@@ -1,0 +1,163 @@
+# SIGESA — Sistema de Gestión de Evaluación y Acreditación
+## Documento de Visión de Negocio
+
+---
+
+## 1. Problema que resuelve
+
+El Sistema de Gestión de Evaluación y Acreditación (SIGESA) surge para resolver la ineficiencia y desorganización en los procesos de evaluación y acreditación de carreras en la Universidad Mayor de San Simón (UMSS), alineados a los lineamientos de ARCU-SUR y el CEUB.
+
+Actualmente, la gestión se realiza mediante herramientas dispersas: documentos físicos, hojas de cálculo y repositorios digitales no integrados. Esto genera:
+
+- Duplicidad de información
+- Falta de trazabilidad
+- Dificultad en el seguimiento del avance
+- Retrasos en el cumplimiento de plazos
+- Alta carga administrativa para los actores involucrados
+- Limitaciones en la toma de decisiones oportunas
+
+SIGESA busca centralizar la información, automatizar procesos y proporcionar un sistema estructurado que mejore el control, la eficiencia y la transparencia en la gestión institucional.
+
+---
+
+## 2. Usuarios principales
+
+### Usuario #1 — Administrador DUEA
+
+**Objetivo:** Supervisar y controlar todos los procesos de acreditación desde un solo lugar, asegurando que las etapas avancen a tiempo, la documentación esté completa y la información no se pierda ante cambios de gestión.
+
+**Tareas principales:**
+1. Ver el estado actualizado de todas las carreras sin consultar a cada jefatura por separado.
+2. Aprobar, rechazar o enviar observaciones sobre las fases entregadas por los coordinadores.
+3. Consultar el historial completo de ciclos anteriores de acreditación para garantizar continuidad institucional.
+
+---
+
+### Usuario #2 — Jefe de Carrera
+
+**Objetivo:** Cumplir oportunamente con los requisitos de acreditación de su carrera, organizando la evidencia y respondiendo observaciones sin depender de procesos manuales dispersos.
+
+**Tareas principales:**
+1. Cargar y actualizar los documentos de evidencia vinculados a cada etapa del proceso.
+2. Recibir alertas de fechas límite para no perder plazos críticos.
+3. Consultar el estado actual de su carrera y las observaciones pendientes que debe atender.
+
+---
+
+### Usuario #3 — Coordinador de Carrera
+
+**Objetivo:** Gestionar el proceso de autoevaluación de su carrera, siendo responsable de recopilar y organizar evidencias, coordinar con docentes y personal administrativo, dar seguimiento a los criterios de evaluación y asegurar el cumplimiento de los requisitos de acreditación.
+
+---
+
+### Usuario #4 — Público General
+
+**Objetivo:** Acceder a información pública del sistema (estado de acreditación de carreras, reportes generales, datos institucionales). No tiene permisos de edición ni acceso a información sensible.
+
+---
+
+## 3. Funcionalidades del sistema
+
+Las funcionalidades se priorizan en tres niveles:
+
+### P1 — Crítico (el sistema no funciona sin esto)
+
+1. **Registro y autenticación de usuarios con roles diferenciados**
+   Roles: Administrador DUEA, Jefe de Carrera, Coordinador, Evaluador Externo. Controla qué puede ver y hacer cada usuario. Es la puerta de entrada a todo: sin roles definidos, cualquier usuario podría aprobar, crear o borrar fases, rompiendo la lógica de negocio.
+
+2. **Gestión de fases del proceso de acreditación**
+   Fases: Autoevaluación → Documentación → Visita de pares → Informe externo → Resolución final. Permite registrar avances, observaciones y cambios de estado. Es el núcleo operativo del sistema.
+
+3. **Carga, organización y versionado de documentos de evidencia**
+   Vinculados a etapas específicas del proceso. Reemplaza el principal dolor detectado: documentos dispersos en físico, Drive y correo. Es la propuesta de valor inmediata.
+
+### P2 — Importante (diferencia el sistema del proceso manual)
+
+4. **Panel centralizado de estado de acreditación por carrera**
+   Incluye etapa actual, porcentaje de avance y fechas clave. Sin dashboard, el sistema sigue requiriendo consultas manuales y la DUEA continúa dependiendo de reportes informales.
+
+5. **Alertas automáticas sobre fechas límite y hitos críticos**
+   Los retrasos más graves ocurren porque nadie recuerda los plazos a tiempo. Sin alertas, el sistema pierde su ventaja sobre el proceso manual.
+
+### P3 — Valioso (agrega valor estratégico)
+
+6. **Reportes de avance exportables (PDF/Excel)**
+   Con métricas de cumplimiento por carrera, facultad y periodo. Permite a la DUEA y autoridades tomar decisiones con datos consolidados y cumplir con rendición de cuentas externa. Puede incorporarse en una segunda iteración.
+
+---
+
+## 4. Reglas de negocio
+
+### Gestión de procesos de acreditación
+- Un proceso debe estar asociado obligatoriamente a una carrera y una facultad.
+- No puede existir más de un proceso activo del mismo tipo (ARCU-SUR o CEUB) para una misma carrera en el mismo periodo.
+- Todo proceso debe registrar: tipo de acreditación, organismo acreditador, gestión (año), fecha de inicio y fin.
+
+### Gestión de usuarios y roles
+- Cada usuario debe tener al menos un rol asignado (Administrador, Técnico, Coordinador, etc.).
+- El acceso a funcionalidades está restringido según el rol.
+- Solo el Administrador puede crear usuarios, asignar roles y modificar permisos.
+
+### Gestión de evidencias
+- Toda evidencia debe estar asociada a un criterio de evaluación y a un proceso de acreditación.
+- No se permite guardar evidencias sin clasificación.
+- El sistema debe registrar: fecha de carga y usuario responsable.
+- Se debe mantener historial de versiones de documentos.
+
+### Seguimiento y control
+- El sistema debe mostrar el estado de cada proceso: En proceso / Acreditado / Vencido.
+- El avance se calcula en función del cumplimiento de criterios.
+- Se generan alertas automáticas cuando se acerquen fechas límite o existan actividades pendientes.
+
+### Gestión de cronogramas
+- Todo proceso debe contar con un cronograma definido.
+- No se puede cerrar un proceso si existen tareas pendientes.
+- Las fechas deben ser coherentes (inicio < fin).
+
+### Generación de reportes
+- El sistema debe permitir generar reportes por carrera, facultad y modalidad de acreditación.
+- Los reportes deben basarse en información actualizada en tiempo real.
+
+### Estados del sistema
+- Todo proceso debe tener un estado definido.
+- Los cambios de estado deben quedar registrados en un historial.
+- Solo usuarios autorizados pueden cambiar el estado de un proceso.
+
+### Seguridad y acceso
+- El sistema requiere autenticación para el acceso.
+- Los usuarios solo pueden visualizar información según su rol.
+- Se debe registrar la actividad del usuario (bitácora de auditoría).
+
+### Validaciones
+- No se permite: crear procesos sin datos obligatorios, subir documentos incompletos ni duplicar registros críticos.
+- El sistema debe mostrar mensajes de error claros al usuario.
+
+### Inteligencia del sistema
+- El sistema emite alertas automáticas de vencimiento.
+- Sugiere organización de evidencias por criterio.
+- Puede generar recomendaciones basadas en procesos anteriores.
+
+---
+
+## 5. Criterios de éxito
+
+El sistema SIGESA funciona correctamente cuando se evidencia mejora real en el proceso de evaluación y acreditación, validado a través de los siguientes indicadores:
+
+### Usabilidad
+- Los usuarios completan sus tareas clave (registrar evidencias, hacer seguimiento, generar reportes) de manera eficiente.
+- Se reduce el tiempo y los errores respecto al proceso actual.
+- Medición: pruebas de usabilidad (tiempo de tarea, tasa de éxito, número de errores).
+
+### Indicadores del proceso
+- Reducción de retrasos en acreditaciones.
+- Mayor cumplimiento de plazos.
+- Disminución de documentos perdidos o duplicados.
+- Incremento en la trazabilidad de la información.
+
+### Satisfacción del usuario
+- Técnicos, coordinadores y autoridades perciben el sistema como útil, fácil de usar y confiable.
+
+### Impacto institucional
+- Mejora en la toma de decisiones.
+- Mayor transparencia en la gestión.
+- Proceso de acreditación más organizado y auditable.
