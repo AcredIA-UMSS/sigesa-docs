@@ -151,20 +151,19 @@ El sistema reconoce 4 actores fundamentales con niveles de visibilidad y permiso
 > El análisis profundo con curva de valor y Estrategia del Océano Azul se desarrolla en el MRD.
 
 ---
-
 ## 7. Business Model Canvas
 
-| Bloque | Mínimo 3 elementos concretos |
-|--------|-------------------------------|
-| **1. Segmentos de clientes** | Técnicos operativos DUEA (usuarios diarios) / Jefatura y dirección DUEA (toma de decisiones) / Coordinadores de carrera y directores académicos de las 12 facultades UMSS / Rectorado, Vicerrectorado y Decanos (consumidores de reportes) / Estudiantes y egresados (consulta pública de estado de acreditación) |
-| **2. Propuesta de valor** | Única Fuente de Verdad con control de versiones automático / Visibilidad gerencial instantánea sin intervención técnica / Cumplimiento normativo CEUB y ARCU-SUR nativo desde la arquitectura / Automatización de alertas, notificaciones y reportes sin intervención humana / Cero pérdidas documentales con historial inmutable auditable |
-| **3. Canales** | Plataforma web institucional con autenticación por correo UMSS (sin instalación) / Notificaciones automáticas por correo institucional / Capacitación y onboarding presencial en la DUEA / Integración futura con sistemas académicos internos UMSS |
-| **4. Relación con clientes** | Interfaz de "cero curva de aprendizaje": botones grandes, lenguaje sin jerga técnica / Retroalimentación en tiempo real: confirmaciones, aprobaciones y rechazos con comentarios / Soporte técnico interno vía equipo AcredIA / Sección de ayuda integrada: manual de usuario, preguntas frecuentes y contacto |
-| **5. Fuentes de ingresos** | Implementación institucional: acuerdo de licenciamiento con UMSS/DUEA / Mantenimiento anual y soporte técnico continuo / Módulos adicionales por demanda (integración RRHH, informes externos) / Licenciamiento potencial a otras universidades del sistema boliviano CEUB |
-| **6. Recursos clave** | Plataforma web SIGESA: backend, base de datos y almacenamiento cloud / Equipo de desarrollo AcredIA (ingenieros, diseñadores UX) / Taxonomías y reglas de negocio CEUB y ARCU-SUR integradas al motor de validación / Base de datos inicial de carreras, facultades y fases UMSS / Accesos de integración con sistemas institucionales UMSS |
-| **7. Actividades clave** | Desarrollo y mantenimiento evolutivo de la plataforma SIGESA / Integración y actualización de normativas CEUB y ARCU-SUR en el motor de validación / Capacitación, onboarding y soporte continuo a todos los tipos de usuario / Generación y automatización de reportes e informes ejecutivos / Gestión de respaldos y seguridad de la información |
-| **8. Socios clave** | UMSS / DUEA: cliente primario e institución implementadora / CEUB: organismo normativo boliviano cuyas reglas estructuran el sistema / ARCU-SUR / MERCOSUR Educativo: organismo normativo regional / Ministerio de Educación de Bolivia: validación institucional / Proveedor de infraestructura cloud: hosting, almacenamiento y disponibilidad |
-| **9. Estructura de costos** | Desarrollo inicial: horas de ingeniería de software y diseño UX / Infraestructura cloud: hosting, base de datos y almacenamiento (OPEX mensual) / Licencias de herramientas de desarrollo y servicios de terceros / Capacitación presencial y materiales de onboarding / Mantenimiento evolutivo: actualizaciones normativas y mejoras funcionales |
+| Bloque | Elementos |
+|--------|-----------|
+| **1. Segmentos de clientes** | [TD] Técnicos DUEA: usuarios diarios de validación y auditoría de evidencias / [CC] Coordinadores de Carrera: operadores de carga y seguimiento por facultad (12 facultades UMSS) / [JD] Jefatura DUEA y autoridades universitarias (Rector, Vicerrector, Decanos): consumidores de reportes ejecutivos / [P] Público externo: estudiantes, egresados, empleadores y organismos de acreditación (CEUB, ARCU-SUR) |
+| **2. Propuesta de valor** | Para [TD]: repositorio centralizado con control de versiones automático y cero ambigüedad sobre la versión final vigente / Para [CC]: flujo guiado de carga y corrección de indicadores con retroalimentación inmediata sin depender de la DUEA / Para [JD]: visibilidad gerencial instantánea con dashboard de semáforos y reporte ejecutivo en PDF sin intervención técnica / Para [P]: portal de transparencia con consulta de estado de acreditación y descarga de certificados sin fricciones |
+| **3. Canales** | Plataforma web institucional con autenticación por correo UMSS (sin instalación, acceso por rol) / Notificaciones automáticas por correo institucional para [CC] y [TD] / Capacitación y onboarding presencial diferenciado por tipo de actor / Portal público de transparencia de acceso abierto para [P] |
+| **4. Relación con clientes** | [CC]: interfaz de cero curva de aprendizaje con confirmaciones, rechazos y observaciones en tiempo real / [TD]: panel de auditoría con justificación obligatoria y trazabilidad completa de acciones / [JD]: dashboard ejecutivo autoservicio sin necesidad de asistencia técnica / [P]: acceso anónimo sin registro, información oficial publicada con garantía institucional |
+| **5. Fuentes de ingresos** | Acuerdo de implementación institucional con UMSS/DUEA (licenciamiento inicial) / Mantenimiento anual y soporte técnico continuo / Módulos adicionales por demanda (integración RRHH, reportes externos, nuevas normativas) / Licenciamiento potencial a otras universidades del sistema CEUB |
+| **6. Recursos clave** | Plataforma SIGESA: backend, base de datos y almacenamiento cloud con historial inmutable / Motor de validación con taxonomías CEUB y ARCU-SUR integradas / Equipo AcredIA: ingeniería de software y diseño UX / Matriz de roles y permisos ([CC], [TD], [JD], [P]) como arquitectura de acceso / Base de datos inicial de carreras, facultades, fases e indicadores UMSS |
+| **7. Actividades clave** | Desarrollo y mantenimiento evolutivo de SIGESA con ciclos de mejora continua / Actualización del motor de validación ante cambios normativos CEUB y ARCU-SUR / Onboarding y capacitación diferenciada por actor ([CC], [TD], [JD]) / Automatización de alertas, reportes ejecutivos e informes de avance / Gestión de seguridad, respaldos y auditoría del historial de acreditaciones |
+| **8. Socios clave** | UMSS / DUEA: cliente primario e institución implementadora / CEUB: organismo normativo boliviano que estructura las reglas del motor de validación / ARCU-SUR / MERCOSUR Educativo: organismo normativo regional / Ministerio de Educación de Bolivia: validación y reconocimiento institucional / Proveedor de infraestructura cloud: hosting, almacenamiento y disponibilidad |
+| **9. Estructura de costos** | Desarrollo inicial: horas de ingeniería y diseño UX para los 4 flujos de actor / Infraestructura cloud: hosting, base de datos y almacenamiento (OPEX mensual) / Licencias de herramientas de desarrollo y servicios de terceros / Capacitación presencial diferenciada por rol y materiales de onboarding / Mantenimiento evolutivo: actualizaciones normativas y mejoras funcionales por versión |
 
 ---
 
@@ -353,9 +352,9 @@ El sistema reconoce 4 actores fundamentales con niveles de visibilidad y permiso
 
 | Rol | Nombre | Firma | Fecha |
 |-----|--------|-------|-------|
-| Sponsor (Jefa DUEA) | | | |
+| Sponsor (Jefa DUEA) | Lic. Claudia Sevilla | | |
 | PM / Líder del proyecto | | | |
-| Docente revisor | M.Sc. Rodrigo Iver Romero Frias | | |
+| Docente revisor | M.Sc. Rodrigo Iver Romero Frias | M.Sc. Edson Terceros Torrico | |
 | Grupo par revisor | | | |
 
 ---
@@ -364,7 +363,7 @@ El sistema reconoce 4 actores fundamentales con niveles de visibilidad y permiso
 
 | Versión | Fecha | Autor | Cambio |
 |---------|-------|-------|--------|
-| v0.1 | 02/05/2026 | Equipo AcredIA | Versión inicial — elaborada con base en Bitácoras Módulo 1 y Módulo 2, adaptada al template oficial Módulo 4 |
+| v0.1 | 02/05/2026 | Equipo AcredIA | Versión inicial — elaborada con base en Bitácoras Módulo 1, 2y Módulo 3, adaptada al template oficial Módulo 4 |
 
 ---
 
@@ -372,7 +371,7 @@ El sistema reconoce 4 actores fundamentales con niveles de visibilidad y permiso
 
 - [x] **Resumen ejecutivo** de ½ página con problema, propuesta, valor y métricas.
 - [x] Problema de negocio con evidencia cuantitativa (20+ minutos, validado en campo).
-- [x] **2 personas / usuarios objetivo** caracterizadas (JTBD, dolores, ganancias).
+- [x] **4 personas / usuarios objetivo** caracterizadas (JTBD, dolores, ganancias).
 - [x] **Propuesta de valor** explícita (formato VPC).
 - [x] **Panorama competitivo** con 5 alternativas (incluyendo *do-nothing*).
 - [x] **Business Model Canvas** con los 9 bloques, ≥ 3 elementos por bloque.
