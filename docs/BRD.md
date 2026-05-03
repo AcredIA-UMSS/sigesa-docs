@@ -14,7 +14,7 @@
 | Sponsor de negocio | Jefa de la DUEA — Dirección Universitaria de Evaluación y Acreditación, UMSS |
 | Stakeholders | Jefatura DUEA · Técnicos DUEA · Coordinadores de Carrera · Directores Académicos · Rectorado UMSS · Decanos · Estudiantes/Egresados · CEUB · ARCU-SUR |
 | Autores | Marlene Velasquez Arias · Boris Anthony Angulo Urquieta · Aylen Mariangel Gonzales Alvino · Alexander James Alvarez |
-| Revisores | M.Sc. Rodrigo Iver Romero Frias + 1 grupo par |
+| Revisores | M.Sc. Edson Terceros Torrico |
 | Estado | Borrador |
 
 ---
@@ -77,29 +77,53 @@ La consecuencia de no actuar es directa: mayor riesgo de no superar auditorías 
 
 ---
 
-## 4. Usuarios Objetivo / Personas Clave
+## 4. Usuarios Objetivo / Actores del Sistema
 
-### 4.1 Persona Principal — Técnico Operativo DUEA
-
-| Atributo | Valor |
-|----------|-------|
-| Nombre / rol | Juan Carlos Corrales Terceros, 28 años / Belina Vargas, 38 años — Técnico Evaluador DUEA |
-| Contexto | Trabaja diariamente en la DUEA revisando, validando y organizando evidencias de acreditación de múltiples carreras. Accede constantemente a informes, documentos y evidencias dispersas en carpetas locales, Drive y correo institucional. Se comunica con jefes de carrera, coordinadores y técnicos de facultad. |
-| *Jobs-to-be-done* | 1) Verificar que los documentos corresponden a la versión final correcta. 2) Registrar y validar el avance de fases por carrera. 3) Generar informes de avance para la jefatura sin interrumpir su flujo. 4) Coordinar la recepción y aprobación de evidencias. 5) Mantener un historial auditable de todas las acciones realizadas. |
-| Dolores principales | Pérdida de 20+ minutos buscando versiones finales. Duplicidad de archivos sin control de versiones. Tareas manuales repetitivas en Excel. Sesiones que expiran repentinamente. Necesidad de compilar múltiples Excels para reportes de jefatura. |
-| Ganancia esperada | Repositorio centralizado con versión siempre correcta. Historial de versiones automático. Reportes generados por el sistema. Notificaciones automáticas. Reducción de tiempo en tareas burocráticas. |
-
-### 4.2 Persona Secundaria — Jefa DUEA / Administrador
-
-| Atributo | Valor |
-|----------|-------|
-| Nombre / rol | Claudia Sevilla, 62 años — Jefa de la DUEA |
-| Contexto | Dirige el departamento de acreditación. Presenta informes ante autoridades universitarias (Rector, Vicerrector, Decanos). Nivel técnico bajo-medio (4/10): maneja correo y ofimática básica, sin experiencia con software complejo. |
-| *Jobs-to-be-done* | 1) Conocer en tiempo real el estado de acreditación de cada carrera sin depender del equipo. 2) Generar reportes ejecutivos para autoridades. 3) Identificar carreras en riesgo de no cumplir plazos. 4) Tomar decisiones con información clara. 5) Simplificar la planificación por gestión. |
-| Dolores principales | Incertidumbre permanente sobre el avance real. Dependencia de la memoria del equipo. Imposibilidad de generar reportes sin interrumpir a los técnicos. Falta de visibilidad centralizada. |
-| Ganancia esperada | Dashboard con semáforos de avance. Reporte ejecutivo en PDF con 2 clics. Alertas automáticas de retrasos. Información visual sin asistencia técnica. |
+El sistema reconoce 4 actores fundamentales con niveles de visibilidad y permisos distintos:
 
 ---
+
+### [CC] Coordinador de Carrera
+
+| Atributo | Valor |
+|----------|-------|
+| **Rol** | Actor operativo |
+| **Objetivo** | Cumplir con el framework de evaluación normativo |
+| **Responsabilidades** | Carga de evidencias documentales · Respuesta a observaciones del Técnico DUEA · Corrección de indicadores rechazados · Seguimiento del progreso de su carrera |
+| **Visibilidad** | Limitada a su propia carrera |
+
+---
+
+### [TD] Técnico DUEA (Auditor)
+
+| Atributo | Valor |
+|----------|-------|
+| **Rol** | Actor auditor y orquestador |
+| **Objetivo** | Validar la calidad técnica y completitud de las evidencias |
+| **Responsabilidades** | Revisión de evidencia técnica · Aprobación o rechazo de indicadores (con justificación obligatoria) · Generación de observaciones vinculadas · Autorización del avance de fases |
+| **Visibilidad** | Global (todas las carreras y facultades) |
+
+---
+
+### [JD] Jefatura DUEA (Administrador)
+
+| Atributo | Valor |
+|----------|-------|
+| **Rol** | Actor estratégico |
+| **Objetivo** | Supervisar velocidad de procesos y garantizar continuidad institucional |
+| **Responsabilidades** | Monitoreo de cuellos de botella · Configuración del sistema (usuarios, facultades, plantillas normativas) · Aprobación de dictámenes finales · Auditoría de historial de acreditaciones |
+| **Visibilidad** | Total del sistema |
+
+---
+
+### [P] Público (Portal de Transparencia)
+
+| Atributo | Valor |
+|----------|-------|
+| **Rol** | Actor externo |
+| **Acceso** | Estudiantes, empleadores, organismos de acreditación |
+| **Responsabilidades** | Consultar estados y descargar certificados institucionales sin fricciones |
+| **Visibilidad** | Pública (solo información publicada oficialmente) |
 
 ## 5. Propuesta de Valor
 
