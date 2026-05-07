@@ -194,6 +194,19 @@ Este repositorio contiene:
 
 ---
 
+## 🧾 Plantilla de mensajes de commit
+
+Este repositorio incluye una plantilla de Git para mantener buenas prácticas en los logs de commit.
+Usa el archivo `.gitmessage.txt` en la raíz del proyecto y configura tu repositorio local con:
+
+```bash
+git config commit.template .gitmessage.txt
+```
+
+Luego de configurar, cada `git commit` abrirá un mensaje con secciones claras de tipo, descripción, referencias y pruebas.
+
+---
+
 ## 📝 Licencia
 
 Proyecto de la Universidad Mayor de San Simón (UMSS). Contacto: DUEA (Dirección de Asuntos Universitarios y Acreditación)
