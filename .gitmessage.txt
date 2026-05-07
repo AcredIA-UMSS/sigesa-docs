@@ -1,0 +1,27 @@
+# Plantilla de mensaje de commit para SIGESA
+# Mantiene buenas prácticas para trazabilidad y logs.
+# Elimina las líneas que no necesites antes de guardar el commit.
+
+# Tipo de cambio: feat, fix, docs, style, refactor, perf, test, chore, build, ci
+# Scope opcional: módulo, vista, dominio, etc.
+# Resumen breve en tiempo presente, máximo 50 caracteres.
+# Ejemplo: feat(acreditacion): agregar campo de observaciones
+
+<tipo>(<scope>): <resumen breve>
+
+Descripción:
+- ¿Qué se cambió?
+- ¿Por qué era necesario?
+- ¿Cómo se resolvió?
+
+Logs / Motivo / Referencias:
+- Si aplica, enlaza issue, ticket o RFC.
+- Incluye cualquier dato importante para auditoría.
+
+Pruebas realizadas:
+- Describir pruebas manuales y/o automatizadas.
+- Incluir comandos o rutas relevantes.
+
+Notas adicionales:
+- Mantén el mensaje claro y orientado al historial.
+- Evita mensajes genéricos como "arreglos varios".
