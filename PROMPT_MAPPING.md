@@ -143,3 +143,50 @@ Adicionalmente, para un mapeo detallado, incluir:
 - **Proximos pasos**:
   - Registrar `PM-002` en la siguiente tarea ejecutada con IA.
   - Definir responsable de mantenimiento de este archivo en el flujo del proyecto.
+
+### PM-002 - Visión de negocio v2 (comparación con PDFs)
+- **ID**: PM-002
+- **Fecha**: 2026-05-10
+- **Hora**: 23:53
+- **Solicitante**: Aylen Gonzáles `sigesa-docs`
+- **Agente / Entorno**: Cursor Agent
+- **Modelo**: Cursor Agent (modelo del asistente en sesión)
+- **Tarea**: Leer `docs/01_vision_negocio.txt` y los PDF del repositorio (y adjuntos); comparar con la visión; crear `team/aylenGonzales/02_vision_negocio_v2.md` conservando el contenido original y añadiendo información relevante de los PDFs; actualizar `PROMPT_MAPPING.md` con el registro del entregable.
+- **Objetivo**: Disponer de una versión 2 del documento de visión con mayor contexto y completitud, trazable frente a fuentes PDF, sin perder el texto base.
+- **Contexto**:
+  - Repositorio: `sigesa-docs`.
+  - Fuentes: `./docs/01_vision_negocio.txt`; PDFs añadidos en el chat; PDFs adjuntos en almacenamiento de workspace Cursor cuando apliquen.
+- **Prompt usado (exacto)**:
+  ```text
+  Lee el archivo docs/01_vision_negocio.txt y todos los archivos PDF que encuentres en el repositorio.
+
+  Compara el contenido del documento de visión con la información de los PDFs y crea el archivo team/aylenGonzales/02_vision_negocio_v2.md con una versión mejorada que incluya:
+  - Todo el contenido original conservado
+  - Información relevante e interesante que esté en los PDFs pero que falte en el documento actual
+  - Datos importantes que aporten más completitud y contexto al documento de visión del negocio
+
+  Finalmente, agrega al archivo PROMPT_MAPPING.md una nueva entrada:
+
+  | 02_vision_negocio_v2.md | Comparación con PDFs y mejora del documento de visión | Aylen |
+  ```
+- **Entradas auxiliares**:
+  - Rutas a PDF de Bitácora 3 y Actividad4 en carpeta de workspace del usuario (Cursor).
+- **Archivos generados o modificados**:
+  - `./team/aylenGonzales/02_vision_negocio_v2.md` - Creado.
+  - `./PROMPT_MAPPING.md` - Modificado (registro de la tarea; la fila en tabla se sustituyó por esta entrada PM-002 estructurada).
+- **Cambios realizados**:
+  - Redacción de visión v2 con secciones 1–5 idénticas al `01_vision_negocio.txt` y suplementos 6–8 desde Bitácora 3 AcredIA.
+  - Nota explícita sobre PDF no aplicable a SIGESA y referencia a otras bitácoras del repo.
+  - Sustitución del registro tipo tabla por entrada detallada al alinear con el formato PM-001.
+- **Validacion ejecutada**:
+  - Lectura de `01_vision_negocio.txt`, PDF Bitácora 3 y Actividad4; revisión de estructura del markdown generado.
+- **Resultado obtenido**:
+  - Archivo `02_vision_negocio_v2.md` creado con base íntegra más ampliación contextual desde PDFs de AcredIA.
+  - `PROMPT_MAPPING.md` actualizado con PM-002 en formato homogéneo a PM-001.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - Bitácora 1 y Módulo 2 no se extrajeron por ruta en el entorno de lectura; conviene reabrir v2 cuando esos PDF estén accesibles en el repo.
+- **Lecciones / reuso del prompt**:
+  - Pedir explícitamente “conservar original” y “solo añadir lo faltante” reduce riesgo de reescritura no deseada del BRD/visión.
+- **Proximos pasos**:
+  - Opcional: `PM-003` al incorporar texto de Bitácora 1 y Módulo 2 al documento de visión.
