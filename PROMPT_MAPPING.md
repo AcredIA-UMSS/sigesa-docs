@@ -206,7 +206,8 @@ Adicionalmente, para un mapeo detallado, incluir:
   - Entradas: `./docs/BRD_v1.md` (BRD base v0.1); `./team/aylenGonzales/02_vision_negocio_v2.md` (visión extendida y Bitácora 3).
   - Criterio: conservación literal del cuerpo de las secciones **1–19** del BRD v1; fila añadida en §20; extensiones en §0 metadatos y secciones 21–26.
 - **Prompt usado (exacto)**:
-  ```text
+  
+```text
   Lee los archivos docs/BRD_v1.md y team/aylenGonzales/02_vision_negocio_v2.md
 
   Compara ambos documentos y crea el archivo team/aylenGonzales/BRD_v2.md con una versión mejorada que incluya:
@@ -216,7 +217,8 @@ Adicionalmente, para un mapeo detallado, incluir:
   - Cualquier información importante que haga el BRD más completo y profesional
 
   Luego agrega al archivo PROMPT_MAPPING.md una nueva entrada PM-003 siguiendo exactamente el mismo formato detallado de PM-001 y PM-002, con los datos que estamos haciendo ahhora
-  ```
+  
+```
 - **Entradas auxiliares**:
   - Ninguna adicional fuera de los dos documentos fuente y el estado del repositorio.
 - **Archivos generados o modificados**:
@@ -242,3 +244,52 @@ Adicionalmente, para un mapeo detallado, incluir:
 - **Proximos pasos**:
   - Actualizar trazabilidad §18 con IDs MRD/PRD para BR-013–018 cuando existan.
   - Opcional: `PM-004` para sincronizar con Bitácora 1 y Módulo 2 en texto plano accesible.
+
+### PM-004 - Visión de negocio v2 (AcredIA) - Boris
+- **ID**: PM-004
+- **Fecha**: 2026-05-11
+- **Hora**: 00:00 (UTC-4)
+- **Solicitante**: Boris
+- **Agente / Entorno**: BLACKBOXAI
+- **Modelo**: N/A (asistente en sesión)
+- **Tarea**: Crear `team/borisAngulo/01_vision_negocio_v2.txt` a partir de `docs/01_vision_negocio.txt` (V1 actual), **conservando todo el contenido original** y añadiendo SOLO los bloques [A]–[G] validados, marcándolos con `# [AÑADIDO EN V2 - Boris]`. Además, actualizar `PROMPT_MAPPING.md` con la entrada nueva.
+- **Objetivo**: Generar una versión V2 fiel a la estructura/formato de V1 e incorporar requisitos negocio/UX/modularidad priorizados (MoSCoW) y marca.
+- **Contexto**:
+  - Fuente principal: `./docs/01_vision_negocio.txt`.
+  - Entregable: `./team/borisAngulo/01_vision_negocio_v2.txt`.
+  - Restricción: agregar SOLO [A]–[G] no cubiertos en V1.
+  - Restricción adicional: mantener EXACTAMENTE la estructura y formato de V1, conservando contenido original sin reescribir.
+- **Prompt usado (exacto)**:
+  
+```text
+  Eres un asistente experto en documentación de negocio del proyecto SIGESA / AcredIA.
+  ...
+  Entrega:
+  - Guarda el archivo en `team/borisAngulo/01_vision_negocio_v2.txt`
+  - Solo el bloque nuevo en `PROMPT_MAPPING.md`
+  
+```
+- **Entradas auxiliares**:
+  - Contenido de `docs/01_vision_negocio.txt` (V1) leído para conservar estructura.
+- **Archivos generados o modificados**:
+  - `./team/borisAngulo/01_vision_negocio_v2.txt` - Creado
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-004)
+- **Cambios realizados**:
+  - Insertar secciones/bloques [A]–[G] en ubicaciones coherentes respetando el contenido existente.
+  - Marcar cada bloque añadido con `# [AÑADIDO EN V2 - Boris]`.
+  - Añadir encabezado de marca (AcredIA + slogan) dentro del documento V2.
+  - Registrar esta ejecución en PROMPT_MAPPING.md.
+- **Validacion ejecutada**:
+  - Lectura de `docs/01_vision_negocio.txt` para conservar texto original.
+  - Verificación de creación de archivo destino `team/borisAngulo/01_vision_negocio_v2.txt`.
+  - Confirmación de inserción de la entrada nueva en `PROMPT_MAPPING.md`.
+- **Resultado obtenido**:
+  - Documento V2 generado en el path solicitado.
+  - Entrada PM-004 agregada en PROMPT_MAPPING.md.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - Algunas secciones V1 no incluyen encabezados específicos (p.ej. posicionamiento competitivo), por lo que [C]–[G] se integran en posiciones más cercanas manteniendo el formato global.
+- **Lecciones / reuso del prompt**:
+  - Solicitar explícitamente “conservar original” y “solo añadir lo faltante” reduce el riesgo de reescritura.
+- **Proximos pasos**:
+  - Validar con el equipo DUEA/Negocio la consistencia semántica de [A]–[G] con el documento V1.
