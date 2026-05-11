@@ -143,3 +143,102 @@ Adicionalmente, para un mapeo detallado, incluir:
 - **Proximos pasos**:
   - Registrar `PM-002` en la siguiente tarea ejecutada con IA.
   - Definir responsable de mantenimiento de este archivo en el flujo del proyecto.
+
+### PM-002 - Visión de negocio v2 (comparación con PDFs)
+- **ID**: PM-002
+- **Fecha**: 2026-05-10
+- **Hora**: 23:53
+- **Solicitante**: Aylen Gonzáles `sigesa-docs`
+- **Agente / Entorno**: Cursor Agent
+- **Modelo**: Cursor Agent (modelo del asistente en sesión)
+- **Tarea**: Leer `docs/01_vision_negocio.txt` y los PDF del repositorio (y adjuntos); comparar con la visión; crear `team/aylenGonzales/02_vision_negocio_v2.md` conservando el contenido original y añadiendo información relevante de los PDFs; actualizar `PROMPT_MAPPING.md` con el registro del entregable.
+- **Objetivo**: Disponer de una versión 2 del documento de visión con mayor contexto y completitud, trazable frente a fuentes PDF, sin perder el texto base.
+- **Contexto**:
+  - Repositorio: `sigesa-docs`.
+  - Fuentes: `./docs/01_vision_negocio.txt`; PDFs añadidos en el chat; PDFs adjuntos en almacenamiento de workspace Cursor cuando apliquen.
+- **Prompt usado (exacto)**:
+  ```text
+  Lee el archivo docs/01_vision_negocio.txt y todos los archivos PDF que encuentres en el repositorio.
+
+  Compara el contenido del documento de visión con la información de los PDFs y crea el archivo team/aylenGonzales/02_vision_negocio_v2.md con una versión mejorada que incluya:
+  - Todo el contenido original conservado
+  - Información relevante e interesante que esté en los PDFs pero que falte en el documento actual
+  - Datos importantes que aporten más completitud y contexto al documento de visión del negocio
+
+  Finalmente, agrega al archivo PROMPT_MAPPING.md una nueva entrada:
+
+  | 02_vision_negocio_v2.md | Comparación con PDFs y mejora del documento de visión | Aylen |
+  ```
+- **Entradas auxiliares**:
+  - Rutas a PDF de Bitácora 3 y Actividad4 en carpeta de workspace del usuario (Cursor).
+- **Archivos generados o modificados**:
+  - `./team/aylenGonzales/02_vision_negocio_v2.md` - Creado.
+  - `./PROMPT_MAPPING.md` - Modificado (registro de la tarea; la fila en tabla se sustituyó por esta entrada PM-002 estructurada).
+- **Cambios realizados**:
+  - Redacción de visión v2 con secciones 1–5 idénticas al `01_vision_negocio.txt` y suplementos 6–8 desde Bitácora 3 AcredIA.
+  - Nota explícita sobre PDF no aplicable a SIGESA y referencia a otras bitácoras del repo.
+  - Sustitución del registro tipo tabla por entrada detallada al alinear con el formato PM-001.
+- **Validacion ejecutada**:
+  - Lectura de `01_vision_negocio.txt`, PDF Bitácora 3 y Actividad4; revisión de estructura del markdown generado.
+- **Resultado obtenido**:
+  - Archivo `02_vision_negocio_v2.md` creado con base íntegra más ampliación contextual desde PDFs de AcredIA.
+  - `PROMPT_MAPPING.md` actualizado con PM-002 en formato homogéneo a PM-001.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - Bitácora 1 y Módulo 2 no se extrajeron por ruta en el entorno de lectura; conviene reabrir v2 cuando esos PDF estén accesibles en el repo.
+- **Lecciones / reuso del prompt**:
+  - Pedir explícitamente “conservar original” y “solo añadir lo faltante” reduce riesgo de reescritura no deseada del BRD/visión.
+- **Proximos pasos**:
+  - Completado: registro `PM-003` (BRD v2 alineado con visión de negocio v2).
+  - Opcional: incorporar texto de Bitácora 1 y Módulo 2 en `02_vision_negocio_v3.md` o en el BRD.
+
+### PM-003 - BRD v2 (alineación con visión de negocio v2)
+- **ID**: PM-003
+- **Fecha**: 2026-05-10
+- **Hora**: No registrada (UTC-4)
+- **Solicitante**: Aylen Gonzáles `sigesa-docs`
+- **Agente / Entorno**: Cursor Agent
+- **Modelo**: Cursor Agent (modelo del asistente en sesión)
+- **Tarea**: Leer `docs/BRD_v1.md` y `team/aylenGonzales/02_vision_negocio_v2.md`; comparar; crear `team/aylenGonzales/BRD_v2.md` conservando el contenido del BRD v1, incorporando mejoras y datos de la visión v2 que falten en el BRD; registrar la interacción en `PROMPT_MAPPING.md`.
+- **Objetivo**: Contar con un BRD más completo y profesional, trazable frente a la visión v2, sin pérdida del texto base del BRD v1 en las secciones 1–20.
+- **Contexto**:
+  - Repositorio: `sigesa-docs`.
+  - Entradas: `./docs/BRD_v1.md` (BRD base v0.1); `./team/aylenGonzales/02_vision_negocio_v2.md` (visión extendida y Bitácora 3).
+  - Criterio: conservación literal del cuerpo de las secciones **1–19** del BRD v1; fila añadida en §20; extensiones en §0 metadatos y secciones 21–26.
+- **Prompt usado (exacto)**:
+  ```text
+  Lee los archivos docs/BRD_v1.md y team/aylenGonzales/02_vision_negocio_v2.md
+
+  Compara ambos documentos y crea el archivo team/aylenGonzales/BRD_v2.md con una versión mejorada que incluya:
+  - Todo el contenido existente en BRD_v1.md conservado
+  - Mejoras y nuevas secciones basadas en la información del documento de visión v2
+  - Datos relevantes que estén en la visión pero que falten en el BRD actual
+  - Cualquier información importante que haga el BRD más completo y profesional
+
+  Luego agrega al archivo PROMPT_MAPPING.md una nueva entrada PM-003 siguiendo exactamente el mismo formato detallado de PM-001 y PM-002, con los datos que estamos haciendo ahhora
+  ```
+- **Entradas auxiliares**:
+  - Ninguna adicional fuera de los dos documentos fuente y el estado del repositorio.
+- **Archivos generados o modificados**:
+  - `./team/aylenGonzales/BRD_v2.md` - Creado (copia base de `BRD_v1.md` + metadatos v2 + secciones 21–26 + checklist y pie ampliados).
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-003).
+- **Cambios realizados**:
+  - Metadatos §0: versión documento v2.0, fechas, fuente de alineación y nota de conservación (§1–§19 íntegros; §20 fila v2.0 añadida).
+  - §20 Registro de cambios: fila v2.0 (fila v0.1 conservada).
+  - Nuevas secciones 21–26: alineación estratégica, actores/fases/P1–P3, BR-013–018 y RB-08–11, IA/ética/accesibilidad/móvil, KPI-06–09, riesgos UX complementarios.
+  - Checklist ampliado con ítems marcados para entregables v2.
+  - Pie de documento con referencia cruzada a fuentes.
+- **Validacion ejecutada**:
+  - Comparación lectura a lectura BRD v1 vs visión v2; verificación de que las secciones **1–19** del archivo copiado coinciden con `docs/BRD_v1.md`.
+- **Resultado obtenido**:
+  - `BRD_v2.md` publicado en `team/aylenGonzales/` listo para revisión DUEA y trazabilidad hacia MRD/PRD.
+  - `PROMPT_MAPPING.md` con PM-003 en formato homogéneo a PM-001 y PM-002.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - Los códigos [JC] y roles duplicados con [CC] requieren decisión institucional en implementación para evitar solapamiento de permisos.
+  - KPIs KPI-06 a KPI-09 provienen de prototipo; deben validarse con datos UMSS en piloto.
+- **Lecciones / reuso del prompt**:
+  - Copiar BRD v1 íntegro y extender por secciones nuevas minimiza riesgo de regresión documental frente a edición línea a línea.
+- **Proximos pasos**:
+  - Actualizar trazabilidad §18 con IDs MRD/PRD para BR-013–018 cuando existan.
+  - Opcional: `PM-004` para sincronizar con Bitácora 1 y Módulo 2 en texto plano accesible.
