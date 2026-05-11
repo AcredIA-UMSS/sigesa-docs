@@ -189,4 +189,56 @@ Adicionalmente, para un mapeo detallado, incluir:
 - **Lecciones / reuso del prompt**:
   - Pedir explícitamente “conservar original” y “solo añadir lo faltante” reduce riesgo de reescritura no deseada del BRD/visión.
 - **Proximos pasos**:
-  - Opcional: `PM-003` al incorporar texto de Bitácora 1 y Módulo 2 al documento de visión.
+  - Completado: registro `PM-003` (BRD v2 alineado con visión de negocio v2).
+  - Opcional: incorporar texto de Bitácora 1 y Módulo 2 en `02_vision_negocio_v3.md` o en el BRD.
+
+### PM-003 - BRD v2 (alineación con visión de negocio v2)
+- **ID**: PM-003
+- **Fecha**: 2026-05-10
+- **Hora**: No registrada (UTC-4)
+- **Solicitante**: Aylen Gonzáles `sigesa-docs`
+- **Agente / Entorno**: Cursor Agent
+- **Modelo**: Cursor Agent (modelo del asistente en sesión)
+- **Tarea**: Leer `docs/BRD_v1.md` y `team/aylenGonzales/02_vision_negocio_v2.md`; comparar; crear `team/aylenGonzales/BRD_v2.md` conservando el contenido del BRD v1, incorporando mejoras y datos de la visión v2 que falten en el BRD; registrar la interacción en `PROMPT_MAPPING.md`.
+- **Objetivo**: Contar con un BRD más completo y profesional, trazable frente a la visión v2, sin pérdida del texto base del BRD v1 en las secciones 1–20.
+- **Contexto**:
+  - Repositorio: `sigesa-docs`.
+  - Entradas: `./docs/BRD_v1.md` (BRD base v0.1); `./team/aylenGonzales/02_vision_negocio_v2.md` (visión extendida y Bitácora 3).
+  - Criterio: conservación literal del cuerpo de las secciones **1–19** del BRD v1; fila añadida en §20; extensiones en §0 metadatos y secciones 21–26.
+- **Prompt usado (exacto)**:
+  ```text
+  Lee los archivos docs/BRD_v1.md y team/aylenGonzales/02_vision_negocio_v2.md
+
+  Compara ambos documentos y crea el archivo team/aylenGonzales/BRD_v2.md con una versión mejorada que incluya:
+  - Todo el contenido existente en BRD_v1.md conservado
+  - Mejoras y nuevas secciones basadas en la información del documento de visión v2
+  - Datos relevantes que estén en la visión pero que falten en el BRD actual
+  - Cualquier información importante que haga el BRD más completo y profesional
+
+  Luego agrega al archivo PROMPT_MAPPING.md una nueva entrada PM-003 siguiendo exactamente el mismo formato detallado de PM-001 y PM-002, con los datos que estamos haciendo ahhora
+  ```
+- **Entradas auxiliares**:
+  - Ninguna adicional fuera de los dos documentos fuente y el estado del repositorio.
+- **Archivos generados o modificados**:
+  - `./team/aylenGonzales/BRD_v2.md` - Creado (copia base de `BRD_v1.md` + metadatos v2 + secciones 21–26 + checklist y pie ampliados).
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-003).
+- **Cambios realizados**:
+  - Metadatos §0: versión documento v2.0, fechas, fuente de alineación y nota de conservación (§1–§19 íntegros; §20 fila v2.0 añadida).
+  - §20 Registro de cambios: fila v2.0 (fila v0.1 conservada).
+  - Nuevas secciones 21–26: alineación estratégica, actores/fases/P1–P3, BR-013–018 y RB-08–11, IA/ética/accesibilidad/móvil, KPI-06–09, riesgos UX complementarios.
+  - Checklist ampliado con ítems marcados para entregables v2.
+  - Pie de documento con referencia cruzada a fuentes.
+- **Validacion ejecutada**:
+  - Comparación lectura a lectura BRD v1 vs visión v2; verificación de que las secciones **1–19** del archivo copiado coinciden con `docs/BRD_v1.md`.
+- **Resultado obtenido**:
+  - `BRD_v2.md` publicado en `team/aylenGonzales/` listo para revisión DUEA y trazabilidad hacia MRD/PRD.
+  - `PROMPT_MAPPING.md` con PM-003 en formato homogéneo a PM-001 y PM-002.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - Los códigos [JC] y roles duplicados con [CC] requieren decisión institucional en implementación para evitar solapamiento de permisos.
+  - KPIs KPI-06 a KPI-09 provienen de prototipo; deben validarse con datos UMSS en piloto.
+- **Lecciones / reuso del prompt**:
+  - Copiar BRD v1 íntegro y extender por secciones nuevas minimiza riesgo de regresión documental frente a edición línea a línea.
+- **Proximos pasos**:
+  - Actualizar trazabilidad §18 con IDs MRD/PRD para BR-013–018 cuando existan.
+  - Opcional: `PM-004` para sincronizar con Bitácora 1 y Módulo 2 en texto plano accesible.
