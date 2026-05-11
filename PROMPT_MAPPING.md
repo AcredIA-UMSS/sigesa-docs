@@ -88,7 +88,7 @@ Adicionalmente, para un mapeo detallado, incluir:
 - **ID**: PM-001
 - **Fecha**: 2026-05-06
 - **Hora**: 21:26 (UTC-4)
-- **Solicitante**: Usuario del proyecto `sigesa-docs`
+- **Solicitante**: Aylen Gonzáles `sigesa-docs`
 - **Agente / Entorno**: Cursor Agent
 - **Modelo**: claude en Cursor Agent
 - **Tarea**: Crear archivo base `PROMPT_MAPPING.md` con estructura inicial y formato detallado.
