@@ -232,3 +232,12 @@ El sistema SIGESA funciona correctamente cuando se evidencia mejora real en el p
 - matrices de evaluación,
 - control de respaldos manuales,
 - generación automática de bitácoras.
+
+# [AÑADIDO EN V2 - Boris]
+## 4. REQUERIMIENTOS UX VALIDADOS — enriquecir la sección de funcionalidades:
+- Dashboard con semáforos visuales (verde/amarillo/rojo) por carrera y facultad.
+- Botón "Generar Reporte Ejecutivo" exportable en PDF en máximo 2 clics.
+- Historial de versiones INMUTABLE: quién subió, cuándo y qué cambió.
+- Interfaz "cero curva de aprendizaje": botones grandes, lenguaje sin jerga técnica, similar a ofimática.
+- Modal de advertencia para evitar borrado accidental de documentos.
+- Alertas automáticas sin intervención humana.
