@@ -1,0 +1,289 @@
+# SIGESA — Sistema de Gestión de Evaluación y Acreditación
+## Documento de Visión de Negocio
+
+**Equipo desarrollador:** AcredIA  
+**Slogan:** «Smart accreditation. Real impact.»
+
+---
+
+## 1. Problema que resuelve
+
+El Sistema de Gestión de Evaluación y Acreditación (SIGESA) surge para resolver la ineficiencia y desorganización en los procesos de evaluación y acreditación de carreras en la Universidad Mayor de San Simón (UMSS), alineados a los lineamientos de ARCU-SUR y el CEUB.
+
+Actualmente, la gestión se realiza mediante herramientas dispersas: documentos físicos, hojas de cálculo y repositorios digitales no integrados. En la práctica operativa esto se traduce con frecuencia en Excel aislados, correo electrónico, almacenamiento en pendrives y canales informales (por ejemplo, mensajería instantánea), sin un único repositorio de verdad. Esto genera:
+
+- Duplicidad de información  
+- Falta de trazabilidad  
+- Dificultad en el seguimiento del avance  
+- Retrasos en el cumplimiento de plazos  
+- Alta carga administrativa para los actores involucrados  
+- Limitaciones en la toma de decisiones oportunas  
+
+SIGESA busca centralizar la información, automatizar procesos y proporcionar un sistema estructurado que mejore el control, la eficiencia y la transparencia en la gestión institucional.
+
+**Brecha de adopción:** coexisten perfiles con distinta familiaridad tecnológica (por ejemplo, usuarios que priorizan automatización frente a usuarios que requieren interfaces sencillas, cercanas a la ofimática tradicional). El sistema debe ser usable en ambos extremos sin sacrificar rigor ni trazabilidad.
+
+**Hipótesis de trabajo (validada en levantamiento):** si la jefatura dispone de un panel con baja curva de aprendizaje y el personal técnico cuenta con un repositorio con versionado automático e historial claro, se reducen fricciones operativas y aumenta la probabilidad de cumplir plazos y requisitos de acreditación.
+
+---
+
+## 2. Usuarios principales
+
+### Usuario #1 — Administrador DUEA
+
+**Objetivo:** Supervisar y controlar todos los procesos de acreditación desde un solo lugar, asegurando que las etapas avancen a tiempo, la documentación esté completa y la información no se pierda ante cambios de gestión.
+
+**Tareas principales:**
+
+1. Ver el estado actualizado de todas las carreras sin consultar a cada jefatura por separado.  
+2. Aprobar, rechazar o enviar observaciones sobre las fases entregadas por los coordinadores.  
+3. Consultar el historial completo de ciclos anteriores de acreditación para garantizar continuidad institucional.  
+
+---
+
+### Usuario #2 — Jefe de Carrera
+
+**Objetivo:** Cumplir oportunamente con los requisitos de acreditación de su carrera, organizando la evidencia y respondiendo observaciones sin depender de procesos manuales dispersos.
+
+**Tareas principales:**
+
+1. Cargar y actualizar los documentos de evidencia vinculados a cada etapa del proceso.  
+2. Recibir alertas de fechas límite para no perder plazos críticos.  
+3. Consultar el estado actual de su carrera y las observaciones pendientes que debe atender.  
+
+---
+
+### Usuario #3 — Coordinador de Carrera
+
+**Objetivo:** Gestionar el proceso de autoevaluación de su carrera, siendo responsable de recopilar y organizar evidencias, coordinar con docentes y personal administrativo, dar seguimiento a los criterios de evaluación y asegurar el cumplimiento de los requisitos de acreditación.
+
+---
+
+### Usuario #4 — Evaluador externo
+
+**Objetivo:** Participar en las etapas del proceso que correspondan según ARCU-SUR / CEUB (por ejemplo, revisión de documentación o visita de pares), con acceso acotado a la información necesaria para emitir observaciones o informes según su rol en el ciclo.
+
+**Nota:** Las capacidades exactas (solo lectura, carga de informes, checklist) se definen en el detalle funcional y en la matriz de permisos; en visión de negocio se reconoce como actor distinto del personal UMSS interno.
+
+---
+
+### Usuario #5 — Público general
+
+**Objetivo:** Acceder a información pública del sistema (estado de acreditación de carreras, reportes generales, datos institucionales). No tiene permisos de edición ni acceso a información sensible.
+
+---
+
+### Usuario #6 — Técnico operativo (DUEA / apoyo a carrera)
+
+**Objetivo:** Cerrar el trabajo operativo con precisión, evitando pérdidas de tiempo entre versiones de documentos y dispersión de archivos en canales no controlados.
+
+**Nivel de familiaridad con herramientas digitales:** medio-alto (esperado).
+
+**Dolor principal:** localizar la «versión final» o la versión aceptada entre múltiples canales (correo, mensajería, carpetas compartidas no versionadas), con costo de tiempo y riesgo de error.
+
+---
+
+### Usuario #7 — Técnico de trámites
+
+**Objetivo:** Apoyar procesos posteriores a la acreditación que requieran constancia institucional (por ejemplo, emisión o gestión de certificaciones relacionadas con el estado de acreditación de carreras para estudiantes u otros trámites autorizados), siempre dentro del marco de permisos definido.
+
+---
+
+### Usuario #8 — Stakeholders externos e institucionales
+
+**Objetivo:** Consultar y, cuando aplique, validar avances o resultados según sus responsabilidades institucionales o normativas.
+
+**Participantes típicos (no exhaustivo):** Rectoría / Vicerrectoría, decanatos, secretarías académicas, organismos de acreditación (CEUB, ARCU-SUR), y otros actores con rol de supervisión o rendición de cuentas según se configure en el sistema.
+
+---
+
+## 3. Funcionalidades del sistema
+
+Las funcionalidades se priorizan en tres niveles. Los **requisitos de experiencia de usuario (UX)** validados en levantamiento se integran aquí (no en una sección duplicada), ubicándose donde corresponde según criticidad para el producto mínimo viable y diferenciación frente al proceso manual.
+
+### P1 — Crítico (el sistema no funciona sin esto)
+
+1. **Registro y autenticación de usuarios con roles diferenciados**  
+   Roles base del dominio: Administrador DUEA, Jefe de Carrera, Coordinador de Carrera, Técnico operativo / trámites (según implementación), Evaluador externo, Público general. Controla qué puede ver y hacer cada usuario. Es la puerta de entrada a todo: sin roles definidos, cualquier usuario podría aprobar, crear o borrar fases, rompiendo la lógica de negocio.
+
+2. **Gestión de fases del proceso de acreditación**  
+   Fases de referencia: Autoevaluación → Documentación → Visita de pares → Informe externo → Resolución final. Permite registrar avances, observaciones y cambios de estado. Es el núcleo operativo del sistema.
+
+3. **Carga, organización y versionado de documentos de evidencia**  
+   Vinculados a etapas y criterios del proceso. Reemplaza el principal dolor detectado: documentos dispersos en físico, unidades compartidas y correo. Es la propuesta de valor inmediata.  
+   **Requisito reforzado:** historial de versiones **auditable** (quién subió, cuándo y qué cambió respecto a la gestión de versiones), alineado con las reglas de negocio de evidencias y auditoría.
+
+### P2 — Importante (diferencia el sistema del proceso manual)
+
+4. **Panel centralizado de estado de acreditación por carrera y facultad**  
+   Incluye etapa actual, porcentaje de avance, fechas clave y **indicación visual tipo semáforo** (verde / amarillo / rojo) para lectura rápida del riesgo de incumplimiento. Sin este panel, el sistema sigue requiriendo consultas manuales y la DUEA continúa dependiendo de reportes informales.
+
+5. **Alertas automáticas sobre fechas límite y hitos críticos**  
+   Los retrasos más graves ocurren cuando los plazos no son visibles de forma oportuna. Las alertas deben poder generarse **sin depender de acciones manuales** del administrador para cada recordatorio puntual (configuración y reglas por detrás, avisos al usuario). Sin alertas, el sistema pierde gran parte de su ventaja sobre el proceso manual.
+
+6. **Acciones de reporte de uso frecuente con baja fricción**  
+   Incluye, entre otras, la acción **«Generar reporte ejecutivo»** exportable en PDF con un máximo de **dos clics** desde el contexto habitual de trabajo (por ejemplo, desde el panel de carrera o facultad).
+
+7. **Experiencia de usuario orientada a baja curva de aprendizaje**  
+   Interfaz con controles claros (por ejemplo, botones de tamaño adecuado), lenguaje alineado al dominio académico-administrativo y evitando jerga técnica innecesaria; familiaridad tipo ofimática donde sea posible, sin renunciar a la trazabilidad.
+
+8. **Protección frente a errores operativos graves**  
+   Incluye **modal de advertencia** u mecanismo equivalente antes de eliminar o reemplazar documentos de manera irreversible, reduciendo borrados accidentales.
+
+### P3 — Valioso (agrega valor estratégico)
+
+9. **Reportes de avance exportables amplios (PDF / Excel)**  
+   Con métricas de cumplimiento por carrera, facultad y periodo. Permite a la DUEA y autoridades tomar decisiones con datos consolidados y cumplir con rendición de cuentas externa. Puede incorporarse o ampliarse en una segunda iteración según el alcance MoSCoW.
+
+### Módulos por rol (referencia de descomposición funcional)
+
+- **Técnico DUEA / operativo:** gestión de documentos, historial de acreditaciones, bandeja de evidencias pendientes, gestión de fases de acreditación.  
+- **Coordinador de Carrera:** panel de progreso, dimensiones e indicadores, bandeja de observaciones DUEA, módulo de informaciones.  
+- **Administrador DUEA:** panel global de la UMSS con KPIs, gestión de usuarios y permisos, módulo de reportes y auditoría, gestión de respaldos de documentos (según políticas institucionales y alcance acordado).  
+
+---
+
+## 4. Reglas de negocio
+
+### Gestión de procesos de acreditación
+
+- Un proceso debe estar asociado obligatoriamente a una carrera y una facultad.  
+- No puede existir más de un proceso activo del mismo tipo (ARCU-SUR o CEUB) para una misma carrera en el mismo periodo.  
+- Todo proceso debe registrar: tipo de acreditación, organismo acreditador, gestión (año), fecha de inicio y fin.  
+
+### Gestión de usuarios y roles
+
+- Cada usuario debe tener al menos un rol asignado (Administrador, Técnico, Coordinador, etc.).  
+- El acceso a funcionalidades está restringido según el rol.  
+- Solo el Administrador puede crear usuarios, asignar roles y modificar permisos.  
+
+### Gestión de evidencias
+
+- Toda evidencia debe estar asociada a un criterio de evaluación y a un proceso de acreditación.  
+- No se permite guardar evidencias sin clasificación.  
+- El sistema debe registrar: fecha de carga y usuario responsable.  
+- Se debe mantener historial de versiones de documentos.  
+
+### Seguimiento y control
+
+- El sistema debe mostrar el estado de cada proceso: En proceso / Acreditado / Vencido.  
+- El avance se calcula en función del cumplimiento de criterios.  
+- Se generan alertas automáticas cuando se acerquen fechas límite o existan actividades pendientes.  
+
+### Gestión de cronogramas
+
+- Todo proceso debe contar con un cronograma definido.  
+- No se puede cerrar un proceso si existen tareas pendientes.  
+- Las fechas deben ser coherentes (inicio < fin).  
+
+### Generación de reportes
+
+- El sistema debe permitir generar reportes por carrera, facultad y modalidad de acreditación.  
+- Los reportes deben basarse en información actualizada en tiempo real.  
+
+### Estados del sistema
+
+- Todo proceso debe tener un estado definido.  
+- Los cambios de estado deben quedar registrados en un historial.  
+- Solo usuarios autorizados pueden cambiar el estado de un proceso.  
+
+### Seguridad y acceso
+
+- El sistema requiere autenticación para el acceso.  
+- Los usuarios solo pueden visualizar información según su rol.  
+- Se debe registrar la actividad del usuario (bitácora de auditoría).  
+
+### Validaciones
+
+- No se permite: crear procesos sin datos obligatorios, subir documentos incompletos ni duplicar registros críticos.  
+- El sistema debe mostrar mensajes de error claros al usuario.  
+
+### Inteligencia del sistema
+
+- El sistema emite alertas automáticas de vencimiento.  
+- Sugiere organización de evidencias por criterio.  
+- Puede generar recomendaciones basadas en procesos anteriores.  
+
+---
+
+## 5. Criterios de éxito
+
+El sistema SIGESA funciona correctamente cuando se evidencia mejora real en el proceso de evaluación y acreditación, validado a través de los siguientes indicadores:
+
+### Usabilidad
+
+- Los usuarios completan sus tareas clave (registrar evidencias, hacer seguimiento, generar reportes) de manera eficiente.  
+- Se reduce el tiempo y los errores respecto al proceso actual.  
+- Medición: pruebas de usabilidad (tiempo de tarea, tasa de éxito, número de errores).  
+
+### Indicadores del proceso
+
+- Reducción de retrasos en acreditaciones.  
+- Mayor cumplimiento de plazos.  
+- Disminución de documentos perdidos o duplicados.  
+- Incremento en la trazabilidad de la información.  
+
+### Satisfacción del usuario
+
+- Técnicos, coordinadores y autoridades perciben el sistema como útil, fácil de usar y confiable.  
+
+### Impacto institucional
+
+- Mejora en la toma de decisiones.  
+- Mayor transparencia en la gestión.  
+- Proceso de acreditación más organizado y auditable.  
+
+---
+
+## 6. Posicionamiento competitivo
+
+- Benchmarking estratégico frente a referentes globales de evaluación institucional (por ejemplo, QS Stars, Times Higher Education, AACSB, Cognia / AdvancED), útil como contexto de madurez de producto, no como checklist legal local.  
+- **Brecha observada** en muchos sistemas «genéricos» o internacionales: puntuación baja en **cumplimiento normativo y operativo local** (CEUB / ARCU-SUR) si no incorporan explícitamente flujos, criterios y evidencias propios del marco boliviano y del reglamento UMSS.  
+- **Diferenciadores de SIGESA (enfoque de valor):** normativa local y flujo de acreditación **nativos** en el diseño; sistema **activo** (notificaciones, gestión de versiones, reportes operativos) frente a repositorios pasivos; posibilidad de **acompañamiento** post-acreditación según roadmap institucional; sin modelo de **costo por membresía** tipo plataformas internacionales de licenciamiento (alineado a despliegue universitario).  
+
+---
+
+## 7. Priorización MoSCoW (alcance por versión)
+
+### Must Have
+
+- Autenticación con roles (administrador, coordinador, jefe de carrera y derivados acordados en matriz de permisos).  
+- Gestión de actividades en fases del proceso.  
+- Creación y administración de fases por administrador.  
+- Editor de planilla / carga masiva para coordinador (donde aplique al modelo de actividades y evidencias).  
+- Base de datos de actividades (trazabilidad mínima del trabajo por fase).  
+
+### Should Have
+
+- Selección explícita de tipo de acreditación (ARCU-SUR / CEUB u otros definidos).  
+- Perfil técnico (operativo / trámites) con permisos acotados.  
+- Subida de documentos vinculados a criterios y fases.  
+- Flujo de observaciones DUEA ↔ carrera.  
+
+### Could Have
+
+- Asistente conversacional de tipo **informacional** (orientación, FAQs, enlaces a normativa), sin sustituir decisiones formales.  
+- Generación ampliada de reportes de acreditación (más allá del reporte ejecutivo de P2).  
+
+### Won’t Have (esta versión)
+
+- Pagos en línea por certificaciones.  
+- Matrices de evaluación automáticas completas como motor de calificación (pueden existir vistas o plantillas manuales según alcance; el «no» aplica a motor cerrado no acordado).  
+- Control exclusivo de respaldos **solo** manuales desconectados del sistema (la política de respaldo se alinea a gestión institucional en el módulo admin cuando corresponda).  
+- Generación automática de bitácoras narrativas no basadas en eventos reales del sistema (la **auditoría por eventos** sí está en reglas de negocio; se excluye aquí la redacción automática de informes legales sin revisión humana).  
+
+---
+
+## Anexo: decisiones de consolidación (v1 y borradores v2)
+
+- Se **mantuvo íntegra** la estructura y el contenido normativo de las **reglas de negocio** y **criterios de éxito** del documento base (v1), coincidentes con v2.  
+- Se **incorporó** de v1 la precisión de **ARCU-SUR y CEUB** en el problema inicial (ya presente en ambas versiones; se reforzó con el detalle de canales dispersos sin duplicar listas).  
+- Se **unificó** el rol **Evaluador externo** (citado en autenticación P1 de v1/v2 pero ausente como persona en la lista de usuarios) como **Usuario #4**, con alcance acotado a visión de negocio.  
+- Se **reordenó la sección 3**: en el borrador v2 había **numeración duplicada** (varios «4.», «5.», «6.») y requisitos UX listados dos veces (dentro de P1 y al final como «sección 4» duplicada). Todo quedó en una sola jerarquía P1–P3 con ítems correlativos.  
+- Los ítems que en v2 aparecían como P1 adicionales (semáforos, reporte en 2 clics, UX, modal, alertas sin intervención) se **ubicaron en P2** salvo lo **fusionado con P1-3** (versionado auditable), para **respetar** la lógica del documento original — donde el **panel** y las **alertas** ya eran P2 — evitando declarar «crítico» lo que el documento de referencia clasificaba como «importante», salvo el refuerzo de auditoría en evidencias, alineado a reglas de negocio ya existentes.  
+- Se **corrigió** la ortografía del slogan en inglés: *accreditation*.  
+- Se **eliminaron** las marcas editoriales `# [AÑADIDO EN V2 - …]` del texto oficial.  
+
+---
+
+*Documento unificado para uso como referencia de visión de negocio del proyecto SIGESA.*
