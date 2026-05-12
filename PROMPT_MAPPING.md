@@ -391,3 +391,75 @@ Adicionalmente, para un mapeo detallado, incluir:
 - **Proximos pasos**:
   - Completar MRD y matriz M2 en §11.1; sustituir placeholders FSD en §14.
   - Revisión por pares (Tech Lead + QA) y marcar checklist del PRD.
+
+
+### PM-007 - PRD v1 desde plantilla y BRD v2 aylenGonzales
+- **ID**: PM-007
+- **Fecha**: 2026-05-11
+- **Hora**: 23:00 (UTC-4)
+- **Solicitante**: Aylen Mariangel Gonzales Alvino `sigesa-docs`
+- **Agente / Entorno**: Claude (claude.ai)
+- **Modelo**: claude-sonnet-4-6
+- **Tarea**: Generar `team/aylenGonzales/PRD_v1.md` usando la estructura y formato de `PRD_TEMPLATE.md`, completando cada sección con información de `team/aylenGonzales/BRD_v2.md`; registrar la ejecución en `PROMPT_MAPPING.md` sin modificar otros archivos.
+- **Objetivo**: Disponer de un PRD v1 oficial para la carpeta de Aylen, coherente con el BRD v2 del proyecto AcredIA/SIGESA y alineado al estándar del curso (plantilla PRD), listo como referencia de producto y encadenamiento hacia MRD/FSD.
+- **Contexto**:
+  - Repositorio: `sigesa-docs`.
+  - Fuentes: `./PRD_TEMPLATE.md`; `./team/aylenGonzales/BRD_v2.md`.
+  - Restricción: solo crear/modificar `PRD_v1.md` y `PROMPT_MAPPING.md`.
+  - Contexto adicional: Cursor había alcanzado el límite de uso; la tarea se ejecutó en Claude (claude.ai) como alternativa.
+- **Prompt usado (exacto)**:
+  ```text
+  Eres un ingeniero de producto senior con experiencia en documentación técnica y definición
+  de requerimientos de software. Tu tarea es transformar un BRD (Business Requirements Document)
+  en un PRD (Product Requirements Document) profesional y detallado.
+
+  Usando el archivo @team/aylenGonzales/BRD_v2.md como base, genera un PRD completo siguiendo
+  exactamente la estructura y formato del template @PRD_TEMPLATE.md
+
+  Requisitos:
+  1. Analiza toda la información del BRD_v2.md de aylenGonzales
+  2. Completa TODAS las secciones del PRD_TEMPLATE.md con la información extraída del BRD
+  3. Donde el BRD no tenga suficiente detalle, infiere basándote en el contexto del proyecto
+  4. Guarda el resultado como: team/aylenGonzales/PRD_v1.md
+
+  Luego, agrega una nueva entrada en @PROMPT_MAPPING.md siguiendo exactamente
+  el formato que ya existe en ese archivo para documentar el prompt que se usó
+  para generar este PRD desde el BRD_v2 de aylenGonzales.
+  ```
+- **Entradas auxiliares**:
+  - Contenido completo de `team/aylenGonzales/BRD_v2.md` (BRD v2.0, secciones 0–26).
+  - Contenido completo de `PRD_TEMPLATE.md`.
+  - Contenido completo de `PROMPT_MAPPING.md` (entradas PM-001 a PM-006 como referencia de formato).
+- **Archivos generados o modificados**:
+  - `./team/aylenGonzales/PRD_v1.md` - Creado.
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-007).
+- **Cambios realizados**:
+  - PRD v1 con secciones 0–16 y checklist según plantilla: metadatos AcredIA/SIGESA, constitution (4 principios), resumen ejecutivo, 7 objetivos ligados a BO/BR del BRD, alcance v1.0/backlog/roadmap delivery (3 versiones)/roadmap discovery (5 hipótesis), 4 personas y 3 user journeys Mermaid ([CC], [JD], [TD]), 17 user stories en 8 épicas con criterios Gherkin, priorización MoSCoW + RICE top-10, 17 requerimientos funcionales con trazabilidad a BRD, 13 NFRs con umbrales, dependencias e integraciones, supuestos y restricciones, trazabilidad M2 (wireframes y use cases), métricas de éxito (North Star + KPI-01 a KPI-09), 7 riesgos del producto, tabla de trazabilidad PRD→BRD→MRD→FSD (17 mapeos), anexos, registro de cambios y checklist marcado.
+- **Validacion ejecutada**:
+  - Revisión cruzada sección a sección con `PRD_TEMPLATE.md`.
+  - Verificación de trazabilidad de cada PRD-REQ con su BR correspondiente del BRD v2.
+  - Confirmación de que todas las épicas cubren los requerimientos Must del BRD (BR-001 a BR-018).
+  - Verificación de coherencia entre personas, journeys y user stories.
+- **Resultado obtenido**:
+  - `PRD_v1.md` generado en `team/aylenGonzales/` con todas las secciones del template completas.
+  - 17 user stories en 8 épicas con criterios Gherkin.
+  - 3 user journeys Mermaid para actores principales.
+  - Trazabilidad completa BRD v2 → PRD v1 → FSD (placeholder).
+  - `PROMPT_MAPPING.md` actualizado con PM-007 en formato homogéneo a PM-001–PM-006.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - MRD aún no generado; IDs MRD-N-XX en la tabla de trazabilidad son placeholders.
+  - IDs FSD son placeholders hasta especificación detallada.
+  - RICE es estimación relativa del equipo AcredIA; recalibrar tras planning con datos reales de usuarios UMSS.
+  - La tasa de éxito de core tasks (96,66 %) y CSAT (8,67/10) provienen del prototipo Hi-Fi (Bitácora 3); deben validarse en piloto UMSS.
+- **Lecciones / reuso del prompt**:
+  - Proporcionar el BRD completo y el template completo como contexto directo (sin @referencias) permite que Claude genere el PRD sin necesidad de acceso al filesystem.
+  - Anclar user stories a IDs BR-xxx desde el inicio acelera la trazabilidad §14 y reduce desalineación con negocio.
+  - Especificar "Eres un ingeniero de producto senior" como rol mejora la coherencia y profundidad del documento generado.
+  - Claude (claude.ai) es una alternativa viable cuando Cursor alcanza su límite de uso.
+- **Proximos pasos**:
+  - Copiar `PRD_v1.md` a `team/aylenGonzales/PRD_v1.md` en el repositorio local.
+  - Generar MRD y sustituir placeholders MRD-N-XX en §14.
+  - Completar matriz de trazabilidad con IDs FSD cuando se especifique el FSD.
+  - Revisión por pares (Tech Lead + QA) y completar checklist del PRD.
+  - Registrar `PM-008` en la siguiente tarea ejecutada con IA.
