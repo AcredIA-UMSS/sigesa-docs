@@ -1,5 +1,6 @@
 # Functional Specification Document (FSD) – Plantilla
 
+> **Instrucciones para el grupo**: completen todas las secciones. Las partes en `<…>` son marcadores que deben reemplazar. Mantengan trazabilidad explícita a los ítems del PRD usando IDs (`PRD-XX` → `FSD-XX`). Este documento se versiona en Git en `docs/fsd/` y se revisa con Claude como *reviewer*.
 
 ## Modos soportados por esta plantilla
 
