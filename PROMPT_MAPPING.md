@@ -293,3 +293,51 @@ Adicionalmente, para un mapeo detallado, incluir:
   - Solicitar explícitamente “conservar original” y “solo añadir lo faltante” reduce el riesgo de reescritura.
 - **Proximos pasos**:
   - Validar con el equipo DUEA/Negocio la consistencia semántica de [A]–[G] con el documento V1.
+
+
+### PM-005 - BRD v2 desde plantilla y visión borisAngulo
+- **ID**: PM-005
+- **Fecha**: 2026-05-11
+- **Hora**: 12:00 (UTC-4)
+- **Solicitante**:  Boris `sigesa-docs`
+- **Agente / Entorno**: Cursor Agent
+- **Modelo**: Composer (agente en sesión)
+- **Tarea**: Generar `team/borisAngulo/BRD_v2.md` usando la estructura y formato de `BRD_TEMPLATE.md`, completando cada sección con información de `team/borisAngulo/01_vision_negocio_v2.txt`; registrar la ejecución en `PROMPT_MAPPING.md` sin modificar otros archivos.
+- **Objetivo**: Disponer de un BRD v2 oficial para la carpeta del equipo Boris/AcredIA, trazable a la visión de negocio v2 consolidada y alineado al estándar del curso (plantilla BRD).
+- **Contexto**:
+  - Repositorio: `sigesa-docs`.
+  - Fuentes: `./BRD_TEMPLATE.md`; `./team/borisAngulo/01_vision_negocio_v2.txt`.
+  - Restricción: solo crear/modificar `BRD_v2.md` y `PROMPT_MAPPING.md`.
+- **Prompt usado (exacto)**:
+  ```text
+  Tienes los siguientes documentos:
+
+  01_vision_negocio_v2.txt con la visión de negocio actualizada del proyecto SIGESA
+  BRD_TEMPLATE.md en la raíz del proyecto como plantilla base
+
+  Realiza las siguientes tareas:
+
+  Genera el BRD v2 usando exactamente la estructura y formato del BRD_TEMPLATE.md, completando cada sección con la información extraída de 01_vision_negocio_v2.txt. El documento resultante debe guardarse como BRD_v2.md dentro de la carpeta team/borisAngulo/.
+  Actualiza el archivo PROMPT_MAPPING.md en la raíz del proyecto agregando una nueva entrada para este prompt, respetando la estructura y formato que ya existe en ese archivo. No modifiques ningún otro archivo. Respeta el formato y convenciones existentes en ambos documentos de referencia.
+  ```
+- **Entradas auxiliares**:
+  - Ninguna fuera de los archivos indicados y el estado del repositorio.
+- **Archivos generados o modificados**:
+  - `./team/borisAngulo/BRD_v2.md` - Creado.
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-005).
+- **Cambios realizados**:
+  - Redacción del BRD v2 con secciones 0–21 y checklist según plantilla: metadatos SIGESA/AcredIA, resumen ejecutivo, contexto UMSS/DUEA, problema y oportunidad, discovery enlazado, personas (DUEA + Coordinador/Jefe), propuesta de valor VPC, competencia, BMC, KPIs, objetivos SMART, RACI, BR-001–013 alineados a MoSCoW y P1–P3 de la visión, reglas RB-01–12 desde la visión, supuestos/restricciones/dependencias, alcance en/fuera, business case placeholder, riesgos, criterios de éxito proyecto, trazabilidad §18, aprobaciones, registro de cambios, PR-FAQ opcional poblado de forma coherente, checklist marcado.
+- **Validacion ejecutada**:
+  - Comparación sección a sección con `BRD_TEMPLATE.md` y extracción cruzada con `01_vision_negocio_v2.txt`.
+- **Resultado obtenido**:
+  - `BRD_v2.md` creado en `team/borisAngulo/` listo para revisión y encadenamiento hacia MRD/PRD.
+  - `PROMPT_MAPPING.md` actualizado con PM-005 en formato homogéneo a PM-001–PM-004.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - Líneas base y cifras económicas declaradas como «por medir» / «por estimar» hasta piloto DUEA.
+  - Discovery `docs/discovery/discovery_v0.1.md` y artefactos M2 referenciados como vinculación pendiente si aún no existen en el repo.
+- **Lecciones / reuso del prompt**:
+  - Pedir explícitamente la plantilla como contrato de secciones evita omisiones en BRD académico.
+- **Proximos pasos**:
+  - Completar líneas base KPI/BO en piloto y actualizar §8–§9.
+  - Sustituir placeholders de MRD/PRD/FSD en §18 cuando existan IDs reales.
