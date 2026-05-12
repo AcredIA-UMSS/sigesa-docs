@@ -394,6 +394,7 @@ Adicionalmente, para un mapeo detallado, incluir:
 
 
 ### PM-007 - PRD v1 desde plantilla y BRD v2 aylenGonzales
+
 - **ID**: PM-007
 - **Fecha**: 2026-05-11
 - **Hora**: 23:00 (UTC-4)
@@ -463,3 +464,159 @@ Adicionalmente, para un mapeo detallado, incluir:
   - Completar matriz de trazabilidad con IDs FSD cuando se especifique el FSD.
   - Revisión por pares (Tech Lead + QA) y completar checklist del PRD.
   - Registrar `PM-008` en la siguiente tarea ejecutada con IA.
+
+
+### PM-008 - FSD v1 desde plantilla, PRD v1 y BRD v2 aylenGonzales
+- **ID**: PM-008
+- **Fecha**: 2026-05-11
+- **Hora**: 23:30 (UTC-4)
+- **Solicitante**: Aylen Gonzáles`sigesa-docs`
+- **Agente / Entorno**: Claude (claude.ai)
+- **Modelo**: claude-sonnet-4-6
+- **Tarea**: Generar `team/aylenGonzales/FSD_v1.md` usando la estructura y formato de `FSD_TEMPLATE.md` en modo LFSD ⚡, completando cada sección con información de `team/aylenGonzales/PRD_v1.md` y `team/aylenGonzales/BRD_v2.md`; registrar la ejecución en `PROMPT_MAPPING.md` sin modificar otros archivos.
+- **Objetivo**: Disponer de un FSD v1 oficial en modo LFSD para la carpeta de Aylen, coherente con el PRD v1 y BRD v2 del proyecto AcredIA/SIGESA, listo como especificación funcional para el equipo de diseño, ingeniería y QA.
+- **Contexto**:
+  - Repositorio: `sigesa-docs`.
+  - Fuentes: `./FSD_TEMPLATE.md`; `./team/aylenGonzales/PRD_v1.md`; `./team/aylenGonzales/BRD_v2.md`.
+  - Restricción: solo crear/modificar `FSD_v1.md` y `PROMPT_MAPPING.md`.
+  - Contexto adicional: Cursor había alcanzado el límite de uso; la tarea se ejecutó en Claude (claude.ai) como alternativa, con los tres documentos fuente provistos directamente en el contexto de la conversación.
+- **Prompt usado (exacto)**:
+  ```text
+  Eres un ingeniero de producto senior con experiencia en documentación técnica y definición
+  de requerimientos de software. Tu tarea es transformar un BRD y un PRD ya existentes
+  en un FSD (Functional Specification Document) profesional y detallado.
+
+  Usando los archivos @team/aylenGonzales/BRD_v2.md y @team/aylenGonzales/PRD_v1.md como base,
+  genera un FSD completo en modo LFSD ⚡ siguiendo exactamente la estructura y formato
+  del template @FSD_TEMPLATE.md
+
+  Requisitos:
+  1. Declara el modo como LFSD ⚡ en §0 Metadatos
+  2. Completa TODAS las secciones obligatorias del checklist LFSD
+  3. Incluye mínimo 3 casos de uso críticos con flujo principal, alternativos y criterios Gherkin
+  4. Genera un prompt-contrato (§7) por cada caso de uso crítico con los 6 elementos de la anatomía
+  5. Mantén trazabilidad explícita PRD-REQ → FSD-UC en todas las secciones
+  6. Incluye diagrama ER en Mermaid y diccionario de datos de entidades core
+  7. Guarda el resultado como: team/aylenGonzales/FSD_v1.md
+
+  Luego, agrega una nueva entrada en @PROMPT_MAPPING.md siguiendo exactamente
+  el formato que ya existe en ese archivo (PM-001 a PM-007) para documentar
+  este FSD generado desde el PRD v1 y BRD v2 de aylenGonzales.
+  ```
+- **Entradas auxiliares**:
+  - Contenido completo de `team/aylenGonzales/BRD_v2.md` (BRD v2.0, secciones 0–26).
+  - Contenido completo de `team/aylenGonzales/PRD_v1.md` (PRD v1.0, secciones 0–16).
+  - Contenido completo de `FSD_TEMPLATE.md`.
+  - Contenido completo de `PROMPT_MAPPING.md` (entradas PM-001 a PM-007 como referencia de formato).
+- **Archivos generados o modificados**:
+  - `./team/aylenGonzales/FSD_v1.md` - Creado.
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-008).
+- **Cambios realizados**:
+  - FSD v1 modo LFSD ⚡ con todas las secciones del checklist LFSD completas:
+    - §0 Metadatos con modo LFSD ⚡ declarado explícitamente.
+    - §1 Resumen ejecutivo (≈200 palabras).
+    - §2 Alcance + §2.3 Supuestos/Dependencias + §2.4 Plan técnico (stack, arquitectura, project structure, decisiones técnicas) + §2.5 Tasks (12 tasks ejecutables con prompt asociado).
+    - §3 Actores (8 actores: [CC], [TD], [JD], [P], [JC], [EE], Sistema notificaciones, Motor de reportes).
+    - §4 Cinco casos de uso (FSD-UC-001 a FSD-UC-005): Autenticación, Carga de evidencias, Aprobación/Rechazo de indicadores, Dashboard gerencial, Generación de reporte PDF — cada uno con flujo principal, alternativos, pre/postcondiciones, reglas aplicables, datos E/S y criterios Gherkin.
+    - §5 Quince reglas de negocio con tipo, origen y casos afectados.
+    - §6 Diagrama ER en Mermaid (8 entidades) + diccionario de datos de entidades core.
+    - §7 Tres prompt-contratos (UC-001, UC-002, UC-003) con los 6 elementos de la anatomía: Role, Task, Context, Reasoning, Stop condition, Output + Invariants + Failure modes.
+    - §8 Integraciones externas (SMTP UMSS, S3-compatible, Motor PDF).
+    - §9 Mapeo pantalla→caso de uso + §9.1 Trazabilidad M2 (5 wireframes/mockups del prototipo Hi-Fi).
+    - §10 Trece NFRs con métrica, umbral y forma de verificación.
+    - §11 Matriz de trazabilidad MRD→PRD→FSD→NFR→prueba (7 filas).
+    - §12 Plan de pruebas (estrategia + herramientas: Jest/Pytest, Playwright, k6, Axe + cobertura ≥ 80 %).
+    - §13 Seis riesgos funcionales con mitigación y responsable.
+    - §14 Glosario (15 términos del dominio AcredIA/SIGESA).
+    - §15 Registro de cambios.
+    - Checklist LFSD marcado (14/15 ítems; revisión por pares pendiente).
+- **Validacion ejecutada**:
+  - Revisión cruzada sección a sección con `FSD_TEMPLATE.md` checklist LFSD ⚡.
+  - Verificación de trazabilidad PRD-REQ → FSD-UC en §4 y §11.
+  - Confirmación de que los 3 prompt-contratos cubren los casos de uso Must del PRD (UC-001, UC-002, UC-003).
+  - Verificación de consistencia entre reglas de negocio (§5) y casos de uso (§4).
+  - Confirmación de coherencia del diagrama ER con los flujos de los casos de uso.
+- **Resultado obtenido**:
+  - `FSD_v1.md` generado en `team/aylenGonzales/` en modo LFSD ⚡ con todas las secciones obligatorias del checklist completas.
+  - 5 casos de uso críticos con criterios Gherkin.
+  - 3 prompt-contratos con los 6 elementos de la anatomía del prompt.
+  - Diagrama ER Mermaid con 8 entidades y diccionario de datos core.
+  - 12 tasks ejecutables para el Spec Kit.
+  - Trazabilidad completa BRD v2 → PRD v1 → FSD v1.
+  - `PROMPT_MAPPING.md` actualizado con PM-008 en formato homogéneo a PM-001–PM-007.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - Prompt-contratos de FSD-UC-004 (Dashboard) y FSD-UC-005 (Reporte PDF) no incluidos en §7 por priorización LFSD; añadir en v1.1 o al pasar a modo FSD clásico 🔧.
+  - IDs MRD-N-XX en §11 son placeholders hasta que el MRD sea generado formalmente.
+  - Los prompt-contratos deben testearse con al menos 30 ejecuciones para reportar hallucination rate (§7.3 opcional).
+  - Revisión por pares (otro grupo) pendiente; registrar como comentario en el PR de GitHub.
+- **Lecciones / reuso del prompt**:
+  - Especificar explícitamente "modo LFSD ⚡" y referenciar el checklist LFSD del template garantiza que el agente respete las secciones obligatorias vs. opcionales.
+  - Pedir los 6 elementos de la anatomía del prompt en los prompt-contratos (Role, Task, Context, Reasoning, Stop condition, Output) produce especificaciones más precisas y ejecutables.
+  - Proveer BRD + PRD + Template como contexto directo (sin @referencias al filesystem) es la estrategia correcta cuando Cursor no está disponible.
+  - El diagrama ER en Mermaid es más valioso cuando refleja los estados de las entidades (INDICADOR.estado, PROCESO.estado) que son el núcleo de las reglas de negocio.
+- **Proximos pasos**:
+  - Copiar `FSD_v1.md` a `team/aylenGonzales/FSD_v1.md` en el repositorio local.
+  - Hacer commit y push a la rama `Aylen` y abrir PR hacia `main`.
+  - Completar revisión por pares y registrar como comentario en el PR.
+  - Agregar prompt-contratos para FSD-UC-004 y FSD-UC-005 en la v1.1.
+  - Sustituir placeholders MRD-N-XX en §11 cuando el MRD sea generado.
+  - Registrar `PM-009` en la siguiente tarea ejecutada con IA.
+
+### PM-009 - FSD v1 desde PRD v1 y prompts de evidencias (Boris/AcredIA)
+- **ID**: PM-009
+- **Fecha**: 2026-05-12
+- **Hora**: 00:00 (UTC-4)
+- **Solicitante**: AcredIA `team/borisAngulo`
+- **Agente / Entorno**: BLACKBOXAI
+- **Modelo**: N/A (asistente en sesión)
+- **Tarea**: Leer `PROMPT_MAPPING.md`, `team/borisAngulo/BRD_v2.md` y `team/borisAngulo/PRD_v1.md`; generar un FSD completo siguiendo exactamente la estructura del template `templates/fsd_template.md`; guardar el entregable en `team/borisAngulo/FSD_v1.md`; finalmente agregar esta entrada al `PROMPT_MAPPING.md`.
+- **Objetivo**: Generar `team/borisAngulo/FSD_v1.md` en modo LFSD ⚡, con casos de uso funcionales críticos, reglas de negocio, modelo de datos básico, NFRs y trazabilidad a PRD.
+- **Contexto**:
+  - Fuentes de negocio y requerimientos: `team/borisAngulo/BRD_v2.md` y `team/borisAngulo/PRD_v1.md`.
+  - Template: `templates/fsd_template.md`.
+  - Restricción de formato: respetar la estructura exacta del template y mantener trazabilidad explícita `PRD-REQ-*` → `FSD-UC-*`.
+- **Prompt usado (exacto)**:
+  ```text
+  Lee el archivo `PROMPT_MAPPING.md` para entender su estructura actual.
+
+  Luego, lee todos los documentos de `team/borisAngulo/`:
+  - `01:visio_negocio:v2/ `
+  - `BRD_v2.md`
+  - `PRD_v1.md`
+
+  Con base en esa información, genera un FSD completo siguiendo exactamente la estructura del template en .
+
+  Guarda el FSD generado en `team/borisAngulo/FSD_v1.md`.
+
+  Finalmente, actualiza 'PROMPT_MAPPING.md (see below for file content) ' añadiendo este flujo como una nueva entrada, respetando la estructura y formato que ya existe en ese archivo.
+  ```
+- **Entradas auxiliares**:
+  - Template de FSD: `templates/fsd_template.md`.
+  - Documento de visión usado como contexto para reglas/alcance del dominio: `team/borisAngulo/01_vision_negocio_v2.txt`.
+- **Archivos generados o modificados**:
+  - `./team/borisAngulo/FSD_v1.md` - Creado.
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-008).
+- **Cambios realizados**:
+  - Generación de `FSD_v1.md` en modo LFSD ⚡ siguiendo la estructura del template.
+  - Inclusión de 3 casos de uso críticos: `FSD-UC-001`, `FSD-UC-002`, `FSD-UC-003`.
+  - Definición de reglas de negocio con mapeo a casos de uso.
+  - Modelo de datos funcional con ER/diagrama Mermaid y diccionario mínimo.
+  - Prompt-contratos para cada caso de uso crítico con invariantes y failure modes.
+  - NFRs y plan de pruebas funcionales mínimos.
+  - Sección de trazabilidad MRD → PRD → FSD (mapeo mínimo).
+- **Validacion ejecutada**:
+  - Verificación de presencia/orden de secciones contra `templates/fsd_template.md`.
+  - Revisión de trazabilidad: `PRD-REQ-*` referenciados en casos de uso y reglas.
+- **Resultado obtenido**:
+  - `team/borisAngulo/FSD_v1.md` creado y listo.
+  - Flujo registrado como entrada `PM-008` en `PROMPT_MAPPING.md`.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - Trazabilidad con artefactos M2 declarada como pendiente en la sección de interfaces (rutas de UI/UX no publicadas en los inputs del flujo).
+- **Lecciones / reuso del prompt**:
+  - Mantener el contrato de “estructura exacta + trazabilidad PRD→FSD” reduce omisiones y acelera auditoría.
+- **Proximos pasos**:
+  - Completar §9/§9.1 con rutas de wireframes/mockups del M2 cuando estén publicados.
+  - Generar y enlazar MRD y FSD adicionales con IDs definitivos.
+
