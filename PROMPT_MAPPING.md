@@ -341,3 +341,53 @@ Adicionalmente, para un mapeo detallado, incluir:
 - **Proximos pasos**:
   - Completar líneas base KPI/BO en piloto y actualizar §8–§9.
   - Sustituir placeholders de MRD/PRD/FSD en §18 cuando existan IDs reales.
+
+
+### PM-006 - PRD v1 desde plantilla, visión y BRD borisAngulo
+- **ID**: PM-006
+- **Fecha**: 2026-05-11
+- **Hora**: 14:00 (UTC-4)
+- **Solicitante**: Boris `sigesa-docs`
+- **Agente / Entorno**: Cursor Agent
+- **Modelo**: Composer (agente en sesión)
+- **Tarea**: Generar `team/borisAngulo/PRD_v1.md` usando la estructura y formato de `PRD_TEMPLATE.md`, completando cada sección con información de `team/borisAngulo/01_vision_negocio_v2.txt` y `team/borisAngulo/BRD_v2.md`; registrar la ejecución en `PROMPT_MAPPING.md` sin modificar otros archivos.
+- **Objetivo**: Disponer de un PRD v1 oficial, coherente con visión de negocio v2 y BRD v2, listo como referencia de producto y encadenamiento hacia MRD/FSD.
+- **Contexto**:
+  - Repositorio: `sigesa-docs`.
+  - Fuentes: `./PRD_TEMPLATE.md`; `./team/borisAngulo/01_vision_negocio_v2.txt`; `./team/borisAngulo/BRD_v2.md`.
+  - Restricción: solo crear/modificar `PRD_v1.md` y `PROMPT_MAPPING.md`.
+- **Prompt usado (exacto)**:
+  ```text
+  Tienes los siguientes documentos:
+
+  01_vision_negocio_v2.txt con la visión de negocio actualizada del proyecto SIGESA
+  team/borisAngulo/BRD_v2.md con los requerimientos de negocio ya definidos
+  PRD_TEMPLATE.md en la raíz del proyecto como plantilla base
+  PROMPT_MAPPING.md con el registro de prompts del proyecto
+
+  Realiza las siguientes tareas:
+
+  Genera el PRD v1 usando exactamente la estructura y formato del PRD_TEMPLATE.md, completando cada sección con información extraída de 01_vision_negocio_v2.txt y BRD_v2.md. El documento debe ser coherente con ambos documentos de entrada, profesional y listo para ser referencia oficial del producto. Guárdalo como PRD_v1.md dentro de la carpeta team/borisAngulo/.
+  Actualiza el archivo PROMPT_MAPPING.md en la raíz del proyecto agregando una nueva entrada para este prompt, respetando estrictamente la estructura y formato que ya existe en ese archivo.  No modifiques ningún otro archivo. Respeta el formato y convenciones existentes en todos los documentos de referencia.
+  ```
+- **Entradas auxiliares**:
+  - Ninguna fuera de los archivos indicados y el estado del repositorio.
+- **Archivos generados o modificados**:
+  - `./team/borisAngulo/PRD_v1.md` - Creado.
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-006).
+- **Cambios realizados**:
+  - PRD v1 con secciones 0–16 y checklist según plantilla: metadatos, constitution, resumen, objetivos ligados a BO, alcance v1.0 y backlog, roadmaps delivery/discovery, personas y 2 journeys Mermaid, 24 user stories en 8 épicas con Gherkin, MoSCoW + RICE top‑10, requisitos funcionales y NFRs, dependencias, UX/trazabilidad M2, métricas, riesgos, trazabilidad a BRD/MRD/FSD, anexos, registro de cambios.
+- **Validacion ejecutada**:
+  - Revisión cruzada con `PRD_TEMPLATE.md`, `01_vision_negocio_v2.txt` y `BRD_v2.md` (roles, fases, P1–P3, MoSCoW, BR-001–013, RB, KPIs).
+- **Resultado obtenido**:
+  - `PRD_v1.md` publicado en `team/borisAngulo/` como referencia de producto v1.0.
+  - `PROMPT_MAPPING.md` actualizado con PM-006 en formato homogéneo a entradas previas.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - MRD y artefactos M2 enlazados como pendientes; IDs FSD son placeholders hasta especificación detallada.
+  - RICE es estimación relativa del equipo; recalibrar tras planning.
+- **Lecciones / reuso del prompt**:
+  - Anclar historias a IDs BR-xxx acelera la trazabilidad §14 y reduce desalineación con negocio.
+- **Proximos pasos**:
+  - Completar MRD y matriz M2 en §11.1; sustituir placeholders FSD en §14.
+  - Revisión por pares (Tech Lead + QA) y marcar checklist del PRD.
