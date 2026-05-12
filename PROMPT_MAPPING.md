@@ -563,6 +563,7 @@ Adicionalmente, para un mapeo detallado, incluir:
   - Sustituir placeholders MRD-N-XX en §11 cuando el MRD sea generado.
   - Registrar `PM-009` en la siguiente tarea ejecutada con IA.
 
+
 ### PM-009 - FSD v1 desde PRD v1 y prompts de evidencias (Boris/AcredIA)
 - **ID**: PM-009
 - **Fecha**: 2026-05-12
@@ -619,4 +620,48 @@ Adicionalmente, para un mapeo detallado, incluir:
 - **Proximos pasos**:
   - Completar §9/§9.1 con rutas de wireframes/mockups del M2 cuando estén publicados.
   - Generar y enlazar MRD y FSD adicionales con IDs definitivos.
+  - Registrar `PM-010` en la siguiente tarea ejecutada con IA.
 
+
+### PM-010 - LFSD - Derivación documental LFSD desde FSD (SIGESA)
+- **ID**: PM-010 - LFSD
+- **Fecha**: 2026-05-12
+- **Hora**: 00:30 (UTC-4)
+- **Solicitante**: Boris `team/borisAngulo`
+- **Agente / Entorno**: BLACKBOXAI
+- **Modelo**: N/A (asistente en sesión)
+- **Tarea**: Generar `team/borisAngulo/LFSD_v1.md` derivándolo desde `team/borisAngulo/FSD_v1.md`, preservando IDs y trazabilidad a PRD, y creando prompt-contracts ejecutables para casos de uso críticos. Actualizar `PROMPT_MAPPING.md` con el registro de este prompt.
+- **Objetivo**: Documento LFSD lightweight, claro, trazable y orientado a implementación a partir del FSD vigente, sin inventar funcionalidades.
+- **Contexto**:
+  - Archivos fuente: `team/borisAngulo/FSD_v1.md`, `team/borisAngulo/BRD_v2.md`, `team/borisAngulo/PRD_v1.md`, `templates/fsd_template.md` y `PROMPT_MAPPING.md`.
+  - Restricciones: conservar trazabilidad e IDs (`PRD-REQ-*` → `FSD-UC-*`, `BR-*`, `NFR-*`).
+  - Modo: LFSD ⚡.
+- **Prompt usado (exacto)**:
+  ```text
+  PROMPT — Generación de LFSD desde FSD (SIGESA)
+  Analiza el proyecto y genera un documento LFSD tomando como base `team/borisAngulo/FSD_v1.md` y referencia estructural `team/borisAngulo/` (BRD_v2.md, FSD_v1.md, PRD_v1.md). También revisa `templates/lfsd_template.md`, `PROMPT_MAPPING.md` y `README.md`.
+
+  Objetivo: crear `team/borisAngulo/LFSD_v1.md` y actualizar `PROMPT_MAPPING.md` con una nueva entrada de mapeo para este prompt.
+  ```
+- **Entradas auxiliares**:
+  - `team/borisAngulo/FSD_v1.md`, `team/borisAngulo/BRD_v2.md`, `team/borisAngulo/PRD_v1.md`, `README.md`, `templates/fsd_template.md`.
+- **Archivos generados o modificados**:
+  - `./team/borisAngulo/LFSD_v1.md` - Creado.
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-LFSD-001).
+- **Cambios realizados**:
+  - Derivar LFSD con secciones mínimas obligatorias: metadatos, alcance, casos de uso críticos (con Gherkin mínimo), reglas de negocio críticas, modelo funcional resumido (ER Mermaid), prompt-contracts, NFRs críticos, trazabilidad y riesgos funcionales.
+  - Preservar IDs y reglas (`PRD-REQ-*` → `FSD-UC-*`, `BR-*`, `NFR-*`).
+- **Validacion ejecutada**:
+  - Lectura de `team/borisAngulo/FSD_v1.md` para extraer casos/IDs/reglas/NFRs.
+  - Verificación de consistencia de trazabilidad y no introducción de funcionalidades nuevas.
+- **Resultado obtenido**:
+  - `team/borisAngulo/LFSD_v1.md` creado listo para revisión.
+  - `PROMPT_MAPPING.md` actualizado con el registro del prompt de derivación.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - Mantener la cobertura LFSD depende de que el FSD original conserve íntegramente sus IDs y contenido crítico.
+- **Lecciones / reuso del prompt**:
+  - Incluir explícitamente la trazabilidad y la restricción de no inventar funcionalidades reduce deriva.
+- **Proximos pasos**:
+  - Revisar LFSD con el equipo y, si aplica, extender prompt-contracts a más casos en iteración.
+  - Registrar `PM-011` en la siguiente tarea ejecutada con IA.
