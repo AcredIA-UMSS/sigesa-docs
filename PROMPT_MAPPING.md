@@ -665,3 +665,91 @@ Adicionalmente, para un mapeo detallado, incluir:
 - **Proximos pasos**:
   - Revisar LFSD con el equipo y, si aplica, extender prompt-contracts a más casos en iteración.
   - Registrar `PM-011` en la siguiente tarea ejecutada con IA.
+
+
+  ### PM-011 - LFSD v1 desde FSD, PRD y BRD aylenGonzales
+ 
+- **ID**: PM-011
+- **Fecha**: 2026-05-12
+- **Hora**: 14:00 (UTC-4)
+- **Solicitante**: Aylen Mariangel Gonzales Alvino `sigesa-docs`
+- **Agente / Entorno**: Claude (claude.ai)
+- **Modelo**: claude-sonnet-4-6
+- **Tarea**: Generar `team/aylenGonzales/LFSD.md` derivándolo desde `team/aylenGonzales/FSD_v1_aylen.md`, `team/aylenGonzales/PRD_v1_aylen.md` y `team/aylenGonzales/BRD_v2_aylen.md`, preservando IDs y trazabilidad, creando prompt-contratos ejecutables para los UC críticos. Generar también `team/aylenGonzales/PROMPT_MAPPINGS.md` siguiendo la estructura exacta del `PROMPT_MAPPING.md` raíz. Actualizar `PROMPT_MAPPING.md` raíz con esta entrada.
+- **Objetivo**: Disponer de un LFSD lightweight, compacto y orientado a implementación para `team/aylenGonzales`, con 4 UC críticos, prompt-contratos con JSON schema, trazabilidad real derivada de los documentos de Aylen (no de borisAngulo), y un PROMPT_MAPPINGS.md propio para la carpeta del equipo.
+- **Contexto**:
+  - Repositorio: `sigesa-docs`.
+  - Fuentes consumidas:
+    - `team/aylenGonzales/02_vision_negocio_v2.md`
+    - `team/aylenGonzales/BRD_v2_aylen.md` (secciones 0–26, BRs RB-01–RB-11, BR-001–BR-018)
+    - `team/aylenGonzales/PRD_v1_aylen.md` (PRD-REQ-001–PRD-REQ-017, Tasks T-001–T-012)
+    - `team/aylenGonzales/FSD_v1_aylen.md` (UC-001–UC-005, NFR-001–NFR-013)
+    - `PROMPT_MAPPING.md` raíz (entradas PM-001–PM-008 como referencia de formato)
+  - Restricción: IDs de UC, BR, NFR y Tasks deben derivarse del contenido real de aylenGonzales; no copiar IDs de borisAngulo.
+  - Restricción: sin placeholders ni secciones vacías en ninguno de los dos archivos generados.
+- **Prompt usado (exacto)**:
+  ```text
+  Eres un agente de especificación funcional ágil.
+ 
+  Tienes acceso a los siguientes archivos del equipo aylenGonzales:
+  - team/aylenGonzales/02_vision_negocio_v2.md
+  - team/aylenGonzales/BRD_v2_aylen.md
+  - team/aylenGonzales/FSD_v1_aylen.md
+  - team/aylenGonzales/PRD_v1_aylen.md
+ 
+  También tienes acceso al archivo ya existente en la raíz:
+  - PROMPT_MAPPING.md ← léelo completo y usa su estructura exacta como plantilla
+ 
+  A partir de todos esos documentos, genera DOS archivos dentro de team/aylenGonzales/:
+ 
+  ARCHIVO 1: team/aylenGonzales/LFSD.md
+  Documento Lightweight FSD compacto y orientado a implementación.
+  [estructura completa con §0 Metadatos hasta §11 Registro de cambios]
+ 
+  ARCHIVO 2: team/aylenGonzales/PROMPT_MAPPINGS.md
+  Lee primero el archivo PROMPT_MAPPING.md existente en la raíz del proyecto.
+  Usa su estructura exacta como plantilla: mismos encabezados, mismo orden
+  de secciones, mismo formato de tablas y bloques de código. Y añade este prompt
+  con las características que requiere.
+ 
+  Reglas generales:
+  - No copiar ningún ID, UC, BR ni NFR de borisAngulo
+  - Sin secciones vacías ni placeholders
+  - Los IDs deben ser coherentes con el contenido real de aylenGonzales
+  - LFSD se guarda en team/aylenGonzales y prompt mapping a PROMPT_MAPPING.md
+  ```
+- **Entradas auxiliares**:
+  - Todos los documentos fuente provistos directamente en el contexto de la conversación (sin acceso al filesystem de Cursor).
+  - Estructura del PROMPT_MAPPING.md raíz como plantilla de formato.
+- **Archivos generados o modificados**:
+  - `./team/aylenGonzales/LFSD.md` - Creado.
+  - `./team/aylenGonzales/PROMPT_MAPPINGS.md` - Creado.
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-009).
+- **Cambios realizados**:
+  - **LFSD.md**: §0 Metadatos con rutas exactas de 4 insumos; §1 Objetivo con 11 módulos y Task IDs derivados del PRD; §2 Actores (8 filas); §3 Cuatro UC críticos (UC-A01 a UC-A04) con precondiciones, flujo ≤5 pasos, invariantes, failure modes (4 por UC) y 2 escenarios Gherkin; §4 Quince reglas de negocio con UC afectados; §5 Dieciocho filas de modelo de datos core; §6 Cuatro prompt-contratos con JSON schema completo (PC-A01 a PC-A04); §7 Nueve NFRs con umbral numérico y forma de verificación; §8 Tabla de trazabilidad UC↔BRs↔NFRs con Test IDs; §9 Doce tasks ejecutables; §10 Top-4 riesgos; §11 Registro de cambios.
+  - **PROMPT_MAPPINGS.md**: estructura idéntica al PROMPT_MAPPING.md raíz; entradas PM-007 (PRD desde BRD), PM-008 (FSD desde PRD+BRD), PM-009 (LFSD + PROMPT_MAPPINGS desde todos los documentos) con todos los campos detallados del formato.
+- **Validación ejecutada**:
+  - Verificación de que ningún ID de UC, BR, NFR ni Task corresponde a los de borisAngulo.
+  - Confirmación de que todos los IDs son coherentes con los documentos fuente de aylenGonzales (PRD-REQ-XXX, RB-XX, BR-XXX, NFR-XXX, T-XXX).
+  - Revisión de que los 4 prompt-contratos incluyen JSON schema con invariants, failure_modes y acceptance_criteria_gherkin.
+  - Verificación de ausencia de placeholders en ambos archivos.
+- **Resultado obtenido**:
+  - `team/aylenGonzales/LFSD.md`: LFSD v1.0 con 4 UC críticos (autenticación, carga de evidencias, aprobación/rechazo, dashboard), 4 prompt-contratos con JSON schema, 9 NFRs con umbrales numéricos, 12 tasks ejecutables y trazabilidad completa derivada de los documentos de aylenGonzales.
+  - `team/aylenGonzales/PROMPT_MAPPINGS.md`: registro de prompts del equipo con entradas PM-007, PM-008 y PM-009 en formato homogéneo al PROMPT_MAPPING.md raíz.
+  - `PROMPT_MAPPING.md` raíz actualizado con entrada PM-009.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - UC-A04 (Dashboard) tiene prompt-contrato incluido a diferencia del FSD original; esto amplía la cobertura LFSD respecto al FSD_v1_aylen.md.
+  - IDs MRD-N-XX no incluidos en trazabilidad por no existir MRD formal; actualizar cuando se genere.
+  - Los Test IDs (TC-01 a TC-10) son referencias semánticas; deben formalizarse en el plan de pruebas del sprint.
+- **Lecciones / reuso del prompt**:
+  - Proveer todos los documentos fuente directamente en el contexto (sin @referencias al filesystem) es la estrategia correcta cuando Cursor no está disponible.
+  - Especificar explícitamente "IDs derivados del contenido real de aylenGonzales, NO copiar IDs de borisAngulo" elimina el riesgo de mezcla de trazabilidades entre equipos.
+  - Pedir JSON schema completo en cada prompt-contrato (con invariants, failure_modes y acceptance_criteria_gherkin) produce contratos directamente ejecutables como tests.
+  - El formato UC-A0X (con prefijo A de Aylen) diferencia visualmente los IDs de los dos equipos en el mismo repositorio.
+- **Próximos pasos**:
+  - Copiar `LFSD.md` y `PROMPT_MAPPINGS.md` al repositorio local en `team/aylenGonzales/`.
+  - Hacer commit y push a la rama `Aylen`; abrir PR hacia `main`.
+  - Completar revisión por pares con otro grupo y registrar como comentario en el PR.
+  - Generar MRD cuando esté disponible y actualizar trazabilidad §8 del LFSD.
+  - Registrar `PM-012` en la siguiente tarea ejecutada con IA.
