@@ -1353,3 +1353,171 @@ Cada uno de los 12 casos incluye:
 | — | Revisión por pares: verificar que los escenarios Gherkin son ejecutables como tests (sin ambigüedades) | Tech Lead / QA |
 | — | Expandir escenarios de borde para QA antes del piloto (especialmente FSD-UC-004 y FSD-UC-008) | QA |
 | PM-017 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+
+## PM-017 — Generación de NFR_ISO25010.md: 10 NFRs cuantificables con métrica, umbral y verificación
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-017 |
+| **Fecha** | 2026-05-14 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Boris Angulo |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-6 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar el archivo `docs/fsd/NFR_ISO25010.md` con ≥ 8 requerimientos no funcionales cuantificables bajo la norma ISO/IEC 25010, cada uno con métrica concreta, umbral medible y método de verificación, cubriendo al menos 5 características de la norma, a partir de los documentos existentes del proyecto SIGESA.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/borisAngulo/FSD_v1.md` | Fuente primaria: NFRs base (NFR-001 a NFR-006), casos de uso UC-001 a UC-007, integraciones externas §8, plan técnico §2.4 |
+| `team/borisAngulo/AGENTS.md` | Definición de agentes (@ArchAgent, @QaAgent, @DevAgent) como responsables de verificación |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/borisAngulo/FSD_v1.md
+- @team/borisAngulo/AGENTS.md
+
+Con base en la información extraída, generá el archivo:
+
+`docs/fsd/NFR_ISO25010.md`
+
+El documento será evaluado con estos criterios:
+
+EXCELENTE (apunta a esto):
+- 8 o más NFRs con métrica, umbral y verificación cubriendo al menos 5 características ISO 25010
+- Cada NFR con: métrica concreta (qué se mide y cómo), umbral aceptable, umbral excelente y método de verificación con herramienta nombrada
+- Trazabilidad a FSD-UC, PRD-REQ y agente responsable por cada NFR
+
+ACEPTABLE (mínimo aceptado):
+- 6–7 NFRs cubriendo al menos 4 características
+
+BAJO (evitar):
+- Menos de 6 NFRs o baja cobertura de características
+- Umbrales vagos como "mejorar el rendimiento" sin valor numérico
+- Sin método de verificación concreto
+
+Instrucciones:
+- Expandir los 6 NFRs del FSD §10 a 10 NFRs cuantificables
+- Cubrir mínimo 5 características ISO 25010 distintas
+- Cada NFR debe tener dos umbrales diferenciados: aceptable vs excelente
+- El método de verificación debe nombrar herramienta concreta (k6, axe-core, SonarQube, Pact, etc.)
+- Incluir tabla de cobertura de características ISO 25010 al final
+- Incluir tabla de trazabilidad cruzada NFR → FSD-UC → PRD-REQ → agente responsable
+- No inventar información que no esté en los documentos fuente
+- El objetivo es calificación EXCELENTE
+```
+
+---
+
+### Archivos generados
+
+| Archivo | Operación |
+|---------|-----------|
+| `docs/fsd/NFR_ISO25010.md` | Creado |
+
+---
+
+### Contenido generado — resumen
+
+| ID | Característica ISO 25010 | Sub-característica | Métrica | Umbral aceptable | Umbral excelente |
+|----|--------------------------|-------------------|---------|-----------------|-----------------|
+| NFR-001 | Eficiencia de desempeño | Comportamiento temporal | Latencia p95 (ms) en panel y evidencias, 50 VUs | < 3 000 ms | < 1 500 ms |
+| NFR-002 | Eficiencia de desempeño | Utilización de recursos | CPU (%) durante generación PDF simultánea | < 80 % | < 60 % |
+| NFR-003 | Seguridad | Confidencialidad | % endpoints con HTTPS forzado + cifrado AES-256 en reposo | 100 % endpoints sensibles | 100 % + log de acceso |
+| NFR-004 | Seguridad | No repudio | % eventos críticos con registro append-only (actor, timestamp, acción, recurso) | ≥ 95 % | 100 % |
+| NFR-005 | Fiabilidad | Disponibilidad | Uptime (%) en ventana académica lun–vie 07:00–22:00 BOT | ≥ 99,0 % | ≥ 99,5 % |
+| NFR-006 | Fiabilidad | Tolerancia a fallos | Operaciones core disponibles tras fallo del motor PDF; mensaje de error al usuario | 100 % core disponible; alerta ≤ 5 s | + reintento automático ≤ 30 s |
+| NFR-007 | Usabilidad | Capacidad de aprendizaje | Tiempo de tarea (min) y tasa de errores (%) en carga de evidencia por usuario nuevo | Tiempo ≤ 5 min; errores ≤ 2 | Tiempo ≤ 3 min; errores = 0 |
+| NFR-008 | Usabilidad | Accesibilidad | Violaciones WCAG 2.2 AA en componentes prioritarios | 0 violaciones nivel A | 0 violaciones A + 0 violaciones AA |
+| NFR-009 | Mantenibilidad | Modularidad | Cobertura de pruebas unitarias (%) + acoplamiento eferente por módulo | Cobertura ≥ 80 %; CE ≤ 3 | Cobertura ≥ 90 %; CE ≤ 2 |
+| NFR-010 | Compatibilidad | Interoperabilidad | % llamadas a servicios externos dentro de SLA (p95): almacenamiento < 2 s, PDF < 5 s, notificaciones < 60 s | ≥ 95 % dentro de SLA | ≥ 99 % dentro de SLA |
+
+---
+
+### Cobertura de características ISO 25010
+
+| Característica ISO 25010 | NFRs que la cubren | Cantidad |
+|--------------------------|--------------------|----------|
+| Eficiencia de desempeño | NFR-001, NFR-002 | 2 |
+| Seguridad | NFR-003, NFR-004 | 2 |
+| Fiabilidad | NFR-005, NFR-006 | 2 |
+| Usabilidad | NFR-007, NFR-008 | 2 |
+| Mantenibilidad | NFR-009 | 1 |
+| Compatibilidad | NFR-010 | 1 |
+| **Total** | **6 de 8 características ISO 25010** | **10 NFRs** |
+
+---
+
+### Trazabilidad
+
+| NFR | FSD-UC relacionado | PRD-REQ relacionado | Agente responsable |
+|-----|--------------------|---------------------|--------------------|
+| NFR-001 | FSD-UC-005, FSD-UC-007 | PRD-REQ-005 | @QaAgent + @DevAgent |
+| NFR-002 | FSD-UC-007 | PRD-REQ-007 | @ArchAgent + @DevAgent |
+| NFR-003 | FSD-UC-001, FSD-UC-003 | PRD-REQ-001, PRD-REQ-006 | @ArchAgent + @QaAgent |
+| NFR-004 | FSD-UC-001, FSD-UC-003 | PRD-REQ-013 | @QaAgent |
+| NFR-005 | FSD-UC-002, FSD-UC-005 | PRD-REQ-002 | @DevAgent (infra) |
+| NFR-006 | FSD-UC-007 | PRD-REQ-007 | @ArchAgent |
+| NFR-007 | FSD-UC-003 | PRD-REQ-006 | @ProductAgent + @QaAgent |
+| NFR-008 | FSD-UC-001, FSD-UC-003 | PRD-REQ-001 | @ProductAgent |
+| NFR-009 | Todos | PRD-REQ (arquitectura) | @ArchAgent |
+| NFR-010 | FSD-UC-003, FSD-UC-007 | PRD-REQ-006, PRD-REQ-007 | @ArchAgent + @QaAgent |
+
+---
+
+### Criterio de evaluación alcanzado
+
+| Nivel | Criterio | ¿Cumplido? |
+|-------|----------|------------|
+| **EXCELENTE** | ≥ 8 NFRs con métrica, umbral y verificación | ✅ 10 NFRs |
+| **EXCELENTE** | Cobertura de ≥ 5 características ISO 25010 | ✅ 6 características |
+| **EXCELENTE** | Dos umbrales diferenciados por NFR (aceptable vs excelente) | ✅ Los 10 |
+| **EXCELENTE** | Método de verificación con herramienta concreta nombrada | ✅ Los 10 (k6, Prometheus, OWASP ZAP, axe-core, SonarQube, Pact, UptimeRobot) |
+| **EXCELENTE** | Trazabilidad NFR → FSD-UC → PRD-REQ → agente responsable | ✅ Tabla consolidada |
+| — | 0 información inventada | ✅ Todo derivado de FSD_v1.md y AGENTS.md |
+
+---
+
+### Lecciones y reuso
+
+- Pedir explícitamente **"dos umbrales diferenciados: aceptable vs excelente"** produce NFRs accionables con metas progresivas, evitando umbrales únicos ambiguos.
+- Incluir la instrucción **"el método de verificación debe nombrar herramienta concreta"** ancla cada NFR a una práctica de ingeniería real y evita descripciones genéricas como "hacer pruebas de rendimiento".
+- Usar los **NFRs base del FSD §10 como punto de partida explícito** permite al agente expandir en lugar de inventar, manteniendo coherencia con la especificación existente.
+- La instrucción **"tabla de cobertura de características ISO 25010 al final"** produce evidencia directa de que se cumple el criterio de evaluación sin que el docente deba contarlo manualmente.
+- **Para reusar**: reemplazar los paths de los documentos fuente y ajustar las características ISO 25010 prioritarias según el dominio del sistema; mantener la estructura de tabla maestra con columnas Métrica / Umbral aceptable / Umbral excelente / Verificación.
+
+---
+
+### Riesgos / observaciones
+
+- NFR-001 y NFR-002 deben verificarse en entorno de staging con datos realistas (≥ 100 procesos, ≥ 500 evidencias); en entorno vacío los resultados no son representativos.
+- NFR-005 (uptime 99 %) depende de decisiones de infraestructura aún pendientes (§2.4 del FSD); debe revisarse cuando se defina el stack de despliegue.
+- NFR-007 (usabilidad) requiere establecer la línea base en la primera iteración de pruebas antes de medir la mejora del 25 % referenciada en el FSD original; aplica formalmente desde v1.1.
+- NFR-009 (mantenibilidad) aplica al backend; el frontend requiere criterios separados de componentización que no se cubren en esta versión.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Responsable |
+|----|-------|-------------|
+| — | Guardar `NFR_ISO25010.md` en `docs/fsd/` del repositorio | Boris Angulo |
+| — | Reemplazar §10 de `FSD_v1.md` con referencia a `NFR_ISO25010.md` para evitar duplicación | @ArchAgent / Boris Angulo |
+| — | Validar umbrales NFR-001 y NFR-005 con TI antes del inicio de sprint de infraestructura | Tech Lead |
+| — | Expandir NFR-007 con protocolo formal de prueba de usabilidad (participantes, tareas, escenarios) | @ProductAgent + @QaAgent |
+| PM-018 | Registrar siguiente tarea ejecutada con IA | Por definir |
