@@ -1,0 +1,35 @@
+NOMBRE DEL SISTEMA: SIGESA (Sistema de Gestión y Seguimiento de Evaluación y Acreditación)
+
+PROBLEMA QUE RESUELVE (3 a 5 líneas):
+Elimina la dispersión de información y la gestión manual (Excel, correos, USB, WhatsApp) en los procesos de acreditación universitaria. Centraliza la evidencia y automatiza el seguimiento normativo (CEUB y ARCU-SUR) para evitar la pérdida de trazabilidad, los retrasos en los plazos y reducir la altísima carga operativa de los actores institucionales.
+
+USUARIO PRINCIPAL #1: Coordinador de Carrera [CC]
+- ¿Qué quiere lograr?
+Gestionar la información de su programa académico y asegurar que toda la evidencia cumpla con los requisitos para lograr la acreditación en tiempo y forma.
+- 3 a 5 tareas más importantes que realiza en el sistema:
+1. Cargar y clasificar documentos probatorios (evidencias) asociándolos directamente a las dimensiones y criterios del modelo de acreditación.
+2. Revisar, responder y subsanar las observaciones realizadas por los evaluadores internos.
+3. Hacer seguimiento del porcentaje de avance y fechas límite de las fases de su carrera (Autoevaluación, Evaluación Interna, Evaluación Externa).
+
+USUARIO PRINCIPAL #2 (opcional): Técnico de la DUEA
+- ¿Qué quiere lograr?
+Validar operativamente la documentación, coordinar a los actores involucrados y asegurar que el proceso de acreditación fluya sin cuellos de botella y cumpla con la normativa.
+- 3 a 5 tareas más importantes:
+1. Crear nuevos procesos de acreditación y configurar cronogramas y modalidades aplicables (CEUB/ARCU-SUR).
+2. Revisar la documentación subida por los coordinadores, validar su pertinencia y emitir observaciones formales.
+3. Monitorear los procesos activos de todas las facultades y generar reportes de estado para la toma de decisiones gerencial (Jefatura).
+
+¿QUÉ DEBE HACER EL SISTEMA? (6 a 10 capacidades funcionales clave, en lenguaje de negocio):
+1. Funcionar como una Única Fuente de Verdad para almacenar y organizar toda la documentación probatoria.
+2. Gestionar el flujo de trabajo estructurado en las tres fases del proceso: Autoevaluación, Evaluación Interna y Evaluación Externa.
+3. Incorporar nativamente las reglas de negocio, dimensiones e indicadores de los modelos de acreditación CEUB y ARCU-SUR para evitar traducciones manuales.
+4. Notificar proactivamente a los responsables sobre tareas pendientes, observaciones y plazos de vencimiento (fechas fatales).
+5. Proveer un panel de control (dashboard) gerencial con indicadores globales sobre carreras acreditadas, en proceso y vencidas.
+6. Habilitar un portal público para que estudiantes y sociedad civil puedan verificar la acreditación oficial de las carreras y descargar certificados.
+
+REGLAS DE NEGOCIO IMPORTANTES (3 a 5 líneas):
+El sistema debe exigir estrictamente la estructura y taxonomía del modelo normativo elegido (CEUB o ARCU-SUR) desde el primer ingreso de datos. Un proceso no puede avanzar a la fase de Evaluación Externa si existen indicadores normativos obligatorios marcados como "Observados" o sin evidencia validada en la Evaluación Interna.
+
+¿CÓMO SABRÍAMOS QUE FUNCIONA? (criterio de éxito en lenguaje de negocio):
+Cuando el sistema permita enfrentar auditorías institucionales y pares evaluadores externos con "cero pérdida de documentos", asegurando que los reportes de cumplimiento se generen en tiempo real sin requerir arqueos manuales de información.
+
