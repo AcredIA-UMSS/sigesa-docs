@@ -1175,3 +1175,181 @@ Instrucciones:
 | — | Medir línea base pre-piloto para KPI-M-01 a KPI-M-04 | DUEA + Equipo AcredIA |
 | — | Actualizar estado del MRD de "Borrador" a "Aprobado" tras revisión del docente y sponsor DUEA | Boris Angulo |
 | PM-016 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+
+
+# PROMPT_MAPPING — Entrada PM-016
+
+---
+
+## PM-016 — Generación de casos-de-uso.md: 12 casos críticos con flujo principal, alternos y Gherkin
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-016 |
+| **Fecha** | 2026-05-14 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Boris Angulo |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-6 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar el archivo `docs/fsd/casos-de-uso.md` con ≥ 10 casos de uso críticos, cada uno con flujo principal, flujos alternos y criterios de aceptación Gherkin verificables, a partir de los documentos existentes del proyecto SIGESA.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/borisAngulo/FSD_v1.md` | Fuente primaria: casos de uso UC-001 a UC-003 base, actores, reglas de negocio BR-001 a BR-012, NFRs y tareas T-001 a T-007 |
+| `team/borisAngulo/PRD_v1.md` | Fuente de user stories PRD-US-001 a PRD-US-024 con Gherkin base para expandir |
+| `team/borisAngulo/BRD_v2.md` | Fuente de reglas de negocio y restricciones que condicionan flujos alternos |
+| `team/borisAngulo/01_vision_negocio_v2.txt` | Contexto de actores, roles y flujos del proceso de acreditación |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/borisAngulo/FSD_v1.md
+- @team/borisAngulo/PRD_v1.md
+- @team/borisAngulo/BRD_v2.md
+- @team/borisAngulo/01_vision_negocio_v2.txt
+
+Con base en la información extraída, generá el archivo:
+
+`docs/fsd/casos-de-uso.md`
+
+El documento será evaluado con estos criterios:
+
+EXCELENTE (apunta a esto):
+- 10 o más casos de uso críticos
+- Cada caso con flujo principal completo (pasos numerados)
+- Flujos alternos documentados (condición + comportamiento del sistema)
+- Criterios de aceptación Gherkin verificables (formato Dado/Cuando/Entonces)
+- Trazabilidad a PRD-US, BRD-BR y NFR por cada caso
+
+ACEPTABLE (mínimo aceptado):
+- 5 o más casos completos
+
+BAJO (evitar):
+- Menos de 5 verificables
+- Gherkin vago sin condiciones concretas
+- Flujos alternos ausentes o genéricos
+
+Instrucciones:
+- Usar los casos de uso del FSD como base y expandirlos
+- Identificar casos críticos adicionales desde las user stories del PRD
+- Los flujos alternos deben derivarse de las reglas de negocio del BRD (BR-001 a BR-012)
+- No inventar información que no esté en los documentos fuente
+- Incluir tabla de trazabilidad consolidada al final (FSD-UC → PRD-US → BRD-BR → NFR → prueba de aceptación)
+- El objetivo es calificación EXCELENTE
+```
+
+---
+
+### Archivos generados
+
+| Archivo | Operación |
+|---------|-----------|
+| `docs/fsd/casos-de-uso.md` | Creado |
+
+---
+
+### Contenido generado — resumen
+
+| FSD-UC | Nombre | Actor principal | Escenarios Gherkin |
+|--------|--------|-----------------|--------------------|
+| FSD-UC-001 | Autenticación y autorización por roles | Usuario humano | 4 |
+| FSD-UC-002 | Creación y gestión de procesos de acreditación | Administrador DUEA | 4 |
+| FSD-UC-003 | Gestión de fases y cierre con pendientes | Administrador DUEA | 3 |
+| FSD-UC-004 | Carga y versionado de evidencias por criterio | Coordinador / Jefe | 4 |
+| FSD-UC-005 | Protección ante borrado o reemplazo destructivo | Coordinador / Técnico | 3 |
+| FSD-UC-006 | Flujo de observaciones DUEA ↔ carrera | DUEA / Coordinador | 3 |
+| FSD-UC-007 | Panel de estado con semáforo por carrera y facultad | Administrador DUEA | 3 |
+| FSD-UC-008 | Alertas automáticas por plazos e hitos | Scheduler | 3 |
+| FSD-UC-009 | Generación de reporte ejecutivo PDF en ≤ 2 clics | Administrador DUEA | 3 |
+| FSD-UC-010 | Importación masiva de actividades por planilla | Coordinador | 3 |
+| FSD-UC-011 | Gestión de usuarios y asignación de roles | Administrador DUEA | 3 |
+| FSD-UC-012 | Acceso de evaluador externo con alcance mínimo | Evaluador externo | 3 |
+| **Total** | | | **39 escenarios Gherkin** |
+
+---
+
+### Estructura por caso de uso
+
+Cada uno de los 12 casos incluye:
+
+- Tabla de metadatos (trazabilidad, actor, precondiciones, disparador).
+- **Flujo principal** numerado paso a paso.
+- **Flujos alternos** en tabla con ID, condición y comportamiento exacto del sistema.
+- **Postcondiciones** explícitas.
+- **Gherkin** en formato `Dado / Cuando / Entonces` con condiciones concretas y verificables.
+
+---
+
+### Trazabilidad
+
+| FSD-UC | PRD-US | BRD-BR | NFR |
+|--------|--------|--------|-----|
+| FSD-UC-001 | PRD-US-001, PRD-US-003 | BR-004, BR-005, BR-011 | NFR-002, NFR-003 |
+| FSD-UC-002 | PRD-US-008, PRD-US-009 | BR-001, BR-002, BR-003, BR-012 | NFR-003 |
+| FSD-UC-003 | PRD-US-004, PRD-US-006 | BR-008, BR-009, BR-010 | NFR-003 |
+| FSD-UC-004 | PRD-US-010, PRD-US-011 | BR-006, BR-007, BR-012 | NFR-002, NFR-003 |
+| FSD-UC-005 | PRD-US-012 | BR-007, BR-011 | NFR-003 |
+| FSD-UC-006 | PRD-US-013, PRD-US-014 | BR-008, BR-010, BR-011 | NFR-003 |
+| FSD-UC-007 | PRD-US-015 | BR-008 | NFR-001 |
+| FSD-UC-008 | PRD-US-016 | BR-009, BR-011 | NFR-005 |
+| FSD-UC-009 | PRD-US-017 | BR-008 | NFR-001 |
+| FSD-UC-010 | PRD-US-007 | BR-002, BR-012 | NFR-004 |
+| FSD-UC-011 | PRD-US-002 | BR-004, BR-005 | NFR-003 |
+| FSD-UC-012 | PRD-US-020 | BR-004, BR-005, BR-011 | NFR-002, NFR-003 |
+
+---
+
+### Criterio de evaluación alcanzado
+
+| Nivel | Criterio | ¿Cumplido? |
+|-------|----------|------------|
+| **EXCELENTE** | ≥ 10 casos de uso críticos | ✅ 12 casos |
+| **EXCELENTE** | Flujo principal completo con pasos numerados | ✅ Los 12 |
+| **EXCELENTE** | Flujos alternos con condición y comportamiento | ✅ Los 12 (2-4 alternos por caso) |
+| **EXCELENTE** | Gherkin verificable en formato Dado/Cuando/Entonces | ✅ 39 escenarios totales |
+| **EXCELENTE** | Trazabilidad PRD-US + BRD-BR + NFR por caso | ✅ Tabla consolidada al final |
+| — | 0 información inventada | ✅ Todo derivado de FSD, PRD y BRD |
+
+---
+
+### Lecciones y reuso
+
+- Pedir explícitamente **"flujos alternos derivados de las reglas de negocio del BRD (BR-001 a BR-012)"** ancla los alternos a reglas reales y evita alternos genéricos como "si hay error, mostrar mensaje".
+- Incluir el **criterio de evaluación con niveles** (Excelente/Aceptable/Bajo) dirige al agente al nivel máximo sin ambigüedad.
+- La instrucción **"tabla de trazabilidad consolidada al final"** produce un artefacto directamente usable por el docente para verificar coherencia entre documentos sin abrir cada uno.
+- Los casos del FSD (UC-001 a UC-003) sirven como **base de expansión**: el agente los completa y añade los casos faltantes desde las user stories del PRD.
+- **Para reusar**: reemplazar los paths de los documentos fuente; mantener la instrucción de estructura por caso (metadatos + flujo principal + alternos + postcondiciones + Gherkin) y el criterio de evaluación.
+
+---
+
+### Riesgos / observaciones
+
+- Los 39 escenarios Gherkin cubren los caminos críticos y principales alternos, pero no son exhaustivos para QA; el equipo de pruebas debe expandirlos con casos de borde antes del piloto.
+- Los flujos alternos de FSD-UC-008 (alertas) dependen de la configuración real del canal de notificaciones; deben validarse con TI antes del desarrollo.
+- Las precondiciones de FSD-UC-012 (evaluador externo) asumen que el administrador DUEA gestiona las credenciales temporales manualmente; si este flujo cambia, los alternos A2 y A3 deben actualizarse.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Responsable |
+|----|-------|-------------|
+| — | Guardar `casos-de-uso.md` en `docs/fsd/` del repositorio | Boris Angulo |
+| — | Revisión por pares: verificar que los escenarios Gherkin son ejecutables como tests (sin ambigüedades) | Tech Lead / QA |
+| — | Expandir escenarios de borde para QA antes del piloto (especialmente FSD-UC-004 y FSD-UC-008) | QA |
+| PM-017 | Registrar siguiente tarea ejecutada con IA | Por definir |
