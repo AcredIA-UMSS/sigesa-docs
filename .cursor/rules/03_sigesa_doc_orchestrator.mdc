@@ -1,0 +1,52 @@
+---
+description: Orquesta creación/revisión de BRD, MRD, PRD y FSD en team/*/docs con discovery previo, glosario SIGESA y evaluación de impacto cruzado; prohíbe escribir artefactos en la raíz.
+globs: team/**/docs/**/*.md
+alwaysApply: false
+---
+
+# Orquestador de documentación SIGESA (subagente de contexto)
+
+## Metadatos (convención equipo)
+
+| Clave | Valor |
+|-------|--------|
+| allowed-tools | read-dir, read-file, edit-file, ask-user |
+| model-tier | claude-3-opus |
+| fsd-version-min | v0.1 |
+| status | stable |
+| owner | Módulo 4 – UMSS (Equipo SIGESA) |
+
+## Cuándo aplica
+
+- Solicitudes de **crear**, **revisar**, **actualizar** o **documentar** BRD, MRD, PRD, FSD o casos de uso.
+- Instrucciones ambiguas del tipo «genera el FSD desde mis archivos» o «mejora el BRD de alexAlvarez».
+
+## Antes de escribir (obligatorio)
+
+1. **Área de trabajo:** `team/[persona]/docs/` (no inventar otra jerarquía para entregables del curso).
+2. **Lectura mínima:** `README.md` en la raíz del repo; glosario en `context/03_domain_glossary.md` y/o `team/[persona]/docs/context/03_domain_glossary.md` si existe; listar y relevar `.md`/`.txt` en `team/[persona]/docs/` (incl. `00_overview/` si está presente).
+3. **Checkpoint:** si hay contradicción con `00_overview` o faltan actores/datos clave, **parar y preguntar**; no inventar negocio.
+
+## Filtro SIGESA (al redactar)
+
+- **Append-only / Evidencia:** ningún flujo que implique borrado físico de evidencia normativa; subsanación por versionado.
+- **Roles:** Técnico DUEA, Coordinador de Carrera **[CC]**, Jefatura DUEA, Público — según glosario; prohibido «Cliente» / «Super Admin» genéricos.
+- **Jerarquía:** respetar cadena de dominio acordada (p. ej. **Fase → Dimensión → Criterio → Indicador → Evidencia**; no colapsar con sinónimos incorrectos).
+
+## Dónde escribir
+
+- Solo bajo `team/[persona]/docs/` usando carpetas numeradas cuando existan o se acuerden: `01_brd/`, `02_mrd/`, `03_prd/`, etc.
+- **Prohibido** guardar `BRD.md`, `FSD.md` u otros artefactos de especificación **en la raíz** del repositorio.
+
+## Después de escribir (obligatorio en la respuesta al usuario)
+
+1. **Resumen breve** (≈1 párrafo): qué archivos leíste y cuáles modificaste o creaste.
+2. Confirmar **ruta exacta** del archivo principal tocado.
+3. **Pregunta de impacto cruzado:** listar documentos del repo que podrían quedar desalineados (p. ej. FSD, glosario, trazabilidad MRD→PRD) y **preguntar** si debe aplicarse la alineación en esos archivos.
+
+**Regla dura:** no modificar archivos “secundarios” de impacto cruzado hasta que el usuario **confirme** explícitamente.
+
+## Anti-patrones
+
+- Actualizar PRD/FSD/glosario de terceros sin consentimiento tras el checkpoint de impacto.
+- Usar “archivo” / “upload” en lugar de **Evidencia** cuando el contexto sea normativo SIGESA.
