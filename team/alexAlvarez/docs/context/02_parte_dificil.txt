@@ -1,0 +1,35 @@
+NOMBRE DEL SISTEMA: SIGESA (Sistema de Gestión y Seguimiento de Evaluación y Acreditación)
+
+PARTE DEL SISTEMA QUE CONSIDERAMOS MÁS DIFÍCIL: Ciclo de Observación y Subsanación de Evidencias (Evaluación Interna)
+
+¿POR QUÉ ES DIFÍCIL? (3 a 5 líneas, en lenguaje de negocio, NO en lenguaje técnico):
+Porque el "ida y vuelta" de documentos entre el Coordinador de Carrera y el Técnico Evaluador es donde históricamente se genera el caos operativo. Controlar múltiples versiones de una misma evidencia sin sobreescribir auditorías pasadas, y asegurar que la comunicación sobre qué falta y quién tiene la responsabilidad actual sea clara, es crítico; una evidencia perdida o mal validada hace que la carrera completa fracase en su acreditación.
+
+ESCENARIO CONCRETO:
+- Actor: Coordinador de Carrera [CC] y Técnico DUEA.
+- Punto de partida (datos o situación): La carrera de Diseño Gráfico está en la Fase 2 (Evaluación Interna). El Técnico DUEA revisó la evidencia subida en la "Dimensión 1: Currículo" y encontró un error normativo crítico.
+- Pasos que ocurren:
+1. El Técnico DUEA registra una observación oficial detallando el error y cambia el estado del indicador a "Observado".
+2. El sistema alerta al Coordinador de Carrera (CC) de que tiene una observación pendiente con un plazo máximo para subsanar.
+3. El CC ingresa, lee la observación, sube el documento corregido (nueva versión) y envía una respuesta solicitando la validación.
+- Resultado esperado: El sistema marca la observación como "Revisión Pendiente", retiene el control de tiempos, notifica al Técnico, y archiva el historial completo de la interacción y de las versiones del documento.
+
+REGLAS / RESTRICCIONES QUE NO PUEDEN ROMPERSE:
+1. Ningún documento subido originalmente debe ser eliminado o sobreescrito (trazabilidad y auditoría absoluta de versiones).
+2. No se puede dar por concluida la fase de "Evaluación Interna" si existe al menos una observación en estado "Abierto".
+3. Los plazos fatales estipulados en el cronograma institucional para subsanaciones no pueden ser modificados por el Coordinador de Carrera.
+
+CASO DE PRUEBA CONCRETO (obligatorio):
+- DATOS DE ENTRADA (ejemplo realista, inventado, sin datos sensibles):
+  - Observación ID 405 (Técnico DUEA): "Falta la firma del Decano en la Resolución Facultativa 12/2025 del Plan de Estudios."
+  - Estado actual del indicador: Observado.
+  - Acción del Coordinador [CC]: Sube el documento "Resolucion_12_2025_Firmada.pdf" al indicador 1.2, redacta la nota "Se adjunta documento con firma" y presiona "Enviar subsanación".
+
+- DATOS DE SALIDA ESPERADOS para esa misma entrada:
+  - El estado del indicador 1.2 y de la Observación ID 405 cambia a "Revisión Pendiente".
+  - El porcentaje de avance de la fase se bloquea o recalcula mostrando estado "Esperando validación DUEA".
+  - Se genera una alerta accionable en el dashboard del Técnico DUEA: "Nueva evidencia subida para revisión en Carrera: Diseño Gráfico".
+
+¿CÓMO MEDIRÍAMOS QUE FUNCIONA? (criterio observable en lenguaje de negocio):
+Los actores ya no necesitan llamarse, enviarse correos o usar WhatsApp para preguntar "¿quién tiene la última versión?" o "¿qué me falta entregar?". El sistema muestra inequívocamente de quién es el "turno" de actuar y cuál es el estado exacto de la acreditación.
+

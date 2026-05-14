@@ -1,0 +1,37 @@
+---
+description: Obliga a la IA a usar la nomenclatura de negocio.
+globs: "**/*.{md,ts,py,sql,java}"
+alwaysApply: false
+---
+
+# Enforce Ubiquitous Language (SIGESA)
+
+Antes de nombrar entidades, actores o procesos en código, comentarios o documentación técnica, consulta el glosario versionado del repositorio (p. ej. `context/03_domain_glossary.md` o `team/**/docs/context/03_domain_glossary.md` si existe en tu copia).
+
+1. **Evidencia, no “archivo” genérico** — Nunca uses el término genérico "File" o "Archivo" cuando te refieras a los documentos probatorios. Usa **Evidence** (código / identificadores) o **Evidencia** (texto en español).
+
+2. **Fase, no paso ni etapa** — El contenedor temporal es **Phase** (Fase). No uses "Step" ni "Stage" para ese concepto de dominio.
+
+3. **Actores en código** — Los actores en el código deben reflejarse como: `Coordinator` (Coordinador de Carrera), `Technician` (Técnico DUEA), `Admin` (Jefatura DUEA).
+
+4. **Proceso normativo maestro** — El proceso maestro es `AccreditationProcess` o, cuando el contexto sea inequívoco, `Process`.
+
+## Ejemplos rápidos
+
+```typescript
+// ❌ MAL: vocabulario genérico
+type UploadedFile = { path: string };
+function advanceToNextStage(processId: string) {}
+
+// ✅ BIEN: lenguaje ubicuo SIGESA
+type Evidence = { /* metadatos de evidencia normativa */ };
+function advancePhase(processId: string) {}
+```
+
+```sql
+-- ❌ MAL
+-- CREATE TABLE archivo_proceso (...);
+
+-- ✅ BIEN
+-- CREATE TABLE evidence (...);
+```
