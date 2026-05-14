@@ -1,0 +1,164 @@
+# ADR‑0002: Log de auditoría como tabla append-only en PostgreSQL
+
+### Metadatos
+
+| Campo | Valor |
+|-------|-------|
+| Número | `0002` |
+| Título | Log de auditoría como tabla append-only en PostgreSQL |
+| Fecha | `13/05/2026` |
+| Autor(es) | Equipo AcredIA — UMSS |
+| Estado | **Propuesta** |
+| Alcance | Módulo `Auditoría` / todo el sistema (trazabilidad de acciones) |
+| Stakeholders consultados | Tech Lead, Jefatura DUEA, docente Edson Terceros |
+
+---
+
+### 1. Contexto
+
+SIGESA debe registrar de forma completa e inmutable cada acción relevante ejecutada por cualquier usuario del sistema. Este requisito tiene dos orígenes:
+
+- **NFR-013**: el 100 % de las acciones del sistema deben quedar registradas.
+- **RB-07** (BRD v2): ante una inspección institucional de CEUB o ARCU-SUR, el sistema debe proveer trazabilidad completa del historial de decisiones, cargas y aprobaciones.
+
+El log de auditoría es, por definición, el único artefacto que no puede ser alterado ni eliminado —ni siquiera por un administrador con acceso legítimo al sistema—, ya que su valor probatorio depende de esa garantía.
+
+**Restricciones determinantes:**
+
+- Presupuesto cero: no hay presupuesto para Elastic Stack (ELK), CloudWatch, Datadog ni ningún sistema de observabilidad externo.
+- El equipo es pequeño (≤ 4 devs); la operación de infraestructura adicional representa sobrecarga injustificada en v1.0.
+- PostgreSQL ya es el motor de persistencia principal del sistema (FSD §2.4); reutilizarlo evita introducir una segunda tecnología de almacenamiento.
+
+**Fuerzas en tensión:**
+
+- Inmutabilidad fuerte (garantizada por infraestructura) vs. inmutabilidad razonable (garantizada por permisos de BD).
+- Correlación con el dominio (JOIN con entidades) vs. independencia del log respecto a la base de datos de negocio.
+- Simplicidad operacional vs. escalabilidad a largo plazo (volumen de logs en 12+ meses).
+
+Lo que se desconoce: el volumen de eventos diarios en operación real, necesario para dimensionar la política de particionamiento y archivado.
+
+---
+
+### 2. Alternativas consideradas
+
+| Alternativa | Pros | Contras | Costo aproximado |
+|-------------|------|---------|------------------|
+| A. Sistema de logging externo (ELK, CloudWatch, Datadog) | Infraestructura dedicada; dashboards nativos; alta disponibilidad | Sin presupuesto; complejidad operacional; requiere equipo DevOps; datos del log separados del dominio | $50–300/mes (SaaS) o 1 servidor adicional (on-premise) |
+| B. Archivos de log en disco (`.log` del servidor) | Costo cero; implementación inmediata | No correlacionable con entidades del dominio; inmutabilidad no garantizable; búsqueda ineficiente; rotación destruye historia | $0 — pero sin valor probatorio real |
+| C. Tabla PostgreSQL `LOG_AUDITORIA` con `REVOKE DELETE, UPDATE` | Costo cero; correlación directa vía JOIN; inmutabilidad a nivel de permisos de BD; misma infraestructura de respaldo | Inmutabilidad dependiente de permisos (no de arquitectura); requiere particionamiento a futuro para escalar | $0 |
+
+---
+
+### 3. Decisión
+
+> **Elegimos la alternativa C: implementar el log de auditoría como tabla `LOG_AUDITORIA` en PostgreSQL, con `REVOKE DELETE, UPDATE` para el rol de aplicación, garantizando operación solo de `INSERT`.**
+
+La restricción de presupuesto elimina directamente la alternativa A. La alternativa B no ofrece garantía probatoria real: los archivos `.log` pueden ser editados por cualquier usuario con acceso al servidor, no son consultables eficientemente y no se correlacionan con las entidades del dominio (carrera, indicador, usuario) que son precisamente las que interesan en una inspección institucional.
+
+La alternativa C reutiliza PostgreSQL —ya operativo— y permite auditar cualquier acción con un JOIN directo sobre las tablas del dominio. La inmutabilidad se garantiza mediante permisos de base de datos: el rol de aplicación tiene `REVOKE DELETE, UPDATE ON LOG_AUDITORIA`, de modo que ningún bug de código puede eliminar o modificar registros de auditoría.
+
+**Esquema de la tabla:**
+
+```sql
+CREATE TABLE LOG_AUDITORIA (
+    id            BIGSERIAL PRIMARY KEY,
+    fecha_hora    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    usuario_id    INTEGER     REFERENCES usuarios(id),
+    accion        accion_enum NOT NULL,  -- ver enum abajo
+    entidad_tipo  VARCHAR(64),           -- 'DOCUMENTO', 'INDICADOR', 'FASE', etc.
+    entidad_id    INTEGER,
+    detalle       JSONB,                 -- contexto adicional (ip, user_agent, motivo)
+    ip_origen     INET
+);
+
+CREATE TYPE accion_enum AS ENUM (
+    'LOGIN', 'LOGOUT',
+    'CARGA', 'APROBACION', 'RECHAZO',
+    'AVANCE_FASE', 'REPORTE'
+);
+
+-- Inmutabilidad: el rol de aplicación no puede borrar ni modificar
+REVOKE DELETE, UPDATE ON LOG_AUDITORIA FROM sigesa_app_role;
+
+-- Índices para consultas frecuentes en inspecciones
+CREATE INDEX idx_log_usuario    ON LOG_AUDITORIA (usuario_id);
+CREATE INDEX idx_log_entidad    ON LOG_AUDITORIA (entidad_tipo, entidad_id);
+CREATE INDEX idx_log_fecha      ON LOG_AUDITORIA (fecha_hora DESC);
+```
+
+---
+
+### 4. Consecuencias
+
+#### 4.1 Positivas
+
+- Inmutabilidad garantizada a nivel de permisos de base de datos: ningún bug de la capa de aplicación puede eliminar o modificar registros de auditoría.
+- Correlación directa con el dominio mediante JOIN: en una inspección CEUB/ARCU-SUR se puede consultar el historial completo de un indicador, una fase o un usuario con una sola query SQL.
+- Costo de infraestructura: $0 adicional; PostgreSQL ya está operativo.
+- El respaldo diario de PostgreSQL incluye automáticamente `LOG_AUDITORIA` sin configuración adicional.
+- El campo `detalle JSONB` permite registrar contexto arbitrario (IP, motivo de rechazo, user-agent) sin alterar el esquema.
+
+#### 4.2 Negativas / costos
+
+- La inmutabilidad depende de permisos de rol de BD, no de arquitectura; un DBA con privilegios de superusuario puede evitar la restricción. Requiere política de acceso estricta documentada en el runbook de operaciones.
+- El enum `accion_enum` es cerrado; agregar nuevos tipos de acción en v2.0 requiere `ALTER TYPE` — migración de schema planificada.
+- Sin particionamiento, la tabla crecerá indefinidamente en v1.0; las consultas sobre períodos largos pueden degradarse si el volumen supera ~1 M de filas.
+- No provee dashboards nativos ni alertas en tiempo real (fuera de alcance de v1.0).
+
+#### 4.3 Neutras / observables
+
+- El módulo `Auditoría` debe interceptar todas las acciones relevantes del sistema; cualquier endpoint nuevo debe incluir el INSERT en `LOG_AUDITORIA` como parte del contrato de implementación.
+- Añadir `fecha_hora` con índice DESC permite paginar el historial eficientemente para la UI de auditoría.
+
+---
+
+### 5. Impacto en el sistema
+
+- **Código**: módulo `Auditoría` (interceptor/middleware de logging); todos los módulos (`Auth`, `Documentos`, `Fases`, `Aprobación`, `Reportes`) deben invocar el servicio de auditoría en cada acción relevante. El enum `accion_enum` es el contrato compartido.
+- **Operaciones**: el `pg_dump` diario incluye `LOG_AUDITORIA` automáticamente. A partir del mes 12, evaluar particionamiento por rango de `fecha_hora` (PostgreSQL 14+ nativo). El archivado de particiones antiguas se realiza exportando a `.sql.gz` en el respaldo local.
+- **Seguridad**: el rol `sigesa_app_role` tiene `REVOKE DELETE, UPDATE`. El rol `sigesa_readonly` (para reportes e inspecciones) tiene solo `SELECT`. El acceso de superusuario a la BD debe estar restringido a operaciones de mantenimiento documentadas.
+- **Equipo**: no requiere habilidades nuevas. La convención de invocar el servicio de auditoría en cada endpoint debe documentarse en el `CONTRIBUTING.md` del repositorio.
+- **Costo**: $0 en v1.0. En v2.0, si se adopta ELK o similar, la migración implica exportar `LOG_AUDITORIA` a formato compatible (JSON/CSV) — estimado en 1 día de trabajo.
+
+---
+
+### 6. Plan de reversión
+
+**Señales tempranas de que la decisión fue incorrecta:**
+
+- Las queries sobre `LOG_AUDITORIA` degradan el rendimiento general de PostgreSQL (tiempo de respuesta de API > 500 ms en endpoints no relacionados con auditoría).
+- El volumen de registros supera 5 M de filas antes de los 12 meses de operación y el particionamiento no es suficiente.
+- Una inspección institucional requiere correlaciones o formatos de reporte que SQL no puede proveer eficientemente.
+
+**Costo estimado de revertir:** 2–3 días para migrar `LOG_AUDITORIA` a un sistema externo (ELK, Loki), exportar el histórico en JSON y redirigir el middleware de auditoría al nuevo destino.
+
+**Plan B:** Loki + Grafana (stack ligero, open-source) si se dispone de servidor adicional sin costo de licencia.
+
+---
+
+### 7. Validación
+
+| Criterio | Métrica | Plazo | Responsable |
+|----------|---------|-------|-------------|
+| Cobertura de acciones auditadas | 100 % de endpoints con acción relevante registran en `LOG_AUDITORIA` (verificado con tests de integración) | Sprint de implementación del módulo Auditoría | Tech Lead |
+| Inmutabilidad bajo prueba | Tests de integración intentan DELETE y UPDATE contra `LOG_AUDITORIA` con el rol de aplicación — deben fallar | Sprint de implementación | Tech Lead |
+| Rendimiento de consultas de auditoría | Queries de inspección sobre rango de 30 días ≤ 2 s con datos de prueba de 100K filas | Pre-despliegue (staging) | Tech Lead |
+| Cumplimiento NFR-013 | 0 acciones relevantes sin registro en 1 semana de operación piloto | 1 semana post-despliegue | Jefatura DUEA |
+
+---
+
+### 8. Referencias
+
+- NFR-013: 100 % de acciones del sistema registradas — `docs/fsd/FSD_v1.md`
+- RB-07: trazabilidad completa ante inspecciones institucionales — `docs/brd/BRD_v2.md`
+- PostgreSQL 14 — Table Partitioning: https://www.postgresql.org/docs/14/ddl-partitioning.html
+- `docs/dti/DTI_borrador.md` §2 — ADR candidata 2
+- ADR-0001 — Almacenamiento de archivos de evidencia en sistema de archivos local (relacionada: misma restricción de presupuesto)
+
+---
+
+### 9. Historial
+
+| Versión | Fecha | Autor | Cambio |
+|---------|-------|-------|--------|
+| 1 | 13/05/2026 | Equipo AcredIA | Propuesta inicial extraída de DTI_borrador.md §2 |
