@@ -665,3 +665,348 @@ Adicionalmente, para un mapeo detallado, incluir:
 - **Proximos pasos**:
   - Revisar LFSD con el equipo y, si aplica, extender prompt-contracts a más casos en iteración.
   - Registrar `PM-011` en la siguiente tarea ejecutada con IA.
+
+
+  ### PM-011 - LFSD v1 desde FSD, PRD y BRD aylenGonzales
+ 
+- **ID**: PM-011
+- **Fecha**: 2026-05-12
+- **Hora**: 14:00 (UTC-4)
+- **Solicitante**: Aylen Mariangel Gonzales Alvino `sigesa-docs`
+- **Agente / Entorno**: Claude (claude.ai)
+- **Modelo**: claude-sonnet-4-6
+- **Tarea**: Generar `team/aylenGonzales/LFSD.md` derivándolo desde `team/aylenGonzales/FSD_v1_aylen.md`, `team/aylenGonzales/PRD_v1_aylen.md` y `team/aylenGonzales/BRD_v2_aylen.md`, preservando IDs y trazabilidad, creando prompt-contratos ejecutables para los UC críticos. Generar también `team/aylenGonzales/PROMPT_MAPPINGS.md` siguiendo la estructura exacta del `PROMPT_MAPPING.md` raíz. Actualizar `PROMPT_MAPPING.md` raíz con esta entrada.
+- **Objetivo**: Disponer de un LFSD lightweight, compacto y orientado a implementación para `team/aylenGonzales`, con 4 UC críticos, prompt-contratos con JSON schema, trazabilidad real derivada de los documentos de Aylen (no de borisAngulo), y un PROMPT_MAPPINGS.md propio para la carpeta del equipo.
+- **Contexto**:
+  - Repositorio: `sigesa-docs`.
+  - Fuentes consumidas:
+    - `team/aylenGonzales/02_vision_negocio_v2.md`
+    - `team/aylenGonzales/BRD_v2_aylen.md` (secciones 0–26, BRs RB-01–RB-11, BR-001–BR-018)
+    - `team/aylenGonzales/PRD_v1_aylen.md` (PRD-REQ-001–PRD-REQ-017, Tasks T-001–T-012)
+    - `team/aylenGonzales/FSD_v1_aylen.md` (UC-001–UC-005, NFR-001–NFR-013)
+    - `PROMPT_MAPPING.md` raíz (entradas PM-001–PM-008 como referencia de formato)
+  - Restricción: IDs de UC, BR, NFR y Tasks deben derivarse del contenido real de aylenGonzales; no copiar IDs de borisAngulo.
+  - Restricción: sin placeholders ni secciones vacías en ninguno de los dos archivos generados.
+- **Prompt usado (exacto)**:
+  ```text
+  Eres un agente de especificación funcional ágil.
+ 
+  Tienes acceso a los siguientes archivos del equipo aylenGonzales:
+  - team/aylenGonzales/02_vision_negocio_v2.md
+  - team/aylenGonzales/BRD_v2_aylen.md
+  - team/aylenGonzales/FSD_v1_aylen.md
+  - team/aylenGonzales/PRD_v1_aylen.md
+ 
+  También tienes acceso al archivo ya existente en la raíz:
+  - PROMPT_MAPPING.md ← léelo completo y usa su estructura exacta como plantilla
+ 
+  A partir de todos esos documentos, genera DOS archivos dentro de team/aylenGonzales/:
+ 
+  ARCHIVO 1: team/aylenGonzales/LFSD.md
+  Documento Lightweight FSD compacto y orientado a implementación.
+  [estructura completa con §0 Metadatos hasta §11 Registro de cambios]
+ 
+  ARCHIVO 2: team/aylenGonzales/PROMPT_MAPPINGS.md
+  Lee primero el archivo PROMPT_MAPPING.md existente en la raíz del proyecto.
+  Usa su estructura exacta como plantilla: mismos encabezados, mismo orden
+  de secciones, mismo formato de tablas y bloques de código. Y añade este prompt
+  con las características que requiere.
+ 
+  Reglas generales:
+  - No copiar ningún ID, UC, BR ni NFR de borisAngulo
+  - Sin secciones vacías ni placeholders
+  - Los IDs deben ser coherentes con el contenido real de aylenGonzales
+  - LFSD se guarda en team/aylenGonzales y prompt mapping a PROMPT_MAPPING.md
+  ```
+- **Entradas auxiliares**:
+  - Todos los documentos fuente provistos directamente en el contexto de la conversación (sin acceso al filesystem de Cursor).
+  - Estructura del PROMPT_MAPPING.md raíz como plantilla de formato.
+- **Archivos generados o modificados**:
+  - `./team/aylenGonzales/LFSD.md` - Creado.
+  - `./team/aylenGonzales/PROMPT_MAPPINGS.md` - Creado.
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-009).
+- **Cambios realizados**:
+  - **LFSD.md**: §0 Metadatos con rutas exactas de 4 insumos; §1 Objetivo con 11 módulos y Task IDs derivados del PRD; §2 Actores (8 filas); §3 Cuatro UC críticos (UC-A01 a UC-A04) con precondiciones, flujo ≤5 pasos, invariantes, failure modes (4 por UC) y 2 escenarios Gherkin; §4 Quince reglas de negocio con UC afectados; §5 Dieciocho filas de modelo de datos core; §6 Cuatro prompt-contratos con JSON schema completo (PC-A01 a PC-A04); §7 Nueve NFRs con umbral numérico y forma de verificación; §8 Tabla de trazabilidad UC↔BRs↔NFRs con Test IDs; §9 Doce tasks ejecutables; §10 Top-4 riesgos; §11 Registro de cambios.
+  - **PROMPT_MAPPINGS.md**: estructura idéntica al PROMPT_MAPPING.md raíz; entradas PM-007 (PRD desde BRD), PM-008 (FSD desde PRD+BRD), PM-009 (LFSD + PROMPT_MAPPINGS desde todos los documentos) con todos los campos detallados del formato.
+- **Validación ejecutada**:
+  - Verificación de que ningún ID de UC, BR, NFR ni Task corresponde a los de borisAngulo.
+  - Confirmación de que todos los IDs son coherentes con los documentos fuente de aylenGonzales (PRD-REQ-XXX, RB-XX, BR-XXX, NFR-XXX, T-XXX).
+  - Revisión de que los 4 prompt-contratos incluyen JSON schema con invariants, failure_modes y acceptance_criteria_gherkin.
+  - Verificación de ausencia de placeholders en ambos archivos.
+- **Resultado obtenido**:
+  - `team/aylenGonzales/LFSD.md`: LFSD v1.0 con 4 UC críticos (autenticación, carga de evidencias, aprobación/rechazo, dashboard), 4 prompt-contratos con JSON schema, 9 NFRs con umbrales numéricos, 12 tasks ejecutables y trazabilidad completa derivada de los documentos de aylenGonzales.
+  - `team/aylenGonzales/PROMPT_MAPPINGS.md`: registro de prompts del equipo con entradas PM-007, PM-008 y PM-009 en formato homogéneo al PROMPT_MAPPING.md raíz.
+  - `PROMPT_MAPPING.md` raíz actualizado con entrada PM-009.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - UC-A04 (Dashboard) tiene prompt-contrato incluido a diferencia del FSD original; esto amplía la cobertura LFSD respecto al FSD_v1_aylen.md.
+  - IDs MRD-N-XX no incluidos en trazabilidad por no existir MRD formal; actualizar cuando se genere.
+  - Los Test IDs (TC-01 a TC-10) son referencias semánticas; deben formalizarse en el plan de pruebas del sprint.
+- **Lecciones / reuso del prompt**:
+  - Proveer todos los documentos fuente directamente en el contexto (sin @referencias al filesystem) es la estrategia correcta cuando Cursor no está disponible.
+  - Especificar explícitamente "IDs derivados del contenido real de aylenGonzales, NO copiar IDs de borisAngulo" elimina el riesgo de mezcla de trazabilidades entre equipos.
+  - Pedir JSON schema completo en cada prompt-contrato (con invariants, failure_modes y acceptance_criteria_gherkin) produce contratos directamente ejecutables como tests.
+  - El formato UC-A0X (con prefijo A de Aylen) diferencia visualmente los IDs de los dos equipos en el mismo repositorio.
+- **Próximos pasos**:
+  - Copiar `LFSD.md` y `PROMPT_MAPPINGS.md` al repositorio local en `team/aylenGonzales/`.
+  - Hacer commit y push a la rama `Aylen`; abrir PR hacia `main`.
+  - Completar revisión por pares con otro grupo y registrar como comentario en el PR.
+  - Generar MRD cuando esté disponible y actualizar trazabilidad §8 del LFSD.
+  - Registrar `PM-012` en la siguiente tarea ejecutada con IA.
+
+
+  ### PM-012- Generación de estructura base del DTI con secciones §0 y §1
+ 
+- **ID**: PM-001
+- **Fecha**: 2026-05-13
+- **Hora**: 09:00 (UTC-4)
+- **Solicitante**: Equipo AcredIA (rol: Arquitecto / Tech Lead)
+- **Agente / Entorno**: Claude en claude.ai (chat web)
+- **Modelo**: claude-sonnet-4-6
+- **Tarea**: Crear el archivo `docs/dti/DTI_borrador.md` con las secciones §0 (Información General) y §1 (Arquitectura Inicial C4 Nivel 1) esbozadas.
+- **Objetivo**: Obtener un borrador coherente del DTI que incluya la descripción del sistema SIGESA, los actores, los sistemas externos, el estilo arquitectónico elegido y el diagrama C4 Nivel 1 en sintaxis Mermaid, listo para commitear y revisar con el docente Edson Terceros.
+- **Contexto**:
+  - Documentos abiertos: `BRD_v2.md`, `PRD_v1.md`, `FSD_v1.md`, `AGENTS.md`
+  - El sistema se llama AcredIA / SIGESA y pertenece a la DUEA-UMSS, Cochabamba, Bolivia
+  - Stack declarado en FSD §2.4: React + Tailwind, Node.js/Express o FastAPI, PostgreSQL, Docker
+  - Restricción de presupuesto: sin acceso a servicios cloud ni S3
+  - El diagrama de contexto debe seguir el C4 Model (c4model.com) — Nivel 1 (System Context)
+  - Audiencia mixta: técnica (equipo) y no técnica (jefatura DUEA, docente revisor)
+  - Se deben identificar al menos 2 decisiones arquitectónicas candidatas a ADR
+- **Prompt usado (exacto)**:
+  ```text
+  Eres un arquitecto de software senior. Necesito que generes el borrador del Documento Técnico Inicial (DTI) para el sistema AcredIA / SIGESA — Sistema Inteligente de Gestión y Seguimiento de Acreditaciones de la DUEA-UMSS.
+ 
+  El documento debe seguir el C4 Model (c4model.com) y cubrir:
+  
+  §0 - Información General: nombre del sistema, problema que resuelve, métricas objetivo, actores (personas C4) y sistemas externos.
+  
+  §1 - Arquitectura Inicial: diagrama C4 Nivel 1 (System Context) en sintaxis Mermaid usando directiva C4Context, estilo arquitectónico elegido con justificación, y stack tecnológico en tabla.
+  
+  Actores del sistema:
+  - Jefatura DUEA [JD]: configura, monitorea semáforos y genera reportes PDF (autenticado)
+  - Técnico DUEA [TD]: valida evidencias y aprueba/rechaza indicadores (autenticado)
+  - Coordinador de Carrera [CC]: carga evidencias y consulta estado (autenticado)
+  - Público externo [P]: consulta estado y descarga certificados (sin autenticación)
+  
+  Sistema externo: Servidor de Correo UMSS (SMTP institucional @umss.edu.bo).
+  
+  Restricciones:
+  - Presupuesto cero: sin cloud ni S3
+  - Stack: React + Tailwind, Node.js/Express o FastAPI (pendiente spike), PostgreSQL, Docker
+  - Almacenamiento de archivos en volumen local Docker /data/evidencias/
+  
+  Al final del §1, agrega una sección §2 con al menos 2 decisiones arquitectónicas candidatas a ADR, cada una con: pregunta de decisión, tabla de opciones consideradas (con por qué se descarta o elige cada una), decisión preliminar, consecuencias a confirmar y referencia al FSD o C4.
+  
+  Formato de salida: Markdown puro, listo para commitear en docs/dti/DTI_borrador.md.
+  ```
+- **Entradas auxiliares**:
+  - Contenido de `FSD_v1.md` §2.4 (stack tecnológico), §12 (testing), NFR-001, NFR-003, NFR-005, NFR-013
+  - Contenido de `AGENTS.md` (descripción de roles y restricciones del agente)
+  - URL de referencia: https://c4model.com (Abstractions y Diagrams)
+- **Archivos generados o modificados**:
+  - `docs/dti/DTI_borrador.md` — Creado
+- **Cambios realizados**:
+  - Sección §0 completa: nombre, problema, métricas, actores C4, sistemas externos, alcance v1.0
+  - Sección §1 completa: nota metodológica C4, diagrama Mermaid C4Context con 4 personas + 1 sistema externo + SIGESA, lectura para audiencia no técnica, estilo arquitectónico (Layered N-Tier), tabla de stack tecnológico
+  - Sección §2 con 2 ADR candidatas: almacenamiento local vs S3 y log de auditoría append-only
+  - Sección §3 con supuestos declarados (SA-01 a SA-06)
+  - Sección §4 con próximos pasos
+- **Validacion ejecutada**:
+  - Lectura completa del archivo generado comparando con FSD §2.4 y AGENTS.md
+  - Verificación visual del diagrama Mermaid en editor compatible (mermaid.live)
+  - Revisión de coherencia de actores entre §0 y el diagrama C4Context
+  - Confirmación de que el sistema externo SMTP aparece correctamente como `System_Ext`
+  - Verificación de que el volumen de archivos NO aparece como sistema externo (es un container C4)
+- **Resultado obtenido**:
+  - Archivo `DTI_borrador.md` v0.1 completo, con diagrama Mermaid funcional, dos ADR candidatas documentadas y supuestos declarados — listo para revisión del docente Edson Terceros y posterior commit
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - La elección Node.js/Express vs FastAPI está pendiente de spike técnico de 2 días (§4 próximos pasos); el DTI refleja ambas opciones como pendientes
+  - El volumen de disco del servidor no está dimensionado aún (SA-05); debe resolverse antes del despliegue
+  - Mermaid con directiva `C4Context` requiere versión ≥ 10.x para renderizar correctamente; versiones anteriores no la soportan
+- **Lecciones / reuso del prompt**:
+  - El prompt funciona mejor cuando se especifican los actores con su código (ej. `[JD]`, `[TD]`) y el tipo de acceso (autenticado / sin autenticación)
+  - Incluir la URL de referencia (c4model.com) en el contexto del prompt mejora la adherencia al vocabulario oficial del modelo (persona, container, software system)
+  - Separar §0 y §1 en el prompt evita que el agente mezcle información de contexto con decisiones arquitectónicas
+  - Para reusar: reemplazar nombre del sistema, actores y restricciones de presupuesto manteniendo la estructura de la solicitud
+- **Proximos pasos**:
+  - Commitear `docs/dti/DTI_borrador.md` con mensaje: `docs(dti): add DTI_borrador v0.1 - C4 L1 + ADR candidates`
+  - Registrar `PM-013` en la siguiente tarea ejecutada con IA.
+
+
+  ### PM-013 - Formalización de ADR-0001 — Almacenamiento de archivos de evidencia en sistema de archivos local
+
+- **ID**: PM-013
+- **Fecha**: 2026-05-13
+- **Hora**: 10:30 (UTC-4)
+- **Solicitante**: Aylen
+- **Agente / Entorno**: Claude en claude.ai (chat web)
+- **Modelo**: claude-sonnet-4-6
+- **Tarea**: Convertir la ADR candidata 1 del DTI borrador en un ADR formal y autónomo siguiendo el template `templates/ADR_TEMPLATE.md`, guardado en `docs/adr/ADR-0001.md`.
+- **Objetivo**: Documentar de forma completa y trazable la decisión de almacenar archivos binarios de evidencia en el volumen Docker local `/data/evidencias/`, con contexto, alternativas comparadas, consecuencias, plan de reversión y criterios de validación medibles.
+- **Contexto**:
+  - Archivo base: `docs/dti/DTI_borrador.md` §2 — ADR candidata 1
+  - Template a seguir: `templates/ADR_TEMPLATE.md` (9 secciones: Metadatos, Contexto, Alternativas, Decisión, Consecuencias, Impacto, Plan de reversión, Validación, Referencias, Historial)
+  - Restricción de presupuesto: sin cloud ni MinIO on-premise
+  - Referencia C4: el volumen local es un container válido según c4model.com/abstractions/container
+  - NFR relevantes: NFR-002 (versionado inmutable), NFR-005 (TLS 1.3)
+  - Supuesto activo: SA-05 — disco del servidor suficiente (pendiente de estimación)
+  - Estado inicial del ADR: **Propuesta** (pendiente revisión Tech Lead)
+- **Prompt usado (exacto)**:
+  ```text
+  Eres un arquitecto de software senior documentando decisiones para el proyecto AcredIA / SIGESA (DUEA-UMSS).
+
+  Formaliza la siguiente ADR candidata como un ADR autónomo y completo, siguiendo exactamente la estructura del template ADR_TEMPLATE.md que tiene estas secciones: Metadatos, 1.Contexto, 2.Alternativas consideradas, 3.Decisión, 4.Consecuencias (4.1 Positivas / 4.2 Negativas / 4.3 Neutras), 5.Impacto en el sistema, 6.Plan de reversión, 7.Validación, 8.Referencias, 9.Historial.
+
+  ADR candidata — Almacenamiento de archivos de evidencia:
+  - Pregunta: ¿Dónde almacenar los archivos binarios de evidencia (PDF, DOCX, XLSX)?
+  - Opción descartada A: PostgreSQL BYTEA — infla la DB, degrada consultas, dificulta respaldos incrementales
+  - Opción descartada B: S3-compatible (AWS/MinIO) — sin presupuesto
+  - Opción elegida: sistema de archivos local /data/evidencias/ en volumen Docker
+  - Estructura de rutas: {proceso_id}/{fase_id}/{indicador_id}/{version}_{nombre_original}
+  - PostgreSQL persiste solo metadatos: ruta_relativa, hash_sha256, version, autor_id, fecha_carga, estado
+  - La restricción de no-DELETE sobre documentos APROBADO se implementa en capa de servicio
+  - Migración a S3 en v2.0 requiere solo cambiar ruta_relativa por url_storage en módulo Documentos
+
+  Restricciones del proyecto:
+  - Presupuesto cero: sin cloud ni MinIO
+  - NFR-002: versionado inmutable; NFR-005: TLS 1.3
+  - SA-05: disco del servidor pendiente de dimensionamiento
+
+  Estado: Propuesta. Número: 0001. Fecha: 13/05/2026. Autor: Equipo AcredIA.
+  Ruta de salida: docs/adr/0001-almacenamiento-archivos-local.md
+  Formato: Markdown puro, sin texto introductorio ni explicaciones fuera del documento.
+  ```
+- **Entradas auxiliares**:
+  - `docs/dti/DTI_borrador.md` §2 — ADR candidata 1 (fragmento completo)
+  - `templates/ADR_TEMPLATE.md` — estructura de 9 secciones
+  - FSD v1 §2.4 (stack), NFR-002, NFR-005
+  - SA-05 del DTI borrador §3
+- **Archivos generados o modificados**:
+  - `docs/adr/ADR-0001.md` — Creado
+- **Cambios realizados**:
+  - Metadatos completos (número, título, fecha, autor, estado, alcance, stakeholders)
+  - §1 Contexto: problema, 3 restricciones determinantes, 2 fuerzas en tensión, incógnita activa (SA-05)
+  - §2 Alternativas: tabla de 3 opciones con pros, contras y costo aproximado
+  - §3 Decisión: justificación de descarte de A y B, estructura de rutas exacta, esquema de metadatos en PostgreSQL, estrategia de inmutabilidad en capa de servicio
+  - §4 Consecuencias: 4 positivas, 4 negativas/costos, 2 neutras
+  - §5 Impacto: código (módulo Documentos + tests), operaciones (rsync en respaldo diario, alerta disco 70%), seguridad (archivos solo vía API + RBAC), equipo (sin habilidades nuevas), costo ($0 v1.0 / 1–2 días v2.0)
+  - §6 Plan de reversión: 3 señales de alerta, costo estimado (2–3 días), Plan B (MinIO/S3)
+  - §7 Validación: tabla de 4 criterios con métricas, plazos y responsables
+  - §8 Referencias: C4 Model, DTI borrador, FSD §2.4, SA-05, NFR-002/005
+  - §9 Historial: versión 1 — propuesta inicial
+- **Validacion ejecutada**:
+  - Lectura cruzada entre `ADR-0001.md` y `DTI_borrador.md` §2 para verificar consistencia de la estructura de rutas y el esquema de metadatos
+  - Verificación de que la ruta `/data/evidencias/` coincide con la declarada en ADR candidata 1 del DTI
+  - Confirmación de que el campo `ruta_relativa` (y su equivalente v2.0 `url_storage`) está nombrado consistentemente
+  - Revisión de que el estado inicial es "Propuesta" (no "Aceptada") — pendiente revisión Tech Lead
+- **Resultado obtenido**:
+  - `docs/adr/ADR-0001md` completo, autónomo y trazable al DTI borrador — listo para revisión del Tech Lead y posterior cambio de estado a "Aceptada"
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - SA-05 (dimensionamiento de disco) sigue abierto; el ADR no puede cambiar de estado a "Aceptada" hasta que el Tech Lead provea la estimación de volumen
+  - La restricción no-DELETE en capa de servicio (no en política de BD) es el principal riesgo técnico; debe cubrirse con tests de integración específicos antes del primer despliegue
+- **Lecciones / reuso del prompt**:
+  - Listar las 9 secciones del template explícitamente en el prompt elimina la necesidad de correcciones de estructura en el output
+  - Proveer la estructura de rutas y el esquema de metadatos en el prompt produce salida directamente usable por el desarrollador de backend sin ambigüedad
+  - La instrucción final "sin texto introductorio ni explicaciones fuera del documento" evita que el agente envuelva el ADR en prosa de presentación
+  - Para reusar: reemplazar la sección "ADR candidata" y los NFR de referencia; mantener el resto de la instrucción de estructura
+- **Proximos pasos**:
+  - Registrar `PM-014` para la formalización de ADR-0002
+  - Compartir `ADR-0001 con el Tech Lead para aprobación y estimación de SA-05
+  - Una vez aprobado: actualizar estado en el archivo a "Aceptada" y registrar versión 2 en §9 Historial
+  - Registrar `PM-014` en la siguiente tarea ejecutada con IA.
+---
+
+### PM-014 - Formalización de ADR-0002 — Log de auditoría como tabla append-only en PostgreSQL
+
+- **ID**: PM-014
+- **Fecha**: 2026-05-13
+- **Hora**: 11:15 (UTC-4)
+- **Solicitante**: Aylen
+- **Agente / Entorno**: Claude en claude.ai (chat web)
+- **Modelo**: claude-sonnet-4-6
+- **Tarea**: Convertir la ADR candidata 2 del DTI borrador en un ADR formal y autónomo siguiendo el template `templates/ADR_TEMPLATE.md`, guardado en `docs/adr/ADR-0002.md`.
+- **Objetivo**: Documentar de forma completa y trazable la decisión de implementar el log de auditoría como tabla PostgreSQL con `REVOKE DELETE, UPDATE` para el rol de aplicación, incluyendo el DDL esquemático, el plan de particionamiento futuro y los criterios de validación vinculados a NFR-013 y RB-07.
+- **Contexto**:
+  - Archivo base: `docs/dti/DTI_borrador.md` §2 — ADR candidata 2
+  - Template a seguir: `templates/ADR_TEMPLATE.md` (mismas 9 secciones que PM-013)
+  - NFR-013: 100 % de acciones del sistema registradas
+  - RB-07 (BRD v2): trazabilidad completa ante inspecciones institucionales CEUB/ARCU-SUR
+  - Sin presupuesto para ELK, CloudWatch, Datadog ni infraestructura de observabilidad externa
+  - PostgreSQL 14+ soporta particionamiento por rango de fechas (nativo)
+  - Enum de acciones: LOGIN, LOGOUT, CARGA, APROBACION, RECHAZO, AVANCE_FASE, REPORTE
+  - Estado inicial del ADR: **Propuesta** (pendiente revisión Tech Lead y docente)
+- **Prompt usado (exacto)**:
+  ```text
+  Eres un arquitecto de software senior documentando decisiones para el proyecto AcredIA / SIGESA (DUEA-UMSS).
+
+  Formaliza la siguiente ADR candidata como un ADR autónomo y completo, siguiendo exactamente la estructura del template ADR_TEMPLATE.md con estas secciones: Metadatos, 1.Contexto, 2.Alternativas consideradas, 3.Decisión, 4.Consecuencias (4.1 Positivas / 4.2 Negativas / 4.3 Neutras), 5.Impacto en el sistema, 6.Plan de reversión, 7.Validación, 8.Referencias, 9.Historial.
+
+  ADR candidata — Log de auditoría:
+  - Pregunta: ¿Cómo garantizar la inmutabilidad del historial de acciones del sistema?
+  - Opción descartada A: Sistema de logging externo (ELK, CloudWatch, Datadog) — sin presupuesto, complejidad operacional injustificada en v1.0
+  - Opción descartada B: Archivos de log en disco (.log) — no correlacionables con dominio, inmutabilidad no garantizable, sin valor probatorio real
+  - Opción elegida: tabla LOG_AUDITORIA en PostgreSQL con REVOKE DELETE, UPDATE para el rol de aplicación
+  - Solo operación permitida: INSERT
+  - Enum accion: LOGIN, LOGOUT, CARGA, APROBACION, RECHAZO, AVANCE_FASE, REPORTE
+  - Índices por: usuario_id / entidad_tipo + entidad_id / fecha_hora DESC
+  - Campo detalle JSONB para contexto arbitrario (IP, motivo de rechazo, user-agent)
+  - Plan futuro: particionar por fecha_hora (rango PostgreSQL 14+) al superar 12 meses de operación
+  - NFR-013: 100% acciones registradas; RB-07: trazabilidad ante inspecciones CEUB/ARCU-SUR
+
+  Incluir en §3 Decisión el DDL esquemático completo: CREATE TABLE, CREATE TYPE accion_enum, REVOKE, e índices.
+
+  Restricciones del proyecto:
+  - Presupuesto cero: sin ELK ni sistema externo de logging
+  - PostgreSQL ya es el motor principal (FSD §2.4)
+  - Equipo pequeño (≤ 4 devs): sin capacidad operacional para infraestructura adicional
+
+  Estado: Propuesta. Número: 0002. Fecha: 13/05/2026. Autor: Equipo AcredIA.
+  Ruta de salida: docs/adr/0002-log-auditoria-append-only-postgresql.md
+  Formato: Markdown puro, sin texto introductorio ni explicaciones fuera del documento.
+  ```
+- **Entradas auxiliares**:
+  - `docs/dti/DTI_borrador.md` §2 — ADR candidata 2 (fragmento completo)
+  - `templates/ADR_TEMPLATE.md` — estructura de 9 secciones
+  - BRD v2 — RB-07 (trazabilidad ante inspecciones)
+  - FSD v1 — NFR-013 (100 % de acciones registradas)
+  - PostgreSQL 14 docs — Table Partitioning (referencia para plan futuro)
+- **Archivos generados o modificados**:
+  - `docs/adr/ADR-0002.md` — Creado
+- **Cambios realizados**:
+  - Metadatos completos (número, título, fecha, autor, estado, alcance, stakeholders — incluye docente Edson Terceros)
+  - §1 Contexto: problema dual (NFR-013 + RB-07), 3 restricciones determinantes, fuerzas en tensión (inmutabilidad de infraestructura vs. permisos), incógnita activa (volumen de eventos diarios en producción)
+  - §2 Alternativas: tabla de 3 opciones con pros, contras y costo (A: $50–300/mes o hardware adicional; B y C: $0)
+  - §3 Decisión: justificación de descarte de A y B, DDL esquemático completo (CREATE TABLE, CREATE TYPE accion_enum AS ENUM, REVOKE DELETE UPDATE, 3 CREATE INDEX)
+  - §4 Consecuencias: 4 positivas (incluyendo correlación vía JOIN para inspecciones), 4 negativas (superusuario bypass, enum cerrado, crecimiento sin particionamiento, sin dashboards nativos), 2 neutras
+  - §5 Impacto: código (módulo Auditoría + interceptor en todos los módulos + contrato enum compartido), operaciones (pg_dump automático, particionamiento mes 12, archivado .sql.gz), seguridad (REVOKE + rol sigesa_readonly para inspecciones + política de superusuario en runbook), equipo (convención en CONTRIBUTING.md), costo ($0 v1.0 / 1 día v2.0)
+  - §6 Plan de reversión: 3 señales de alerta (degradación de rendimiento, 5M filas antes de 12 meses, inspección requiere formatos que SQL no provee), costo (2–3 días), Plan B (Loki + Grafana)
+  - §7 Validación: tabla de 4 criterios con métricas, plazos y responsables (cobertura 100%, tests de inmutabilidad que deben fallar, rendimiento ≤ 2s en 100K filas, 0 acciones sin registro en piloto)
+  - §8 Referencias: NFR-013, RB-07, PostgreSQL 14 partitioning, DTI borrador, ADR-0001 (relacionada)
+  - §9 Historial: versión 1 — propuesta inicial
+- **Validacion ejecutada**:
+  - Lectura cruzada entre `ADR-0002` y `DTI_borrador.md` §2 para verificar consistencia del enum y los índices
+  - Verificación de que el DDL incluye `REVOKE DELETE, UPDATE` (no solo comentario en prosa)
+  - Confirmación de que el enum `accion_enum` cubre todos los eventos auditables declarados en el FSD
+  - Revisión de que el campo `detalle JSONB` está presente para capturar contexto arbitrario sin alterar schema
+  - Verificación de que ADR-0001 está citada en §8 Referencias como ADR relacionada
+- **Resultado obtenido**:
+  - `docs/adr/ADR-0002.md` completo, autónomo y trazable a NFR-013 y RB-07 — listo para revisión del Tech Lead y docente Edson Terceros
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - El `REVOKE DELETE, UPDATE` protege contra bugs de aplicación pero no contra un DBA con privilegios de superusuario; la política de acceso a la BD debe documentarse en el runbook de operaciones antes del despliegue
+  - El enum `accion_enum` es cerrado; cualquier acción nueva en v2.0 requiere `ALTER TYPE` — documentar como deuda técnica controlada en el backlog
+  - El volumen de eventos diarios en producción real es desconocido; si supera las estimaciones, el particionamiento deberá adelantarse a antes del mes 12
+- **Lecciones / reuso del prompt**:
+  - La instrucción explícita "Incluir en §3 Decisión el DDL esquemático completo" es la diferencia entre un ADR con valor técnico real y uno que solo describe la decisión en prosa
+  - Referenciar los NFR por número (NFR-013) y los requisitos de negocio por código (RB-07) ancla el razonamiento del agente y evita justificaciones genéricas
+  - Nombrar el Plan B en el prompt (Loki + Grafana) produce un plan de reversión concreto, no vago
+  - Para reusar: reemplazar la descripción de la ADR candidata, los NFR/RB de referencia y el DDL esquemático; mantener la instrucción de estructura y el formato de salida
+- **Proximos pasos**:
+  - Compartir `ADR-0002.md` con el Tech Lead para aprobación
+  - Una vez aprobados ambos ADRs: actualizar estado en los archivos a "Aceptada" y registrar versión 2 en §9 Historial de cada uno
+  - Registrar `PM-015` para el siguiente paso: generación del C4 Nivel 2 (Container Diagram) incorporando el volumen Docker y `LOG_AUDITORIA` como containers explícitos
+  - Resolver spike técnico Node.js/Express vs FastAPI (2 días) para cerrar la elección de backend pendiente desde PM-012
+  - Registrar `PM-015` en la siguiente tarea ejecutada con IA.
