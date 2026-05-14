@@ -1010,3 +1010,168 @@ Adicionalmente, para un mapeo detallado, incluir:
   - Registrar `PM-015` para el siguiente paso: generación del C4 Nivel 2 (Container Diagram) incorporando el volumen Docker y `LOG_AUDITORIA` como containers explícitos
   - Resolver spike técnico Node.js/Express vs FastAPI (2 días) para cerrar la elección de backend pendiente desde PM-012
   - Registrar `PM-015` en la siguiente tarea ejecutada con IA.
+
+
+  # PROMPT_MAPPING — Entrada PM-015
+
+---
+
+## PM-015 — Generación del MRD v1.0: Market Requirements Document de SIGESA
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-015 |
+| **Fecha** | 2026-05-14 |
+| **Hora** | 15:00|
+| **Solicitante** | Boris Angulo |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-6 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar el archivo `team/borisAngulo/MRD.md` completo, siguiendo `templates/MRD_TEMPLATE.md`, a partir de los documentos de visión de negocio, BRD y PRD existentes del proyecto SIGESA.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/borisAngulo/01_vision_negocio_v2.txt` | Fuente primaria: segmentos, usuarios, posicionamiento y diferenciadores |
+| `team/borisAngulo/BRD_v2.md` | Fuente de stakeholders, reglas de negocio, objetivos SMART y trazabilidad BRD→MRD |
+| `team/borisAngulo/PRD_v1.md` | Fuente de user stories, personas y trazabilidad MRD→PRD |
+| `templates/MRD_TEMPLATE.md` | Estructura y secciones obligatorias a seguir |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/borisAngulo/01_vision_negocio_v2.txt
+- @team/borisAngulo/BRD_v2.md
+- @team/borisAngulo/PRD_v1.md
+
+Luego leé el formato requerido en:
+
+- @templates/MRD_TEMPLATE
+
+Con base en la información extraída, creá y guardá el archivo en:
+
+`team/borisAngulo/MRD.md`
+
+El documento será evaluado con estos criterios:
+
+EXCELENTE (apunta a esto):
+- 7 elementos completos: segmentos, personas, JTBD, voz del cliente,
+  competencia, posicionamiento e hipótesis
+- Mínimo 2 segmentos de mercado bien diferenciados (no genéricos)
+- Personas con nombre, rol, motivaciones y frustraciones reales del contexto
+- JTBD formulados como "Cuando... quiero... para..."
+- Hipótesis falsables por segmento
+
+ACEPTABLE (mínimo aceptado):
+- 5–6 elementos con perfil básico
+
+BAJO (evitar):
+- Menos de 5 elementos
+- Segmentos genéricos como "usuarios jóvenes" o "empresas medianas"
+
+Instrucciones:
+- No inventes información que no esté en los documentos fuente
+- Si falta datos para algún elemento, marcalo como
+  `[PENDIENTE - requiere investigación primaria]`
+- El objetivo es calificación EXCELENTE
+```
+
+---
+
+### Archivos generados
+
+| Archivo | Operación |
+|---------|-----------|
+| `team/borisAngulo/MRD.md` | Creado |
+
+---
+
+### Contenido generado — resumen de secciones
+
+| Sección | Contenido entregado |
+|---------|---------------------|
+| §0 Metadatos | Completo con referencias a BRD v2, PRD v1 y visión v2 |
+| §1 Resumen ejecutivo | Problema, propuesta, diferenciación y tamaño de oportunidad (~200 palabras) |
+| §2 Visión del producto | Frase inspiradora ≤ 25 palabras, orientada al usuario y al plazo |
+| §3 Análisis de mercado | TAM/SAM/SOM con fuentes; 3 tendencias del sector; factores regulatorios (Ley 164, CEUB, ARCU-SUR); cadencia de Continuous Discovery |
+| §4 Segmentación y Personas | 2 segmentos diferenciados + 2 personas completas (Daniela Flores — Administradora DUEA; Carlos Mamani — Coordinador de Carrera) |
+| §5 JTBD | 7 jobs en formato "Cuando… / Quiero… / Para poder…" |
+| §6 Análisis competitivo | Tabla de 4 alternativas (proceso actual, Drive/genéricos, plataformas globales, SIGESA); positioning statement; 3 fuentes de ventaja competitiva sostenible |
+| §7 Propuesta de valor | Value Proposition Canvas resumido por segmento (Seg-1 vs. Seg-2) |
+| §8 Pricing y modelo de negocio | Modelo institucional piloto; benchmark vs. plataformas internacionales; modelo futuro por explorar |
+| §9 Go-to-market | Canales de adquisición; estrategia pre/launch/post-launch; funnel AARRR contextualizado |
+| §10 Métricas de éxito | North Star + 4 KPIs secundarios con meta y horizonte |
+| §11 Requerimientos de mercado | 7 requerimientos MRD-N-* priorizados con segmento y justificación |
+| §12 Hipótesis a validar | 5 hipótesis falsables con método de validación y criterio de éxito medible |
+| §13 Riesgos de mercado | 5 riesgos con probabilidad, impacto y mitigación |
+| §14 Trazabilidad | Tabla BRD → MRD → PRD completa |
+| §15–16 Anexos y registro de cambios | Completos |
+| Checklist de evaluación | 16 ítems marcados, todos cumplidos |
+
+---
+
+### Trazabilidad
+
+| Artefacto | Relación |
+|-----------|----------|
+| BRD v2 — BR-001 a BR-013 | Requerimientos de negocio que originan MRD-N-01 a MRD-N-07 |
+| BRD v2 — RB-01 a RB-12 | Reglas de negocio que condicionan segmentación y posicionamiento |
+| BRD v2 — §3.3 hipótesis validada en levantamiento | Fuente de H-01 y H-02 del MRD |
+| PRD v1 — PRD-REQ-001 a PRD-REQ-013 | Requerimientos de producto trazados desde MRD-N-* |
+| PRD v1 — §4.1 Personas | Personas del PRD extendidas en §4.2 del MRD con mirada de mercado |
+| `01_vision_negocio_v2.txt` §2 | Fuente directa de Persona 1 (Daniela) y Persona 2 (Carlos) |
+| `01_vision_negocio_v2.txt` §6 | Fuente del análisis competitivo y diferenciadores de SIGESA |
+
+---
+
+### Criterio de evaluación alcanzado
+
+| Nivel | Criterio | ¿Cumplido? |
+|-------|----------|------------|
+| **EXCELENTE** | 7 elementos completos | ✅ |
+| **EXCELENTE** | ≥ 2 segmentos bien diferenciados (no genéricos) | ✅ Seg-1: Gestión/DUEA vs. Seg-2: Equipos operativos |
+| **EXCELENTE** | Personas con nombre, rol, motivaciones y frustraciones | ✅ Daniela Flores + Carlos Mamani |
+| **EXCELENTE** | JTBD en formato "Cuando… / Quiero… / Para poder…" | ✅ 7 JTBD |
+| **EXCELENTE** | Hipótesis falsables por segmento | ✅ 5 hipótesis con método y criterio de éxito |
+| — | 0 datos inventados (faltantes marcados como PENDIENTE) | ✅ |
+
+---
+
+### Lecciones y reuso
+
+- Incluir los **criterios de evaluación explícitos** (Excelente / Aceptable / Bajo) en el prompt dirige al agente hacia el nivel máximo sin ambigüedad.
+- La instrucción **"no inventes información; marcá lo faltante como PENDIENTE"** evita alucinaciones y hace visible qué gaps requieren investigación primaria real.
+- Pasar los **3 documentos fuente** en el mismo prompt (visión + BRD + PRD) permite al agente cruzar información y producir trazabilidad sin iteraciones adicionales.
+- **Para reusar**: reemplazar los paths de los archivos fuente y el nombre del archivo de salida; mantener los criterios de evaluación y la instrucción de PENDIENTE.
+
+---
+
+### Riesgos / observaciones
+
+- TAM/SAM/SOM son estimaciones de trabajo; deben confirmarse con datos oficiales del CEUB (número de universidades afiliadas y carreras en proceso de acreditación) antes de presentar el MRD al sponsor.
+- Las personas (Daniela y Carlos) están construidas desde los documentos internos del proyecto; deben validarse con entrevistas reales antes del MRD v2.
+- La línea base de métricas (KPI-M-01 a KPI-M-04) debe medirse **antes** del lanzamiento del piloto para que los resultados post-piloto sean demostrables.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Responsable |
+|----|-------|-------------|
+| — | Validar TAM/SAM/SOM con datos oficiales del CEUB | Boris Angulo |
+| — | Realizar ≥ 2 entrevistas con usuarios reales (Coordinador de Carrera + Técnico DUEA) para validar personas y JTBD antes del MRD v2 | Boris Angulo / Equipo AcredIA |
+| — | Medir línea base pre-piloto para KPI-M-01 a KPI-M-04 | DUEA + Equipo AcredIA |
+| — | Actualizar estado del MRD de "Borrador" a "Aprobado" tras revisión del docente y sponsor DUEA | Boris Angulo |
+| PM-016 | Registrar siguiente tarea ejecutada con IA | Por definir |
