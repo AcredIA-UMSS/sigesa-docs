@@ -753,3 +753,83 @@ Adicionalmente, para un mapeo detallado, incluir:
   - Completar revisión por pares con otro grupo y registrar como comentario en el PR.
   - Generar MRD cuando esté disponible y actualizar trazabilidad §8 del LFSD.
   - Registrar `PM-012` en la siguiente tarea ejecutada con IA.
+
+
+  ### PM-012- Generación de estructura base del DTI con secciones §0 y §1
+ 
+- **ID**: PM-001
+- **Fecha**: 2026-05-13
+- **Hora**: 09:00 (UTC-4)
+- **Solicitante**: Equipo AcredIA (rol: Arquitecto / Tech Lead)
+- **Agente / Entorno**: Claude en claude.ai (chat web)
+- **Modelo**: claude-sonnet-4-6
+- **Tarea**: Crear el archivo `docs/dti/DTI_borrador.md` con las secciones §0 (Información General) y §1 (Arquitectura Inicial C4 Nivel 1) esbozadas.
+- **Objetivo**: Obtener un borrador coherente del DTI que incluya la descripción del sistema SIGESA, los actores, los sistemas externos, el estilo arquitectónico elegido y el diagrama C4 Nivel 1 en sintaxis Mermaid, listo para commitear y revisar con el docente Edson Terceros.
+- **Contexto**:
+  - Documentos abiertos: `BRD_v2.md`, `PRD_v1.md`, `FSD_v1.md`, `AGENTS.md`
+  - El sistema se llama AcredIA / SIGESA y pertenece a la DUEA-UMSS, Cochabamba, Bolivia
+  - Stack declarado en FSD §2.4: React + Tailwind, Node.js/Express o FastAPI, PostgreSQL, Docker
+  - Restricción de presupuesto: sin acceso a servicios cloud ni S3
+  - El diagrama de contexto debe seguir el C4 Model (c4model.com) — Nivel 1 (System Context)
+  - Audiencia mixta: técnica (equipo) y no técnica (jefatura DUEA, docente revisor)
+  - Se deben identificar al menos 2 decisiones arquitectónicas candidatas a ADR
+- **Prompt usado (exacto)**:
+  ```text
+  Eres un arquitecto de software senior. Necesito que generes el borrador del Documento Técnico Inicial (DTI) para el sistema AcredIA / SIGESA — Sistema Inteligente de Gestión y Seguimiento de Acreditaciones de la DUEA-UMSS.
+ 
+  El documento debe seguir el C4 Model (c4model.com) y cubrir:
+  
+  §0 - Información General: nombre del sistema, problema que resuelve, métricas objetivo, actores (personas C4) y sistemas externos.
+  
+  §1 - Arquitectura Inicial: diagrama C4 Nivel 1 (System Context) en sintaxis Mermaid usando directiva C4Context, estilo arquitectónico elegido con justificación, y stack tecnológico en tabla.
+  
+  Actores del sistema:
+  - Jefatura DUEA [JD]: configura, monitorea semáforos y genera reportes PDF (autenticado)
+  - Técnico DUEA [TD]: valida evidencias y aprueba/rechaza indicadores (autenticado)
+  - Coordinador de Carrera [CC]: carga evidencias y consulta estado (autenticado)
+  - Público externo [P]: consulta estado y descarga certificados (sin autenticación)
+  
+  Sistema externo: Servidor de Correo UMSS (SMTP institucional @umss.edu.bo).
+  
+  Restricciones:
+  - Presupuesto cero: sin cloud ni S3
+  - Stack: React + Tailwind, Node.js/Express o FastAPI (pendiente spike), PostgreSQL, Docker
+  - Almacenamiento de archivos en volumen local Docker /data/evidencias/
+  
+  Al final del §1, agrega una sección §2 con al menos 2 decisiones arquitectónicas candidatas a ADR, cada una con: pregunta de decisión, tabla de opciones consideradas (con por qué se descarta o elige cada una), decisión preliminar, consecuencias a confirmar y referencia al FSD o C4.
+  
+  Formato de salida: Markdown puro, listo para commitear en docs/dti/DTI_borrador.md.
+  ```
+- **Entradas auxiliares**:
+  - Contenido de `FSD_v1.md` §2.4 (stack tecnológico), §12 (testing), NFR-001, NFR-003, NFR-005, NFR-013
+  - Contenido de `AGENTS.md` (descripción de roles y restricciones del agente)
+  - URL de referencia: https://c4model.com (Abstractions y Diagrams)
+- **Archivos generados o modificados**:
+  - `docs/dti/DTI_borrador.md` — Creado
+- **Cambios realizados**:
+  - Sección §0 completa: nombre, problema, métricas, actores C4, sistemas externos, alcance v1.0
+  - Sección §1 completa: nota metodológica C4, diagrama Mermaid C4Context con 4 personas + 1 sistema externo + SIGESA, lectura para audiencia no técnica, estilo arquitectónico (Layered N-Tier), tabla de stack tecnológico
+  - Sección §2 con 2 ADR candidatas: almacenamiento local vs S3 y log de auditoría append-only
+  - Sección §3 con supuestos declarados (SA-01 a SA-06)
+  - Sección §4 con próximos pasos
+- **Validacion ejecutada**:
+  - Lectura completa del archivo generado comparando con FSD §2.4 y AGENTS.md
+  - Verificación visual del diagrama Mermaid en editor compatible (mermaid.live)
+  - Revisión de coherencia de actores entre §0 y el diagrama C4Context
+  - Confirmación de que el sistema externo SMTP aparece correctamente como `System_Ext`
+  - Verificación de que el volumen de archivos NO aparece como sistema externo (es un container C4)
+- **Resultado obtenido**:
+  - Archivo `DTI_borrador.md` v0.1 completo, con diagrama Mermaid funcional, dos ADR candidatas documentadas y supuestos declarados — listo para revisión del docente Edson Terceros y posterior commit
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - La elección Node.js/Express vs FastAPI está pendiente de spike técnico de 2 días (§4 próximos pasos); el DTI refleja ambas opciones como pendientes
+  - El volumen de disco del servidor no está dimensionado aún (SA-05); debe resolverse antes del despliegue
+  - Mermaid con directiva `C4Context` requiere versión ≥ 10.x para renderizar correctamente; versiones anteriores no la soportan
+- **Lecciones / reuso del prompt**:
+  - El prompt funciona mejor cuando se especifican los actores con su código (ej. `[JD]`, `[TD]`) y el tipo de acceso (autenticado / sin autenticación)
+  - Incluir la URL de referencia (c4model.com) en el contexto del prompt mejora la adherencia al vocabulario oficial del modelo (persona, container, software system)
+  - Separar §0 y §1 en el prompt evita que el agente mezcle información de contexto con decisiones arquitectónicas
+  - Para reusar: reemplazar nombre del sistema, actores y restricciones de presupuesto manteniendo la estructura de la solicitud
+- **Proximos pasos**:
+  - Commitear `docs/dti/DTI_borrador.md` con mensaje: `docs(dti): add DTI_borrador v0.1 - C4 L1 + ADR candidates`
+  - Registrar `PM-013` en la siguiente tarea ejecutada con IA.
