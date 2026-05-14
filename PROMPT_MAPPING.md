@@ -1010,3 +1010,346 @@ Adicionalmente, para un mapeo detallado, incluir:
   - Registrar `PM-015` para el siguiente paso: generación del C4 Nivel 2 (Container Diagram) incorporando el volumen Docker y `LOG_AUDITORIA` como containers explícitos
   - Resolver spike técnico Node.js/Express vs FastAPI (2 días) para cerrar la elección de backend pendiente desde PM-012
   - Registrar `PM-015` en la siguiente tarea ejecutada con IA.
+
+
+  # PROMPT_MAPPING — Entrada PM-015
+
+---
+
+## PM-015 — Generación del MRD v1.0: Market Requirements Document de SIGESA
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-015 |
+| **Fecha** | 2026-05-14 |
+| **Hora** | 15:00|
+| **Solicitante** | Boris Angulo |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-6 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar el archivo `team/borisAngulo/MRD.md` completo, siguiendo `templates/MRD_TEMPLATE.md`, a partir de los documentos de visión de negocio, BRD y PRD existentes del proyecto SIGESA.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/borisAngulo/01_vision_negocio_v2.txt` | Fuente primaria: segmentos, usuarios, posicionamiento y diferenciadores |
+| `team/borisAngulo/BRD_v2.md` | Fuente de stakeholders, reglas de negocio, objetivos SMART y trazabilidad BRD→MRD |
+| `team/borisAngulo/PRD_v1.md` | Fuente de user stories, personas y trazabilidad MRD→PRD |
+| `templates/MRD_TEMPLATE.md` | Estructura y secciones obligatorias a seguir |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/borisAngulo/01_vision_negocio_v2.txt
+- @team/borisAngulo/BRD_v2.md
+- @team/borisAngulo/PRD_v1.md
+
+Luego leé el formato requerido en:
+
+- @templates/MRD_TEMPLATE
+
+Con base en la información extraída, creá y guardá el archivo en:
+
+`team/borisAngulo/MRD.md`
+
+El documento será evaluado con estos criterios:
+
+EXCELENTE (apunta a esto):
+- 7 elementos completos: segmentos, personas, JTBD, voz del cliente,
+  competencia, posicionamiento e hipótesis
+- Mínimo 2 segmentos de mercado bien diferenciados (no genéricos)
+- Personas con nombre, rol, motivaciones y frustraciones reales del contexto
+- JTBD formulados como "Cuando... quiero... para..."
+- Hipótesis falsables por segmento
+
+ACEPTABLE (mínimo aceptado):
+- 5–6 elementos con perfil básico
+
+BAJO (evitar):
+- Menos de 5 elementos
+- Segmentos genéricos como "usuarios jóvenes" o "empresas medianas"
+
+Instrucciones:
+- No inventes información que no esté en los documentos fuente
+- Si falta datos para algún elemento, marcalo como
+  `[PENDIENTE - requiere investigación primaria]`
+- El objetivo es calificación EXCELENTE
+```
+
+---
+
+### Archivos generados
+
+| Archivo | Operación |
+|---------|-----------|
+| `team/borisAngulo/MRD.md` | Creado |
+
+---
+
+### Contenido generado — resumen de secciones
+
+| Sección | Contenido entregado |
+|---------|---------------------|
+| §0 Metadatos | Completo con referencias a BRD v2, PRD v1 y visión v2 |
+| §1 Resumen ejecutivo | Problema, propuesta, diferenciación y tamaño de oportunidad (~200 palabras) |
+| §2 Visión del producto | Frase inspiradora ≤ 25 palabras, orientada al usuario y al plazo |
+| §3 Análisis de mercado | TAM/SAM/SOM con fuentes; 3 tendencias del sector; factores regulatorios (Ley 164, CEUB, ARCU-SUR); cadencia de Continuous Discovery |
+| §4 Segmentación y Personas | 2 segmentos diferenciados + 2 personas completas (Daniela Flores — Administradora DUEA; Carlos Mamani — Coordinador de Carrera) |
+| §5 JTBD | 7 jobs en formato "Cuando… / Quiero… / Para poder…" |
+| §6 Análisis competitivo | Tabla de 4 alternativas (proceso actual, Drive/genéricos, plataformas globales, SIGESA); positioning statement; 3 fuentes de ventaja competitiva sostenible |
+| §7 Propuesta de valor | Value Proposition Canvas resumido por segmento (Seg-1 vs. Seg-2) |
+| §8 Pricing y modelo de negocio | Modelo institucional piloto; benchmark vs. plataformas internacionales; modelo futuro por explorar |
+| §9 Go-to-market | Canales de adquisición; estrategia pre/launch/post-launch; funnel AARRR contextualizado |
+| §10 Métricas de éxito | North Star + 4 KPIs secundarios con meta y horizonte |
+| §11 Requerimientos de mercado | 7 requerimientos MRD-N-* priorizados con segmento y justificación |
+| §12 Hipótesis a validar | 5 hipótesis falsables con método de validación y criterio de éxito medible |
+| §13 Riesgos de mercado | 5 riesgos con probabilidad, impacto y mitigación |
+| §14 Trazabilidad | Tabla BRD → MRD → PRD completa |
+| §15–16 Anexos y registro de cambios | Completos |
+| Checklist de evaluación | 16 ítems marcados, todos cumplidos |
+
+---
+
+### Trazabilidad
+
+| Artefacto | Relación |
+|-----------|----------|
+| BRD v2 — BR-001 a BR-013 | Requerimientos de negocio que originan MRD-N-01 a MRD-N-07 |
+| BRD v2 — RB-01 a RB-12 | Reglas de negocio que condicionan segmentación y posicionamiento |
+| BRD v2 — §3.3 hipótesis validada en levantamiento | Fuente de H-01 y H-02 del MRD |
+| PRD v1 — PRD-REQ-001 a PRD-REQ-013 | Requerimientos de producto trazados desde MRD-N-* |
+| PRD v1 — §4.1 Personas | Personas del PRD extendidas en §4.2 del MRD con mirada de mercado |
+| `01_vision_negocio_v2.txt` §2 | Fuente directa de Persona 1 (Daniela) y Persona 2 (Carlos) |
+| `01_vision_negocio_v2.txt` §6 | Fuente del análisis competitivo y diferenciadores de SIGESA |
+
+---
+
+### Criterio de evaluación alcanzado
+
+| Nivel | Criterio | ¿Cumplido? |
+|-------|----------|------------|
+| **EXCELENTE** | 7 elementos completos | ✅ |
+| **EXCELENTE** | ≥ 2 segmentos bien diferenciados (no genéricos) | ✅ Seg-1: Gestión/DUEA vs. Seg-2: Equipos operativos |
+| **EXCELENTE** | Personas con nombre, rol, motivaciones y frustraciones | ✅ Daniela Flores + Carlos Mamani |
+| **EXCELENTE** | JTBD en formato "Cuando… / Quiero… / Para poder…" | ✅ 7 JTBD |
+| **EXCELENTE** | Hipótesis falsables por segmento | ✅ 5 hipótesis con método y criterio de éxito |
+| — | 0 datos inventados (faltantes marcados como PENDIENTE) | ✅ |
+
+---
+
+### Lecciones y reuso
+
+- Incluir los **criterios de evaluación explícitos** (Excelente / Aceptable / Bajo) en el prompt dirige al agente hacia el nivel máximo sin ambigüedad.
+- La instrucción **"no inventes información; marcá lo faltante como PENDIENTE"** evita alucinaciones y hace visible qué gaps requieren investigación primaria real.
+- Pasar los **3 documentos fuente** en el mismo prompt (visión + BRD + PRD) permite al agente cruzar información y producir trazabilidad sin iteraciones adicionales.
+- **Para reusar**: reemplazar los paths de los archivos fuente y el nombre del archivo de salida; mantener los criterios de evaluación y la instrucción de PENDIENTE.
+
+---
+
+### Riesgos / observaciones
+
+- TAM/SAM/SOM son estimaciones de trabajo; deben confirmarse con datos oficiales del CEUB (número de universidades afiliadas y carreras en proceso de acreditación) antes de presentar el MRD al sponsor.
+- Las personas (Daniela y Carlos) están construidas desde los documentos internos del proyecto; deben validarse con entrevistas reales antes del MRD v2.
+- La línea base de métricas (KPI-M-01 a KPI-M-04) debe medirse **antes** del lanzamiento del piloto para que los resultados post-piloto sean demostrables.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Responsable |
+|----|-------|-------------|
+| — | Validar TAM/SAM/SOM con datos oficiales del CEUB | Boris Angulo |
+| — | Realizar ≥ 2 entrevistas con usuarios reales (Coordinador de Carrera + Técnico DUEA) para validar personas y JTBD antes del MRD v2 | Boris Angulo / Equipo AcredIA |
+| — | Medir línea base pre-piloto para KPI-M-01 a KPI-M-04 | DUEA + Equipo AcredIA |
+| — | Actualizar estado del MRD de "Borrador" a "Aprobado" tras revisión del docente y sponsor DUEA | Boris Angulo |
+| PM-016 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+
+
+# PROMPT_MAPPING — Entrada PM-016
+
+---
+
+## PM-016 — Generación de casos-de-uso.md: 12 casos críticos con flujo principal, alternos y Gherkin
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-016 |
+| **Fecha** | 2026-05-14 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Boris Angulo |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-6 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar el archivo `docs/fsd/casos-de-uso.md` con ≥ 10 casos de uso críticos, cada uno con flujo principal, flujos alternos y criterios de aceptación Gherkin verificables, a partir de los documentos existentes del proyecto SIGESA.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/borisAngulo/FSD_v1.md` | Fuente primaria: casos de uso UC-001 a UC-003 base, actores, reglas de negocio BR-001 a BR-012, NFRs y tareas T-001 a T-007 |
+| `team/borisAngulo/PRD_v1.md` | Fuente de user stories PRD-US-001 a PRD-US-024 con Gherkin base para expandir |
+| `team/borisAngulo/BRD_v2.md` | Fuente de reglas de negocio y restricciones que condicionan flujos alternos |
+| `team/borisAngulo/01_vision_negocio_v2.txt` | Contexto de actores, roles y flujos del proceso de acreditación |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/borisAngulo/FSD_v1.md
+- @team/borisAngulo/PRD_v1.md
+- @team/borisAngulo/BRD_v2.md
+- @team/borisAngulo/01_vision_negocio_v2.txt
+
+Con base en la información extraída, generá el archivo:
+
+`docs/fsd/casos-de-uso.md`
+
+El documento será evaluado con estos criterios:
+
+EXCELENTE (apunta a esto):
+- 10 o más casos de uso críticos
+- Cada caso con flujo principal completo (pasos numerados)
+- Flujos alternos documentados (condición + comportamiento del sistema)
+- Criterios de aceptación Gherkin verificables (formato Dado/Cuando/Entonces)
+- Trazabilidad a PRD-US, BRD-BR y NFR por cada caso
+
+ACEPTABLE (mínimo aceptado):
+- 5 o más casos completos
+
+BAJO (evitar):
+- Menos de 5 verificables
+- Gherkin vago sin condiciones concretas
+- Flujos alternos ausentes o genéricos
+
+Instrucciones:
+- Usar los casos de uso del FSD como base y expandirlos
+- Identificar casos críticos adicionales desde las user stories del PRD
+- Los flujos alternos deben derivarse de las reglas de negocio del BRD (BR-001 a BR-012)
+- No inventar información que no esté en los documentos fuente
+- Incluir tabla de trazabilidad consolidada al final (FSD-UC → PRD-US → BRD-BR → NFR → prueba de aceptación)
+- El objetivo es calificación EXCELENTE
+```
+
+---
+
+### Archivos generados
+
+| Archivo | Operación |
+|---------|-----------|
+| `docs/fsd/casos-de-uso.md` | Creado |
+
+---
+
+### Contenido generado — resumen
+
+| FSD-UC | Nombre | Actor principal | Escenarios Gherkin |
+|--------|--------|-----------------|--------------------|
+| FSD-UC-001 | Autenticación y autorización por roles | Usuario humano | 4 |
+| FSD-UC-002 | Creación y gestión de procesos de acreditación | Administrador DUEA | 4 |
+| FSD-UC-003 | Gestión de fases y cierre con pendientes | Administrador DUEA | 3 |
+| FSD-UC-004 | Carga y versionado de evidencias por criterio | Coordinador / Jefe | 4 |
+| FSD-UC-005 | Protección ante borrado o reemplazo destructivo | Coordinador / Técnico | 3 |
+| FSD-UC-006 | Flujo de observaciones DUEA ↔ carrera | DUEA / Coordinador | 3 |
+| FSD-UC-007 | Panel de estado con semáforo por carrera y facultad | Administrador DUEA | 3 |
+| FSD-UC-008 | Alertas automáticas por plazos e hitos | Scheduler | 3 |
+| FSD-UC-009 | Generación de reporte ejecutivo PDF en ≤ 2 clics | Administrador DUEA | 3 |
+| FSD-UC-010 | Importación masiva de actividades por planilla | Coordinador | 3 |
+| FSD-UC-011 | Gestión de usuarios y asignación de roles | Administrador DUEA | 3 |
+| FSD-UC-012 | Acceso de evaluador externo con alcance mínimo | Evaluador externo | 3 |
+| **Total** | | | **39 escenarios Gherkin** |
+
+---
+
+### Estructura por caso de uso
+
+Cada uno de los 12 casos incluye:
+
+- Tabla de metadatos (trazabilidad, actor, precondiciones, disparador).
+- **Flujo principal** numerado paso a paso.
+- **Flujos alternos** en tabla con ID, condición y comportamiento exacto del sistema.
+- **Postcondiciones** explícitas.
+- **Gherkin** en formato `Dado / Cuando / Entonces` con condiciones concretas y verificables.
+
+---
+
+### Trazabilidad
+
+| FSD-UC | PRD-US | BRD-BR | NFR |
+|--------|--------|--------|-----|
+| FSD-UC-001 | PRD-US-001, PRD-US-003 | BR-004, BR-005, BR-011 | NFR-002, NFR-003 |
+| FSD-UC-002 | PRD-US-008, PRD-US-009 | BR-001, BR-002, BR-003, BR-012 | NFR-003 |
+| FSD-UC-003 | PRD-US-004, PRD-US-006 | BR-008, BR-009, BR-010 | NFR-003 |
+| FSD-UC-004 | PRD-US-010, PRD-US-011 | BR-006, BR-007, BR-012 | NFR-002, NFR-003 |
+| FSD-UC-005 | PRD-US-012 | BR-007, BR-011 | NFR-003 |
+| FSD-UC-006 | PRD-US-013, PRD-US-014 | BR-008, BR-010, BR-011 | NFR-003 |
+| FSD-UC-007 | PRD-US-015 | BR-008 | NFR-001 |
+| FSD-UC-008 | PRD-US-016 | BR-009, BR-011 | NFR-005 |
+| FSD-UC-009 | PRD-US-017 | BR-008 | NFR-001 |
+| FSD-UC-010 | PRD-US-007 | BR-002, BR-012 | NFR-004 |
+| FSD-UC-011 | PRD-US-002 | BR-004, BR-005 | NFR-003 |
+| FSD-UC-012 | PRD-US-020 | BR-004, BR-005, BR-011 | NFR-002, NFR-003 |
+
+---
+
+### Criterio de evaluación alcanzado
+
+| Nivel | Criterio | ¿Cumplido? |
+|-------|----------|------------|
+| **EXCELENTE** | ≥ 10 casos de uso críticos | ✅ 12 casos |
+| **EXCELENTE** | Flujo principal completo con pasos numerados | ✅ Los 12 |
+| **EXCELENTE** | Flujos alternos con condición y comportamiento | ✅ Los 12 (2-4 alternos por caso) |
+| **EXCELENTE** | Gherkin verificable en formato Dado/Cuando/Entonces | ✅ 39 escenarios totales |
+| **EXCELENTE** | Trazabilidad PRD-US + BRD-BR + NFR por caso | ✅ Tabla consolidada al final |
+| — | 0 información inventada | ✅ Todo derivado de FSD, PRD y BRD |
+
+---
+
+### Lecciones y reuso
+
+- Pedir explícitamente **"flujos alternos derivados de las reglas de negocio del BRD (BR-001 a BR-012)"** ancla los alternos a reglas reales y evita alternos genéricos como "si hay error, mostrar mensaje".
+- Incluir el **criterio de evaluación con niveles** (Excelente/Aceptable/Bajo) dirige al agente al nivel máximo sin ambigüedad.
+- La instrucción **"tabla de trazabilidad consolidada al final"** produce un artefacto directamente usable por el docente para verificar coherencia entre documentos sin abrir cada uno.
+- Los casos del FSD (UC-001 a UC-003) sirven como **base de expansión**: el agente los completa y añade los casos faltantes desde las user stories del PRD.
+- **Para reusar**: reemplazar los paths de los documentos fuente; mantener la instrucción de estructura por caso (metadatos + flujo principal + alternos + postcondiciones + Gherkin) y el criterio de evaluación.
+
+---
+
+### Riesgos / observaciones
+
+- Los 39 escenarios Gherkin cubren los caminos críticos y principales alternos, pero no son exhaustivos para QA; el equipo de pruebas debe expandirlos con casos de borde antes del piloto.
+- Los flujos alternos de FSD-UC-008 (alertas) dependen de la configuración real del canal de notificaciones; deben validarse con TI antes del desarrollo.
+- Las precondiciones de FSD-UC-012 (evaluador externo) asumen que el administrador DUEA gestiona las credenciales temporales manualmente; si este flujo cambia, los alternos A2 y A3 deben actualizarse.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Responsable |
+|----|-------|-------------|
+| — | Guardar `casos-de-uso.md` en `docs/fsd/` del repositorio | Boris Angulo |
+| — | Revisión por pares: verificar que los escenarios Gherkin son ejecutables como tests (sin ambigüedades) | Tech Lead / QA |
+| — | Expandir escenarios de borde para QA antes del piloto (especialmente FSD-UC-004 y FSD-UC-008) | QA |
+| PM-017 | Registrar siguiente tarea ejecutada con IA | Por definir |
