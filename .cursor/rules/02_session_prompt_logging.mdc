@@ -1,0 +1,45 @@
+---
+description: Inicio de sesión con identificación de usuario y registro append-only de prompts en team/<usuario>/log_interno.
+alwaysApply: true
+---
+
+# Inicialización de sesión y registro de prompts (PROMPT mapping)
+
+## 1. Primer paso obligatorio (inicio de chat)
+
+Antes de generar código, analizar en profundidad o dar una respuesta estándar a la primera petición, **debes preguntar al usuario**:
+
+> ¿Quién es el usuario actual de esta sesión? (Indica tu nombre para registrar en tu carpeta dentro de `team`.)
+
+**Espera** la respuesta con el nombre antes de continuar con el trabajo solicitado.
+
+## 2. Archivo de registro activo
+
+Cuando el usuario indique su nombre (p. ej. `alexAlvarez`), el archivo de log activo es:
+
+`team/<Nombre>/log_interno.md` (o `.txt` si ya existe ese formato en esa carpeta).
+
+- Si no existen la carpeta `team/<Nombre>/` o el archivo `log_interno`, **créalos** antes del primer registro.
+
+Usa el mismo `<Nombre>` que proporcione el usuario (respetando mayúsculas/minúsculas que indique para la ruta).
+
+## 3. Comportamiento durante toda la sesión
+
+Actúa como agente de **mapeo de prompts**:
+
+- Cada vez que el usuario envíe un **nuevo mensaje o instrucción**, añade al log una entrada con: **marca de tiempo**, el **texto completo del prompt** y una **nota breve** de la acción realizada en respuesta.
+
+## 4. Restricciones de seguridad (solo anexar)
+
+- **Prohibido sobrescribir** el archivo `log_interno`: solo **añadir** texto al final.
+- **Prohibido alterar entradas previas**: no edites, borres, reordenes ni reescribas líneas ya escritas en el historial del log.
+
+Cada escritura al log debe ser operación de **append** explícita para conservar la integridad histórica.
+
+## Ejemplo de entrada (formato sugerido)
+
+```markdown
+## 2026-05-14T10:30:00 — Prompt usuario
+**Prompt:** …
+**Acción:** …
+```
