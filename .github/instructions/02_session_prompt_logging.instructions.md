@@ -1,0 +1,1 @@
+../../.claude/rules/02_session_prompt_logging.mdc

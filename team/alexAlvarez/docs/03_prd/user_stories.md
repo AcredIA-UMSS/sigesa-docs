@@ -1,8 +1,8 @@
 # User Stories — SIGESA / AcredIA
 
-> Cada historia cumple INVEST y contiene criterios de aceptación en formato Gherkin. Todas están trazadas a un ID del BRD.
+> 20+ Historias de Usuario agrupadas por Épicas, cada una en formato INVEST con criterios de aceptación en Gherkin. Diagramas stateDiagram-v2 opcionales para cambios de estado.
 
-## 1. Historias de usuario
+## Épica 1: Gestión de Evidencias y Versionado
 
 ### PRD-US-001
 **Como** Coordinador de Carrera [CC], **quiero** buscar una Evidence por Fase, Indicador y carrera en menos de 5 segundos, **para** encontrar rápidamente el documento correcto y evitar retrasos.
@@ -76,6 +76,38 @@ Escenario: Aviso de liberación de fase
   Entonces el sistema actualiza el estado de la Fase si todos los Indicadores están aprobados
 ```
 
+### PRD-US-010
+**Como** Coordinador de Carrera [CC], **quiero** ver el historial completo de versiones de una Evidence, **para** entender qué cambios se hicieron y por qué.
+**BRD vinculado:** BRD-OBJ-04
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Acceso al historial de versiones
+  Dado que una Evidence tiene múltiples versiones
+  Cuando el [CC] selecciona la opción de historial
+  Entonces el sistema muestra todas las versiones con fechas y autores
+```
+```gherkin
+Escenario: Vinculación a observaciones
+  Dado que una versión fue creada por subsanación
+  Cuando el [CC] ve el historial
+  Entonces ve el enlace a la observación que motivó la nueva versión
+```
+
+### PRD-US-011
+**Como** Técnico DUEA [TD], **quiero** descargar Evidencias para revisión offline, **para** auditar en detalle sin depender de la conexión.
+**BRD vinculado:** BRD-OBJ-04
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Descarga de evidencia
+  Dado que el [TD] está revisando un Indicador
+  Cuando selecciona descargar la Evidence
+  Entonces el sistema permite la descarga del archivo original
+```
+
+## Épica 2: Dashboard y Experiencia de Usuario
+
 ### PRD-US-004
 **Como** Coordinador de Carrera [CC], **quiero** ver rápidamente el estado de mis fases y observaciones en un dashboard, **para** priorizar mis entregas antes de las fechas límite.
 **BRD vinculado:** BRD-OBJ-01
@@ -98,30 +130,6 @@ Escenario: Mensaje de estado claro
   Dado que una Fase está en riesgo
   Cuando el [CC] visualiza el tablero
   Entonces recibe un mensaje claro sobre los próximos pasos
-```
-
-### PRD-US-005
-**Como** Coordinador de Carrera [CC], **quiero** recibir notificaciones cuando un Indicador es rechazado o aprobado, **para** decidir qué acciones tomar sin revisar correos dispersos.
-**BRD vinculado:** BRD-OBJ-02
-
-#### Criterios de aceptación
-```gherkin
-Escenario: Notificación de rechazo
-  Dado que el [TD] rechaza un Indicador
-  Cuando el rechazo se confirma
-  Entonces el [CC] recibe notificación en ≤ 15 minutos
-```
-```gherkin
-Escenario: Notificación de aprobación
-  Dado que el [TD] aprueba un Indicador
-  Cuando el estado cambia a Aprobado
-  Entonces el [CC] recibe notificación en ≤ 15 minutos
-```
-```gherkin
-Escenario: Acceso desde notificación
-  Dado que el [CC] abre la notificación
-  Cuando selecciona el enlace de la evidencia
-  Entonces el sistema muestra la Evidence y la observación relacionada
 ```
 
 ### PRD-US-006
@@ -147,6 +155,32 @@ Escenario: Rendimiento mobile
   Cuando solicita la actualización de datos
   Entonces la interfaz responde en ≤ 3 segundos
 ```
+
+### PRD-US-012
+**Como** Técnico DUEA [TD], **quiero** una interfaz de escritorio con múltiples paneles, **para** revisar Evidencias en paralelo y comparar versiones.
+**BRD vinculado:** BRD-OBJ-04
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Panel múltiple en escritorio
+  Dado que el [TD] usa un monitor amplio
+  Cuando abre el panel de auditoría
+  Entonces puede dividir la vista en paneles para comparar Evidencias
+```
+
+### PRD-US-013
+**Como** Público [P], **quiero** navegar el portal sin registro, **para** acceder rápidamente a información de acreditación.
+**BRD vinculado:** BRD-OBJ-03
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Acceso anónimo al portal
+  Dado que el usuario no está autenticado
+  Cuando ingresa al portal público
+  Entonces puede buscar carreras y ver estados publicados
+```
+
+## Épica 3: Auditoría y Control de Fases
 
 ### PRD-US-007
 **Como** Técnico DUEA [TD], **quiero** filtrar evidencias por Fase, Indicador y carrera, **para** revisar solo el conjunto relevante de documentos y ahorrar tiempo.
@@ -198,6 +232,157 @@ Escenario: Detalle de cambio
 
 ### PRD-US-009
 **Como** Técnico DUEA [TD], **quiero** rechazar un Indicador con justificación obligatoria, **para** que el Coordinador entienda qué corregir.
+**BRD vinculado:** BRD-OBJ-02
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Rechazo con justificación
+  Dado que el [TD] encuentra una no-conformidad
+  Cuando rechaza el Indicador
+  Entonces debe ingresar una justificación obligatoria
+```
+```gherkin
+Escenario: Creación automática de observación
+  Dado que el rechazo se confirma
+  Cuando el sistema procesa
+  Entonces crea una Observación ligada al Indicador y notifica al [CC]
+```
+
+### PRD-US-014
+**Como** Técnico DUEA [TD], **quiero** aprobar Indicadores en lote, **para** acelerar el cierre de Fases.
+**BRD vinculado:** BRD-OBJ-03
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Aprobación en lote
+  Dado que múltiples Indicadores están listos
+  Cuando el [TD] selecciona aprobar lote
+  Entonces el sistema aprueba todos y actualiza el estado de Fase si aplica
+```
+
+### PRD-US-015
+**Como** Jefatura DUEA [JD], **quiero** ver reportes ejecutivos de avance por Fase, **para** monitorear el cumplimiento institucional.
+**BRD vinculado:** BRD-KPI-02
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Reporte ejecutivo
+  Dado que el [JD] accede a reportes
+  Cuando selecciona por Fase
+  Entonces ve % de Indicadores aprobados y fechas límite
+```
+
+## Épica 4: Portal Público y Transparencia
+
+### PRD-US-016
+**Como** Estudiante [P], **quiero** verificar el estado de acreditación de mi carrera, **para** confiar en la información oficial.
+**BRD vinculado:** BRD-OBJ-03
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Consulta de estado
+  Dado que el estudiante busca una carrera
+  Cuando ingresa al portal
+  Entonces ve el estado actual de Fases y certificados disponibles
+```
+
+### PRD-US-017
+**Como** Empleador [P], **quiero** descargar certificados de acreditación, **para** evaluar la calidad institucional.
+**BRD vinculado:** BRD-OBJ-03
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Descarga de certificado
+  Dado que la carrera está acreditada
+  Cuando el empleador solicita descarga
+  Entonces el sistema permite descargar el certificado oficial
+```
+
+## Épica 5: Notificaciones y Comunicación
+
+### PRD-US-005
+**Como** Coordinador de Carrera [CC], **quiero** recibir notificaciones cuando un Indicador es rechazado o aprobado, **para** decidir qué acciones tomar sin revisar correos dispersos.
+**BRD vinculado:** BRD-OBJ-02
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Notificación de rechazo
+  Dado que el [TD] rechaza un Indicador
+  Cuando el rechazo se confirma
+  Entonces el [CC] recibe notificación en ≤ 15 minutos
+```
+```gherkin
+Escenario: Notificación de aprobación
+  Dado que el [TD] aprueba un Indicador
+  Cuando el estado cambia a Aprobado
+  Entonces el [CC] recibe notificación en ≤ 15 minutos
+```
+```gherkin
+Escenario: Acceso desde notificación
+  Dado que el [CC] abre la notificación
+  Cuando selecciona el enlace de la evidencia
+  Entonces el sistema muestra la Evidence y la observación relacionada
+```
+
+### PRD-US-018
+**Como** Coordinador de Carrera [CC], **quiero** recibir alertas de fechas límite próximas, **para** evitar incumplimientos.
+**BRD vinculado:** BRD-KPI-03
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Alerta de fecha límite
+  Dado que una Fase tiene fecha límite en 3 días
+  Cuando el sistema evalúa
+  Entonces envía notificación al [CC] con recordatorio
+```
+
+### PRD-US-019
+**Como** Técnico DUEA [TD], **quiero** notificaciones de nuevas Evidencias cargadas, **para** iniciar revisiones promptly.
+**BRD vinculado:** BRD-OBJ-04
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Notificación de nueva evidencia
+  Dado que el [CC] carga una Evidence
+  Cuando se confirma
+  Entonces el [TD] recibe notificación de revisión pendiente
+```
+
+### PRD-US-020
+**Como** Jefatura DUEA [JD], **quiero** reportes automáticos de hitos cumplidos, **para** seguimiento ejecutivo.
+**BRD vinculado:** BRD-KPI-04
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Reporte automático
+  Dado que un hito de Fase se cumple
+  Cuando el sistema detecta
+  Entonces envía reporte al [JD] con métricas actualizadas
+```
+
+### PRD-US-021
+**Como** Coordinador de Carrera [CC], **quiero** exportar reportes de mi Proceso, **para** compartir con stakeholders internos.
+**BRD vinculado:** BRD-OBJ-01
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Exportar reporte
+  Dado que el [CC] está en su dashboard
+  Cuando selecciona exportar
+  Entonces el sistema genera un PDF con estado de Fases e Indicadores
+```
+
+### PRD-US-022
+**Como** Técnico DUEA [TD], **quiero** exportar listas de Observaciones abiertas, **para** priorizar auditorías.
+**BRD vinculado:** BRD-OBJ-02
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Exportar observaciones
+  Dado que hay Observaciones abiertas
+  Cuando el [TD] solicita exportar
+  Entonces recibe un CSV con detalles de Indicadores y Evidencias afectadas
+```
 **BRD vinculado:** BRD-CST-01
 
 #### Criterios de aceptación

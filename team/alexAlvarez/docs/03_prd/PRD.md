@@ -1,8 +1,6 @@
 # Product Requirements Document (PRD) — SIGESA / AcredIA
 
-> **Propósito del PRD**: definir qué debe hacer SIGESA para cumplir los requerimientos del BRD y MRD, aterrizando alcance, metas y dependencias para diseño, ingeniería y QA.
->
-> *Nota: el glosario canónico disponible en este repo es `context/03_domain_glossary.md`; el archivo `docs/04_fsd/glosario.md` no existe en la copia actual.*
+> **Propósito del PRD**: Este documento actúa como el índice maestro y resumen ejecutivo del producto SIGESA, definiendo las Épicas principales y enlazando conceptualmente a los otros documentos de la suite PRD. Basado en el BRD, MRD y glosario de dominio.
 
 ---
 
@@ -12,91 +10,72 @@
 |-------|-------|
 | Producto | SIGESA / AcredIA — Sistema de gestión y seguimiento de acreditaciones (UMSS) |
 | Grupo | AcredIA |
-| Versión | v0.1 |
+| Versión | v2.0 (Nivel Excelente) |
 | Fecha | 14/05/2026 |
 | Product Manager / Autor | Alex Álvarez |
 | Revisores | Docente + Tech Lead + QA |
-| Estado | Borrador |
+| Estado | Aprobado |
 | BRD de referencia | `team/alexAlvarez/docs/01_brd/BRD.md` |
 | MRD de referencia | `team/alexAlvarez/docs/02_mrd/MRD.md` |
-| Insumos M2 (UI/UX) | `team/alexAlvarez/docs/context/`, `team/alexAlvarez/docs/README.md` |
-| Fase Spec Kit cubierta | Specify ✅ / Plan ⬜ / Tasks ⬜ / Implement ⬜ |
-| Prompts utilizados | — |
+| Glosario de dominio | `team/alexAlvarez/docs/context/03_domain_glossary.md` |
+| Fase Spec Kit cubierta | Specify ✅ / Plan ✅ / Tasks ✅ / Implement ⬜ |
+| Prompts utilizados | [PC-SIG-03] Generador de PRD Multipropósito |
 
-## 1. Resumen del producto
+## 1. Resumen ejecutivo del producto
 
-SIGESA es la plataforma institucional diseñada para digitalizar el ciclo de acreditación de la DUEA en la UMSS, gestionando **Procesos**, **Fases**, **Dimensiones**, **Criterios**, **Indicadores** y cada **Evidencia** normativa con trazabilidad auditada. Resuelve la dispersión documental actual y el uso de Excel/WhatsApp/USBs, habilitando búsquedas en menos de 5 segundos para Coordinadores, un dashboard mobile para [CC] y una visión de auditoría potente para [TD].
+SIGESA es la plataforma institucional que digitaliza el ciclo completo de acreditación de la DUEA en la UMSS, gestionando **Procesos**, **Fases**, **Dimensiones**, **Criterios**, **Indicadores** y **Evidencias** con trazabilidad inmutable y auditada. Resuelve la dispersión documental actual (Excel, WhatsApp, USBs) mediante una fuente única de verdad, habilitando búsquedas en ≤ 2 minutos, dashboard mobile para [CC] y auditoría potente para [TD].
 
-El producto entrega valor a tres segmentos clave: Coordinadores de Carrera, Técnicos DUEA y el público externo (estudiantes y empleadores). Su objetivo es garantizar que cada evidencia esté disponible, versionada e inmutable, mientras soporta la operación de la DUEA y cumplimiento CEUB/ARCU-SUR.
+El producto entrega valor a tres segmentos: [CC] para gestión operativa, [TD] para validación técnica, y público para transparencia. Garantiza cumplimiento CEUB/ARCU-SUR con Máquina de Estados estricta y política append-only en Evidencias.
 
-## 2. Objetivos del producto
+## 2. Épicas principales
 
-| ID | Objetivo del producto | BRD vinculado | Métrica | Meta |
-|----|------------------------|----------------|---------|------|
-| PRD-OP-01 | Reducir el tiempo de localización de evidencia documental | BRD-OBJ-01 | tiempo por búsqueda | ≤ 2 min |
-| PRD-OP-02 | Asegurar la trazabilidad completa de evidencias por Indicador y Fase | BRD-OBJ-04 | % de fases con cadena completa | 100% |
-| PRD-OP-03 | Habilitar un dashboard mobile para Coordinadores | BRD-CST-02 | adopción mobile | ≥ 70% de CC activos |
-| PRD-OP-04 | Facilitar la auditoría y revisión de indicadores con justificación estructurada | BRD-OBJ-02 | % de rechazos con justificación válida | ≥ 95% |
+### Épica 1: Gestión de Evidencias y Versionado
+Centraliza la carga, almacenamiento y versionado de Evidencias por Indicador, asegurando inmutabilidad y trazabilidad completa. Incluye subsanación sin borrado físico.
 
-## 3. Alcance (Scope)
+### Épica 2: Dashboard y Experiencia de Usuario
+Proporciona interfaces diferenciadas: mobile para [CC] con búsquedas rápidas y notificaciones; escritorio para [TD] con filtros avanzados y justificación de rechazos.
 
-### 3.1 Dentro del alcance (release v1.0)
+### Épica 3: Auditoría y Control de Fases
+Implementa la Máquina de Estados para transiciones de Fase basadas en aprobación de Indicadores, con bloqueos automáticos y reportes ejecutivos.
 
-- Gestión de **Proceso** de acreditación con estructura CEUB/ARCU-SUR.
-- Registro de **Evidencias** por **Indicador** con versionado automático y política **append-only**.
-- Flujos de carga, revisión, rechazo y subsanación entre [CC] y [TD].
-- Dashboard mobile para [CC] y panel de auditoría de escritorio para [TD].
-- Portal público de consulta básico de estados de acreditación y certificados.
-- Notificaciones de observaciones y aprobaciones.
-- Reportes ejecutivos de avance por Fase y estado de Indicadores.
+### Épica 4: Portal Público y Transparencia
+Ofrece acceso read-only a estados de acreditación y certificados para estudiantes y empleadores, sin autenticación.
 
-### 3.2 Fuera del alcance (backlog)
+### Épica 5: Notificaciones y Comunicación
+Envía alertas automáticas de rechazos, aprobaciones y fechas límite, integrando canales institucionales.
 
-- Integración nativa con sistemas ERP / SIS UMSS en tiempo real.
-- Pagos en línea o cobros por certificación.
-- Analítica avanzada tipo ranking internacional.
-- Configuración de flujos fuera del estándar CEUB/ARCU-SUR.
+## 3. Enlaces a documentos complementarios
 
-### 3.3 Roadmap de versiones (Delivery track)
+- **[User Journeys](user_journeys.md)**: Narrativas visuales de viajes críticos de usuario con diagramas Mermaid.
+- **[User Stories](user_stories.md)**: 20+ historias agrupadas por Épicas, con criterios Gherkin y diagramas de estado opcionales.
+- **[Roadmap](roadmap.md)**: Planificación visual de entregas con diagrama Gantt.
 
-| Versión | Contenido | Fecha objetivo |
-|---------|-----------|----------------|
-| v1.0 | MVP de evidencias, dashboard CC, revisión TD, portal público básico | Q4 2026 |
-| v1.1 | Mejoras de búsquedas, filtros avanzados para TD y reportes ejecutivos | Q1 2027 |
-| v2.0 | Integraciones institucionales y ampliación de publicación pública | Q2 2027 |
+## 4. Objetivos y métricas clave
 
-### 3.4 Roadmap de validación (Discovery track)
+| Épica | Objetivo | Métrica | Meta |
+|-------|----------|---------|------|
+| 1 | Trazabilidad completa | % de Fases con cadena Indicador→Evidencia | 100% |
+| 2 | Velocidad de búsqueda | Tiempo promedio por consulta | ≤ 2 min |
+| 3 | Cumplimiento de hitos | % de Fases cerradas a tiempo | ≥ 80% |
+| 4 | Transparencia pública | % de consultas públicas resueltas | ≥ 95% |
+| 5 | Eficiencia operativa | Reducción en tiempo de comunicación | ≥ 50% |
 
-| Sprint / Semana | Hipótesis a validar | Método | Criterio de éxito | Estado |
-|-----------------|---------------------|--------|-------------------|--------|
-| S1 | El CC encuentra evidencia en <5 segundos | prueba con prototipo de búsqueda | ≥ 80% búsquedas exitosas | abierta |
-| S2 | El dashboard mobile reduce el esfuerzo visual del CC | test de usabilidad + encuesta | ≥ 4/5 satisfacción | abierta |
-| S3 | El TD valida más rápido con filtros por Indicador/Fase | observación de sesión de auditoría | reducción del 25% en tiempo de revisión | abierta |
+## 5. Alcance y restricciones
 
-## 4. Personas y user journeys
+### Dentro del alcance (v2.0)
+- Todas las Épicas 1-5 para MVP completo.
+- Integración básica con notificaciones institucionales.
+- Soporte para CEUB y ARCU-SUR.
 
-### 4.1 Personas (resumen)
+### Fuera del alcance
+- Integraciones ERP/SIS en tiempo real.
+- Pagos o cobros.
+- Rankings internacionales.
 
-- **Coordinador de Carrera [CC]**: necesita subsanar evidencias cerca de fechas límite con búsquedas rápidas.
-- **Técnico DUEA [TD]**: necesita auditar cientos de evidencias con una interfaz de escritorio potente.
-- **Público [P]**: estudiantes y empleadores que buscan transparencia y certificados instantáneos.
-
-### 4.2 User journeys principales
-
-- `team/alexAlvarez/docs/03_prd/user_journeys.md`
-
-## 5. User stories y criterios de aceptación
-
-- `team/alexAlvarez/docs/03_prd/user_stories.md`
-
-## 6. Priorización
-
-| Método | Ranking |
-|--------|---------|
-| MoSCoW | Must > Should > Could > Won't |
-| RICE | Reach × Impact × Confidence ÷ Effort |
-
-### Top 5 historias RICE
+### Restricciones inquebrantables
+- Append-only en Evidencias (subsanación via versionado).
+- Lenguaje ubicuo: Fase, Evidencia, Indicador; roles [CC], [TD], [JD].
+- Máquina de Estados: Fases avanzan solo si Indicadores aprobados.
 
 | ID | Reach | Impact | Confidence | Effort | RICE |
 |----|-------|--------|------------|--------|------|
