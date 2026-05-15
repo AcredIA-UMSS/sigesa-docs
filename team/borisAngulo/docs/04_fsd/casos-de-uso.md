@@ -30,13 +30,13 @@ Permitir que los usuarios accedan al sistema únicamente según sus permisos y r
 
 ## Actores
 
-* Usuario
-* Sistema de autenticación
+- Usuario
+- Sistema de autenticación
 
 ## Precondiciones
 
-* El usuario debe existir.
-* El usuario debe tener un rol asignado.
+- El usuario debe existir.
+- El usuario debe tener un rol asignado.
 
 ## Flujo principal
 
@@ -63,8 +63,8 @@ Permitir que los usuarios accedan al sistema únicamente según sus permisos y r
 
 ## Postcondiciones
 
-* Existe una sesión válida.
-* El acceso queda restringido según permisos.
+- Existe una sesión válida.
+- El acceso queda restringido según permisos.
 
 ## Gherkin
 
@@ -96,12 +96,12 @@ Permitir registrar procesos de acreditación asociados a carrera y facultad.
 
 ## Actores
 
-* Administrador DUEA
-* Coordinador
+- Administrador DUEA
+- Coordinador
 
 ## Precondiciones
 
-* Existen carreras y facultades registradas.
+- Existen carreras y facultades registradas.
 
 ## Flujo principal
 
@@ -127,7 +127,7 @@ Permitir registrar procesos de acreditación asociados a carrera y facultad.
 
 ## Postcondiciones
 
-* El proceso queda registrado correctamente.
+- El proceso queda registrado correctamente.
 
 ## Gherkin
 
@@ -158,12 +158,12 @@ Administrar fases y actividades dentro de un proceso de acreditación.
 
 ## Actores
 
-* Coordinador
-* Administrador DUEA
+- Coordinador
+- Administrador DUEA
 
 ## Precondiciones
 
-* Existe un proceso activo.
+- Existe un proceso activo.
 
 ## Flujo principal
 
@@ -183,7 +183,7 @@ Administrar fases y actividades dentro de un proceso de acreditación.
 
 ## Postcondiciones
 
-* Las actividades quedan asociadas a la fase.
+- Las actividades quedan asociadas a la fase.
 
 ## Gherkin
 
@@ -207,11 +207,11 @@ Evitar el cierre de procesos con tareas pendientes.
 
 ## Actores
 
-* Administrador DUEA
+- Administrador DUEA
 
 ## Precondiciones
 
-* Existe un proceso activo.
+- Existe un proceso activo.
 
 ## Flujo principal
 
@@ -231,7 +231,7 @@ Evitar el cierre de procesos con tareas pendientes.
 
 ## Postcondiciones
 
-* El proceso queda cerrado solo si cumple condiciones.
+- El proceso queda cerrado solo si cumple condiciones.
 
 ## Gherkin
 
@@ -262,12 +262,12 @@ Permitir cargar evidencias vinculadas a criterios y fases.
 
 ## Actores
 
-* Coordinador
-* Técnico operativo
+- Coordinador
+- Técnico operativo
 
 ## Precondiciones
 
-* Existe un proceso y criterio válido.
+- Existe un proceso y criterio válido.
 
 ## Flujo principal
 
@@ -287,7 +287,7 @@ Permitir cargar evidencias vinculadas a criterios y fases.
 
 ## Postcondiciones
 
-* La evidencia queda almacenada.
+- La evidencia queda almacenada.
 
 ## Gherkin
 
@@ -318,11 +318,11 @@ Mantener historial de versiones y control sobre reemplazos destructivos.
 
 ## Actores
 
-* Coordinador
+- Coordinador
 
 ## Precondiciones
 
-* Existe una evidencia previa.
+- Existe una evidencia previa.
 
 ## Flujo principal
 
@@ -342,7 +342,7 @@ Mantener historial de versiones y control sobre reemplazos destructivos.
 
 ## Postcondiciones
 
-* El historial permanece íntegro.
+- El historial permanece íntegro.
 
 ## Gherkin
 
@@ -373,11 +373,11 @@ Registrar observaciones formales sobre fases o entregables.
 
 ## Actores
 
-* Administrador DUEA
+- Administrador DUEA
 
 ## Precondiciones
 
-* Existe un proceso activo.
+- Existe un proceso activo.
 
 ## Flujo principal
 
@@ -396,7 +396,7 @@ Registrar observaciones formales sobre fases o entregables.
 
 ## Postcondiciones
 
-* La observación queda registrada.
+- La observación queda registrada.
 
 ## Gherkin
 
@@ -420,11 +420,11 @@ Permitir responder observaciones emitidas por DUEA.
 
 ## Actores
 
-* Coordinador
+- Coordinador
 
 ## Precondiciones
 
-* Existe una observación abierta.
+- Existe una observación abierta.
 
 ## Flujo principal
 
@@ -443,7 +443,7 @@ Permitir responder observaciones emitidas por DUEA.
 
 ## Postcondiciones
 
-* La observación queda en seguimiento o cerrada.
+- La observación queda en seguimiento o cerrada.
 
 ## Gherkin
 
@@ -467,12 +467,12 @@ Visualizar el avance y estado de procesos mediante indicadores.
 
 ## Actores
 
-* Administrador DUEA
-* Coordinador
+- Administrador DUEA
+- Coordinador
 
 ## Precondiciones
 
-* Existen procesos registrados.
+- Existen procesos registrados.
 
 ## Flujo principal
 
@@ -490,7 +490,7 @@ Visualizar el avance y estado de procesos mediante indicadores.
 
 ## Postcondiciones
 
-* El usuario visualiza el estado actualizado.
+- El usuario visualiza el estado actualizado.
 
 ## Gherkin
 
@@ -514,12 +514,12 @@ Enviar notificaciones automáticas sobre vencimientos y actividades.
 
 ## Actores
 
-* Scheduler
-* Sistema de notificaciones
+- Scheduler
+- Sistema de notificaciones
 
 ## Precondiciones
 
-* Existen hitos próximos a vencer.
+- Existen hitos próximos a vencer.
 
 ## Flujo principal
 
@@ -538,7 +538,7 @@ Enviar notificaciones automáticas sobre vencimientos y actividades.
 
 ## Postcondiciones
 
-* Las alertas quedan registradas.
+- Las alertas quedan registradas.
 
 ## Gherkin
 
@@ -562,12 +562,12 @@ Generar reportes ejecutivos del estado de acreditación.
 
 ## Actores
 
-* Administrador DUEA
-* Coordinador
+- Administrador DUEA
+- Coordinador
 
 ## Precondiciones
 
-* Existe información consolidada.
+- Existe información consolidada.
 
 ## Flujo principal
 
@@ -587,7 +587,7 @@ Generar reportes ejecutivos del estado de acreditación.
 
 ## Postcondiciones
 
-* El usuario obtiene el reporte.
+- El usuario obtiene el reporte.
 
 ## Gherkin
 
@@ -611,11 +611,11 @@ Registrar eventos críticos realizados dentro del sistema.
 
 ## Actores
 
-* Sistema de auditoría
+- Sistema de auditoría
 
 ## Precondiciones
 
-* Existe una acción crítica.
+- Existe una acción crítica.
 
 ## Flujo principal
 
@@ -633,7 +633,7 @@ Registrar eventos críticos realizados dentro del sistema.
 
 ## Postcondiciones
 
-* Existe trazabilidad completa.
+- Existe trazabilidad completa.
 
 ## Gherkin
 
@@ -651,6 +651,7 @@ Y almacena usuario y fecha
 
 # Resumen de cobertura de rúbrica
 
+
 | Criterio                         | Cumplimiento |
 | -------------------------------- | ------------ |
 | Casos de uso críticos            | 12           |
@@ -660,9 +661,11 @@ Y almacena usuario y fecha
 | Cobertura de módulos principales | Sí           |
 | Trazabilidad con FSD             | Sí           |
 
+
 ---
 
 # Trazabilidad con FSD
+
 
 | Caso de uso | Relación FSD      |
 | ----------- | ----------------- |
@@ -678,3 +681,5 @@ Y almacena usuario y fecha
 | CU-010      | FSD-UC-006        |
 | CU-011      | FSD-UC-007        |
 | CU-012      | BR-11 / Auditoría |
+
+
