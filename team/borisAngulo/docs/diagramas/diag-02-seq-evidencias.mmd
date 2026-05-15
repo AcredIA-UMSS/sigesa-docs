@@ -1,0 +1,51 @@
+---
+title: "SEQ-02 · Carga y versionado de evidencias (FSD-UC-004)"
+---
+sequenceDiagram
+    actor C as Coordinador
+    participant F as Frontend
+    participant API as Evidence API
+    participant VAL as Validador
+    participant STG as Storage
+    participant AUD as Auditoría
+
+    C->>F: Abre vista de evidencias (proceso/fase)
+    F->>API: GET /procesos/{id}/criterios
+    API-->>F: Lista de criterios con estado de evidencias
+    F-->>C: Muestra criterios disponibles
+
+    C->>F: Selecciona criterio + sube archivo
+    F->>API: POST /evidencias {criterio_id, proceso_id, fase_id, archivo}
+
+    API->>VAL: Valida clasificación obligatoria
+    alt Sin criterio seleccionado
+        VAL-->>API: ERROR: EVIDENCIA_SIN_CLASIFICACION
+        API-->>F: 400 Bad Request
+        F-->>C: Resalta campo "Criterio" con mensaje de error
+    else Archivo vacío o formato inválido
+        VAL-->>API: ERROR: ARCHIVO_INVALIDO
+        API-->>F: 400 Bad Request {detalle}
+        F-->>C: Mensaje descriptivo del error
+    else Validación exitosa
+        VAL-->>API: OK
+        API->>STG: Almacena archivo + genera hash
+        STG-->>API: {url, hash, tamaño}
+        API->>API: Crea versión incremental (v1, v2…)
+        API->>AUD: INSERT CARGA {user_id, evidencia_id, version, timestamp}
+        API-->>F: 201 Created {evidencia_id, version, autor, fecha}
+        F-->>C: Confirmación con número de versión
+
+        Note over C,AUD: Acción destructiva (borrado/reemplazo)
+        C->>F: Solicita eliminar evidencia
+        F-->>C: Modal: "¿Confirmar eliminación de acta_reunion.pdf?"
+        alt Confirma
+            C->>F: Clic "Confirmar"
+            F->>API: DELETE /evidencias/{id}
+            API->>AUD: INSERT ELIMINACION {user_id, evidencia_id, timestamp}
+            API-->>F: 200 OK
+            F-->>C: Confirmación de operación completada
+        else Cancela
+            C->>F: Clic "Cancelar"
+            F-->>C: Modal cerrado, repositorio sin cambios
+        end
+    end
