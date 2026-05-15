@@ -318,3 +318,20 @@ also keep in mind all the versions available of the brd for more context if need
 - Se actualizó el registro de trazabilidad de prompts con base en `PROMPT_MAPPING.md`.
 - Se realizó la acción final de preparación para commit y push a `origin`.
 
+
+---
+
+## Registro de cambios 2026-05-15
+
+- Se agregaron los prompts trabajados en esta sesión a `team/alexAlvarez/prompts/`:
+  - `sigesa-api-contract-designer.prompt.md`
+  - `sigesa-arquitectura-tecnica-ia.prompt.md`
+  - `sigesa-auditor-trazabilidad-dti.prompt.md`
+  - `sigesa-db-architect-append-only.prompt.md`
+- Se corrigió la numeración de secciones en `AGENTS.md` para mantener la secuencia tras el workflow.
+- Se incluyeron nuevas reglas y la política de QA/Gherkin en el manifiesto de agentes.
+- Se dejó lista la rama para commit con las modificaciones finales de la sesión.
+
+**Fecha:** 2026-05-15
+**Autor:** Alex Alvarez / GitHub Copilot
+**Motivo:** Consolidación de artefactos de sesión, auditoría de prompts y preparación para commit.
