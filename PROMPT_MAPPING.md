@@ -1521,3 +1521,181 @@ Instrucciones:
 | — | Validar umbrales NFR-001 y NFR-005 con TI antes del inicio de sprint de infraestructura | Tech Lead |
 | — | Expandir NFR-007 con protocolo formal de prueba de usabilidad (participantes, tareas, escenarios) | @ProductAgent + @QaAgent |
 | PM-018 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+
+## PM-018 — Generación de prompt-contracts.md: 10 contratos con 6 elementos + invariants + failure modes
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-018 |
+| **Fecha** | 2026-05-14 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Boris Angulo |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-6 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar el archivo `docs/04_fsd/prompt-contracts.md` con ≥ 10 prompt-contratos completos, cada uno con los 6 elementos obligatorios (Role, Task, Context, Reasoning, Stop condition, Output) más invariants y failure modes, a partir de los documentos existentes del proyecto SIGESA.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/borisAngulo/FSD_v1.md` | Fuente primaria: prompt-contratos base (PC-001 a PC-003 en §7), casos de uso UC-001 a UC-007, reglas de negocio BR-001 a BR-012 |
+| `team/borisAngulo/docs/04_fsd/casos-de-uso.md` | Fuente de expansión: FSD-UC-004 a FSD-UC-012 con flujos alternos y Gherkin base |
+| `team/borisAngulo/AGENTS.md` | Definición de agentes (@ArchAgent, @QaAgent, @DevAgent) como responsables por dominio |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/borisAngulo/FSD_v1.md
+- @team/borisAngulo/docs/04_fsd/casos-de-uso.md
+- @team/borisAngulo/AGENTS.md
+
+Con base en la información extraída, generá el archivo:
+
+`docs/04_fsd/prompt-contracts.md`
+
+El documento será evaluado con estos criterios:
+
+EXCELENTE (apunta a esto):
+- 10 o más contratos con los 6 elementos + invariants + failure modes
+- Cada contrato con: Role, Task, Context, Reasoning (pasos obligatorios), Stop condition, Output (JSON estructurado)
+- Invariants: condiciones que nunca pueden violarse (mínimo 4 por contrato)
+- Failure modes: errores nombrados con código, mensaje y condición disparadora (mínimo 4 por contrato)
+- Trazabilidad a FSD-UC, PRD-US, BRD-BR y NFR por cada contrato
+
+ACEPTABLE (mínimo aceptado):
+- 5–9 contratos completos con los 6 elementos
+
+BAJO (evitar):
+- Menos de 5 contratos
+- Failure modes sin código o condición concreta
+- Invariants genéricos como "el sistema no debe fallar"
+- Output sin formato estructurado
+
+Instrucciones:
+- Usar los 3 prompt-contratos del FSD §7 (UC-001, UC-002, UC-003) como base y reescribirlos con formato completo y consistente
+- Generar los 7 contratos restantes (UC-004 a UC-010) desde los casos de uso del casos-de-uso.md
+- Los failure modes deben derivarse de las reglas de negocio BR-001 a BR-012 y los flujos alternos de cada UC
+- Los invariants deben ser condiciones verificables, no principios generales
+- El Output de cada contrato debe ser JSON con campos definidos
+- Incluir tabla de trazabilidad consolidada al final (PC → FSD-UC → PRD-US → BRD-BR → NFR)
+- No inventar información que no esté en los documentos fuente
+- El objetivo es calificación EXCELENTE
+```
+
+---
+
+### Archivos generados
+
+| Archivo | Operación | Ubicación en repo |
+|---------|-----------|-------------------|
+| `docs/04_fsd/prompt-contracts.md` | Creado | `borisAngulo/docs/04_fsd/` |
+
+---
+
+### Contenido generado — resumen
+
+| PC | FSD-UC | Nombre | Invariants | Failure modes | Escenarios Gherkin |
+|----|--------|--------|-----------|---------------|-------------------|
+| PC-001 | FSD-UC-001 | Autenticación y autorización por roles | 4 | 5 | 4 |
+| PC-002 | FSD-UC-002 | Creación y gestión de procesos de acreditación | 4 | 5 | 4 |
+| PC-003 | FSD-UC-003 | Gestión de fases y cierre con pendientes | 4 | 4 | 3 |
+| PC-004 | FSD-UC-004 | Carga y versionado de evidencias por criterio | 4 | 4 | 3 |
+| PC-005 | FSD-UC-005 | Protección ante borrado o reemplazo destructivo | 4 | 4 | 3 |
+| PC-006 | FSD-UC-006 | Flujo de observaciones DUEA ↔ carrera | 4 | 5 | 3 |
+| PC-007 | FSD-UC-007 | Panel de estado con semáforo por carrera/facultad | 4 | 4 | 3 |
+| PC-008 | FSD-UC-008 | Alertas automáticas por plazos e hitos | 4 | 4 | 3 |
+| PC-009 | FSD-UC-009 | Generación de reporte ejecutivo PDF en ≤ 2 clics | 4 | 4 | 3 |
+| PC-010 | FSD-UC-010 | Gestión de usuarios y asignación de roles | 4 | 5 | 3 |
+| **Total** | | | **40 invariants** | **44 failure modes** | **32 escenarios** |
+
+---
+
+### Estructura por contrato
+
+Cada uno de los 10 contratos incluye:
+
+- **Role**: perfil experto del agente IA para el dominio del UC.
+- **Task**: descripción precisa de qué especificar, referenciando el FSD-UC.
+- **Context**: entradas, referencias de dominio (BR), NFR aplicables y restricciones concretas.
+- **Reasoning**: pasos numerados obligatorios (chain-of-thought explícito).
+- **Stop condition**: criterio de terminación verificable con campos del Output.
+- **Output**: JSON estructurado con campos definidos (invariants, failure_modes, acceptance_criteria_gherkin y campos específicos por dominio).
+- **Invariants**: 4 condiciones verificables que nunca pueden violarse.
+- **Failure modes**: 4–5 errores con código, condición disparadora y mensaje de usuario.
+
+---
+
+### Trazabilidad consolidada
+
+| PC | FSD-UC | PRD-US | BRD-BR | NFR |
+|----|--------|--------|--------|-----|
+| PC-001 | FSD-UC-001 | PRD-US-001, PRD-US-003 | BR-004, BR-005, BR-011 | NFR-003, NFR-004 |
+| PC-002 | FSD-UC-002 | PRD-US-008, PRD-US-009 | BR-001, BR-002, BR-003, BR-012 | NFR-004 |
+| PC-003 | FSD-UC-003 | PRD-US-004, PRD-US-006 | BR-008, BR-009, BR-010 | NFR-004 |
+| PC-004 | FSD-UC-004 | PRD-US-010, PRD-US-011 | BR-006, BR-007, BR-012 | NFR-003, NFR-004 |
+| PC-005 | FSD-UC-005 | PRD-US-012 | BR-007, BR-011 | NFR-004 |
+| PC-006 | FSD-UC-006 | PRD-US-013, PRD-US-014 | BR-008, BR-010, BR-011 | NFR-004 |
+| PC-007 | FSD-UC-007 | PRD-US-015 | BR-008 | NFR-001 |
+| PC-008 | FSD-UC-008 | PRD-US-016 | BR-009, BR-011 | NFR-005 |
+| PC-009 | FSD-UC-009 | PRD-US-017 | BR-008 | NFR-001, NFR-006 |
+| PC-010 | FSD-UC-010 | PRD-US-002 | BR-004, BR-005 | NFR-004 |
+
+---
+
+### Criterio de evaluación alcanzado
+
+| Nivel | Criterio | ¿Cumplido? |
+|-------|----------|------------|
+| **EXCELENTE** | ≥ 10 contratos completos | ✅ 10 contratos (PC-001 a PC-010) |
+| **EXCELENTE** | Los 6 elementos en cada contrato | ✅ Role · Task · Context · Reasoning · Stop condition · Output |
+| **EXCELENTE** | Invariants verificables (mínimo 4 por contrato) | ✅ 40 invariants totales |
+| **EXCELENTE** | Failure modes con código, condición y mensaje (mínimo 4 por contrato) | ✅ 44 failure modes totales |
+| **EXCELENTE** | Output JSON estructurado con campos definidos por dominio | ✅ Los 10 |
+| **EXCELENTE** | Trazabilidad PC → FSD-UC → PRD-US → BRD-BR → NFR | ✅ Tabla consolidada |
+| — | 0 información inventada | ✅ Todo derivado de FSD_v1.md y casos-de-uso.md |
+
+---
+
+### Lecciones y reuso
+
+- Pedir explícitamente **"los failure modes deben derivarse de las reglas de negocio BR-001 a BR-012 y los flujos alternos de cada UC"** ancla los errores a reglas reales y evita failure modes genéricos como `GENERIC_ERROR`.
+- Incluir la instrucción **"el Output de cada contrato debe ser JSON con campos definidos"** produce contratos directamente consumibles por agentes de implementación sin reformateo.
+- Usar los **3 contratos del FSD §7 como base explícita y pedir reescritura con formato consistente** unifica el estilo de todos los contratos sin perder el trabajo previo del equipo.
+- La instrucción **"invariants deben ser condiciones verificables, no principios generales"** evita invariants vacíos como "el sistema debe ser seguro" y produce aserciones testeables como "toda acción sensible requiere sesión válida activa".
+- El campo **access_control_matrix** en PC-001 y **state_transitions** en PC-003/PC-006 son campos de Output específicos por dominio que agregan valor sin estar en la plantilla base; el agente los infirió de los flujos del UC.
+- **Para reusar**: reemplazar los paths de los documentos fuente; mantener la instrucción de los 6 elementos + invariants + failure modes + Output JSON; ajustar los campos específicos del Output según el dominio del sistema.
+
+---
+
+### Riesgos / observaciones
+
+- Los 32 escenarios Gherkin incluidos en los Output JSON de cada contrato cubren los caminos principales y alternos críticos, pero no son exhaustivos para QA; el equipo debe expandirlos antes del piloto (especialmente PC-004 y PC-008).
+- La **semaphore_logic** de PC-007 (Verde/Amarillo/Rojo) usa umbrales provisionales (70 %, 40 %, 15 días, 7 días) derivados del FSD; deben validarse con DUEA antes de implementar.
+- Los **alert_windows** de PC-008 (30/15/7/1 días) dependen de la configuración real del calendario académico UMSS; deben confirmarse con TI antes del sprint de notificaciones.
+- PC-003 y PC-006 declaran el historial como **append-only** e inmutable; esto debe reflejarse en el diseño de base de datos (ver `FSD_v1.md §2.4`) antes de que @DevAgent inicie implementación.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Responsable |
+|----|-------|-------------|
+| — | Guardar `prompt-contracts.md` en `docs/04_fsd/` del repositorio | Boris Angulo |
+| — | Reemplazar §7 de `FSD_v1.md` con referencia a `prompt-contracts.md` para evitar duplicación | @ArchAgent / Boris Angulo |
+| — | Validar semaphore_logic de PC-007 con el equipo DUEA antes del sprint de panel | @ProductAgent |
+| — | Confirmar alert_windows de PC-008 con TI (calendario académico UMSS) | Tech Lead |
+| — | Expandir escenarios Gherkin de PC-004 y PC-008 para QA antes del piloto | @QaAgent |
+| PM-019 | Registrar siguiente tarea ejecutada con IA | Por definir |
