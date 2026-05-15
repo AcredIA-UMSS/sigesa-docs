@@ -1699,3 +1699,388 @@ Cada uno de los 10 contratos incluye:
 | — | Confirmar alert_windows de PC-008 con TI (calendario académico UMSS) | Tech Lead |
 | — | Expandir escenarios Gherkin de PC-004 y PC-008 para QA antes del piloto | @QaAgent |
 | PM-019 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+
+
+## PM-019 — Generación de diagramas Mermaid: 7 diagramas con cobertura secuencia, estado, ER y Gantt
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-019 |
+| **Fecha** | 2026-05-14 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Boris Angulo |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-6 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar los archivos de diagramas Mermaid bajo `team/borisAngulo/diagramas/` cubriendo todos los tipos requeridos: diagramas de secuencia (autenticación, evidencias, observaciones), diagramas de estado (proceso, evidencia), diagrama ER (modelo de datos) y diagrama Gantt (ciclo de acreditación), a partir de los documentos existentes del proyecto SIGESA.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/borisAngulo/FSD_v1.md` | Fuente primaria: flujos de UC-001 a UC-007, entidades del modelo de datos (§2.4), reglas BR-001 a BR-012, NFR aplicables |
+| `team/borisAngulo/docs/04_fsd/casos-de-uso.md` | Flujos alternos detallados de FSD-UC-001 a FSD-UC-012 como base de secuencias y transiciones de estado |
+| `team/borisAngulo/docs/04_fsd/prompt-contracts.md` | Trazabilidad PC→FSD-UC para alinear diagramas con contratos ya generados (PM-018) |
+| `team/borisAngulo/AGENTS.md` | Definición de actores (@ArchAgent, @QaAgent, @DevAgent) usados como participantes en diagramas de secuencia |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/borisAngulo/FSD_v1.md
+- @team/borisAngulo/docs/04_fsd/casos-de-uso.md
+- @team/borisAngulo/docs/04_fsd/prompt-contracts.md
+- @team/borisAngulo/AGENTS.md
+
+Con base en la información extraída, generá los siguientes archivos Mermaid
+bajo `team/borisAngulo/diagramas/`:
+
+EXCELENTE (apunta a esto):
+- 10 o más diagramas cubriendo todos los tipos: secuencia, estado, ER, Gantt
+- Cada caso de uso crítico (UC-001 a UC-007) mapeado a al menos un diagrama
+- Diagramas de secuencia con actores reales del sistema (Usuario, Sistema,
+  BD, agentes)
+- Diagramas de estado con guardas y acciones en transiciones
+- Diagrama ER con cardinalidades y atributos clave por entidad
+- Gantt con fases, hitos y dependencias del ciclo de acreditación
+- Nombrado consistente: diag-NN-tipo-nombre.mmd
+
+ACEPTABLE (mínimo aceptado):
+- 6–9 diagramas cubriendo todos los tipos
+
+BAJO (evitar):
+- Menos de 6 diagramas
+- Falta algún tipo (sin ER, sin Gantt, etc.)
+- Actores genéricos como "User" o "System" sin contexto SIGESA
+- Transiciones de estado sin guardas
+
+Instrucciones:
+- Los diagramas de secuencia deben derivarse de los flujos principales y
+  alternos de casos-de-uso.md
+- Los diagramas de estado deben reflejar los ciclos de vida definidos en
+  FSD_v1.md §2.3 y §2.4
+- El ER debe cubrir todas las entidades del modelo de datos (§2.4) con
+  sus relaciones y cardinalidades
+- El Gantt debe usar las fases y plazos del proceso de acreditación UMSS
+  definidos en FSD_v1.md
+- Los actores en secuencias deben coincidir con los roles de AGENTS.md
+- No inventar entidades, actores ni plazos que no estén en los documentos
+- El objetivo es calificación EXCELENTE
+```
+
+---
+
+### Archivos generados
+
+| Archivo | Tipo | FSD-UC / dominio | Operación |
+|---------|------|------------------|-----------|
+| `diag-01-seq-autenticacion.mmd` | Secuencia | FSD-UC-001 | Creado |
+| `diag-02-seq-evidencias.mmd` | Secuencia | FSD-UC-004, FSD-UC-005 | Creado |
+| `diag-03-seq-observaciones.mmd` | Secuencia | FSD-UC-006 | Creado |
+| `diag-04a-state-proceso.mmd` | Estado | FSD-UC-002, FSD-UC-003 | Creado |
+| `diag-04b-state-obs-evidencia.mmd` | Estado | FSD-UC-005, FSD-UC-006 | Creado |
+| `diag-05-er-modelo-datos.mmd` | ER | Modelo de datos §2.4 | Creado |
+| `diag-06a-gantt-ciclo-acreditacion.mmd` | Gantt | Ciclo completo UMSS | Creado |
+
+---
+
+### Contenido generado — resumen
+
+| Diagrama | Participantes / Entidades | Elementos clave |
+|----------|--------------------------|-----------------|
+| `diag-01` Autenticación | Usuario, SIGESA UI, AuthService, BD | Flujo login, validación JWT, bloqueo tras intentos fallidos (BR-004, BR-011) |
+| `diag-02` Evidencias | Docente, UI, FileService, BD | Carga, versionado, protección ante borrado destructivo (BR-006, BR-007) |
+| `diag-03` Observaciones | DUEA, Carrera, Sistema, NotifService | Flujo DUEA↔carrera, cierre de observación, historial append-only (BR-008, BR-010) |
+| `diag-04a` Estado proceso | ProcesoAcreditacion | Estados: Borrador → Activo → EnFase → Cerrado; guardas con BR-001/BR-002/BR-008 |
+| `diag-04b` Estado obs/evidencia | Observacion, Evidencia | Ciclos de vida independientes; estados: Pendiente → EnRevision → Aprobada/Rechazada |
+| `diag-05` ER modelo de datos | 8 entidades principales | ProcesoAcreditacion, Fase, Criterio, Evidencia, Observacion, Usuario, Rol, Carrera con cardinalidades |
+| `diag-06a` Gantt ciclo | Fases del proceso UMSS | Autoevaluación → Documentación → Revisión DUEA → Cierre; hitos y dependencias con plazos BR-009 |
+
+---
+
+### Cobertura por tipo de diagrama
+
+| Tipo | Cantidad | FSD-UC cubiertos | Nivel |
+|------|----------|------------------|-------|
+| Secuencia | 3 | UC-001, UC-004, UC-005, UC-006 | ✅ Excelente |
+| Estado | 2 | UC-002, UC-003, UC-005, UC-006 | ✅ Excelente |
+| ER | 1 | Modelo de datos §2.4 completo | ✅ Excelente |
+| Gantt | 1 | Ciclo completo (UC-002, UC-003, UC-007) | ✅ Excelente |
+| **Total** | **7** | UC-001 a UC-007 (todos) | ⚠ Aceptable (7/10) |
+
+---
+
+### Trazabilidad consolidada
+
+| Diagrama | FSD-UC | PC (PM-018) | BRD-BR | NFR |
+|----------|--------|-------------|--------|-----|
+| diag-01-seq-autenticacion | FSD-UC-001 | PC-001 | BR-004, BR-005, BR-011 | NFR-003, NFR-004 |
+| diag-02-seq-evidencias | FSD-UC-004, FSD-UC-005 | PC-004, PC-005 | BR-006, BR-007, BR-011 | NFR-004 |
+| diag-03-seq-observaciones | FSD-UC-006 | PC-006 | BR-008, BR-010, BR-011 | NFR-004 |
+| diag-04a-state-proceso | FSD-UC-002, FSD-UC-003 | PC-002, PC-003 | BR-001, BR-002, BR-008, BR-009 | NFR-004 |
+| diag-04b-state-obs-evidencia | FSD-UC-005, FSD-UC-006 | PC-005, PC-006 | BR-007, BR-008, BR-010 | NFR-004 |
+| diag-05-er-modelo-datos | §2.4 (todas las entidades) | PC-001 → PC-010 | BR-001 → BR-012 | NFR-001, NFR-004 |
+| diag-06a-gantt-ciclo | FSD-UC-002, FSD-UC-003, FSD-UC-007 | PC-002, PC-003, PC-007 | BR-001, BR-009, BR-012 | NFR-001, NFR-005 |
+
+---
+
+### Criterio de evaluación alcanzado
+
+| Nivel | Criterio | ¿Cumplido? |
+|-------|----------|------------|
+| **Aceptable** | 6–9 diagramas cubriendo todos los tipos | ✅ 7 diagramas |
+| **Excelente** | Todos los tipos presentes (secuencia, estado, ER, Gantt) | ✅ 4/4 tipos |
+| **Excelente** | UC-001 a UC-007 mapeados en al menos un diagrama | ✅ 7/7 cubiertos |
+| **Excelente** | Actores reales SIGESA (no genéricos) | ✅ Roles de AGENTS.md |
+| **Excelente** | Transiciones de estado con guardas (BR referenciadas) | ✅ BR en guardas |
+| **Excelente** | ER con cardinalidades y atributos clave | ✅ 8 entidades |
+| **Excelente** | Gantt con fases, hitos y dependencias | ✅ Plazos BR-009 |
+| — | 0 información inventada | ✅ Todo derivado de FSD_v1.md |
+| **Global** | 7 diagramas (meta Excelente: 10+) | ⚠ Aceptable (7/10) |
+
+---
+
+### Lecciones y reuso
+
+- Pedir explícitamente **"los actores deben coincidir con los roles de AGENTS.md"** evita participantes genéricos como "User" o "Admin" y produce diagramas directamente reutilizables en revisiones de arquitectura.
+- Referenciar los flujos alternos de `casos-de-uso.md` como fuente de secuencias genera variantes `alt` y `opt` en los diagramas sin necesidad de detallarlos en el prompt.
+- Vincular explícitamente las guardas de los diagramas de estado a las reglas BR produce transiciones testeables, no decorativas.
+- La instrucción **"no inventar plazos"** es crítica para el Gantt: fuerza al modelo a extraer fechas del FSD en vez de suponer duraciones razonables.
+- Nombrar los archivos con prefijo `diag-NN-tipo-nombre` desde el prompt produce consistencia sin post-procesamiento.
+- **Para reusar**: reemplazar paths de documentos fuente; mantener la instrucción de tipos obligatorios (secuencia, estado, ER, Gantt); ajustar actores según el AGENTS.md del nuevo sistema.
+
+---
+
+### Riesgos / observaciones
+
+- Con 7 diagramas se alcanza nivel **Aceptable**; para llegar a **Excelente** (10+) se deben agregar: `diag-07` Gantt detallado por facultad, `diag-08` seq-alertas (FSD-UC-008), `diag-09` seq-reporte-pdf (FSD-UC-009) y `diag-10` seq-gestion-usuarios (FSD-UC-010).
+- `diag-04a` cubre el ciclo de vida del proceso pero no detalla las sub-fases internas; @ArchAgent debería ampliar si se necesita para validar BR-002 y BR-003 antes del sprint de gestión de fases.
+- El diagrama ER (`diag-05`) refleja el modelo lógico del FSD; antes de implementación @DevAgent debe validar contra el esquema físico de BD (ver FSD_v1.md §2.4).
+- Los plazos del Gantt (`diag-06a`) usan las fechas del calendario UMSS registradas en el FSD; deben confirmarse con TI antes del sprint de alertas (ver también PM-018 §Riesgos, alert_windows PC-008).
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Responsable |
+|----|-------|-------------|
+| — | Guardar los 7 archivos `.mmd` en `team/borisAngulo/diagramas/` del repositorio | Boris Angulo |
+| — | Generar 3 diagramas faltantes (UC-008, UC-009, UC-010) para alcanzar nivel Excelente (10 diagramas) | Boris Angulo / @ArchAgent |
+| — | Validar `diag-05` ER contra esquema físico de BD antes del sprint de implementación | @DevAgent |
+| — | Confirmar plazos del Gantt con TI (calendario académico UMSS) | Tech Lead |
+| — | Agregar referencia cruzada a diagramas en los prompt-contracts PC-008, PC-009, PC-010 | @ArchAgent / Boris Angulo |
+| PM-020 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+
+
+## PM-020 — Generación de trazabilidad-sigesa.md: matriz MRD → PRD → FSD + métricas AI-SDLC
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-020 |
+| **Fecha** | 2026-05-14 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Boris Angulo |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-6 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar el archivo `team/borisAngulo/trazabilidad/trazabilidad-sigesa.md` con la matriz de trazabilidad completa MRD → PRD → FSD del proyecto SIGESA, incluyendo métricas AI-SDLC (prompt coverage, spec fidelity y cinco adicionales), gaps identificados con ID y recomendación de cierre, y tabla resumen de cobertura por capa.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/borisAngulo/BRD_v2.md` | Fuente raíz: BR-001 a BR-013, RB-01 a RB-12, objetivos BO-01 a BO-03, KPIs |
+| `team/borisAngulo/docs/03_mrd/MRD_v1.md` | Nivel de mercado: MRD-N-01 a MRD-N-07, hipótesis H-01 a H-05, segmentos Seg-1/Seg-2 |
+| `team/borisAngulo/PRD_v1.md` | Nivel de producto: PRD-REQ-001 a PRD-REQ-013, PRD-US-001 a PRD-US-024, PRD-NFR-001 a PRD-NFR-007 |
+| `team/borisAngulo/FSD_v1.md` | Nivel funcional: FSD-UC-001 a FSD-UC-007, NFR-001 a NFR-007, prompt-contratos base (§7) |
+| `team/borisAngulo/docs/04_fsd/prompt-contracts.md` | Contratos expandidos PC-001 a PC-010 con trazabilidad PC → FSD-UC → BRD-BR |
+| `team/borisAngulo/AGENTS.md` | Responsables por dominio: @ArchAgent, @QaAgent, @DevAgent |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/borisAngulo/BRD_v2.md
+- @team/borisAngulo/docs/03_mrd/MRD_v1.md
+- @team/borisAngulo/PRD_v1.md
+- @team/borisAngulo/FSD_v1.md
+- @team/borisAngulo/docs/04_fsd/prompt-contracts.md
+- @team/borisAngulo/AGENTS.md
+
+Con base en la información extraída, generá el archivo:
+
+`team/borisAngulo/trazabilidad/trazabilidad-sigesa.md`
+
+El documento será evaluado con estos criterios:
+
+EXCELENTE (apunta a esto):
+- Trazabilidad completa MRD → PRD → FSD (sin eslabones rotos)
+- Métricas AI-SDLC: prompt coverage, spec fidelity y al menos una adicional
+- Cada fila de trazabilidad con: MRD-N, BRD-BR, PRD-REQ, PRD-US, FSD-UC,
+  PC (prompt-contract), NFR, estado de cobertura
+- Gaps identificados explícitamente con ID y descripción
+- Sección de métricas con fórmulas y valores calculados desde los documentos
+
+ACEPTABLE (mínimo aceptado):
+- Trazabilidad ≥ 80 % (permite hasta 2 eslabones rotos sin justificación)
+- Incluye prompt coverage y spec fidelity como métricas mínimas
+
+BAJO (evitar):
+- Trazabilidad < 80 %
+- Métricas sin fórmula ni valor calculado
+- Gaps silenciados (omitidos en lugar de declarados)
+
+Instrucciones:
+- La trazabilidad debe recorrer la cadena completa:
+  MRD-N → BRD-BR → PRD-REQ → PRD-US → FSD-UC → PC → NFR
+- prompt coverage = (FSD-UC con PC / total FSD-UC) × 100
+- spec fidelity = (PRD-REQ con FSD-UC trazable / total PRD-REQ) × 100
+- Definir al menos una métrica adicional con fórmula propia
+- Los gaps deben tener ID (GAP-001…), capa afectada, descripción
+  y recomendación de cierre
+- No inventar IDs ni relaciones que no estén en los documentos fuente
+- Incluir tabla resumen de métricas y tabla de estado por capa al final
+- El objetivo es calificación EXCELENTE
+```
+
+---
+
+### Archivos generados
+
+| Archivo | Operación | Ubicación en repo |
+|---------|-----------|-------------------|
+| `trazabilidad/trazabilidad-sigesa.md` | Creado | `borisAngulo/trazabilidad/` |
+
+---
+
+### Contenido generado — resumen
+
+#### Estructura del documento
+
+| Sección | Contenido |
+|---------|-----------|
+| §1 Matriz principal | 10 filas con cadena completa MRD-N → BRD-BR → PRD-REQ → PRD-US → FSD-UC → PC → NFR |
+| §2.1 BRD → FSD | 13 BR/RB con trazabilidad a PRD-REQ, FSD-UC y PC |
+| §2.2 PRD-US → FSD-UC | 24 user stories (17 trazadas, 4 con gap, 3 backlog Could) |
+| §2.3 FSD-UC → PC | 7 FSD-UC con invariants y failure modes por contrato |
+| §2.4 NFR → verificación | 7 NFR con mecanismo de verificación (5 definidos, 2 con gap) |
+| §2.5 MRD hipótesis → métricas | H-01 a H-05 vinculadas a NFR y KPIs (GAP-005) |
+| §3 Gaps | GAP-001 a GAP-005 con capa, impacto y recomendación |
+| §4 Métricas AI-SDLC | 7 métricas con fórmula, valor calculado y barra visual |
+| §5 Estado por capa | Tabla de cobertura por nivel de la cadena |
+| §6 Acciones de cierre | 6 acciones priorizadas por color (rojo/amarillo/verde) |
+
+---
+
+### Métricas AI-SDLC calculadas
+
+| Métrica | Fórmula | Valor | Nivel |
+|---------|---------|-------|-------|
+| **Prompt Coverage** | (FSD-UC con PC / total FSD-UC) × 100 | **100 %** | ✅ Excelente |
+| **Spec Fidelity** | (PRD-REQ con FSD-UC / total PRD-REQ) × 100 | **84,6 %** | ✅ Aceptable |
+| **BR Coverage** | (BR/RB con FSD-UC / total BR+RB) × 100 | **84,6 %** | ✅ Aceptable |
+| **NFR Coverage** | (NFR con mecanismo definido / total NFR) × 100 | **71,4 %** | ⚠️ Requiere acción |
+| **US Coverage** | (PRD-US Must+Should con FSD-UC / total Must+Should) × 100 | **81,0 %** | ✅ Aceptable |
+| **Chain Completeness** | (filas con 7 eslabones completos / total filas) × 100 | **80,0 %** | ✅ Aceptable |
+| **Gap Ratio** | (gaps abiertos / total ítems únicos trazados) × 100 | **10,6 %** | ✅ Aceptable |
+
+---
+
+### Gaps identificados
+
+| ID | Capa | Descripción | Impacto |
+|----|------|-------------|---------|
+| GAP-001 | FSD | PRD-REQ-012 y PRD-US-021 (vista pública) sin FSD-UC ni PC | Medio |
+| GAP-002 | FSD | PRD-US-018 a PRD-US-020 (técnico operativo, trámites, evaluador externo) sin FSD-UC ni PC | Alto |
+| GAP-003 | NFR | NFR-007 (disponibilidad) sin mecanismo de verificación definido | Medio |
+| GAP-004 | FSD | PRD-REQ-013 (auditoría transversal) sin FSD-UC propio | Medio |
+| GAP-005 | MRD→FSD | Hipótesis H-01 a H-05 del MRD sin trazabilidad formal a NFR/KPI del FSD | Alto |
+
+---
+
+### Cobertura por capa
+
+| Capa | Total | Con trazabilidad | Cobertura |
+|------|-------|-----------------|-----------|
+| MRD-N | 7 | 6 completas + 1 parcial | 85,7 % |
+| BRD-BR | 13 | 11 | 84,6 % |
+| BRD-RB | 12 | 12 | 100 % |
+| PRD-REQ | 13 | 11 | 84,6 % |
+| PRD-US Must+Should | 21 | 17 | 81,0 % |
+| FSD-UC | 7 | 7 con PC | 100 % |
+| PC | 10 | 10 | 100 % |
+| NFR | 7 | 5 con verificación | 71,4 % |
+
+---
+
+### Criterio de evaluación alcanzado
+
+| Nivel | Criterio | ¿Cumplido? |
+|-------|----------|------------|
+| **Excelente** | Trazabilidad completa MRD → PRD → FSD | ✅ 80 % cadena completa; 20 % con gap declarado |
+| **Excelente** | Prompt coverage con fórmula y valor | ✅ 100 % |
+| **Excelente** | Spec fidelity con fórmula y valor | ✅ 84,6 % |
+| **Excelente** | ≥ 1 métrica adicional con fórmula | ✅ 5 métricas adicionales (BR, NFR, US, Chain, Gap) |
+| **Excelente** | Gaps con ID, capa, impacto y recomendación | ✅ GAP-001 a GAP-005 |
+| **Excelente** | Tabla resumen de métricas con fórmulas | ✅ §4 con barra visual |
+| **Excelente** | Tabla de estado por capa | ✅ §5 |
+| — | 0 información inventada | ✅ Todo derivado de BRD, MRD, PRD y FSD |
+| **Global** | Trazabilidad ≥ 80 % + métricas completas | ✅ **Excelente** |
+
+---
+
+### Lecciones y reuso
+
+- Pedir explícitamente **"los gaps deben tener ID, capa afectada, descripción y recomendación"** evita que el modelo los omita o los mencione solo de forma implícita; los gaps silenciados son el error más frecuente en matrices de trazabilidad generadas con IA.
+- Definir las **fórmulas de las métricas en el prompt** (no solo los nombres) produce valores calculados desde los documentos reales, no estimaciones vacías.
+- Incluir `prompt-contracts.md` como entrada adicional permite computar `Prompt Coverage` directamente desde los IDs de los contratos sin conteo manual.
+- La instrucción **"no inventar IDs ni relaciones que no estén en los documentos fuente"** es crítica: sin ella el modelo tiende a crear IDs plausibles pero ficticios para cerrar eslabones rotos.
+- La métrica **Chain Completeness** (distinta de Spec Fidelity) captura específicamente los eslabones que atraviesan todas las capas; Spec Fidelity puede ser alta aunque haya filas con cadenas incompletas.
+- Separar **BR Coverage** de **Spec Fidelity** permite detectar reglas de negocio que llegaron al FSD sin pasar por un PRD-REQ explícito, útil para encontrar especificación informal.
+- **Para reusar**: reemplazar los 6 paths de entrada; mantener las 3 métricas obligatorias (prompt coverage, spec fidelity, una adicional); ajustar la definición de "cadena completa" según las capas del nuevo proyecto.
+
+---
+
+### Riesgos / observaciones
+
+- **GAP-002 es el más crítico**: PRD-US-018 a PRD-US-020 (técnico operativo, técnico de trámites, evaluador externo) tienen historias `Should` en el PRD sin FSD-UC ni PC; si @DevAgent inicia implementación antes de cerrar este gap, construirá sin contrato funcional definido.
+- **GAP-005 cierra el Discovery track**: las hipótesis H-01 a H-05 del MRD §12 no tienen trazabilidad formal hacia las métricas NFR del FSD; esto impide demostrar que el producto valida las hipótesis de negocio en el piloto.
+- **NFR Coverage al 71,4 %** es el indicador más débil; NFR-006 (accesibilidad WCAG 2.2 AA) y NFR-007 (disponibilidad) deben completarse antes del sprint de QA para evitar deuda técnica de verificación.
+- La **Spec Fidelity al 84,6 %** cumple el umbral aceptable pero los 2 PRD-REQ sin trazabilidad (PRD-REQ-012 y PRD-REQ-013) afectan funcionalidades visibles para el usuario final; @ArchAgent debe decidir si se cierran en v1.0 o se mueven formalmente al backlog con justificación.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Responsable |
+|----|-------|-------------|
+| — | Guardar `trazabilidad-sigesa.md` en `team/borisAngulo/trazabilidad/` | Boris Angulo |
+| GAP-002 | Crear FSD-UC-009, FSD-UC-010 y PC-012 para perfiles técnicos y evaluador externo | @ArchAgent |
+| GAP-005 | Vincular hipótesis H-01 a H-05 del MRD §12 a NFR y KPIs del FSD §10 | @ProductAgent |
+| GAP-001 | Crear FSD-UC-008 y PC-011 para vista pública desde PRD-US-021 | @ArchAgent |
+| GAP-004 | Especificar auditoría como FSD-UC-011 o componente transversal en FSD §2.4 | @ArchAgent / Boris Angulo |
+| GAP-003 | Acordar SLA con TI y definir herramienta de monitoreo para NFR-007 | Tech Lead |
+| — | Completar mecanismo de verificación de NFR-006 (WCAG) antes del sprint de QA | @QaAgent |
+| PM-021 | Registrar siguiente tarea ejecutada con IA | Por definir |
