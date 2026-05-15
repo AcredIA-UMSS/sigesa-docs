@@ -1,0 +1,1 @@
+../../.claude/rules/01_domain_language.mdc

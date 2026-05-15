@@ -1,28 +1,42 @@
 # Roadmap — SIGESA / AcredIA
 
-> Plan de entregas dividido por fases de acreditación, con foco en el lanzamiento MVP y la validación de funcionalidades clave.
+> Planificación visual de entregas por hitos, mapeando Épicas desarrolladas con diagrama Gantt.
 
 ## 1. Roadmap de entregas
 
 ```mermaid
 gantt
-  title SIGESA PRD Roadmap 2026
+  title SIGESA PRD Roadmap 2026-2027
   dateFormat YYYY-MM-DD
   axisFormat %b/%Y
-  section Fase 1 - Preparacion
-    Validacion de requisitos y glosario :done, reqs, 2026-07-01, 30d
-    Diseno de taxonomia CEUB/ARCU-SUR :done, tax, 2026-08-01, 30d
-  section Fase 2 - MVP
-    Desarrollo de repositorio de Evidence :active, repo, 2026-09-01, 45d
-    Dashboard mobile CC y busquedas rapidas :mvp1, 2026-10-15, 45d
-    Vista de auditoria de escritorio TD :mvp2, 2026-11-15, 30d
-  section Fase 3 - Piloto
-    Piloto con carreras y equipo DUEA :pilot, 2026-12-15, 30d
-    Ajustes post-piloto y retroalimentacion :adjust, 2027-01-15, 30d
+  section Épica 1: Evidencias y Versionado
+    Desarrollo repositorio Evidence: done, repo, 2026-07-01, 60d
+    Implementación versionado append-only: active, ver, 2026-09-01, 45d
+    Subsanación y trazabilidad: subs, 2026-10-15, 30d
+  section Épica 2: Dashboard y UX
+    Dashboard mobile CC: mob, 2026-08-01, 45d
+    Panel auditoría TD escritorio: desk, 2026-09-15, 45d
+    Portal público básico: pub, 2026-11-01, 30d
+  section Épica 3: Auditoría y Fases
+    Máquina de Estados Indicador: state, 2026-10-01, 45d
+    Filtros y reportes TD: filt, 2026-11-15, 30d
+    Control de transiciones Fase: trans, 2026-12-01, 30d
+  section Épica 4: Transparencia Pública
+    Consulta estados acreditación: cons, 2026-11-01, 30d
+    Descarga certificados: cert, 2026-12-01, 30d
+  section Épica 5: Notificaciones
+    Sistema notificaciones: notif, 2026-09-15, 45d
+    Alertas fechas límite: alert, 2026-10-15, 30d
+    Reportes ejecutivos: rep, 2026-12-15, 30d
+  section Validación y Piloto
+    Piloto con carreras: pilot, 2026-12-15, 45d
+    Ajustes post-piloto: adj, 2027-02-01, 30d
+    Lanzamiento v2.0: launch, 2027-03-01, 30d
 ```
 
-## 2. Desglose por fases
+## 2. Desglose por hitos
 
-- **Fase 1 (Q3 2026)**: validación de requisitos, definición de glosario, diseño de taxonomía y casos de uso.
-- **Fase 2 (Q4 2026)**: construcción del MVP, incluyendo repositorio de Evidence, dashboard CC mobile, búsquedas rápidas y auditoría de TD.
-- **Fase 3 (Q4 2026 — Q1 2027)**: piloto institucional, ajustes con feedback y preparación para despliegue ampliado.
+- **Q3 2026**: Validación de requisitos, desarrollo base de Evidencias y UX inicial.
+- **Q4 2026**: Implementación completa de Épicas 1-5, piloto institucional.
+- **Q1 2027**: Ajustes basados en feedback, preparación para lanzamiento.
+- **Q2 2027**: Lanzamiento v2.0 con integraciones adicionales.
