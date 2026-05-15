@@ -98,6 +98,65 @@ Fecha de registro: 2026-05-07
 - **Lecciones / reuso del prompt**:
   - Prompt estructurado con seccion \"Key Requirements\" clara permite generacion sistemática de FSD a partir de BRD
   - Exigencia de \"Exception Flows\" garantiza cobertura de error handling desde especificacion
+
+---
+
+## Registro de prompts utilizados en esta sesion (PRD v2.0 Generation)
+
+### PC-SIG-03 - Generador de PRD Multipropósito (Nivel Excelente)
+
+- **ID**: PC-SIG-03
+- **Fecha**: 2026-05-14
+- **Hora**: [TIMESTAMP ACTUAL]
+- **Solicitante**: Usuario del proyecto sigesa-docs (sesion actual)
+- **Agente / Entorno**: GitHub Copilot
+- **Modelo**: Grok Code Fast 1
+- **Tarea**: Generar suite completa de PRD v2.0 (Nivel Excelente) con 4 archivos separados: PRD.md, user_journeys.md, user_stories.md, roadmap.md, basándose en BRD.md, MRD.md y glosario.md.
+- **Objetivo**: Elevar el PRD a estándar de excelencia visual y exhaustividad técnica, incluyendo User Journeys con Mermaid, 20+ User Stories con Gherkin, y Roadmap con Gantt, respetando restricciones append-only, Máquina de Estados y lenguaje ubicuo.
+- **Contexto**:
+  - Archivos analizados: team/alexAlvarez/docs/context/03_domain_glossary.md, team/alexAlvarez/docs/01_brd/BRD.md, team/alexAlvarez/docs/02_mrd/MRD.md
+  - Proyecto: SIGESA (Sistema Gestor de Acreditaciones UMSS)
+  - Normativas: CEUB y ARCU-SUR
+  - Actores: [CC], [TD], [JD], [P]
+  - Restricciones: Append-Only en Evidencias, Fases avanzan solo si Indicadores aprobados
+- **Prompt usado (exacto)**: Ver archivo team/alexAlvarez/docs/prompts/PC-SIG-03.prompt.md
+- **Entradas auxiliares**:
+  - Directorio del proyecto: /home/alex/sigesa-docs
+  - Estructura de carpetas: team/alexAlvarez/docs/03_prd/ (archivos existentes para iteración)
+  - Requisitos de salida: 4 archivos separados con visuales Mermaid obligatorios, 20+ US INVEST/Gherkin, enlaces conceptuales
+- **Archivos generados o modificados**:
+  - team/alexAlvarez/docs/03_prd/PRD.md - Actualizado (índice maestro con 5 Épicas)
+  - team/alexAlvarez/docs/03_prd/user_journeys.md - Actualizado (4 journeys con narrativas profundas y Mermaid)
+  - team/alexAlvarez/docs/03_prd/user_stories.md - Actualizado (22 US agrupadas por Épicas con Gherkin)
+  - team/alexAlvarez/docs/03_prd/roadmap.md - Actualizado (Gantt visual por Épicas)
+  - team/alexAlvarez/docs/prompts/PC-SIG-03.prompt.md - Creado (almacenamiento del prompt)
+- **Cambios realizados**:
+  1. Creación del prompt PC-SIG-03.prompt.md con contrato de generación multipropósito
+  2. Lectura de glosario, BRD y MRD para basar la generación
+  3. Generación inicial de suite PRD: PRD.md como índice, user_journeys.md con 3 journeys y Mermaid, user_stories.md con 22 US, roadmap.md con Gantt
+  4. Iteración en user_journeys.md: Expansión narrativa con contexto emocional/problema/criticidad, adición de journey para [JD] con Mermaid
+  5. Creación de carpeta team/alexAlvarez/docs/prompts/ para almacenamiento de prompts
+  6. Actualización de log_interno.md con registro de sesión
+- **Validacion ejecutada**:
+  - Verificación de 4 archivos separados generados
+  - Confirmación de 22 US > 20 mínimo, con formato INVEST/Gherkin
+  - Validación de Mermaid renderizable en journeys y roadmap
+  - Cumplimiento de restricciones: append-only, lenguaje ubicuo, Máquina de Estados
+  - Enlaces conceptuales entre archivos
+- **Resultado obtenido**:
+  - Suite PRD v2.0 completa con excelencia visual y técnica
+  - 4 journeys con narrativas profundas y diagramas Mermaid
+  - 22 US trazadas a Épicas con criterios Gherkin
+  - Roadmap visual con Gantt por hitos
+  - Prompt almacenado para reutilización
+- **Estado**: Completado (PRD v2.0 finalizado e iterado)
+- **Riesgos / observaciones**:
+  - Iteración completada sobre PRD.md (ya finalizado como índice maestro)
+  - Cobertura ampliada a actor [JD] en journeys
+  - Sin violaciones a append-only o Máquina de Estados
+- **Lecciones / reuso del prompt**:
+  - Prompt con contrato estricto permite generación determinística de suites documentales
+  - Iteración post-generación mejora profundidad analítica sin romper estructura
   - Formal \"The system shall...\" lenguaje hace especificacion óperable por developers
 - **Proximos pasos**:
   - Post-revision M2 (wireframes UI), integrar trazabilidad con §9.1 (wireframe → pantalla → caso uso)
@@ -201,3 +260,61 @@ Fecha de registro: 2026-05-07
   - Pedir explícitamente la plantilla de referencia (`PROMPT_MAPPING.md`) mantiene homogeneidad entre el registro central y los logs por integrante.
 - **Próximos pasos**:
   - Si el curso o el equipo exige un único registro: copiar o resumir PM-ALEX-001/002 en `./PROMPT_MAPPING.md` con el siguiente `PM-0xx` disponible.
+
+---
+
+## 2026-05-14T12:00:00 — Prompt usuario (BRD SIGESA)
+
+**Prompt (texto completo):**
+
+```text
+/sigesa-generacion-documentos-negocio @templates/BRD_TEMPLATE.md Actúa como un Senior Technical Product Manager y Business Analyst experto en el dominio de la DUEA y acreditación universitaria (CEUB / ARCU-SUR).
+Tu tarea es redactar el Documento de Requisitos de Negocio (BRD) para el proyecto SIGESA y crear/guardar el archivo resultante estrictamente en la ruta: `alexAlvarez/docs/01_brd/BRD.md`.
+
+**PASO 0: LECTURA DE CONTEXTO OBLIGATORIA**
+Antes de generar el documento, debes leer y analizar rigurosamente los siguientes contextos para mantener la coherencia absoluta del dominio:
+1. Archivos en la raíz del proyecto (ej. `README.md`, `AGENTS.md`, `SKILLS.md`, `.cursor/rules/`).
+2. Documentación base dentro del directorio local: `alexAlvarez/docs/` (incluyendo `00_overview/definicion_producto.md`, `04_fsd/glosario.md` y cualquier plantilla existente).
+
+**PASO 1: RESOLUCIÓN DE AMBIGÜEDADES (CRÍTICO)**
+Si tras leer el contexto encuentras alguna ambigüedad, contradicción entre archivos de la raíz y la carpeta local, o falta definición en alguna métrica/alcance, DETENTE. Formula una lista de preguntas claras y directas para confirmar los detalles antes de redactar. NO ASUMAS NI INVENTES INFORMACIÓN.
+
+**PASO 2: INSTRUCCIONES DE GENERACIÓN (RÚBRICA EXCELENTE)**
+Si el contexto es claro, genera el BRD de forma exhaustiva, asegurando que se cubran obligatoriamente los siguientes 11 elementos funcionales:
+
+1. **Resumen Ejecutivo:** El problema actual de la dispersión documental y la solución (Single Source of Truth).
+2. **Objetivos SMART (Mínimo 3):** Específicos, medibles, alcanzables, relevantes y temporales.
+3. **Stakeholders y Matriz RACI Básica:** Definir el impacto en Jefatura DUEA, Técnico DUEA, Coordinador de Carrera [CC] y Público. (Nota: Es estrictamente "Coordinador de Carrera [CC]").
+4. **Business Case (Valor y Retorno):** Ahorro de horas-hombre, mitigación de riesgo de pérdida de acreditación y optimización de recursos operativos.
+5. **Alcance del Proyecto (Scope):** Qué está estrictamente IN-SCOPE (ej. flujo CEUB/ARCU-SUR) y qué está OUT-OF-SCOPE.
+6. **KPIs de Negocio:** Métricas de impacto en la UMSS (ej. % de procesos cerrados a tiempo).
+7. **Restricciones (Constraints):** Limitaciones normativas (obligatorio mencionar la inmutabilidad de la Evidencia / Append-Only), tecnológicas o de tiempo.
+8. **Supuestos (Assumptions):** Condiciones que asumimos como verdaderas.
+9. **Riesgos y Mitigación:** Mínimo 3 riesgos críticos y cómo el sistema los mitigará.
+10. **Gobernanza del Proyecto:** Quién aprueba los cambios en los requisitos normativos dentro del sistema.
+11. **Criterios de Éxito:** Las condiciones de negocio que deben cumplirse para dar el proyecto por finalizado.
+
+**REGLAS DE FORMATO, ESTILO Y PLANTILLAS:**
+- **Mejora Continua de Estructura:** Si existe una plantilla sugerida en tu contexto, tómala solo como una guía base. Tienes total autoridad para mejorar, reorganizar y optimizar la estructura del documento. Tu objetivo principal es que el BRD sea extremadamente claro, modular y facilite la extracción de requerimientos para las siguientes fases (MRD y PRD).
+- Escribe en formato Markdown (`.md`) limpio, utilizando jerarquía de encabezados (`#`, `##`, `###`), tablas para matrices y viñetas concisas.
+- **Trazabilidad:** Asigna un ID único a cada objetivo y regla de negocio mencionada (ej. `[BRD-OBJ-01]`, `[BRD-RSK-02]`).
+- Mantén un tono formal, gerencial y directo. Cero texto de relleno ("fluff").
+- No inventes tecnologías; el BRD trata sobre el "QUÉ" y el "POR QUÉ", no sobre el "CÓMO" técnico.
+
+Ejecuta el análisis ahora y procede con la creación del archivo en `alexAlvarez/docs/01_brd/BRD.md` o detente a realizar las preguntas necesarias.
+
+also keep in mind all the versions available of the brd for more context if needed
+```
+
+**Acción realizada:** Tras leer `docs/BRD_v1.md`, `team/borisAngulo/BRD_v2.md`, `context/03_domain_glossary.md`, `team/alexAlvarez/docs/README.md`, contextos en `team/alexAlvarez/docs/context/`, plantilla BRD y nota de rutas faltantes (`00_overview/definicion_producto.md`, `04_fsd/glosario.md`), se creó `team/alexAlvarez/docs/01_brd/BRD.md` (v1.0) con IDs trazables [BRD-*] y sin asumir cifras financieras no sustentadas.
+
+**Estado:** Completado.
+
+## Resumen de sesión 2026-05-14
+
+- Se generaron los artefactos del PRD para SIGESA en `team/alexAlvarez/docs/03_prd/`: `PRD.md`, `user_stories.md`, `user_journeys.md` y `roadmap.md`.
+- La generación se basó en `team/alexAlvarez/docs/01_brd/BRD.md`, `team/alexAlvarez/docs/02_mrd/MRD.md` y el glosario canónico en `context/03_domain_glossary.md`.
+- Se respetó el lenguaje ubicuo de SIGESA y la política de inmutabilidad de Evidence (append-only).
+- Se actualizó el registro de trazabilidad de prompts con base en `PROMPT_MAPPING.md`.
+- Se realizó la acción final de preparación para commit y push a `origin`.
+

@@ -1,0 +1,1 @@
+../../.claude/rules/03_sigesa_doc_orchestrator.mdc

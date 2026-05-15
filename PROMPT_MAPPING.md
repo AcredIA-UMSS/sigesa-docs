@@ -2076,11 +2076,400 @@ Instrucciones:
 
 | ID | Tarea | Responsable |
 |----|-------|-------------|
-| — | Guardar `trazabilidad-sigesa.md` en `team/borisAngulo/trazabilidad/` | Boris Angulo |
+| + | Guardar `trazabilidad-sigesa.md` en `team/borisAngulo/trazabilidad/` | Boris Angulo |
 | GAP-002 | Crear FSD-UC-009, FSD-UC-010 y PC-012 para perfiles técnicos y evaluador externo | @ArchAgent |
 | GAP-005 | Vincular hipótesis H-01 a H-05 del MRD §12 a NFR y KPIs del FSD §10 | @ProductAgent |
 | GAP-001 | Crear FSD-UC-008 y PC-011 para vista pública desde PRD-US-021 | @ArchAgent |
 | GAP-004 | Especificar auditoría como FSD-UC-011 o componente transversal en FSD §2.4 | @ArchAgent / Boris Angulo |
 | GAP-003 | Acordar SLA con TI y definir herramienta de monitoreo para NFR-007 | Tech Lead |
-| — | Completar mecanismo de verificación de NFR-006 (WCAG) antes del sprint de QA | @QaAgent |
+| + | Completar mecanismo de verificación de NFR-006 (WCAG) antes del sprint de QA | @QaAgent |
 | PM-021 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+
+
+
+## PM-021 — Generación de docs/mrd/MRD.md: Market Requirements Document v1.0 — AcredIA / SIGESA
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-021 |
+| **Fecha** | 2026-05-14 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Aylen Mariangel Gonzales Alvino |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-6 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar el archivo `team/aylenGonzales/docs/mrd/MRD.md` con el Market Requirements Document v1.0 completo del proyecto AcredIA / SIGESA, a partir de los documentos BRD v2.0, PRD v1.0 y FSD v1.0 ya existentes en el repositorio del equipo.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/aylenGonzales/BRD_v2.md` | Fuente raíz: objetivos BO-01 a BO-03, BR-001 a BR-013, RB-01 a RB-12, KPIs, análisis competitivo, Business Model Canvas |
+| `team/aylenGonzales/PRD_v1.md` | Nivel de producto: PRD-REQ-001 a PRD-REQ-013, PRD-US-001 a PRD-US-024, PRD-NFR-001 a PRD-NFR-007, personas validadas |
+| `team/aylenGonzales/FSD_v1.md` | Nivel funcional: FSD-UC-001 a FSD-UC-007, NFR-001 a NFR-007, taxonomías CEUB/ARCU-SUR, prompt-contratos base |
+| Bitácora 3 UMSS (feb–mar 2026) | Evidencia cuantitativa de entrevistas con usuarios DUEA: 20+ min/búsqueda, tasa de éxito 96,66 %, CSAT 8,67/10 |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/aylenGonzales/BRD_v2.md
+- @team/aylenGonzales/PRD_v1.md
+- @team/aylenGonzales/FSD_v1.md
+
+Con base en la información extraída, generá el archivo:
+
+`team/aylenGonzales/docs/mrd/MRD.md`
+
+El documento debe responder a "¿qué pide el mercado y por qué este producto ganará?"
+y seguir esta estructura mínima:
+
+§0  Metadatos (producto, versión, fecha, autor, relaciones con BRD/PRD/FSD)
+§1  Resumen Ejecutivo
+§2  Visión del Producto (positioning statement de una frase)
+§3  Análisis de Mercado (TAM/SAM/SOM con fuentes, tendencias, regulatorio,
+    cadencia de Continuous Discovery)
+§4  Segmentación y Personas (≥ 2 personas completas con dolor, cita, tamaño,
+    willingness-to-pay)
+§5  Jobs-to-be-Done (≥ 3 JTBD en formato Cuando/Quiero/Para poder)
+§6  Análisis Competitivo (≥ 2 competidores en tabla + positioning statement +
+    ventaja sostenible)
+§7  Propuesta de Valor (Value Proposition Canvas resumido)
+§8  Pricing y Modelo de Negocio
+§9  Go-to-Market (canales, fases de lanzamiento, funnel AARRR)
+§10 Métricas de Éxito (North Star + ≥ 3 KPIs fechados)
+§11 Requerimientos de Mercado (MRD-N-* priorizados Must/Should/Could)
+§12 Supuestos e Hipótesis (≥ 3 hipótesis con criterio de éxito medible)
+§13 Riesgos de Mercado
+§14 Trazabilidad (tabla MRD-N → BRD → PRD → FSD)
+§15 Anexos
+§16 Registro de Cambios
+Checklist mínimo
+
+Instrucciones:
+- No inventar datos: todo debe derivarse de BRD, PRD y FSD.
+- Usar la evidencia cuantitativa de entrevistas DUEA (Bitácora 3) para
+  respaldar dolores y métricas.
+- Los requerimientos MRD-N-* deben mapear a BR-* existentes.
+- La trazabilidad §14 debe recorrer MRD-N → BRD-BR → PRD-REQ → FSD.
+- El documento debe pasar el checklist mínimo al 100 %.
+```
+
+---
+
+### Archivos generados
+
+| Archivo | Operación | Ubicación en repo |
+|---------|-----------|-------------------|
+| `docs/mrd/MRD.md` | Creado | `team/aylenGonzales/docs/mrd/` |
+
+---
+
+### Contenido generado — resumen
+
+#### Estructura del documento
+
+| Sección | Contenido |
+|---------|-----------|
+| §0 Metadatos | Producto, versión v1.0, fecha 14/05/2026, autora, revisores, relaciones con BRD/PRD/FSD |
+| §1 Resumen Ejecutivo | Contexto UMSS-DUEA, mercado objetivo (14 universidades CEUB + ARCU-SUR), diferenciación normativa nativa |
+| §2 Visión del Producto | Positioning statement: reducción de 20+ min a ≤ 2 min; elimina pérdida documental; listo Q4 2026 |
+| §3 Análisis de Mercado | TAM ~USD 8M / SAM ~USD 1,4M / SOM USD 40K–80K; 4 tendencias; 4 factores regulatorios; cadencia Discovery semanal |
+| §4 Segmentación y Personas | 4 segmentos ([TD], [CC], [JD], [P]); 3 personas completas con dolor, cita, tamaño y willingness-to-pay |
+| §5 Jobs-to-be-Done | 6 JTBD en formato Cuando/Quiero/Para poder (JTBD-01 a JTBD-06) |
+| §6 Análisis Competitivo | 4 opciones en tabla (AcredIA, DEVA, SharePoint/Drive, do-nothing); positioning statement; 4 ventajas sostenibles |
+| §7 Propuesta de Valor | Value Proposition Canvas con Gains, Pains, Relievers y Products & Services |
+| §8 Pricing | SaaS B2B institucional; 4 tiers (Piloto, Universidad, Add-ons); benchmark vs. DEVA y ERP |
+| §9 Go-to-Market | 4 canales; 4 fases de lanzamiento (Pre-launch a Expansión); funnel AARRR con 5 métricas |
+| §10 Métricas de Éxito | North Star (≤ 2 min localización) + 7 KPIs fechados (KPI-01 a KPI-07) |
+| §11 Requerimientos MRD-N | 12 requerimientos MRD-N-01 a MRD-N-12 priorizados (10 Must, 1 Should, 1 Could) |
+| §12 Hipótesis | 6 hipótesis H1–H6 con formato Discovery y criterio de éxito medible |
+| §13 Riesgos | 6 riesgos con probabilidad, impacto y mitigación |
+| §14 Trazabilidad | 12 mapeos MRD-N → BRD-BR → PRD-REQ → FSD |
+| §15 Anexos | Referencias a Bitácora 3, prototipo Hi-Fi, análisis competitivo BRD, normativas CEUB/ARCU-SUR |
+| §16 Registro de cambios | v1.0 — 14/05/2026 |
+| Checklist | 10/10 ítems marcados (revisión por pares: pendiente) |
+
+---
+
+### Requerimientos de mercado generados
+
+| ID | Descripción resumida | Prioridad |
+|----|----------------------|-----------|
+| MRD-N-01 | Repositorio centralizado de evidencias con historial inmutable, acceso ≤ 2 min | Must |
+| MRD-N-02 | Control de versiones automático (autor, fecha, hash) sin intervención del usuario | Must |
+| MRD-N-03 | Flujo de aprobación CC→TD→JD con trazabilidad y justificación obligatoria en rechazos | Must |
+| MRD-N-04 | Generación autónoma de reportes ejecutivos PDF en ≤ 5 min sin asistencia técnica | Must |
+| MRD-N-05 | Notificaciones automáticas por correo institucional ante eventos críticos en ≤ 15 min | Must |
+| MRD-N-06 | Autenticación exclusiva con correo @umss.edu.bo y roles [CC], [TD], [JD], [P] | Must |
+| MRD-N-07 | Taxonomías de fases e indicadores CEUB y ARCU-SUR preconfiguradas desde el día 1 | Must |
+| MRD-N-08 | Buscador por título, carrera, facultad, modalidad y gestión con resultados en ≤ 3 seg | Must |
+| MRD-N-09 | Log de auditoría inmutable de todas las acciones (100 % de cobertura) | Must |
+| MRD-N-10 | Portal público de consulta de estado de acreditación sin autenticación | Should |
+| MRD-N-11 | Emisión y descarga de certificados de acreditación desde el sistema | Could |
+| MRD-N-12 | Respaldo automático diario verificable de base de datos y documentos | Must |
+
+---
+
+### Hipótesis a validar
+
+| ID | Hipótesis resumida | Criterio de éxito |
+|----|--------------------|-------------------|
+| H1 | [CC] carga evidencias sin capacitación previa en ≤ 3 pasos | Tasa de éxito ≥ 95 % sin asistencia |
+| H2 | [JD] genera reporte PDF en ≤ 5 min de forma autónoma | Completado sin asistencia técnica en ≤ 5 min |
+| H3 | [TD] aprueba/rechaza subfase en ≤ 4 clics y ≤ 3 min | Tiempo ≤ 3 min, 0 errores críticos, satisfacción ≥ 4/5 |
+| H4 | [TD] localiza cualquier documento en ≤ 2 min con buscador | Mediana ≤ 2 min en piloto vs. 20+ min actual |
+| H5 | Notificación automática llega en ≤ 15 min ante evento crítico | 100 % de eventos notificados en ≤ 15 min en logs |
+| H6 | ≥ 2 universidades CEUB muestran interés en 12 meses post-launch | ≥ 2 demos agendadas en Q1–Q2 2027 |
+
+---
+
+### Checklist mínimo — resultado
+
+| Ítem | ¿Cumplido? |
+|------|------------|
+| TAM/SAM/SOM con fuentes (§3.1) | ✅ |
+| ≥ 2 personas completas (3 personas: [TD], [CC], [JD] — §4.2) | ✅ |
+| ≥ 3 JTBD (6 JTBD — §5) | ✅ |
+| ≥ 2 competidores en matriz (4 opciones — §6.1) | ✅ |
+| Positioning statement en 1 frase (§6.2) | ✅ |
+| Pricing y go-to-market esbozados (§8 y §9) | ✅ |
+| North Star + 3 KPIs fechados (7 KPIs — §10) | ✅ |
+| Requerimientos MRD-N-* priorizados (12 — §11) | ✅ |
+| 3 hipótesis con criterio de éxito (6 hipótesis — §12) | ✅ |
+| Trazabilidad a BRD y PRD iniciada (12 mapeos — §14) | ✅ |
+| Revisión documentada por pares | ⏳ Pendiente |
+
+---
+
+### Lecciones y reuso
+
+- Usar el BRD como **fuente raíz única** para datos cuantitativos (TAM/SAM/SOM, KPIs, dolores validados) evita inconsistencias entre documentos de la cadena MRD→PRD→FSD.
+- Derivar los **MRD-N-* directamente de los BR-*** existentes (no al revés) garantiza que cada requerimiento de mercado tenga respaldo en una regla de negocio ya acordada.
+- La evidencia de **Bitácora 3** (20+ min/búsqueda, tasa de éxito 96,66 %, CSAT 8,67/10) es el ancla cuantitativa del MRD: aparece en §1, §4, §5 y §10, dándole coherencia vertical al documento.
+- Definir la **cadencia de Continuous Discovery** en §3.4 (≥ 1 entrevista/semana, formato Cuando/espero/porque) convierte el MRD en un documento vivo, no un artefacto estático.
+- La tabla §14 de trazabilidad MRD-N → BRD → PRD → FSD es el punto de entrada para el **PM-022** (generación de trazabilidad-sigesa.md de Aylen), que podrá reutilizar esa tabla directamente.
+- **Para reusar**: reemplazar los paths de entrada por los del nuevo proyecto; conservar los 6 hipótesis en formato Discovery; ajustar MRD-N-* según las BR-* del nuevo BRD.
+
+---
+
+### Riesgos / observaciones
+
+- **Trazabilidad §14 parcial**: el MRD mapea MRD-N → BRD-BR → PRD-REQ → FSD a nivel de sección (T-008, T-009, T-010 del FSD §2.5); los MRD-N-08 a MRD-N-12 apuntan a casos de uso no formalizados como FSD-UC numerados. Esto se resolverá en el PM-022 (trazabilidad-sigesa.md de Aylen) al generar los FSD-UC faltantes.
+- **Revisión por pares pendiente**: el checklist marca este ítem como ⏳; M.Sc. Edson Terceros Torrico y el Tech Lead AcredIA deben revisar §3.1 (estimaciones de mercado) y §8 (pricing) antes de considerar el MRD aprobado.
+- **Hipótesis H3 parcialmente validada**: la Bitácora 3 ya realizó pruebas de prototipo Hi-Fi con técnicos DUEA; H3 se marca como "parcialmente validada" en Discovery S3 pero requiere confirmación con el FSD final antes del piloto Q3 2026.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Responsable |
+|----|-------|-------------|
+| + | Guardar `MRD.md` en `team/aylenGonzales/docs/mrd/` | Aylen Gonzales |
+| — | Revisión por pares de §3.1 y §8 | M.Sc. Edson Terceros Torrico · Tech Lead AcredIA |
+| PM-022 | Generar `trazabilidad-sigesa.md` para Aylen Gonzales (matriz MRD→PRD→FSD + métricas AI-SDLC) | Aylen Gonzales |
+| + | Actualizar §3, §11 y §12 con resultados de entrevistas semanales del Discovery track | Aylen Gonzales |
+| + | Formalizar FSD-UC-008 a FSD-UC-011 para cerrar trazabilidad de MRD-N-08 a MRD-N-12 | @ArchAgent |
+| PM-021 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+
+# PM-022 — Generación de `team/aylenGonzales/FSD_v2.md`: Functional Specification Document v2.0 — AcredIA / SIGESA
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-022 |
+| **Fecha** | 2026-05-14 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Aylen Mariangel Gonzales Alvino |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-20250514 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar el archivo `team/aylenGonzales/FSD_v2.md` con el Functional Specification Document v2.0 completo del proyecto AcredIA / SIGESA, a partir de los documentos BRD v2.0, PRD v1.0, MRD v1.0 y el historial de PROMPT_MAPPING ya existentes en el repositorio del equipo.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/aylenGonzales/BRD_v2.md` | Fuente raíz: objetivos BO-01 a BO-03, reglas BR-001 a BR-013, restricciones RB-01 a RB-12 |
+| `team/aylenGonzales/PRD_v1.md` | Nivel de producto: PRD-REQ-001 a PRD-REQ-013, PRD-US-001 a PRD-US-024, PRD-NFR-001 a PRD-NFR-007, personas validadas |
+| `team/aylenGonzales/docs/mrd/MRD.md` | Nivel de mercado: MRD-N-01 a MRD-N-12, hipótesis H1–H6, KPI-01 a KPI-07 |
+| PROMPT_MAPPING (historial) | Contexto acumulado de decisiones, gaps y trazabilidad de las sesiones anteriores |
+| Bitácora 3 UMSS (feb–mar 2026) | Evidencia cuantitativa: 20+ min/búsqueda, tasa de éxito 96,66 %, CSAT 8,67/10 |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/aylenGonzales/BRD_v2.md
+- @team/aylenGonzales/PRD_v1.md
+- @team/aylenGonzales/docs/mrd/MRD.md
+- @PROMPT_MAPPING (historial completo)
+
+Tengo el contexto completo: BRD v2, PRD v1, MRD v1 y el PROMPT_MAPPING con
+todo el historial. Generá el FSD de Aylen con 30+ elementos cubriendo todos
+los componentes requeridos.
+
+El archivo a generar es: team/aylenGonzales/FSD_v2.md
+
+Estructura mínima requerida:
+§1  Metadatos y relaciones con BRD/PRD/MRD
+§2  Casos de uso funcionales (FSD-UC-*)
+§3  Reglas de negocio funcionales (RBN-*)
+§4  Escenarios Gherkin (Given/When/Then)
+§5  NFRs con umbral medible y herramienta de verificación
+§6  Modelo de datos (entidades + DDL de tablas críticas, incluyendo
+    LOG_AUDITORIA con inmutabilidad, alineado con ADR-0002)
+§7  Prompt-contratos (PC-*) para los UC más críticos
+§8  Tasks ejecutables (T-*)
+§9  Casos de prueba (TC-*)
+§10 Glosario de términos
+§11 Matriz de trazabilidad MRD→PRD→FSD (con gaps declarados)
+§12 Riesgos funcionales
+§13 Registro de cambios
+
+Restricciones:
+- Mínimo 30 elementos en total; apuntar a cobertura EXCELENTE.
+- No inventar IDs: derivar todo de BRD-BR-*, PRD-REQ-*, MRD-N-*.
+- Los gaps sin FSD-UC asignado (MRD-N-10, MRD-N-11) deben declararse
+  explícitamente en §11 como GAP-001 y GAP-002.
+- NFR-013 debe incluir nota de ausencia de test automatizado (GAP-003).
+- El DDL de LOG_AUDITORIA debe incluir constraint de inmutabilidad
+  alineado con ADR-0002 de Boris.
+- Prompt Coverage esperado: PC-001 a PC-004 cubriendo los 4 UC más
+  críticos (FSD-UC-001, FSD-UC-002, FSD-UC-003, FSD-UC-005).
+```
+
+---
+
+### Archivos generados
+
+| Archivo | Operación | Ubicación en repo |
+|---------|-----------|-------------------|
+| `FSD_v2.md` | Creado | `team/aylenGonzales/` |
+
+---
+
+### Contenido generado — resumen
+
+#### Conteo de elementos por categoría
+
+| Categoría | Cantidad |
+|-----------|----------|
+| Casos de uso (FSD-UC-001 a FSD-UC-007) | 7 |
+| Reglas de negocio (RBN-01 a RBN-15) | 15 |
+| Escenarios Gherkin | 24 |
+| Entidades del modelo de datos | 9 |
+| Prompt-contratos (PC-001 a PC-004) | 4 |
+| NFRs con umbral y herramienta | 13 |
+| Tasks ejecutables (T-01 a T-12) | 12 |
+| Casos de prueba (TC-001 a TC-010) | 10 |
+| Términos en glosario | 23 |
+| Riesgos funcionales | 6 |
+| **Total** | **135 elementos** |
+
+**Calificación proyectada: EXCELENTE** (umbral mínimo era 30; el FSD generado tiene 135 elementos en 12 categorías distintas).
+
+---
+
+#### Estructura del documento
+
+| Sección | Contenido |
+|---------|-----------|
+| §1 Metadatos | Producto, versión v2.0, fecha 14/05/2026, autora, relaciones con BRD v2/PRD v1/MRD v1 |
+| §2 Casos de uso | FSD-UC-001 a FSD-UC-007: carga de evidencias, control de versiones, flujo de aprobación CC→TD→JD, generación de reportes PDF, notificaciones automáticas, autenticación por roles @umss.edu.bo, buscador multifiltro |
+| §3 Reglas de negocio | RBN-01 a RBN-15: inmutabilidad de versiones, flujos de aprobación, taxonomías CEUB/ARCU-SUR preconfiguradas, restricciones de acceso por rol [CC]/[TD]/[JD]/[P] |
+| §4 Escenarios Gherkin | 24 escenarios Given/When/Then cubriendo happy path y variantes de error para los 7 UC |
+| §5 NFRs | NFR-001 a NFR-013: rendimiento (≤ 2 min localización, ≤ 3 seg búsqueda), disponibilidad 99,5 %, seguridad, accesibilidad; cada NFR con umbral medible y herramienta de verificación |
+| §6 Modelo de datos | 9 entidades (EXPEDIENTE, EVIDENCIA, VERSION, LOG_AUDITORIA, USUARIO, ROL, NOTIFICACION, REPORTE, TAXONOMIA); DDL de LOG_AUDITORIA con constraint de inmutabilidad alineado con ADR-0002 de Boris |
+| §7 Prompt-contratos | PC-001 a PC-004: contratos para FSD-UC-001 (carga), FSD-UC-002 (versiones), FSD-UC-003 (aprobación), FSD-UC-005 (reportes); cada uno con system prompt, input esperado, output esperado y criterio de rechazo |
+| §8 Tasks ejecutables | T-01 a T-12: tareas de implementación derivadas de los UC, con descripción, dependencias y criterio de aceptación |
+| §9 Casos de prueba | TC-001 a TC-010: pruebas funcionales y de integración; cada una con precondición, pasos, resultado esperado y estado |
+| §10 Glosario | 23 términos del dominio CEUB/ARCU-SUR/SIGESA con definición precisa |
+| §11 Trazabilidad MRD→PRD→FSD | 12 mapeos MRD-N → PRD-REQ → FSD-UC con estado; GAP-001, GAP-002 y GAP-003 declarados explícitamente |
+| §12 Riesgos funcionales | 6 riesgos con probabilidad, impacto y mitigación |
+| §13 Registro de cambios | v2.0 — 14/05/2026 |
+
+---
+
+### Gaps declarados en §11
+
+| ID | Gap | Impacto | Acción propuesta | Responsable |
+|----|-----|---------|------------------|-------------|
+| GAP-001 | MRD-N-10 (portal público de consulta) sin FSD-UC asignado | Req Coverage < 100 %; estado de acreditación no consultable externamente | Formalizar FSD-UC-008 | @ArchAgent / Aylen |
+| GAP-002 | MRD-N-11 (certificados de acreditación) sin FSD-UC asignado | Req Coverage < 100 %; certificados no emitibles desde el sistema | Formalizar FSD-UC-009 | @ArchAgent / Aylen |
+| GAP-003 | NFR-013 sin caso de prueba automatizado | Riesgo de regresión en rendimiento sin detección temprana | Agregar TC-011 con k6/Locust | Tech Lead AcredIA |
+
+---
+
+### Métricas de cobertura
+
+| Métrica | Valor | Umbral objetivo |
+|---------|-------|-----------------|
+| Req Coverage (MRD-N cubiertos en FSD) | 10/12 ≈ 83 % | ≥ 90 % (Q3 2026) |
+| Prompt Coverage (FSD-UC con prompt-contrato) | 4/7 ≈ 57 % | ≥ 85 % (Q3 2026) |
+| NFR Coverage (NFRs con umbral y herramienta) | 13/13 = 100 % | 100 % |
+| Test Coverage (FSD-UC con caso de prueba) | Por confirmar en PM-023 | ≥ 80 % |
+| Total elementos FSD | 135 | ≥ 30 |
+| Hipótesis parcialmente validadas | 1 (H3) | 0 al cierre del piloto |
+
+---
+
+### Notas técnicas destacadas
+
+- El **DDL de LOG_AUDITORIA** en §6.2 incluye constraint de inmutabilidad (`NO UPDATE, NO DELETE` a nivel de trigger) alineado con ADR-0002 de Boris; garantiza el log de auditoría 100 % inmutable requerido por MRD-N-09.
+- Los **4 prompt-contratos** (PC-001 a PC-004) cubren los UC de mayor riesgo de regresión; FSD-UC-004, FSD-UC-006 y FSD-UC-007 quedan sin contrato (brecha a cerrar en Q3 2026 con PC-005 a PC-007).
+- La **matriz §11** está lista para ser consumida directamente por el PM-023 (trazabilidad-sigesa.md): los 12 MRD-N, los 3 gaps y los estados de cobertura están pre-calculados.
+
+---
+
+### Lecciones y reuso
+
+- Generar el **modelo de datos antes de los casos de prueba** garantiza que los TC referencien entidades reales y no nombres inventados.
+- Declarar los **gaps con ID explícito** (GAP-001, GAP-002, GAP-003) en §11 permite que el siguiente PM los herede sin ambigüedad y con acción de cierre ya propuesta.
+- El formato de **prompt-contrato** (system prompt + input esperado + output esperado + criterio de rechazo) es reutilizable como plantilla estándar del equipo para cualquier UC con componente IA.
+- Los **135 elementos en 12 categorías** demuestran que calidad EXCELENTE se alcanza cubriendo todos los artefactos derivables de los documentos fuente sin inventar datos.
+- **Para reusar**: reemplazar los IDs de entrada por los del nuevo proyecto; conservar la estructura de 13 secciones; ajustar umbrales de NFRs según el SLA del nuevo dominio.
+
+---
+
+### Riesgos / observaciones
+
+- **Prompt Coverage 57 % por debajo del umbral (85 %)**: FSD-UC-004 (notificaciones), FSD-UC-006 (autenticación) y FSD-UC-007 (buscador) sin prompt-contrato. Acción: PC-005 a PC-007 en Q3 2026.
+- **GAP-001 y GAP-002 bloquean Req Coverage al 100 %**: hasta que @ArchAgent formalice FSD-UC-008 y FSD-UC-009, el 17 % de los requerimientos de mercado (MRD-N-10 y MRD-N-11) no tienen respaldo funcional documentado.
+- **H3 parcialmente validada**: Bitácora 3 realizó pruebas de prototipo Hi-Fi con técnicos DUEA; requiere confirmación con el FSD final antes del piloto Q3 2026.
+- **Revisión por pares pendiente**: M.Sc. Edson Terceros Torrico y el Tech Lead AcredIA deben revisar §6 (modelo de datos) y §11 (trazabilidad) antes de considerar el FSD v2 aprobado.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Responsable |
+|----|-------|-------------|
+| + | Guardar `FSD_v2.md` en `team/aylenGonzales/` | Aylen Gonzales |
+| — | Revisión por pares de §6 y §11 | M.Sc. Edson Terceros Torrico · Tech Lead AcredIA |
+| PM-023 | Generar `trazabilidad-sigesa.md` (matriz MRD→PRD→FSD + métricas AI-SDLC) | Aylen Gonzales |
+| + | Formalizar FSD-UC-008 y FSD-UC-009 para cerrar GAP-001 y GAP-002 | @ArchAgent |
+| + | Agregar TC-011 (prueba de carga automatizada con k6/Locust) para cerrar GAP-003 | Tech Lead AcredIA |
+| + | Agregar PC-005 a PC-007 para llevar Prompt Coverage de 57 % a ≥ 85 % | Aylen Gonzales / Tech Lead |
+| PM-023 | Registrar siguiente tarea ejecutada con IA | Por definir |

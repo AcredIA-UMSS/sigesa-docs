@@ -1,4 +1,6 @@
-# AGENTS.md v1.0
+# AGENTS.md (resumen histórico)
+
+> **Versión canónica ampliada (v1.0 gobierno, skills, Cursor Rules):** ver `AGENTS.md` en la raíz del repositorio.
 
 Este documento define la arquitectura agéntica para el ciclo de vida de desarrollo (AI-SDLC) de SIGESA. Especifica los roles, responsabilidades y alcances de cada agente de IA (ej. Cursor, Claude, GitHub Copilot) que interactuará con este repositorio.
 
