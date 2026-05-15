@@ -13,11 +13,11 @@
 | Revisores | DUEA, Tech Lead, QA |
 | Estado | Borrador |
 | Relación con BRD | BRD v1.0 / BRD v2.0 |
-| Fuentes | `team/alexAlvarez/docs/02_mrd/MRD.md`, `team/aylenGonzales/03_prd/PRD_v1.md`, `team/borisAngulo/docs/01_brd/BRD_v2.md` |
+| Fuentes | `team/alexAlvarez/docs/02_mrd/MRD.md`, `team/aylenGonzales/03_prd/PRD_v1.md`, `team/borisAngulo/docs/01_brd/BRD_v2.md`, `team/Marlene/02_mrd/MRD.md` |
 
 ## 1. Resumen ejecutivo
 
-SIGESA transforma el proceso de acreditación de la DUEA de la UMSS, reemplazando el status quo manual de Excel, WhatsApp, correo y USBs por una plataforma única de evidencias inmutables. El producto atiende a Coordinadores de Carrera, Técnicos DUEA y público externo, con foco en búsquedas rápidas, trazabilidad documental y transparencia.
+SIGESA transforma el proceso de acreditación de la DUEA de la UMSS, reemplazando el status quo manual de Excel, WhatsApp, correo y USBs por una plataforma única de evidencias inmutables. El producto atiende a Coordinadores de Carrera, Técnicos DUEA y público externo, con foco en búsquedas rápidas, trazabilidad documental y transparencia. Este MRD incorpora análisis de mercado y adopción institucional de `team/Marlene/02_mrd/MRD.md`.
 
 ## 2. Visión del producto
 

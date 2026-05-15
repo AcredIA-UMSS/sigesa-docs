@@ -2565,4 +2565,39 @@ Restricciones:
 - Incluir referencias explícitas a AGENTS.md y PROMPT_MAPPING.md.
 
 ### Próximos pasos
+
+### PM-010 - Registrar prompts de team/alexAlvarez
+- **ID**: PM-010
+- **Fecha**: 2026-05-15
+- **Hora**: 14:30 (UTC-4)
+- **Solicitante**: Alex Álvarez
+- **Agente / Entorno**: Manual / repositorio
+- **Modelo**: N/A
+- **Tarea**: Registrar en `PROMPT_MAPPING.md` las prompts existentes en `team/alexAlvarez/prompts/` y asegurar trazabilidad conforme a las reglas del repositorio.
+- **Objetivo**: Incluir todas las prompts de Alex en el registro central sin modificar su contenido original.
+- **Contexto**:
+  - Rutas: `team/alexAlvarez/prompts/sigesa-api-contract-designer.prompt.md`, `team/alexAlvarez/prompts/sigesa-arquitectura-tecnica-ia.prompt.md`, `team/alexAlvarez/prompts/sigesa-auditor-trazabilidad-dti.prompt.md`, `team/alexAlvarez/prompts/sigesa-db-architect-append-only.prompt.md`.
+  - Requisito: seguir formato definido en la sección de plantilla de `PROMPT_MAPPING.md`.
+- **Prompt usado (exacto)**:
+  ```text
+  Registra en PROMPT_MAPPING.md todas las prompts existentes en team/alexAlvarez/prompts/ siguiendo el formato de entradas PM-001..PM-009. No modifiques ningún archivo de prompt, solo referencia sus rutas y propósitos.
+  ```
+- **Archivos generados o modificados**:
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-010).
+- **Cambios realizados**:
+  - Agregado un registro específico en el mapa de prompts para los archivos del equipo Alex.
+  - Documentada la inclusión de las prompts existentes sin alterar los archivos fuente.
+- **Validacion ejecutada**:
+  - Verificación de existencia de las cuatro rutas de prompts en `team/alexAlvarez/prompts/`.
+  - Revisión del registro final para asegurar formato uniforme y estilo concordante con entradas anteriores.
+- **Resultado obtenido**:
+  - Las prompts de `team/alexAlvarez/prompts/` quedan integradas en el monitoreo central de prompts.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - No se modificaron los archivos de prompt; si se requiere versionamiento de prompt, debe hacerse en su propia entrada futura.
+- **Lecciones / reuso del prompt**:
+  - Registrar prompts existentes como metadatos incrementa la trazabilidad sin impactar artefactos ya generados.
+- **Próximos pasos**:
+  - Confirmar con el equipo Alex si desean entradas adicionales (por prompt) o un registro colectivo.
+
 | PM-024 | Registrar siguiente tarea ejecutada con IA | Por definir |

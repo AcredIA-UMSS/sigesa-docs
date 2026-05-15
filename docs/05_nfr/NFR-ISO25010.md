@@ -11,7 +11,7 @@
 | Fecha | 15/05/2026 |
 | Autor | Equipo SIGESA |
 | Estado | Borrador |
-| Referencias | `docs/01_brd/BRD.md`, `docs/03_prd/PRD.md`, `docs/04_fsd/FSD.md` |
+| Referencias | `docs/01_brd/BRD.md`, `docs/03_prd/PRD.md`, `docs/04_fsd/FSD.md`, `team/Marlene/05_nfr/CU_BDD.md` |
 
 ## 1. Introducción
 

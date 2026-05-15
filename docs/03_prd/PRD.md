@@ -16,6 +16,7 @@
 | MRD de referencia | `docs/02_mrd/MRD.md` |
 | Glosario de dominio | `context/03_domain_glossary.md` |
 | FSD de referencia | `docs/04_fsd/FSD.md` |
+| Fuentes adicionales | `team/Marlene/03_prd/PRD.md` |
 
 ## 1. Resumen ejecutivo
 

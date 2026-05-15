@@ -8,7 +8,7 @@
 | Fecha | 15/05/2026 |
 | Sponsor de negocio | Jefatura DUEA UMSS *(por confirmar en acta institucional)* |
 | Estado | Borrador |
-| Fuentes de contexto | `team/alexAlvarez/docs/01_brd/BRD.md`, `team/aylenGonzales/01_brd/BRD_v2_aylen.md`, `team/borisAngulo/docs/01_brd/BRD_v2.md`, `context/03_domain_glossary.md`, `docs/BRD_v1.md` |
+| Fuentes de contexto | `team/alexAlvarez/docs/01_brd/BRD.md`, `team/aylenGonzales/01_brd/BRD_v2_aylen.md`, `team/borisAngulo/docs/01_brd/BRD_v2.md`, `team/Marlene/01_brd/BRD.md`, `context/03_domain_glossary.md`, `docs/BRD_v1.md` |
 
 ## 1. Resumen ejecutivo
 
@@ -16,7 +16,7 @@
 
 **Propuesta de valor:** SIGESA centraliza el ciclo de acreditación en un solo sistema, modelando procesos, fases, dimensiones, criterios, indicadores y evidencias. Cada evidencia queda versionada, auditada y asociada a su indicador normativo.
 
-**Impacto esperado:** Reducción del tiempo de localización documental de 20+ minutos a ≤ 2 minutos, eliminación de pérdidas de evidencia por gestión y generación de reportes ejecutivos en menos de 5 minutos.
+**Impacto esperado:** Reducción del tiempo de localización documental de 20+ minutos a ≤ 2 minutos, eliminación de pérdidas de evidencia por gestión y generación de reportes ejecutivos en menos de 5 minutos. Este BRD incorpora también la visión institucional y de gobernanza estratégica documentada en `team/Marlene/01_brd/BRD.md`.
 
 ## 2. Objetivos SMART
 
