@@ -16,6 +16,9 @@
 | FSD-UC-005 | Generación de Reportes Ejecutivos PDF | [JD] Jefe de Departamento | Must |
 | FSD-UC-006 | Autenticación y Gestión de Roles | [Todos] | Must |
 | FSD-UC-007 | Búsqueda Multifiltro de Documentos | [TD] / [JD] | Must |
+| FSD-UC-008 | Portal Público de Consulta de Estado | [P] Público sin autenticación | Should |
+| FSD-UC-009 | Emisión y Descarga de Certificados de Acreditación | [JD] Jefe de Departamento | Could |
+| FSD-UC-010 | Respaldo Automático Diario Verificable | Sistema (scheduler) | Must |
 
 ---
 
@@ -393,12 +396,208 @@ Scenario: Búsqueda sin resultados
 
 ---
 
+---
+
+## FSD-UC-008 — Portal Público de Consulta de Estado
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | FSD-UC-008 |
+| **Nombre** | Portal Público de Consulta de Estado de Acreditación |
+| **Actor principal** | [P] Usuario público (sin autenticación) |
+| **Actores secundarios** | Sistema |
+| **Prioridad** | Should |
+| **Trazabilidad** | MRD-N-10 · BR-010 · PRD-REQ-010 — cierra GAP-001 |
+
+### Precondiciones
+- Al menos una carrera con estado de acreditación registrado en el sistema.
+- El portal público está habilitado por el administrador.
+
+### Flujo principal
+1. Usuario externo accede a la URL pública del portal (sin login).
+2. Usuario selecciona facultad y/o carrera desde una lista desplegable.
+3. Sistema consulta el estado de acreditación vigente de la carrera.
+4. Sistema muestra: nombre de la carrera, facultad, estado (`EN_PROCESO`, `ACREDITADA`, `VENCIDA`), fecha de última actualización y fase CEUB actual.
+5. Usuario puede descargar el resumen público en PDF (sin datos internos del expediente).
+
+### Flujos alternativos
+| Paso | Condición | Acción |
+|------|-----------|--------|
+| 3a | Carrera sin estado registrado | Sistema muestra "Información no disponible aún" |
+| 5a | Error en generación de PDF | Sistema ofrece vista en pantalla como alternativa |
+
+### Postcondiciones
+- No se modifican datos del sistema.
+- Consulta registrada en LOG_AUDITORIA (acción = `PUBLIC_QUERY`, sin datos de usuario).
+
+### Reglas de negocio aplicables
+`RBN-10` · `RBN-11`
+
+### Escenarios Gherkin
+
+```gherkin
+Scenario: Consulta pública exitosa de carrera acreditada
+  Given el portal público está habilitado
+  And la carrera "Ingeniería de Sistemas" tiene estado ACREDITADA
+  When un usuario externo selecciona esa carrera sin autenticarse
+  Then el sistema muestra estado "ACREDITADA", facultad y fecha de actualización
+  And el sistema registra PUBLIC_QUERY en el log sin datos personales
+
+Scenario: Consulta de carrera sin información disponible
+  Given la carrera "Licenciatura en Arte" no tiene estado registrado
+  When un usuario externo la selecciona
+  Then el sistema muestra "Información no disponible aún"
+  And no expone ningún dato interno del expediente
+
+Scenario: Descarga de resumen público en PDF
+  Given la carrera tiene estado ACREDITADA
+  When el usuario externo solicita descargar el resumen
+  Then el sistema genera un PDF sin datos internos del expediente
+  And el PDF incluye solo: nombre, facultad, estado y fecha de actualización
+```
+
+---
+
+## FSD-UC-009 — Emisión y Descarga de Certificados de Acreditación
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | FSD-UC-009 |
+| **Nombre** | Emisión y Descarga de Certificados de Acreditación |
+| **Actor principal** | [JD] Jefe de Departamento |
+| **Actores secundarios** | Sistema generador de documentos, [TD] |
+| **Prioridad** | Could |
+| **Trazabilidad** | MRD-N-11 · BR-011 · PRD-REQ-011 — cierra GAP-002 |
+
+### Precondiciones
+- Usuario autenticado con rol `[JD]`.
+- La carrera tiene estado `ACREDITADA` con evidencias en `APROBADO_FINAL`.
+- La acreditación fue registrada por el administrador del sistema.
+
+### Flujo principal
+1. [JD] accede al módulo de certificados.
+2. [JD] selecciona la carrera y el período de acreditación.
+3. Sistema verifica que el estado sea `ACREDITADA` y que la vigencia no haya expirado.
+4. Sistema genera el certificado PDF con: nombre de la carrera, facultad, período de acreditación, marco normativo (CEUB/ARCU-SUR), número de certificado único y QR de verificación.
+5. [JD] descarga el certificado firmado digitalmente.
+6. Sistema registra la emisión en LOG_AUDITORIA (acción = `CERTIFICATE_ISSUED`).
+
+### Flujos alternativos
+| Paso | Condición | Acción |
+|------|-----------|--------|
+| 3a | Estado distinto de `ACREDITADA` | Sistema bloquea la emisión y muestra el estado actual |
+| 3b | Acreditación vencida | Sistema informa la fecha de vencimiento y sugiere proceso de renovación |
+| 4a | Error en generación PDF | Sistema notifica al [JD] y registra el fallo en el log |
+
+### Postcondiciones
+- Certificado registrado con número único e inmutable en el sistema.
+- QR de verificación activo y consultable públicamente.
+- LOG_AUDITORIA actualizado con `CERTIFICATE_ISSUED`.
+
+### Reglas de negocio aplicables
+`RBN-11` · `RBN-12`
+
+### Escenarios Gherkin
+
+```gherkin
+Scenario: Emisión exitosa de certificado
+  Given la carrera "Ing. de Sistemas" tiene estado ACREDITADA vigente
+  And el [JD] está autenticado
+  When solicita emitir el certificado para el período 2026-I
+  Then el sistema genera el PDF con número único y QR de verificación
+  And el log registra CERTIFICATE_ISSUED con timestamp y usuario
+
+Scenario: Bloqueo por estado no acreditado
+  Given la carrera "Lic. en Arte" tiene estado EN_PROCESO
+  When el [JD] intenta emitir un certificado
+  Then el sistema muestra "La carrera no tiene acreditación vigente"
+  And no genera ningún documento
+
+Scenario: Certificado con acreditación vencida
+  Given la carrera tiene acreditación vencida al 2025-12-31
+  When el [JD] intenta emitir el certificado
+  Then el sistema muestra "Acreditación vencida el 31/12/2025"
+  And sugiere iniciar el proceso de renovación
+  And no emite el certificado
+```
+
+---
+
+## FSD-UC-010 — Respaldo Automático Diario Verificable
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | FSD-UC-010 |
+| **Nombre** | Respaldo Automático Diario Verificable |
+| **Actor principal** | Sistema (scheduler automático) |
+| **Actores secundarios** | Administrador del sistema |
+| **Prioridad** | Must |
+| **Trazabilidad** | MRD-N-12 · BR-012 · PRD-REQ-012 |
+
+### Precondiciones
+- Sistema en funcionamiento con base de datos y almacenamiento de archivos activos.
+- Scheduler configurado para ejecutarse diariamente a las 02:00 hora local.
+
+### Flujo principal
+1. Scheduler dispara el proceso de respaldo a las 02:00.
+2. Sistema genera respaldo comprimido de la base de datos (dump SQL).
+3. Sistema genera respaldo del almacenamiento de archivos (evidencias y documentos).
+4. Sistema calcula hash SHA-256 del paquete de respaldo para verificación de integridad.
+5. Sistema almacena el respaldo en ubicación secundaria (distinta al almacenamiento primario).
+6. Sistema registra en LOG_AUDITORIA: acción = `BACKUP_COMPLETED`, tamaño, hash, duración y estado (`SUCCESS` / `FAILED`).
+7. Si el respaldo falla: sistema envía alerta al administrador por correo en ≤ 15 min.
+
+### Flujos alternativos
+| Paso | Condición | Acción |
+|------|-----------|--------|
+| 2a | Fallo en dump de base de datos | Marca respaldo como `FAILED`; alerta al administrador; reintenta en 1 hora |
+| 5a | Almacenamiento secundario sin espacio | Alerta al administrador; no sobreescribe respaldo anterior válido |
+
+### Postcondiciones
+- Respaldo del día disponible y verificable por hash en ubicación secundaria.
+- LOG_AUDITORIA actualizado con resultado del proceso.
+- Administrador notificado solo en caso de fallo.
+
+### Reglas de negocio aplicables
+`RBN-13` · `RBN-14`
+
+### Escenarios Gherkin
+
+```gherkin
+Scenario: Respaldo diario exitoso
+  Given el scheduler está configurado para las 02:00
+  And el almacenamiento secundario tiene espacio disponible
+  When se ejecuta el proceso de respaldo
+  Then el sistema genera dump SQL y respaldo de archivos
+  And calcula hash SHA-256 del paquete
+  And registra BACKUP_COMPLETED con estado SUCCESS en el log
+  And no envía ninguna alerta al administrador
+
+Scenario: Fallo en respaldo con alerta
+  Given el scheduler ejecuta el proceso a las 02:00
+  And el almacenamiento secundario está lleno
+  When el sistema intenta almacenar el respaldo
+  Then registra BACKUP_COMPLETED con estado FAILED en el log
+  And envía alerta al administrador en ≤ 15 min
+  And no sobreescribe el respaldo anterior válido
+
+Scenario: Verificación de integridad del respaldo
+  Given existe un respaldo del día anterior con hash ABC123
+  When el administrador ejecuta la verificación
+  Then el sistema recalcula el hash del paquete
+  And confirma "Integridad verificada: hash coincide" si el valor es ABC123
+  And muestra "Respaldo comprometido" si el hash difiere
+```
+
+---
+
 ## Gaps declarados
 
-| ID | Gap | MRD-N afectado | Acción requerida |
-|----|-----|----------------|-----------------|
-| GAP-001 | Portal público de consulta de estado sin FSD-UC asignado | MRD-N-10 | Formalizar FSD-UC-008 |
-| GAP-002 | Emisión de certificados de acreditación sin FSD-UC asignado | MRD-N-11 | Formalizar FSD-UC-009 |
+| ID | Gap | MRD-N afectado | Estado |
+|----|-----|----------------|--------|
+| GAP-001 | Portal público de consulta de estado sin FSD-UC asignado | MRD-N-10 | ✅ Cerrado — FSD-UC-008 |
+| GAP-002 | Emisión de certificados de acreditación sin FSD-UC asignado | MRD-N-11 | ✅ Cerrado — FSD-UC-009 |
+| GAP-003 | NFR-013 sin caso de prueba automatizado | — | ⚠️ Pendiente — TC-011 con k6/Locust |
 
 ---
 
@@ -406,4 +605,5 @@ Scenario: Búsqueda sin resultados
 
 | Versión | Fecha | Autor | Cambio |
 |---------|-------|-------|--------|
-| 1.0 | 2026-05-14 | Aylen Gonzales Alvino | Versión inicial derivada de FSD v2.0 |
+| 1.0 | 2026-05-13 | Aylen Gonzales Alvino | Versión inicial derivada de FSD v2.0 |
+| 1.1 | 2026-05-14 | Aylen Gonzales Alvino | Agrega FSD-UC-008, FSD-UC-009, FSD-UC-010; cierra GAP-001 y GAP-002; total 10 UC |
