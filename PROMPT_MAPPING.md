@@ -2473,3 +2473,96 @@ Restricciones:
 | + | Agregar TC-011 (prueba de carga automatizada con k6/Locust) para cerrar GAP-003 | Tech Lead AcredIA |
 | + | Agregar PC-005 a PC-007 para llevar Prompt Coverage de 57 % a ≥ 85 % | Aylen Gonzales / Tech Lead |
 | PM-023 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+
+
+# PM-023 — Generación de `team/borisAngulo/docs/09_dti/DTI_v1.md`: Documento Técnico Inicial v1.0 — SIGESA
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-023 |
+| **Fecha** | 2026-05-15 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Boris Angulo |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-20250514 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar el archivo `team/borisAngulo/docs/09_dti/DTI_v1.md` con el Documento Técnico Inicial (DTI) v1.0 completo del proyecto SIGESA, consolidando arquitectura, modelo de dominio, bounded contexts, diagramas C4, arquitectura hexagonal, eventos, despliegue cloud, seguridad, observabilidad, agentes IA y trazabilidad arquitectónica a partir de los artefactos previamente existentes del proyecto.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/borisAngulo/docs/01_brd/BRD_v2.md` | Objetivos de negocio, restricciones RB-* y reglas BR-* |
+| `team/borisAngulo/docs/02_mrd/MRD.md` | Necesidades de mercado, hipótesis y KPIs |
+| `team/borisAngulo/docs/03_prd/PRD_v1.md` | Requerimientos funcionales y no funcionales |
+| `team/borisAngulo/docs/04_fsd/FSD_v1.md` | Casos de uso funcionales, NFRs, modelo de datos y prompt-contracts |
+| `PROMPT_MAPPING.md` | Historial de prompts y trazabilidad AI-SDLC |
+| `AGENTS.md` | Convenciones de agentes IA y restricciones operativas |
+| Diagramas Mermaid existentes | Reutilización de arquitectura visual y flujos |
+| ADR-0001 a ADR-0003 (referenciados) | Decisiones arquitectónicas declaradas |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/borisAngulo/docs/01_brd/BRD_v2.md
+- @team/borisAngulo/docs/02_mrd/MRD.md
+- @team/borisAngulo/docs/03_prd/PRD_v1.md
+- @team/borisAngulo/docs/04_fsd/FSD_v1.md
+- @PROMPT_MAPPING.md
+- @AGENTS.md
+
+Generá el Documento Técnico Inicial (DTI) v1.0 del proyecto SIGESA.
+
+El archivo a generar es:
+
+team/borisAngulo/docs/09_dti/DTI_v1.md
+
+El documento debe seguir la plantilla `templates/dti.md`
+y cubrir:
+
+§1  Metadatos
+§2  Visión técnica del producto
+§3  Arquitectura de alto nivel
+§4  Diagramas C4 (niveles 1, 2 y 3)
+§5  Modelo de dominio y bounded contexts
+§6  Arquitectura hexagonal
+§7  Arquitectura distribuida y eventos
+§8  Despliegue cloud (AWS conceptual)
+§9  Capa IA / agentes
+§10 Prompt Mapping
+§11 NFRs consolidados
+§12 POCs críticas
+§13 Seguridad
+§14 Observabilidad
+§15 DevOps y ciclo de vida
+§16 Antipatrones auditados
+§17 Trade-offs arquitectónicos
+§18 Riesgos técnicos
+§19 Roadmap técnico
+§20 Glosario
+§21 ADRs declaradas
+
+Restricciones:
+- No inventar IDs.
+- Mantener consistencia con BR-*, RB-*, PRD-REQ-*,
+  FSD-UC-*, PC-* y NFR-* existentes.
+- Reutilizar diagramas Mermaid existentes cuando corresponda.
+- Mantener alineación con arquitectura Clean Architecture + Hexagonal.
+- Declarar gaps y pendientes explícitamente.
+- Integrar agentes IA solo a nivel SDLC, no runtime.
+- Incluir referencias explícitas a AGENTS.md y PROMPT_MAPPING.md.
+
+### Próximos pasos
+| PM-024 | Registrar siguiente tarea ejecutada con IA | Por definir |
