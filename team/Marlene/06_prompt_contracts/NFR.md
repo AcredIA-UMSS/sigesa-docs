@@ -419,4 +419,8 @@ Los NFR bajo ISO 25010 **condicionan el éxito** de SIGESA tanto como las histor
 
 ---
 
-*Documento NFR SIGESA — ISO/IEC 25010 — `06_nfr/NFR_SIGESA_ISO25010_v1.md`*
+**Contratos de verificación:** ver [README.md](README.md) y archivos `PC-NFR-*.prompt.md` en esta carpeta.
+
+---
+
+*Documento NFR SIGESA — ISO/IEC 25010 — `team/Marlene/06_prompt_contracts/NFR.md`*
