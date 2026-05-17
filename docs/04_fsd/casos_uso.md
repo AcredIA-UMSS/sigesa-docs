@@ -9,6 +9,7 @@
 | **Fuente maestra** | [`FSD.md`](FSD.md) |
 | **Trazabilidad** | [`matriz_trazabilidad.md`](../../matriz_trazabilidad.md) · [`docs/03_prd/PRD.md`](../03_prd/PRD.md) §5 |
 | **Gherkin** | [`gherkin.md`](gherkin.md) |
+| **Diagramas** | [`07_diagramas/`](07_diagramas/README.md) |
 
 > Especificación detallada de los **18 casos de uso** (`FSD-UC-001`…`018`). Comportamiento verificable; sin prescripción de stack.
 
@@ -16,26 +17,26 @@
 
 ## Índice
 
-| ID | Nombre | Actor principal | PRD-US | Release |
-|----|--------|---------------|--------|---------|
-| [FSD-UC-001](#fsd-uc-001--autenticación-y-sesión) | Autenticación y sesión | Usuario interno | 001, 003 | v1.0 |
-| [FSD-UC-002](#fsd-uc-002--gestión-de-usuarios-jd) | Gestión de usuarios [JD] | [JD] | 002 | v1.0 |
-| [FSD-UC-003](#fsd-uc-003--plantillas-y-proceso-ceubarcu-sur) | Plantillas y Proceso CEUB/ARCU-SUR | [JD] | 023 | v1.0 |
-| [FSD-UC-004](#fsd-uc-004--cargar-evidencia) | Cargar Evidencia | [CC] | 005, 025 | v1.0 |
-| [FSD-UC-005](#fsd-uc-005--versionado-y-bloqueo-de-borrado) | Versionado y bloqueo de borrado | [CC], [TD] | 007, 008 | v1.0 |
-| [FSD-UC-006](#fsd-uc-006--subsanar-evidencia) | Subsanar Evidencia | [CC] | 006 | v1.0 |
-| [FSD-UC-007](#fsd-uc-007--buscar-evidencia) | Buscar Evidencia | [CC], [TD] | 004 | v1.0 |
-| [FSD-UC-008](#fsd-uc-008--rechazar-indicador) | Rechazar Indicador | [TD] | 009 | v1.0 |
-| [FSD-UC-009](#fsd-uc-009--aprobar-indicador) | Aprobar Indicador | [TD] | 010 | v1.0 |
-| [FSD-UC-010](#fsd-uc-010--avanzarcerrar-fase) | Avanzar/cerrar Fase | [TD] | 011 | v1.0 |
-| [FSD-UC-011](#fsd-uc-011--dashboard-cc-y-observaciones) | Dashboard [CC] y observaciones | [CC] | 012, 015 | v1.0 |
-| [FSD-UC-012](#fsd-uc-012--bandeja-auditoría-td) | Bandeja auditoría [TD] | [TD] | 014 | v1.0 |
-| [FSD-UC-013](#fsd-uc-013--panel-semáforo-jd) | Panel semáforo [JD] | [JD] | 013 | v1.0 |
-| [FSD-UC-014](#fsd-uc-014--reporte-ejecutivo-pdf) | Reporte ejecutivo PDF | [JD] | 021 | v1.0 |
-| [FSD-UC-015](#fsd-uc-015--notificaciones-y-alertas) | Notificaciones y alertas | Sistema | 017–019 | v1.0 |
-| [FSD-UC-016](#fsd-uc-016--portal-público) | Portal público | [P] | 016, 020 | v1.1 |
-| [FSD-UC-017](#fsd-uc-017--bitácora-de-auditoría) | Bitácora de auditoría | [JD] | 022 | v1.0 |
-| [FSD-UC-018](#fsd-uc-018--importación-masiva) | Importación masiva | [CC] | 024 | v1.1 |
+| ID | Nombre | Actor principal | PRD-US | Diagrama | Release |
+|----|--------|---------------|--------|----------|---------|
+| [FSD-UC-001](#fsd-uc-001--autenticación-y-sesión) | Autenticación y sesión | Usuario interno | 001, 003 | [secuencia](07_diagramas/FSD-UC-001_autenticacion_secuencia.mmd) | v1.0 |
+| [FSD-UC-002](#fsd-uc-002--gestión-de-usuarios-jd) | Gestión de usuarios [JD] | [JD] | 002 | — | v1.0 |
+| [FSD-UC-003](#fsd-uc-003--plantillas-y-proceso-ceubarcu-sur) | Plantillas y Proceso CEUB/ARCU-SUR | [JD] | 023 | [secuencia](07_diagramas/FSD-UC-003_010_proceso_y_cierre_fase_secuencia.mmd) | v1.0 |
+| [FSD-UC-004](#fsd-uc-004--cargar-evidencia) | Cargar Evidencia | [CC] | 005, 025 | [secuencia](07_diagramas/FSD-UC-004_008_carga_y_observacion_secuencia.mmd) | v1.0 |
+| [FSD-UC-005](#fsd-uc-005--versionado-y-bloqueo-de-borrado) | Versionado y bloqueo de borrado | [CC], [TD] | 007, 008 | [estados](07_diagramas/FSD-UC-004_005_estados_evidencia.mmd) | v1.0 |
+| [FSD-UC-006](#fsd-uc-006--subsanar-evidencia) | Subsanar Evidencia | [CC] | 006 | [secuencia](07_diagramas/FSD-UC-006_subsanar_evidencia_secuencia.mmd) | v1.0 |
+| [FSD-UC-007](#fsd-uc-007--buscar-evidencia) | Buscar Evidencia | [CC], [TD] | 004 | — | v1.0 |
+| [FSD-UC-008](#fsd-uc-008--rechazar-indicador) | Rechazar Indicador | [TD] | 009 | [secuencia](07_diagramas/FSD-UC-004_008_carga_y_observacion_secuencia.mmd) | v1.0 |
+| [FSD-UC-009](#fsd-uc-009--aprobar-indicador) | Aprobar Indicador | [TD] | 010 | [estados](07_diagramas/FSD-UC-006_008_009_estados_indicador.mmd) | v1.0 |
+| [FSD-UC-010](#fsd-uc-010--avanzarcerrar-fase) | Avanzar/cerrar Fase | [TD] | 011 | [estados](07_diagramas/FSD-UC-010_cierre_fase_estados.mmd) | v1.0 |
+| [FSD-UC-011](#fsd-uc-011--dashboard-cc-y-observaciones) | Dashboard [CC] y observaciones | [CC] | 012, 015 | — | v1.0 |
+| [FSD-UC-012](#fsd-uc-012--bandeja-auditoría-td) | Bandeja auditoría [TD] | [TD] | 014 | — | v1.0 |
+| [FSD-UC-013](#fsd-uc-013--panel-semáforo-jd) | Panel semáforo [JD] | [JD] | 013 | — | v1.0 |
+| [FSD-UC-014](#fsd-uc-014--reporte-ejecutivo-pdf) | Reporte ejecutivo PDF | [JD] | 021 | — | v1.0 |
+| [FSD-UC-015](#fsd-uc-015--notificaciones-y-alertas) | Notificaciones y alertas | Sistema | 017–019 | — | v1.0 |
+| [FSD-UC-016](#fsd-uc-016--portal-público) | Portal público | [P] | 016, 020 | — | v1.1 |
+| [FSD-UC-017](#fsd-uc-017--bitácora-de-auditoría) | Bitácora de auditoría | [JD] | 022 | — | v1.0 |
+| [FSD-UC-018](#fsd-uc-018--importación-masiva) | Importación masiva | [CC] | 024 | — | v1.1 |
 
 ---
 

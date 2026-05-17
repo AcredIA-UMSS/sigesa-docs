@@ -494,3 +494,147 @@ also keep in mind all the versions available of the brd for more context if need
   - 5 cadenas bidireccionales documentadas en informe
 - **Resultado obtenido**: Gate PASS; Prompt Coverage 91 %; Spec Fidelity POR_MEDIR; AEI 4,2 orientativo
 - **Estado**: Completado
+
+---
+
+## Registro de prompts — sesión Cursor 2026-05-17
+
+> Regla aplicada: `.cursor/rules/02_session_prompt_logging.mdc` (append-only). Prompts almacenados en `team/alexAlvarez/docs/prompts/`. Skills: `sigesa-generacion-documentos-tecnicos`, `sigesa-auditor-trazabilidad-dti`.
+
+### Resumen ejecutivo de la sesión
+
+| # | Área | Entregables principales |
+|---|------|-------------------------|
+| 1 | DTI + ADRs (repo canónico) | `docs/05_dti/DTI.md`, `docs/05_dti/adrs/` (ADR_001…009 + README), enlaces `docs/adr/` |
+| 2 | Diagramas `07_diagramas/` | Symlinks en `docs/02_mrd/`, `docs/03_prd/`, `docs/04_fsd/` → `team/*/07_diagramas/` |
+| 3 | NFR equipo Alex | `team/alexAlvarez/docs/05_nfr/` (NFR_ISO25010, TC, matriz, diagrama pie) |
+| 4 | LFSD + FSD v1.1 | `team/alexAlvarez/docs/05_lfsd/LFSD_v1.md`; FSD maestro y `casos_uso.md` integrados |
+
+---
+
+### PM-ALEX-008 — PC-SIG-13: DTI maestro y ADRs (`docs/05_dti/`)
+
+- **ID**: PM-ALEX-008 / PC-SIG-13
+- **Fecha**: 2026-05-17
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Skills**: `sigesa-generacion-documentos-tecnicos`, `sigesa-auditor-trazabilidad-dti`
+- **Tarea**: Primera versión DTI Dorado + carpeta ADRs narrativos tras gate trazabilidad APTO.
+- **Objetivo**: `docs/05_dti/DTI.md` (C4, ER, API RBAC) y `docs/05_dti/adrs/ADR_001…009` alineados a `team/aylenGonzales/09_dti/` y `docs/adr/`.
+- **Contexto leído**:
+  - `team/aylenGonzales/09_dti/DTI_v1.md`, `team/borisAngulo/docs/09_dti/DTI_v1.md`
+  - `docs/05_dti/modelo_datos.md`, `ddl_sigesa_append_only.sql`
+  - `docs/04_fsd/`, `docs/09_trazabilidad/report_findings.md` (APTO)
+- **Prompt usado (exacto)**: Ver `team/alexAlvarez/docs/prompts/PC-SIG-13-arquitecto-dti.prompt.md`
+- **Archivos generados o modificados**:
+  - `docs/05_dti/DTI.md` — Creado (v1.0 borrador compilado)
+  - `docs/05_dti/adrs/README.md` — Índice DTI ↔ canónico `docs/adr/`
+  - `docs/05_dti/adrs/ADR_001_append_only_evidencia.md` — Redactado
+  - `docs/05_dti/adrs/ADR_002_monolito_modular.md` — Redactado
+  - `docs/05_dti/adrs/ADR_003_adapter_autenticacion.md` — Redactado
+  - `docs/05_dti/adrs/ADR_004…009_*.md` — Desde `team/aylenGonzales/09_dti/adr/` (enriquecidos)
+  - `docs/adr/README.md` — Actualizado enlace a DTI compilado
+- **Resultado obtenido**: Paquete técnico implementable; ADR_001–003 narrativa nueva; 004–009 desde equipo AcredIA con cabecera DTI.
+- **Estado**: Completado (primera versión; usuario eligió explorar team/ antes de DTI vs ADRs primero)
+
+---
+
+### PM-ALEX-009 — Symlinks `07_diagramas` en docs PRD / MRD / FSD
+
+- **ID**: PM-ALEX-009
+- **Fecha**: 2026-05-17
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Tarea**: Enlazar diagramas `.mmd` de `team/` dentro de carpetas canónicas `docs/03_prd/`, `docs/02_mrd/`, `docs/04_fsd/` con `ln -s`.
+- **Prompt usado (exacto)**: Ver `team/alexAlvarez/docs/prompts/diagramas-07-symlinks-canonicos.prompt.md`
+- **Archivos generados o modificados**:
+  - `docs/04_fsd/07_diagramas/` — 28 symlinks + alias `FSD-UC-*` + README
+  - `docs/03_prd/07_diagramas/` — 8 symlinks (Gantt, journeys, modelo ER)
+  - `docs/02_mrd/07_diagramas/` — 3 symlinks (dominio negocio, NFR pie)
+  - `docs/04_fsd/FSD.md`, `casos_uso.md`, `modelo_datos.md` — Enlaces a diagramas
+  - `docs/03_prd/PRD.md`, `ROADMAP.md` — Enlaces Gantt/journeys
+  - `docs/02_mrd/MRD.md` — Enlace contexto diagramas
+- **Fuentes symlink**: `team/alexAlvarez/docs/07_diagramas/`, `team/borisAngulo/docs/07_diagramas/`, `team/aylenGonzales/07_diagramas/`
+- **Corrección**: Rutas relativas `../../../team/...` (no `../../../../`)
+- **Estado**: Completado
+
+---
+
+### PM-ALEX-010 — Carpeta `05_nfr` equipo Alex Alvarez
+
+- **ID**: PM-ALEX-010
+- **Fecha**: 2026-05-17
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Tarea**: Generar `team/alexAlvarez/docs/05_nfr/` con contenido ISO 25010 alineado a FSD/Gherkin del equipo.
+- **Prompt usado (exacto)**: Ver `team/alexAlvarez/docs/prompts/nfr-iso25010-equipo-alex.prompt.md`
+- **Archivos generados o modificados**:
+  - `team/alexAlvarez/docs/05_nfr/README.md`
+  - `team/alexAlvarez/docs/05_nfr/NFR_ISO25010.md` — NFR-001…019, puente PRD-NFR-001…005
+  - `team/alexAlvarez/docs/05_nfr/catalogo_tc.md` — TC-NFR-* y TC-SAD-*
+  - `team/alexAlvarez/docs/05_nfr/matriz_cobertura.md`
+  - `team/alexAlvarez/docs/05_nfr/plantilla_tags_pruebas.md`
+  - `team/alexAlvarez/docs/05_nfr/07_diagramas/nfr_cobertura_iso25010.mmd`
+  - `team/alexAlvarez/docs/05_nfr/07_diagramas/diag-10-pie-cobertura-nfr-boris.mmd` — symlink
+  - `team/alexAlvarez/docs/04_fsd/FSD.md` — §7 NFR actualizado
+  - `team/alexAlvarez/docs/README.md` — `05_nfr/` marcado listo
+- **Referencia canónica**: `docs/05_nfr/NFR_ISO25010.md` Dorada v1.1
+- **Estado**: Completado
+
+---
+
+### PM-ALEX-011 — LFSD v1.0 integrado con FSD clásico (equipo Alex)
+
+- **ID**: PM-ALEX-011
+- **Fecha**: 2026-05-17
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Tarea**: Iterar FSD con modo LFSD usando plantilla `team/aylenGonzales/05_lfsd/LFSD_v1_aylen.md`.
+- **Prompt usado (exacto)**: Ver `team/alexAlvarez/docs/prompts/lfsd-integracion-fsd.prompt.md`
+- **Archivos generados o modificados**:
+  - `team/alexAlvarez/docs/05_lfsd/README.md`
+  - `team/alexAlvarez/docs/05_lfsd/LFSD_v1.md` — UC-L01…L07, failure modes, tasks T-001…012, PC-L*
+  - `team/alexAlvarez/docs/04_fsd/FSD.md` — v1.1 modo dual FSD+LFSD, §2.1 reconciliación, §8 tasks
+  - `team/alexAlvarez/docs/04_fsd/casos_uso.md` — columna LFSD en índice
+  - `team/alexAlvarez/docs/README.md` — `05_lfsd/` registrado
+- **Mapeo clave**: UC-L01→UC-001 … UC-L07→UC-013; invariantes y códigos desde `api_contracts.md`
+- **Estado**: Completado
+
+---
+
+### PM-ALEX-012 — Registro sesión 2026-05-17 en log y prompts
+
+- **ID**: PM-ALEX-012
+- **Fecha**: 2026-05-17
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Tarea**: Volcar sesión completa en `log_interno.md` y `docs/prompts/`.
+- **Prompt usado (exacto)**: Ver `team/alexAlvarez/docs/prompts/session-log-2026-05-17.prompt.md`
+- **Archivos generados o modificados**:
+  - `team/alexAlvarez/log_interno.md` — Append (esta sección PM-ALEX-008…012)
+  - `team/alexAlvarez/docs/prompts/PC-SIG-13-arquitecto-dti.prompt.md` — Creado
+  - `team/alexAlvarez/docs/prompts/diagramas-07-symlinks-canonicos.prompt.md` — Creado
+  - `team/alexAlvarez/docs/prompts/nfr-iso25010-equipo-alex.prompt.md` — Creado
+  - `team/alexAlvarez/docs/prompts/lfsd-integracion-fsd.prompt.md` — Creado
+  - `team/alexAlvarez/docs/prompts/session-log-2026-05-17.prompt.md` — Creado
+- **Estado**: Completado
+
+---
+
+## 2026-05-17T18:30:00-04:00 — Prompt usuario (cierre sesión)
+
+**Prompt:** Añadir todo el trabajo de la sesión en `team/alexAlvarez/log_interno.md` y almacenar prompts en `team/alexAlvarez/docs/prompts/`.
+
+**Acción:** Append PM-ALEX-008…012; 5 archivos `.prompt.md` nuevos; resumen ejecutivo tabla sesión 2026-05-17.
+
+**Estado:** Completado.
+
+---
+
+## 2026-05-17T19:00:00-04:00 — Prompt usuario (reorganización PC-SIG)
+
+**Prompt:** Analizar `team/alexAlvarez/docs/prompts/` y reorganizar los prompt_contracts según la estructura compartida (`06_prompt_contracts/` + frontmatter `PC-SIG-NN`).
+
+**Acción:** Clasificación 23 archivos; 9 contratos en `docs/06_prompt_contracts/` con frontmatter (`name`, `id`, `description`, `type`, `skills`); eliminados duplicados `sigesa_contract_pcsig*.md`; symlinks en `prompts/` para rutas históricas; README en ambas carpetas; `docs/README.md` actualizado.
+
+**Estado:** Completado.

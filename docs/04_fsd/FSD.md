@@ -40,6 +40,7 @@
 | Modelo de datos (funcional) | [`modelo_datos.md`](modelo_datos.md) |
 | Contratos API | [`api_contracts.md`](api_contracts.md) |
 | Glosario FSD | [`glosario.md`](glosario.md) |
+| **Diagramas (`.mmd`)** | [`07_diagramas/`](07_diagramas/README.md) — enlaces a `team/*/07_diagramas/` |
 
 > Modelo físico PostgreSQL: [`docs/05_dti/modelo_datos.md`](../05_dti/modelo_datos.md).
 
@@ -133,6 +134,8 @@ stateDiagram-v2
 `COUNT(indicadores_fase) == COUNT(indicadores WHERE estado = APROBADO)` — si no, **excepción** `FASE_CIERRE_BLOQUEADO` (FSD-UC-010).
 
 ### 4.3 Diagrama de secuencia — Subsanación
+
+> Versión editable (fuente): [`07_diagramas/FSD-UC-006_subsanar_evidencia_secuencia.mmd`](07_diagramas/FSD-UC-006_subsanar_evidencia_secuencia.mmd) · Estados: [`FSD-UC-006_008_009_estados_indicador.mmd`](07_diagramas/FSD-UC-006_008_009_estados_indicador.mmd)
 
 ```mermaid
 sequenceDiagram

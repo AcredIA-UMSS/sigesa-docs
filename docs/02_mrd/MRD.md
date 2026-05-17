@@ -30,6 +30,7 @@
 | Glosario | `context/03_domain_glossary.md` |
 | Fuentes consolidadas | `team/borisAngulo/docs/02_mrd/MRD.md` · `team/aylenGonzales/02_mrd/MRD_v1.md` · `team/alexAlvarez/docs/02_mrd/MRD.md` · `team/Marlene/02_mrd/MRD.md` |
 | Cadena documental | BRD → **MRD** → PRD → FSD → DTI / NFR |
+| **Diagramas de contexto** | [`07_diagramas/`](07_diagramas/README.md) — dominio y cobertura NFR |
 | Skill aplicada | `sigesa-generacion-documentos-negocio` |
 
 ---

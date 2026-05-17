@@ -17,6 +17,7 @@
 | Estado | Aprobado |
 | BRD de referencia | `team/alexAlvarez/docs/01_brd/BRD.md` |
 | MRD de referencia | `team/alexAlvarez/docs/02_mrd/MRD.md` |
+| Overview / definición producto | `team/alexAlvarez/docs/00_overview/definicion_producto.md` |
 | Glosario de dominio | `team/alexAlvarez/docs/context/03_domain_glossary.md` |
 | Fase Spec Kit cubierta | Specify ✅ / Plan ✅ / Tasks ✅ / Implement ⬜ |
 | Prompts utilizados | [PC-SIG-03] Generador de PRD Multipropósito |
@@ -25,7 +26,20 @@
 
 SIGESA es la plataforma institucional que digitaliza el ciclo completo de acreditación de la DUEA en la UMSS, gestionando **Procesos**, **Fases**, **Dimensiones**, **Criterios**, **Indicadores** y **Evidencias** con trazabilidad inmutable y auditada. Resuelve la dispersión documental actual (Excel, WhatsApp, USBs) mediante una fuente única de verdad, habilitando búsquedas en ≤ 2 minutos, dashboard mobile para [CC] y auditoría potente para [TD].
 
-El producto entrega valor a tres segmentos: [CC] para gestión operativa, [TD] para validación técnica, y público para transparencia. Garantiza cumplimiento CEUB/ARCU-SUR con Máquina de Estados estricta y política append-only en Evidencias.
+El producto entrega valor a cuatro segmentos internos/externos: **[CC]** (gestión operativa), **[TD]** (validación técnica), **[JD]** (gobierno y visibilidad ejecutiva) y **[P]** (transparencia). Garantiza cumplimiento CEUB/ARCU-SUR con Máquina de Estados estricta y política append-only en **Evidencias**.
+
+### 1.1 Mapa de actores y ciclo de fases
+
+Diagramas canónicos en [`../07_diagramas/`](../07_diagramas/) y FSD [`../04_fsd/`](../04_fsd/FSD.md).
+
+| Diagrama | Archivo |
+|----------|---------|
+| Actores ↔ dominio | Ver [`modelo_er.mmd`](../07_diagramas/modelo_er.mmd) |
+| Subsanación (secuencia) | [`UC01_secuencia.mmd`](../07_diagramas/UC01_secuencia.mmd) |
+| Estados del Indicador | [`UC01_estado.mmd`](../07_diagramas/UC01_estado.mmd) · [`user_stories.md`](user_stories.md) |
+| Cierre de Fase | [`UC03_estado.mmd`](../07_diagramas/UC03_estado.mmd) |
+
+> Transiciones: `context/04_state_machine.md`
 
 ## 2. Épicas principales
 
@@ -44,10 +58,22 @@ Ofrece acceso read-only a estados de acreditación y certificados para estudiant
 ### Épica 5: Notificaciones y Comunicación
 Envía alertas automáticas de rechazos, aprobaciones y fechas límite, integrando canales institucionales.
 
+### 2.1 Dependencias entre épicas (orden de entrega)
+
+Ver oleadas en [`roadmap.md`](roadmap.md) y [`../07_diagramas/gantt.mmd`](../07_diagramas/gantt.mmd).
+
+| Épica | Depende de | Entrega mínima |
+|-------|------------|----------------|
+| 1 | — | Repositorio **Evidencia** append-only |
+| 3 | 1 | Máquina de estados del **Indicador** |
+| 2 | 1, 3 | Dashboards [CC]/[TD]/[JD] |
+| 5 | 1, 3 | Eventos de observación y aprobación |
+| 4 | 2, 3 | Datos publicados por [JD] |
+
 ## 3. Enlaces a documentos complementarios
 
 - **[User Journeys](user_journeys.md)**: Narrativas visuales de viajes críticos de usuario con diagramas Mermaid.
-- **[User Stories](user_stories.md)**: 20+ historias agrupadas por Épicas, con criterios Gherkin y diagramas de estado opcionales.
+- **[User Stories](user_stories.md)**: 26 historias con Gherkin, máquina de estados Mermaid y caminos tristes en operaciones críticas.
 - **[Roadmap](roadmap.md)**: Planificación visual de entregas con diagrama Gantt.
 
 ## 4. Objetivos y métricas clave
@@ -84,6 +110,15 @@ Envía alertas automáticas de rechazos, aprobaciones y fechas límite, integran
 | PRD-US-007 | 50 | 3 | 75 | 4 | 844 |
 | PRD-US-010 | 50 | 2.5 | 80 | 3 | 666 |
 | PRD-US-012 | 1000 | 2 | 70 | 4 | 350 |
+
+## 6. Priorización MoSCoW (resumen)
+
+| Prioridad | Épicas / capacidades | Historias representativas |
+|-----------|----------------------|---------------------------|
+| **Must** | 1, 3, 5 (núcleo) | PRD-US-002, PRD-US-003, PRD-US-007, PRD-US-009 |
+| **Should** | 2, 4 | PRD-US-006, PRD-US-012, PRD-US-016 |
+| **Could** | 4 ampliado, exportaciones | PRD-US-021, PRD-US-022 |
+| **Won't (v2.0)** | ERP, pagos, rankings | Ver BRD OUT-OF-SCOPE |
 
 ## 7. Requerimientos funcionales (alto nivel)
 
@@ -143,9 +178,11 @@ Envía alertas automáticas de rechazos, aprobaciones y fechas límite, integran
 | Use Case M2 | User Story PRD | Estado |
 |-------------|----------------|--------|
 | Búsqueda de evidencias | PRD-US-001 | ✅ cubierto |
-| Subsanación de evidencia | PRD-US-003 | ✅ cubierto |
+| Subsanación de evidencia | PRD-US-003, PRD-US-025 | ✅ cubierto |
 | Dashboard mobile CC | PRD-US-006 | ✅ cubierto |
-| Auditoría de indicadores | PRD-US-007 | ✅ cubierto |
+| Auditoría de indicadores | PRD-US-007, PRD-US-026 | ✅ cubierto |
+| Apertura proceso / plantillas | PRD-US-024 | ✅ cubierto |
+| Aprobación indicador | PRD-US-023 | ✅ cubierto |
 
 ## 12. Métricas de éxito del producto
 
@@ -188,3 +225,4 @@ Envía alertas automáticas de rechazos, aprobaciones y fechas límite, integran
 | Versión | Fecha | Autor | Cambio |
 |---------|-------|-------|--------|
 | v0.1 | 14/05/2026 | Alex Álvarez | Creación inicial del PRD maestro con trazabilidad al BRD y MRD |
+| v2.1 | 17/05/2026 | Alex Álvarez | Diagramas Mermaid (actores, fases, épicas); §6 MoSCoW; alineación [JD] y overview |
