@@ -680,6 +680,6 @@ Y almacena usuario y fecha
 | CU-009      | FSD-UC-005        |
 | CU-010      | FSD-UC-006        |
 | CU-011      | FSD-UC-007        |
-| CU-012      | BR-11 / Auditoría |
+| CU-012      | COMP-AUDIT-001 (transversal) · FSD §2.4.1 · GAP-004 cerrado doc |
 
 

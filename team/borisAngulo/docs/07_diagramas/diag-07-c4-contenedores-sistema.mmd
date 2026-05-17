@@ -1,0 +1,36 @@
+%% Diagrama C4 Nivel 2 (Contenedores) — Fuente: DTI_v1 §3.2 / FSD §2.3
+C4Container
+  title Diagrama de Contenedores SIGESA v1.0
+  Person(duea, "Admin DUEA", "Supervision y observaciones")
+  Person(carrera, "Equipo Carrera", "Jefe / Coordinador / Tecnico")
+  Person(ext, "Evaluador externo", "Alcance minimo por fase")
+  Person(pub, "Publico general", "Lectura no sensible")
+
+  System_Boundary(sigesa, "SIGESA") {
+    Container(web, "Frontend web", "React/Vue", "UI panel semaforo evidencias observaciones")
+    Container(api, "API Backend", "REST HTTP", "Casos de uso FSD-UC-001 a FSD-UC-007")
+    ContainerDb(db, "PostgreSQL 16", "RDBMS", "Procesos fases evidencias auditoria")
+    Container(storage, "Storage evidencias", "Object Storage UMSS", "Archivos versionados con hash")
+    Container(audit, "Servicio auditoria", "Append-only", "Eventos criticos BR-011 NFR-004")
+    Container(worker, "Scheduler", "Worker cron", "Alertas FSD-UC-006 plazos e hitos")
+    Container(pdf, "Motor PDF", "Servicio reportes", "Reporte ejecutivo FSD-UC-007")
+  }
+
+  System_Ext(idp, "Identidad UMSS", "SSO LDAP cuentas")
+  System_Ext(smtp, "Notificaciones", "SMTP institucional")
+  System_Ext(ceub, "CEUB ARCU-SUR", "Marco normativo acreditacion")
+
+  Rel(duea, web, "Usa HTTPS")
+  Rel(carrera, web, "Usa HTTPS")
+  Rel(ext, web, "Acceso acotado")
+  Rel(pub, web, "Consulta publica")
+
+  Rel(web, api, "JSON REST")
+  Rel(api, db, "Lee escribe transaccional")
+  Rel(api, storage, "Guarda lee archivos")
+  Rel(api, audit, "Emite eventos")
+  Rel(api, pdf, "Render reporte")
+  Rel(worker, api, "Consulta vencimientos")
+  Rel(worker, smtp, "Envia alertas")
+  Rel(api, idp, "Autentica")
+  Rel(sigesa, ceub, "Trazabilidad cumplimiento")

@@ -252,10 +252,10 @@ La acreditación exige evidencias por criterio, plazos e hitos coordinados entre
 
 | BRD ID | MRD relacionado | PRD relacionado | Caso de uso FSD |
 |--------|-----------------|-----------------|-----------------|
-| BR-001 a BR-005 | MRD-N-01 (por crear) | PRD-REQ-AUTH, PRD-REQ-PHASE (por crear) | FSD-UC-001 … |
-| BR-006 a BR-008 | MRD-N-02 | PRD-REQ-EVID, PRD-REQ-OBS | FSD-UC-010 … |
-| BR-009 a BR-011 | MRD-N-03 | PRD-REQ-DASH, PRD-REQ-ALERT | FSD-UC-020 … |
-| BR-012 a BR-013 | MRD-N-04 | PRD-REQ-REPORT, PRD-REQ-CHAT | FSD-UC-030 … |
+| BR-001 a BR-005 | MRD-N-01 | PRD-REQ-001, PRD-REQ-002 | FSD-UC-001, FSD-UC-002 |
+| BR-006 a BR-008 | MRD-N-02 | PRD-REQ-006 … 008 | FSD-UC-003, FSD-UC-004 |
+| BR-009 a BR-011 | MRD-N-03, MRD-N-04 | PRD-REQ-005, 009, 011 | FSD-UC-002, FSD-UC-005, FSD-UC-006, FSD-UC-007 |
+| BR-012 a BR-013 | MRD-N-05 | PRD-REQ-012, backlog | GAP-001, GAP-004, backlog |
 
 ## 19. Aprobaciones
 

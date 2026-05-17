@@ -71,6 +71,23 @@ La especificación integra invariantes y failure modes en prompt-contratos para 
 | **Decisiones técnicas anticipadas** | Historial de versiones inalterable para evidencias; políticas de autorización centralizadas; auditoría por eventos; generación de PDF a partir de datos consolidados. |
 | **Restricciones técnicas** | Cumplimiento Ley 164/PII; operaciones sensibles requieren sesión válida; no borrar silenciosamente evidencias. |
 
+#### 2.4.1 Componente transversal — Auditoría (cierre GAP-004)
+
+La bitácora **no es un caso de uso de negocio independiente** en MVP v1.0: es un **componente transversal** consumido por todos los FSD-UC-001…007.
+
+| Elemento | Especificación |
+|----------|----------------|
+| **ID** | `COMP-AUDIT-001` (alias CU-012 en `casos-de-uso.md`) |
+| **Puerto** | `AuditEventPort` — insert append-only |
+| **Eventos obligatorios** | login/logout; carga/reemplazo evidencia; cierre proceso; transición observación; envío alerta; generación PDF; gestión usuarios |
+| **Payload mínimo** | `actor_id`, `timestamp`, `action`, `resource_type`, `resource_id`, `correlation_id` |
+| **NFR** | NFR-004 (≥ 95 % eventos críticos); NFR-003 en tránsito |
+| **PRD** | PRD-REQ-013 (Must) — satisfecho por diseño transversal, no por UC dedicado |
+| **Verificación** | Tests de integración por UC + smoke en staging (`nfr_iso25010.md` §Notas) |
+| **Implementación** | Tabla `LOG_AUDITORIA` append-only; ADR-0001 |
+
+> **Estado GAP-004**: cerrado a nivel de arquitectura/documentación. Pendiente solo validación de cobertura de eventos en CI por UC.
+
 ### 2.5 Descomposición en Tasks (Spec Kit) ⚡
 
 | Task ID | Descripción | Caso de uso (FSD-UC) | Dependencias | Prompt asociado | Estado |
@@ -82,6 +99,32 @@ La especificación integra invariantes y failure modes en prompt-contratos para 
 | `T-005` | Panel con semáforo y cálculo de avance por criterios/fechas | `FSD-UC-005` | reglas semáforo + datos de avance | `PR-FSD-005` | pendiente |
 | `T-006` | Alertas automáticas por plazos/hitos + registro de eventos | `FSD-UC-006` | scheduler + canal notificaciones | `PR-FSD-006` | pendiente |
 | `T-007` | Generación de reporte ejecutivo PDF ≤ 2 clics desde contexto | `FSD-UC-007` | motor PDF | `PR-FSD-007` | pendiente |
+
+### 2.6 Extensiones post-MVP (registro de gaps)
+
+> **Alcance v1.0**: 7 FSD-UC canónicos (§4). Las filas siguientes son **backlog v1.1+** con IDs reservados para evitar colisión con PC-001…012.
+
+| Gap | ID extensión | PRD-US | PC / artefacto | Prioridad | Definición de cierre (DoD) |
+|-----|--------------|--------|----------------|-----------|----------------------------|
+| GAP-001 | `FSD-UC-EXT-001` | PRD-US-021 | **PC-013** (borrador) | Should | UC en FSD §4; PC-013 completo; `GET /publico/carreras/{id}` sin PII; Gherkin PRD §5.7.4 verde |
+| GAP-002a | `FSD-UC-EXT-002` | PRD-US-018 | **PC-014** (borrador) | Should | Bandeja evidencias pendientes; RBAC técnico operativo; trazado a BR-006/012 |
+| GAP-002b | `FSD-UC-EXT-003` | PRD-US-019 | **PC-015** (por crear) | Should | Flujo constancias/trámites; solo acciones permitidas por rol |
+| GAP-002c | `FSD-UC-EXT-004` | PRD-US-020 | **PC-012** (existente) | Should | PC-012 enlazado en FSD §4; UC-EXT-004; @DevAgent desbloqueado |
+| GAP-003 | — (ops) | — | Runbook TI + NFR-005 | Pre-piloto | Acta UMSS: ventana 07:00–22:00 BOT, herramienta monitoreo, contacto on-call |
+| GAP-004 | `COMP-AUDIT-001` | PRD-REQ-013 | §2.4.1 + CU-012 | Must | ✅ Doc cerrado; tests integración por UC en CI |
+| GAP-005 | — (discovery) | H-01…H-05 | `trazabilidad-sigesa.md` §2.5 | Documental | ✅ Vínculo formal MRD→FSD-UC→NFR/KPI; medición en piloto |
+
+**Dependencias de sprint sugeridas**
+
+```mermaid
+flowchart LR
+  MVP["MVP v1.0\nUC-001…007"] --> G4["GAP-004\nAudit CI"]
+  MVP --> G5["GAP-005\nHipótesis piloto"]
+  G4 --> G2c["GAP-002c\nEvaluador PC-012"]
+  G2c --> G2ab["GAP-002a/b\nTécnicos PC-014/015"]
+  G2ab --> G1["GAP-001\nVista pública PC-013"]
+  G3["GAP-003\nSLA TI"] -.-> MVP
+```
 
 ---
 
@@ -492,6 +535,7 @@ JSON con:
 | Versión | Fecha | Autor | Cambio |
 |---------|-------|--------|--------|
 | v0.1 | 12/05/2026 | AcredIA | FSD v1 en modo LFSD con casos de uso críticos y prompt-contratos mínimo |
+| v1.0.1 | 16/05/2026 | AcredIA | §2.4.1 auditoría transversal; §2.6 registro gaps/extensiones FSD-UC-EXT-* |
 
 ---
 

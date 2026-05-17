@@ -6,13 +6,13 @@
 - **Grupo**: AcredIA (`team/borisAngulo`)
 - **Dominio**: GovTech académico (universidad pública — UMSS, Bolivia)
 - **Resumen**: plataforma institucional que centraliza el ciclo de evaluación y acreditación de carreras UMSS (ARCU-SUR / CEUB) con gestión de fases, evidencias versionadas, observaciones DUEA-carrera, panel de semáforo y reportes ejecutivos PDF.
-- **Enlace al DTI**: `docs/dti/DTI.md`
-- **Enlace al FSD**: `team/borisAngulo/FSD_v1.md` · `team/borisAngulo/docs/04_fsd/casos-de-uso.md` · `team/borisAngulo/docs/04_fsd/prompt-contracts.md`
+- **Enlace al DTI**: `team/borisAngulo/docs/09_dti/DTI_v1.md`
+- **Enlace al FSD**: `team/borisAngulo/docs/04_fsd/FSD_v1.md` · `team/borisAngulo/docs/04_fsd/casos-de-uso.md` · `team/borisAngulo/docs/04_fsd/prompt-contracts.md`
 - **Enlace al PROMPT_MAPPING**: `PROMPT_MAPPING.md`
-- **BRD**: `team/borisAngulo/BRD_v2.md`
-- **PRD**: `team/borisAngulo/PRD_v1.md`
-- **MRD**: `team/borisAngulo/docs/03_mrd/MRD_v1.md`
-- **Trazabilidad**: `team/borisAngulo/trazabilidad/trazabilidad-sigesa.md`
+- **BRD**: `team/borisAngulo/docs/01_brd/BRD_v2.md`
+- **PRD**: `team/borisAngulo/docs/03_prd/PRD_v1.md`
+- **MRD**: `team/borisAngulo/docs/02_mrd/MRD.md`
+- **Trazabilidad**: `team/borisAngulo/docs/08_trazabilidad/trazabilidad-sigesa.md`
 
 ---
 
@@ -20,12 +20,12 @@
 
 Al comenzar cualquier tarea, el agente **MUST** leer en orden:
 
-1. `docs/dti/DTI.md` secciones 1–5.
-2. `team/borisAngulo/FSD_v1.md` — caso de uso tocado por la tarea.
-3. `team/borisAngulo/docs/04_fsd/casos-de-uso.md` — flujos alternos del UC afectado.
-4. `team/borisAngulo/docs/04_fsd/prompt-contracts.md` — contrato PC asociado al UC.
+1. `team/borisAngulo/docs/09_dti/DTI_v1.md` secciones 1–5.
+2. `team/borisAngulo/docs/04_fsd/FSD_v1.md` — caso de uso tocado por la tarea.
+3. `team/borisAngulo/docs/04_fsd/casos-de-uso.md` — flujos alternos del CU/UC afectado.
+4. `team/borisAngulo/docs/04_fsd/prompt-contracts.md` — contrato PC asociado (columna FSD-UC canónico en tabla consolidada).
 5. `docs/adr/` — decisiones arquitectónicas vigentes.
-6. `team/borisAngulo/trazabilidad/trazabilidad-sigesa.md` — para verificar que el cambio no rompe trazabilidad existente.
+6. `team/borisAngulo/docs/08_trazabilidad/trazabilidad-sigesa.md` — verificar que el cambio no rompe trazabilidad existente.
 
 ---
 
@@ -43,41 +43,25 @@ Al comenzar cualquier tarea, el agente **MUST** leer en orden:
 ├── .github/                         ← CI/CD workflows
 ├── context/                         ← contexto compartido del proyecto
 ├── docs/
-│   ├── adr/                         ← decisiones arquitectónicas
-│   ├── dti/
-│   │   └── DTI.md
-│   ├── 01_vision_negocio.txt
-│   ├── BRD_v1.md · BRD_v2.md
-│   ├── PRD_v1.md
-│   ├── FSD_v1.md
-│   └── LFSD.md
+│   └── adr/                         ← decisiones arquitectónicas (repo)
 ├── team/
 │   └── borisAngulo/
-│       ├── AGENTS.md                ← este archivo (copia en equipo)
-│       ├── BRD_v2.md
-│       ├── PRD_v1.md
-│       ├── FSD_v1.md
-│       ├── 01_vision_negocio_v2.txt
-│       ├── docs/
-│       │   ├── 01_brd/
-│       │   ├── 02_mrd/
-│       │   ├── 03_prd/
-│       │   ├── 04_fsd/
-│       │   │   ├── casos-de-uso.md
-│       │   │   ├── FSD_v1.md
-│       │   │   └── prompt-contracts.md
-│       │   ├── 05_lfsd/
-│       │   └── 06_nfr/
-│       ├── diagramas/
-│       │   ├── diag-01-seq-autenticacion.mmd
-│       │   ├── diag-02-seq-evidencias.mmd
-│       │   ├── diag-03-seq-observaciones.mmd
-│       │   ├── diag-04a-state-proceso.mmd
-│       │   ├── diag-04b-state-obs-evidencia.mmd
-│       │   ├── diag-05-er-modelo-datos.mmd
-│       │   └── diag-06a-gantt-ciclo-acreditacion.mmd
-│       └── trazabilidad/
-│           └── trazabilidad-sigesa.md
+│       └── docs/
+│           ├── 01_brd/BRD_v2.md
+│           ├── 02_mrd/MRD.md
+│           ├── 03_prd/PRD_v1.md
+│           ├── 04_fsd/
+│           │   ├── FSD_v1.md
+│           │   ├── casos-de-uso.md
+│           │   └── prompt-contracts.md
+│           ├── 05_lfsd/LFSD_v1.md
+│           ├── 06_nfr/nfr_iso25010.md
+│           ├── 07_diagramas/        ← diag-01 … diag-10
+│           ├── 08_trazabilidad/trazabilidad-sigesa.md
+│           ├── 09_dti/DTI_v1.md
+│           └── 09_agents/
+│               ├── AGENTS.md        ← este archivo
+│               └── skills/skill-001 … skill-004.md
 └── templates/                       ← plantillas de documentos
 ```
 
@@ -155,8 +139,8 @@ Al comenzar cualquier tarea, el agente **MUST** leer en orden:
 | `@ArchAgent` | Diseño de arquitectura, ADRs, FSD-UC faltantes (GAP-001, GAP-002, GAP-004) | Claude Sonnet | `read`, `edit` (solo `docs/`, `team/borisAngulo/docs/`) | **MUST NOT** tocar `src/` ni `infra/` |
 | `@DevAgent` | Implementación de casos de uso con contrato PC definido | Claude Sonnet | `read`, `edit`, `run-tests` | **MUST NOT** iniciar UC sin PC asociado; **MUST NOT** tocar `infra/` |
 | `@QaAgent` | Pruebas unitarias, integración, E2E, cobertura NFR | Claude Sonnet | `read`, `edit`, `run-tests` | solo `tests/`; **MUST NOT** modificar lógica de dominio |
-| `@ProductAgent` | Actualizar trazabilidad, hipótesis MRD, métricas AI-SDLC | Claude Haiku | `read`, `edit` (solo `docs/`, `trazabilidad/`) | **MUST NOT** modificar código fuente |
-| `@DocsAgent` | Mantener AGENTS.md, DTI, diagramas Mermaid sincronizados | Claude Haiku | `read`, `edit` (solo `docs/`, `diagramas/`) | **MUST NOT** modificar código fuente |
+| `@ProductAgent` | Actualizar trazabilidad, hipótesis MRD, métricas AI-SDLC | Claude Haiku | `read`, `edit` (solo `team/borisAngulo/docs/08_trazabilidad/`) | **MUST NOT** modificar código fuente |
+| `@DocsAgent` | Mantener AGENTS.md, DTI, diagramas Mermaid sincronizados | Claude Haiku | `read`, `edit` (solo `team/borisAngulo/docs/`) | **MUST NOT** modificar código fuente |
 
 ### 8.2 Guardrails generales
 
@@ -228,16 +212,18 @@ JSON con: status · data.invariants · data.failure_modes · data.acceptance_cri
 
 | FSD-UC | PC | Dominio |
 |--------|----|---------|
-| FSD-UC-001 | PC-001, PC-010 | Autenticación y gestión de usuarios |
-| FSD-UC-002 | PC-002, PC-003 | Procesos, fases y cierre con pendientes |
+| FSD-UC-001 | PC-001, PC-011 | Autenticación y gestión de usuarios |
+| FSD-UC-002 | PC-002, PC-003, PC-010 | Procesos, fases, cierre e importación |
 | FSD-UC-003 | PC-004, PC-005 | Evidencias: carga, versionado y protección |
 | FSD-UC-004 | PC-006 | Observaciones DUEA ↔ carrera |
 | FSD-UC-005 | PC-007 | Panel de semáforo por carrera/facultad |
 | FSD-UC-006 | PC-008 | Alertas automáticas por plazos e hitos |
 | FSD-UC-007 | PC-009 | Reporte ejecutivo PDF en ≤ 2 clics |
-| FSD-UC-008 | **GAP-001** — pendiente PC-011 | Vista pública información no sensible |
-| FSD-UC-009 | **GAP-002** — pendiente PC-012 | Perfiles técnicos operativo y trámites |
-| FSD-UC-010 | **GAP-002** — pendiente PC-012 | Evaluador externo |
+| GAP-001 | FSD-UC-EXT-001 | PC-013 borrador — vista pública |
+| GAP-002a | FSD-UC-EXT-002 | PC-014 borrador — técnico operativo |
+| GAP-002b | FSD-UC-EXT-003 | PC-015 pendiente — técnico trámites |
+| GAP-002c | FSD-UC-EXT-004 | PC-012 completo — falta UC en FSD §4 |
+| GAP-004 | COMP-AUDIT-001 | Cerrado doc — FSD §2.4.1 |
 
 ---
 
@@ -285,12 +271,12 @@ docker compose up -d    # BD + servicios locales
 | `prompt_coverage` | (FSD-UC con PC / total FSD-UC) × 100 | ≥ 80 % | `trazabilidad-sigesa.md §4` — valor actual: **100 %** |
 | `spec_fidelity` | (PRD-REQ con FSD-UC / total PRD-REQ) × 100 | ≥ 95 % | `trazabilidad-sigesa.md §4` — valor actual: **84,6 %** ⚠️ |
 | `br_coverage` | (BR/RB con FSD-UC / total BR+RB) × 100 | ≥ 80 % | `trazabilidad-sigesa.md §4` — valor actual: **84,6 %** |
-| `nfr_coverage` | (NFR con mecanismo definido / total NFR) × 100 | ≥ 80 % | `trazabilidad-sigesa.md §4` — valor actual: **71,4 %** ⚠️ |
+| `nfr_coverage` | (NFR con mecanismo definido / total NFR) × 100 | ≥ 80 % | `trazabilidad-sigesa.md §4` — valor actual: **100 %** |
 | `gap_ratio` | (gaps abiertos / total ítems trazados) × 100 | < 15 % | `trazabilidad-sigesa.md §4` — valor actual: **10,6 %** |
 | *Hallucination rate* en PRs | PRs revertidos por info inventada / total PRs agente | < 5 % | Revisión humana en PR |
 | *Revert rate* mensual | Reverts por PRs de agente / total PRs agente | < 10 % | GitHub |
 
-> **Acción pendiente**: `spec_fidelity` y `nfr_coverage` están por debajo de meta. Ver GAP-001, GAP-002, GAP-003 en `trazabilidad-sigesa.md §3` para acciones de cierre.
+> **Acción pendiente**: `spec_fidelity` por debajo de meta hasta cerrar extensiones. Ver GAP-001, GAP-002a–c en `trazabilidad-sigesa.md §3`.
 
 ---
 
@@ -300,10 +286,11 @@ docker compose up -d    # BD + servicios locales
 
 | Gap | UC bloqueado | Acción requerida | Responsable |
 |-----|-------------|-----------------|-------------|
-| GAP-001 | FSD-UC-008 (vista pública) | Crear FSD-UC-008 + PC-011 | @ArchAgent |
-| GAP-002 | FSD-UC-009, FSD-UC-010 (técnico operativo, trámites, evaluador externo) | Crear FSD-UC-009, FSD-UC-010 + PC-012 | @ArchAgent |
-| GAP-004 | Auditoría transversal | Crear FSD-UC-011 o componente en FSD §2.4 | @ArchAgent / Boris Angulo |
-| GAP-005 | Validación hipótesis MRD | Vincular H-01–H-05 a NFR/KPI del FSD | @ProductAgent |
+| GAP-001 | PRD-US-021 | Completar PC-013 + UC-EXT-001 en FSD §4 | @ArchAgent |
+| GAP-002a/b | PRD-US-018/019 | Completar PC-014; crear PC-015 | @ArchAgent |
+| GAP-002c | PRD-US-020 | Añadir UC-EXT-004 en FSD (PC-012 listo) | @ArchAgent |
+| GAP-003 | NFR-005 piloto | Checklist TI §3.1 trazabilidad | Tech Lead |
+| GAP-005 | H-01…H-05 | Ejecutar protocolo piloto §2.5 trazabilidad | @ProductAgent |
 
 ---
 
@@ -321,3 +308,5 @@ docker compose up -d    # BD + servicios locales
 | Versión | Fecha | Autor | Cambio |
 |---------|-------|-------|--------|
 | v1.0 | 2026-05-14 | Boris Angulo / AcredIA | Versión inicial generada desde BRD_v2.md, MRD_v1.md, PRD_v1.md, FSD_v1.md, prompt-contracts.md y trazabilidad-sigesa.md |
+| v1.1 | 2026-05-16 | Boris Angulo / AcredIA | Rutas `docs/` corregidas; 7 FSD-UC canónicos; tabla PC; gaps sin numeración UC conflictiva |
+| v1.2 | 2026-05-16 | Boris Angulo / AcredIA | Gaps con FSD-UC-EXT-*; GAP-004/005 cerrados doc; sub-gaps 002a–c |

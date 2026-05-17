@@ -3530,8 +3530,141 @@ Solo referencias de AGENTS.md. Registrar en PROMPT_MAPPING.md.
 - **Próximos pasos**:
   - Confirmar con el equipo Alex si desean entradas adicionales (por prompt) o un registro colectivo.
 
+| PM-034 | diag | team/borisAngulo/docs/07_diagramas/ | Generación de 4 diagramas Mermaid adicionales para borisAngulo derivados de BRD/PRD/FSD/NFR/DTI. Tipos: C4Container, flowchart, classDiagram, pie. Sin duplicados respecto a diagramas existentes en el equipo ni en otros equipos. | 2026-05-16 | borisAngulo |
+
+---
+
+# PM-034 — Generación de 4 diagramas Mermaid adicionales (`team/borisAngulo/docs/07_diagramas/`)
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-034 |
+| **Fecha** | 2026-05-16 |
+| **Solicitante** | Boris Angulo |
+| **Agente / Entorno** | Cursor Agent |
+| **Modelo** | Composer |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de `team/borisAngulo/docs/`, generar exactamente 4 diagramas `.mmd` nuevos sin duplicar tipos ya presentes en `07_diagramas/` (propios ni de otros equipos) y registrar entrada en `PROMPT_MAPPING.md`.
+
+---
+
+### Entradas analizadas
+
+| Ruta | Rol |
+|------|-----|
+| `team/borisAngulo/docs/01_brd/` … `09_dti/` | Documentación base |
+| `team/borisAngulo/docs/07_diagramas/diag-01` … `diag-06a` | Diagramas existentes (evitar duplicados) |
+| `team/*/07_diagramas/` | Inventario cross-equipo |
+| `PROMPT_MAPPING.md` | Correlativo PM-* |
+
+---
+
+### Salidas generadas
+
+| Archivo | Tipo | Fuente documental |
+|---------|------|-------------------|
+| `diag-07-c4-contenedores-sistema.mmd` | C4Container | DTI_v1 §3.2 |
+| `diag-08-flow-cierre-proceso-pendientes.mmd` | flowchart | FSD-UC-002 / BR-009 / CU-004 |
+| `diag-09-class-dominio-agregados.mmd` | classDiagram | DTI_v1 §4.2 |
+| `diag-10-pie-cobertura-nfr-iso25010.mmd` | pie | `nfr_iso25010.md` |
+
+---
+
+### Validación
+
+- Sin `sequenceDiagram`, `stateDiagram`, `erDiagram` ni `gantt` duplicados en carpeta borisAngulo.
+- Comentario `%%` con título y fuente en línea 1 de cada `.mmd`.
+- Naming `diag-NN-tipo-nombre.mmd` correlativo desde 07.
+
+---
+
+### Próximos pasos
+
 | ID | Tarea |
 |----|-------|
-| PM-034 | Registrar siguiente tarea ejecutada con IA | Por definir |
+| PM-035 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+---
+
+## Log interno de sesión — borisAngulo (2026-05-16)
+
+> Registro append-only de prompts de la sesión. Solicitante inferido por entregables en `team/borisAngulo/`.
+
+### 2026-05-16T00:00:00 — Prompt usuario (merge)
+
+**Prompt:** Resolve this merge conflict @Branch
+
+**Acción:** Resuelto conflicto en `PROMPT_MAPPING.md` (rama `Aylen` vs incoming): conservadas entradas PM-024–PM-032; registro Alex renumerado a PM-033; próximo slot PM-034. Archivo staged; merge pendiente de `git commit` por el usuario.
+
+---
+
+### 2026-05-16T00:00:00 — Prompt usuario (diagramas)
+
+**Prompt:** Actúa como arquitecto de software senior… Acción 1 lectura BRD/MRD/PRD/FSD/LFSD/NFR/trazabilidad/DTI borisAngulo + diagramas existentes. Acción 2: generar 4 diagramas `.mmd` en `07_diagramas/` sin duplicar tipos; entrada en PROMPT_MAPPING con formato `| PM-[N] | diag | … |`.
+
+**Acción:** Lectura de documentación y diagramas; creación de `diag-07` (C4Container), `diag-08` (flowchart cierre proceso), `diag-09` (classDiagram dominio), `diag-10` (pie NFR ISO 25010); fila resumen PM-034 en `PROMPT_MAPPING.md`.
+
+---
+
+### 2026-05-16T00:00:00 — Prompt usuario (log)
+
+**Prompt:** Guarda el log interno en PROMPT_MAPPING
+
+**Acción:** Expandida entrada detallada PM-034 y añadida sección «Log interno de sesión — borisAngulo» al final de `PROMPT_MAPPING.md` (append-only).
+
+---
+
+### 2026-05-16T12:00:00 — Prompt usuario (skills)
+
+**Prompt:** OKAY, IGUAL EN /skills agrega unas 2 no duplicadas que no existan
+
+**Acción:** Creadas `team/borisAngulo/docs/09_agents/skills/skill-003.md` (generar diagramas `07_diagramas/`) y `skill-004.md` (módulo panel/alertas/reporte PDF FSD-UC-005–007); sin duplicar skill-001/002 ni skills globales `.cursor/skills/`.
+
+---
+
+| PM-035 | skills | team/borisAngulo/docs/09_agents/skills/ | Alta de skill-003 (diagramas Mermaid equipo) y skill-004 (panel FSD-UC-007, alertas UC-008, reporte PDF UC-009). Complementan skill-001/002 sin duplicar skills globales ni de aylenGonzales. | 2026-05-16 | borisAngulo |
+
+### 2026-05-16T14:00:00 — Prompt usuario (auditoría DTI)
+
+**Prompt:** Revisar todos los archivos de team/borisAngulo/docs; avisar inconsistencias entre docs; actualizar completamente el DTI.
+
+**Acción:** Auditoría cruzada BRD/MRD/PRD/FSD/LFSD/NFR/trazabilidad/diagramas/skills; hallazgos I-01…I-09 documentados; `DTI_v1.md` reescrito a **v1.1** con tabla canónica 7 FSD-UC, NFR-001–010, rutas corregidas y referencias a diag-01…10.
+
+---
+
+| PM-036 | docs | team/borisAngulo/docs/09_dti/DTI_v1.md | Auditoría de consistencia documental borisAngulo; DTI v1.1 con reconciliación FSD-UC/CU/PC, NFR alineados, gaps y checklist de correcciones pendientes. | 2026-05-16 | borisAngulo |
+
+| ID | Tarea |
+|----|-------|
+| PM-037 | docs | team/borisAngulo/docs/ | Aplicación correcciones I-01…I-09: prompt-contracts (12 PC → 7 UC canónicos), trazabilidad v1.1, AGENTS v1.1, skills 002/004, diag-04b, DTI checklist cerrado. | 2026-05-16 | borisAngulo |
+
+### 2026-05-16T16:00:00 — Prompt usuario (alineación)
+
+**Prompt:** aplica las correcciones y que todo cuadre
+
+**Acción:** Cierre reconciliación documental borisAngulo: encabezados y tabla consolidada en `prompt-contracts.md`; `trazabilidad-sigesa.md` v1.1 (BR-010→UC-002, PC-010/011, 10 NFR); `AGENTS.md` v1.1 rutas y gaps; `skill-002`/`skill-004` IDs canónicos; DTI §2.1 resuelto; `diag-04b` FSD-UC-006.
+
+---
+
+| ID | Tarea |
+|----|-------|
+| PM-038 | docs | team/borisAngulo/docs/ | Mejora registro gaps: FSD §2.4.1/§2.6, trazabilidad v1.2, PC-013/014 borrador, GAP-004/005 cerrados doc, sub-gaps 002a–c. | 2026-05-16 | borisAngulo |
+
+### 2026-05-16T18:00:00 — Prompt usuario (gaps)
+
+**Prompt:** mejora los gaps
+
+**Acción:** Registro gaps ampliado en `trazabilidad-sigesa.md` §3; `FSD_v1.md` §2.4.1 auditoría + §2.6 extensiones; borradores PC-013/014; GAP-004/005 cerrados a nivel documental; métricas gap ratio 8,5 %.
+
+---
+
+| ID | Tarea |
+|----|-------|
+| PM-039 | Registrar siguiente tarea ejecutada con IA | Por definir |
 
 

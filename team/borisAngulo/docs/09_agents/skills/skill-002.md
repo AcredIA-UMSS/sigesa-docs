@@ -152,17 +152,19 @@ Scenario: <nombre descriptivo>
 ## 8. Mini ejemplo
 
 ```
-"Crea PC-011 para FSD-UC-008 (vista pública información no sensible).
+"Crea PC-013 para PRD-US-021 (vista pública). No reutilizar PC-011 (gestión usuarios).
  Usa Skill-002. GAP-001 debe quedar cerrado."
 ```
 
 ## 9. UCs con GAP activo (referencia rápida)
 
-| GAP | UC | PC a crear | Responsable |
-|-----|----|-----------|-------------|
-| GAP-001 | FSD-UC-008 | PC-011 | @ArchAgent |
-| GAP-002 | FSD-UC-009, FSD-UC-010 | PC-012 | @ArchAgent |
-| GAP-004 | FSD-UC-011 (auditoría) | PC-013 | @ArchAgent / Boris Angulo |
+| GAP | Alcance | ID / PC | Responsable |
+|-----|---------|---------|-------------|
+| GAP-001 | PRD-US-021 vista pública | EXT-001 / PC-013 borrador | @ArchAgent |
+| GAP-002a | PRD-US-018 técnico operativo | EXT-002 / PC-014 borrador | @ArchAgent |
+| GAP-002b | PRD-US-019 técnico trámites | EXT-003 / PC-015 pendiente | @ArchAgent |
+| GAP-002c | PRD-US-020 evaluador | EXT-004 / PC-012 completo | @ArchAgent |
+| GAP-004 | Auditoría | COMP-AUDIT-001 — cerrado doc | @QaAgent (tests CI) |
 
 ## 10. Registro de cambios
 
