@@ -76,7 +76,7 @@ BRD-ASM-01…05; correo institucional; datos maestros carreras/facultades; plant
 | Estilo | Monolito modular (evitar microservicios prematuros — skill arquitectura) |
 | Persistencia Evidencia | Append-only; sin `DELETE` físico en blobs aprobados |
 | Autenticación | `AuthPort` + `LocalAuthAdapter` (v1.0); `LdapAuthAdapter` (v1.1) — ADR-0003 |
-| ADR | `ADR-0001` inmutable · `ADR-0002` monolito · `ADR-0003` auth adapter |
+| ADR | `docs/adr/README.md` — ADR-0001…0009 (inmutable, monolito, auth, storage, audit, PG, JWT, taxonomías, Node) |
 | Módulos lógicos | `MOD-AUTH`, `MOD-PROCESS`, `MOD-EVIDENCE`, `MOD-WORKFLOW`, `MOD-DASH`, `MOD-NOTIFY`, `MOD-REPORT`, `MOD-PUBLIC`, `MOD-AUDIT` |
 
 ### 2.5 Descomposición en tasks (Spec Kit)

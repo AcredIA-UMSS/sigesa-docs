@@ -6,6 +6,7 @@
 | Fecha | 2026-05-16 |
 | Alcance | Arquitectura aplicación UMSS |
 | Trazabilidad | FSD §2.4 · matriz MOD-* |
+| Relacionado | [ADR-0009](ADR-0009-backend-nodejs-express.md) (runtime) · [`README.md`](README.md) |
 
 ## Contexto
 

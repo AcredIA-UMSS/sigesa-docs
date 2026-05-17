@@ -10,7 +10,7 @@
 | **Fuentes** | BRD v2.2 · MRD v1.1 · PRD v1.0 · FSD v1.0 · NFR v1.1 · `docs/05_dti/modelo_datos.md` |
 | **Informe** | [`report_findings.md`](report_findings.md) |
 | **Métricas IA** | [`metricas_ai_sdlc.md`](metricas_ai_sdlc.md) |
-| **ADRs** | [`docs/adr/ADR-0001`](docs/adr/ADR-0001-append-only-evidence-storage.md) · [`docs/adr/ADR-0002`](docs/adr/ADR-0002-modular-monolith.md) · [`docs/adr/ADR-0003`](docs/adr/ADR-0003-authentication-adapter.md) |
+| **ADRs** | [`docs/adr/README.md`](docs/adr/README.md) — ADR-0001…0009 |
 
 ---
 
@@ -159,16 +159,16 @@ Fuente autoritativa: `docs/03_prd/PRD.md` §7. Corregida en auditoría v1.1 (sus
 
 | MOD | Descripción (módulo) | FSD-UC | ADR | Descripción (ADR) |
 |-----|------------------------|--------|-----|-------------------|
-| MOD-AUTH | Identidad, sesión y RBAC | UC-001 Autenticación · UC-002 Gestión usuarios | ADR-0003 | Patrón Adapter auth (local v1.0 → LDAP v1.1) |
-| MOD-PROCESS | Proceso, plantillas CEUB/ARCU-SUR, taxonomía | UC-003 Plantillas y Proceso | ADR-0002 | Monolito modular SIGESA v1 |
-| MOD-EVIDENCE | Carga, versionado, búsqueda, importación | UC-004–007 · UC-018 | ADR-0001 | Almacenamiento append-only para Evidencia |
+| MOD-AUTH | Identidad, sesión y RBAC | UC-001 Autenticación · UC-002 Gestión usuarios | ADR-0003, ADR-0007 | Adapter auth local→LDAP; JWT + RBAC |
+| MOD-PROCESS | Proceso, plantillas CEUB/ARCU-SUR, taxonomía | UC-003 Plantillas y Proceso | ADR-0002, ADR-0008 | Monolito modular; taxonomías en BD |
+| MOD-EVIDENCE | Carga, versionado, búsqueda, importación | UC-004–007 · UC-018 | ADR-0001, ADR-0004 | Versiones append-only; blobs Docker |
 | MOD-WORKFLOW | Validación [TD], estados, observaciones, fases | UC-008–010 | — | — |
 | MOD-DASH | Dashboard [CC], bandeja [TD], semáforo [JD] | UC-011–013 | — | — |
 | MOD-NOTIFY | Alertas y notificaciones correo UMSS | UC-015 | — | — |
 | MOD-REPORT | Reportes ejecutivos y exportación | UC-014 | — | — |
 | MOD-PUBLIC | Portal transparencia y certificados [P] | UC-016 | — | — |
-| MOD-AUDIT | Bitácora de auditoría inmutable | UC-017 | — | — |
-| MOD-OPS | Respaldo, despliegue y operaciones (DTI) | PRD-REQ-021 Respaldo diario | — | — |
+| MOD-AUDIT | Bitácora de auditoría inmutable | UC-017 | ADR-0005 | Log append-only PostgreSQL |
+| MOD-OPS | Respaldo, despliegue y operaciones (DTI) | PRD-REQ-021 Respaldo diario | ADR-0006, ADR-0009 | PostgreSQL 16; runtime Node/Express |
 
 | Artefacto | Ruta |
 |-----------|------|

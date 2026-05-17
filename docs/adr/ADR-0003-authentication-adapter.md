@@ -6,6 +6,7 @@
 | Fecha | 2026-05-16 |
 | Decisión Q-02 | Credenciales locales en piloto; LDAP/SSO UMSS en v1.1 |
 | Trazabilidad | BRD §21.1 Q-02 · FSD-UC-001 · PRD-REQ-001 |
+| Relacionado | [ADR-0007](ADR-0007-jwt-rbac-authentication.md) (JWT/RBAC en API) |
 
 ## Contexto
 

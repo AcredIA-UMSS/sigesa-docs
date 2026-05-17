@@ -71,8 +71,8 @@ Al comenzar cualquier tarea, el agente **MUST** leer en orden:
 
 | Capa | Tecnología | Versión | Justificación |
 |------|------------|---------|---------------|
-| Lenguaje backend | Por definir (Java 21 / Python 3.12 / TypeScript 5) | — | Pendiente ADR-001 |
-| Framework backend | Por definir (Spring Boot 3 / FastAPI / NestJS) | — | Pendiente ADR-001 |
+| Lenguaje backend | Node.js 20 (TypeScript opcional) | ADR-0009 | [`docs/adr/ADR-0009`](../../../docs/adr/ADR-0009-backend-nodejs-express.md) |
+| Framework backend | Express 4 | ADR-0009 | Idem |
 | Persistencia | PostgreSQL | 16 | Transacciones ACID requeridas por BR-009, BR-012 |
 | Migraciones | Flyway / Alembic | — | Historial auditable de esquema |
 | Almacenamiento de archivos | Servidor UMSS / objeto autorizado | — | Evidencias y reportes (NFR-002, Ley 164) |
