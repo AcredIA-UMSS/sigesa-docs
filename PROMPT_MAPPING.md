@@ -2566,3 +2566,123 @@ Restricciones:
 
 ### Próximos pasos
 | PM-024 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+
+# PM-025 — Generación de `team/aylenGonzales/04_fsd/adr/` — ADR-0001 a ADR-0005: Architecture Decision Records v1.0 — SIGESA
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-025 |
+| **Fecha** | 2026-05-15 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Aylen Gonzales |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-6 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar 5 Architecture Decision Records (ADRs) completos y aceptados para el proyecto SIGESA, almacenados en `team/aylenGonzales/04_fsd/adr/`, cubriendo las decisiones arquitectónicas más críticas del sistema: almacenamiento de evidencias, log de auditoría, base de datos principal, autenticación y taxonomías normativas.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/aylenGonzales/01_brd/BRD_v2.md` | Objetivos de negocio, restricciones RB-* y reglas BR-* |
+| `team/aylenGonzales/02_mrd/MRD.md` | Diferenciadores competitivos, ventajas sostenibles y riesgos de mercado |
+| `team/aylenGonzales/03_prd/PRD_v1.md` | Requerimientos funcionales PRD-REQ-*, NFRs con umbrales y Constitution del producto |
+| `team/aylenGonzales/04_fsd/FSD_v1.md` | Stack tecnológico §2.3, supuestos SA-*, tasks T-*, prompt-contratos PC-*, NFRs, riesgos RF-*, ADRs referenciados en §15 como pendientes |
+| `templates/ADR_TEMPLATE.md` | Plantilla oficial del módulo con secciones §1–§9 y convenciones de nomenclatura |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/aylenGonzales/01_brd/BRD_v2.md
+- @team/aylenGonzales/02_mrd/MRD.md
+- @team/aylenGonzales/03_prd/PRD_v1.md
+- @team/aylenGonzales/04_fsd/FSD_v1.md
+- @templates/ADR_TEMPLATE.md
+
+Generá entre 2 y 5 ADRs completos para el proyecto SIGESA.
+
+Los archivos a generar son:
+
+team/aylenGonzales/09_dti/adr/ADR-001.md
+team/aylenGonzales/09_dti/adr/ADR-002.md
+team/aylenGonzales/09_dti/adr/ADR-003.md
+team/aylenGonzales/09_dti/adr/ADR-004.md
+team/aylenGonzales/09_dti/adr/ADR-005.md
+
+Cada ADR debe seguir la plantilla `templates/ADR_TEMPLATE.md`
+y cubrir las 9 secciones obligatorias:
+
+§1  Metadatos (tabla con Número, Título, Fecha, Autor(es), Estado, Alcance, Stakeholders)
+§2  Contexto (problema, restricciones, fuerzas en tensión)
+§3  Alternativas consideradas (tabla con ≥ 3 alternativas, pros, contras, costo)
+§4  Decisión (alternativa elegida con justificación)
+§5  Consecuencias (positivas, negativas/costos, neutras/observables)
+§6  Impacto en el sistema (Código, Operaciones, Seguridad, Equipo, Costo)
+§7  Plan de reversión (señales, costo, Plan B)
+§8  Validación (métricas, plazos, responsable)
+§9  Referencias (FSD, PRD, BRD, MRD, documentación oficial, ADRs relacionados)
+
+Restricciones:
+- No inventar IDs; usar solo BR-*, RB-*, PRD-REQ-*, FSD-UC-*, PC-*, NFR-*, SA-*, T-*, RF-* existentes en los documentos leídos.
+- Mantener consistencia con el stack tecnológico declarado en FSD §2.3 (React + Node.js/Express o FastAPI + PostgreSQL 16 + Docker).
+- Los ADR-0001 y ADR-0002 ya están referenciados en FSD §15 como pendientes; generarlos primero.
+- Cada ADR cubre exactamente una decisión arquitectónica (no mezclar).
+- Estado de todos los ADRs: Aceptada.
+- Trazabilidad explícita a BRD, MRD, PRD y FSD en §8 Referencias de cada ADR.
+- Declarar el Plan B de reversión con estimación de sprints.
+```
+
+---
+
+### Salidas generadas
+
+| Archivo | Decisión cubierta | Estado |
+|---------|-------------------|--------|
+| `ADR-0001-almacenamiento-evidencias-local.md` | Almacenamiento de archivos de evidencia en volumen Docker local `/data/evidencias/` vs. S3-compatible vs. PostgreSQL BYTEA | Aceptada |
+| `ADR-0002-log-auditoria-append-only-postgresql.md` | Log de auditoría como tabla append-only en PostgreSQL con `REVOKE DELETE, UPDATE FROM sigesa_app` vs. ELK vs. archivo de texto | Aceptada |
+| `ADR-0003-postgresql-base-de-datos-principal.md` | PostgreSQL 16 como único motor de BD vs. MySQL 8 vs. SQLite vs. MongoDB | Aceptada |
+| `ADR-0004-autenticacion-jwt-rbac.md` | Autenticación stateless JWT + RBAC por claims vs. sesiones en servidor vs. Keycloak vs. Auth-as-a-Service | Aceptada |
+| `ADR-0005-taxonomias-ceub-arcusur-en-bd.md` | Taxonomías CEUB/ARCU-SUR como configuración en BD (editables por [JD]) vs. hardcodeadas en código vs. archivos YAML vs. microservicio | Aceptada |
+
+---
+
+### Cobertura de trazabilidad
+
+| ADR | BRD vinculado | PRD vinculado | FSD vinculado | MRD vinculado |
+|-----|---------------|---------------|---------------|---------------|
+| ADR-0001 | BR-001, BR-002, BR-012, RB-04 | PRD-REQ-003, PRD-REQ-004, PRD-NFR-012 | SA-03, T-04, PC-002, RF-04, MOD-02 | MRD-N-01, MRD-N-02 |
+| ADR-0002 | BR-009, RB-04 | PRD-REQ-011 | RBN-07, T-11, NFR-004, NFR-012, TC-006 | MRD-N-09 |
+| ADR-0003 | BR-008 | PRD-REQ-009, PRD-NFR-001 | §2.3 Stack, T-03, T-10, NFR-001, TC-007, TC-010 | MRD-N-08 |
+| ADR-0004 | BR-006, RB-06 | PRD-REQ-001, PRD-REQ-002, PRD-NFR-006 | FSD-UC-001, PC-001, T-02, NFR-003, NFR-004 | MRD-N-06 |
+| ADR-0005 | BR-007, RB-01, RB-05 | PRD-REQ-010 | RBN-13, SA-04, T-06, RF-05, FSD-UC-003 | MRD-N-07, §6.2, §6.3 |
+
+---
+
+### Observaciones de ejecución
+
+- Los ADR-0001 y ADR-0002 estaban listados como existentes en el FSD v1.0 §15 (Anexos) sin contenido formal; este prompt los materializó por primera vez con estructura completa.
+- El ADR-0003 formaliza la elección implícita del FSD §2.3 que no tenía justificación documentada.
+- El ADR-0004 cubre la decisión de no usar Keycloak en v1.0 por ausencia de IdP institucional en TI UMSS — restricción operativa real confirmada con el sponsor.
+- El ADR-0005 es el ADR de mayor valor estratégico: materializa el diferenciador competitivo central del producto (MRD §6.2) como decisión de arquitectura formal.
+- Todos los ADRs incluyen Plan B con estimación de sprints para reversión.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea sugerida | Prioridad |
+|----|----------------|-----------|
+| PM-026 | Generar ADR-0006 sobre la decisión de backend (Node.js/Express vs. FastAPI) una vez resuelto el spike de 2 días declarado en FSD §2.3 | Alta — bloquea T-01 y T-02 |
+| PM-027 | Actualizar FSD §15 Anexos para reemplazar las referencias pendientes de ADR-0001 y ADR-0002 con los enlaces a los archivos generados | Media |

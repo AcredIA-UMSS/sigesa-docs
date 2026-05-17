@@ -1165,4 +1165,4 @@ CREATE INDEX idx_log_fecha ON LOG_AUDITORIA(fecha_hora DESC);
 ---
 
 *Documento elaborado por el equipo AcredIA — UMSS, Cochabamba, Bolivia, 2026.*
-*FSD v1.0 (14/05/2026): generado en modo LFSD ⚡ desde `BRD_v2.md`, `PRD_v1.md` y `MRD.md` de Aylen Gonzales Alvino siguiendo el template FSD_TEMPLATE.md.*
+*FSD v2.0 (14/05/2026): generado en modo LFSD ⚡ desde `BRD_v2.md`, `PRD_v1.md` y `MRD.md` de Aylen Gonzales Alvino siguiendo el template FSD_TEMPLATE.md.*
