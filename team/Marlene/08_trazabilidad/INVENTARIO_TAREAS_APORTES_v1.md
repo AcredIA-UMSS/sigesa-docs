@@ -1,8 +1,8 @@
-# Inventario de tareas (aportes) — Marlene v1.0
+# Inventario de tareas (aportes) — Marlene v1.1
 
 | Metadato | Valor |
 |----------|-------|
-| **Total tareas** | 130 (T-001…T-130) |
+| **Total tareas** | 172 (T-001…T-172) |
 | **Autor** | Marlene (equipo AcredIA) |
 | **Fecha inventario** | 16/05/2026 |
 | **Última verificación** | 16/05/2026 — solo `team/Marlene/` |
@@ -12,8 +12,8 @@
 
 | Estado | Cantidad | % |
 |--------|----------|---|
-| **Entregada** | 124 | 95.4 % |
-| **Entregada parcial** | 1 | — |
+| **Entregada** | 147 | 86.0 % |
+| **Entregada parcial** | 17 | — |
 | **Recomendada** | 3 | — |
 
 **Artefactos físicos:** ~60 archivos `.md` / `.mmd` / `.prompt.md` bajo `team/Marlene/` (excl. duplicados `08_agents/mmd/`).
@@ -28,18 +28,18 @@ Ver `templates/APORTES_TEMPLATE.md` y `docs/10_aportes/APORTES_RELEASE_1.0.0.md`
 
 | Tipo | Esperado | Inventario | ¿Completo? |
 |------|----------|------------|------------|
-| User story | 22 | T-063…084 (aprox.) | **Sí** |
-| FSD-UC | 12 | filas FSD en inventario | **Sí** |
+| User story | 22 | PRD-US §10 + T-063…084 | **Sí** |
+| FSD-UC | 12 | T-131…142 (UC dedicados) | **Sí** |
 | Diagrama `MAR-*` | 18 | filas Diagrama | **Sí** (no sumar `D-*` borrador) |
-| NFR ISO | 10 (+10 IA) | NFR.md + NFR_IA | **Parcial** vs 15 ISO ref. |
+| NFR ISO | 10 (+10 IA) | T-143…152 + NFR_IA.md | **Sí** (10 ISO; +10 IA) |
 | PC `.prompt.md` | 20 | `06_prompt_contracts/` | **Sí** (tipo NFR) |
 | Skills | 7 ref. | 2 en SKILLS.md | **No** |
 | Matriz + métricas | 2 | pendiente | **No** |
 | POC ejecutada | 2 | 0 | **No** |
 
-**Tareas únicas alineadas a reglas (estricto):** **~115–120** (base 124 menos duplicados lógicos de secciones repetidas en aportes).
+**Tareas únicas alineadas a reglas (estricto):** **~145–155** (base 124 menos duplicados lógicos de secciones repetidas en aportes).
 
-## Registro T-001 a T-130
+## Registro T-001 a T-172
 
 | ID | Categoria | Descripcion | Referencia | Estado | Observacion |
 |----|-----------|-------------|------------|--------|-------------|
@@ -145,22 +145,22 @@ Ver `templates/APORTES_TEMPLATE.md` y `docs/10_aportes/APORTES_RELEASE_1.0.0.md`
 | T-100 | Gherkin | CU_BDD.md | team/Marlene/05_nfr/CU_BDD.md | Entregada |  |
 | T-101 | Skill | SKILLS.md | team/Marlene/08_agents/agents/SKILLS.md | Entregada |  |
 | T-102 | Diagrama | ARQ_Mermaid_SIGESA_FSD_Traceability_v1.md | team/Marlene/08_agents/ARQ_Mermaid_SIGESA_FSD_Traceability_v1.md | Entregada |  |
-| T-103 | Diagrama | D-ACT-001-observaciones-mejoras.mmd | team/Marlene/08_agents/mmd/D-ACT-001-observaciones-mejoras.mmd | Entregada |  |
-| T-104 | Diagrama | D-ARCH-001-capas-sistema.mmd | team/Marlene/08_agents/mmd/D-ARCH-001-capas-sistema.mmd | Entregada |  |
-| T-105 | Diagrama | D-CLASS-001-dominio-sigesa.mmd | team/Marlene/08_agents/mmd/D-CLASS-001-dominio-sigesa.mmd | Entregada |  |
-| T-106 | Diagrama | D-COMP-001-modulos-sigesa.mmd | team/Marlene/08_agents/mmd/D-COMP-001-modulos-sigesa.mmd | Entregada |  |
-| T-107 | Diagrama | D-ER-001-nucleo-sigesa.mmd | team/Marlene/08_agents/mmd/D-ER-001-nucleo-sigesa.mmd | Entregada |  |
-| T-108 | Diagrama | D-FLOW-001-workflow-aprobacion.mmd | team/Marlene/08_agents/mmd/D-FLOW-001-workflow-aprobacion.mmd | Entregada |  |
-| T-109 | Diagrama | D-GANTT-001-roadmap-implementacion.mmd | team/Marlene/08_agents/mmd/D-GANTT-001-roadmap-implementacion.mmd | Entregada |  |
-| T-110 | Diagrama | D-GANTT-002-cronograma-ceub-carrera.mmd | team/Marlene/08_agents/mmd/D-GANTT-002-cronograma-ceub-carrera.mmd | Entregada |  |
-| T-111 | Diagrama | D-JOURNEY-001-coordinador-carga.mmd | team/Marlene/08_agents/mmd/D-JOURNEY-001-coordinador-carga.mmd | Entregada |  |
-| T-112 | Diagrama | D-SEQ-001-auth-jwt.mmd | team/Marlene/08_agents/mmd/D-SEQ-001-auth-jwt.mmd | Entregada |  |
-| T-113 | Diagrama | D-SEQ-002-carga-evidencia.mmd | team/Marlene/08_agents/mmd/D-SEQ-002-carga-evidencia.mmd | Entregada |  |
-| T-114 | Diagrama | D-SEQ-003-dictamen-td.mmd | team/Marlene/08_agents/mmd/D-SEQ-003-dictamen-td.mmd | Entregada |  |
-| T-115 | Diagrama | D-SEQ-004-reporte-pdf.mmd | team/Marlene/08_agents/mmd/D-SEQ-004-reporte-pdf.mmd | Entregada |  |
-| T-116 | Diagrama | D-SEQ-005-integracion-siis-futuro.mmd | team/Marlene/08_agents/mmd/D-SEQ-005-integracion-siis-futuro.mmd | Entregada |  |
-| T-117 | Diagrama | D-STA-001-indicador.mmd | team/Marlene/08_agents/mmd/D-STA-001-indicador.mmd | Entregada |  |
-| T-118 | Diagrama | D-STA-002-proceso-acreditacion.mmd | team/Marlene/08_agents/mmd/D-STA-002-proceso-acreditacion.mmd | Entregada |  |
+| T-103 | Diagrama | D-ACT-001-observaciones-mejoras.mmd | team/Marlene/08_agents/mmd/D-ACT-001-observaciones-mejoras.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-104 | Diagrama | D-ARCH-001-capas-sistema.mmd | team/Marlene/08_agents/mmd/D-ARCH-001-capas-sistema.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-105 | Diagrama | D-CLASS-001-dominio-sigesa.mmd | team/Marlene/08_agents/mmd/D-CLASS-001-dominio-sigesa.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-106 | Diagrama | D-COMP-001-modulos-sigesa.mmd | team/Marlene/08_agents/mmd/D-COMP-001-modulos-sigesa.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-107 | Diagrama | D-ER-001-nucleo-sigesa.mmd | team/Marlene/08_agents/mmd/D-ER-001-nucleo-sigesa.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-108 | Diagrama | D-FLOW-001-workflow-aprobacion.mmd | team/Marlene/08_agents/mmd/D-FLOW-001-workflow-aprobacion.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-109 | Diagrama | D-GANTT-001-roadmap-implementacion.mmd | team/Marlene/08_agents/mmd/D-GANTT-001-roadmap-implementacion.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-110 | Diagrama | D-GANTT-002-cronograma-ceub-carrera.mmd | team/Marlene/08_agents/mmd/D-GANTT-002-cronograma-ceub-carrera.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-111 | Diagrama | D-JOURNEY-001-coordinador-carga.mmd | team/Marlene/08_agents/mmd/D-JOURNEY-001-coordinador-carga.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-112 | Diagrama | D-SEQ-001-auth-jwt.mmd | team/Marlene/08_agents/mmd/D-SEQ-001-auth-jwt.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-113 | Diagrama | D-SEQ-002-carga-evidencia.mmd | team/Marlene/08_agents/mmd/D-SEQ-002-carga-evidencia.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-114 | Diagrama | D-SEQ-003-dictamen-td.mmd | team/Marlene/08_agents/mmd/D-SEQ-003-dictamen-td.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-115 | Diagrama | D-SEQ-004-reporte-pdf.mmd | team/Marlene/08_agents/mmd/D-SEQ-004-reporte-pdf.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-116 | Diagrama | D-SEQ-005-integracion-siis-futuro.mmd | team/Marlene/08_agents/mmd/D-SEQ-005-integracion-siis-futuro.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-117 | Diagrama | D-STA-001-indicador.mmd | team/Marlene/08_agents/mmd/D-STA-001-indicador.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
+| T-118 | Diagrama | D-STA-002-proceso-acreditacion.mmd | team/Marlene/08_agents/mmd/D-STA-002-proceso-acreditacion.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
 | T-119 | Otro | release-1.0.0.md | team/Marlene/09_trazabilidad/10_aportes/release-1.0.0.md | Entregada |  |
 | T-120 | Presentación | release-1.0.0.md | team/Marlene/10_aportes/release-1.0.0.md | Entregada |  |
 | T-121 | AGENTS | AGENTS.md | AGENTS.md (co-autoría Equipo) | Entregada |  |
@@ -173,3 +173,45 @@ Ver `templates/APORTES_TEMPLATE.md` y `docs/10_aportes/APORTES_RELEASE_1.0.0.md`
 | T-128 | Metricas AI-SDLC | metricas_ai_sdlc.md en carpeta equipo | team/Marlene/08_trazabilidad/metricas_ai_sdlc.md | Recomendada | GAP-M02 |
 | T-129 | Bitacora | log_interno.md con entradas de sesion | team/Marlene/log_interno.md | Entregada parcial | Archivo existe; vacio |
 | T-130 | POC | POC ejecutada con evidencia | team/Marlene/11_pocs/ | Recomendada | GAP-M06 |
+| T-131 | UC critico | FSD-UC-001 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
+| T-132 | UC critico | FSD-UC-002 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
+| T-133 | UC critico | FSD-UC-003 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
+| T-134 | UC critico | FSD-UC-004 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
+| T-135 | UC critico | FSD-UC-005 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
+| T-136 | UC critico | FSD-UC-006 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
+| T-137 | UC critico | FSD-UC-007 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
+| T-138 | UC critico | FSD-UC-008 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
+| T-139 | UC critico | FSD-UC-009 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
+| T-140 | UC critico | FSD-UC-010 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
+| T-141 | UC critico | FSD-UC-011 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
+| T-142 | UC critico | FSD-UC-012 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
+| T-143 | NFR ISO 25010 | NFR-ED-01 metrica+umbral+verificacion | 06_prompt_contracts/NFR.md | Entregada |  |
+| T-144 | NFR ISO 25010 | NFR-ED-02 metrica+umbral+verificacion | 06_prompt_contracts/NFR.md | Entregada |  |
+| T-145 | NFR ISO 25010 | NFR-SEG-01 metrica+umbral+verificacion | 06_prompt_contracts/NFR.md | Entregada |  |
+| T-146 | NFR ISO 25010 | NFR-FIA-01 metrica+umbral+verificacion | 06_prompt_contracts/NFR.md | Entregada |  |
+| T-147 | NFR ISO 25010 | NFR-FIA-02 metrica+umbral+verificacion | 06_prompt_contracts/NFR.md | Entregada |  |
+| T-148 | NFR ISO 25010 | NFR-USA-01 metrica+umbral+verificacion | 06_prompt_contracts/NFR.md | Entregada |  |
+| T-149 | NFR ISO 25010 | NFR-USA-02 metrica+umbral+verificacion | 06_prompt_contracts/NFR.md | Entregada |  |
+| T-150 | NFR ISO 25010 | NFR-COM-01 metrica+umbral+verificacion | 06_prompt_contracts/NFR.md | Entregada |  |
+| T-151 | NFR ISO 25010 | NFR-MAN-01 metrica+umbral+verificacion | 06_prompt_contracts/NFR.md | Entregada |  |
+| T-152 | NFR ISO 25010 | NFR-POR-01 metrica+umbral+verificacion | 06_prompt_contracts/NFR.md | Entregada |  |
+| T-153 | User journey | J-01 Cierre evidencia CEUB | 03_prd/PRD.md §11.1 | Entregada |  |
+| T-154 | User journey | J-02 Transparencia empleador | 03_prd/PRD.md §11.2 | Entregada |  |
+| T-155 | Diagrama Mermaid | MAR-SEQ-001-autenticacion-jwt.mmd | 07_diagramas/MAR-SEQ-001-autenticacion-jwt.mmd | Entregada | Oficial MAR |
+| T-156 | Diagrama Mermaid | MAR-SEQ-002-carga-evidencia-versionada.mmd | 07_diagramas/MAR-SEQ-002-carga-evidencia-versionada.mmd | Entregada | Oficial MAR |
+| T-157 | Diagrama Mermaid | MAR-SEQ-003-aprobacion-rechazo-subfase.mmd | 07_diagramas/MAR-SEQ-003-aprobacion-rechazo-subfase.mmd | Entregada | Oficial MAR |
+| T-158 | Diagrama Mermaid | MAR-SEQ-004-dashboard-drilldown.mmd | 07_diagramas/MAR-SEQ-004-dashboard-drilldown.mmd | Entregada | Oficial MAR |
+| T-159 | Diagrama Mermaid | MAR-SEQ-005-reporte-pdf-asincrono.mmd | 07_diagramas/MAR-SEQ-005-reporte-pdf-asincrono.mmd | Entregada | Oficial MAR |
+| T-160 | Diagrama Mermaid | MAR-SEQ-006-notificaciones-outbox-smtp.mmd | 07_diagramas/MAR-SEQ-006-notificaciones-outbox-smtp.mmd | Entregada | Oficial MAR |
+| T-161 | Diagrama Mermaid | MAR-SEQ-007-busqueda-fts-multifiltro.mmd | 07_diagramas/MAR-SEQ-007-busqueda-fts-multifiltro.mmd | Entregada | Oficial MAR |
+| T-162 | Diagrama Mermaid | MAR-SEQ-008-portal-publico-consulta.mmd | 07_diagramas/MAR-SEQ-008-portal-publico-consulta.mmd | Entregada | Oficial MAR |
+| T-163 | Diagrama Mermaid | MAR-SEQ-009-auditoria-exportacion.mmd | 07_diagramas/MAR-SEQ-009-auditoria-exportacion.mmd | Entregada | Oficial MAR |
+| T-164 | Diagrama Mermaid | MAR-SEQ-010-configuracion-proceso-normativa.mmd | 07_diagramas/MAR-SEQ-010-configuracion-proceso-normativa.mmd | Entregada | Oficial MAR |
+| T-165 | Diagrama Mermaid | MAR-SEQ-011-supervision-respaldos.mmd | 07_diagramas/MAR-SEQ-011-supervision-respaldos.mmd | Entregada | Oficial MAR |
+| T-166 | Diagrama Mermaid | MAR-STA-001-ciclo-vida-evidencia.mmd | 07_diagramas/MAR-STA-001-ciclo-vida-evidencia.mmd | Entregada | Oficial MAR |
+| T-167 | Diagrama Mermaid | MAR-STA-002-ciclo-proceso-acreditacion.mmd | 07_diagramas/MAR-STA-002-ciclo-proceso-acreditacion.mmd | Entregada | Oficial MAR |
+| T-168 | Diagrama Mermaid | MAR-STA-003-ciclo-plan-mejora.mmd | 07_diagramas/MAR-STA-003-ciclo-plan-mejora.mmd | Entregada | Oficial MAR |
+| T-169 | Diagrama Mermaid | MAR-ER-001-modelo-datos-nucleo.mmd | 07_diagramas/MAR-ER-001-modelo-datos-nucleo.mmd | Entregada | Oficial MAR |
+| T-170 | Diagrama Mermaid | MAR-ER-002-dominio-auditoria-evidencia.mmd | 07_diagramas/MAR-ER-002-dominio-auditoria-evidencia.mmd | Entregada | Oficial MAR |
+| T-171 | Diagrama Mermaid | MAR-GANTT-001-roadmap-implementacion-sigesa.mmd | 07_diagramas/MAR-GANTT-001-roadmap-implementacion-sigesa.mmd | Entregada | Oficial MAR |
+| T-172 | Diagrama Mermaid | MAR-GANTT-002-cronograma-convocatoria-ceub.mmd | 07_diagramas/MAR-GANTT-002-cronograma-convocatoria-ceub.mmd | Entregada | Oficial MAR |
