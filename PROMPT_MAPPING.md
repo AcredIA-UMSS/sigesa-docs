@@ -3710,4 +3710,16 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 
 | PM-041 | docs | docs/10_aportes/APORTES_RELEASE_1.0.0.md | Inventario aportes release 1.0.0 (703 tareas, 4 integrantes, §0–§6 plantilla APORTES). | 2026-05-16 | — |
 
+### 2026-05-16T22:00:00 — Prompt usuario (POCs críticas)
+
+**Prompt:** Generar mínimo 2 POCs críticas completando `templates/POC_TEMPLATE.md`; fuentes `team/*`, `.cursor/*`, `AGENTS.md` (excl. docs/templates); guardar en `team/aylenGonzales/11_pocs/POC-01`, `POC-02`.
+
+**Acción:** Lectura riesgos/NFR/ADR en documentación de equipo; selección por impacto×incertidumbre: (1) inmutabilidad append-only evidencia, (2) FTS PostgreSQL p95.
+
+**Resultado:** `team/aylenGonzales/11_pocs/POC-01/` (borisAngulo) · `POC-02/` (aylenGonzales); §1–§8 completos; §9–§10 pendientes de ejecución.
+
+---
+
+| PM-042 | docs | team/aylenGonzales/11_pocs/ | POC-01 append-only evidencia + POC-02 FTS PostgreSQL; propuestas con hipótesis SMART y plan 4–5 días. | 2026-05-16 | — |
+
 
