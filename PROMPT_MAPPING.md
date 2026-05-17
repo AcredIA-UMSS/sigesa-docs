@@ -3008,4 +3008,258 @@ Elevar entregables de `08_trazabilidad/` a nivel **EXCELENTE** (PM-020): trazabi
 
 | ID | Tarea |
 |----|-------|
-| PM-030 | Registrar siguiente tarea ejecutada con IA |
+| PM-030 | *(completado)* Generación `team/aylenGonzales/10_agents/AGENTS.md` | — |
+
+---
+
+# PM-030 — Generación de `team/aylenGonzales/10_agents/AGENTS.md` (plantilla AI-SDLC)
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-030 |
+| **Fecha** | 2026-05-16 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Aylen Gonzales |
+| **Agente / Entorno** | Cursor Agent |
+| **Modelo** | Composer |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Leer FSD_v1/v2, PRD_v1, BRD_v2, ADR-001…006 y `templates/AGENTS_TEMPLATE.md`; generar `team/aylenGonzales/10_agents/AGENTS.md` con secciones §1–§14 (más §15 changelog) sin placeholders, alineado al stack Node 20 + Express 4 (ADR-006) y reglas RBN/BR/RB del FSD.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol |
+|----------------------|-----|
+| `team/aylenGonzales/04_fsd/FSD_v1.md` | Contexto histórico |
+| `team/aylenGonzales/04_fsd/FSD_v2.md` | UC, MOD, RBN, stack §2.3, NFR, PC-001…004 |
+| `team/aylenGonzales/03_prd/PRD_v1.md` | PRD-REQ-001…017 |
+| `team/aylenGonzales/01_brd/BRD_v2_aylen.md` | BR-*, RB-* (ruta real del equipo) |
+| `team/aylenGonzales/09_dti/adr/ADR-001.md` … `ADR-006.md` | Stack, evidencias, JWT, taxonomías, backend |
+| `team/aylenGonzales/04_fsd/prompt-contracts.md` | PC-005…010 (ejemplo PC-001 en FSD_v2 §7) |
+| `team/aylenGonzales/08_trazabilidad/matriz_trazabilidad.md` | Trazabilidad §2 contexto agente |
+| `team/aylenGonzales/08_trazabilidad/metricas_ai_sdlc.md` | Umbrales §13 |
+| `templates/AGENTS_TEMPLATE.md` | Estructura canónica §1–§15 |
+| `PROMPT_MAPPING.md` | PM-025, PM-026, PM-028, PM-029 |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos en orden:
+
+@team/aylenGonzales/04_fsd/FSD_v1.md
+@team/aylenGonzales/04_fsd/FSD_v2.md
+@team/aylenGonzales/03_prd/PRD_v1.md
+@team/aylenGonzales/01_brd/BRD_v2.md
+@team/aylenGonzales/09_dti/adr/ADR-001.md … ADR-006.md
+@templates/AGENTS_TEMPLATE.md
+
+Generá team/aylenGonzales/10_agents/AGENTS.md siguiendo la estructura exacta de AGENTS_TEMPLATE.md
+completando cada sección con datos reales AcredIA/SIGESA (§1–§14: identidad, contexto, repo,
+stack FSD §2.3 + ADR-006 Node+Express, convenciones, RBN/BR invariantes, seguridad, agentes,
+flujo Mermaid, PC-001, prompts prohibidos, comandos, métricas, contacto).
+Restricciones: sin placeholders; MUST/MUST NOT; no inventar IDs; guardar en 10_agents/AGENTS.md;
+registrar en PROMPT_MAPPING.md.
+```
+
+---
+
+### Acciones realizadas
+
+- Lectura de FSD_v2 §2.3, §5 (RBN-01…15), §7 (PC-001), ADR-001…006 y plantilla `AGENTS_TEMPLATE.md`.
+- Creación de carpeta `team/aylenGonzales/10_agents/` y archivo `AGENTS.md` (377 líneas, v1.0).
+- Stack documentado como **Node.js 20 + Express 4** (ADR-006 cerrado; no spike pendiente).
+- BRD referenciado como `BRD_v2_aylen.md`; DTI con ruta canónica + fallback FSD+ADRs (DTI_v1 aún no publicado).
+- §6: reglas MUST/MUST NOT derivadas de RBN y BR/RB; §8: @DevAgent, @ArchAgent, @QaAgent, @ProductAgent.
+- §13: métricas desde `metricas_ai_sdlc.md` v2.0 (Prompt Coverage 100 %, Spec Fidelity 88,24 %, etc.).
+
+---
+
+### Salidas
+
+| Archivo | Contenido |
+|---------|-----------|
+| `team/aylenGonzales/10_agents/AGENTS.md` | AGENTS v1.0 — 15 secciones, checklist validez, sin placeholders `<…>` |
+| `PROMPT_MAPPING.md` | Entrada PM-030 (esta) |
+
+---
+
+### Validación ejecutada
+
+- Verificación de ausencia de placeholders sin completar en `AGENTS.md`.
+- Coherencia stack con ADR-006 (Node/Express, PDFKit, Nodemailer, PostgreSQL 16).
+- Coherencia reglas con RBN-01…15 y ADR-001, 002, 004, 005.
+- Diagrama Mermaid §9 copiado sin modificación desde plantilla.
+
+---
+
+### Resultado obtenido
+
+Archivo operativo para agentes Cursor del equipo **aylenGonzales**: contexto de lectura obligatorio, estructura del repo, stack autoritativo, guardrails, flujo de trabajo, template PC-001, prompts prohibidos SIGESA y comandos de verificación local.
+
+---
+
+### Riesgos / observaciones
+
+- `team/aylenGonzales/09_dti/DTI_v1.md` no existe aún; §2 documenta fallback a FSD_v2 + ADRs hasta publicación del DTI.
+- Checklist §15 marca pendiente sincronización con DTI y revisión humana pre-piloto Q3–Q4 2026.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Prioridad |
+|----|-------|-----------|
+| + | Publicar `09_dti/DTI_v1.md` y sincronizar §2 de AGENTS.md | Media |
+| + | Implementar T-01/T-02 según ADR-004 y ADR-006 | Alta |
+| PM-031 | *(completado)* DTI_v1.md + sincronización AGENTS.md §2 | — |
+
+---
+
+# PM-031 — Generación de `DTI_v1.md` y actualización de `AGENTS.md` §2
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-031 |
+| **Fecha** | 2026-05-16 |
+| **Solicitante** | Aylen Gonzales |
+| **Agente / Entorno** | Cursor Agent |
+| **Modelo** | Composer |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar `team/aylenGonzales/09_dti/DTI_v1.md` según plantilla DTI (`templates/dti.md`); actualizar **únicamente** §2 de `10_agents/AGENTS.md` con referencias a secciones reales del DTI.
+
+---
+
+### Entradas
+
+| Archivo | Rol |
+|---------|-----|
+| `BRD_v2_aylen.md` | Problema, BR/RB, métricas negocio |
+| `PRD_v1.md` | Objetivos OP-*, alcance v1.0 |
+| `FSD_v1.md`, `FSD_v2.md` | Stack §2.3, UC, RBN, NFR §10, modelo §6 |
+| `ADR-001` … `ADR-006` | Decisiones arquitectónicas |
+| `10_agents/AGENTS.md` | Solo §2 editable |
+| `templates/dti.md` | Estructura canónica (equivalente DTI_TEMPLATE) |
+
+---
+
+### Prompt utilizado
+
+```text
+Generar DTI_v1.md desde templates/DTI_TEMPLATE.md con datos reales AcredIA/SIGESA.
+Actualizar SOLO §2 de AGENTS.md con secciones reales del DTI.
+Registrar en PROMPT_MAPPING.md.
+```
+
+---
+
+### Salidas
+
+| Archivo | Cambio |
+|---------|--------|
+| `team/aylenGonzales/09_dti/DTI_v1.md` | Creado — secciones §0–§21 + checklist |
+| `team/aylenGonzales/10_agents/AGENTS.md` | §2 reemplazado; §1 tabla DTI sin nota “pendiente” |
+| `PROMPT_MAPPING.md` | PM-031 |
+
+---
+
+### Secciones generadas en DTI_v1.md
+
+§0 Metadatos · §1 Visión · §2 Contexto (2.1–2.2) · §3 Arquitectura (3.1–3.4) · §4 Dominio · §5 Hexagonal · §6 Distribuida (monolito) · §7 Eventos (cola) · §8 Despliegue Docker · §9 IA/Agentes · §10 Prompt Mapping · §11 NFRs · §12 POCs · §13 Seguridad · §14 Observabilidad · §15 DevOps · §16 Antipatrones · §17 Trade-offs · §18 Riesgos · §19 Roadmap · §20 Glosario · §21 ADRs · Checklist
+
+---
+
+### Cambios AGENTS.md §2
+
+- Ítem 1: de “secciones 1–5 genéricas + fallback” → referencias explícitas DTI §0, §1, §2.1–2.2, §3.1–3.4, §4.1–4.2, §5.1–5.2.
+- Ítems 2–6: rutas FSD §4, ADR con DTI §21, PM hasta PM-031, matriz, BRD/PRD con IDs BR/RB y PRD-REQ.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea |
+|----|-------|
+| PM-032 | *(completado)* 7 Skills en `10_agents/skills/` según SKILL_TEMPLATE | — |
+
+---
+
+# PM-032 — Generación de Skills operativos (`10_agents/skills/`)
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-032 |
+| **Fecha** | 2026-05-16 |
+| **Solicitante** | Aylen Gonzales |
+| **Agente / Entorno** | Cursor Agent |
+| **Modelo** | Composer |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Crear carpeta `team/aylenGonzales/10_agents/skills/` con 7 archivos `.md` siguiendo `templates/SKILL_TEMPLATE.md`, derivando contenido de `10_agents/AGENTS.md` (§4, §6, §7, §8.1–8.3, §11–13).
+
+---
+
+### Entradas
+
+| Archivo | Rol |
+|---------|-----|
+| `templates/SKILL_TEMPLATE.md` | Estructura canónica §1–§10 + frontmatter |
+| `team/aylenGonzales/10_agents/AGENTS.md` | Stack, RBN/BR/RB, agentes, MOD/FSD-UC, guardrails |
+
+---
+
+### Prompt utilizado
+
+```text
+Crear 7 skills en team/aylenGonzales/10_agents/skills/ según SKILL_TEMPLATE.md:
+validate_domain_rules, run_tests_and_lint, sync_traceability_matrix,
+generate_adr, audit_security_compliance, generate_pr_description, detect_spec_gaps.
+Solo referencias de AGENTS.md. Registrar en PROMPT_MAPPING.md.
+```
+
+---
+
+### Salidas
+
+| Archivo | Agente principal | Propósito |
+|---------|------------------|-----------|
+| `skills/skill_validate_domain_rules.md` | @DevAgent, @QaAgent | Auditar RBN-*, BR-*, RB-* §6 |
+| `skills/skill_run_tests_and_lint.md` | @DevAgent, @QaAgent | `npm test`, `npm run lint`, k6 §12 |
+| `skills/skill_sync_traceability_matrix.md` | @ProductAgent | `08_trazabilidad/matriz_trazabilidad.md` |
+| `skills/skill_generate_adr.md` | @ArchAgent | `09_dti/adr/ADR-00N.md` |
+| `skills/skill_audit_security_compliance.md` | @ArchAgent, @QaAgent | NFR-003/004/012, ADR-001/002/004 |
+| `skills/skill_generate_pr_description.md` | @DevAgent | PR con FSD-UC, PRD-REQ, TC-* |
+| `skills/skill_detect_spec_gaps.md` | @ProductAgent | GAP FSD §11 + métricas §13 |
+
+---
+
+### Validación
+
+- Frontmatter YAML en los 7 archivos (name, description, allowed-tools, model-tier, fsd-version-min, status, owner).
+- Secciones 1–10 sin renombrar respecto a SKILL_TEMPLATE.
+- Sin referencias a MongoDB, FastAPI, S3 obligatorio, Redis obligatorio.
+- Rutas de salida explícitas donde aplica (`08_trazabilidad/`, `09_dti/adr/`, `10_agents/reports/`).
+
+---
+
+### Próximos pasos
+
+| ID | Tarea |
+|----|-------|
+| PM-033 | Registrar siguiente tarea ejecutada con IA |
