@@ -4,13 +4,15 @@
 
 | Campo | Valor |
 |-------|-------|
-| **Versión** | **Dorada v1.4** |
-| **Timestamp** | `2026-05-16T20:00:00-04:00` |
-| **Cambio** | Migración canónica a `docs/09_trazabilidad/`; auditoría skill `sigesa-auditor-trazabilidad-dti` v1.0 (gate PASS). |
-| **Fuentes** | BRD v2.2 · MRD v1.1 · PRD v1.0 · FSD v1.0 · NFR v1.1 · `docs/05_dti/modelo_datos.md` |
+| **Versión** | **Dorada v1.5** |
+| **Timestamp** | `2026-05-17T18:00:00-04:00` |
+| **Cambio** | Re-auditoría alineación Golden Folder (`docs/06`–`08`); corrección enlaces relativos; cobertura PRD-US 25/25. |
+| **Fuentes** | BRD v2.2 · MRD v1.1 · PRD v1.0 · FSD Dorado · NFR v1.1 · DTI · [`docs/08_agents/AGENTS.md`](../08_agents/AGENTS.md) |
 | **Informe** | [`report_findings.md`](report_findings.md) |
 | **Métricas IA** | [`metricas_ai_sdlc.md`](metricas_ai_sdlc.md) |
-| **ADRs** | [`docs/adr/README.md`](docs/adr/README.md) — ADR-0001…0009 |
+| **ADRs** | [`../adr/README.md`](../adr/README.md) — ADR-0001…0009 |
+| **Gobernanza IA** | [`../08_agents/`](../08_agents/README.md) · [`../06_prompt_contracts/`](../06_prompt_contracts/prompt_contracts.md) |
+| **Diagramas** | [`../07_diagramas/`](../07_diagramas/README.md) |
 
 ---
 
@@ -104,7 +106,7 @@ Fuente autoritativa: `docs/03_prd/PRD.md` §7. Corregida en auditoría v1.1 (sus
 | BRD-REQ-025 | UX progreso y errores accionables | 022 | UX progreso cargas | UC-004 | BR-18 Progreso > umbral | 010 · 011 | TC-04b Progreso carga |
 | BRD-REQ-026 | Paneles [CC] y bandeja [TD] | 012 | Dashboard [CC]/[TD] | UC-011 · UC-012 | BR-09 | 001 · 009 | TC-09a Dashboard CC · TC-09b Bandeja TD |
 
-*Columna `FSD-BR`: ID completo `FSD-BR-01`…`18`. Catálogo TC ampliado en [`docs/05_nfr/NFR_ISO25010.md`](docs/05_nfr/NFR_ISO25010.md) §5.*
+*Columna `FSD-BR`: ID completo `FSD-BR-01`…`18`. Catálogo TC ampliado en [`../05_nfr/NFR_ISO25010.md`](../05_nfr/NFR_ISO25010.md) §5.*
 
 ---
 
@@ -138,7 +140,7 @@ Fuente autoritativa: `docs/03_prd/PRD.md` §7. Corregida en auditoría v1.1 (sus
 | PRD-US-024 | [CC] importa actividades/evidencias desde planilla | UC-018 | Importación masiva | TC-15 Importación CSV | Sí | P2 |
 | PRD-US-025 | [CC] barra de progreso en cargas pesadas | UC-004 | Cargar Evidencia | TC-04b Progreso >5 MB | Sí | P2 |
 
-**Cobertura:** 24/24 US → UC (100 %). Gherkin: 24/24 en `docs/03_prd/PRD.md` §5.
+**Cobertura:** 25/25 US → UC (100 %). Gherkin: 25/25 en `docs/03_prd/PRD.md` §5 y [`docs/04_fsd/gherkin.md`](../04_fsd/gherkin.md).
 
 ---
 
@@ -172,8 +174,8 @@ Fuente autoritativa: `docs/03_prd/PRD.md` §7. Corregida en auditoría v1.1 (sus
 
 | Artefacto | Ruta |
 |-----------|------|
-| Modelo físico | [`docs/05_dti/modelo_datos.md`](docs/05_dti/modelo_datos.md) |
-| DDL | [`docs/05_dti/ddl_sigesa_append_only.sql`](docs/05_dti/ddl_sigesa_append_only.sql) |
+| Modelo físico | [`../05_dti/modelo_datos.md`](../05_dti/modelo_datos.md) |
+| DDL | [`../05_dti/ddl_sigesa_append_only.sql`](../05_dti/ddl_sigesa_append_only.sql) |
 
 ---
 
@@ -200,11 +202,32 @@ Fuente autoritativa: `docs/03_prd/PRD.md` §7. Corregida en auditoría v1.1 (sus
 | NFR-017 | Append-only: rechazo DELETE Evidencia aprobada |
 | NFR-018 | Máquina de estados: sin saltos ilegales |
 
-Fuente completa: [`docs/05_nfr/NFR_ISO25010.md`](docs/05_nfr/NFR_ISO25010.md).
+Fuente completa: [`../05_nfr/NFR_ISO25010.md`](../05_nfr/NFR_ISO25010.md).
 
 ---
 
-## 8. Registro de cambios
+## 8. Alineación Golden Folder (`docs/`)
+
+Cadena documental verificada contra la pirámide Dorada del repositorio (post-consolidación 2026-05-17).
+
+| Carpeta | Contenido | Enlace trazabilidad | IDs / artefactos |
+|---------|-----------|---------------------|------------------|
+| `docs/01_brd/` | BRD institucional | BRD-REQ-001…026, BRD-OBJ-01…07 | Negocio |
+| `docs/02_mrd/` | MRD mercado | MRD-N-01…22 | Mercado |
+| `docs/03_prd/` | PRD + journeys + roadmap | PRD-REQ-001…028, PRD-US-001…025 | Producto |
+| `docs/04_fsd/` | FSD descompuesto | FSD-UC-001…018, FSD-BR-01…18 | Funcional |
+| `docs/05_dti/` | DTI + ADRs numerados | ADR_001…009, MOD-* | Técnico |
+| `docs/05_nfr/` | NFR ISO 25010 | NFR-001…018 | Calidad |
+| `docs/06_prompt_contracts/` | Catálogo PCs consolidado | 58 contratos (SDLC, IA runtime, NFR verify) | AI-SDLC |
+| `docs/07_diagramas/` | Mermaid canónico | 92 entradas `.mmd` (vistas por capa en `*/07_diagramas/`) | Visual |
+| `docs/08_agents/` | Manifiesto agéntico | 8 skills, 5 rules `.mdc` | Gobernanza |
+| `docs/09_trazabilidad/` | Este paquete | Matriz, métricas, informe | Auditoría |
+
+**Coherencia FSD:** `docs/04_fsd/casos_uso.md` define 18 UC; `docs/04_fsd/gherkin.md` declara cobertura 18/18 UC y 24/24 US en PRD (matriz extiende a 25 US incluyendo bloques §5 del PRD). Diagramas UC enlazados vía [`docs/04_fsd/07_diagramas/`](../04_fsd/07_diagramas/README.md) → [`../07_diagramas/`](../07_diagramas/README.md).
+
+---
+
+## 9. Registro de cambios
 
 | Versión | Timestamp | Cambio |
 |---------|-----------|--------|
@@ -212,4 +235,5 @@ Fuente completa: [`docs/05_nfr/NFR_ISO25010.md`](docs/05_nfr/NFR_ISO25010.md).
 | Dorada v1.1 | 2026-05-16T16:22:00-04:00 | Auditoría: matriz PRD-REQ, IDs normalizados, ADR/NFR/TC |
 | Dorada v1.2 | 2026-05-16T16:30:00-04:00 | Q-01…Q-04: BRD-REQ-026, ADR-0003, 5 MB, responsive |
 | Dorada v1.3 | 2026-05-16T18:00:00-04:00 | Columnas Descripción en matrices; catálogo NFR resumido |
-| **Dorada v1.4** | 2026-05-16T20:00:00-04:00 | Carpeta canónica `docs/09_trazabilidad/`; validación bidireccional sin ERROR |
+| Dorada v1.4 | 2026-05-16T20:00:00-04:00 | Carpeta canónica `docs/09_trazabilidad/`; validación bidireccional sin ERROR |
+| **Dorada v1.5** | 2026-05-17T18:00:00-04:00 | Golden Folder 06–08; enlaces relativos corregidos; US 25/25 |

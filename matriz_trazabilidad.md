@@ -1,6 +1,6 @@
 # Matriz de trazabilidad — alias de compatibilidad
 
-> **Documento canónico:** [`docs/09_trazabilidad/matriz_trazabilidad.md`](docs/09_trazabilidad/matriz_trazabilidad.md) (Dorada v1.4).
+> **Documento canónico:** [`docs/09_trazabilidad/matriz_trazabilidad.md`](docs/09_trazabilidad/matriz_trazabilidad.md) (Dorada v1.5).
 
 Este archivo en la raíz se conserva para enlaces históricos (`AGENTS.md`, commits previos). No editar aquí; actualizar la copia en `docs/09_trazabilidad/`.
 

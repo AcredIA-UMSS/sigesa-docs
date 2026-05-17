@@ -29,7 +29,7 @@
 | Estado | Borrador para validación institucional |
 | Glosario | `context/03_domain_glossary.md` |
 | **Roadmap de producto** | **[`ROADMAP.md`](ROADMAP.md)** — fases F0–F5, releases, Gantt, trazabilidad |
-| **Diagramas (`.mmd`)** | [`07_diagramas/`](07_diagramas/README.md) — Gantt, journeys, dominio |
+| **Diagramas (`.mmd`)** | [`07_diagramas/`](07_diagramas/README.md) → [`../07_diagramas/`](../07_diagramas/README.md) |
 | FSD | [`docs/04_fsd/FSD.md`](../04_fsd/FSD.md) Dorada v1.0 |
 | Trazabilidad | [`matriz_trazabilidad.md`](../../matriz_trazabilidad.md) |
 | Fuentes consolidadas | `team/borisAngulo/docs/03_prd/PRD_v1.md` · `team/alexAlvarez/docs/03_prd/user_stories.md` · `team/aylenGonzales/03_prd/PRD_v1.md` · `team/Marlene/03_prd/PRD.md` |

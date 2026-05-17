@@ -1,6 +1,6 @@
 # Informe de auditoría de trazabilidad — SIGESA Dorada (histórico)
 
-> **Informe canónico:** [`docs/09_trazabilidad/report_findings.md`](../09_trazabilidad/report_findings.md) (v1.3).
+> **Informe canónico:** [`report_findings.md`](report_findings.md) (v1.4). Este archivo es histórico (v1.2).
 
 | Campo | Valor |
 |-------|-------|

@@ -638,3 +638,80 @@ also keep in mind all the versions available of the brd for more context if need
 **Acción:** Clasificación 23 archivos; 9 contratos en `docs/06_prompt_contracts/` con frontmatter (`name`, `id`, `description`, `type`, `skills`); eliminados duplicados `sigesa_contract_pcsig*.md`; symlinks en `prompts/` para rutas históricas; README en ambas carpetas; `docs/README.md` actualizado.
 
 **Estado:** Completado.
+
+---
+
+## Registro de prompts — sesión Cursor 2026-05-17 (continuación)
+
+> Regla: `.cursor/rules/02_session_prompt_logging.mdc`. Correlativo global: `PROMPT_MAPPING.md` **PM-050**.
+
+### Resumen ejecutivo de la sesión
+
+| # | Área | Entregables principales |
+|---|------|-------------------------|
+| 1 | Trazabilidad Dorada | `docs/09_trazabilidad/` matriz v1.5, métricas v1.2, informe v1.4 **APTO**; enlaces relativos corregidos; US 25/25 |
+| 2 | Golden Folder | `docs/06_prompt_contracts/` (58 PCs), `docs/07_diagramas/` (canónico 92 `.mmd`), `docs/08_agents/` (AGENTS v2.0, skills, rules) |
+| 3 | Diagramas | Symlinks `docs/*/07_diagramas/` → `docs/07_diagramas/`; vistas `team/*/07_diagramas/` alineadas |
+| 4 | Auditoría Excelente Alex | `team/alexAlvarez/08_trazabilidad/` — `AUDITORIA_RUBRICAS_EXCELENTE.md`, `INVENTARIO_TAREAS_APORTES_v1.md` (**10/10**) |
+| 5 | Gobernanza IA | Skill `sigesa-auditoria-excelente-equipo`; atribución 7 skills + 5 rules `.cursor/` (autor Alex) |
+| 6 | Limpieza docs | Legacy `docs/BRD_v1.md`, `FSD_v1.md`, etc. → `docs/deprecated/`; `AGENTS.md` raíz → puntero `docs/08_agents/` |
+
+---
+
+### PM-ALEX-013 — Re-auditoría trazabilidad Dorada (`docs/09_trazabilidad/`)
+
+- **ID**: PM-ALEX-013 / correlativo global **PM-050**
+- **Fecha**: 2026-05-17
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Skills**: `sigesa-auditor-trazabilidad-dti`
+- **Tarea**: Verificar alineación Golden Folder y actualizar paquete `docs/09_trazabilidad/`.
+- **Prompt usado (exacto)**:
+  ```text
+  execute the appropiate skills to check that the golden documentation is correct and aligned (for traceability) do the neccessary modifications in the 09_trazabilidad folder
+  ```
+- **Archivos generados o modificados**:
+  - `docs/09_trazabilidad/matriz_trazabilidad.md` — Dorada v1.5 (§8 Golden Folder, enlaces `../`, US 25/25)
+  - `docs/09_trazabilidad/report_findings.md` — v1.4 APTO
+  - `docs/09_trazabilidad/metricas_ai_sdlc.md` — v1.2
+  - `docs/09_trazabilidad/README.md` — pirámide documental
+  - `docs/04_fsd/FSD.md` — matriz → `../09_trazabilidad/`
+  - `matriz_trazabilidad.md` (raíz) — alias v1.5
+- **Validación**: 14/14 US Must → UC; 25/25 US total; 0 ERROR; gate PASS
+- **Estado**: Completado
+
+---
+
+### PM-ALEX-014 — Auditoría rúbrica Excelente (`team/alexAlvarez/`)
+
+- **ID**: PM-ALEX-014
+- **Fecha**: 2026-05-17
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Skills**: `sigesa-auditoria-excelente-equipo`
+- **Tarea**: Generar `AUDITORIA_RUBRICAS_EXCELENTE.md` e `INVENTARIO_TAREAS_APORTES_v1.md` en `team/alexAlvarez/08_trazabilidad/`.
+- **Prompt usado (exacto)**:
+  ```text
+  /sigesa-auditoria-excelente-equipo pls write the auditoria rubircas, inventario tareas aporte for alexAlvarez based on the documentation, what was included in the golden documentation, and to inform u that all the rules + skills ( not sigesa-auditoria-excelente-equipo) were build by this member
+  ```
+- **Archivos generados o modificados**:
+  - `team/alexAlvarez/08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md` — **EXCELENTE 10/10**
+  - `team/alexAlvarez/08_trazabilidad/INVENTARIO_TAREAS_APORTES_v1.md` — 112 filas T-001…T-132
+  - `team/alexAlvarez/08_trazabilidad/matriz_trazabilidad.md` — puntero Dorada
+  - `team/alexAlvarez/08_trazabilidad/metricas_ai_sdlc.md` — puntero M-RUB-*
+- **Nota autoría**: 7 skills + 5 rules en `.cursor/` por Alex; `sigesa-auditoria-excelente-equipo` excluida de esa autoría.
+- **Estado**: Completado
+
+---
+
+### PM-ALEX-015 — Commit y push sesión (plantilla `.gitmessage.txt`)
+
+- **ID**: PM-ALEX-015
+- **Fecha**: 2026-05-17
+- **Solicitante**: Alex Alvarez
+- **Prompt usado (exacto)**:
+  ```text
+  commit all the changes and push it to the origin (take in mind u must use the template .gitmessage.txt and incldue in th tPROMPT_mapping (in alexAlvarez/log_interno) what we've worked during this session)
+  ```
+- **Acción**: Append `log_interno.md`; entrada **PM-050** en `PROMPT_MAPPING.md`; `git commit` con plantilla; `git push origin`.
+- **Estado**: Completado
