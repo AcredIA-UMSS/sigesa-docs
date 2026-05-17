@@ -1182,6 +1182,230 @@ Instrucciones:
 
 ---
 
+# Prompt Mapping — PM-015
+## Generación de Diagramas Mermaid (.mmd) — AcredIA / SIGESA
+
+---
+
+## 0. Metadatos
+
+| Campo | Valor |
+|-------|-------|
+| **ID Prompt** | PM-015 |
+| **Producto** | AcredIA / SIGESA |
+| **Grupo** | AcredIA |
+| **Versión** | `v1.0` |
+| **Fecha** | 16/05/2026 |
+| **Autor / PM** | Aylen Mariangel Gonzales Alvino |
+| **Modelo usado** | Claude Sonnet 4.6 |
+| **Artefactos de entrada** | `FSD_v2.md` · `casos-de-uso.md` · `prompt-contracts.md` (v1.2) |
+| **Artefactos de salida** | 10 archivos `.mmd` en `04_fsd/diagramas/` |
+| **Prompt registrado en** | `PROMPT_MAPPING.md` (referencia global del equipo AcredIA) |
+| **Prompts relacionados** | PM-022 (FSD v2.0 modo LFSD ⚡) |
+
+---
+
+## 1. Objetivo del prompt
+
+Generar automáticamente los **10 diagramas Mermaid** requeridos por el criterio de calificación del FSD, cubriendo los **4 tipos obligatorios**: Secuencia, Estado, ER (Entidad-Relación) y Gantt, a partir del contenido ya especificado en el FSD v2.0, los casos de uso y los prompt-contratos del proyecto AcredIA / SIGESA.
+
+**Problema resuelto:** Los diagramas `.mmd` son un entregable evaluable (≥10 diagramas, ≥4 tipos) que requiere coherencia total con las reglas de negocio, el modelo de datos, los actores y los flujos definidos en el FSD. Generarlos manualmente presenta riesgo de inconsistencias y consume tiempo elevado.
+
+---
+
+## 2. Prompt original (entrada al modelo)
+
+**Mensaje del usuario:**
+
+> "quiero hacer diagrams , que necesitas de aca, que cumpla:
+> diagramas/Mermaid 10%≥10 diagramas .mmd cubriendo los 4 tipos
+> * Secuencia → seq-caso-uso-1.mmd / seq-caso-uso-2.mmd / seq-caso-uso-3.mmd
+> * Estado → state-flujo-principal.mmd / state-flujo-2.mmd
+> * ER (Entidad-Relación) → er-modelo-datos.mmd / er-dominio.mmd
+> * Gantt → gantt-roadmap.mmd / gantt-sprint.mmd / gantt-release.mmd
+> mínimo 10 total y todos los tipos cubiertos"
+
+**Archivos provistos por el usuario:**
+- `FSD_v2.md` — Especificación funcional completa (135 elementos, 7 FSD-UC, 9 entidades ER, 13 NFRs, 4 PCs)
+- `casos-de-uso.md` — 10 casos de uso con flujos, Gherkin y trazabilidad
+- `prompt-contracts.md` v1.2 — PC-008, PC-009, PC-010 con endpoints, failure modes e invariants
+
+---
+
+## 3. Estrategia de resolución
+
+### 3.1 Flujo de trabajo aplicado
+
+```
+[Archivos FSD] → Análisis de contenido por tipo de diagrama
+                → Selección de UC/entidades/fechas relevantes
+                → Generación de 10 archivos .mmd
+                → Verificación de cobertura (4 tipos × N diagramas)
+                → Output en /diagramas/
+```
+
+### 3.2 Decisiones de diseño tomadas por el modelo
+
+| Decisión | Justificación |
+|----------|---------------|
+| `seq-caso-uso-1` cubre FSD-UC-001 **y** FSD-UC-002 en un solo diagrama | Ambos UC son continuos: la carga dispara el versionado; separarlos duplicaría participantes |
+| `seq-caso-uso-3` usa FSD-UC-006 (autenticación) en lugar de FSD-UC-004/005 | La autenticación tiene el flujo de secuencia más rico (JWT, refresh, bloqueo) y es la base de todos los demás |
+| `state-flujo-principal` modela la evidencia, no el proceso | La evidencia tiene el ciclo de estados más granular del sistema (6 estados + transiciones RBN-02/07) |
+| `er-modelo-datos` agrega `REFRESH_TOKEN` y `CERTIFICADO` al ER del FSD | Estas entidades están definidas en PC-001 y PC-009 pero no tenían ER consolidado; se normalizan aquí |
+| `er-dominio` usa vista conceptual (sin tipos de dato) | Orientada a comunicar el dominio de negocio a stakeholders no técnicos (DUEA, evaluadores externos) |
+| `gantt-sprint` desglosa **S2** en particular | S2 es el sprint más complejo (MOD-02, MOD-03, MOD-07) y el que tiene mayor riesgo funcional (RF-01 a RF-04) |
+| `gantt-release` incluye v2.0 con IA y S3 | Trazado desde RBN-15 y ADR-0001 del FSD: migración a S3-compatible y sugerencias IA en v2.0 |
+
+---
+
+## 4. Mapeo de artefactos de entrada → diagramas de salida
+
+| Diagrama (salida) | Tipo | Sección FSD fuente | UC / Entidades / Tasks fuente |
+|-------------------|------|--------------------|-------------------------------|
+| `seq-caso-uso-1.mmd` | Secuencia | FSD §4 UC-002, §7 PC-002 | FSD-UC-001, FSD-UC-002 · T-04 · RBN-02, RBN-09, RBN-10 |
+| `seq-caso-uso-2.mmd` | Secuencia | FSD §4 UC-003, §7 PC-003 | FSD-UC-003 · T-05 · RBN-03, RBN-04 · NFR-004 |
+| `seq-caso-uso-3.mmd` | Secuencia | FSD §4 UC-001, §7 PC-001 | FSD-UC-006 · T-02 · RBN-01 · NFR-003 |
+| `state-flujo-principal.mmd` | Estado | FSD §6 Diccionario EVIDENCIA | FSD-UC-001/002/003 · RBN-02, RBN-07 · accion_enum LOG |
+| `state-flujo-2.mmd` | Estado | FSD §4 UC-004, §5 RBN-13 | FSD-UC-004 · PROCESO_ACREDITACION.estado · PC-004 · NFR-001 |
+| `er-modelo-datos.mmd` | ER | FSD §6 Diagrama ER + diccionario | 11 entidades: USUARIO, CARRERA, FACULTAD, PROCESO, FASE, INDICADOR, EVIDENCIA, LOG_AUDITORIA, NOTIFICACION, CERTIFICADO, REFRESH_TOKEN |
+| `er-dominio.mmd` | ER | FSD §1 Resumen + §3 Actores + §14 Glosario | Vista conceptual: UNIVERSIDAD → ORGANISMO_ACREDITADOR → PORTAL_PUBLICO · casos-de-uso.md |
+| `gantt-roadmap.mmd` | Gantt | FSD §2.4 Tasks ejecutables (T-01 a T-12) | T-01 … T-12 · NFR-007 (usabilidad) · §12 Plan de pruebas |
+| `gantt-sprint.mmd` | Gantt | FSD §2.4 T-04/05/09, §12 TC-004/006 | Sprint S2 granular: MOD-02, MOD-03, MOD-07 · TC-004, TC-006 |
+| `gantt-release.mmd` | Gantt | FSD §2.3 Stack + ADR-0001 + RBN-15 | Milestones: MVP → Beta → v1.0 → v1.1 → v2.0 · migración S3 · IA v2.0 |
+
+---
+
+## 5. Cobertura del criterio de evaluación
+
+| Criterio | Requerido | Entregado | Estado |
+|----------|-----------|-----------|--------|
+| Total de diagramas `.mmd` | ≥ 10 | **10** | ✅ |
+| Tipo Secuencia | ≥ 1 | **3** (`seq-caso-uso-1/2/3`) | ✅ |
+| Tipo Estado | ≥ 1 | **2** (`state-flujo-principal`, `state-flujo-2`) | ✅ |
+| Tipo ER | ≥ 1 | **2** (`er-modelo-datos`, `er-dominio`) | ✅ |
+| Tipo Gantt | ≥ 1 | **3** (`gantt-roadmap`, `gantt-sprint`, `gantt-release`) | ✅ |
+| Nombres de archivo exactos | Sí | Coincidencia 10/10 | ✅ |
+| Trazabilidad con FSD | Sí | Cada diagrama referencia UC, reglas o entidades del FSD | ✅ |
+
+---
+
+## 6. Instrucciones de reproducción
+
+Para regenerar o actualizar los diagramas con una versión nueva del FSD, usar el siguiente prompt base:
+
+```
+Contexto: Proyecto AcredIA / SIGESA — Sistema universitario de gestión de acreditaciones.
+
+Archivos de entrada:
+- FSD_v2.md (o versión actualizada)
+- casos-de-uso.md
+- prompt-contracts.md
+
+Tarea: Genera los siguientes diagramas Mermaid (.mmd), uno por archivo,
+manteniendo trazabilidad exacta con los UC, reglas de negocio, entidades
+y tasks definidos en el FSD:
+
+SECUENCIA (3 archivos):
+- seq-caso-uso-1.mmd → FSD-UC-001 + FSD-UC-002 (carga y versionado)
+- seq-caso-uso-2.mmd → FSD-UC-003 (aprobación/rechazo CC→TD→JD)
+- seq-caso-uso-3.mmd → FSD-UC-006 (autenticación JWT + refresh + bloqueo)
+
+ESTADO (2 archivos):
+- state-flujo-principal.mmd → Ciclo de vida de EVIDENCIA (6 estados)
+- state-flujo-2.mmd → Ciclo de vida de PROCESO_ACREDITACION
+
+ER (2 archivos):
+- er-modelo-datos.mmd → Modelo físico completo (todas las entidades con campos y tipos)
+- er-dominio.mmd → Vista conceptual del dominio (sin tipos de dato, orientada a negocio)
+
+GANTT (3 archivos):
+- gantt-roadmap.mmd → Roadmap completo v1.0 con sprints S1–S4 y milestones
+- gantt-sprint.mmd → Desglose granular del Sprint S2 (MOD-02, MOD-03, MOD-07)
+- gantt-release.mmd → Plan de releases v0.1 → v1.0 → v2.0 con milestones
+
+Requisitos:
+- Sintaxis Mermaid válida en cada archivo
+- Cada diagrama incluye título descriptivo
+- Los estados, entidades y participantes deben coincidir exactamente
+  con los definidos en el FSD (sin inventar elementos no especificados)
+- Las fechas del Gantt parten del [FECHA_INICIO_REAL] del proyecto
+- El er-modelo-datos debe incluir PK, FK, tipos y constraints relevantes (UK, CHECK)
+```
+
+**Parámetros a ajustar en cada regeneración:**
+
+| Parámetro | Valor actual (v1.0) | Actualizar si… |
+|-----------|---------------------|----------------|
+| `FECHA_INICIO_REAL` | 2026-05-14 | Cambia el inicio real del sprint S1 |
+| Entidades ER | 11 entidades | Se agrega nueva entidad al modelo de datos del FSD |
+| Estados de EVIDENCIA | 6 estados | Se modifica el ciclo de vida en §6 del FSD |
+| Milestones Gantt | MVP/Beta/v1.0/v1.1/v2.0 | Se redefine el roadmap en §2.4 |
+
+---
+
+## 7. Limitaciones y consideraciones
+
+| ID | Limitación | Impacto | Mitigación |
+|----|-----------|---------|------------|
+| LIM-01 | Los diagramas Gantt usan fechas estimadas derivadas del roadmap del FSD, no del plan real del equipo | Las fechas pueden requerir ajuste manual tras la planificación de sprints | Revisar con Tech Lead antes de compartir con stakeholders |
+| LIM-02 | `er-modelo-datos` incluye `REFRESH_TOKEN` y `CERTIFICADO` que no estaban en el ER original del FSD §6 | Posible discrepancia con la BD si no se migra el esquema | Agregar estas entidades a la migración Flyway/Alembic en T-03 |
+| LIM-03 | `state-flujo-2` asume que las fases internas de `EN_FASE` son exactamente las 4 de CEUB (Autoevaluación, Evaluación Externa, Plan de Mejoras, Seguimiento) | Si ARCU-SUR tiene fases distintas, el diagrama no las refleja | Parametrizar fases en BD (configuración, no hardcode) — ya contemplado en RBN-05 |
+| LIM-04 | Los diagramas de secuencia no modelan el flujo WebSocket del dashboard (FSD-UC-004) | El polling cada 30s queda implícito, no diagramado | Agregar `seq-caso-uso-4.mmd` en PM-031 si el evaluador lo requiere |
+| LIM-05 | La sintaxis Mermaid no soporta anotaciones condicionales complejas en diagramas ER | Algunos constraints (CHECK @umss.edu.bo) se indican como string en el campo, no como sintaxis ER formal | Aceptable para documentación; la constraint real está en el DDL del FSD §6 |
+
+---
+
+## 8. Trazabilidad hacia el FSD
+
+| Elemento del FSD | Diagrama(s) que lo representan |
+|-----------------|-------------------------------|
+| FSD-UC-001 Carga de evidencias | `seq-caso-uso-1.mmd` |
+| FSD-UC-002 Control de versiones | `seq-caso-uso-1.mmd` |
+| FSD-UC-003 Aprobación/rechazo | `seq-caso-uso-2.mmd` · `state-flujo-principal.mmd` |
+| FSD-UC-004 Dashboard semáforos | `state-flujo-2.mmd` (lógica semáforo en nota) |
+| FSD-UC-005 Reportes PDF | `gantt-sprint.mmd` (MOD-06 en S3) |
+| FSD-UC-006 Autenticación | `seq-caso-uso-3.mmd` |
+| FSD-UC-007 Búsqueda | `gantt-sprint.mmd` (T-10 buscador GIN) |
+| FSD-UC-008 Portal público | `er-dominio.mmd` (PORTAL_PUBLICO) · `gantt-release.mmd` (v1.0) |
+| FSD-UC-009 Certificados | `er-modelo-datos.mmd` (entidad CERTIFICADO) · `gantt-release.mmd` |
+| FSD-UC-010 Respaldo automático | `gantt-roadmap.mmd` (MOD-12) · `gantt-release.mmd` |
+| RBN-01 a RBN-15 | `state-flujo-principal.mmd` (RBN-02, 04, 07) · `seq-caso-uso-2/3.mmd` (RBN-01, 03) |
+| NFR-001 (latencia ≤ 3s) | `state-flujo-2.mmd` (nota en ACREDITADA) |
+| NFR-004 (no repudio) | `seq-caso-uso-1/2/3.mmd` (LOG_AUDITORIA en todos los flujos) |
+| T-01 a T-12 (tasks) | `gantt-roadmap.mmd` · `gantt-sprint.mmd` |
+| Milestones v1.0 → v2.0 | `gantt-release.mmd` |
+| Entidades BD (§6) | `er-modelo-datos.mmd` · `er-dominio.mmd` |
+
+---
+
+## 9. Archivos entregados
+
+| Archivo | Tipo Mermaid | UC / Módulo principal | Líneas aprox. |
+|---------|-------------|----------------------|---------------|
+| `seq-caso-uso-1.mmd` | `sequenceDiagram` | FSD-UC-001 / MOD-02 | ~55 |
+| `seq-caso-uso-2.mmd` | `sequenceDiagram` | FSD-UC-003 / MOD-03 | ~65 |
+| `seq-caso-uso-3.mmd` | `sequenceDiagram` | FSD-UC-006 / MOD-01 | ~70 |
+| `state-flujo-principal.mmd` | `stateDiagram-v2` | EVIDENCIA (ciclo de vida) | ~40 |
+| `state-flujo-2.mmd` | `stateDiagram-v2` | PROCESO_ACREDITACION | ~50 |
+| `er-modelo-datos.mmd` | `erDiagram` | Modelo físico completo | ~80 |
+| `er-dominio.mmd` | `erDiagram` | Vista conceptual dominio | ~65 |
+| `gantt-roadmap.mmd` | `gantt` | Roadmap v1.0 completo | ~50 |
+| `gantt-sprint.mmd` | `gantt` | Sprint S2 granular | ~55 |
+| `gantt-release.mmd` | `gantt` | Releases v0.1 → v2.0 | ~50 |
+| **TOTAL** | **4 tipos** | **10 UC / módulos cubiertos** | **~580 líneas** |
+
+---
+
+## 10. Registro de cambios
+
+| Versión | Fecha | Autor | Cambio |
+|---------|-------|-------|--------|
+| v1.0 | 16/05/2026 | Aylen Mariangel Gonzales Alvino | Versión inicial — PM-030 para los 10 diagramas .mmd de AcredIA/SIGESA |
+
+---
+
+
+
 ## PM-016 — Generación de casos-de-uso.md: 12 casos críticos con flujo principal, alternos y Gherkin
 
 | Campo | Valor |
@@ -3309,3 +3533,5 @@ Solo referencias de AGENTS.md. Registrar en PROMPT_MAPPING.md.
 | ID | Tarea |
 |----|-------|
 | PM-034 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+
