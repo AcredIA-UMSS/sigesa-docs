@@ -1,0 +1,40 @@
+---
+name: sigesa-qa-gherkin-coverage
+description: |
+  Regla global de Quality Assurance para SIGESA. Fuerza al agente a validar que todo código
+  generado esté respaldado por un Criterio de Aceptación en formato Gherkin extraído del PRD/FSD,
+  y prohíbe el cierre de tareas sin pruebas automatizadas.
+globs:
+  - "src/**/*.ts"
+  - "src/**/*.java"
+  - "tests/**/*.feature"
+  - "tests/**/*.spec.ts"
+---
+
+# Regla: Guardián de QA y Cobertura Gherkin
+
+> El código no existe si no está testeado. Ningún feature de SIGESA puede darse por completado si no cumple la trazabilidad BDD (Behavior-Driven Development).
+
+## 1. Contexto y Activación
+Esta regla se activa SILENCIOSAMENTE cada vez que el usuario solicita:
+- "Escribe el código para esta Historia de Usuario".
+- "Genera los tests para el Caso de Uso X".
+- "Revisa si este componente está listo para mergear".
+
+## 2. Restricciones Duras (Invariants)
+1. **Verificación de Origen (BDD):** Antes de programar un endpoint o interfaz, DEBES leer el PRD o FSD y extraer el bloque ````gherkin```` correspondiente a esa funcionalidad.
+2. **Trazabilidad en Código:** Todo archivo de prueba (ej. `*.spec.ts` o `*Test.java`) DEBE incluir un comentario en la cabecera referenciando el ID de la Historia de Usuario y el ID del NFR (si aplica). Ejemplo: `@Tag("US-SIG-012")`.
+3. **Tests de Estados Inmutables:** Siempre debes generar un "Sad Path" (Camino triste) que verifique que el sistema rechaza intentos de `DELETE` o de salto de Fases ilegales en la Máquina de Estados.
+
+## 3. Comportamiento Esperado
+Si el usuario te pide código pero no hay un Gherkin definido en los documentos base, DEBES pausar y decir:
+
+"⚠️ Alerta QA: No puedo generar el código de producción porque esta funcionalidad no tiene Criterios de Aceptación Gherkin en el PRD. ¿Deseas que genere el Gherkin primero para mantener nuestra trazabilidad?"
+
+## 4. Implementación práctica para agentes
+- Buscar automáticamente en `docs/` y en `team/*/docs/` por bloques delimitados por triple backticks con la etiqueta `gherkin`.
+- Si existen múltiples Gherkins candidatos, pedir al usuario que confirme cuál corresponde al alcance solicitado.
+- Al generar tests, agregar cabecera con `@Tag` o comentario con IDs BRD/PRD/FSD/NFR.
+
+## 5. Excepciones
+- En entornos de prototipo/POC marcados explícitamente `FICTIONAL_EXAMPLE`, la regla puede relajar la obligación de tests, siempre con consentimiento explícito del `[JD]`.

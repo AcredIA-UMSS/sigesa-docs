@@ -318,3 +318,179 @@ also keep in mind all the versions available of the brd for more context if need
 - Se actualizó el registro de trazabilidad de prompts con base en `PROMPT_MAPPING.md`.
 - Se realizó la acción final de preparación para commit y push a `origin`.
 
+
+---
+
+## Registro de cambios 2026-05-15
+
+- Se agregaron los prompts trabajados en esta sesión a `team/alexAlvarez/prompts/`:
+  - `sigesa-api-contract-designer.prompt.md`
+  - `sigesa-arquitectura-tecnica-ia.prompt.md`
+  - `sigesa-auditor-trazabilidad-dti.prompt.md`
+  - `sigesa-db-architect-append-only.prompt.md`
+- Se corrigió la numeración de secciones en `AGENTS.md` para mantener la secuencia tras el workflow.
+- Se incluyeron nuevas reglas y la política de QA/Gherkin en el manifiesto de agentes.
+- Se dejó lista la rama para commit con las modificaciones finales de la sesión.
+
+**Fecha:** 2026-05-15
+**Autor:** Alex Alvarez / GitHub Copilot
+**Motivo:** Consolidación de artefactos de sesión, auditoría de prompts y preparación para commit.
+
+---
+
+## Registro de prompts — sesión Cursor 2026-05-16
+
+> Usuario de sesión: **alexAlvarez**. Regla aplicada: `.cursor/rules/02_session_prompt_logging.mdc` (append-only; sin alterar entradas previas). Prompts almacenados en `team/alexAlvarez/docs/prompts/`.
+
+### Resumen ejecutivo de la sesión
+
+| Área | Entregables |
+|------|-------------|
+| Reglas Cursor | `.cursor/rules/06_docs_consistency_checker.mdc` (Guardián de Consistencia documental) |
+| Trazabilidad | `matriz_trazabilidad.md` → **Dorada v1.3** (columnas Descripción + catálogo NFR) |
+| FSD descompuesto | `docs/04_fsd/casos_uso.md`, `gherkin.md`, `reglas_negocio.md`, `modelo_datos.md`, `api_contracts.md`, `glosario.md` |
+| FSD maestro | `docs/04_fsd/FSD.md` — tabla «Artefactos descompuestos» |
+| Prompts | 4 archivos nuevos en `team/alexAlvarez/docs/prompts/` |
+
+---
+
+### PM-ALEX-003 — Regla Guardián de Consistencia (`06_docs_consistency_checker`)
+
+- **ID**: PM-ALEX-003
+- **Fecha**: 2026-05-16
+- **Hora**: 2026-05-16T17:00:00-04:00 (estimada sesión)
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Modelo**: Cursor Agent (sesión actual)
+- **Tarea**: Crear regla global Cursor para consistencia entre README, AGENTS, glosario y `docs/`.
+- **Objetivo**: Archivo `.mdc` con YAML (`sigesa-docs-consistency-checker`), globs `docs/**/*.md`, cross-reference obligatorio, cascada proactiva, bloqueo terminológico, zero-icons.
+- **Contexto**:
+  - Skill adjunta: `create-rule`.
+  - Fuentes leídas: `README.md`, `AGENTS.md`, `context/03_domain_glossary.md`, reglas existentes `01_domain_language`, `03_sigesa_doc_orchestrator`.
+- **Prompt usado (exacto)**: Ver `team/alexAlvarez/docs/prompts/06-docs-consistency-checker.prompt.md`
+- **Archivos generados o modificados**:
+  - `.cursor/rules/06_docs_consistency_checker.mdc` — Creado
+- **Cambios realizados**:
+  1. Jerarquía de fuentes: glosario → AGENTS → README → docs/ → team/.
+  2. Activación silenciosa en create/edit de `.md`.
+  3. Bloqueo de renombres (Fase, Evidencia, actores [CC]/[TD]/[JD]/[P]).
+  4. Detección de contradicciones con alerta estructurada.
+  5. Cascada proactiva sin editar README/AGENTS sin confirmación (alineado a `03_sigesa_doc_orchestrator`).
+- **Resultado obtenido**: Regla operativa con globs explícitos para `docs/**/*.md` y `**/*.md`.
+- **Estado**: Completado
+- **Riesgos / observaciones**: `AGENTS.md` §5 aún no lista la regla `06`; pendiente alineación en manifiesto si el equipo lo requiere.
+- **Próximos pasos**: Opcional registrar regla en tabla de `AGENTS.md`.
+
+---
+
+### PM-ALEX-004 — Matriz de trazabilidad con descripciones (Dorada v1.3)
+
+- **ID**: PM-ALEX-004
+- **Fecha**: 2026-05-16
+- **Hora**: 2026-05-16T18:00:00-04:00 (estimada sesión)
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Tarea**: Añadir descripciones legibles a `matriz_trazabilidad.md` además de IDs.
+- **Objetivo**: Facilitar lectura de PRD-REQ, BRD-REQ, US, OBJ/KPI, MOD sin abrir documentos fuente.
+- **Contexto**: Fuentes `PRD.md` §7, `BRD.md` requerimientos, `MRD.md` §11, `FSD.md` UC/BR, `NFR_ISO25010.md`.
+- **Prompt usado (exacto)**: Ver `team/alexAlvarez/docs/prompts/matriz-trazabilidad-descripciones.prompt.md`
+- **Archivos generados o modificados**:
+  - `matriz_trazabilidad.md` — Modificado (v1.2 → **Dorada v1.3**)
+- **Cambios realizados**:
+  1. Sección §2: columnas Descripción (PRD), (BRD), (MRD); referencias anotadas (`UC-001 Autenticación`).
+  2. Sección §3: descripciones BRD/PRD y TC con etiqueta corta.
+  3. Sección §4: descripción por PRD-US y FSD-UC.
+  4. Sección §5: descripciones BRD-OBJ y BRD-KPI.
+  5. Sección §6: descripciones MOD y ADR.
+  6. Nueva §7: catálogo resumido NFR-001…018.
+  7. Registro de cambios v1.3.
+- **Resultado obtenido**: Matriz extremo a extremo legible sin perder trazabilidad por ID.
+- **Estado**: Completado
+
+---
+
+### PM-ALEX-005 — Descomposición artefactos FSD (`docs/04_fsd/`)
+
+- **ID**: PM-ALEX-005
+- **Fecha**: 2026-05-16
+- **Hora**: 2026-05-16T18:30:00-04:00 (estimada sesión)
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Tarea**: Generar 6 archivos derivados del FSD Dorado canónico en `docs/04_fsd/`.
+- **Objetivo**: Separar casos de uso, Gherkin, reglas, modelo funcional, API y glosario FSD para agentes y desarrollo.
+- **Contexto**: `docs/04_fsd/FSD.md` v1.0, `docs/03_prd/PRD.md` §5, `docs/05_dti/modelo_datos.md`, `context/03_domain_glossary.md`, skill API contract designer.
+- **Prompt usado (exacto)**: Ver `team/alexAlvarez/docs/prompts/fsd-descomposicion-artefactos.prompt.md`
+- **Archivos generados o modificados**:
+  - `docs/04_fsd/casos_uso.md` — Creado (18 UC completos)
+  - `docs/04_fsd/gherkin.md` — Creado (24 US / 18 UC, tags CI)
+  - `docs/04_fsd/reglas_negocio.md` — Creado (FSD-BR-01…18 detalladas)
+  - `docs/04_fsd/modelo_datos.md` — Creado (vista funcional; enlace a DTI)
+  - `docs/04_fsd/api_contracts.md` — Creado (REST lógico, RBAC, errores)
+  - `docs/04_fsd/glosario.md` — Creado (vista FSD; apunta a glosario canónico)
+  - `docs/04_fsd/FSD.md` — Modificado (tabla artefactos descompuestos en §0)
+- **Cambios realizados**:
+  1. Extracción y expansión de UC-001…018 desde FSD maestro.
+  2. Consolidación Gherkin desde PRD §5 + FSD con `@PRD-US-*` `@FSD-UC-*`.
+  3. Reglas de negocio con códigos HTTP y verificación.
+  4. Modelo funcional sin duplicar DDL (referencia `docs/05_dti/`).
+  5. Contratos API semánticos (sin `status` en payload cliente).
+  6. Glosario FSD con estados Indicador y códigos error API.
+- **Resultado obtenido**: Paquete FSD modular listo para @QaAgent, @ArchAgent y Spec Kit.
+- **Estado**: Completado
+- **Riesgos / observaciones**: `openapi.yaml` en DTI sigue pendiente; `modelo_datos.md` en `04_fsd` es lógico, físico en `05_dti`.
+- **Próximos pasos**: Generar `docs/05_dti/openapi.yaml` desde `api_contracts.md`; sincronizar copia en `team/alexAlvarez/docs/` si el curso lo exige.
+
+---
+
+### PM-ALEX-006 — Registro de sesión y almacenamiento de prompts
+
+- **ID**: PM-ALEX-006
+- **Fecha**: 2026-05-16
+- **Hora**: 2026-05-16T19:00:00-04:00 (estimada sesión)
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Tarea**: Volcar toda la sesión 2026-05-16 en `log_interno.md` y guardar prompts en `docs/prompts/`.
+- **Objetivo**: Cumplir regla `02_session_prompt_logging.mdc` (append-only) y trazabilidad PROMPT_MAPPING.
+- **Prompt usado (exacto)**: Ver `team/alexAlvarez/docs/prompts/session-log-2026-05-16.prompt.md`
+- **Archivos generados o modificados**:
+  - `team/alexAlvarez/log_interno.md` — Append (esta sección)
+  - `team/alexAlvarez/docs/prompts/06-docs-consistency-checker.prompt.md` — Creado
+  - `team/alexAlvarez/docs/prompts/matriz-trazabilidad-descripciones.prompt.md` — Creado
+  - `team/alexAlvarez/docs/prompts/fsd-descomposicion-artefactos.prompt.md` — Creado
+  - `team/alexAlvarez/docs/prompts/session-log-2026-05-16.prompt.md` — Creado
+- **Estado**: Completado
+
+---
+
+## 2026-05-16T19:00:00-04:00 — Prompt usuario (cierre sesión)
+
+**Prompt:** Registrar sesión completa en `team/alexAlvarez/log_interno.md` y almacenar prompts en `team/alexAlvarez/docs/prompts/` (regla `02_session_prompt_logging`).
+
+**Acción:** Append de PM-ALEX-003…006; creación de 4 archivos `.prompt.md`; resumen ejecutivo de entregables 2026-05-16.
+
+**Estado:** Completado.
+
+---
+
+### PM-ALEX-007 — Ejecución skill auditor trazabilidad (`docs/09_trazabilidad/`)
+
+- **ID**: PM-ALEX-007
+- **Fecha**: 2026-05-16
+- **Hora**: 2026-05-16T20:00:00-04:00
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Tarea**: Ejecutar `sigesa-auditor-trazabilidad-dti` v1.0: migrar matriz y métricas, validar huérfanos, certificar gate.
+- **Prompt usado (exacto)**: «yes execute it to check that all is ok» (tras reescritura de skill)
+- **Archivos generados o modificados**:
+  - `docs/09_trazabilidad/matriz_trazabilidad.md` — Dorada v1.4 (migrado desde raíz)
+  - `docs/09_trazabilidad/metricas_ai_sdlc.md` — v1.1 con M-RUB-PC/SF/AE
+  - `docs/09_trazabilidad/report_findings.md` — v1.3 veredicto APTO
+  - `matriz_trazabilidad.md` (raíz) — alias de compatibilidad
+  - `metricas_ai_sdlc.md` (raíz) — puntero + catálogo M-AI-001…014 preservado
+  - `docs/08_trazabilidad/report_findings.md` — puntero a v1.3 canónico
+- **Validación ejecutada**:
+  - Script Python: 14/14 PRD-US Must con FSD-UC (0 ERROR)
+  - 24/24 US → UC; 18/18 FSD-UC en `casos_uso.md`
+  - 5 cadenas bidireccionales documentadas en informe
+- **Resultado obtenido**: Gate PASS; Prompt Coverage 91 %; Spec Fidelity POR_MEDIR; AEI 4,2 orientativo
+- **Estado**: Completado
