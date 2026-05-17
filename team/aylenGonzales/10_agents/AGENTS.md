@@ -57,7 +57,9 @@ team/aylenGonzales/
 ├── 05_lfsd/
 │   └── LFSD_v1_aylen.md
 ├── 06_nfr/
-│   └── NFR-ISO25010.md
+│   ├── NFR-ISO25010.md
+│   └── NFR_IA.md
+├── 06_prompt_contracts/         ← PC-005…007 (.prompt.md)
 ├── 07_diagramas/                ← Mermaid (ER, secuencia, estados, Gantt)
 ├── 08_trazabilidad/
 │   ├── matriz_trazabilidad.md

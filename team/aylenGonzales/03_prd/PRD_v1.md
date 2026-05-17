@@ -390,14 +390,70 @@ Escenario: Estudiante consulta estado de acreditación de su carrera
 
 ---
 
+### 5.9 Épica E9 – Plan de mejora, operaciones y accesibilidad
+
+| ID | Historia | Prioridad | Valor | Esfuerzo | Criterios Gherkin |
+|----|----------|-----------|-------|----------|-------------------|
+| PRD-US-018 | Como [CC], quiero registrar acciones del plan de mejora vinculadas a un indicador rechazado para subsanar observaciones de auditoría | Should | 9 | 4 | §5.9.1 |
+| PRD-US-019 | Como [JD], quiero supervisar el estado del último respaldo automático de BD y evidencias para cumplir BR-012 | Must | 8 | 2 | §5.9.2 |
+| PRD-US-020 | Como usuario con discapacidad visual, quiero navegar las pantallas críticas cumpliendo WCAG 2.2 AA para operar SIGESA sin barreras | Should | 7 | 5 | §5.9.3 |
+
+#### 5.9.1 Criterios PRD-US-018
+
+```gherkin
+Escenario: Coordinador crea ítem de plan de mejora tras rechazo
+  Dado un [CC] autenticado con un indicador en estado "Rechazado"
+  Cuando registra una acción correctiva con descripción y fecha objetivo
+  Entonces el sistema crea el ítem en estado "Abierto" vinculado al indicador
+   Y el [TD] asignado recibe notificación en ≤ 15 minutos
+
+Escenario: Técnico cierra ítem con evidencia opcional
+  Dado un ítem de plan de mejora en estado "Pendiente de cierre"
+  Cuando el [TD] valida la acción y adjunta evidencia de subsanación
+  Entonces el ítem pasa a estado "Cerrado"
+   Y queda trazado en LOG_AUDITORIA sin eliminación física
+```
+
+#### 5.9.2 Criterios PRD-US-019
+
+```gherkin
+Escenario: Jefatura consulta salud de respaldos
+  Dado la [JD] autenticada en el panel de operaciones
+  Cuando accede a la vista de respaldos automáticos
+  Entonces el sistema muestra fecha, duración y estado del último respaldo DB y evidencias
+   Y si el último respaldo falló muestra alerta visible en ≤ 15 minutos del fallo
+
+Escenario: Respaldo fallido sin permisos de operación
+  Dado un usuario [CC] sin rol de operaciones
+  Cuando intenta acceder a /health/backups
+  Entonces el sistema responde 403 y no expone rutas de almacenamiento
+```
+
+#### 5.9.3 Criterios PRD-US-020
+
+```gherkin
+Escenario: Navegación por teclado en login y carga de evidencia
+  Dado un usuario que navega solo con teclado
+  Cuando recorre el formulario de login y la pantalla de carga de evidencia
+  Entonces todos los controles interactivos son alcanzables en orden lógico
+   Y el foco visible cumple contraste mínimo WCAG 2.2 AA
+
+Escenario: Auditoría axe-core en pantallas críticas
+  Dado el build de frontend desplegado en staging
+  Cuando se ejecuta axe-core en login, dashboard JD y carga evidencia
+  Entonces no hay violaciones nivel A ni AA en componentes prioritarios
+```
+
+---
+
 ## 6. Priorización
 
 ### MoSCoW
 
 | Nivel | User Stories |
 |-------|-------------|
-| **Must** | PRD-US-001, 002, 003, 004, 005, 006, 007, 008, 009, 011, 013, 014, 015 |
-| **Should** | PRD-US-010, 016 |
+| **Must** | PRD-US-001, 002, 003, 004, 005, 006, 007, 008, 009, 011, 013, 014, 015, 019 |
+| **Should** | PRD-US-010, 016, 018, 020 |
 | **Could** | PRD-US-012, 017 |
 | **Won't (v1)** | Integración SIIS/RRHH, módulo de pagos, IA asistencial autónoma |
 
@@ -437,6 +493,9 @@ Escenario: Estudiante consulta estado de acreditación de su carrera
 | PRD-REQ-013 | El sistema debe gestionar emisión y descarga de certificados de acreditación | PRD-US-017 | Could | BR-011 |
 | PRD-REQ-014 | El sistema debe ejecutar respaldos automáticos diarios de base de datos y documentos | — | Must | BR-012 |
 | PRD-REQ-015 | El sistema no debe permitir más de un proceso activo del mismo tipo para la misma carrera en el mismo periodo | — | Must | BR-013 |
+| PRD-REQ-018 | El sistema debe gestionar planes de mejora vinculados a indicadores rechazados con trazabilidad append-only | PRD-US-018 | Should | Política calidad UMSS |
+| PRD-REQ-019 | El sistema debe exponer a [JD] el estado del último respaldo automático verificable | PRD-US-019 | Must | BR-012 |
+| PRD-REQ-020 | Las interfaces prioritarias deben cumplir WCAG 2.2 nivel AA en auditoría automatizada | PRD-US-020 | Should | NFR-008 |
 | PRD-REQ-016 | El sistema debe gestionar planes de mejora vinculados al proceso de acreditación (creación, seguimiento, cierre) | — | Should | BR-017 |
 | PRD-REQ-017 | El sistema debe exportar reportes de avance en Excel por carrera, facultad y periodo | PRD-US-012 | Could | BR-018 |
 
