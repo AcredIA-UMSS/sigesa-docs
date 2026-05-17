@@ -715,3 +715,13 @@ also keep in mind all the versions available of the brd for more context if need
   ```
 - **Acción**: Append `log_interno.md`; entrada **PM-050** en `PROMPT_MAPPING.md`; `git commit` con plantilla; `git push origin`.
 - **Estado**: Completado
+
+---
+
+### PM-ALEX-017 — Inventario aportes v1.2 (metodología aylen)
+
+- **ID**: PM-ALEX-017
+- **Fecha**: 2026-05-17
+- **Tarea**: Recalcular inventario sin inflar conteo (v1.1 tenía 370 filas irrealistas).
+- **Archivos**: `INVENTARIO_TAREAS_APORTES_v1.md` v1.2 (285 filas, ~237 únicas); `AUDITORIA_RUBRICAS_EXCELENTE.md` v1.2.
+- **Estado**: Completado

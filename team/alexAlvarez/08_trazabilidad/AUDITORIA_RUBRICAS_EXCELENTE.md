@@ -7,7 +7,7 @@
 | **Integrante** | Alex Alvarez |
 | **Alcance primario** | `team/alexAlvarez/` |
 | **Alcance extendido** | Promoción y gobernanza en Golden Folder `docs/` (06–09, 05_dti, 04_fsd) y runtime `.cursor/skills/`, `.cursor/rules/` |
-| **Inventario** | [`INVENTARIO_TAREAS_APORTES_v1.md`](INVENTARIO_TAREAS_APORTES_v1.md) (112 filas, IDs T-001…T-132) |
+| **Inventario** | [`INVENTARIO_TAREAS_APORTES_v1.md`](INVENTARIO_TAREAS_APORTES_v1.md) (**285** filas v1.2; ~237 únicas estrictas) |
 | **Trazabilidad Dorada** | [`docs/09_trazabilidad/report_findings.md`](../../../docs/09_trazabilidad/report_findings.md) — **APTO** (v1.4) |
 
 **Nota de autoría (declarada por el integrante):** Las **cinco** reglas `.cursor/rules/*.mdc` y **siete** de las ocho skills en `.cursor/skills/` fueron diseñadas e implementadas por Alex Alvarez (`PM-ALEX-001`…`006`, sesiones 2026-05-13…17). La skill `sigesa-auditoria-excelente-equipo` es posterior y **no** forma parte de ese paquete original.
@@ -22,16 +22,16 @@
 | 2. MRD | 5 % | **CUMPLE** | `docs/02_mrd/MRD.md` — segmentos, JTBD, VoC, §15 trazabilidad | 16 secciones sustantivas |
 | 3. PRD | 10 % | **CUMPLE** | **26** `PRD-US` en `user_stories.md`; **6** journeys; `roadmap.md` | Umbral ≥20 US superado; `PRD.md` índice con 18 US + desglose en `user_stories.md` |
 | 4. FSD | 15 % | **CUMPLE** | **17** `FSD-UC` en `casos_uso.md`; LFSD; Golden `docs/04_fsd/` (7 archivos) | >45 elementos (reglas, API, modelo, gherkin, LFSD) |
-| 5. UC + Gherkin | 10 % | **CUMPLE** | Flujos alternos en UC críticos; [`gherkin.md`](../docs/04_fsd/gherkin.md) | Caminos tristes en escenarios BDD |
+| 5. UC + Gherkin | 10 % | **PARCIAL** | **8** UC con cuerpo completo en `casos_uso.md`; **17** en índice; [`gherkin.md`](../docs/04_fsd/gherkin.md) cubre Must | Umbral rúbrica 10 UC críticos completos: 8/10 |
 | 6. NFR ISO 25010 | 10 % | **CUMPLE** | **19** `NFR-*` en `05_nfr/NFR_ISO25010.md` + `catalogo_tc.md` | Umbral ≥15 |
 | 7. Prompt-contracts | 10 % | **CUMPLE** | **9** `PC-SIG-*` en `06_prompt_contracts/` + **14** prompts sesión; Golden **58** PCs | ≥10 con rol, contexto, salida, invariantes |
 | 8. Diagramas Mermaid | 10 % | **CUMPLE** | **10** `.mmd` bajo `team/`; **6** tipos; Golden **92** en `docs/07_diagramas/` | Consolidación PM-ALEX-009 |
 | 9. AGENTS + Skills | 15 % | **CUMPLE** | `docs/08_agents/AGENTS.md` v2.0; **7** skills Alex + **5** rules | Runtime en `.cursor/` (referencia repo) |
 | 10. Trazabilidad + métricas | 10 % | **CUMPLE** | `docs/09_trazabilidad/` v1.5; inventario local; `log_interno.md` | Matriz Dorada certificada APTO |
 
-**Puntuación:** **10/10** criterios «Excelente» (incluye aportes Golden Folder atribuibles al integrante).
+**Puntuación:** **9/10** criterios «Excelente» en carpeta equipo; **10/10** con Golden Folder y gobernania `.cursor/` (criterio 5 UC parcial en equipo, cubierto en `docs/04_fsd/`).
 
-**Veredicto global:** **EXCELENTE** — apto para promoción documental y defensa de AI-SDLC ante auditoría AcredIA.
+**Veredicto global:** **EXCELENTE** — apto para promoción documental (inventario v1.2 alineado a metodología aylenGonzales).
 
 ---
 
@@ -192,7 +192,7 @@ Archivos equipo: [`07_diagramas/`](../docs/07_diagramas/README.md), [`05_nfr/07_
 | Matriz extremo a extremo | [`docs/09_trazabilidad/matriz_trazabilidad.md`](../../../docs/09_trazabilidad/matriz_trazabilidad.md) | Dorada v1.5 |
 | Métricas M-RUB-* | [`docs/09_trazabilidad/metricas_ai_sdlc.md`](../../../docs/09_trazabilidad/metricas_ai_sdlc.md) | v1.2 |
 | Informe auditoría | [`docs/09_trazabilidad/report_findings.md`](../../../docs/09_trazabilidad/report_findings.md) | v1.4 **APTO** |
-| Inventario local | [`INVENTARIO_TAREAS_APORTES_v1.md`](INVENTARIO_TAREAS_APORTES_v1.md) | 112 filas |
+| Inventario local | [`INVENTARIO_TAREAS_APORTES_v1.md`](INVENTARIO_TAREAS_APORTES_v1.md) | 285 filas / ~237 únicas (v1.2) |
 | Bitácora sesiones | [`../log_interno.md`](../log_interno.md) | PM-ALEX-001…012, PC-SIG-03 |
 
 **Gate Must:** 14/14 `PRD-US` Must → `FSD-UC`; 0 ERROR (validado PM-ALEX-007, reconfirmado 2026-05-17).
@@ -224,8 +224,23 @@ Archivos equipo: [`07_diagramas/`](../docs/07_diagramas/README.md), [`05_nfr/07_
 
 ---
 
-## 13. Registro de cambios
+## 13. Conteo de aportes (v1.2 — metodología aylen)
+
+| Bloque | Filas inventario | Nota |
+|--------|----------------:|------|
+| `team/alexAlvarez/` Entregada | **246** | Secciones `##`, 26 US, 8 UC críticos, 19 NFR, 10 `.mmd`, 9 PC, etc. |
+| `team/alexAlvarez/` Parcial | **9** | UC solo en índice (sin flujo largo en `casos_uso.md`) |
+| Referencia repo (Golden + `.cursor/`) | **30** | 7 skills, 5 rules, DTI, 9 ADR, paquetes `docs/06`–`09` (**1 fila** catálogo 58 PCs) |
+| **Total filas** | **285** | Comparable a aylen **260** filas (~235–240 únicas) |
+
+La versión v1.1 (**370**) era irreal: contaba cada PC Golden (58×), cada sesión PM del log (17×) y secciones DTI/Agents duplicadas. v1.2 sigue [`team/aylenGonzales/08_trazabilidad/INVENTARIO_TAREAS_APORTES_v1.md`](../../aylenGonzales/08_trazabilidad/INVENTARIO_TAREAS_APORTES_v1.md).
+
+---
+
+## 14. Registro de cambios
 
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
-| **v1.0** | 17/05/2026 | Auditoría inicial Excelente 10/10; inventario 112 filas |
+| v1.0 | 17/05/2026 | Auditoría inicial Excelente 10/10; inventario v1.0 (subconteo) |
+| v1.1 | 17/05/2026 | Inventario 370 (subconteo inflado — descartado) |
+| **v1.2** | 17/05/2026 | Inventario 285 filas estilo aylen; criterio 5 UC 8/10 en equipo |
