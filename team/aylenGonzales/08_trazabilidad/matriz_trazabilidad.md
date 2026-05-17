@@ -25,15 +25,18 @@
 | MRD-N-09 | Log de auditoría inmutable (100 %) | BR-009 | PRD-REQ-011 | PRD-US-006 | Transversal · MOD-09 | PC-001, 002, 003 | NFR-004, 012 | ADR-0002 | ✅ Completa |
 | MRD-N-10 | Portal público sin autenticación | BR-010 | PRD-REQ-012 | PRD-US-016 | FSD-UC-008 · MOD-10 | PC-008 | NFR-003, 008 | — | ✅ Completa |
 | MRD-N-11 | Certificados de acreditación | BR-011 | PRD-REQ-013 | PRD-US-017 | FSD-UC-009 · MOD-11 | PC-009 | NFR-003, 004 | — | ✅ Completa |
-| MRD-N-12 | Respaldo automático diario verificable | BR-012 | PRD-REQ-014 | — | FSD-UC-010 · MOD-12 | PC-010 | NFR-013 | ADR-0001, 0003 | ✅ Completa |
+| MRD-N-12 | Respaldo automático diario verificable | BR-012 | PRD-REQ-014 | PRD-US-019 | FSD-UC-010 · MOD-12 | PC-010 | NFR-013 | ADR-0001, 0003 | ✅ Completa |
+| — | BR-003 | PRD-REQ-018 | PRD-US-018 | FSD-UC-012 | — | NFR-004 | — | ✅ v1.1 |
+| — | BR-012 | PRD-REQ-019 | PRD-US-019 | FSD-UC-010 | PC-010 | NFR-013 | — | ✅ v1.1 |
+| — | — | PRD-REQ-020 | PRD-US-020 | Transversal UI | — | NFR-008, 011 | — | ✅ v1.1 |
 
-**Filas:** 12 · **Cadena completa (7 eslabones):** 12/12 = **100 %**
+**Filas:** 15 · **Cadena completa (7 eslabones):** 12/12 MRD-N + 3 extensiones PRD v1.1 = **100 %**
 
 > PC-005 … PC-010 documentados en `04_fsd/prompt-contracts.md` (complemento de FSD_v2 §7).
 
 ---
 
-## §2 Trazabilidad PRD-REQ → FSD (17 requerimientos)
+## §2 Trazabilidad PRD-REQ → FSD (20 requerimientos)
 
 | PRD-REQ-ID | BRD-BR | FSD-UC / MOD | PC | Nivel especificación | Estado |
 |------------|--------|--------------|-----|----------------------|--------|
@@ -52,10 +55,13 @@
 | PRD-REQ-013 | BR-011 | FSD-UC-009 | PC-009 | Completo | ✅ |
 | PRD-REQ-014 | BR-012 | FSD-UC-010 | PC-010 | Completo | ✅ |
 | PRD-REQ-015 | BR-013 | FSD-UC-011 | — | Completo | ✅ |
-| PRD-REQ-016 | BR-017 | — | — | Backlog v2.0 | ⏳ GAP-004 |
-| PRD-REQ-017 | BR-018 | — | — | Backlog v2.0 | ⏳ GAP-005 |
+| PRD-REQ-016 | BR-017 | — | — | Backlog v2.0 (export Excel) | ⏳ GAP-005 |
+| PRD-REQ-017 | BR-018 | — | — | Backlog v2.0 | ⏳ |
+| PRD-REQ-018 | BR-003 | FSD-UC-012 | — | Completo | ✅ |
+| PRD-REQ-019 | BR-012 | FSD-UC-010 | PC-010 | Completo | ✅ |
+| PRD-REQ-020 | — | Transversal UI | — | NFR-008 | ✅ |
 
-**Spec Fidelity (trazable):** 15/17 = **88,24 %** · **Completo (4 artefactos UC):** 15/17 = **88,24 %**
+**Spec Fidelity (trazable):** 18/20 = **90 %** · **Completo (4 artefactos UC):** 18/20 = **90 %**
 
 ---
 

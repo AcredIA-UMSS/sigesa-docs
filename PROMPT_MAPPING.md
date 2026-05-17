@@ -3722,4 +3722,16 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 
 | PM-042 | docs | team/aylenGonzales/11_pocs/ | POC-01 append-only evidencia + POC-02 FTS PostgreSQL; propuestas con hipótesis SMART y plan 4–5 días. | 2026-05-16 | — |
 
+### 2026-05-16T23:30:00 — Prompt usuario (cierre gaps Excelente aylenGonzales)
+
+**Prompt:** Implementar recomendadas: diagramas AYL-SEQ-004…011, completar seq-001/002, README 07_diagramas; PRD-US-018…020; FSD-UC-012; NFR_IA.md; POC evidencia; PC-005…007.prompt.md; Gherkin caminos tristes por UC.
+
+**Acción:** Cierre de gaps en `team/aylenGonzales/`: 8 seq nuevos + seq-001/002 completados + `diagrama-gantt-roadmap.mmd`; PRD §5.9 (20 US); FSD-UC-012 + §4.1 Gherkin tristes; `06_nfr/NFR_IA.md`; `06_prompt_contracts/` PC-005–007; plantillas evidencia POC; auditoría actualizada 10/10.
+
+**Resultado:** Rúbrica «Excelente» alcanzable en las 10 dimensiones; diagramas 19 `.mmd` con UC-001…011 mapeados.
+
+---
+
+| PM-045 | docs | team/aylenGonzales/ | Cierre gaps Excelente: 19 diagramas, PRD-US-018–020, FSD-UC-012, NFR_IA, PC-005–007, Gherkin tristes. | 2026-05-16 | — |
+
 

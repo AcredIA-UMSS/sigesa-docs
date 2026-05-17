@@ -763,6 +763,138 @@ Escenario: Bloqueo de segundo proceso activo
 
 ---
 
+### FSD-UC-012 — Plan de mejora vinculado a indicador
+
+| Atributo | Valor |
+|----------|-------|
+| **ID** | FSD-UC-012 |
+| **Actor principal** | [CC] Coordinador de Carrera |
+| **Actores secundarios** | [TD] Técnico DUEA |
+| **Precondición** | Indicador en `RECHAZADO` o política DUEA de mejora continua |
+| **Disparador** | [CC] crea ítem de plan de mejora desde detalle del indicador |
+| **PRD-REQ trazados** | PRD-REQ-018, PRD-US-018 |
+| **BRD-BR trazados** | BR-003 |
+| **NFR aplicables** | NFR-004, NFR-008 |
+
+**Flujo principal:**
+
+1. [CC] abre indicador `RECHAZADO` y selecciona "Plan de mejora".
+2. Registra acción correctiva, responsable y fecha objetivo.
+3. El sistema persiste fila en `PLAN_MEJORA` estado `ABIERTO`.
+4. [TD] revisa y cambia a `EN_VALIDACION` o devuelve observaciones.
+5. [CC] marca acciones completadas; [TD] valida y cierra con evidencia opcional.
+6. Cada transición se registra en `LOG_AUDITORIA`.
+
+**Flujos alternos:**
+
+| ID | Condición | Comportamiento |
+|----|-----------|----------------|
+| A1 | Cierre sin evidencia cuando política exige adjunto | Bloqueo con mensaje institucional |
+| A2 | Ítem vencido sin cierre | Alerta a [CC] y [TD] vía FSD-UC-006 |
+
+**Criterios Gherkin:**
+
+```gherkin
+Escenario: Creación de plan de mejora tras rechazo
+  Dado un indicador en estado RECHAZADO
+  And un [CC] autenticado de la misma carrera
+  When registra una acción correctiva con fecha objetivo
+  Then el sistema crea PLAN_MEJORA en estado ABIERTO
+  And notifica al [TD] en ≤ 15 minutos
+
+Escenario: Cierre validado por técnico
+  Dado un ítem en PENDIENTE_CIERRE
+  When el [TD] confirma subsanación
+  Then el estado pasa a CERRADO
+  And se registra evento en LOG_AUDITORIA
+```
+
+---
+
+### 4.1 Escenarios Gherkin — caminos tristes (complemento)
+
+> Un escenario adicional por UC crítico para pruebas BDD de regresión. Ver flujos nominales en cada `FSD-UC-00N` §4.
+
+```gherkin
+# FSD-UC-001
+Escenario: Cuenta bloqueada tras intentos fallidos
+  Dado un usuario con 3 intentos LOGIN_FALLIDO en 15 minutos
+  When intenta autenticarse nuevamente
+  Then el sistema responde 401 AUTH-003
+  And no emite JWT
+
+# FSD-UC-002
+Escenario: Carga rechazada por indicador aprobado
+  Dado un indicador en estado APROBADO
+  When el [CC] intenta cargar nueva evidencia sin política de reapertura
+  Then el sistema responde 409 EV-003
+
+# FSD-UC-003
+Escenario: Cierre de subfase con indicadores pendientes
+  Dado una subfase con al menos un indicador EN_REVISION
+  When el [TD] solicita cerrar la subfase
+  Then el sistema responde 409 AP-004
+
+# FSD-UC-004
+Escenario: Dashboard sin procesos activos
+  Dado que no existen procesos en estado ACTIVO
+  When la [JD] abre el dashboard
+  Then el sistema muestra mensaje de configuración sin error 500
+
+# FSD-UC-005
+Escenario: Motor PDF falla sin afectar dashboard
+  Dado que el worker PDF lanza excepción interna
+  When la [JD] genera un reporte
+  Then el sistema muestra RPT-002
+  And el dashboard sigue respondiendo en ≤ 3 s
+
+# FSD-UC-006
+Escenario: SMTP caído con reintentos agotados
+  Dado que SMTP UMSS no responde en 3 reintentos
+  When existe un evento RECHAZO en cola
+  Then el estado es FALLIDO_DEFINITIVO
+  And se alerta a la [JD]
+
+# FSD-UC-007
+Escenario: Búsqueda con query maliciosa
+  Dado un [TD] autenticado
+  When envía una query de más de 500 caracteres con caracteres de control
+  Then el sistema responde 400 SRCH-001 sin ejecutar SQL dinámico inseguro
+
+# FSD-UC-008
+Escenario: Rate limit en portal público
+  Dado una IP que superó 100 solicitudes en una hora
+  When consulta el portal público
+  Then el sistema responde 429 PUB-003 con Retry-After
+
+# FSD-UC-009
+Escenario: Certificado bloqueado por acreditación vencida
+  Dado una carrera con estado VENCIDA
+  When el [JD] solicita emitir certificado
+  Then el sistema responde 409 CERT-002
+
+# FSD-UC-010
+Escenario: Respaldo fallido alerta a jefatura
+  Dado que el dump PostgreSQL falla a las 02:00
+  When finaliza el job de respaldo
+  Then LOG_AUDITORIA registra BACKUP_FAILED
+  And la [JD] recibe alerta en ≤ 15 minutos
+
+# FSD-UC-011
+Escenario: Segundo proceso activo rechazado
+  Dado un proceso CEUB activo para la misma carrera y periodo
+  When se intenta crear otro proceso CEUB activo
+  Then el sistema responde 409 PROC-001
+
+# FSD-UC-012
+Escenario: Cierre de plan sin permiso de técnico
+  Dado un ítem ABIERTO
+  When el [CC] intenta cerrarlo directamente
+  Then el sistema responde 403 sin cambiar estado
+```
+
+---
+
 ## 5. Reglas de negocio
 
 | ID | Regla | Tipo | Casos de uso afectados | BRD-BR origen |
@@ -1214,7 +1346,7 @@ CREATE INDEX idx_log_fecha ON LOG_AUDITORIA(fecha_hora DESC);
 | GAP | Capa | Descripción | Recomendación |
 |-----|------|-------------|---------------|
 | GAP-003 | NFR / QA | NFR-013 (respaldo): FSD-UC-010 definido; falta TC-011 automatizado | Definir script + TC-011 en sprint QA |
-| GAP-004 | PRD / FSD | PRD-REQ-016 (planes de mejora): fuera de alcance v1.0 | Backlog v2.0 — formalizar FSD-UC-012 |
+| GAP-004 | PRD / FSD | ~~PRD-REQ-016 planes de mejora~~ | **Cerrado** — FSD-UC-012 + PRD-US-018 (16/05/2026) |
 | GAP-005 | PRD / FSD | PRD-REQ-017 (exportación Excel): Could | Backlog v2.0 — formalizar FSD-UC-013 |
 
 ---
