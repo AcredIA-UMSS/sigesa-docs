@@ -3734,4 +3734,58 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 
 | PM-045 | docs | team/aylenGonzales/ | Cierre gaps Excelente: 19 diagramas, PRD-US-018–020, FSD-UC-012, NFR_IA, PC-005–007, Gherkin tristes. | 2026-05-16 | — |
 
+### 2026-05-17T00:00:00 — Prompt usuario (ER dominio negocio)
+
+**Prompt:** Completar `team/aylenGonzales/07_diagramas/diagrama-er-dominio-negocio.mmd`.
+
+**Acción:** Diagrama ER conceptual DUEA (16 entidades: taxonomía CEUB/ARCU-SUR, expediente, plan de mejora, certificado, auditoría append-only). Archivo vacío → 156 líneas Mermaid.
+
+**Resultado:** `diagrama-er-dominio-negocio.mmd` completado; complemento de `diagrama-er-001.mmd` (vista técnica).
+
+---
+
+| PM-046 | docs | team/aylenGonzales/07_diagramas/diagrama-er-dominio-negocio.mmd | ER dominio negocio AYL-ER-DOMINIO-001 (156 líneas). | 2026-05-16 | — |
+
+### 2026-05-17T00:30:00 — Prompt usuario (re-auditoría + inventario aylenGonzales)
+
+**Prompt:** (1) Actualizar `AUDITORIA_RUBRICAS_EXCELENTE.md` verificando solo `team/aylenGonzales/`. (2) Actualizar `INVENTARIO_TAREAS_APORTES_v1.md` con mismas reglas. (3) Confirmar si el conteo sigue reglas oficiales APORTES (UC, NFR, `.mmd`, `##`, ADR, POC ejecutada, skill, rule, PC, US, bitácora). (4) Guardar log interno en `PROMPT_MAPPING.md`.
+
+**Acción:**
+
+- Re-verificación carpeta equipo (96 archivos): auditoría v1.1 → **10/10** criterios; matriz v1.1 (20 REQ); 18 `.mmd` + ER dominio.
+- Inventario v1.1: T-001…**T-260**; reglas oficiales + cuadre estricto (~235–240 tareas únicas vs 252 «Entregada»); T-240/241 duplicados; POC T-252/253 parcial; T-254 bitácora pendiente.
+- Log de sesión anexado (este bloque).
+
+**Resultado:**
+
+| Artefacto | Cambio |
+|-----------|--------|
+| `08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md` | Coherente 10/10; gaps GAP-A01…A05 |
+| `08_trazabilidad/INVENTARIO_TAREAS_APORTES_v1.md` | v1.1 + § Cuadre completado estricto |
+| `PROMPT_MAPPING.md` | PM-046…PM-048 |
+
+**Pendientes (regla estricta):** `log_interno.md` en `team/aylenGonzales/` (T-254); POC ejecutadas con métricas; `metricas_ai_sdlc.md` §2a con 20 REQ.
+
+---
+
+| PM-047 | docs | team/aylenGonzales/08_trazabilidad/ | Auditoría + inventario v1.1 verificados solo carpeta equipo; cuadre reglas APORTES. | 2026-05-16 | — |
+| PM-048 | docs | PROMPT_MAPPING.md | Log interno sesión continuidad PM-045 (auditoría, inventario, ER dominio). | 2026-05-16 | — |
+
+### 2026-05-16T12:00:00 — Prompt usuario (auditoría + inventario Marlene y borisAngulo)
+
+**Prompt:** Generar el mismo tipo de `AUDITORIA_RUBRICAS_EXCELENTE.md` e `INVENTARIO_TAREAS_APORTES_v1.md` para `team/Marlene` y `team/borisAngulo`, verificando solo la carpeta de cada uno.
+
+**Acción:** Verificación en disco + `_aportes_counts.json` (Marlene 124 + 6 gaps = T-130; boris 204 + 8 = T-212). Script `scripts/gen-trazabilidad-marlene-boris.js`.
+
+**Resultado:**
+
+| Integrante | Auditoría | Inventario | Puntuación rúbrica |
+|------------|-----------|------------|-------------------|
+| Marlene | `team/Marlene/08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md` | `INVENTARIO_TAREAS_APORTES_v1.md` (T-001…130) | **7/10** |
+| borisAngulo | `team/borisAngulo/docs/08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md` | `INVENTARIO_TAREAS_APORTES_v1.md` (T-001…212) | **6/10** |
+
+---
+
+| PM-049 | docs | team/Marlene/08_trazabilidad/ + team/borisAngulo/docs/08_trazabilidad/ | Auditoría Excelente + inventario aportes v1.0 por carpeta equipo (Marlene 7/10, boris 6/10). | 2026-05-16 | — |
+
 
