@@ -30,7 +30,7 @@
 
 AcredIA / SIGESA es un sistema web activo de gestión documental para procesos de acreditación universitaria (CEUB y ARCU-SUR) en la DUEA-UMSS, Cochabamba, Bolivia. Este FSD especifica el comportamiento funcional detallado de los **7 casos de uso críticos**, las **15 reglas de negocio** que los gobiernan, el **modelo de datos** con 9 entidades, los **10 prompt-contratos** para los módulos asistidos por IA, los **13 NFRs** con umbrales medibles, y los mecanismos de verificación para cada uno.
 
-El sistema opera con cuatro actores autenticados — [CC] Coordinador de Carrera, [TD] Técnico DUEA, [JD] Jefatura DUEA — y un actor público sin autenticación [P]. La arquitectura es web pura (sin instalación), con stack React + Tailwind (frontend), Node.js/Express o FastAPI (backend, pendiente spike), PostgreSQL (base de datos) y almacenamiento de archivos en volumen local Docker (`/data/evidencias/`).
+El sistema opera con cuatro actores autenticados — [CC] Coordinador de Carrera, [TD] Técnico DUEA, [JD] Jefatura DUEA — y un actor público sin autenticación [P]. La arquitectura es web pura (sin instalación), con stack React + Tailwind (frontend), Node.js 20 + Express 4 (backend — ADR-0006), PostgreSQL (base de datos) y almacenamiento de archivos en volumen local Docker (`/data/evidencias/`).
 
 El objetivo funcional central es reducir el tiempo de localización de documentos de 20+ minutos a ≤ 2 minutos, eliminar la pérdida documental en procesos activos y habilitar generación autónoma de reportes ejecutivos en ≤ 5 minutos.
 
@@ -71,12 +71,12 @@ El objetivo funcional central es reducir el tiempo de localización de documento
 | Capa | Tecnología | Versión objetivo | Justificación |
 |------|-----------|-----------------|---------------|
 | Frontend | React + Tailwind CSS | React 18 / Tailwind 3 | Componentes reutilizables; diseño responsive sin CSS custom extenso |
-| Backend | Node.js/Express **o** FastAPI (Python) | Node 20 / Python 3.12 | Spike de 2 días para decidir; Express = ecosistema más familiar al equipo; FastAPI = tipado nativo + async |
+| Backend | Node.js 20 + Express 4 | Node 20 LTS | ADR-0006: spike cerrado; ecosistema npm alineado con React, JWT (ADR-0004), Jest y T-01/T-02 |
 | Base de datos | PostgreSQL | 16 | ACID, soporte JSONB para `detalle` en log de auditoría, particionamiento nativo |
 | Almacenamiento de archivos | Volumen Docker local `/data/evidencias/` | — | Costo $0 en v1.0; migración a S3-compatible en v2.0 solo requiere cambiar `ruta_relativa` por `url_storage` |
-| Motor de reportes PDF | PDFKit (Node) / ReportLab (Python) | Según spike | Generación server-side sin dependencias de terceros con costo |
+| Motor de reportes PDF | PDFKit | 0.15.x | ADR-0006: generación server-side en Node (T-08) |
 | Autenticación | JWT + refresh token | — | Sin estado en servidor; compatible con CORS para SPA React |
-| Notificaciones | Nodemailer / smtplib + servidor SMTP UMSS | — | Sin costo de servicio externo; SLA ≤ 15 min |
+| Notificaciones | Nodemailer + servidor SMTP UMSS | 6.x | ADR-0006; sin costo de servicio externo; SLA ≤ 15 min |
 | Containerización | Docker + Docker Compose | Docker 25 | Despliegue reproducible; volúmenes para BD y archivos |
 | Testing | Jest + Playwright + k6 | — | Unit/integration, E2E y carga |
 
@@ -511,6 +511,12 @@ Escenario: Reintento ante fallo SMTP
    Y si los 3 reintentos fallan, registra FALLIDO_DEFINITIVO y alerta al [JD]
 ```
 
+**Postcondiciones:**
+
+- Cada evento queda en estado `ENVIADO`, `FALLIDO` o `FALLIDO_DEFINITIVO` en `NOTIFICACION`.
+- Los envíos exitosos respetan SLA ≤ 15 min (RBN-08, NFR-011).
+- Fallos definitivos generan alerta al [JD].
+
 ---
 
 ### FSD-UC-007 — Buscador de documentos
@@ -564,6 +570,197 @@ Escenario: Sin resultados informa claramente
    Y sugiere ajustar los filtros
 ```
 
+**Postcondiciones:**
+
+- El usuario visualiza la lista de resultados o un mensaje claro de ausencia de coincidencias.
+- No se modifican documentos ni metadatos de evidencias.
+- Las consultas de [CC] quedan acotadas a `carrera_id` del token JWT.
+
+---
+
+### FSD-UC-008 — Portal público de consulta de estado
+
+| Atributo | Valor |
+|----------|-------|
+| **ID** | FSD-UC-008 |
+| **Actor principal** | [P] Usuario público (sin autenticación) |
+| **Precondición** | Portal público habilitado; al menos una carrera con estado registrado |
+| **Disparador** | Usuario externo accede a la URL pública del portal |
+| **PRD-REQ trazados** | PRD-REQ-012 |
+| **BRD-BR trazados** | BR-010 |
+| **NFR aplicables** | NFR-003, NFR-008 |
+
+**Flujo principal:**
+
+1. Usuario accede al portal sin credenciales.
+2. Selecciona facultad y/o carrera.
+3. El sistema consulta el estado de acreditación vigente.
+4. Muestra carrera, facultad, estado (`EN_PROCESO`, `ACREDITADA`, `VENCIDA`), fecha de actualización y fase CEUB actual.
+5. Opcionalmente descarga resumen público en PDF (sin datos internos del expediente).
+
+**Flujos alternos:**
+
+| ID | Condición | Comportamiento |
+|----|-----------|----------------|
+| A1 | Carrera sin estado | Muestra "Información no disponible aún" |
+| A2 | Error al generar PDF | Ofrece vista en pantalla como alternativa |
+
+**Postcondiciones:**
+
+- No se modifican datos del expediente interno.
+- Se registra `PUBLIC_QUERY` en `LOG_AUDITORIA` sin datos personales del visitante.
+
+**Criterios Gherkin:**
+
+```gherkin
+Escenario: Consulta pública de carrera acreditada
+  Dado el portal público habilitado
+  And la carrera "Ingeniería de Sistemas" tiene estado ACREDITADA
+  When un usuario externo la consulta sin autenticarse
+  Entonces ve estado ACREDITADA, facultad y fecha de actualización
+  And no se exponen datos internos del expediente
+```
+
+> Especificación extendida y PC-008: `04_fsd/casos-de-uso.md`, `04_fsd/prompt-contracts.md`.
+
+---
+
+### FSD-UC-009 — Emisión y descarga de certificados de acreditación
+
+| Atributo | Valor |
+|----------|-------|
+| **ID** | FSD-UC-009 |
+| **Actor principal** | [JD] Jefatura DUEA |
+| **Precondición** | Usuario autenticado con rol [JD]; carrera en estado `ACREDITADA` vigente |
+| **Disparador** | [JD] solicita emitir certificado para una carrera y período |
+| **PRD-REQ trazados** | PRD-REQ-013 |
+| **BRD-BR trazados** | BR-011 |
+| **NFR aplicables** | NFR-003, NFR-004 |
+
+**Flujo principal:**
+
+1. [JD] accede al módulo de certificados.
+2. Selecciona carrera y período de acreditación.
+3. El sistema valida estado `ACREDITADA` y vigencia.
+4. Genera PDF con datos públicos del certificado, número único y QR de verificación.
+5. [JD] descarga el certificado.
+6. Registra `CERTIFICATE_ISSUED` en `LOG_AUDITORIA`.
+
+**Flujos alternos:**
+
+| ID | Condición | Comportamiento |
+|----|-----------|----------------|
+| A1 | Estado distinto de `ACREDITADA` | Bloquea emisión y muestra estado actual |
+| A2 | Acreditación vencida | Informa fecha de vencimiento; no emite |
+| A3 | Error PDF | Notifica al [JD] y registra fallo |
+
+**Postcondiciones:**
+
+- Certificado registrado con número único e inmutable.
+- QR de verificación activo para consulta pública.
+
+**Criterios Gherkin:**
+
+```gherkin
+Escenario: Emisión exitosa de certificado
+  Dado la carrera "Ing. de Sistemas" está ACREDITADA vigente
+  And el [JD] está autenticado
+  When solicita emitir el certificado del período 2026-I
+  Entonces el sistema genera PDF con número único y QR
+  And registra CERTIFICATE_ISSUED en el log
+```
+
+> PC-009: `04_fsd/prompt-contracts.md`.
+
+---
+
+### FSD-UC-010 — Respaldo automático diario verificable
+
+| Atributo | Valor |
+|----------|-------|
+| **ID** | FSD-UC-010 |
+| **Actor principal** | [SYS] Scheduler automático |
+| **Precondición** | BD y volumen de evidencias activos; scheduler 02:00 BOT |
+| **Disparador** | Ejecución programada diaria |
+| **PRD-REQ trazados** | PRD-REQ-014 |
+| **BRD-BR trazados** | BR-012 |
+| **NFR aplicables** | NFR-013 |
+
+**Flujo principal:**
+
+1. Scheduler dispara respaldo a las 02:00.
+2. Genera dump SQL de PostgreSQL.
+3. Respalda archivos de evidencias.
+4. Calcula hash SHA-256 del paquete.
+5. Almacena en ubicación secundaria.
+6. Registra `BACKUP_COMPLETED` en `LOG_AUDITORIA`.
+7. Si falla, alerta al [JD] en ≤ 15 min.
+
+**Flujos alternos:**
+
+| ID | Condición | Comportamiento |
+|----|-----------|----------------|
+| A1 | Fallo dump BD | Marca `FAILED`; reintenta en 1 h |
+| A2 | Sin espacio secundario | Alerta; no sobreescribe respaldo válido anterior |
+
+**Postcondiciones:**
+
+- Respaldo del día disponible con hash verificable.
+- Administrador notificado solo ante fallo.
+
+**Criterios Gherkin:**
+
+```gherkin
+Escenario: Respaldo diario exitoso
+  Dado el scheduler configurado a las 02:00
+  When se ejecuta el respaldo
+  Entonces registra BACKUP_COMPLETED con hash SHA-256
+  And no envía alerta al [JD]
+```
+
+> PC-010: `04_fsd/prompt-contracts.md`. TC-011 pendiente (GAP-003).
+
+---
+
+### FSD-UC-011 — Validación de proceso único activo por carrera
+
+| Atributo | Valor |
+|----------|-------|
+| **ID** | FSD-UC-011 |
+| **Actor principal** | Sistema (validación en creación de proceso) |
+| **Precondición** | Usuario [JD] o [TD] inicia o registra un proceso de acreditación |
+| **Disparador** | Intento de crear proceso del mismo tipo para la misma carrera y periodo |
+| **PRD-REQ trazados** | PRD-REQ-015 |
+| **BRD-BR trazados** | BR-013 |
+| **NFR aplicables** | NFR-004 |
+
+**Flujo principal:**
+
+1. Usuario solicita crear proceso (tipo CEUB o ARCU-SUR) para `carrera_id` y `periodo`.
+2. El sistema consulta procesos activos del mismo tipo y carrera en el periodo.
+3. Si existe uno activo, rechaza con mensaje institucional claro.
+4. Si no existe, permite continuar el alta.
+
+**Flujos alternos:**
+
+| ID | Condición | Comportamiento |
+|----|-----------|----------------|
+| A1 | Proceso anterior cerrado | Permite nuevo proceso |
+
+**Postcondiciones:**
+
+- A lo sumo un proceso activo del mismo tipo por carrera y periodo (RBN-05).
+
+**Criterios Gherkin:**
+
+```gherkin
+Escenario: Bloqueo de segundo proceso activo
+  Dado un proceso CEUB activo para "Ing. de Sistemas" periodo 2026-I
+  When el [JD] intenta crear otro proceso CEUB para la misma carrera y periodo
+  Entonces el sistema rechaza con mensaje de proceso duplicado
+  And no crea el segundo proceso
+```
+
 ---
 
 ## 5. Reglas de negocio
@@ -583,7 +780,7 @@ Escenario: Sin resultados informa claramente
 | RBN-11 | Los reportes ejecutivos son de uso interno; el PDF lleva marca de agua "USO INTERNO DUEA-UMSS" | Política institucional | FSD-UC-005 | RB-07 |
 | RBN-12 | El avance porcentual de una fase se calcula como: (indicadores APROBADO / total indicadores de la fase) × 100 | Política de cálculo | FSD-UC-004 | RB-09 (BRD v2 §23) |
 | RBN-13 | Una carrera ARCU-SUR solo puede iniciar si tiene acreditación CEUB vigente | Normativa CEUB/ARCU-SUR | FSD-UC-004 | RB-01 |
-| RBN-14 | El respaldo automático se ejecuta diariamente a las 02:00 BOT; la DUEA recibe confirmación por correo | Política operativa | MOD-12 | BR-012 |
+| RBN-14 | El respaldo automático se ejecuta diariamente a las 02:00 BOT; la DUEA recibe confirmación por correo | Política operativa | FSD-UC-010, MOD-12 | BR-012 |
 | RBN-15 | Las sugerencias de IA son orientativas; no pueden aprobar ni rechazar indicadores de forma autónoma | Política de IA ética | Todos (futuro v2.0) | RB-11 (BRD v2 §23) |
 
 ---
@@ -1008,17 +1205,17 @@ CREATE INDEX idx_log_fecha ON LOG_AUDITORIA(fecha_hora DESC);
 | MRD-N-07 | BR-007 | PRD-REQ-010 | US-007 | FSD-UC-003, FSD-UC-004 | PC-003 | NFR-004 |
 | MRD-N-08 | BR-008 | PRD-REQ-009 | US-015 | FSD-UC-007 | — | NFR-001 |
 | MRD-N-09 | BR-009 | PRD-REQ-011 | US-006 | Transversal (todos) | PC-001, PC-002, PC-003 | NFR-004, NFR-012 |
-| MRD-N-10 | BR-010 | PRD-REQ-012 | US-016 | [FSD-UC-008 — pendiente] | — | NFR-003 |
-| MRD-N-11 | BR-011 | PRD-REQ-013 | US-017 | [FSD-UC-009 — pendiente] | — | NFR-003 |
-| MRD-N-12 | BR-012 | PRD-REQ-014 | — | MOD-12 | — | NFR-013 |
+| MRD-N-10 | BR-010 | PRD-REQ-012 | PRD-US-016 | FSD-UC-008 | PC-008 | NFR-003, NFR-008 |
+| MRD-N-11 | BR-011 | PRD-REQ-013 | PRD-US-017 | FSD-UC-009 | PC-009 | NFR-003, NFR-004 |
+| MRD-N-12 | BR-012 | PRD-REQ-014 | — | FSD-UC-010 · MOD-12 | PC-010 | NFR-013 |
 
-**Gaps identificados:**
+**Gaps identificados (v1.0):**
 
 | GAP | Capa | Descripción | Recomendación |
 |-----|------|-------------|---------------|
-| GAP-001 | FSD | MRD-N-10 (portal público) sin FSD-UC formal | Crear FSD-UC-008 en v1.1 |
-| GAP-002 | FSD | MRD-N-11 (certificados) sin FSD-UC formal | Crear FSD-UC-009 en v1.1 |
-| GAP-003 | NFR | NFR-013 (respaldo) sin test automatizado definido | Definir script + test en sprint de QA |
+| GAP-003 | NFR / QA | NFR-013 (respaldo): FSD-UC-010 definido; falta TC-011 automatizado | Definir script + TC-011 en sprint QA |
+| GAP-004 | PRD / FSD | PRD-REQ-016 (planes de mejora): fuera de alcance v1.0 | Backlog v2.0 — formalizar FSD-UC-012 |
+| GAP-005 | PRD / FSD | PRD-REQ-017 (exportación Excel): Could | Backlog v2.0 — formalizar FSD-UC-013 |
 
 ---
 
@@ -1101,8 +1298,12 @@ CREATE INDEX idx_log_fecha ON LOG_AUDITORIA(fecha_hora DESC);
 - Prototipo Hi-Fi AcredIA — Bitácora 3 (validado con usuarios DUEA, febrero–marzo 2026): tasa de éxito 96,66 %, CSAT 8,67/10.
 - Evaluación heurística del prototipo: severidades altas corregidas en v2 (validación en tiempo real, barra de progreso, mensajes de error empáticos).
 - Entrevistas contextuales DUEA (feb–mar 2026): evidencia cuantitativa de 20+ min/búsqueda.
-- ADR-0001: Almacenamiento de archivos de evidencia en sistema de archivos local (`docs/adr/ADR-0001.md`).
-- ADR-0002: Log de auditoría como tabla append-only en PostgreSQL (`docs/adr/ADR-0002.md`).
+- ADR-0001: Almacenamiento de archivos de evidencia en volumen Docker local — `team/aylenGonzales/09_dti/adr/ADR-001.md`
+- ADR-0002: Log de auditoría como tabla append-only en PostgreSQL con REVOKE DELETE/UPDATE — `team/aylenGonzales/09_dti/adr/ADR-002.md`
+- ADR-0003: PostgreSQL 16 como base de datos principal — `team/aylenGonzales/09_dti/adr/ADR-003.md`
+- ADR-0004: Autenticación stateless JWT + RBAC por rol institucional — `team/aylenGonzales/09_dti/adr/ADR-004.md`
+- ADR-0005: Taxonomías CEUB/ARCU-SUR como configuración en BD — `team/aylenGonzales/09_dti/adr/ADR-005.md`
+- ADR-0006: Backend API con Node.js 20 y Express 4 — `team/aylenGonzales/09_dti/adr/ADR-006.md`
 - DTI borrador: Diagrama C4 Nivel 1, stack tecnológico y decisiones arquitectónicas candidatas (`docs/dti/DTI_borrador.md`).
 - Normativas CEUB y ARCU-SUR: documentación oficial para configuración de taxonomías de fases e indicadores.
 - MRD v1.0: Análisis de mercado, segmentos, personas y JTBD (`team/aylenGonzales/docs/mrd/MRD.md`).
@@ -1146,7 +1347,7 @@ CREATE INDEX idx_log_fecha ON LOG_AUDITORIA(fecha_hora DESC);
 
 | Categoría | Elementos incluidos | Cantidad |
 |-----------|---------------------|---------|
-| Casos de uso (FSD-UC) | FSD-UC-001 a FSD-UC-007 | **7** |
+| Casos de uso (FSD-UC) | FSD-UC-001 a FSD-UC-011 | **11** |
 | Reglas de negocio | RBN-01 a RBN-15 | **15** |
 | Escenarios Gherkin | 4+4+4+3+3+3+3 escenarios | **24** |
 | Entidades del modelo de datos | USUARIO, CARRERA, FACULTAD, PROCESO_ACREDITACION, FASE, INDICADOR, EVIDENCIA, LOG_AUDITORIA, NOTIFICACION | **9** |
