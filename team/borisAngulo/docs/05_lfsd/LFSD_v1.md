@@ -73,7 +73,7 @@ El objetivo de este LFSD es derivar una especificación ligera, clara y orientad
   - A1: Credenciales inválidas → rechazo de acceso.
   - A2: Usuario sin rol → acceso denegado a funciones internas.
   - A3: Operación sensible sin sesión → rechazo por política.
-- **Reglas asociadas (críticas)**: `BR-001`, `BR-004`, `BR-05`, `BR-11`
+- **Reglas asociadas (críticas)**: `BR-001`, `BR-004`, `BR-005`, `BR-011`
 
 **Criterios Gherkin mínimos**
 

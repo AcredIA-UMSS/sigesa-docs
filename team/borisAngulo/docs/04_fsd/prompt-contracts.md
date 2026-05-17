@@ -5,10 +5,12 @@
 **Trazabilidad:** `FSD_v1.md §7` | `casos-de-uso.md`
 
 > Cada contrato sigue los 6 elementos obligatorios: Role · Task · Context · Reasoning · Stop condition · Output, más Invariants y Failure modes.
+>
+> **Convención de IDs:** **FSD-UC-001…007** (canónico) = `FSD_v1.md` / `DTI_v1.md §2`. Cada **PC-NNN** es un contrato granular; el encabezado indica el FSD-UC canónico que agrupa (no confundir el número de PC con el de UC).
 
 ---
 
-## PC-001 — Autenticación y autorización por roles (FSD-UC-001)
+## PC-001 — Autenticación y autorización por roles (agrupa FSD-UC-001 canónico)
 
 ```markdown
 # Role
@@ -98,7 +100,7 @@ Formato: JSON
 
 ---
 
-## PC-002 — Creación y gestión de procesos de acreditación (FSD-UC-002)
+## PC-002 — Creación y gestión de procesos de acreditación (agrupa FSD-UC-002 canónico)
 
 ```markdown
 # Role
@@ -184,7 +186,7 @@ Formato: JSON
 
 ---
 
-## PC-003 — Gestión de fases y cierre con pendientes (FSD-UC-003)
+## PC-003 — Gestión de fases y cierre con pendientes (agrupa FSD-UC-002 canónico)
 
 ```markdown
 # Role
@@ -192,7 +194,7 @@ Eres un agente IA especializado en contratos de prompt para especificación func
 de fases de procesos de acreditación y reglas de cierre con validación de pendientes.
 
 # Task
-Especifica el contrato funcional del caso de uso FSD-UC-003: gestión de fases dentro
+Especifica el contrato funcional del caso de uso FSD-UC-002 (canónico): gestión de fases dentro
 de un proceso y bloqueo de cierre cuando existen actividades pendientes obligatorias.
 
 # Context
@@ -256,7 +258,7 @@ Formato: JSON
 
 ---
 
-## PC-004 — Carga y versionado de evidencias vinculadas a criterio (FSD-UC-004)
+## PC-004 — Carga y versionado de evidencias vinculadas a criterio (agrupa FSD-UC-003 canónico)
 
 ```markdown
 # Role
@@ -264,7 +266,7 @@ Eres un agente IA especializado en contratos de prompt para gestión documental:
 clasificación obligatoria, versionado secuencial e inmutabilidad auditada de evidencias.
 
 # Task
-Especifica el contrato funcional del caso de uso FSD-UC-004: carga de evidencias
+Especifica el contrato funcional del caso de uso FSD-UC-003 (canónico): carga de evidencias
 vinculadas a un criterio de acreditación con versionado automático e historial inalterable.
 
 # Context
@@ -336,7 +338,7 @@ Formato: JSON
 
 ---
 
-## PC-005 — Protección ante borrado o reemplazo destructivo (FSD-UC-005)
+## PC-005 — Protección ante borrado o reemplazo destructivo (agrupa FSD-UC-003 canónico)
 
 ```markdown
 # Role
@@ -344,7 +346,7 @@ Eres un agente IA especializado en contratos de prompt para operaciones destruct
 sobre documentos con confirmación explícita y registro de auditoría inalterable.
 
 # Task
-Especifica el contrato funcional del caso de uso FSD-UC-005: protección ante borrado
+Especifica el contrato funcional del caso de uso FSD-UC-003 (canónico): protección ante borrado
 o reemplazo destructivo de evidencias, incluyendo flujo de confirmación obligatoria
 y registro del evento en auditoría.
 
@@ -409,7 +411,7 @@ Formato: JSON
 
 ---
 
-## PC-006 — Flujo de observaciones DUEA ↔ carrera (FSD-UC-006)
+## PC-006 — Flujo de observaciones DUEA ↔ carrera (agrupa FSD-UC-004 canónico)
 
 ```markdown
 # Role
@@ -417,7 +419,7 @@ Eres un agente IA especializado en contratos de prompt para flujos de comunicaci
 institucional con estados auditados y trazabilidad a entregables de acreditación.
 
 # Task
-Especifica el contrato funcional del caso de uso FSD-UC-006: flujo de observaciones
+Especifica el contrato funcional del caso de uso FSD-UC-004 (canónico): flujo de observaciones
 formales entre DUEA y carrera, con estados (abierta / en seguimiento / cerrada),
 registro de respuestas y auditoría de cada transición.
 
@@ -490,7 +492,7 @@ Formato: JSON
 
 ---
 
-## PC-007 — Panel de estado con semáforo por carrera y facultad (FSD-UC-007)
+## PC-007 — Panel de estado con semáforo por carrera y facultad (agrupa FSD-UC-005 canónico)
 
 ```markdown
 # Role
@@ -498,7 +500,7 @@ Eres un agente IA especializado en contratos de prompt para dashboards de seguim
 con indicadores visuales de riesgo calculados a partir de datos de avance y fechas.
 
 # Task
-Especifica el contrato funcional del caso de uso FSD-UC-007: panel de estado con
+Especifica el contrato funcional del caso de uso FSD-UC-005 (canónico): panel de estado con
 semáforo visual por carrera/facultad, cálculo de porcentaje de avance por criterios
 cumplidos y visualización de fechas clave próximas.
 
@@ -572,7 +574,7 @@ Formato: JSON
 
 ---
 
-## PC-008 — Alertas automáticas por plazos e hitos (FSD-UC-008)
+## PC-008 — Alertas automáticas por plazos e hitos (agrupa FSD-UC-006 canónico)
 
 ```markdown
 # Role
@@ -580,7 +582,7 @@ Eres un agente IA especializado en contratos de prompt para sistemas de alertas
 automáticas basadas en scheduler con registro de eventos y manejo de fallos de entrega.
 
 # Task
-Especifica el contrato funcional del caso de uso FSD-UC-008: generación y envío
+Especifica el contrato funcional del caso de uso FSD-UC-006 (canónico): generación y envío
 automático de alertas por proximidad de plazos e hitos críticos del proceso de
 acreditación, sin intervención manual.
 
@@ -650,7 +652,7 @@ Formato: JSON
 
 ---
 
-## PC-009 — Generación de reporte ejecutivo PDF en ≤ 2 clics (FSD-UC-009)
+## PC-009 — Generación de reporte ejecutivo PDF en ≤ 2 clics (agrupa FSD-UC-007 canónico)
 
 ```markdown
 # Role
@@ -658,7 +660,7 @@ Eres un agente IA especializado en contratos de prompt para generación de repor
 ejecutivos PDF desde contexto de proceso con restricciones de latencia y flujo mínimo.
 
 # Task
-Especifica el contrato funcional del caso de uso FSD-UC-009: generación del reporte
+Especifica el contrato funcional del caso de uso FSD-UC-007 (canónico): generación del reporte
 ejecutivo PDF desde el contexto del proceso o panel en no más de 2 interacciones del
 usuario, con entrega en menos de 5 segundos (p95).
 
@@ -726,7 +728,7 @@ Formato: JSON
 
 ---
 
-## PC-010 — Importación masiva de actividades por planilla (FSD-UC-010)
+## PC-010 — Importación masiva de actividades por planilla (agrupa FSD-UC-002 canónico)
 
 ```markdown
 # Role
@@ -735,7 +737,7 @@ masiva de datos con validación por fila, importación parcial y reporte de erro
 en sistemas de gestión documental institucional.
 
 # Task
-Especifica el contrato funcional del caso de uso FSD-UC-010: importación masiva de
+Especifica el contrato funcional del caso de uso FSD-UC-002 (canónico): importación masiva de
 actividades desde una plantilla oficial, con validación fila a fila, importación
 parcial de filas válidas y reporte detallado de errores por fila.
 
@@ -813,7 +815,7 @@ Formato: JSON
 
 ---
 
-## PC-011 — Gestión de usuarios y asignación de roles (FSD-UC-011)
+## PC-011 — Gestión de usuarios y asignación de roles (agrupa FSD-UC-001 canónico)
 
 ```markdown
 # Role
@@ -821,7 +823,7 @@ Eres un agente IA especializado en contratos de prompt para administración de u
 y control de acceso basado en roles (RBAC) en sistemas institucionales.
 
 # Task
-Especifica el contrato funcional del caso de uso FSD-UC-011: creación de usuarios,
+Especifica el contrato funcional del caso de uso FSD-UC-001 (canónico): creación de usuarios,
 asignación/modificación de roles y gestión del ciclo de vida de cuentas, con
 restricción exclusiva al Administrador DUEA y registro en auditoría.
 
@@ -892,7 +894,7 @@ Formato: JSON
 
 ---
 
-## PC-012 — Acceso de evaluador externo con alcance mínimo (FSD-UC-012)
+## PC-012 — Acceso de evaluador externo con alcance mínimo (agrupa FSD-UC-EXT-004 — GAP-002c)
 
 ```markdown
 # Role
@@ -900,7 +902,7 @@ Eres un agente IA especializado en contratos de prompt para control de acceso
 con principio de mínimo privilegio en sistemas de acreditación institucional.
 
 # Task
-Especifica el contrato funcional del caso de uso FSD-UC-012: acceso del evaluador
+Especifica el contrato funcional para FSD-UC-EXT-004 (GAP-002c): acceso del evaluador
 externo al sistema con alcance estrictamente limitado a la fase y carrera asignadas,
 sin posibilidad de navegar a recursos no autorizados.
 
@@ -975,22 +977,81 @@ Formato: JSON
 
 ---
 
+## PC-013 — Vista pública de estado de acreditación (agrupa FSD-UC-EXT-001 — GAP-001)
+
+> **Estado**: borrador v0.1 — completar antes de implementación. Cierra GAP-001.
+
+```markdown
+# Role
+Agente IA de contratos para endpoints públicos de solo lectura sin exposición de PII.
+
+# Task
+Especificar FSD-UC-EXT-001: consulta pública del estado de acreditación por carrera/facultad
+según campos publicados por DUEA (PRD-US-021, PRD-REQ-012).
+
+# Context
+- PRD §5.7.4 Gherkin vista pública
+- RB-11 no aplica a lectura anónima; Ley 164 — cero PII en respuesta
+- Relacionado: FSD-UC-005 (panel interno) — reutilizar lógica semáforo sin detalle documental
+
+# Reasoning
+1. Definir DTO público: carrera, facultad, fase_actual, color_semaforo, %_avance_agregado, fecha_ultima_actualizacion
+2. Excluir: nombres docentes, rutas evidencia, observaciones internas, correos
+3. Rate limit + cache 5 min en GET /publico/carreras/{id}
+4. Configuración DUEA: publicar/ocultar carrera
+
+# Stop condition
+Output con invariants (no PII, no auth requerida), failure modes (404 carrera no publicada, 429 rate limit)
+y acceptance_criteria_gherkin copiados de PRD-US-021.
+
+# Output
+JSON: endpoints, dto_publico, invariantes, failure_modes, gherkin
+```
+
+**Invariantes (borrador)**: `INV-PUB-01` sin PII · `INV-PUB-02` solo campos en whitelist DUEA · `INV-PUB-03` sin listado de evidencias.
+
+---
+
+## PC-014 — Bandeja técnico operativo DUEA (agrupa FSD-UC-EXT-002 — GAP-002a)
+
+> **Estado**: borrador v0.1 — completar antes de implementación.
+
+```markdown
+# Role
+Agente IA de contratos para bandejas de trabajo y RBAC acotado (técnico operativo).
+
+# Task
+Especificar FSD-UC-EXT-002: bandeja de evidencias pendientes y acciones documentales
+permitidas al técnico operativo (PRD-US-018).
+
+# Context
+- Extiende UC-003 (evidencias) con vista filtrada por permisos rol Técnico Operativo
+- BR-006, BR-012; NFR-003, NFR-004
+
+# Stop condition
+Output completo con ≥ 4 invariants y ≥ 4 failure modes + Gherkin PRD §5.7.1.
+```
+
+---
+
 ## Tabla de trazabilidad consolidada
 
-| PC | FSD-UC | Nombre | PRD-US | BRD-BR | NFR | Elementos completos |
-|----|--------|--------|--------|--------|-----|---------------------|
+| PC | FSD-UC canónico | Nombre | PRD-US | BRD-BR | NFR | Elementos completos |
+|----|-----------------|--------|--------|--------|-----|---------------------|
 | PC-001 | FSD-UC-001 | Autenticación y autorización por roles | PRD-US-001, PRD-US-003 | BR-004, BR-005, BR-011 | NFR-003, NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
-| PC-002 | FSD-UC-002 | Creación y gestión de procesos | PRD-US-008, PRD-US-009 | BR-001, BR-002, BR-003, BR-012 | NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
-| PC-003 | FSD-UC-003 | Gestión de fases y cierre con pendientes | PRD-US-004, PRD-US-006 | BR-008, BR-009, BR-010 | NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
-| PC-004 | FSD-UC-004 | Carga y versionado de evidencias | PRD-US-010, PRD-US-011 | BR-006, BR-007, BR-012 | NFR-003, NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
-| PC-005 | FSD-UC-005 | Protección ante borrado destructivo | PRD-US-012 | BR-007, BR-011 | NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
-| PC-006 | FSD-UC-006 | Flujo de observaciones DUEA ↔ carrera | PRD-US-013, PRD-US-014 | BR-008, BR-010, BR-011 | NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
-| PC-007 | FSD-UC-007 | Panel semáforo por carrera/facultad | PRD-US-015 | BR-008 | NFR-001 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
-| PC-008 | FSD-UC-008 | Alertas automáticas por plazos | PRD-US-016 | BR-009, BR-011 | NFR-005 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
-| PC-009 | FSD-UC-009 | Reporte ejecutivo PDF ≤ 2 clics | PRD-US-017 | BR-008 | NFR-001, NFR-006 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
-| PC-010 | FSD-UC-010 | Importación masiva de actividades | PRD-US-007 | BR-002, BR-012 | NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
-| PC-011 | FSD-UC-011 | Gestión de usuarios y asignación de roles | PRD-US-002 | BR-004, BR-005 | NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
-| PC-012 | FSD-UC-012 | Acceso de evaluador externo con alcance mínimo | PRD-US-020 | BR-004, BR-005, BR-011 | NFR-003, NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
+| PC-002 | FSD-UC-002 | Creación y gestión de procesos | PRD-US-008, PRD-US-009 | BR-001, BR-002, BR-003, BR-012 | NFR-004, NFR-005 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
+| PC-003 | FSD-UC-002 | Gestión de fases y cierre con pendientes | PRD-US-004, PRD-US-006 | BR-008, BR-009, BR-010 | NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
+| PC-004 | FSD-UC-003 | Carga y versionado de evidencias | PRD-US-010, PRD-US-011 | BR-006, BR-007, BR-012 | NFR-001, NFR-003, NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
+| PC-005 | FSD-UC-003 | Protección ante borrado destructivo | PRD-US-012 | BR-007, BR-011 | NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
+| PC-006 | FSD-UC-004 | Flujo de observaciones DUEA ↔ carrera | PRD-US-013, PRD-US-014 | BR-008, BR-010, BR-011 | NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
+| PC-007 | FSD-UC-005 | Panel semáforo por carrera/facultad | PRD-US-015 | BR-008 | NFR-001 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
+| PC-008 | FSD-UC-006 | Alertas automáticas por plazos | PRD-US-016 | BR-009, BR-011 | NFR-005 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
+| PC-009 | FSD-UC-007 | Reporte ejecutivo PDF ≤ 2 clics | PRD-US-017 | BR-008 | NFR-001, NFR-002, NFR-006 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
+| PC-010 | FSD-UC-002 | Importación masiva de actividades | PRD-US-007 | BR-002, BR-012 | NFR-004, NFR-007 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
+| PC-011 | FSD-UC-001 | Gestión de usuarios y asignación de roles | PRD-US-002 | BR-004, BR-005 | NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
+| PC-012 | FSD-UC-EXT-004 | Acceso de evaluador externo con alcance mínimo | PRD-US-020 | BR-004, BR-005, BR-011 | NFR-003, NFR-004 | Role · Task · Context · Reasoning · Stop · Output · Invariants · Failure modes |
+| PC-013 | FSD-UC-EXT-001 | Vista pública estado acreditación (borrador) | PRD-US-021 | PRD-REQ-012 | NFR-003, NFR-008 | Borrador GAP-001 |
+| PC-014 | FSD-UC-EXT-002 | Bandeja técnico operativo (borrador) | PRD-US-018 | BR-006, BR-012 | NFR-004, NFR-007 | Borrador GAP-002a |
 
 ---
 
@@ -1004,7 +1065,7 @@ Formato: JSON
 | **EXCELENTE** | Failure modes con código, condición y mensaje (mínimo 4 por contrato) | ✅ 57 failure modes totales |
 | **EXCELENTE** | Gherkin verificable (Dado/Cuando/Entonces), 3 escenarios por contrato | ✅ 36 escenarios totales |
 | **EXCELENTE** | Trazabilidad PC → FSD-UC → PRD-US → BRD-BR → NFR | ✅ Tabla consolidada con nombre por fila |
-| **EXTRA** | Consistencia 1:1 con casos-de-uso.md (12 UCs = 12 PCs) | ✅ Numeración alineada sin cruces |
+| **EXTRA** | 12 CU en `casos-de-uso.md` agrupados en 7 FSD-UC canónicos + 12 PC | ✅ Tabla consolidada alineada a DTI §2 |
 
 ---
 
