@@ -3667,4 +3667,47 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 |----|-------|
 | PM-039 | Registrar siguiente tarea ejecutada con IA | Por definir |
 
+### 2026-05-16T20:00:00 — Prompt usuario (auditoría BRD Excelente)
+
+**Prompt:** revisa el documento en la carpeta docs/01_brd/BRD.md y verifica si cumple el estándar de Excelente, Excelente: 10 o más elementos de negocio bien desarrollados (objetivos SMART, stakeholders, business case con ROI/NPV, alcance, KPIs, restricciones, supuestos, riesgos, gobernanza, criterios de éxito). Registra el log en @PROMPT_MAPPING.md
+
+**Acción:** Auditoría documental de `docs/01_brd/BRD.md` (Dorada v2.2) contra rúbrica «Excelente» (≥10 elementos de negocio bien desarrollados). Sin modificar el BRD.
+
+**Resultado — Veredicto: CUMPLE estándar Excelente** (10/10 elementos presentes y desarrollados; matiz en business case financiero).
+
+| # | Elemento (rúbrica) | ¿Cumple? | Evidencia en BRD |
+|---|-------------------|:--------:|------------------|
+| 1 | Objetivos SMART | Sí | §9 — 12 objetivos `BRD-OBJ-01…12` con métrica, línea base, meta y horizonte |
+| 2 | Stakeholders | Sí | §0 metadatos; §4 personas [CC]/[TD]/[JD]/[P]; §10 matriz RACI + tabla por tema |
+| 3 | Business case ROI/NPV | Parcial–Sí* | §15 tablas ahorro (~57.600 BOB/año), CAPEX/OPEX placeholder, **VAN/TIR «por calcular»**; interpretación cualitativa cumplimiento |
+| 4 | Alcance | Sí | §14.1 en alcance, §14.2 fuera, §14.3 piloto F2 (plantilla carreras) |
+| 5 | KPIs | Sí | §8 — North Star `BRD-KPI-01` + 9 KPIs de apoyo con meta y fuente |
+| 6 | Restricciones | Sí | §13.2 — 7 restricciones `BRD-CST-01…07` (append-only, CEUB, no-ERP, etc.) |
+| 7 | Supuestos | Sí | §13.1 — 5 supuestos `BRD-ASM-01…05` |
+| 8 | Riesgos | Sí | §17 — 11 riesgos `BRD-RSK-01…11` con P/I, mitigación y responsable |
+| 9 | Gobernanza | Sí | §18 — `BRD-GOV-01…05` (Accountable [JD], Steering, escalamiento) |
+| 10 | Criterios de éxito | Sí | §19 — `BRD-SUC-01…06`, UAT `BRD-CA-01…08`, roadmap F0–F5 |
+
+\*El business case está **bien desarrollado** en narrativa y parámetros ilustrativos; VAN/TIR pendientes de cifras oficiales UMSS (`BRD-Q-05`), coherente con §15 y §21 (no inventar cifras).
+
+**Elementos adicionales** (refuerzan nivel Excelente, no exigidos por la rúbrica mínima): §7 BMC (9 bloques); §6 competitivo; §11 26 REQ MoSCoW; §12 18 reglas; §3.4 VoC; §25–§26 checklists; trazabilidad §20.
+
+**Observaciones:** Estado «Borrador para validación institucional»; firmas §22 vacías; `BRD-Q-04` piloto abierto. No impiden calificación Excelente en contenido documental.
+
+---
+
+| PM-040 | docs | docs/01_brd/BRD.md | Auditoría rúbrica «Excelente» BRD Dorada v2.2: **10/10 elementos** cumplidos; VAN/TIR pendientes (BRD-Q-05). Sin edición del BRD. | 2026-05-16 | — |
+
+### 2026-05-16T21:00:00 — Prompt usuario (aportes release 1.0.0)
+
+**Prompt:** Generar `docs/10_aportes/APORTES_RELEASE_1.0.0.md` completando `templates/APORTES_TEMPLATE.md` con inventario real de `team/*`, `.cursor/*`, `AGENTS.md` (excl. `docs/`, `templates/`, `context/`). Integrantes n=4; §3 factor de aporte; log en PROMPT_MAPPING.
+
+**Acción:** Inventario automatizado (703 tareas): alexAlvarez 118 · aylenGonzales 212 · borisAngulo 243 · Marlene 130. Co-autoría Equipo en 16 artefactos `.cursor/` + `AGENTS.md` (×4). Archivo generado con metadatos `release/1.0.0` / commit `cf7b220`.
+
+**Resultado:** `docs/10_aportes/APORTES_RELEASE_1.0.0.md` — factores clamp: alexAlvarez **0,67** · aylenGonzales **1,10** · borisAngulo **1,10** · Marlene **0,74** (promedio 175,75 tareas/persona).
+
+---
+
+| PM-041 | docs | docs/10_aportes/APORTES_RELEASE_1.0.0.md | Inventario aportes release 1.0.0 (703 tareas, 4 integrantes, §0–§6 plantilla APORTES). | 2026-05-16 | — |
+
 
