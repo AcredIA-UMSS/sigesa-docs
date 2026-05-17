@@ -2566,8 +2566,713 @@ Restricciones:
 
 ### Próximos pasos
 
-### PM-010 - Registrar prompts de team/alexAlvarez
-- **ID**: PM-010
+| ID | Tarea |
+|----|-------|
+| PM-024 | Generación de ADRs (ADR-0001 a ADR-0005) — aylenGonzales |
+
+---
+
+# PM-024 — Generación de `team/aylenGonzales/04_fsd/adr/` — ADR-0001 a ADR-0005: Architecture Decision Records v1.0 — SIGESA
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-025 |
+| **Fecha** | 2026-05-15 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Aylen Gonzales |
+| **Agente / Entorno** | Claude en claude.ai (chat web) |
+| **Modelo** | claude-sonnet-4-6 |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar 5 Architecture Decision Records (ADRs) completos y aceptados para el proyecto SIGESA, almacenados en `team/aylenGonzales/04_fsd/adr/`, cubriendo las decisiones arquitectónicas más críticas del sistema: almacenamiento de evidencias, log de auditoría, base de datos principal, autenticación y taxonomías normativas.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/aylenGonzales/01_brd/BRD_v2.md` | Objetivos de negocio, restricciones RB-* y reglas BR-* |
+| `team/aylenGonzales/02_mrd/MRD.md` | Diferenciadores competitivos, ventajas sostenibles y riesgos de mercado |
+| `team/aylenGonzales/03_prd/PRD_v1.md` | Requerimientos funcionales PRD-REQ-*, NFRs con umbrales y Constitution del producto |
+| `team/aylenGonzales/04_fsd/FSD_v1.md` | Stack tecnológico §2.3, supuestos SA-*, tasks T-*, prompt-contratos PC-*, NFRs, riesgos RF-*, ADRs referenciados en §15 como pendientes |
+| `templates/ADR_TEMPLATE.md` | Plantilla oficial del módulo con secciones §1–§9 y convenciones de nomenclatura |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos:
+
+- @team/aylenGonzales/01_brd/BRD_v2.md
+- @team/aylenGonzales/02_mrd/MRD.md
+- @team/aylenGonzales/03_prd/PRD_v1.md
+- @team/aylenGonzales/04_fsd/FSD_v1.md
+- @templates/ADR_TEMPLATE.md
+
+Generá entre 2 y 5 ADRs completos para el proyecto SIGESA.
+
+Los archivos a generar son:
+
+team/aylenGonzales/09_dti/adr/ADR-001.md
+team/aylenGonzales/09_dti/adr/ADR-002.md
+team/aylenGonzales/09_dti/adr/ADR-003.md
+team/aylenGonzales/09_dti/adr/ADR-004.md
+team/aylenGonzales/09_dti/adr/ADR-005.md
+
+Cada ADR debe seguir la plantilla `templates/ADR_TEMPLATE.md`
+y cubrir las 9 secciones obligatorias:
+
+§1  Metadatos (tabla con Número, Título, Fecha, Autor(es), Estado, Alcance, Stakeholders)
+§2  Contexto (problema, restricciones, fuerzas en tensión)
+§3  Alternativas consideradas (tabla con ≥ 3 alternativas, pros, contras, costo)
+§4  Decisión (alternativa elegida con justificación)
+§5  Consecuencias (positivas, negativas/costos, neutras/observables)
+§6  Impacto en el sistema (Código, Operaciones, Seguridad, Equipo, Costo)
+§7  Plan de reversión (señales, costo, Plan B)
+§8  Validación (métricas, plazos, responsable)
+§9  Referencias (FSD, PRD, BRD, MRD, documentación oficial, ADRs relacionados)
+
+Restricciones:
+- No inventar IDs; usar solo BR-*, RB-*, PRD-REQ-*, FSD-UC-*, PC-*, NFR-*, SA-*, T-*, RF-* existentes en los documentos leídos.
+- Mantener consistencia con el stack tecnológico declarado en FSD §2.3 (React + Node.js/Express o FastAPI + PostgreSQL 16 + Docker).
+- Los ADR-0001 y ADR-0002 ya están referenciados en FSD §15 como pendientes; generarlos primero.
+- Cada ADR cubre exactamente una decisión arquitectónica (no mezclar).
+- Estado de todos los ADRs: Aceptada.
+- Trazabilidad explícita a BRD, MRD, PRD y FSD en §8 Referencias de cada ADR.
+- Declarar el Plan B de reversión con estimación de sprints.
+```
+
+---
+
+### Salidas generadas
+
+| Archivo | Decisión cubierta | Estado |
+|---------|-------------------|--------|
+| `ADR-0001-almacenamiento-evidencias-local.md` | Almacenamiento de archivos de evidencia en volumen Docker local `/data/evidencias/` vs. S3-compatible vs. PostgreSQL BYTEA | Aceptada |
+| `ADR-0002-log-auditoria-append-only-postgresql.md` | Log de auditoría como tabla append-only en PostgreSQL con `REVOKE DELETE, UPDATE FROM sigesa_app` vs. ELK vs. archivo de texto | Aceptada |
+| `ADR-0003-postgresql-base-de-datos-principal.md` | PostgreSQL 16 como único motor de BD vs. MySQL 8 vs. SQLite vs. MongoDB | Aceptada |
+| `ADR-0004-autenticacion-jwt-rbac.md` | Autenticación stateless JWT + RBAC por claims vs. sesiones en servidor vs. Keycloak vs. Auth-as-a-Service | Aceptada |
+| `ADR-0005-taxonomias-ceub-arcusur-en-bd.md` | Taxonomías CEUB/ARCU-SUR como configuración en BD (editables por [JD]) vs. hardcodeadas en código vs. archivos YAML vs. microservicio | Aceptada |
+
+---
+
+### Cobertura de trazabilidad
+
+| ADR | BRD vinculado | PRD vinculado | FSD vinculado | MRD vinculado |
+|-----|---------------|---------------|---------------|---------------|
+| ADR-0001 | BR-001, BR-002, BR-012, RB-04 | PRD-REQ-003, PRD-REQ-004, PRD-NFR-012 | SA-03, T-04, PC-002, RF-04, MOD-02 | MRD-N-01, MRD-N-02 |
+| ADR-0002 | BR-009, RB-04 | PRD-REQ-011 | RBN-07, T-11, NFR-004, NFR-012, TC-006 | MRD-N-09 |
+| ADR-0003 | BR-008 | PRD-REQ-009, PRD-NFR-001 | §2.3 Stack, T-03, T-10, NFR-001, TC-007, TC-010 | MRD-N-08 |
+| ADR-0004 | BR-006, RB-06 | PRD-REQ-001, PRD-REQ-002, PRD-NFR-006 | FSD-UC-001, PC-001, T-02, NFR-003, NFR-004 | MRD-N-06 |
+| ADR-0005 | BR-007, RB-01, RB-05 | PRD-REQ-010 | RBN-13, SA-04, T-06, RF-05, FSD-UC-003 | MRD-N-07, §6.2, §6.3 |
+
+---
+
+### Observaciones de ejecución
+
+- Los ADR-0001 y ADR-0002 estaban listados como existentes en el FSD v1.0 §15 (Anexos) sin contenido formal; este prompt los materializó por primera vez con estructura completa.
+- El ADR-0003 formaliza la elección implícita del FSD §2.3 que no tenía justificación documentada.
+- El ADR-0004 cubre la decisión de no usar Keycloak en v1.0 por ausencia de IdP institucional en TI UMSS — restricción operativa real confirmada con el sponsor.
+- El ADR-0005 es el ADR de mayor valor estratégico: materializa el diferenciador competitivo central del producto (MRD §6.2) como decisión de arquitectura formal.
+- Todos los ADRs incluyen Plan B con estimación de sprints para reversión.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea sugerida | Prioridad |
+|----|----------------|-----------|
+| PM-026 | *(completado)* Generar ADR-0006 — backend Node.js 20 + Express 4 | — |
+
+
+# PM-025— Actualización de `team/aylenGonzales/04_fsd/FSD_v2.md` §15 Anexos — referencias ADR-0001 a ADR-0005
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-025 |
+| **Fecha** | 2026-05-16 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Aylen Gonzales |
+| **Agente / Entorno** | Cursor Agent |
+| **Modelo** | Composer |
+| **Estado** | Completado |
+| **Tarea heredada de** | PM-024 (próximos pasos) |
+
+---
+
+### Tarea
+
+Actualizar únicamente la sección §15 Anexos de `team/aylenGonzales/04_fsd/FSD_v2.md`: reemplazar las referencias pendientes de ADR-0001 y ADR-0002 (`docs/adr/…`) por los archivos generados en `team/aylenGonzales/09_dti/adr/`, y agregar las referencias a ADR-0003, ADR-0004 y ADR-0005.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/aylenGonzales/04_fsd/FSD_v2.md` | Documento a editar (solo §15) |
+| `team/aylenGonzales/09_dti/adr/ADR-001.md` | ADR almacenamiento evidencias (volumen Docker) |
+| `team/aylenGonzales/09_dti/adr/ADR-002.md` | ADR log auditoría append-only |
+| `team/aylenGonzales/09_dti/adr/ADR-003.md` | ADR PostgreSQL 16 |
+| `team/aylenGonzales/09_dti/adr/ADR-004.md` | ADR JWT + RBAC |
+| `team/aylenGonzales/09_dti/adr/ADR-005.md` | ADR taxonomías CEUB/ARCU-SUR |
+| `PROMPT_MAPPING.md` | Registro de prompt (esta entrada) |
+
+---
+
+### Prompt utilizado
+
+```text
+Actualizar FSD §15 Anexos para reemplazar las referencias pendientes de ADR-0001 y ADR-0002 con los enlaces a los archivos generados  y guarda el log del prompt con la estructura en @PROMPT_MAPPING.md
+```
+
+**Prompt operativo ejecutado (equivalente funcional):**
+
+```text
+Leé team/aylenGonzales/04_fsd/FSD_v2.md y los ADR en team/aylenGonzales/09_dti/adr/ADR-001.md … ADR-005.md.
+
+Tarea: editá únicamente §15 Anexos del FSD_v2.md.
+
+Reemplazá:
+- ADR-0001: … (`docs/adr/ADR-0001.md`)
+- ADR-0002: … (`docs/adr/ADR-0002.md`)
+
+Por:
+- ADR-0001: Almacenamiento de archivos de evidencia en volumen Docker local — team/aylenGonzales/09_dti/adr/ADR-001.md
+- ADR-0002: Log de auditoría … REVOKE DELETE/UPDATE — team/aylenGonzales/09_dti/adr/ADR-002.md
+- ADR-0003 … ADR-005 — team/aylenGonzales/09_dti/adr/ADR-003.md … ADR-005.md
+
+Restricciones: solo §15; no modificar ADRs; registrar en PROMPT_MAPPING.md como PM-027.
+```
+
+---
+
+### Salidas
+
+| Archivo | Cambio |
+|---------|--------|
+| `team/aylenGonzales/04_fsd/FSD_v2.md` | §15 líneas 1104–1108: referencias ADR-0001 a ADR-0005 apuntan a `09_dti/adr/` |
+| `PROMPT_MAPPING.md` | Entrada PM-027; próximos pasos de PM-025 actualizados |
+
+---
+
+### Texto aplicado en FSD §15 (Anexos)
+
+```markdown
+- ADR-0001: Almacenamiento de archivos de evidencia en volumen Docker local — `team/aylenGonzales/09_dti/adr/ADR-001.md`
+- ADR-0002: Log de auditoría como tabla append-only en PostgreSQL con REVOKE DELETE/UPDATE — `team/aylenGonzales/09_dti/adr/ADR-002.md`
+- ADR-0003: PostgreSQL 16 como base de datos principal — `team/aylenGonzales/09_dti/adr/ADR-003.md`
+- ADR-0004: Autenticación stateless JWT + RBAC por rol institucional — `team/aylenGonzales/09_dti/adr/ADR-004.md`
+- ADR-0005: Taxonomías CEUB/ARCU-SUR como configuración en BD — `team/aylenGonzales/09_dti/adr/ADR-005.md`
+```
+
+---
+
+### Validación
+
+- §15 verificado: cinco referencias ADR con rutas bajo `team/aylenGonzales/09_dti/adr/`.
+- Resto del FSD sin cambios.
+- ADRs no modificados.
+
+---
+
+### Observaciones
+
+- Cierra el pendiente declarado en PM-025 (generación de ADRs en `09_dti/adr/`).
+- Trazabilidad FSD §15 ↔ ADR-001 … ADR-005 alineada con PM-025.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea sugerida | Prioridad |
+|----|----------------|-----------|
+| PM-028 | Registrar siguiente tarea ejecutada con IA | Por definir |
+
+---
+
+# PM-026 — Generación de ADR-0006: Backend Node.js 20 + Express 4 (spike FSD §2.3)
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-026 |
+| **Fecha** | 2026-05-16 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Aylen Gonzales |
+| **Agente / Entorno** | Cursor Agent |
+| **Modelo** | Composer |
+| **Estado** | Completado |
+| **Tarea heredada de** | PM-025 / PM-027 (próximos pasos) |
+
+---
+
+### Tarea
+
+Formalizar la decisión de backend tras el spike de 2 días declarado en FSD §2.3: elegir **Node.js 20 + Express 4** frente a FastAPI, documentar alternativas, consecuencias y plan de reversión en `team/aylenGonzales/09_dti/adr/ADR-006.md`. Actualizar FSD §2.3 (stack) y §15 (anexo ADR-0006).
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol en la tarea |
+|----------------------|-----------------|
+| `team/aylenGonzales/04_fsd/FSD_v2.md` | §2.3 stack, T-01, T-02, NFR-009; §15 anexos |
+| `team/aylenGonzales/09_dti/adr/ADR-001.md` … `ADR-005.md` | Formato y trazabilidad ADR |
+| `team/aylenGonzales/09_dti/adr/ADR-004.md` | JWT (`jsonwebtoken` vs `python-jose`) |
+| `templates/ADR_TEMPLATE.md` | Estructura §1–§9 |
+
+---
+
+### Prompt utilizado
+
+```text
+Generar ADR-0006 (backend Node.js/Express vs. FastAPI) tras spike FSD §2.3 | Alta | y guarda el log del prompt con la estructura en @PROMPT_MAPPING.md
+```
+
+---
+
+### Salidas generadas
+
+| Archivo | Operación | Contenido |
+|---------|-----------|-----------|
+| `team/aylenGonzales/09_dti/adr/ADR-006.md` | Creado | ADR-0006 — Node.js 20 + Express 4 (Aceptada) |
+| `team/aylenGonzales/04_fsd/FSD_v2.md` | Modificado | §2.1, §2.3 (backend, PDF, notificaciones); §15 referencia ADR-0006 |
+| `PROMPT_MAPPING.md` | Modificado | Entrada PM-026 |
+
+---
+
+### Decisión registrada (resumen)
+
+| Aspecto | Elección |
+|---------|----------|
+| Runtime | Node.js 20 LTS |
+| Framework HTTP | Express 4 |
+| Descartado en v1.0 | FastAPI / Python 3.12 |
+| Migraciones | node-pg-migrate o Knex (rama Node) |
+| PDF / correo / tests | PDFKit, Nodemailer, Jest (coherentes con FSD §2.3) |
+
+---
+
+### Cobertura de trazabilidad
+
+| ADR-0006 vincula | IDs |
+|------------------|-----|
+| FSD | §2.3, T-01, T-02, T-03, T-08, NFR-001, NFR-009, FSD-UC-001, PC-001 |
+| ADRs | ADR-0001, ADR-0002, ADR-0003, ADR-0004 |
+| PRD | PRD-REQ-001 … PRD-REQ-013 (API transversal) |
+| BRD | BR-008, RB-06 |
+
+---
+
+### Validación
+
+- ADR-006 con 9 secciones obligatorias y estado **Aceptada**.
+- FSD §2.3 sin texto “pendiente spike”.
+- §15 incluye enlace a `ADR-006.md`.
+- Desbloquea T-01 y T-02 según criterio de aceptación del spike.
+
+---
+
+### Observaciones
+
+- FastAPI queda como Plan B en ADR-0006 §6, no como deuda oculta.
+- T-03 en FSD cita Flyway/Alembic; en la rama Node se documenta node-pg-migrate/Knex en el ADR sin alterar el ID de task.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea sugerida | Prioridad |
+|----|----------------|-----------|
+| + | Implementar T-01 (Docker Compose monorepo) con servicio `backend` Node | Alta |
+| + | Implementar T-02 (JWT + RBAC) según ADR-0004 y ADR-0006 | Alta |
+| PM-028 | *(completado)* Matriz de trazabilidad + métricas AI-SDLC | — |
+
+---
+
+# PM-028 — Generación de `team/aylenGonzales/08_trazabilidad/` — matriz_trazabilidad.md + metricas_ai_sdlc.md
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-028 |
+| **Fecha** | 2026-05-16 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Aylen Gonzales |
+| **Agente / Entorno** | Cursor Agent |
+| **Modelo** | Composer |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar matriz de trazabilidad MRD→PRD→FSD→ADR (12 filas MRD-N-*) y documento de métricas AI-SDLC (Prompt Coverage, Spec Fidelity, Decision Coverage) con cálculo explícito y semáforos.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol |
+|----------------------|-----|
+| `team/aylenGonzales/02_mrd/MRD_v1.md` | 12 MRD-N-* |
+| `team/aylenGonzales/03_prd/PRD_v1.md` | PRD-REQ-001 … 017 |
+| `team/aylenGonzales/04_fsd/FSD_v1.md` | Contexto histórico |
+| `team/aylenGonzales/04_fsd/FSD_v2.md` | UC, MOD, RBN, NFR, RF, gaps §11 |
+| `team/aylenGonzales/09_dti/adr/ADR-001.md` … `ADR-006.md` | Decisiones arquitectónicas |
+| `PROMPT_MAPPING.md` | PM-021, PM-022, PM-025, PM-026 |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá: MRD, PRD_v1, FSD_v1, FSD_v2 y ADR-001 … ADR-006.
+Generá matriz_trazabilidad.md y metricas_ai_sdlc.md en 08_trazabilidad/.
+Restricciones: no inventar IDs; GAP explícito; cálculo paso a paso; log en PROMPT_MAPPING.md
+```
+
+---
+
+### Salidas
+
+| Archivo | Contenido |
+|---------|-----------|
+| `team/aylenGonzales/08_trazabilidad/matriz_trazabilidad.md` | 12 filas + 8 gaps |
+| `team/aylenGonzales/08_trazabilidad/metricas_ai_sdlc.md` | 3 métricas + resumen |
+| `PROMPT_MAPPING.md` | PM-028 |
+
+---
+
+### Resultados de métricas
+
+| Métrica | Valor | Semáforo |
+|---------|-------|----------|
+| Prompt Coverage | 12/12 = 100 % | 🟢 |
+| Spec Fidelity | 7/17 = 41,18 % | 🔴 |
+| Decision Coverage | 3/6 = 50 % | 🟡 |
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Prioridad |
+|----|-------|-----------|
+| + | Cerrar GAP-001/002 (FSD-UC-008/009) | Alta |
+| PM-029 | *(completado)* Elevar 08_trazabilidad a nivel EXCELENTE | — |
+
+---
+
+# PM-029 — Trazabilidad EXCELENTE: actualización FSD_v2 + matriz + métricas v2.0
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-029 |
+| **Fecha** | 2026-05-16 |
+| **Solicitante** | Aylen Gonzales |
+| **Agente / Entorno** | Cursor Agent |
+| **Modelo** | Composer |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Elevar entregables de `08_trazabilidad/` a nivel **EXCELENTE** (PM-020): trazabilidad completa MRD→PRD→FSD, métricas con fórmulas, cerrar GAP-001/002 integrando FSD-UC-008/009/010 en FSD_v2.
+
+---
+
+### Salidas
+
+| Archivo | Cambio |
+|---------|--------|
+| `FSD_v2.md` | +FSD-UC-008, 009, 010, 011; postcondiciones UC-006/007; §11 actualizado |
+| `matriz_trazabilidad.md` | v2.0 — 12 filas cadena completa, §2 PRD×17, §4 por capa |
+| `metricas_ai_sdlc.md` | v2.0 — 7 métricas, veredicto EXCELENTE |
+
+---
+
+### Métricas finales
+
+| Métrica | Valor | Semáforo |
+|---------|-------|----------|
+| Prompt Coverage (PC) | 100 % | 🟢 |
+| Spec Fidelity | 88,24 % | 🟢 |
+| Chain Completeness | 100 % | 🟢 |
+| Decision Coverage | 50 % | 🟡 |
+
+---
+
+### Próximos pasos
+
+| ID | Tarea |
+|----|-------|
+| PM-030 | *(completado)* Generación `team/aylenGonzales/10_agents/AGENTS.md` | — |
+
+---
+
+# PM-030 — Generación de `team/aylenGonzales/10_agents/AGENTS.md` (plantilla AI-SDLC)
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-030 |
+| **Fecha** | 2026-05-16 |
+| **Hora** | (hora local de ejecución) |
+| **Solicitante** | Aylen Gonzales |
+| **Agente / Entorno** | Cursor Agent |
+| **Modelo** | Composer |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Leer FSD_v1/v2, PRD_v1, BRD_v2, ADR-001…006 y `templates/AGENTS_TEMPLATE.md`; generar `team/aylenGonzales/10_agents/AGENTS.md` con secciones §1–§14 (más §15 changelog) sin placeholders, alineado al stack Node 20 + Express 4 (ADR-006) y reglas RBN/BR/RB del FSD.
+
+---
+
+### Entradas
+
+| Archivo / referencia | Rol |
+|----------------------|-----|
+| `team/aylenGonzales/04_fsd/FSD_v1.md` | Contexto histórico |
+| `team/aylenGonzales/04_fsd/FSD_v2.md` | UC, MOD, RBN, stack §2.3, NFR, PC-001…004 |
+| `team/aylenGonzales/03_prd/PRD_v1.md` | PRD-REQ-001…017 |
+| `team/aylenGonzales/01_brd/BRD_v2_aylen.md` | BR-*, RB-* (ruta real del equipo) |
+| `team/aylenGonzales/09_dti/adr/ADR-001.md` … `ADR-006.md` | Stack, evidencias, JWT, taxonomías, backend |
+| `team/aylenGonzales/04_fsd/prompt-contracts.md` | PC-005…010 (ejemplo PC-001 en FSD_v2 §7) |
+| `team/aylenGonzales/08_trazabilidad/matriz_trazabilidad.md` | Trazabilidad §2 contexto agente |
+| `team/aylenGonzales/08_trazabilidad/metricas_ai_sdlc.md` | Umbrales §13 |
+| `templates/AGENTS_TEMPLATE.md` | Estructura canónica §1–§15 |
+| `PROMPT_MAPPING.md` | PM-025, PM-026, PM-028, PM-029 |
+
+---
+
+### Prompt utilizado
+
+```text
+Leé y analizá los siguientes archivos en orden:
+
+@team/aylenGonzales/04_fsd/FSD_v1.md
+@team/aylenGonzales/04_fsd/FSD_v2.md
+@team/aylenGonzales/03_prd/PRD_v1.md
+@team/aylenGonzales/01_brd/BRD_v2.md
+@team/aylenGonzales/09_dti/adr/ADR-001.md … ADR-006.md
+@templates/AGENTS_TEMPLATE.md
+
+Generá team/aylenGonzales/10_agents/AGENTS.md siguiendo la estructura exacta de AGENTS_TEMPLATE.md
+completando cada sección con datos reales AcredIA/SIGESA (§1–§14: identidad, contexto, repo,
+stack FSD §2.3 + ADR-006 Node+Express, convenciones, RBN/BR invariantes, seguridad, agentes,
+flujo Mermaid, PC-001, prompts prohibidos, comandos, métricas, contacto).
+Restricciones: sin placeholders; MUST/MUST NOT; no inventar IDs; guardar en 10_agents/AGENTS.md;
+registrar en PROMPT_MAPPING.md.
+```
+
+---
+
+### Acciones realizadas
+
+- Lectura de FSD_v2 §2.3, §5 (RBN-01…15), §7 (PC-001), ADR-001…006 y plantilla `AGENTS_TEMPLATE.md`.
+- Creación de carpeta `team/aylenGonzales/10_agents/` y archivo `AGENTS.md` (377 líneas, v1.0).
+- Stack documentado como **Node.js 20 + Express 4** (ADR-006 cerrado; no spike pendiente).
+- BRD referenciado como `BRD_v2_aylen.md`; DTI con ruta canónica + fallback FSD+ADRs (DTI_v1 aún no publicado).
+- §6: reglas MUST/MUST NOT derivadas de RBN y BR/RB; §8: @DevAgent, @ArchAgent, @QaAgent, @ProductAgent.
+- §13: métricas desde `metricas_ai_sdlc.md` v2.0 (Prompt Coverage 100 %, Spec Fidelity 88,24 %, etc.).
+
+---
+
+### Salidas
+
+| Archivo | Contenido |
+|---------|-----------|
+| `team/aylenGonzales/10_agents/AGENTS.md` | AGENTS v1.0 — 15 secciones, checklist validez, sin placeholders `<…>` |
+| `PROMPT_MAPPING.md` | Entrada PM-030 (esta) |
+
+---
+
+### Validación ejecutada
+
+- Verificación de ausencia de placeholders sin completar en `AGENTS.md`.
+- Coherencia stack con ADR-006 (Node/Express, PDFKit, Nodemailer, PostgreSQL 16).
+- Coherencia reglas con RBN-01…15 y ADR-001, 002, 004, 005.
+- Diagrama Mermaid §9 copiado sin modificación desde plantilla.
+
+---
+
+### Resultado obtenido
+
+Archivo operativo para agentes Cursor del equipo **aylenGonzales**: contexto de lectura obligatorio, estructura del repo, stack autoritativo, guardrails, flujo de trabajo, template PC-001, prompts prohibidos SIGESA y comandos de verificación local.
+
+---
+
+### Riesgos / observaciones
+
+- `team/aylenGonzales/09_dti/DTI_v1.md` no existe aún; §2 documenta fallback a FSD_v2 + ADRs hasta publicación del DTI.
+- Checklist §15 marca pendiente sincronización con DTI y revisión humana pre-piloto Q3–Q4 2026.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea | Prioridad |
+|----|-------|-----------|
+| + | Publicar `09_dti/DTI_v1.md` y sincronizar §2 de AGENTS.md | Media |
+| + | Implementar T-01/T-02 según ADR-004 y ADR-006 | Alta |
+| PM-031 | *(completado)* DTI_v1.md + sincronización AGENTS.md §2 | — |
+
+---
+
+# PM-031 — Generación de `DTI_v1.md` y actualización de `AGENTS.md` §2
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-031 |
+| **Fecha** | 2026-05-16 |
+| **Solicitante** | Aylen Gonzales |
+| **Agente / Entorno** | Cursor Agent |
+| **Modelo** | Composer |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Generar `team/aylenGonzales/09_dti/DTI_v1.md` según plantilla DTI (`templates/dti.md`); actualizar **únicamente** §2 de `10_agents/AGENTS.md` con referencias a secciones reales del DTI.
+
+---
+
+### Entradas
+
+| Archivo | Rol |
+|---------|-----|
+| `BRD_v2_aylen.md` | Problema, BR/RB, métricas negocio |
+| `PRD_v1.md` | Objetivos OP-*, alcance v1.0 |
+| `FSD_v1.md`, `FSD_v2.md` | Stack §2.3, UC, RBN, NFR §10, modelo §6 |
+| `ADR-001` … `ADR-006` | Decisiones arquitectónicas |
+| `10_agents/AGENTS.md` | Solo §2 editable |
+| `templates/dti.md` | Estructura canónica (equivalente DTI_TEMPLATE) |
+
+---
+
+### Prompt utilizado
+
+```text
+Generar DTI_v1.md desde templates/DTI_TEMPLATE.md con datos reales AcredIA/SIGESA.
+Actualizar SOLO §2 de AGENTS.md con secciones reales del DTI.
+Registrar en PROMPT_MAPPING.md.
+```
+
+---
+
+### Salidas
+
+| Archivo | Cambio |
+|---------|--------|
+| `team/aylenGonzales/09_dti/DTI_v1.md` | Creado — secciones §0–§21 + checklist |
+| `team/aylenGonzales/10_agents/AGENTS.md` | §2 reemplazado; §1 tabla DTI sin nota “pendiente” |
+| `PROMPT_MAPPING.md` | PM-031 |
+
+---
+
+### Secciones generadas en DTI_v1.md
+
+§0 Metadatos · §1 Visión · §2 Contexto (2.1–2.2) · §3 Arquitectura (3.1–3.4) · §4 Dominio · §5 Hexagonal · §6 Distribuida (monolito) · §7 Eventos (cola) · §8 Despliegue Docker · §9 IA/Agentes · §10 Prompt Mapping · §11 NFRs · §12 POCs · §13 Seguridad · §14 Observabilidad · §15 DevOps · §16 Antipatrones · §17 Trade-offs · §18 Riesgos · §19 Roadmap · §20 Glosario · §21 ADRs · Checklist
+
+---
+
+### Cambios AGENTS.md §2
+
+- Ítem 1: de “secciones 1–5 genéricas + fallback” → referencias explícitas DTI §0, §1, §2.1–2.2, §3.1–3.4, §4.1–4.2, §5.1–5.2.
+- Ítems 2–6: rutas FSD §4, ADR con DTI §21, PM hasta PM-031, matriz, BRD/PRD con IDs BR/RB y PRD-REQ.
+
+---
+
+### Próximos pasos
+
+| ID | Tarea |
+|----|-------|
+| PM-032 | *(completado)* 7 Skills en `10_agents/skills/` según SKILL_TEMPLATE | — |
+
+---
+
+# PM-032 — Generación de Skills operativos (`10_agents/skills/`)
+
+| Campo | Valor |
+|-------|-------|
+| **ID** | PM-032 |
+| **Fecha** | 2026-05-16 |
+| **Solicitante** | Aylen Gonzales |
+| **Agente / Entorno** | Cursor Agent |
+| **Modelo** | Composer |
+| **Estado** | Completado |
+
+---
+
+### Tarea
+
+Crear carpeta `team/aylenGonzales/10_agents/skills/` con 7 archivos `.md` siguiendo `templates/SKILL_TEMPLATE.md`, derivando contenido de `10_agents/AGENTS.md` (§4, §6, §7, §8.1–8.3, §11–13).
+
+---
+
+### Entradas
+
+| Archivo | Rol |
+|---------|-----|
+| `templates/SKILL_TEMPLATE.md` | Estructura canónica §1–§10 + frontmatter |
+| `team/aylenGonzales/10_agents/AGENTS.md` | Stack, RBN/BR/RB, agentes, MOD/FSD-UC, guardrails |
+
+---
+
+### Prompt utilizado
+
+```text
+Crear 7 skills en team/aylenGonzales/10_agents/skills/ según SKILL_TEMPLATE.md:
+validate_domain_rules, run_tests_and_lint, sync_traceability_matrix,
+generate_adr, audit_security_compliance, generate_pr_description, detect_spec_gaps.
+Solo referencias de AGENTS.md. Registrar en PROMPT_MAPPING.md.
+```
+
+---
+
+### Salidas
+
+| Archivo | Agente principal | Propósito |
+|---------|------------------|-----------|
+| `skills/skill_validate_domain_rules.md` | @DevAgent, @QaAgent | Auditar RBN-*, BR-*, RB-* §6 |
+| `skills/skill_run_tests_and_lint.md` | @DevAgent, @QaAgent | `npm test`, `npm run lint`, k6 §12 |
+| `skills/skill_sync_traceability_matrix.md` | @ProductAgent | `08_trazabilidad/matriz_trazabilidad.md` |
+| `skills/skill_generate_adr.md` | @ArchAgent | `09_dti/adr/ADR-00N.md` |
+| `skills/skill_audit_security_compliance.md` | @ArchAgent, @QaAgent | NFR-003/004/012, ADR-001/002/004 |
+| `skills/skill_generate_pr_description.md` | @DevAgent | PR con FSD-UC, PRD-REQ, TC-* |
+| `skills/skill_detect_spec_gaps.md` | @ProductAgent | GAP FSD §11 + métricas §13 |
+
+---
+
+### Validación
+
+- Frontmatter YAML en los 7 archivos (name, description, allowed-tools, model-tier, fsd-version-min, status, owner).
+- Secciones 1–10 sin renombrar respecto a SKILL_TEMPLATE.
+- Sin referencias a MongoDB, FastAPI, S3 obligatorio, Redis obligatorio.
+- Rutas de salida explícitas donde aplica (`08_trazabilidad/`, `09_dti/adr/`, `10_agents/reports/`).
+
+---
+
+### Próximos pasos
+
+| ID | Tarea |
+|----|-------|
+| PM-033 | *(completado)* Registrar prompts de team/alexAlvarez | — |
+
+---
+
+### PM-033 - Registrar prompts de team/alexAlvarez
+
+- **ID**: PM-033
 - **Fecha**: 2026-05-15
 - **Hora**: 14:30 (UTC-4)
 - **Solicitante**: Alex Álvarez
@@ -2583,7 +3288,7 @@ Restricciones:
   Registra en PROMPT_MAPPING.md todas las prompts existentes en team/alexAlvarez/prompts/ siguiendo el formato de entradas PM-001..PM-009. No modifiques ningún archivo de prompt, solo referencia sus rutas y propósitos.
   ```
 - **Archivos generados o modificados**:
-  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-010).
+  - `./PROMPT_MAPPING.md` - Modificado (entrada PM-033).
 - **Cambios realizados**:
   - Agregado un registro específico en el mapa de prompts para los archivos del equipo Alex.
   - Documentada la inclusión de las prompts existentes sin alterar los archivos fuente.
@@ -2595,9 +3300,12 @@ Restricciones:
 - **Estado**: Completado
 - **Riesgos / observaciones**:
   - No se modificaron los archivos de prompt; si se requiere versionamiento de prompt, debe hacerse en su propia entrada futura.
+  - ID renumerado a PM-033 en merge con rama `Aylen` (PM-010 ya asignado a LFSD).
 - **Lecciones / reuso del prompt**:
   - Registrar prompts existentes como metadatos incrementa la trazabilidad sin impactar artefactos ya generados.
 - **Próximos pasos**:
   - Confirmar con el equipo Alex si desean entradas adicionales (por prompt) o un registro colectivo.
 
-| PM-024 | Registrar siguiente tarea ejecutada con IA | Por definir |
+| ID | Tarea |
+|----|-------|
+| PM-034 | Registrar siguiente tarea ejecutada con IA | Por definir |
