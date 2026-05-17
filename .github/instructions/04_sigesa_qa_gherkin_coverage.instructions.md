@@ -1,0 +1,1 @@
+../../.claude/rules/04_sigesa_qa_gherkin_coverage.mdc
