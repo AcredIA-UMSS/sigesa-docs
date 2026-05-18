@@ -8,8 +8,10 @@
 | **Fecha de publicación** | 14/05/2026 |
 | **Estado del release** | **Publicado — línea base documental y de gobernanza** (repositorio `sigesa-docs`) |
 | **Clasificación del documento** | Release notes · Governance report · AI engineering & compliance report |
-| **Versión del informe** | 2.0 (sustituye borrador breve anterior del mismo archivo) |
-| **Fuentes canónicas** | `02_mrd/MRD_SIGESA_Institucional_Estrategico_v1.md` · `docs/LFSD.md` / `docs/FSD_v1.md` · `team/aylenGonzales/PRD_v1.md` (trazas PRD-REQ/US) · `matriz_trazabilidad.md` · `metricas_ai_sdlc.md` · `AGENTS.md` · `08_mermaid/ARQ_Mermaid_SIGESA_FSD_Traceability_v1.md` |
+| **Versión del informe** | 2.1 — paquete documental Marlene integrado |
+| **Ubicación canónica** | `team/Marlene/10_aportes/release-1.0.0.md` |
+| **Fuentes canónicas** | `docs/LFSD.md` · `team/Marlene/01_brd/BRD_v1.md` · `03_prd/PRD.md` · `04_fsd/*` · `09_trazabilidad/matriz_trazabilidad.md` · `09_trazabilidad/metricas_ai_sdlc.md` · `AGENTS.md` (raíz) · `08_agents/ARQ_Mermaid_SIGESA_FSD_Traceability_v1.md` |
+| **Réplicas repo** | `matriz_trazabilidad.md` · `metricas_ai_sdlc.md` (raíz) |
 
 ---
 
@@ -29,7 +31,7 @@ Institucionalizar una **línea base única** de especificación, trazabilidad y 
 | Capa | Incluido en v1.0.0 | Excluido o diferido |
 |------|---------------------|---------------------|
 | **Documentación** | MRD, PRD referenciado, FSD/LFSD, matrices, métricas IA, AGENTS, diagramas Mermaid | — |
-| **Producto software** | Especificado y trazado (FSD-UC-001 … UC-005 + capacidades §2.1 LFSD) | Implementación según tablero de código (no es objeto de este repositorio únicamente) |
+| **Producto software** | Especificado y trazado (**FSD-UC-001 … UC-012** + capacidades §2.1 LFSD) | Implementación según tablero de código (repositorio aplicativo externo) |
 | **Integraciones** | SMTP, S3, PDF internos (diseño) | SIIS / ERP tiempo real (**v2**, LFSD §2.2) |
 | **IA avanzada** | Métricas, skills, reglas Cursor, prompt-contratos LFSD §7 | Clasificación autónoma de evidencias (**v2**, LFSD §2.2) |
 
@@ -48,6 +50,29 @@ Institucionalizar una **línea base única** de especificación, trazabilidad y 
 ## A.4 Resumen ejecutivo institucional
 
 La UMSS enfrenta ciclos de **acreditación de carrera** bajo exigencias de **evidencia trazable**, **plazos** y **coordinación multiactor** (carrera ↔ DUEA ↔ instancias externas). SIGESA se define como plataforma que **centraliza el ciclo documental**, **formaliza el flujo de aprobación** y **habilita inteligencia gerencial** sin sustituir el juicio institucional. La versión **v1.0.0** del **paquete documental** establece la **cadena de confianza** entre lo que el mercado y la política institucional exigen (MRD), lo que el producto promete (PRD) y lo que el sistema debe hacer (FSD/LFSD), incluyendo **controles de IA** en el ciclo de ingeniería para evitar deriva normativa o alucinaciones en asistencias futuras (**RB-11**).
+
+## A.5 Entregables del paquete documental Marlene (v1.0.0)
+
+| Carpeta | Artefacto | Propósito |
+|---------|-----------|-----------|
+| `01_brd/` | `BRD_v1.md` | Visión y necesidades de negocio |
+| `03_prd/` | `PRD.md`, `user_stories.md`, `roadmap.md`, `user_journeys.md` | Producto e historias PRD-US-001…022 |
+| `04_fsd/` | `casos_uso.md`, `gherkin.md`, `reglas_negocio.md`, `modelo_datos.md`, `api_contracts.md`, `glosario.md` | Especificación funcional UC-001…012 |
+| `05_nfr/` | `NFR_ISO25010.md` | Calidad ISO/IEC 25010 (NFR-001…013) |
+| `06_prompt_contracts/` | `prompt_contracts.md` | PC-UC y contratos IA |
+| `07_diagramas/` | `UC01–UC03_*`, `modelo_er.mmd`, `gantt.mmd` | Secuencia, estado, ER, cronograma CEUB |
+| `08_agents/` | `ARQ_Mermaid_*`, `agents/SKILLS.md`, `mmd/D-*` | Trazabilidad diagramas y skills |
+| `09_trazabilidad/` | `matriz_trazabilidad.md`, `metricas_ai_sdlc.md` | Matriz E2E y métricas AI-SDLC |
+| `10_aportes/` | **Este documento** | Release notes y compliance |
+
+**Objetivos de release documentales (RO):**
+
+| ID | Objetivo | Criterio |
+|----|----------|----------|
+| RO-01 | Trazabilidad E2E | `09_trazabilidad/matriz_trazabilidad.md` publicado |
+| RO-02 | Métricas IA responsable | `09_trazabilidad/metricas_ai_sdlc.md` publicado |
+| RO-03 | Operación multi-agente | `AGENTS.md` + `08_agents/agents/SKILLS.md` |
+| RO-04 | Comunicación de versión | `10_aportes/release-1.0.0.md` |
 
 ---
 
@@ -157,7 +182,7 @@ Las métricas aplican a: **prompt-contratos** (LFSD §7), **agentes** (`AGENTS.m
 | **Método de validación** | Auditoría manual asistida: (1) muestreo de endpoints vs matriz TR; (2) tests E2E vs Gherkin; (3) revisión RB en código (flags de feature); (4) checklist NFR en pipeline (TLS, logs). |
 | **Riesgos por desviación** | Incumplimiento ante auditor CEUB; pérdida de confianza de JD; retrabajo en carrera. |
 | **Indicadores de inconsistencia** | REQ en código sin TR; RB implementada distinta a LFSD sin ADR; TC rojo sin issue vinculada a TR-xx. |
-| **Fuente de datos** | Repositorio código + `matriz_trazabilidad.md` + resultados CI + informe QA. |
+| **Fuente de datos** | Repositorio código + `team/Marlene/09_trazabilidad/matriz_trazabilidad.md` + resultados CI + informe QA. |
 | **Frecuencia** | Cada release candidato y trimestral en mantenimiento. |
 | **Umbral aceptable** | Ver nivel esperado. |
 | **Responsable** | Arquitecto + QA |
@@ -172,7 +197,7 @@ Las métricas aplican a: **prompt-contratos** (LFSD §7), **agentes** (`AGENTS.m
 | **Nombre** | Traceability Integrity Index |
 | **Objetivo** | Asegurar que **ningún requisito crítico** quede huérfano en la cadena TR (sin TC, sin API, sin RB cuando aplique). |
 | **Fórmula** | \(\text{TII} = 1 - \frac{\text{huérfanos}_{C1}}{\text{filas TR}_{C1}}\) · Huérfano = fila TR sin al menos un TC **y** un MOD **y** un API cuando el UC sea implementado en código. |
-| **Fuente de datos** | `matriz_trazabilidad.md` + export ALM + cobertura de tests vinculados por etiqueta `TR-xx`. |
+| **Fuente de datos** | `team/Marlene/09_trazabilidad/matriz_trazabilidad.md` + export ALM + cobertura de tests vinculados por etiqueta `TR-xx`. |
 | **Frecuencia** | Por sprint / release |
 | **Umbral aceptable** | **TII = 1,00** antes de piloto; **≥ 0,95** en mantenimiento. |
 | **Responsable** | QA Lead |
@@ -192,7 +217,7 @@ Las métricas aplican a: **prompt-contratos** (LFSD §7), **agentes** (`AGENTS.m
 | **Umbral aceptable** | **HRR ≤ 2 %** en asistencias que no son dictamen; **0 %** en textos marcados como “oficial DUEA” sin firma humana. |
 | **Responsable** | Oficial de calidad IA + TD referente |
 | **Riesgo asociado** | Riesgo IA reputacional / normativo. |
-| **Acción correctiva** | RAG solo sobre corpus aprobado; plantillas con `rationale`; kill-switch (véase `metricas_ai_sdlc.md`). |
+| **Acción correctiva** | RAG solo sobre corpus aprobado; plantillas con `rationale`; kill-switch (véase `team/Marlene/09_trazabilidad/metricas_ai_sdlc.md`). |
 
 ## C.6 Tabla resumen de métricas AI-SDLC del release
 
@@ -202,7 +227,7 @@ Las métricas aplican a: **prompt-contratos** (LFSD §7), **agentes** (`AGENTS.m
 | M-AI-SFID | Spec Fidelity | ≥ 0,92 | Arquitecto + QA |
 | M-AI-TII | Traceability Integrity | ≥ 0,95 (1,00 piloto) | QA Lead |
 | M-AI-HRR | Hallucination Risk Rate | ≤ 2 % asistido | TD + PM |
-| M-AI-014 | Costo inferencia (ref. `metricas_ai_sdlc.md`) | Presupuesto | JD sponsor |
+| M-AI-014 | Costo inferencia (ref. `09_trazabilidad/metricas_ai_sdlc.md`) | Presupuesto | JD sponsor |
 
 ---
 
@@ -213,14 +238,21 @@ Las métricas aplican a: **prompt-contratos** (LFSD §7), **agentes** (`AGENTS.m
 | Tipo | Descripción | Estado |
 |------|-------------|--------|
 | Especificación | LFSD/FSD completo UC-001…005, RB, NFR, ER, APIs lógicos | DOC_DONE |
-| Trazabilidad | Matriz TR + `matriz_trazabilidad.md` | DOC_DONE |
-| IA-SDLC | `metricas_ai_sdlc.md`, `AGENTS.md`, skills, Cursor Rules | DOC_DONE |
-| Visualización | Diagramas Mermaid `08_mermaid/` | DOC_DONE |
+| Trazabilidad | Matriz TR + `09_trazabilidad/matriz_trazabilidad.md` | DOC_DONE |
+| IA-SDLC | `09_trazabilidad/metricas_ai_sdlc.md`, `AGENTS.md`, `08_agents/agents/SKILLS.md` | DOC_DONE |
+| Visualización | `07_diagramas/` (UC01–03, ER, Gantt) + `08_agents/mmd/` | DOC_DONE |
+| FSD detallado | `04_fsd/` (12 UC, Gherkin, API, modelo) | DOC_DONE |
 | Código aplicativo | Tasks T-001…T-012 | APP_PLAN (externo a este repo) |
 
 ## D.2 Casos de uso cubiertos (especificación)
 
-FSD-UC-001 … UC-005 según `docs/LFSD.md` §4; portal y buscador como extensiones TR-07, TR-08.
+| Rango | Fuente | Diagramas secuencia/estado |
+|-------|--------|------------------------------|
+| UC-001 … UC-003 | `04_fsd/casos_uso.md` | `07_diagramas/UC01_*` … `UC03_*` |
+| UC-004 … UC-012 | `04_fsd/casos_uso.md` | Pendientes en `07_diagramas/` (v1.1) |
+| Transversal | `modelo_er.mmd`, `gantt.mmd` | ER + cronograma tipo CEUB |
+
+Núcleo LFSD §4 (UC-001…005) ampliado a **UC-012** en el paquete Marlene (portal, auditoría, respaldos, plan de mejora).
 
 ## D.3 APIs desarrolladas (nivel diseño)
 
@@ -303,7 +335,7 @@ Escenarios embebidos en LFSD §4 para UC-001…005; trazados a TC-01…TC-14 en 
 |----|--------|------------|
 | RT-01 | Falla SMTP | Cola retry, alerta admin (LFSD §13) |
 | RT-02 | Saturación S3/red | Límite 50 MB, colas |
-| RT-03 | CVE dependencias | Escaneo CI (M-AI-011 en `metricas_ai_sdlc.md`) |
+| RT-03 | CVE dependencias | Escaneo CI (M-AI-011 en `09_trazabilidad/metricas_ai_sdlc.md`) |
 
 ## F.2 Riesgos funcionales
 
@@ -375,8 +407,9 @@ Aprobación de textos “oficiales” generados por IA sin JD — mitigación: R
 
 | Versión informe | Fecha | Nota |
 |-----------------|-------|------|
-| 2.0 | 14/05/2026 | Integración matriz MRD→PRD→FSD extendida + métricas AI-SDLC obligatorias |
+| 2.0 | 14/05/2026 | Matriz MRD→PRD→FSD extendida + métricas AI-SDLC obligatorias |
+| 2.1 | 14/05/2026 | Rutas paquete Marlene; entregables §A.5; UC-001…012; diagramas `07_diagramas/` |
 
 ---
 
-*Fin del documento `10_aportes/release-1.0.0.md`.*
+*Fin del documento `team/Marlene/10_aportes/release-1.0.0.md`.*

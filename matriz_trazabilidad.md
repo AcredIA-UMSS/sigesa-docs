@@ -5,6 +5,7 @@
 | **Versión** | v1.0 |
 | **Fecha** | 14/05/2026 |
 | **Fuente canónica** | `docs/LFSD.md` (FSD / LFSD), `docs/BRD_v1.md`, `team/aylenGonzales/PRD_v1.md` (referencias PRD-REQ / PRD-US) |
+| **Paquete AcredIA (detalle UC 001–012)** | `team/Marlene/09_trazabilidad/matriz_trazabilidad.md` |
 | **Alcance** | Sistema de Evaluación y Acreditación de Carreras (CEUB / ARCU-SUR) — DUEA UMSS |
 
 ---

@@ -1,0 +1,26 @@
+%% UC03 — FSD-UC-003 Dictamen TD (referencia)
+%% Canónico: team/Marlene/07_diagramas/UC03_secuencia.mmd
+
+sequenceDiagram
+    autonumber
+    actor TD as [TD]
+    participant UI as SPA
+    participant API as API
+    participant DB as PostgreSQL
+    participant OUT as Outbox
+
+    TD->>UI: revisar indicador EN_REVISION
+    UI->>API: PATCH /indicadores/{id}/decision
+    alt rechazo sin justificación
+        API-->>UI: 422
+    else ok
+        API->>DB: update estado + auditoría
+        API->>OUT: notificar CC
+        API-->>UI: 200
+    end
+    TD->>API: POST /subfases/{id}/avance
+    alt incompleto
+        API-->>UI: 409 WF_INCOMPLETE
+    else ok
+        API-->>UI: 200 subfase cerrada
+    end

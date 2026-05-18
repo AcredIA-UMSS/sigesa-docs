@@ -1,0 +1,28 @@
+%% UC01 — FSD-UC-001 Autenticación (referencia)
+%% Documento canónico del diagrama:
+%% team/Marlene/07_diagramas/UC01_secuencia.mmd
+
+sequenceDiagram
+    autonumber
+    actor U as Usuario [CC TD JD]
+    participant UI as SPA /login
+    participant API as API Auth
+    participant DB as PostgreSQL
+    participant AUD as Auditoría
+
+    U->>UI: email + password
+    UI->>API: POST /auth/login
+    API->>API: dominio @umss.edu.bo
+    alt dominio inválido
+        API-->>UI: 403 AUTH_DOMAIN
+    else OK dominio
+        API->>DB: buscar usuario
+        alt credencial inválida
+            API->>AUD: LOGIN_FALLIDO
+            API-->>UI: 401 AUTH_INVALID
+        else OK
+            API->>AUD: LOGIN
+            API-->>UI: 200 JWT + rol
+            UI-->>U: dashboard por rol
+        end
+    end

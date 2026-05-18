@@ -1,0 +1,95 @@
+%% UC03_secuencia.mmd — FSD-UC-003 Aprobación, rechazo y avance de subfase
+%% diagramId: UC03 | alias: D-SEQ-003
+%% fsdTrace: FSD-UC-003 · PRD-REQ-005 · PRD-US-006 · PRD-US-007 · PRD-US-008
+%% reglas: RB-02 · RB-03 · BR-014
+%% api: GET /indicadores/{id} · PATCH /indicadores/{id}/decision · POST /subfases/{id}/avance
+%% pantalla: /dashboard/tecnico
+%% pruebas: TC-06 · TC-07 · TC-08
+%% version: 1.0 · 14/05/2026
+
+sequenceDiagram
+    autonumber
+    actor TD as Técnico DUEA [TD]
+    participant UI as SPA Técnico<br/>/dashboard/tecnico
+    participant API as API Workflow
+    participant AUTH as Middleware JWT RBAC
+    participant S3 as Almacenamiento objeto
+    participant DB as PostgreSQL
+    participant AUD as log_auditoria
+    participant OUT as notificacion_outbox
+    participant WORK as Worker SMTP
+
+    Note over TD,UI: Precondición: indicador EN_REVISION<br/>documento vigente cargado por [CC]
+
+    TD->>UI: Abre panel de auditoría
+    UI->>API: GET indicadores?estado=EN_REVISION<br/>Bearer JWT rol TD
+    API->>AUTH: Verificar rol TD
+    API->>DB: Listar cola por prioridad/fecha
+    DB-->>API: lista indicadores
+    API-->>UI: 200 items
+    UI-->>TD: Tabla carreras e indicadores
+
+    TD->>UI: Selecciona indicador
+    UI->>API: GET /indicadores/{id}
+    API->>DB: Detalle + versiones documento
+    DB-->>API: indicador + documentos[]
+    API-->>UI: 200 historial versiones
+    UI-->>TD: Muestra versión vigente
+
+    TD->>UI: Descargar evidencia
+    UI->>API: GET /documentos/{docId}?disposition=attachment
+    API->>S3: URL firmada temporal
+    S3-->>API: downloadUrl
+    API-->>UI: 200 enlace
+    UI-->>TD: Archivo para revisión
+
+    TD->>UI: Elige APROBAR o RECHAZAR
+    alt RECHAZAR sin justificación o menor a 20 caracteres
+        UI->>UI: Bloquear botón Confirmar TC-07
+        UI-->>TD: Justificación obligatoria
+    else Decisión lista para enviar
+        UI->>API: PATCH /indicadores/{id}/decision<br/>{ accion, justificacion? }
+        API->>AUTH: Verificar rol TD
+        API->>DB: Leer indicador + version lock
+        alt Estado distinto de EN_REVISION
+            API-->>UI: 409 SIGESA_WF_INVALID_STATE
+            UI-->>TD: Indicador ya dictaminado
+        else EN_REVISION
+            alt RECHAZAR y justificación corta
+                API-->>UI: 422 SIGESA_VAL_JUSTIFICATION_SHORT
+                UI-->>TD: Mínimo 20 caracteres
+            else Decisión válida
+                alt Conflicto concurrencia otro TD
+                    API-->>UI: 409 SIGESA_WF_CONFLICT
+                    UI-->>TD: Actualizar y reintentar
+                else Actualización exitosa
+                    API->>DB: UPDATE indicador APROBADO o RECHAZADO
+                    API->>DB: INSERT auditoria APROBACION o RECHAZO
+                    API->>OUT: NOTIF_DICTAMEN a [CC]
+                    API-->>UI: 200 nuevoEstado actualizadoEn
+                    UI-->>TD: Confirmación dictamen
+                    OUT-->>WORK: async SMTP [CC]<br/>SLA ≤ 15 min NFR-003
+                end
+            end
+        end
+    end
+
+    Note over TD,UI: Avance de subfase RB-03 BR-014
+
+    TD->>UI: Cerrar subfase / Avanzar
+    UI->>API: POST /subfases/{subfaseId}/avance<br/>{ confirmar: true }
+    API->>DB: Verificar ∀ obligatorios APROBADO
+    alt Indicadores pendientes o rechazados
+        API-->>UI: 409 SIGESA_WF_INCOMPLETE<br/>indicadoresPendientes[]
+        UI-->>TD: Lista indicadores incompletos TC-08
+    else Subfase completa
+        API->>DB: UPDATE subfase CERRADA
+        API->>DB: Habilitar siguiente subfase si existe
+        API->>DB: INSERT auditoria AVANCE_FASE
+        API-->>UI: 200 nuevoEstado siguienteSubfaseId
+        UI-->>TD: Subfase cerrada correctamente
+    end
+
+    opt [CC] sube nueva versión tras rechazo UC-002
+        Note over TD,DB: Indicador RECHAZADO → EN_REVISION<br/>nueva notificación a [TD]
+    end

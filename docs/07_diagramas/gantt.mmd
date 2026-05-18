@@ -1,0 +1,17 @@
+%% gantt — Cronograma CEUB carrera (referencia)
+%% Canónico: team/Marlene/07_diagramas/gantt.mmd
+%% Fechas: ejemplo ilustrativo TEST_2026 (no convocatoria real)
+
+gantt
+    title Cronograma tipo CEUB — carrera (resumen)
+    dateFormat YYYY-MM-DD
+
+    section Autoevaluación [CC]
+    Carga subfases 1-3                   :a1, 2026-08-01, 74d
+
+    section DUEA [TD]
+    Revisión y cierre subfases UC-003    :a2, 2026-08-29, 51d
+
+    section Cierre
+    Paquete auditoría                    :a3, after a2, 12d
+    Fecha límite convocatoria RB-05      :milestone, m1, 2026-12-15, 0d

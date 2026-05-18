@@ -1,0 +1,13 @@
+%% modelo_er — ER SIGESA (referencia)
+%% Canónico: team/Marlene/07_diagramas/modelo_er.mmd
+
+erDiagram
+    FACULTAD ||--o{ CARRERA : contiene
+    CARRERA ||--o{ PROCESO : tiene
+    PLANTILLA ||--o{ PROCESO : instancia
+    PROCESO ||--o{ FASE : compone
+    FASE ||--o{ SUBFASE : compone
+    SUBFASE ||--o{ INDICADOR : define
+    INDICADOR ||--o{ DOCUMENTO : evidencia
+    USUARIO ||--o{ DOCUMENTO : carga
+    USUARIO }o--o{ CARRERA : usuario_carrera

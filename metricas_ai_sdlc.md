@@ -6,6 +6,7 @@
 | **Fecha** | 14/05/2026 |
 | **Normas de referencia** | ISO/IEC 25010 (calidad del producto), ISO/IEC 23894 (IA — gestión de riesgos), LFSD `RB-11` (IA explicable y supervisada v2) |
 | **Alcance** | Ciclo de vida de software asistido por IA (prompts, agentes, generación de reportes, clasificación asistida futura) |
+| **Paquete AcredIA (PCOV/SFID/TII, mapa UC)** | `team/Marlene/09_trazabilidad/metricas_ai_sdlc.md` |
 
 ---
 

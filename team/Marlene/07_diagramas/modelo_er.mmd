@@ -1,0 +1,211 @@
+%% modelo_er.mmd — Modelo entidad-relación SIGESA v1.0 (núcleo + soporte)
+%% diagramId: ER-SIGESA | alias: D-ER-001
+%% fsdTrace: docs/LFSD.md §6 · team/Marlene/04_fsd/modelo_datos.md
+%% reglas: RB-01 · RB-02 · RB-03 · RB-04 · BR-013 · BR-015
+%% motor: PostgreSQL 14+
+%% version: 1.0 · 14/05/2026
+
+erDiagram
+    %% --- Dominio catálogo e identidad ---
+    FACULTAD ||--o{ CARRERA : contiene
+    CARRERA ||--o{ PROCESO : acredita
+    CARRERA ||--o| PUBLICACION_CARRERA : portal
+    USUARIO ||--o{ USUARIO_CARRERA : asignacion_CC
+    CARRERA ||--o{ USUARIO_CARRERA : cc_asignado
+
+    %% --- Plantilla y workflow ---
+    PLANTILLA ||--o{ PROCESO : instancia
+    PROCESO ||--o{ FASE : compone
+    FASE ||--o{ SUBFASE : compone
+    SUBFASE ||--o{ INDICADOR : define
+    USUARIO ||--o{ PROCESO : td_referente
+
+    %% --- Evidencias ---
+    INDICADOR ||--o{ DOCUMENTO : evidencia
+    USUARIO ||--o{ DOCUMENTO : autora
+
+    %% --- Mejora continua (UC-012) ---
+    INDICADOR ||--o{ PLAN_MEJORA : acciones
+
+    %% --- Auditoría, notificaciones, reportes ---
+    USUARIO ||--o{ LOG_AUDITORIA : genera
+    USUARIO ||--o{ REPORTE_JOB : solicita
+    REPORTE_JOB ||--|| REPORTE_HISTORICO : archiva
+    USUARIO ||--o{ PUBLICACION_CARRERA : publica
+
+    FACULTAD {
+        uuid id PK
+        varchar nombre
+        varchar codigo UK
+        timestamptz creado_en
+    }
+
+    CARRERA {
+        uuid id PK
+        uuid facultad_id FK
+        varchar nombre
+        varchar codigo UK
+        enum modalidad
+        boolean activo
+    }
+
+    USUARIO {
+        uuid id PK
+        varchar email UK
+        varchar password_hash
+        enum rol CC_TD_JD
+        boolean activo
+        timestamptz ultimo_login_en
+    }
+
+    USUARIO_CARRERA {
+        uuid usuario_id PK_FK
+        uuid carrera_id PK_FK
+        timestamptz asignado_en
+    }
+
+    PLANTILLA {
+        uuid id PK
+        enum tipo_acreditacion CEUB_ARCU
+        int version
+        jsonb json_definicion
+        date vigente_desde
+        date vigente_hasta
+    }
+
+    PROCESO {
+        uuid id PK
+        uuid carrera_id FK
+        uuid plantilla_id FK
+        uuid td_referente_id FK
+        enum tipo_acreditacion
+        varchar organismo
+        int gestion
+        date fecha_inicio
+        date fecha_fin
+        date fecha_limite_externa
+        enum estado_proceso
+    }
+
+    FASE {
+        uuid id PK
+        uuid proceso_id FK
+        varchar nombre
+        int orden
+        enum estado PENDIENTE_EN_CURSO_CERRADA
+    }
+
+    SUBFASE {
+        uuid id PK
+        uuid fase_id FK
+        varchar nombre
+        int orden
+        enum estado PENDIENTE_EN_CURSO_CERRADA
+        date fecha_limite
+    }
+
+    INDICADOR {
+        uuid id PK
+        uuid subfase_id FK
+        varchar codigo
+        varchar nombre
+        text criterio
+        boolean obligatorio
+        enum estado PENDIENTE_EN_REVISION_APROBADO_RECHAZADO
+        varchar justificacion_rechazo
+        numeric peso
+        timestamptz actualizado_en
+    }
+
+    DOCUMENTO {
+        uuid id PK
+        uuid indicador_id FK
+        uuid autor_id FK
+        int version
+        varchar nombre_archivo
+        varchar storage_key
+        varchar mime
+        bigint tamano
+        char hash_sha256
+        varchar descripcion
+        enum estado_documento
+        timestamptz creado_en
+    }
+
+    PLAN_MEJORA {
+        uuid id PK
+        uuid indicador_id FK
+        varchar titulo
+        enum estado PROPUESTO_CERRADO
+        date fecha_objetivo
+        uuid creado_por FK
+        uuid cerrado_por FK
+    }
+
+    LOG_AUDITORIA {
+        bigserial id PK
+        uuid usuario_id FK
+        varchar accion
+        varchar entidad_tipo
+        uuid entidad_id
+        jsonb metadatos_json
+        timestamptz creado_en
+    }
+
+    NOTIFICACION_OUTBOX {
+        uuid id PK
+        varchar evento_tipo
+        varchar destinatario_email
+        jsonb payload_json
+        enum estado PENDIENTE_ENVIADO
+        int intentos
+        timestamptz programado_en
+        timestamptz enviado_en
+    }
+
+    REPORTE_JOB {
+        uuid id PK
+        uuid solicitante_id FK
+        varchar alcance
+        uuid referencia_id
+        int gestion
+        enum estado PENDIENTE_LISTO_ERROR
+        varchar storage_key
+        timestamptz creado_en
+    }
+
+    REPORTE_HISTORICO {
+        uuid id PK
+        uuid job_id FK
+        varchar clasificacion USO_INTERNO
+        jsonb parametros_json
+        timestamptz generado_en
+    }
+
+    PUBLICACION_CARRERA {
+        uuid carrera_id PK_FK
+        enum estado_visible OCULTO_VISIBLE
+        varchar slug UK
+        text texto_resumen
+        date vigencia_desde
+        date vigencia_hasta
+        uuid publicado_por FK
+    }
+
+    CONFIG_DASHBOARD {
+        uuid id PK
+        int gestion
+        numeric umbral_verde
+        numeric umbral_amarillo
+        jsonb formula_json
+        date vigente_desde
+    }
+
+    BACKUP_ESTADO {
+        bigserial id PK
+        varchar tipo DB_OBJETOS
+        varchar estado OK_FAILED_RUNNING
+        timestamptz inicio_en
+        timestamptz fin_en
+        int duracion_seg
+    }

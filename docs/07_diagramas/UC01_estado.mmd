@@ -1,0 +1,9 @@
+%% UC01 estado — FSD-UC-001 (referencia)
+%% Canónico: team/Marlene/07_diagramas/UC01_estado.mmd
+
+stateDiagram-v2
+    [*] --> NO_AUTENTICADO
+    NO_AUTENTICADO --> AUTENTICANDO: POST /auth/login
+    AUTENTICANDO --> NO_AUTENTICADO: error 401/403/429
+    AUTENTICANDO --> SESION_ACTIVA: 200 JWT
+    SESION_ACTIVA --> NO_AUTENTICADO: logout o expiración

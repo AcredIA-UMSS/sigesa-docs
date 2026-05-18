@@ -37,4 +37,4 @@ Este documento define la arquitectura agéntica para el ciclo de vida de desarro
 * **Responsabilidades:**
   - Escribir código adherido estrictamente a las `cursor_rules`.
   - Implementar los API Contracts definidos por el `@ArchAgent`.
-* **Archivos Base de Contexto:** `.cursor/rules/`, `04_fsd/api_contracts.md.
+* **Archivos Base de Contexto:** `.cursor/rules/`, `team/Marlene/rules/coding_rules.md`, `04_fsd/api_contracts.md`.

@@ -1,0 +1,10 @@
+%% UC02 estado — FSD-UC-002 (referencia)
+%% Canónico: team/Marlene/07_diagramas/UC02_estado.mmd
+
+stateDiagram-v2
+    [*] --> PENDIENTE
+    PENDIENTE --> EN_REVISION: CC carga evidencia
+    EN_REVISION --> APROBADO: TD aprueba
+    EN_REVISION --> RECHAZADO: TD rechaza
+    RECHAZADO --> EN_REVISION: CC nueva versión
+    APROBADO --> EN_REVISION: nueva versión RB-04

@@ -1,0 +1,21 @@
+%% UC03 — FSD-UC-003 Estados workflow (referencia)
+%% Canónico: team/Marlene/07_diagramas/UC03_estado.mmd
+
+stateDiagram-v2
+    direction TB
+
+    state Indicador {
+        EN_REVISION --> APROBADO: TD aprueba
+        EN_REVISION --> RECHAZADO: TD rechaza
+        RECHAZADO --> EN_REVISION: CC nueva versión
+    }
+
+    state Subfase {
+        EN_CURSO --> CERRADA: avance si todos APROBADO
+        EN_CURSO --> EN_CURSO: 409 incompleto
+    }
+
+    state Proceso {
+        BORRADOR --> EN_PROCESO: activar
+        EN_PROCESO --> ACREDITADO: cierre favorable
+    }

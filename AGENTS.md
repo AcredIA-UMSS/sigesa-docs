@@ -262,6 +262,8 @@ Cada skill es invocable como **instrucción explícita** a un agente (p. ej. en 
 
 Las siguientes reglas deben implementarse como archivos bajo `.cursor/rules/` (o equivalente) y **copiarse textualmente** el bloque “Regla exacta” en el cuerpo del rule file.
 
+**Documentos consolidados (paquete Marlene):** `team/Marlene/rules/domain_rules.md` (DR-01…07) · `team/Marlene/rules/ai_rules.md` (AR-AI-01…12, HITL) · `team/Marlene/rules/coding_rules.md`.
+
 ---
 
 ### CR-SIG-01 — Consistencia criterio de acreditación ↔ evidencia
