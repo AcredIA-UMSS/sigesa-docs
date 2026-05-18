@@ -41,6 +41,7 @@
 | Contratos API | [`api_contracts.md`](api_contracts.md) |
 | Glosario FSD | [`glosario.md`](glosario.md) |
 | **Diagramas (`.mmd`)** | Vista [`07_diagramas/`](07_diagramas/README.md) → canónico [`../07_diagramas/`](../07_diagramas/README.md) |
+| **C4 (DTI)** | [`diag-06-c4-contexto-sistema.mmd`](../07_diagramas/diag-06-c4-contexto-sistema.mmd) · [`diag-07-c4-contenedores-sistema.mmd`](../07_diagramas/diag-07-c4-contenedores-sistema.mmd) — ver [`docs/05_dti/DTI.md`](../05_dti/DTI.md) §2 |
 
 > Modelo físico PostgreSQL: [`docs/05_dti/modelo_datos.md`](../05_dti/modelo_datos.md).
 

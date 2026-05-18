@@ -9,6 +9,9 @@ Carpeta canónica gestionada por la skill `sigesa-auditor-trazabilidad-dti`. Cer
 | [`matriz_trazabilidad.md`](matriz_trazabilidad.md) | Trazabilidad extremo a extremo; §8 Golden Folder | Dorada **v1.5** |
 | [`metricas_ai_sdlc.md`](metricas_ai_sdlc.md) | Métricas M-RUB-PC/SF/AE e inventario AI-SDLC | **v1.2** |
 | [`report_findings.md`](report_findings.md) | Hallazgos, gate duro, veredicto **APTO** / NO_APTO | **v1.4** |
+| [`INVENTARIO_TAREAS_APORTES_EQUIPO.md`](INVENTARIO_TAREAS_APORTES_EQUIPO.md) | Inventario consolidado T-xxx — **965** tareas (alex 285 · aylen 260 · boris **220** · Marlene **200**) | **v1.2** |
+| [`AUDITORIA_RUBRICAS_EXCELENTE_EQUIPO.md`](AUDITORIA_RUBRICAS_EXCELENTE_EQUIPO.md) | Comparativa rúbrica Excelente + factores APORTES | **v1.2** |
+| [`../10_aportes/APORTES_RELEASE_1.0.0.md`](../10_aportes/APORTES_RELEASE_1.0.0.md) | Factores de aporte individual (§3) y reglas de conteo (§4) | **v1.2** |
 
 ## Pirámide documental (referencia rápida)
 
@@ -36,3 +39,5 @@ Los archivos [`../../matriz_trazabilidad.md`](../../matriz_trazabilidad.md) y [`
 | Veredicto | **APTO** |
 | Huérfanos Must | 0 ERROR |
 | Cobertura US | 25/25 |
+| Rúbrica equipo | alex **9/10** · aylen **10/10** · boris **9/10** · Marlene **10/10** |
+| Inventario aportes | **965** tareas · promedio **241,25**/persona · ver [`APORTES_RELEASE_1.0.0.md`](../10_aportes/APORTES_RELEASE_1.0.0.md) §3 |

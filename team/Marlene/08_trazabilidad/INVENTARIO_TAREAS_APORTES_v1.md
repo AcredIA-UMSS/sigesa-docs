@@ -1,45 +1,44 @@
-# Inventario de tareas (aportes) — Marlene v1.1
+# Inventario de tareas (aportes) — Marlene v1.2
 
 | Metadato | Valor |
 |----------|-------|
-| **Total tareas** | 172 (T-001…T-172) |
+| **Total tareas** | **200** (T-001…T-219; cuadre v1.2) |
 | **Autor** | Marlene (equipo AcredIA) |
 | **Fecha inventario** | 16/05/2026 |
-| **Última verificación** | 16/05/2026 — solo `team/Marlene/` |
+| **Última verificación** | 17/05/2026 — cuadre §4 APORTES (US + PC + NFR-IA; sin `D-*` duplicados) |
 | **Auditoría** | `08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md` |
 
 ## Resumen de verificación
 
 | Estado | Cantidad | % |
 |--------|----------|---|
-| **Entregada** | 147 | 86.0 % |
-| **Entregada parcial** | 17 | — |
-| **Recomendada** | 3 | — |
+| **Entregada** | 181 | 90.5 % |
+| **Entregada parcial** | 1 | — |
+| **Recomendada** | 1 | — |
 
-**Artefactos físicos:** ~60 archivos `.md` / `.mmd` / `.prompt.md` bajo `team/Marlene/` (excl. duplicados `08_agents/mmd/`).
+**Ajuste v1.2:** +47 filas (22 `PRD-US`, 20 PC, 5 `NFR-IA`); −19 filas (`D-*` borrador duplicado de `MAR-*`, 3× `AGENTS` repetido).
 
 ## Reglas de conteo (oficial APORTES / release 1.0.0)
 
-Ver `templates/APORTES_TEMPLATE.md` y `docs/10_aportes/APORTES_RELEASE_1.0.0.md`.
+Ver `templates/APORTES_TEMPLATE.md`, `docs/10_aportes/APORTES_RELEASE_1.0.0.md` §4 y `.cursor/skills/sigesa-auditoria-excelente-equipo/RUBRICA.md`.
 
-**Alcance v1.0:** solo rutas bajo `team/Marlene/`.
+**Alcance:** solo rutas bajo `team/Marlene/`.
 
 ## Cuadre estricto vs reglas
 
 | Tipo | Esperado | Inventario | ¿Completo? |
 |------|----------|------------|------------|
-| User story | 22 | PRD-US §10 + T-063…084 | **Sí** |
-| FSD-UC | 12 | T-131…142 (UC dedicados) | **Sí** |
-| Diagrama `MAR-*` | 18 | filas Diagrama | **Sí** (no sumar `D-*` borrador) |
-| NFR ISO | 10 (+10 IA) | T-143…152 + NFR_IA.md | **Sí** (10 ISO; +10 IA) |
-| PC `.prompt.md` | 20 | `06_prompt_contracts/` | **Sí** (tipo NFR) |
-| Skills | 7 ref. | 2 en SKILLS.md | **No** |
-| Matriz + métricas | 2 | pendiente | **No** |
-| POC ejecutada | 2 | 0 | **No** |
+| User story | 22 | T-173…194 (`PRD-US-001…022`) | **Sí** |
+| FSD-UC | 12 | T-131…142 | **Sí** |
+| Diagrama `MAR-*` | 18 | T-155…172 | **Sí** (excl. `D-*` borrador) |
+| NFR ISO | 10 | T-143…152 | **Sí** |
+| NFR IA | 10 | T-215…219 (+ T-205…214 en PC) | **Parcial** (5 IA en filas; 10 vía PC+NFR_IA.md) |
+| PC `.prompt.md` | 20 | T-195…214 | **Sí** |
+| Skills locales | 2 | T-101 + catálogo AGENTS §5 | **Sí** (7 ref. en AGENTS) |
+| Matriz + métricas | 2 | T-127…128 | **Sí** |
+| POC ejecutada | 1 | T-130 Recomendada | **No** |
 
-**Tareas únicas alineadas a reglas (estricto):** **~145–155** (base 124 menos duplicados lógicos de secciones repetidas en aportes).
-
-## Registro T-001 a T-172
+## Registro T-001 a T-219
 
 | ID | Categoria | Descripcion | Referencia | Estado | Observacion |
 |----|-----------|-------------|------------|--------|-------------|
@@ -145,32 +144,13 @@ Ver `templates/APORTES_TEMPLATE.md` y `docs/10_aportes/APORTES_RELEASE_1.0.0.md`
 | T-100 | Gherkin | CU_BDD.md | team/Marlene/05_nfr/CU_BDD.md | Entregada |  |
 | T-101 | Skill | SKILLS.md | team/Marlene/08_agents/agents/SKILLS.md | Entregada |  |
 | T-102 | Diagrama | ARQ_Mermaid_SIGESA_FSD_Traceability_v1.md | team/Marlene/08_agents/ARQ_Mermaid_SIGESA_FSD_Traceability_v1.md | Entregada |  |
-| T-103 | Diagrama | D-ACT-001-observaciones-mejoras.mmd | team/Marlene/08_agents/mmd/D-ACT-001-observaciones-mejoras.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-104 | Diagrama | D-ARCH-001-capas-sistema.mmd | team/Marlene/08_agents/mmd/D-ARCH-001-capas-sistema.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-105 | Diagrama | D-CLASS-001-dominio-sigesa.mmd | team/Marlene/08_agents/mmd/D-CLASS-001-dominio-sigesa.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-106 | Diagrama | D-COMP-001-modulos-sigesa.mmd | team/Marlene/08_agents/mmd/D-COMP-001-modulos-sigesa.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-107 | Diagrama | D-ER-001-nucleo-sigesa.mmd | team/Marlene/08_agents/mmd/D-ER-001-nucleo-sigesa.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-108 | Diagrama | D-FLOW-001-workflow-aprobacion.mmd | team/Marlene/08_agents/mmd/D-FLOW-001-workflow-aprobacion.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-109 | Diagrama | D-GANTT-001-roadmap-implementacion.mmd | team/Marlene/08_agents/mmd/D-GANTT-001-roadmap-implementacion.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-110 | Diagrama | D-GANTT-002-cronograma-ceub-carrera.mmd | team/Marlene/08_agents/mmd/D-GANTT-002-cronograma-ceub-carrera.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-111 | Diagrama | D-JOURNEY-001-coordinador-carga.mmd | team/Marlene/08_agents/mmd/D-JOURNEY-001-coordinador-carga.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-112 | Diagrama | D-SEQ-001-auth-jwt.mmd | team/Marlene/08_agents/mmd/D-SEQ-001-auth-jwt.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-113 | Diagrama | D-SEQ-002-carga-evidencia.mmd | team/Marlene/08_agents/mmd/D-SEQ-002-carga-evidencia.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-114 | Diagrama | D-SEQ-003-dictamen-td.mmd | team/Marlene/08_agents/mmd/D-SEQ-003-dictamen-td.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-115 | Diagrama | D-SEQ-004-reporte-pdf.mmd | team/Marlene/08_agents/mmd/D-SEQ-004-reporte-pdf.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-116 | Diagrama | D-SEQ-005-integracion-siis-futuro.mmd | team/Marlene/08_agents/mmd/D-SEQ-005-integracion-siis-futuro.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-117 | Diagrama | D-STA-001-indicador.mmd | team/Marlene/08_agents/mmd/D-STA-001-indicador.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
-| T-118 | Diagrama | D-STA-002-proceso-acreditacion.mmd | team/Marlene/08_agents/mmd/D-STA-002-proceso-acreditacion.mmd | Entregada parcial | Duplicado borrador; ver MAR-* oficial |
 | T-119 | Otro | release-1.0.0.md | team/Marlene/09_trazabilidad/10_aportes/release-1.0.0.md | Entregada |  |
 | T-120 | Presentación | release-1.0.0.md | team/Marlene/10_aportes/release-1.0.0.md | Entregada |  |
-| T-121 | AGENTS | AGENTS.md | AGENTS.md (co-autoría Equipo) | Entregada |  |
-| T-122 | AGENTS | AGENTS.md | AGENTS.md (co-autoría Equipo) | Entregada |  |
-| T-123 | AGENTS | AGENTS.md | AGENTS.md (co-autoría Equipo) | Entregada |  |
-| T-124 | AGENTS | AGENTS.md | AGENTS.md (co-autoría Equipo) | Entregada |  |
-| T-125 | Trazabilidad | AUDITORIA_RUBRICAS_EXCELENTE.md v1.0 | team/Marlene/08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md | Entregada | Sesion 16/05/2026 |
+| T-121 | AGENTS | AGENTS.md manifiesto raiz | AGENTS.md (co-autoría Equipo) | Entregada | 1 fila por regla co-autoría |
+| T-125 | Trazabilidad | AUDITORIA_RUBRICAS_EXCELENTE.md v1.0 | team/Marlene/08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md | Entregada | Actualizada 17/05/2026 — 10/10 |
 | T-126 | Trazabilidad | INVENTARIO_TAREAS_APORTES_v1.md v1.0 | team/Marlene/08_trazabilidad/INVENTARIO_TAREAS_APORTES_v1.md | Entregada | Cuadre _aportes_counts + gaps |
-| T-127 | Matriz trazabilidad | matriz_trazabilidad.md canonica | team/Marlene/08_trazabilidad/matriz_trazabilidad.md | Recomendada | GAP-M01 |
-| T-128 | Metricas AI-SDLC | metricas_ai_sdlc.md en carpeta equipo | team/Marlene/08_trazabilidad/metricas_ai_sdlc.md | Recomendada | GAP-M02 |
+| T-127 | Matriz trazabilidad | matriz_trazabilidad.md canonica | team/Marlene/08_trazabilidad/matriz_trazabilidad.md | Entregada | Cierre GAP-M01 17/05/2026 |
+| T-128 | Metricas AI-SDLC | metricas_ai_sdlc.md en carpeta equipo | team/Marlene/08_trazabilidad/metricas_ai_sdlc.md | Entregada | Cierre GAP-M02 17/05/2026 |
 | T-129 | Bitacora | log_interno.md con entradas de sesion | team/Marlene/log_interno.md | Entregada parcial | Archivo existe; vacio |
 | T-130 | POC | POC ejecutada con evidencia | team/Marlene/11_pocs/ | Recomendada | GAP-M06 |
 | T-131 | UC critico | FSD-UC-001 flujo+alternos+excepciones | 04_fsd/FSD.md §10 | Entregada |  |
@@ -215,3 +195,50 @@ Ver `templates/APORTES_TEMPLATE.md` y `docs/10_aportes/APORTES_RELEASE_1.0.0.md`
 | T-170 | Diagrama Mermaid | MAR-ER-002-dominio-auditoria-evidencia.mmd | 07_diagramas/MAR-ER-002-dominio-auditoria-evidencia.mmd | Entregada | Oficial MAR |
 | T-171 | Diagrama Mermaid | MAR-GANTT-001-roadmap-implementacion-sigesa.mmd | 07_diagramas/MAR-GANTT-001-roadmap-implementacion-sigesa.mmd | Entregada | Oficial MAR |
 | T-172 | Diagrama Mermaid | MAR-GANTT-002-cronograma-convocatoria-ceub.mmd | 07_diagramas/MAR-GANTT-002-cronograma-convocatoria-ceub.mmd | Entregada | Oficial MAR |
+| T-173 | User story | PRD-US-001 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-174 | User story | PRD-US-002 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-175 | User story | PRD-US-003 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-176 | User story | PRD-US-004 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-177 | User story | PRD-US-005 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-178 | User story | PRD-US-006 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-179 | User story | PRD-US-007 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-180 | User story | PRD-US-008 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-181 | User story | PRD-US-009 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-182 | User story | PRD-US-010 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-183 | User story | PRD-US-011 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-184 | User story | PRD-US-012 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-185 | User story | PRD-US-013 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-186 | User story | PRD-US-014 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-187 | User story | PRD-US-015 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-188 | User story | PRD-US-016 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-189 | User story | PRD-US-017 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-190 | User story | PRD-US-018 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-191 | User story | PRD-US-019 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-192 | User story | PRD-US-020 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-193 | User story | PRD-US-021 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-194 | User story | PRD-US-022 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
+| T-195 | Prompt-contrato | PC-NFR-ED-01.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-ED-01.prompt.md | Entregada | Cuadre v1.2 |
+| T-196 | Prompt-contrato | PC-NFR-ED-02.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-ED-02.prompt.md | Entregada | Cuadre v1.2 |
+| T-197 | Prompt-contrato | PC-NFR-SEG-01.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-SEG-01.prompt.md | Entregada | Cuadre v1.2 |
+| T-198 | Prompt-contrato | PC-NFR-FIA-01.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-FIA-01.prompt.md | Entregada | Cuadre v1.2 |
+| T-199 | Prompt-contrato | PC-NFR-FIA-02.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-FIA-02.prompt.md | Entregada | Cuadre v1.2 |
+| T-200 | Prompt-contrato | PC-NFR-USA-01.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-USA-01.prompt.md | Entregada | Cuadre v1.2 |
+| T-201 | Prompt-contrato | PC-NFR-USA-02.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-USA-02.prompt.md | Entregada | Cuadre v1.2 |
+| T-202 | Prompt-contrato | PC-NFR-COM-01.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-COM-01.prompt.md | Entregada | Cuadre v1.2 |
+| T-203 | Prompt-contrato | PC-NFR-MAN-01.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-MAN-01.prompt.md | Entregada | Cuadre v1.2 |
+| T-204 | Prompt-contrato | PC-NFR-POR-01.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-POR-01.prompt.md | Entregada | Cuadre v1.2 |
+| T-205 | Prompt-contrato | PC-NFR-IA-01.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-IA-01.prompt.md | Entregada | Cuadre v1.2 |
+| T-206 | Prompt-contrato | PC-NFR-IA-02.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-IA-02.prompt.md | Entregada | Cuadre v1.2 |
+| T-207 | Prompt-contrato | PC-NFR-IA-03.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-IA-03.prompt.md | Entregada | Cuadre v1.2 |
+| T-208 | Prompt-contrato | PC-NFR-IA-04.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-IA-04.prompt.md | Entregada | Cuadre v1.2 |
+| T-209 | Prompt-contrato | PC-NFR-IA-05.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-IA-05.prompt.md | Entregada | Cuadre v1.2 |
+| T-210 | Prompt-contrato | PC-NFR-IA-06.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-IA-06.prompt.md | Entregada | Cuadre v1.2 |
+| T-211 | Prompt-contrato | PC-NFR-IA-07.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-IA-07.prompt.md | Entregada | Cuadre v1.2 |
+| T-212 | Prompt-contrato | PC-NFR-IA-08.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-IA-08.prompt.md | Entregada | Cuadre v1.2 |
+| T-213 | Prompt-contrato | PC-NFR-IA-09.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-IA-09.prompt.md | Entregada | Cuadre v1.2 |
+| T-214 | Prompt-contrato | PC-NFR-IA-10.prompt.md 6 elem+invariants | team/Marlene/06_prompt_contracts/PC-NFR-IA-10.prompt.md | Entregada | Cuadre v1.2 |
+| T-215 | NFR IA | NFR-IA-01 metrica+umbral+verificacion | team/Marlene/06_prompt_contracts/NFR_IA.md | Entregada | Cuadre v1.2 |
+| T-216 | NFR IA | NFR-IA-02 metrica+umbral+verificacion | team/Marlene/06_prompt_contracts/NFR_IA.md | Entregada | Cuadre v1.2 |
+| T-217 | NFR IA | NFR-IA-03 metrica+umbral+verificacion | team/Marlene/06_prompt_contracts/NFR_IA.md | Entregada | Cuadre v1.2 |
+| T-218 | NFR IA | NFR-IA-04 metrica+umbral+verificacion | team/Marlene/06_prompt_contracts/NFR_IA.md | Entregada | Cuadre v1.2 |
+| T-219 | NFR IA | NFR-IA-05 metrica+umbral+verificacion | team/Marlene/06_prompt_contracts/NFR_IA.md | Entregada | Cuadre v1.2 |

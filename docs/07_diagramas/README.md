@@ -1,6 +1,6 @@
 # Diagramas Mermaid — repositorio canónico SIGESA
 
-Carpeta **oficial** de artefactos `.mmd` para la documentación Dorada en `docs/`. Los equipos entregan en `team/*/07_diagramas/`; aquí se consolidan las copias maestras. Las rutas `docs/{02_mrd,03_prd,04_fsd}/07_diagramas/` son **vistas** con enlaces simbólicos a esta carpeta.
+Carpeta **oficial** de artefactos `.mmd` para la documentación Dorada en `docs/`. Los equipos entregan en `team/*/07_diagramas/`; aquí se consolidan las copias maestras. Las rutas `docs/{02_mrd,03_prd,04_fsd,05_dti}/07_diagramas/` son **vistas** con enlaces simbólicos a esta carpeta.
 
 ## Convención
 
@@ -49,6 +49,13 @@ Carpeta **oficial** de artefactos `.mmd` para la documentación Dorada en `docs/
 | `MRD_contexto_entidades.mmd` | Contexto entidades |
 | `MRD_cobertura_nfr_mercado.mmd` | Cobertura NFR mercado |
 
+### DTI — C4 (fuente única; enlazado desde `docs/05_dti/DTI.md` §2)
+
+| Archivo | Nivel | Uso |
+|---------|-------|-----|
+| `diag-06-c4-contexto-sistema.mmd` | C4-1 Contexto | Actores [CC]/[TD]/[JD]/[P], SIGESA, SMTP, CEUB |
+| `diag-07-c4-contenedores-sistema.mmd` | C4-2 Contenedores | Stack Dorada v1.0 (React 18, Node 20, PostgreSQL 16, volumen Docker) |
+
 ### Marlene (`MAR-*`, `D-*`)
 
 Diagramas de módulo Marlene (ER, secuencias, Gantt, estados). Prefijos `MAR-` en raíz de equipo; `D-*` provenientes de `team/Marlene/07_diagramas/mmd/`.
@@ -70,3 +77,4 @@ Diagramas de módulo Marlene (ER, secuencias, Gantt, estados). Prefijos `MAR-` e
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
 | v1.0 | 2026-05-17 | Consolidación canónica desde `team/*/07_diagramas/`; vistas MRD/PRD/FSD reenlazadas |
+| v1.1 | 2026-05-17 | C4 unificado: `diag-06` contexto + `diag-07` contenedores; DTI §2 sin duplicar Mermaid inline |

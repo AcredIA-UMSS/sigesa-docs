@@ -5,7 +5,7 @@
 | Campo | Valor |
 |-------|-------|
 | **Versión** | Dorada v1.0 (borrador compilado) |
-| **Timestamp** | `2026-05-17T12:00:00-04:00` |
+| **Timestamp** | `2026-05-17T18:00:00-04:00` |
 | **Contrato** | [PC-SIG-13] Arquitecto de Infraestructura y DTI |
 | **Skills** | `sigesa-generacion-documentos-tecnicos` · `sigesa-auditor-trazabilidad-dti` · `sigesa-db-architect-append-only` |
 | **Gate trazabilidad** | [`docs/09_trazabilidad/report_findings.md`](../09_trazabilidad/report_findings.md) — **APTO** |
@@ -22,6 +22,7 @@
 | NFR | [`docs/05_nfr/NFR_ISO25010.md`](../05_nfr/NFR_ISO25010.md) |
 | Glosario | [`context/03_domain_glossary.md`](../../context/03_domain_glossary.md) |
 | Máquina de estados | [`team/alexAlvarez/docs/context/04_state_machine.md`](../../team/alexAlvarez/docs/context/04_state_machine.md) |
+| **Diagramas C4 (fuente única)** | [`docs/07_diagramas/`](../07_diagramas/README.md) — [`diag-06-c4-contexto-sistema.mmd`](../07_diagramas/diag-06-c4-contexto-sistema.mmd) · [`diag-07-c4-contenedores-sistema.mmd`](../07_diagramas/diag-07-c4-contenedores-sistema.mmd) |
 
 ### Fuentes de trabajo equipo (consolidadas en esta versión)
 
@@ -42,46 +43,33 @@ SIGESA es el sistema de **automatización** del ciclo de acreditación CEUB/ARCU
 
 ## 2. Vista lógica — contexto y contenedores
 
+> **Fuente única (anti-deriva):** los diagramas C4 viven solo en `docs/07_diagramas/`. Vista local: [`07_diagramas/`](07_diagramas/README.md). **No** duplicar bloques `mermaid` en este DTI; editar el `.mmd` y previsualizar con la extensión Mermaid del IDE o [Mermaid Live](https://mermaid.live).
+
 ### 2.1 C4 — Nivel 1 (contexto)
 
-```mermaid
-C4Context
-  title SIGESA — Diagrama de contexto v1.0
-  Person(cc, "[CC] Coordinador de Carrera", "Carga y subsana Evidencia")
-  Person(td, "[TD] Tecnico DUEA", "Valida Indicadores y cierra Fases")
-  Person(jd, "[JD] Jefatura DUEA", "Plantillas, usuarios, reportes")
-  Person(pub, "[P] Publico", "Consulta publicacion sin login")
-  System(sigesa, "SIGESA / AcredIA", "Automatizacion acreditacion UMSS")
-  System_Ext(smtp, "SMTP institucional UMSS", "Notificaciones")
-  System_Ext(ceub, "CEUB / ARCU-SUR", "Marco normativo")
-  Rel(cc, sigesa, "HTTPS")
-  Rel(td, sigesa, "HTTPS")
-  Rel(jd, sigesa, "HTTPS")
-  Rel(pub, sigesa, "HTTPS lectura")
-  Rel(sigesa, smtp, "Envia alertas")
-  Rel(sigesa, ceub, "Cumple taxonomias y trazabilidad")
-```
+| Elemento | Descripción |
+|----------|-------------|
+| Actores | [CC], [TD], [JD], [P] |
+| Sistema | SIGESA / AcredIA |
+| Externos | SMTP institucional UMSS; marco CEUB / ARCU-SUR |
+
+**Diagrama (editable):** [`../07_diagramas/diag-06-c4-contexto-sistema.mmd`](../07_diagramas/diag-06-c4-contexto-sistema.mmd) (`D-C4-001`)
 
 ### 2.2 C4 — Nivel 2 (contenedores)
 
-```mermaid
-C4Container
-  title SIGESA — Contenedores v1.0
-  Person(user, "Usuarios UMSS y publico", "")
-  Container(web, "Frontend SPA", "React 18", "UI stateless")
-  Container(api, "API Backend", "Node.js 20 + Express 4", "REST JWT RBAC")
-  ContainerDb(db, "PostgreSQL 16", "PostgreSQL", "Transaccional + FTS + audit_log")
-  Container(vol, "Volumen evidencias", "Docker named volume", "Blobs versionados")
-  Container(worker, "Worker notificaciones", "Node cron", "Cola notification_outbox")
-  Rel(user, web, "HTTPS")
-  Rel(web, api, "JSON /api/v1")
-  Rel(api, db, "TCP pg")
-  Rel(api, vol, "storage_key read/write")
-  Rel(api, worker, "enqueue")
-  Rel(worker, smtp, "SMTP", "async")
-```
+| Contenedor | Tecnología | Notas |
+|------------|------------|-------|
+| Frontend SPA | React 18 | UI stateless |
+| API Backend | Node.js 20 + Express 4 | REST JWT RBAC; módulos de dominio |
+| PostgreSQL 16 | RDBMS | Transaccional, FTS, `audit_log` append-only |
+| Volumen evidencias | Docker named volume | Blobs versionados (SHA-256) |
+| Worker notificaciones | Node cron | Cola `notification_outbox` |
+| Motor reportes PDF | Módulo en proceso | FSD-UC-014 |
+| Externos | IdP UMSS, SMTP, CEUB/ARCU-SUR | ADR_003 autenticación |
 
-**Decisiones:** ver [ADR_002](adrs/ADR_002_monolito_modular.md), [ADR_006](adrs/ADR_006_postgresql_16.md), [ADR_004](adrs/ADR_004_almacenamiento_blobs_docker.md), [ADR_009](adrs/ADR_009_backend_nodejs_express.md).
+**Diagrama (editable):** [`../07_diagramas/diag-07-c4-contenedores-sistema.mmd`](../07_diagramas/diag-07-c4-contenedores-sistema.mmd) (`D-C4-002`)
+
+**Decisiones:** ver [ADR_002](adrs/ADR_002_monolito_modular.md), [ADR_003](adrs/ADR_003_adapter_autenticacion.md), [ADR_004](adrs/ADR_004_almacenamiento_blobs_docker.md), [ADR_006](adrs/ADR_006_postgresql_16.md), [ADR_007](adrs/ADR_007_jwt_rbac.md), [ADR_009](adrs/ADR_009_backend_nodejs_express.md).
 
 ### 2.3 Flujo crítico — carga de Evidencia (FSD-UC-004)
 

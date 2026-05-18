@@ -1,37 +1,41 @@
-# Inventario de tareas (aportes) — borisAngulo v1.0
+# Inventario de tareas (aportes) — borisAngulo v1.1
 
 | Metadato | Valor |
 |----------|-------|
-| **Total tareas** | 212 (T-001…T-212) |
-| **Autor** | Boris Angulo (equipo AcredIA) |
-| **Fecha inventario** | 16/05/2026 |
-| **Alcance** | `team/borisAngulo/docs/` (+ insumo raíz `01_vision_negocio_v2.txt`) |
-| **Auditoría** | `docs/08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md` |
+| **Total tareas** | **220** (T-001…T-220) |
+| **Autor** | borisAngulo (equipo AcredIA) |
+| **Fecha inventario** | 17/05/2026 |
+| **Última verificación** | 17/05/2026 — cuadre §4 (+7 UC +3 PC en `casos-de-uso.md` / `prompt-contracts.md`) |
+| **Alcance** | `team/borisAngulo/docs/` (+ archivos en `team/borisAngulo/` fuera de docs/) |
+| **Auditoría** | `08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md` |
 
-## Resumen
+## Resumen de verificación
 
 | Estado | Cantidad |
 |--------|----------|
 | **Entregada** | 206 |
-| **Recomendada** | 5 |
+| **Entregada parcial** | 0 |
+| **Recomendada** | 4 |
 
-Base automatizada: `_aportes_counts.json` → **204** filas documentales en `docs/`.
+**Métricas escaneadas:** PRD-US=24 · FSD-UC=7 · diagramas=11 · PC=14
 
-## Cuadre estricto
+## Reglas de conteo
 
-| Tipo | Esperado | ¿Completo? |
-|------|----------|------------|
-| PRD-US | 24 | **Sí** |
-| FSD-UC en FSD canónico | 7 ref. / 3 §4 | **Parcial** |
-| CU en casos-de-uso | 12 | **Sí** (no duplicar en factor) |
-| Diagrama diag-* | 11 | **Sí** |
-| PC-001…014 | 14 | **Sí** |
-| NFR-001…010 | 10 | **Parcial** vs 15 |
-| Skills | 4 | **Parcial** vs 7 |
+Ver `templates/APORTES_TEMPLATE.md`, `docs/10_aportes/APORTES_RELEASE_1.0.0.md` y `.cursor/skills/sigesa-auditoria-excelente-equipo/RUBRICA.md`.
 
-**Tareas únicas (estricto):** **~185–195**.
+## Cuadre estricto (orientativo)
 
-## Registro T-001 a T-212
+| Tipo | Esperado ref. | Detectado | Notas |
+|------|---------------|-----------|-------|
+| PRD-US | ≥20 | 24 | |
+| FSD-UC | ≥12 | 7 (+7 filas T-211…217) | CU en `casos-de-uso.md`; gap FSD §4 |
+| Diagramas oficiales | ≥10 | 11 | `diag-01`…`diag-10` |
+| PC completos | ≥10 | 14 (+3 filas T-218…220) | `prompt-contracts.md` PC-001…014 |
+| NFR ISO | ≥15 | 10 | `06_nfr/nfr_iso25010.md` |
+| Skills | ≥7 | 4 | `09_agents/skills/skill-001…004` |
+| Matriz + métricas | 2 archivos | matriz sí / métricas sí | `matriz_trazabilidad.md` + `metricas_ai_sdlc.md` |
+
+## Registro T-001 a T-220
 
 | ID | Categoria | Descripcion | Referencia | Estado | Observacion |
 |----|-----------|-------------|------------|--------|-------------|
@@ -239,11 +243,19 @@ Base automatizada: `_aportes_counts.json` → **204** filas documentales en `doc
 | T-202 | AGENTS | AGENTS.md | AGENTS.md (co-autoría Equipo) | Entregada |  |
 | T-203 | AGENTS | AGENTS.md | AGENTS.md (co-autoría Equipo) | Entregada |  |
 | T-204 | AGENTS | AGENTS.md | AGENTS.md (co-autoría Equipo) | Entregada |  |
-| T-205 | Trazabilidad | AUDITORIA_RUBRICAS_EXCELENTE.md v1.0 | team/borisAngulo/docs/08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md | Entregada | Sesion 16/05/2026 |
-| T-206 | Trazabilidad | INVENTARIO_TAREAS_APORTES_v1.md v1.0 | team/borisAngulo/docs/08_trazabilidad/INVENTARIO_TAREAS_APORTES_v1.md | Entregada |  |
-| T-207 | Insumo negocio | 01_vision_negocio_v2.txt | team/borisAngulo/01_vision_negocio_v2.txt | Entregada | Fuera de docs/; insumo BRD |
-| T-208 | Matriz trazabilidad | matriz_trazabilidad.md canonica | team/borisAngulo/docs/08_trazabilidad/matriz_trazabilidad.md | Recomendada | Formalizar trazabilidad-sigesa.md |
-| T-209 | Metricas AI-SDLC | metricas_ai_sdlc.md archivo fisico | team/borisAngulo/docs/08_trazabilidad/metricas_ai_sdlc.md | Recomendada | Citado en AGENTS §13 |
-| T-210 | Bitacora | log_interno.md | team/borisAngulo/log_interno.md | Recomendada | GAP-B06 |
-| T-211 | NFR IA | NFR_IA.md complemento | team/borisAngulo/docs/06_nfr/NFR_IA.md | Recomendada | GAP-B05 |
-| T-212 | POC | POC ejecutada | team/borisAngulo/docs/11_pocs/ | Recomendada | GAP-B08 |
+| T-205 | Trazabilidad | AUDITORIA_RUBRICAS_EXCELENTE.md | team/borisAngulo/docs/08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md | Entregada | Enriquecida 17/05/2026 — 9/10 |
+| T-206 | Trazabilidad | INVENTARIO_TAREAS_APORTES_v1.md | team/borisAngulo/docs/08_trazabilidad/INVENTARIO_TAREAS_APORTES_v1.md | Entregada |  |
+| T-207 | Matriz trazabilidad | matriz_trazabilidad.md | team/borisAngulo/docs/08_trazabilidad/matriz_trazabilidad.md | Entregada | Cierre trazabilidad 17/05/2026 |
+| T-208 | Metricas AI-SDLC | metricas_ai_sdlc.md | team/borisAngulo/docs/08_trazabilidad/metricas_ai_sdlc.md | Entregada | Cierre métricas 17/05/2026 |
+| T-209 | Bitacora | log_interno.md | team/borisAngulo/log_interno.md | Recomendada |  |
+| T-210 | POC | POC ejecutada con evidencia | team/borisAngulo/docs/11_pocs/ | Recomendada |  |
+| T-211 | UC critico | FSD-UC-001 flujo+alterno+Gherkin | team/borisAngulo/docs/04_fsd/casos-de-uso.md | Entregada | Cuadre v1.1 |
+| T-212 | UC critico | FSD-UC-002 flujo+alterno+Gherkin | team/borisAngulo/docs/04_fsd/casos-de-uso.md | Entregada | Cuadre v1.1 |
+| T-213 | UC critico | FSD-UC-003 flujo+alterno+Gherkin | team/borisAngulo/docs/04_fsd/casos-de-uso.md | Entregada | Cuadre v1.1 |
+| T-214 | UC critico | FSD-UC-004 flujo+alterno+Gherkin | team/borisAngulo/docs/04_fsd/casos-de-uso.md | Entregada | Cuadre v1.1 |
+| T-215 | UC critico | FSD-UC-005 flujo+alterno+Gherkin | team/borisAngulo/docs/04_fsd/casos-de-uso.md | Entregada | Cuadre v1.1 |
+| T-216 | UC critico | FSD-UC-006 flujo+alterno+Gherkin | team/borisAngulo/docs/04_fsd/casos-de-uso.md | Entregada | Cuadre v1.1 |
+| T-217 | UC critico | FSD-UC-007 flujo+alterno+Gherkin | team/borisAngulo/docs/04_fsd/casos-de-uso.md | Entregada | Cuadre v1.1 |
+| T-218 | Prompt-contrato | PC-001 6 elem+invariants+failure modes | team/borisAngulo/docs/04_fsd/prompt-contracts.md | Entregada | Cuadre v1.1 |
+| T-219 | Prompt-contrato | PC-002 6 elem+invariants+failure modes | team/borisAngulo/docs/04_fsd/prompt-contracts.md | Entregada | Cuadre v1.1 |
+| T-220 | Prompt-contrato | PC-003 6 elem+invariants+failure modes | team/borisAngulo/docs/04_fsd/prompt-contracts.md | Entregada | Cuadre v1.1 |
