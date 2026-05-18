@@ -3788,4 +3788,58 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 
 | PM-049 | docs | team/Marlene/08_trazabilidad/ + team/borisAngulo/docs/08_trazabilidad/ | Auditoría Excelente + inventario aportes v1.0 por carpeta equipo (Marlene 7/10, boris 6/10). | 2026-05-16 | — |
 
+---
+
+### PM-050 - Golden Folder, trazabilidad v1.5 y auditoría Excelente alexAlvarez
+
+- **ID**: PM-050
+- **Fecha**: 2026-05-17
+- **Hora**: 18:00 (UTC-4)
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Modelo**: Composer (Cursor)
+- **Tarea**: Consolidar documentación Dorada (`docs/06`–`09`), re-auditar trazabilidad, certificar carpeta `team/alexAlvarez/` con rúbrica Excelente y publicar commit.
+- **Objetivo**: Golden Folder alineada; gate trazabilidad APTO; inventario de aportes Alex; historial Git trazable.
+- **Contexto**:
+  - Skills: `sigesa-auditor-trazabilidad-dti`, `sigesa-auditoria-excelente-equipo`
+  - Sesiones previas: PM-ALEX-007…012 en `team/alexAlvarez/log_interno.md`
+  - Gobernanza: 7 skills + 5 rules `.cursor/` (autoría Alex; excl. `sigesa-auditoria-excelente-equipo`)
+- **Prompts usados (resumen sesión)**:
+  ```text
+  execute the appropiate skills to check that the golden documentation is correct and aligned (for traceability) do the neccessary modifications in the 09_trazabilidad folder
+
+  /sigesa-auditoria-excelente-equipo pls write the auditoria rubircas, inventario tareas aporte for alexAlvarez ...
+
+  commit all the changes and push it to the origin (take in mind u must use the template .gitmessage.txt and incldue in th tPROMPT_mapping (in alexAlvarez/log_interno) what we've worked during this session)
+  ```
+- **Archivos generados o modificados (principal)**:
+  - `docs/09_trazabilidad/matriz_trazabilidad.md` — Dorada v1.5
+  - `docs/09_trazabilidad/report_findings.md` — v1.4 APTO
+  - `docs/09_trazabilidad/metricas_ai_sdlc.md` — v1.2
+  - `docs/06_prompt_contracts/` — 58 contratos consolidados
+  - `docs/07_diagramas/` — canónico 92 `.mmd` + symlinks capas
+  - `docs/08_agents/` — AGENTS.md v2.0, skills.md, cursor_rules.md
+  - `team/alexAlvarez/08_trazabilidad/` — auditoría Excelente 10/10 + inventario
+  - `.cursor/skills/sigesa-auditoria-excelente-equipo/SKILL.md` — skill auditoría equipo
+  - `AGENTS.md` (raíz) — puntero a `docs/08_agents/`
+  - `docs/deprecated/` — BRD/FSD/PRD legacy movidos
+  - `team/alexAlvarez/log_interno.md` — PM-ALEX-013…015
+  - Symlinks `docs/*/07_diagramas/` y `team/*/07_diagramas/` → `docs/07_diagramas/`
+- **Validación ejecutada**:
+  - Gate trazabilidad: 14/14 US Must → FSD-UC; 25/25 US; 0 ERROR
+  - Rúbrica Excelente Alex: 10/10 criterios CUMPLE
+  - Inventario: 112 filas (T-001…T-132)
+- **Resultado obtenido**:
+  - Documentación Dorada certificada APTO; carpeta equipo Alex con veredicto EXCELENTE; commit con plantilla `.gitmessage.txt`.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - W-07: revisar coherencia `docs/05_dti/DTI.md` vs matriz
+  - W-09: diagrama `diag-02-seq-evidencias.mmd` vs append-only
+  - G-01: FSD-UC-018 sincronía equipo ↔ Golden
+- **Próximos pasos**:
+  - FSD Paso 2: flujos alternos en todos los UC (backlog)
+  - Script CI `traceability-check.sh` (propuesto en métricas)
+
+| PM-050 | docs | docs/09_trazabilidad/ + team/alexAlvarez/08_trazabilidad/ + Golden 06–08 | Trazabilidad v1.5 APTO; auditoría Excelente Alex 10/10; commit sesión. | 2026-05-17 | Alex Alvarez |
+
 

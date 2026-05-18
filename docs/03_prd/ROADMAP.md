@@ -133,6 +133,8 @@ timeline
 
 Fechas **orientativas** asumiendo T0 = julio 2026 (ajustar en BRD-Q-04).
 
+> Fuente Mermaid externa: [`07_diagramas/gantt_roadmap_2026_2027.mmd`](07_diagramas/gantt_roadmap_2026_2027.mmd) · Release: [`gantt_release_producto.mmd`](07_diagramas/gantt_release_producto.mmd)
+
 ```mermaid
 gantt
   title SIGESA — Roadmap producto 2026-2027 (Dorada)

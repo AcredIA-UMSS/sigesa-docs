@@ -1,42 +1,39 @@
 # Roadmap — SIGESA / AcredIA
 
-> Planificación visual de entregas por hitos, mapeando Épicas desarrolladas con diagrama Gantt.
+> Planificación visual de entregas por hitos, mapeando Épicas desarrolladas con diagrama Gantt y fases de negocio. Alineado a [`PRD.md`](PRD.md) y [`../01_brd/BRD.md`](../01_brd/BRD.md).
 
-## 1. Roadmap de entregas
+## 0. Vista por fases de negocio
 
-```mermaid
-gantt
-  title SIGESA PRD Roadmap 2026-2027
-  dateFormat YYYY-MM-DD
-  axisFormat %b/%Y
-  section Épica 1: Evidencias y Versionado
-    Desarrollo repositorio Evidence: done, repo, 2026-07-01, 60d
-    Implementación versionado append-only: active, ver, 2026-09-01, 45d
-    Subsanación y trazabilidad: subs, 2026-10-15, 30d
-  section Épica 2: Dashboard y UX
-    Dashboard mobile CC: mob, 2026-08-01, 45d
-    Panel auditoría TD escritorio: desk, 2026-09-15, 45d
-    Portal público básico: pub, 2026-11-01, 30d
-  section Épica 3: Auditoría y Fases
-    Máquina de Estados Indicador: state, 2026-10-01, 45d
-    Filtros y reportes TD: filt, 2026-11-15, 30d
-    Control de transiciones Fase: trans, 2026-12-01, 30d
-  section Épica 4: Transparencia Pública
-    Consulta estados acreditación: cons, 2026-11-01, 30d
-    Descarga certificados: cert, 2026-12-01, 30d
-  section Épica 5: Notificaciones
-    Sistema notificaciones: notif, 2026-09-15, 45d
-    Alertas fechas límite: alert, 2026-10-15, 30d
-    Reportes ejecutivos: rep, 2026-12-15, 30d
-  section Validación y Piloto
-    Piloto con carreras: pilot, 2026-12-15, 45d
-    Ajustes post-piloto: adj, 2027-02-01, 30d
-    Lanzamiento v2.0: launch, 2027-03-01, 30d
-```
+Diagrama Gantt canónico: [`../07_diagramas/gantt.mmd`](../07_diagramas/gantt.mmd)
 
-## 2. Desglose por hitos
+## 1. Roadmap de entregas (Gantt)
+
+Renderizar el archivo Mermaid anterior en el visor del repositorio o en la documentación publicada.
+
+## 2. Oleadas de release (dependencias)
+
+| Release | Épicas | Gate de salida |
+|---------|--------|----------------|
+| R0 | 1 | Carga y versionado **Evidencia** append-only en UAT |
+| R1 | 3 | Transiciones **Indicador** y hard stop de **Fase** |
+| R2 | 2 | Dashboard [CC] mobile + panel [TD] escritorio |
+| R3 | 5 | Notificaciones ≤ 15 min en rechazo/aprobación |
+| R4 | 4 | Portal [P] con datos publicados por [JD] |
+| Piloto | 1–5 | KPI búsqueda ≤ 2 min; 0 pérdida documental en piloto |
+
+## 3. Desglose por hitos
 
 - **Q3 2026**: Validación de requisitos, desarrollo base de Evidencias y UX inicial.
 - **Q4 2026**: Implementación completa de Épicas 1-5, piloto institucional.
 - **Q1 2027**: Ajustes basados en feedback, preparación para lanzamiento.
 - **Q2 2027**: Lanzamiento v2.0 con integraciones adicionales.
+
+## 4. Trazabilidad épica → historias (muestra)
+
+| Épica | Historias Must en roadmap |
+|-------|---------------------------|
+| 1 | PRD-US-002, PRD-US-003, PRD-US-010 |
+| 2 | PRD-US-004, PRD-US-006, PRD-US-012 |
+| 3 | PRD-US-007, PRD-US-009, PRD-US-014 |
+| 4 | PRD-US-016, PRD-US-017 |
+| 5 | PRD-US-005, PRD-US-018, PRD-US-019 |

@@ -18,7 +18,7 @@
 | Revisores | Docente + 1 grupo par |
 | Estado | Borrador |
 | Plantilla de referencia | Alineado a la convención de [`templates/BRD_TEMPLATE.md`](../templates/BRD_TEMPLATE.md), [`templates/fsd_template.md`](../templates/fsd_template.md) y documentos entregados en `docs/` y `team/` |
-| Trazabilidad a BRD / FSD | [`docs/BRD_v1.md`](../docs/BRD_v1.md), [`docs/FSD_v1.md`](../docs/FSD_v1.md), [`team/borisAngulo/BRD_v2.md`](../team/borisAngulo/BRD_v2.md), [`team/borisAngulo/FSD_v1.md`](../team/borisAngulo/FSD_v1.md), [`team/alexAlvarez/docs/FSD.md`](../team/alexAlvarez/docs/FSD.md) |
+| Trazabilidad a BRD / FSD | [`docs/BRD_v1.md`](../docs/BRD_v1.md), [`docs/FSD_v1.md`](../docs/FSD_v1.md), [`team/borisAngulo/BRD_v2.md`](../team/borisAngulo/BRD_v2.md), [`team/borisAngulo/FSD_v1.md`](../team/borisAngulo/FSD_v1.md), [`team/alexAlvarez/docs/04_fsd/FSD.md`](../team/alexAlvarez/docs/04_fsd/FSD.md) |
 | Prompts utilizados | *(vacío si no se usó IA en esta versión)* |
 
 ---

@@ -4,7 +4,8 @@
 |-------|-------|
 | **Ubicación canónica** | `docs/adr/` (este directorio) |
 | **Audiencia** | DTI, FSD, implementación, agentes IA |
-| **Última actualización** | 2026-05-16 |
+| **Última actualización** | 2026-05-17 |
+| **DTI compilado** | [`docs/05_dti/DTI.md`](../05_dti/DTI.md) · ADRs narrativos en [`docs/05_dti/adrs/`](../05_dti/adrs/README.md) |
 
 > **Regla:** las decisiones de arquitectura del producto viven aquí. Las carpetas `team/<equipo>/09_dti/adr/` son **copias de trabajo** del equipo; no introducen numeración distinta en el repo.
 
@@ -22,7 +23,7 @@
 | [ADR-0006](ADR-0006-postgresql-16-primary-database.md) | PostgreSQL 16 como BD principal | Aceptado | `docs/05_dti/modelo_datos.md` |
 | [ADR-0007](ADR-0007-jwt-rbac-authentication.md) | JWT stateless + RBAC | Aceptado | Complementa ADR-0003 |
 | [ADR-0008](ADR-0008-taxonomies-ceub-arcu-sur-database.md) | Taxonomías CEUB/ARCU-SUR en BD | Aceptado | FSD-UC-003 · MOD-PROCESS |
-| [ADR-0009](ADR-0009-backend-nodejs-express.md) | Backend Node.js 20 + Express 4 | Aceptado | `docs/05_dti/DTI.md` (pendiente) |
+| [ADR-0009](ADR-0009-backend-nodejs-express.md) | Backend Node.js 20 + Express 4 | Aceptado | [`docs/05_dti/DTI.md`](../05_dti/DTI.md) |
 
 ---
 
