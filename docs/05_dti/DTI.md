@@ -54,57 +54,128 @@ SIGESA es el sistema de **automatización** del ciclo de acreditación CEUB/ARCU
 
 ---
 
-## 2. Vista lógica — contexto y contenedores
+<!-- avance: iteración 1 -->
+## 2. Vistas del DTI (Richardson, Cap. 1)
 
-> **Fuente única (anti-deriva):** los diagramas C4 viven solo en `docs/07_diagramas/`. Vista local: [`07_diagramas/`](07_diagramas/README.md). **No** duplicar bloques `mermaid` en este DTI; editar el `.mmd` y previsualizar con la extensión Mermaid del IDE o [Mermaid Live](https://mermaid.live).
+### 2.0 Checklist por vista
 
-### 2.1 C4 — Nivel 1 (contexto)
+| Sección | Estado | ¿Se agrega/mejora en esta iteración? |
+|---|---|---|
+| 2.1 Logical View | ✅ | Se incorporan decisiones de resiliencia/particionado en dependencias e integración, conectadas a contenedores SIGESA. |
+| 2.2 Process View | ✅ | Se modelan puntos de falla y recuperación en flujos de carga/cierre/notificación (circuit breaker) y cómo se particiona trabajo (consistent hashing) a nivel de “orquestación”. |
+| 2.3 Development View | ✅ | Se especifican puntos de aplicación de circuit breaker/colas/outbox dentro de puertos y adaptadores hexagonales SIGESA. |
+| 2.4 Physical View | ✅ | Se describe el “límite físico” donde se aplican los patrones: reverse proxy, API, worker notificaciones y dependencias externas (SMTP/IdP). |
+| 2.5 Scenarios | ✅ | Se agregan escenarios concretos del dominio (upload evidencia, approve/reject, cierre de fase, notificaciones) con decisiones y comportamiento esperado. |
 
-| Elemento | Descripción |
-|----------|-------------|
-| Actores | [CC], [TD], [JD], [P] |
-| Sistema | SIGESA / AcredIA |
-| Externos | SMTP institucional UMSS; marco CEUB / ARCU-SUR |
+---
 
-**Diagrama (editable):** [`../07_diagramas/diag-06-c4-contexto-sistema.mmd`](../07_diagramas/diag-06-c4-contexto-sistema.mmd) (`D-C4-001`)
+<!-- avance: iteración 1 -->
+## 2.1 Logical View (vista lógica)
 
-### 2.2 C4 — Nivel 2 (contenedores)
+SIGESA en v1.0 es un **monolito modular**: un solo proceso lógico (API) y módulos internos (dominio + adaptadores). La vista lógica se describe con:
 
-| Contenedor | Tecnología | Notas |
-|------------|------------|-------|
-| Frontend SPA | React 18 | UI stateless |
-| API Backend | Node.js 20 + Express 4 | REST JWT RBAC; módulos de dominio |
-| PostgreSQL 16 | RDBMS | Transaccional, FTS, `audit_log` append-only |
-| Volumen evidencias | Docker named volume | Blobs versionados (SHA-256) |
-| Worker notificaciones | Node cron | Cola `notification_outbox` |
-| Motor reportes PDF | Módulo en proceso | FSD-UC-014 |
-| Externos | IdP UMSS, SMTP, CEUB/ARCU-SUR | ADR_003 autenticación |
+- **Contexto**: Actores [CC], [TD], [JD], [P] y externos (IdP UMSS, SMTP, marco CEUB/ARCU-SUR).
+- **Contenedores lógicos**: Frontend SPA, API Backend, PostgreSQL, volumen de evidencias versionadas, worker de notificaciones, motor de reportes PDF.
+- **Integraciones críticas (puntos de fallo)**:
+  - **Auth** contra IdP/infra UMSS (o mecanismo local LDAP según ADR_003).
+  - **Notificaciones** por SMTP institucional.
 
-**Diagrama (editable):** [`../07_diagramas/diag-07-c4-contenedores-sistema.mmd`](../07_diagramas/diag-07-c4-contenedores-sistema.mmd) (`D-C4-002`)
+**Circuit Breaker (aplicación lógica)**
+- Se aplica alrededor de llamadas a **dependencias externas** (IdP UMSS y SMTP). Para SIGESA, el “fallback” no modifica evidencia: la operación principal (p.ej. `POST /api/v1/evidences`) continúa usando append-only en BD/volumen; solo se afecta la entrega de notificación/reportes asíncronos.
 
-**Decisiones:** ver [ADR_002](adrs/ADR_002_monolito_modular.md), [ADR_003](adrs/ADR_003_adapter_autenticacion.md), [ADR_004](adrs/ADR_004_almacenamiento_blobs_docker.md), [ADR_006](adrs/ADR_006_postgresql_16.md), [ADR_007](adrs/ADR_007_jwt_rbac.md), [ADR_009](adrs/ADR_009_backend_nodejs_express.md).
+**Consistent Hashing (aplicación lógica)**
+- Se define como estrategia de **asignación estable de trabajo** del worker notificaciones: si SIGESA se escala a múltiples instancias de worker, la clave lógica es `program_id + indicator_id` (o `evidence_version_id` cuando corresponda) para que el “mismo” caso caiga consistentemente en la misma partición/worker.
 
-### 2.3 Flujo crítico — carga de Evidencia (FSD-UC-004)
+---
 
-```mermaid
-sequenceDiagram
-  participant CC as Actor_CC
-  participant API as Express_API
-  participant UC as UploadEvidenceUseCase
-  participant VOL as Docker_volume
-  participant DB as PostgreSQL
-  CC->>API: POST /api/v1/evidences multipart
-  API->>UC: validar JWT rol CC y programScope
-  UC->>DB: verificar Indicador y Proceso activos
-  UC->>VOL: escribir blob storage_key
-  UC->>UC: SHA-256 post-escritura
-  UC->>DB: INSERT evidence_version
-  UC->>DB: INSERT state_transition SUBIDO
-  UC->>DB: INSERT audit_log
-  API-->>CC: 201 version N
-```
+<!-- avance: iteración 1 -->
+## 2.2 Process View (vista por procesos)
 
-**Invariante:** ningún paso ejecuta `DELETE` sobre blob ni fila de versión aprobada ([ADR_001](adrs/ADR_001_append_only_evidencia.md)).
+La vista de procesos se aterriza en flujos ya documentados, con puntos explícitos donde los patrones mejoran resiliencia y escalabilidad:
+
+1) **Carga/Versionado de Evidencia (FSD-UC-004)**
+- Secuencia (resumen): API valida JWT/RBAC → dominio verifica estado del proceso/indicador → escribe blob (versionado SHA-256) → inserta `evidence_version` + transición de estado + `audit_log`.
+- **Circuit Breaker**: protege llamadas a dependencias externas *solo si existen* dentro del flujo (en v1.0, el flujo crítico de evidencia no depende de SMTP/IdP para escribir append-only; el circuit breaker se usa en “producción de eventos” para notificaciones/reporte).
+
+2) **Aprobación/Rechazo/Observaciones**
+- Estados y transiciones se registran vía `STATE_TRANSITION` y `audit_log` append-only.
+- **Comunicación asíncrona**: generación de notificaciones/reportes desde outbox y worker.
+
+3) **Notificaciones (worker + outbox)**
+- El worker consume `notification_outbox` y envía email vía SMTP.
+- **Circuit Breaker (aquí es donde aporta más)**: ante errores repetidos de SMTP, el circuit breaker evita saturar el sistema; el mensaje permanece para reintentos controlados (sin borrar evidencia).
+
+4) **Particionado estable (consistent hashing) en colas internas**
+- Si hay N workers, el particionado estable reduce reordenamientos y reintentos inconsistentes.
+
+---
+
+<!-- avance: iteración 1 -->
+## 2.3 Development View (vista de desarrollo)
+
+DTI sigue arquitectura **hexagonal** (puertos/adaptadores). Los patrones se ubican en capas específicas:
+
+- **Puertos de salida**
+  - `AuditLogPort` (append-only, no negociable por resiliencia)
+  - `FileStoragePort` (volumen/blobs versionados)
+  - (nuevo requisito de ingeniería, aunque v1.0 sea monolito): `NotificationDeliveryPort` (adaptador SMTP) con circuit breaker.
+
+- **Adaptadores**
+  - `backend/src/adapter/out/` implementa delivery y reportes.
+  - Aplicación del circuit breaker se hace *en el adaptador* SMTP/IdP (no en el dominio), manteniendo invariantes de evidencia.
+
+- **Consistent Hashing**
+  - En el adaptador del worker, antes de despachar trabajos, se calcula `partition_key` desde IDs de dominio y se enruta a la partición/consumer correspondiente.
+
+---
+
+<!-- avance: iteración 1 -->
+## 2.4 Physical View (vista física / despliegue)
+
+Contenedores físicos en v1.0:
+
+- `sigesa-web` (SPA)
+- `sigesa-api` (Node 20 + Express 4)
+- `sigesa-db` (PostgreSQL 16)
+- `evidencias_data` (volumen Docker)
+- Worker notificaciones (cron/worker)
+
+Aplicación física de patrones:
+
+- **Circuit Breaker**: en el proceso donde ocurre la llamada externa (worker para SMTP; API/adaptador para IdP/LDAP). Límites:
+  - No se protege escritura append-only (BD/volumen), se protege la *entrega*.
+- **Consistent Hashing**: solo tiene efecto si existen múltiples instancias de worker/API; en v1.0 se documenta como habilitador para escalamiento horizontal sin re-procesar masivamente.
+
+---
+
+<!-- avance: iteración 1 -->
+## 2.5 Scenarios (escenarios del sistema)
+
+1) **S1 — Subida de evidencia con IdP/SMTP inestable**
+- Entrada: [CC] hace `POST /api/v1/evidences`.
+- Comportamiento esperado:
+  - La operación principal no depende de SMTP; se conserva append-only (no DELETE).
+  - Si hay confirmación/notificación posterior vía outbox, el delivery usa circuit breaker (evita saturar SMTP) y reintenta según política.
+
+2) **S2 — Aprobación de indicador → notificación diferida**
+- Entrada: [TD] hace `PATCH /indicators/{id}/approve`.
+- Comportamiento esperado:
+  - Se registra transición y audit.
+  - Se genera `notification_outbox`.
+  - Worker entrega con circuit breaker sobre SMTP.
+  - Si hay varios workers: consistent hashing por `program_id + indicator_id` minimiza saltos entre instancias.
+
+3) **S3 — Cierre de fase con carga concurrente**
+- Entrada: [TD] `PATCH /phases/{id}/close`.
+- Comportamiento esperado:
+  - Si hay 409 por pendientes, se responde sin mutaciones destructivas.
+  - Las notificaciones derivadas siguen outbox + worker.
+
+4) **S4 — Reportes PDF (FSD-UC-014) bajo fallo parcial**
+- Entrada: solicitud de reporte.
+- Comportamiento esperado:
+  - El motor de reportes se aisla como “tarea” (si aplica) y usa circuit breaker para dependencias externas (si existen en el camino).
+  - La evidencia base permanece consistente por append-only.
 
 ---
 
@@ -283,7 +354,16 @@ Autenticación: [ADR_003](adrs/ADR_003_adapter_autenticacion.md) + [ADR_007](adr
 
 ---
 
-## 6. Registro de decisiones arquitectónicas
+## 6. Justificación del producto — patrones (1 línea por patrón)
+
+- Circuit Breaker: **SÍ** — aplica a llamadas a dependencias externas (SMTP/IdP) en worker/adaptadores para evitar cascada de fallos y mantener invariantes append-only; ver **§3.5 / §3.5.1**.
+- Consistent Hashing: **SÍ** — aplica como estrategia de asignación estable del trabajo del worker (partición por `program_id+indicator_id`) si SIGESA escala horizontalmente; ver **§9**.
+- Comunicación asíncrona: **SÍ** — ya existe vía `notification_outbox` + worker de notificaciones, desacoplando el tiempo de respuesta del usuario del delivery; ver **§22**.
+- Patrón Saga: **NO** — v1.0 mantiene consistencia por transacciones locales y append-only (sin coreografía de transacciones distribuidas); ver **§23**.
+
+---
+
+## 7. Registro de decisiones arquitectónicas
 
 | DTI | Canónico | Tema |
 |-----|----------|------|
@@ -301,7 +381,7 @@ Autenticación: [ADR_003](adrs/ADR_003_adapter_autenticacion.md) + [ADR_007](adr
 
 ---
 
-## 7. Despliegue y operaciones (v1.0)
+## 8. Despliegue y operaciones (v1.0)
 
 | Componente | Imagen / artefacto | Notas |
 |------------|-------------------|-------|
@@ -314,7 +394,7 @@ Respaldo diario: `pg_dump` + copia del volumen de evidencias (RBN-14 / MOD-AUDIT
 
 ---
 
-## 8. NFRs y trazabilidad
+## 9. NFRs y trazabilidad
 
 | Referencia | Ubicación |
 |------------|-----------|
@@ -326,19 +406,20 @@ NFRs con impacto directo en este DTI: NFR-001 (latencia búsqueda), NFR-003 (TLS
 
 ---
 
-## 9. Pendientes v1.1+
+## 10. Pendientes v1.1+
 
 | Ítem | Acción |
 |------|--------|
 | `openapi.yaml` | Generar desde `api_contracts.md` |
 | LDAP / SSO UMSS | Implementar `LdapAuthAdapter` (ADR_003) |
 | Object storage S3-compatible | Evaluar migración desde volumen Docker (ADR_004 §6) |
-| Sincronizar `docs/adr/ADR-0001` y `ADR-0002` | Ampliar narrativa canónica al nivel de `docs/05_dti/adrs/` |
+| Sincronizar `docs/adr/ADR-0001` y `docs/adr/ADR-0002` | Ampliar narrativa canónica al nivel de `docs/05_dti/adrs/` |
 
 ---
 
-## 10. Historial
+## 11. Historial
 
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
 | v1.0-borrador | 2026-05-17 | Primera compilación DTI + carpeta `adrs/` desde `docs/` canónico y `team/aylenGonzales/09_dti/` |
+
