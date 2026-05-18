@@ -4,7 +4,7 @@
 
 | Metadato | Valor |
 |----------|-------|
-| **Versión** | Dorada v2.0 |
+| **Versión** | Dorada v2.1 |
 | **Última actualización** | 2026-05-17 |
 | **Ubicación canónica** | `docs/08_agents/AGENTS.md` |
 | **Runtime skills** | `.cursor/skills/` (`.claude` es enlace simbólico a `.cursor`) |
@@ -78,7 +78,7 @@ Responsable de la cadena de valor documental inicial. Traduce el problema de dis
 
 ### 4.2 @ArchAgent
 
-Traduce PRD aprobado en FSD descompuesto, NFR ISO 25010, DTI, ADRs y contratos API con RBAC y máquina de estados del Indicador. Garantiza que endpoints semánticos (`/reject`, `/approve`, `/close`) reemplacen PATCH genéricos de estado. No certifica release sin paso por @QaAgent.
+Traduce PRD aprobado en FSD descompuesto, NFR ISO 25010, DTI, ADRs y contratos API con RBAC y máquina de estados del Indicador. Para poblar o revisar secciones del DTI canónico usa la skill **`sigesa-dti-author`** (`docs/05_dti/dti-author.md`). Garantiza que endpoints semánticos (`/reject`, `/approve`, `/close`) reemplacen PATCH genéricos de estado. No certifica release sin paso por @QaAgent.
 
 ### 4.3 @DBAgent
 
@@ -102,6 +102,7 @@ Ubicación física: **`.cursor/skills/<nombre>/SKILL.md`**. Detalle y triggers: 
 |-------|--------|-------------------------|
 | `sigesa-generacion-documentos-negocio` | @ProductAgent | `docs/01_brd/`, `docs/02_mrd/`, `team/*/docs/01_brd|02_mrd/` |
 | `sigesa-generacion-documentos-tecnicos` | @ArchAgent | `docs/05_dti/`, `docs/adr/`, ADRs |
+| `sigesa-dti-author` | @ArchAgent | `docs/05_dti/DTI.md` (§0–§21), sync `AGENTS.md` |
 | `sigesa-arquitectura-tecnica-ia` | @ArchAgent | DTI, NFR, ER, decisiones arquitectónicas |
 | `sigesa-api-contract-designer` | @ArchAgent | `docs/04_fsd/api_contracts.md`, OpenAPI futuro |
 | `sigesa-db-architect-append-only` | @DBAgent | DDL, modelos ORM, ER físico |
@@ -109,7 +110,7 @@ Ubicación física: **`.cursor/skills/<nombre>/SKILL.md`**. Detalle y triggers: 
 | `sigesa-auditoria-excelente-equipo` | @QaAgent | `AUDITORIA_RUBRICAS_EXCELENTE.md`, inventario aportes |
 | `mermaid-expert-architect` | @VisualAgent | `.mmd` en `docs/07_diagramas/` |
 
-**Conteo verificado en disco:** 8 skills con `SKILL.md` operativo.
+**Conteo verificado en disco:** 9 skills con `SKILL.md` operativo. Procedimiento detallado de `sigesa-dti-author`: [`docs/05_dti/dti-author.md`](../05_dti/dti-author.md).
 
 ---
 
@@ -220,7 +221,7 @@ Revisiones periódicas conjuntas DUEA + equipo AcredIA: muestreo de Human Evalua
 
 | Elemento | Cantidad en disco |
 |----------|-------------------|
-| Skills `.cursor/skills/*/SKILL.md` | 8 |
+| Skills `.cursor/skills/*/SKILL.md` | 9 |
 | Reglas `.cursor/rules/*.mdc` | 5 |
 | Prompt contracts consolidados | 58 en `docs/06_prompt_contracts/` |
 | Diagramas canónicos `.mmd` | 92 entradas en `docs/07_diagramas/` |
@@ -244,5 +245,6 @@ Revisiones periódicas conjuntas DUEA + equipo AcredIA: muestreo de Human Evalua
 
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
+| Dorada v2.1 | 2026-05-17 | Alta skill `sigesa-dti-author`; fuente en `docs/05_dti/dti-author.md` |
 | Dorada v2.0 | 2026-05-17 | Golden Folder `docs/08_agents/`; alineación a `docs/01`–`09`; 8 skills; 5 rules; gobernanza ampliada |
 | v1.1 | 2026-05-15 | Manifiesto en raíz (legacy) |

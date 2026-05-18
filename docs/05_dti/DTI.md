@@ -1,3 +1,15 @@
+---
+producto: SIGESA / AcredIA
+ambito: docs/05_dti
+version_dti: dorada-v1.0
+release_objetivo: "1.0.0"
+estado: en-revision
+fsd_version_min: v2.0
+dti_author_skill: docs/05_dti/dti-author.md
+plantilla_estructura: templates/dti.md
+audience_default: humano+maquina
+---
+
 # Documento de Diseño Técnico e Infraestructura (DTI) — SIGESA / AcredIA
 
 ## Control de versión
@@ -7,7 +19,8 @@
 | **Versión** | Dorada v1.0 (borrador compilado) |
 | **Timestamp** | `2026-05-17T18:00:00-04:00` |
 | **Contrato** | [PC-SIG-13] Arquitecto de Infraestructura y DTI |
-| **Skills** | `sigesa-generacion-documentos-tecnicos` · `sigesa-auditor-trazabilidad-dti` · `sigesa-db-architect-append-only` |
+| **Skills** | [`dti-author`](dti-author.md) · `sigesa-generacion-documentos-tecnicos` · `sigesa-auditor-trazabilidad-dti` · `sigesa-db-architect-append-only` |
+| **Plantilla estructura** | [`templates/dti.md`](../../templates/dti.md) (§0–§21) |
 | **Gate trazabilidad** | [`docs/09_trazabilidad/report_findings.md`](../09_trazabilidad/report_findings.md) — **APTO** |
 | **Estado** | En revisión — primera versión integrada |
 

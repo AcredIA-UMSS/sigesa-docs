@@ -2,12 +2,12 @@
 
 | Metadato | Valor |
 |----------|-------|
-| **Versión** | Dorada v1.0 |
+| **Versión** | Dorada v1.1 |
 | **Fecha** | 2026-05-17 |
 | **Ubicación física** | `.cursor/skills/<nombre>/SKILL.md` |
 | **Manifiesto** | [`AGENTS.md`](AGENTS.md) |
 
-Este catálogo refleja el inventario **verificado en disco** (8 skills con `SKILL.md`). La descripción completa de cada skill está en su archivo fuente; aquí se documentan agente, triggers y entregables para orquestación UMSS.
+Este catálogo refleja el inventario **verificado en disco** (9 skills con `SKILL.md`). La descripción completa de cada skill está en su archivo fuente; aquí se documentan agente, triggers y entregables para orquestación UMSS.
 
 ---
 
@@ -32,6 +32,7 @@ Este catálogo refleja el inventario **verificado en disco** (8 skills con `SKIL
 | **Triggers** | Tras aprobación de negocio; pedidos de ADR, DTI, descomposición FSD |
 | **Entregables** | `docs/05_dti/`, `docs/adr/`, artefactos técnicos alineados a append-only |
 | **Protección** | Evalúa impacto antes de proponer patrones que violen máquina de estados |
+| **Skill asociada** | [`sigesa-dti-author`](#9-sigesa-dti-author) — poblar secciones del DTI canónico |
 
 ---
 
@@ -107,6 +108,19 @@ Este catálogo refleja el inventario **verificado en disco** (8 skills con `SKIL
 
 ---
 
+## 9. `sigesa-dti-author`
+
+| Campo | Valor |
+|-------|-------|
+| **Agente** | @ArchAgent |
+| **Ruta runtime** | [`.cursor/skills/sigesa-dti-author/SKILL.md`](../../.cursor/skills/sigesa-dti-author/SKILL.md) |
+| **Fuente canónica** | [`docs/05_dti/dti-author.md`](../05_dti/dti-author.md) (sincronizar con la skill de Cursor) |
+| **Triggers** | Edición de `docs/05_dti/DTI.md`; invocación `@dti-author §N`; ADR nuevo que deba reflejarse en DTI + `AGENTS.md` |
+| **Entregables** | Secciones §0–§21 de [`DTI.md`](../05_dti/DTI.md) según [`templates/dti.md`](../../templates/dti.md); diff atómico de `AGENTS.md` cuando aplique |
+| **Protección** | Sin decisiones sin ADR; sin drift DTI↔AGENTS; ADR en `proposed` no se propaga sin confirmación humana |
+
+---
+
 ## Skills documentales en `team/` (no runtime Cursor)
 
 Inventario de apoyo por integrante (11 archivos): `team/aylenGonzales/10_agents/skills/`, `team/borisAngulo/docs/09_agents/skills/`. No sustituyen las skills de `.cursor/skills/`; se usan como plantillas de equipo hasta su promoción.
@@ -118,3 +132,4 @@ Inventario de apoyo por integrante (11 archivos): `team/aylenGonzales/10_agents/
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
 | v1.0 | 2026-05-17 | Catálogo inicial alineado a 8 skills en disco; alta `sigesa-auditoria-excelente-equipo` |
+| v1.1 | 2026-05-17 | Alta `sigesa-dti-author`; fuente canónica en `docs/05_dti/dti-author.md` |
