@@ -8,9 +8,9 @@
 | Fecha | 14/05/2026 |
 | Sponsor de negocio | Jefatura DUEA UMSS *(nombre en acta por confirmar)* |
 | Estado | Borrador |
-| Fuentes de contexto | `docs/BRD_v1.md`, `team/borisAngulo/BRD_v2.md`, `context/03_domain_glossary.md`, `team/alexAlvarez/docs/README.md`, `team/alexAlvarez/docs/context/*`, `templates/BRD_TEMPLATE.md` |
+| Fuentes de contexto | `docs/BRD_v1.md`, `team/borisAngulo/BRD_v2.md`, `context/03_domain_glossary.md`, `team/alexAlvarez/docs/00_overview/*`, `team/alexAlvarez/docs/context/*`, `templates/BRD_TEMPLATE.md` |
 
-> **Nota de coherencia:** No existen en esta copia del repo los archivos `team/alexAlvarez/docs/00_overview/definicion_producto.md` ni `team/alexAlvarez/docs/04_fsd/glosario.md` solicitados en el prompt de trabajo; este BRD se alinea al glosario canónico en `context/03_domain_glossary.md` y a la definición de producto consolidada en `team/alexAlvarez/docs/README.md`. Las cifras de campo citadas como «20+ minutos» provienen de `docs/BRD_v1.md`; las metas con línea base «por medir» siguen el criterio explícito de `team/borisAngulo/BRD_v2.md`.
+> **Nota de coherencia:** Este BRD se alinea a `team/alexAlvarez/docs/00_overview/definicion_producto.md` y `alcance_proyecto.md`, al glosario en `context/03_domain_glossary.md` y a la máquina de estados en `context/04_state_machine.md`. Pendiente: `team/alexAlvarez/docs/04_fsd/glosario.md`. Las cifras de campo citadas como «20+ minutos» provienen de `docs/BRD_v1.md`; las metas con línea base «por medir» siguen el criterio explícito de `team/borisAngulo/BRD_v2.md`.
 
 ---
 
@@ -106,7 +106,7 @@
 
 | ID | Restricción | Tipo |
 |----|-------------|------|
-| **[BRD-CST-01]** | **Inmutabilidad de la Evidencia / append-only:** ninguna operación de negocio puede suponer **eliminación física** de prueba normativa ya registrada; las correcciones se expresan como **nuevas versiones** vinculadas a observación y auditoría *(alineado `team/alexAlvarez/docs/README.md` y glosario)* | Normativa-auditoría |
+| **[BRD-CST-01]** | **Inmutabilidad de la Evidencia / append-only:** ninguna operación de negocio puede suponer **eliminación física** de prueba normativa ya registrada; las correcciones se expresan como **nuevas versiones** vinculadas a observación y auditoría *(alineado `00_overview/README.md` y glosario)* | Normativa-auditoría |
 | **[BRD-CST-02]** | Cumplimiento de marcos **CEUB** y **ARCU-SUR** y reglamentación UMSS aplicable; plazos de convocatoria no editables por usuarios operativos | Normativa |
 | **[BRD-CST-03]** | **Máquina de estados estricta:** no avanza de **Fase** si existen indicadores no resueltos según reglas agregadas *(documento de estado maquina)* | Operativa |
 | **[BRD-CST-04]** | Toda **Evidencia** debe asociarse a **Criterio**/**Indicador** (sin carga «huérfana») | Dominio |

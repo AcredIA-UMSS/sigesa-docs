@@ -4,8 +4,20 @@
 > **Archivo:** `team/aylenGonzales/04_fsd/prompt-contracts.md` (continuación)
 > **Versión:** v1.2 — 15/05/2026
 > **Autor:** Aylen Mariangel Gonzales Alvino
-> **Complementa:** `FSD_v2.md` §7 (PC-001 a PC-004) + `prompt-contracts.md` v1.1 (PC-005 a PC-007)
+> **Complementa:** `FSD_v2.md` §7 (PC-001 a PC-004) + `06_prompt_contracts/` (PC-005 a PC-007) + este archivo (PC-008 a PC-010)
 > **Cierra:** GAP-001 (FSD-UC-008) · GAP-002 (FSD-UC-009) · GAP-003 implícito (FSD-UC-010)
+
+---
+
+## PC-005 · PC-006 · PC-007 (archivos ejecutables)
+
+Los contratos PC-005, PC-006 y PC-007 están materializados en:
+
+- `team/aylenGonzales/06_prompt_contracts/PC-005-reporte-pdf.prompt.md`
+- `team/aylenGonzales/06_prompt_contracts/PC-006-notificaciones.prompt.md`
+- `team/aylenGonzales/06_prompt_contracts/PC-007-busqueda-fts.prompt.md`
+
+Cada archivo incluye los 6 elementos JSON + `invariants` + `failure_modes`.
 
 ---
 

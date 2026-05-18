@@ -71,8 +71,8 @@ Al comenzar cualquier tarea, el agente **MUST** leer en orden:
 
 | Capa | Tecnología | Versión | Justificación |
 |------|------------|---------|---------------|
-| Lenguaje backend | Por definir (Java 21 / Python 3.12 / TypeScript 5) | — | Pendiente ADR-001 |
-| Framework backend | Por definir (Spring Boot 3 / FastAPI / NestJS) | — | Pendiente ADR-001 |
+| Lenguaje backend | Node.js 20 (TypeScript opcional) | ADR-0009 | [`docs/adr/ADR-0009`](../../../docs/adr/ADR-0009-backend-nodejs-express.md) |
+| Framework backend | Express 4 | ADR-0009 | Idem |
 | Persistencia | PostgreSQL | 16 | Transacciones ACID requeridas por BR-009, BR-012 |
 | Migraciones | Flyway / Alembic | — | Historial auditable de esquema |
 | Almacenamiento de archivos | Servidor UMSS / objeto autorizado | — | Evidencias y reportes (NFR-002, Ley 164) |
@@ -303,7 +303,23 @@ docker compose up -d    # BD + servicios locales
 
 ---
 
-## 16. Registro de cambios
+## 16. Catálogo de skills (≥7 — rúbrica Excelente)
+
+| # | Skill | Ubicación | Agente |
+|---|-------|-----------|--------|
+| 1 | `skill-001` — generación documentos negocio | `09_agents/skills/skill-001.md` | @ProductAgent |
+| 2 | `skill-002` — prompt-contracts desde FSD-UC | `09_agents/skills/skill-002.md` | @ArchAgent |
+| 3 | `skill-003` — arquitectura técnica / NFR | `09_agents/skills/skill-003.md` | @ArchAgent |
+| 4 | `skill-004` — auditoría trazabilidad local | `09_agents/skills/skill-004.md` | @QaAgent |
+| 5 | `mermaid-expert-architect` | `.cursor/skills/` (repo) | @VisualAgent |
+| 6 | `sigesa-api-contract-designer` | `.cursor/skills/` (repo) | @ArchAgent |
+| 7 | `sigesa-db-architect-append-only` | `.cursor/skills/` (repo) | @DBAgent |
+
+**Reglas globales:** `.cursor/rules/01_domain_language.mdc` … `04_sigesa_qa_gherkin_coverage.mdc` (documentadas en `docs/08_agents/cursor_rules.md`).
+
+---
+
+## 17. Registro de cambios
 
 | Versión | Fecha | Autor | Cambio |
 |---------|-------|-------|--------|

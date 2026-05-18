@@ -4,6 +4,7 @@
 
 | Campo | Valor |
 |-------|-------|
+| **Diagrama ER (fuente)** | [`07_diagramas/FSD-UC_modelo_er_funcional.mmd`](07_diagramas/FSD-UC_modelo_er_funcional.mmd) |
 | **Versión** | Dorada v1.0 |
 | **Timestamp** | `2026-05-16T18:30:00-04:00` |
 | **Vista** | Lógica / de dominio (FSD) |

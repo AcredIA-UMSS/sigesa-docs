@@ -120,7 +120,8 @@ C4Context
 - **Clean Architecture + Hexagonal** (monolito modular v1.0).
 - **ADR-0002**: monolito modular frente a microservicios prematuros.
 - **ADR-0001**: Evidencia append-only (`evidence_version`, sin DELETE físico).
-- **ADR-0003**: adaptador de autenticación institucional (JWT/sesión; sin Keycloak v1.0 si no hay IdP).
+- **ADR-0003**: adaptador de autenticación institucional (local v1.0 → LDAP v1.1).
+- **ADR-0004–0009**: storage, audit log, PostgreSQL, JWT/RBAC, taxonomías, runtime Node — ver [`docs/adr/README.md`](../../../docs/adr/README.md).
 
 ### 4.2 Contenedores
 
@@ -129,9 +130,9 @@ Fuente canónica: `diag-07-c4-contenedores-sistema.mmd`.
 | Contenedor | Tecnología | UC principales |
 |------------|------------|----------------|
 | Frontend web | React o Vue (ADR pendiente stack UI) | Todos |
-| API Backend | Framework por ADR-001 | UC-001 … UC-007 |
-| PostgreSQL 16 | RDBMS | Proceso, Fase, Evidencia, auditoría |
-| Storage evidencias | Objeto UMSS | UC-003 |
+| API Backend | Node.js 20 + Express 4 ([ADR-0009](../../../docs/adr/ADR-0009-backend-nodejs-express.md)) | UC-001 … UC-007 |
+| PostgreSQL 16 | RDBMS ([ADR-0006](../../../docs/adr/ADR-0006-postgresql-16-primary-database.md)) | Proceso, Fase, Evidencia, auditoría |
+| Storage evidencias | Volumen Docker ([ADR-0004](../../../docs/adr/ADR-0004-evidence-blob-storage-docker.md)) | UC-003 |
 | Servicio auditoría | Append-only interno | Transversal RB-011 |
 | Worker scheduler | Cron | UC-006 |
 | Motor PDF | Servicio/librería | UC-007 |

@@ -3667,4 +3667,197 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 |----|-------|
 | PM-039 | Registrar siguiente tarea ejecutada con IA | Por definir |
 
+### 2026-05-16T20:00:00 — Prompt usuario (auditoría BRD Excelente)
+
+**Prompt:** revisa el documento en la carpeta docs/01_brd/BRD.md y verifica si cumple el estándar de Excelente, Excelente: 10 o más elementos de negocio bien desarrollados (objetivos SMART, stakeholders, business case con ROI/NPV, alcance, KPIs, restricciones, supuestos, riesgos, gobernanza, criterios de éxito). Registra el log en @PROMPT_MAPPING.md
+
+**Acción:** Auditoría documental de `docs/01_brd/BRD.md` (Dorada v2.2) contra rúbrica «Excelente» (≥10 elementos de negocio bien desarrollados). Sin modificar el BRD.
+
+**Resultado — Veredicto: CUMPLE estándar Excelente** (10/10 elementos presentes y desarrollados; matiz en business case financiero).
+
+| # | Elemento (rúbrica) | ¿Cumple? | Evidencia en BRD |
+|---|-------------------|:--------:|------------------|
+| 1 | Objetivos SMART | Sí | §9 — 12 objetivos `BRD-OBJ-01…12` con métrica, línea base, meta y horizonte |
+| 2 | Stakeholders | Sí | §0 metadatos; §4 personas [CC]/[TD]/[JD]/[P]; §10 matriz RACI + tabla por tema |
+| 3 | Business case ROI/NPV | Parcial–Sí* | §15 tablas ahorro (~57.600 BOB/año), CAPEX/OPEX placeholder, **VAN/TIR «por calcular»**; interpretación cualitativa cumplimiento |
+| 4 | Alcance | Sí | §14.1 en alcance, §14.2 fuera, §14.3 piloto F2 (plantilla carreras) |
+| 5 | KPIs | Sí | §8 — North Star `BRD-KPI-01` + 9 KPIs de apoyo con meta y fuente |
+| 6 | Restricciones | Sí | §13.2 — 7 restricciones `BRD-CST-01…07` (append-only, CEUB, no-ERP, etc.) |
+| 7 | Supuestos | Sí | §13.1 — 5 supuestos `BRD-ASM-01…05` |
+| 8 | Riesgos | Sí | §17 — 11 riesgos `BRD-RSK-01…11` con P/I, mitigación y responsable |
+| 9 | Gobernanza | Sí | §18 — `BRD-GOV-01…05` (Accountable [JD], Steering, escalamiento) |
+| 10 | Criterios de éxito | Sí | §19 — `BRD-SUC-01…06`, UAT `BRD-CA-01…08`, roadmap F0–F5 |
+
+\*El business case está **bien desarrollado** en narrativa y parámetros ilustrativos; VAN/TIR pendientes de cifras oficiales UMSS (`BRD-Q-05`), coherente con §15 y §21 (no inventar cifras).
+
+**Elementos adicionales** (refuerzan nivel Excelente, no exigidos por la rúbrica mínima): §7 BMC (9 bloques); §6 competitivo; §11 26 REQ MoSCoW; §12 18 reglas; §3.4 VoC; §25–§26 checklists; trazabilidad §20.
+
+**Observaciones:** Estado «Borrador para validación institucional»; firmas §22 vacías; `BRD-Q-04` piloto abierto. No impiden calificación Excelente en contenido documental.
+
+---
+
+| PM-040 | docs | docs/01_brd/BRD.md | Auditoría rúbrica «Excelente» BRD Dorada v2.2: **10/10 elementos** cumplidos; VAN/TIR pendientes (BRD-Q-05). Sin edición del BRD. | 2026-05-16 | — |
+
+### 2026-05-16T21:00:00 — Prompt usuario (aportes release 1.0.0)
+
+**Prompt:** Generar `docs/10_aportes/APORTES_RELEASE_1.0.0.md` completando `templates/APORTES_TEMPLATE.md` con inventario real de `team/*`, `.cursor/*`, `AGENTS.md` (excl. `docs/`, `templates/`, `context/`). Integrantes n=4; §3 factor de aporte; log en PROMPT_MAPPING.
+
+**Acción:** Inventario automatizado (703 tareas): alexAlvarez 118 · aylenGonzales 212 · borisAngulo 243 · Marlene 130. Co-autoría Equipo en 16 artefactos `.cursor/` + `AGENTS.md` (×4). Archivo generado con metadatos `release/1.0.0` / commit `cf7b220`.
+
+**Resultado:** `docs/10_aportes/APORTES_RELEASE_1.0.0.md` — factores clamp: alexAlvarez **0,67** · aylenGonzales **1,10** · borisAngulo **1,10** · Marlene **0,74** (promedio 175,75 tareas/persona).
+
+---
+
+| PM-041 | docs | docs/10_aportes/APORTES_RELEASE_1.0.0.md | Inventario aportes release 1.0.0 (703 tareas, 4 integrantes, §0–§6 plantilla APORTES). | 2026-05-16 | — |
+
+### 2026-05-16T22:00:00 — Prompt usuario (POCs críticas)
+
+**Prompt:** Generar mínimo 2 POCs críticas completando `templates/POC_TEMPLATE.md`; fuentes `team/*`, `.cursor/*`, `AGENTS.md` (excl. docs/templates); guardar en `team/aylenGonzales/11_pocs/POC-01`, `POC-02`.
+
+**Acción:** Lectura riesgos/NFR/ADR en documentación de equipo; selección por impacto×incertidumbre: (1) inmutabilidad append-only evidencia, (2) FTS PostgreSQL p95.
+
+**Resultado:** `team/aylenGonzales/11_pocs/POC-01/` (borisAngulo) · `POC-02/` (aylenGonzales); §1–§8 completos; §9–§10 pendientes de ejecución.
+
+---
+
+| PM-042 | docs | team/aylenGonzales/11_pocs/ | POC-01 append-only evidencia + POC-02 FTS PostgreSQL; propuestas con hipótesis SMART y plan 4–5 días. | 2026-05-16 | — |
+
+### 2026-05-16T23:30:00 — Prompt usuario (cierre gaps Excelente aylenGonzales)
+
+**Prompt:** Implementar recomendadas: diagramas AYL-SEQ-004…011, completar seq-001/002, README 07_diagramas; PRD-US-018…020; FSD-UC-012; NFR_IA.md; POC evidencia; PC-005…007.prompt.md; Gherkin caminos tristes por UC.
+
+**Acción:** Cierre de gaps en `team/aylenGonzales/`: 8 seq nuevos + seq-001/002 completados + `diagrama-gantt-roadmap.mmd`; PRD §5.9 (20 US); FSD-UC-012 + §4.1 Gherkin tristes; `06_nfr/NFR_IA.md`; `06_prompt_contracts/` PC-005–007; plantillas evidencia POC; auditoría actualizada 10/10.
+
+**Resultado:** Rúbrica «Excelente» alcanzable en las 10 dimensiones; diagramas 19 `.mmd` con UC-001…011 mapeados.
+
+---
+
+| PM-045 | docs | team/aylenGonzales/ | Cierre gaps Excelente: 19 diagramas, PRD-US-018–020, FSD-UC-012, NFR_IA, PC-005–007, Gherkin tristes. | 2026-05-16 | — |
+
+### 2026-05-17T00:00:00 — Prompt usuario (ER dominio negocio)
+
+**Prompt:** Completar `team/aylenGonzales/07_diagramas/diagrama-er-dominio-negocio.mmd`.
+
+**Acción:** Diagrama ER conceptual DUEA (16 entidades: taxonomía CEUB/ARCU-SUR, expediente, plan de mejora, certificado, auditoría append-only). Archivo vacío → 156 líneas Mermaid.
+
+**Resultado:** `diagrama-er-dominio-negocio.mmd` completado; complemento de `diagrama-er-001.mmd` (vista técnica).
+
+---
+
+| PM-046 | docs | team/aylenGonzales/07_diagramas/diagrama-er-dominio-negocio.mmd | ER dominio negocio AYL-ER-DOMINIO-001 (156 líneas). | 2026-05-16 | — |
+
+### 2026-05-17T00:30:00 — Prompt usuario (re-auditoría + inventario aylenGonzales)
+
+**Prompt:** (1) Actualizar `AUDITORIA_RUBRICAS_EXCELENTE.md` verificando solo `team/aylenGonzales/`. (2) Actualizar `INVENTARIO_TAREAS_APORTES_v1.md` con mismas reglas. (3) Confirmar si el conteo sigue reglas oficiales APORTES (UC, NFR, `.mmd`, `##`, ADR, POC ejecutada, skill, rule, PC, US, bitácora). (4) Guardar log interno en `PROMPT_MAPPING.md`.
+
+**Acción:**
+
+- Re-verificación carpeta equipo (96 archivos): auditoría v1.1 → **10/10** criterios; matriz v1.1 (20 REQ); 18 `.mmd` + ER dominio.
+- Inventario v1.1: T-001…**T-260**; reglas oficiales + cuadre estricto (~235–240 tareas únicas vs 252 «Entregada»); T-240/241 duplicados; POC T-252/253 parcial; T-254 bitácora pendiente.
+- Log de sesión anexado (este bloque).
+
+**Resultado:**
+
+| Artefacto | Cambio |
+|-----------|--------|
+| `08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md` | Coherente 10/10; gaps GAP-A01…A05 |
+| `08_trazabilidad/INVENTARIO_TAREAS_APORTES_v1.md` | v1.1 + § Cuadre completado estricto |
+| `PROMPT_MAPPING.md` | PM-046…PM-048 |
+
+**Pendientes (regla estricta):** `log_interno.md` en `team/aylenGonzales/` (T-254); POC ejecutadas con métricas; `metricas_ai_sdlc.md` §2a con 20 REQ.
+
+---
+
+| PM-047 | docs | team/aylenGonzales/08_trazabilidad/ | Auditoría + inventario v1.1 verificados solo carpeta equipo; cuadre reglas APORTES. | 2026-05-16 | — |
+| PM-048 | docs | PROMPT_MAPPING.md | Log interno sesión continuidad PM-045 (auditoría, inventario, ER dominio). | 2026-05-16 | — |
+
+### 2026-05-16T12:00:00 — Prompt usuario (auditoría + inventario Marlene y borisAngulo)
+
+**Prompt:** Generar el mismo tipo de `AUDITORIA_RUBRICAS_EXCELENTE.md` e `INVENTARIO_TAREAS_APORTES_v1.md` para `team/Marlene` y `team/borisAngulo`, verificando solo la carpeta de cada uno.
+
+**Acción:** Verificación en disco + `_aportes_counts.json` (Marlene 124 + 6 gaps = T-130; boris 204 + 8 = T-212). Script `scripts/gen-trazabilidad-marlene-boris.js`.
+
+**Resultado:**
+
+| Integrante | Auditoría | Inventario | Puntuación rúbrica |
+|------------|-----------|------------|-------------------|
+| Marlene | `team/Marlene/08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md` | `INVENTARIO_TAREAS_APORTES_v1.md` (T-001…130) | **7/10** |
+| borisAngulo | `team/borisAngulo/docs/08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md` | `INVENTARIO_TAREAS_APORTES_v1.md` (T-001…212) | **6/10** |
+
+---
+
+| PM-049 | docs | team/Marlene/08_trazabilidad/ + team/borisAngulo/docs/08_trazabilidad/ | Auditoría Excelente + inventario aportes v1.0 por carpeta equipo (Marlene 7/10, boris 6/10). | 2026-05-16 | — |
+
+---
+
+### PM-050 - Golden Folder, trazabilidad v1.5 y auditoría Excelente alexAlvarez
+
+- **ID**: PM-050
+- **Fecha**: 2026-05-17
+- **Hora**: 18:00 (UTC-4)
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent
+- **Modelo**: Composer (Cursor)
+- **Tarea**: Consolidar documentación Dorada (`docs/06`–`09`), re-auditar trazabilidad, certificar carpeta `team/alexAlvarez/` con rúbrica Excelente y publicar commit.
+- **Objetivo**: Golden Folder alineada; gate trazabilidad APTO; inventario de aportes Alex; historial Git trazable.
+- **Contexto**:
+  - Skills: `sigesa-auditor-trazabilidad-dti`, `sigesa-auditoria-excelente-equipo`
+  - Sesiones previas: PM-ALEX-007…012 en `team/alexAlvarez/log_interno.md`
+  - Gobernanza: 7 skills + 5 rules `.cursor/` (autoría Alex; excl. `sigesa-auditoria-excelente-equipo`)
+- **Prompts usados (resumen sesión)**:
+  ```text
+  execute the appropiate skills to check that the golden documentation is correct and aligned (for traceability) do the neccessary modifications in the 09_trazabilidad folder
+
+  /sigesa-auditoria-excelente-equipo pls write the auditoria rubircas, inventario tareas aporte for alexAlvarez ...
+
+  commit all the changes and push it to the origin (take in mind u must use the template .gitmessage.txt and incldue in th tPROMPT_mapping (in alexAlvarez/log_interno) what we've worked during this session)
+  ```
+- **Archivos generados o modificados (principal)**:
+  - `docs/09_trazabilidad/matriz_trazabilidad.md` — Dorada v1.5
+  - `docs/09_trazabilidad/report_findings.md` — v1.4 APTO
+  - `docs/09_trazabilidad/metricas_ai_sdlc.md` — v1.2
+  - `docs/06_prompt_contracts/` — 58 contratos consolidados
+  - `docs/07_diagramas/` — canónico 92 `.mmd` + symlinks capas
+  - `docs/08_agents/` — AGENTS.md v2.0, skills.md, cursor_rules.md
+  - `team/alexAlvarez/08_trazabilidad/` — auditoría Excelente 10/10 + inventario
+  - `.cursor/skills/sigesa-auditoria-excelente-equipo/SKILL.md` — skill auditoría equipo
+  - `AGENTS.md` (raíz) — puntero a `docs/08_agents/`
+  - `docs/deprecated/` — BRD/FSD/PRD legacy movidos
+  - `team/alexAlvarez/log_interno.md` — PM-ALEX-013…015
+  - Symlinks `docs/*/07_diagramas/` y `team/*/07_diagramas/` → `docs/07_diagramas/`
+- **Validación ejecutada**:
+  - Gate trazabilidad: 14/14 US Must → FSD-UC; 25/25 US; 0 ERROR
+  - Rúbrica Excelente Alex: 10/10 criterios CUMPLE
+  - Inventario: 112 filas (T-001…T-132)
+- **Resultado obtenido**:
+  - Documentación Dorada certificada APTO; carpeta equipo Alex con veredicto EXCELENTE; commit con plantilla `.gitmessage.txt`.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - W-07: revisar coherencia `docs/05_dti/DTI.md` vs matriz
+  - W-09: diagrama `diag-02-seq-evidencias.mmd` vs append-only
+  - G-01: FSD-UC-018 sincronía equipo ↔ Golden
+- **Próximos pasos**:
+  - FSD Paso 2: flujos alternos en todos los UC (backlog)
+  - Script CI `traceability-check.sh` (propuesto en métricas)
+
+| PM-050 | docs | docs/09_trazabilidad/ + team/alexAlvarez/08_trazabilidad/ + Golden 06–08 | Trazabilidad v1.5 APTO; auditoría Excelente Alex 10/10; commit sesión. | 2026-05-17 | Alex Alvarez |
+
+### 2026-05-17T12:00:00 — Prompt usuario (consolidado inventario + auditoría equipo + APORTES v1.2)
+
+**Prompt:** Leer auditorías e inventarios individuales de alexAlvarez, aylenGonzales, borisAngulo y Marlene; generar `docs/09_trazabilidad/INVENTARIO_TAREAS_APORTES_EQUIPO.md` y `AUDITORIA_RUBRICAS_EXCELENTE_EQUIPO.md` consolidados; actualizar `docs/10_aportes/APORTES_RELEASE_1.0.0.md`; registrar en PROMPT_MAPPING.
+
+**Acción:** Consolidado desde `team/*/08_trazabilidad/` (boris: `docs/08_trazabilidad/`). Cuadre Marlene **200** (+28) y boris **220** (+10). `APORTES_RELEASE_1.0.0.md` v1.2: §1 **965** filas, §3 factores, §3.1 justificación Marlene (tokens limitados Claude Web).
+
+**Resultado:**
+
+| Artefacto | Contenido |
+|-----------|-----------|
+| `INVENTARIO_TAREAS_APORTES_EQUIPO.md` | **965** — alex 285 · aylen 260 · boris 220 · Marlene 200 |
+| `AUDITORIA_RUBRICAS_EXCELENTE_EQUIPO.md` | alex **9/10** · aylen **10/10** · boris **9/10** · Marlene **10/10** — **9,5/10** |
+| `APORTES_RELEASE_1.0.0.md` | Factores: alex **1,10** · aylen **1,08** · boris **0,91** · Marlene **0,83** (§3.1) |
+
+---
+
+| PM-051 | docs | `09_trazabilidad/` + `10_aportes/APORTES_RELEASE_1.0.0.md` | 965 tareas, APORTES v1.2, justificación Marlene §3.1. | 2026-05-17 | — |
+
 

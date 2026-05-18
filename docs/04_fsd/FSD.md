@@ -11,7 +11,7 @@
 | **MRD** | `docs/02_mrd/MRD.md` v1.1 |
 | **PRD** | `docs/03_prd/PRD.md` v1.0 |
 | **Roadmap** | `docs/03_prd/ROADMAP.md` |
-| **Matriz** | [`matriz_trazabilidad.md`](../../matriz_trazabilidad.md) |
+| **Matriz** | [`matriz_trazabilidad.md`](../09_trazabilidad/matriz_trazabilidad.md) |
 | **NFRs** | [`docs/05_nfr/NFR_ISO25010.md`](../05_nfr/NFR_ISO25010.md) |
 | **Estado** | Borrador — apto para DTI Dorado |
 
@@ -40,6 +40,8 @@
 | Modelo de datos (funcional) | [`modelo_datos.md`](modelo_datos.md) |
 | Contratos API | [`api_contracts.md`](api_contracts.md) |
 | Glosario FSD | [`glosario.md`](glosario.md) |
+| **Diagramas (`.mmd`)** | Vista [`07_diagramas/`](07_diagramas/README.md) → canónico [`../07_diagramas/`](../07_diagramas/README.md) |
+| **C4 (DTI)** | [`diag-06-c4-contexto-sistema.mmd`](../07_diagramas/diag-06-c4-contexto-sistema.mmd) · [`diag-07-c4-contenedores-sistema.mmd`](../07_diagramas/diag-07-c4-contenedores-sistema.mmd) — ver [`docs/05_dti/DTI.md`](../05_dti/DTI.md) §2 |
 
 > Modelo físico PostgreSQL: [`docs/05_dti/modelo_datos.md`](../05_dti/modelo_datos.md).
 
@@ -76,7 +78,7 @@ BRD-ASM-01…05; correo institucional; datos maestros carreras/facultades; plant
 | Estilo | Monolito modular (evitar microservicios prematuros — skill arquitectura) |
 | Persistencia Evidencia | Append-only; sin `DELETE` físico en blobs aprobados |
 | Autenticación | `AuthPort` + `LocalAuthAdapter` (v1.0); `LdapAuthAdapter` (v1.1) — ADR-0003 |
-| ADR | `ADR-0001` inmutable · `ADR-0002` monolito · `ADR-0003` auth adapter |
+| ADR | `docs/adr/README.md` — ADR-0001…0009 (inmutable, monolito, auth, storage, audit, PG, JWT, taxonomías, Node) |
 | Módulos lógicos | `MOD-AUTH`, `MOD-PROCESS`, `MOD-EVIDENCE`, `MOD-WORKFLOW`, `MOD-DASH`, `MOD-NOTIFY`, `MOD-REPORT`, `MOD-PUBLIC`, `MOD-AUDIT` |
 
 ### 2.5 Descomposición en tasks (Spec Kit)
@@ -133,6 +135,8 @@ stateDiagram-v2
 `COUNT(indicadores_fase) == COUNT(indicadores WHERE estado = APROBADO)` — si no, **excepción** `FASE_CIERRE_BLOQUEADO` (FSD-UC-010).
 
 ### 4.3 Diagrama de secuencia — Subsanación
+
+> Versión editable (fuente): [`07_diagramas/FSD-UC-006_subsanar_evidencia_secuencia.mmd`](07_diagramas/FSD-UC-006_subsanar_evidencia_secuencia.mmd) · Estados: [`FSD-UC-006_008_009_estados_indicador.mmd`](07_diagramas/FSD-UC-006_008_009_estados_indicador.mmd)
 
 ```mermaid
 sequenceDiagram
@@ -468,7 +472,7 @@ Ver documento dedicado [`docs/05_nfr/NFR_ISO25010.md`](../05_nfr/NFR_ISO25010.md
 | MRD-N-14 | 020 | UC-018 | — | TC-15 |
 | MRD-N-18 | 019 | UC-016 | NFR-005 | TC-PUB |
 
-**Matriz completa:** [`matriz_trazabilidad.md`](../../matriz_trazabilidad.md)
+**Matriz completa:** [`matriz_trazabilidad.md`](../09_trazabilidad/matriz_trazabilidad.md)
 
 ---
 

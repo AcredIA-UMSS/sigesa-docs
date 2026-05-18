@@ -2,10 +2,10 @@
 
 | Campo | Valor |
 |-------|-------|
-| **Versión** | **v1.3** |
-| **Timestamp** | `2026-05-16T20:00:00-04:00` |
+| **Versión** | **v1.4** |
+| **Timestamp** | `2026-05-17T18:00:00-04:00` |
 | **Auditor** | Skill `sigesa-auditor-trazabilidad-dti` v1.0 |
-| **Alcance** | BRD v2.2 · MRD v1.1 · PRD v1.0 · FSD v1.0 · NFR v1.1 · matriz v1.4 |
+| **Alcance** | BRD v2.2 · MRD v1.1 · PRD v1.0 · FSD Dorado · NFR v1.1 · DTI · Golden `docs/06`–`08` · matriz v1.5 |
 | **Ubicación canónica** | `docs/09_trazabilidad/` |
 
 ---
@@ -17,11 +17,12 @@
 | BRD-REQ (001–026) | 26/26 mapeados o N/A explícito |
 | PRD-REQ → BRD | 28/28 con enlace o N/A P3 documentado |
 | PRD-US Must → FSD-UC | **14/14** (0 huérfanos ERROR) |
-| PRD-US total → FSD-UC | **24/24** (100 %) |
+| PRD-US total → FSD-UC | **25/25** (100 %) |
 | FSD-UC definidos | **18/18** en `docs/04_fsd/casos_uso.md` |
-| Gherkin PRD §5 | 24/24 |
+| Gherkin PRD §5 + FSD | 25/25 US · 18/18 UC |
+| Golden Folder `docs/06`–`08` | Alineados en matriz §8 |
 | Validación bidireccional (muestra 5 cadenas) | PASS |
-| **Veredicto** | **APTO** — matriz Dorada v1.4 certificada |
+| **Veredicto** | **APTO** — matriz Dorada v1.5 certificada |
 
 ---
 
@@ -35,6 +36,7 @@
 | Cada `PRD-REQ` Must enlaza `BRD-REQ` | PASS |
 | Cada `BRD-REQ` Must tiene rastro MRD/PRD | PASS |
 | Terminología glosario (Fase, Evidencia, Indicador) | PASS en muestra `docs/` |
+| Enlaces relativos en matriz (`../05_*`, `../adr/`) | PASS (corregidos v1.5) |
 | Huérfanos ERROR | **0** |
 
 ### 2.2 Muestra bidireccional (5 cadenas)
@@ -59,18 +61,23 @@ No se detectaron `PRD-US` Must sin `FSD-UC` ni `PRD-REQ` Must sin `BRD-REQ`.
 
 | ID | Hallazgo | Acción |
 |----|----------|--------|
-| W-01 | BRD-REQ-021 respaldo sin FSD-UC (runbook DTI) | Documentar en `docs/05_dti/DTI.md` §infra |
+| W-01 | BRD-REQ-021 respaldo sin FSD-UC (runbook DTI) | Documentar en [`docs/05_dti/DTI.md`](../05_dti/DTI.md) §infra |
 | W-05 | Wireframes M2 no en repo | FSD §9 cuando existan |
 | W-06 | BRD-Q-04: carreras piloto pendientes | Completar BRD §14.3 con [JD] |
-| W-07 | `docs/05_dti/DTI.md` aún no compilado | Siguiente paso post gate PASS |
+| W-07 | `docs/05_dti/DTI.md` compilado; revisar coherencia ADR/MOD con matriz §6 | Auditoría DTI vs matriz en próximo sprint |
 | W-08 | Spec Fidelity (M-RUB-SF) requiere medición Git formal | Ejecutar script diff en próximo sprint |
+| W-09 | `diag-02-seq-evidencias.mmd` puede sugerir DELETE exitoso | Alinear diagrama con append-only (409) |
 
-### 3.3 Info
+### 3.3 Info — resueltos / nuevos
 
-| ID | Nota |
-|----|------|
-| I-01 | Migración canónica desde raíz `matriz_trazabilidad.md` y `metricas_ai_sdlc.md` a `docs/09_trazabilidad/` |
-| I-02 | PRD-REQ-024, 027, 028 marcados N/A v2 (esperado P3) |
+| ID | Nota | Estado |
+|----|------|--------|
+| I-01 | Migración canónica a `docs/09_trazabilidad/` | Cerrado |
+| I-02 | PRD-REQ-024, 027, 028 N/A v2 (P3) | Vigente |
+| I-03 | [`docs/06_prompt_contracts/`](../06_prompt_contracts/prompt_contracts.md): 58 PCs consolidados | Nuevo 2026-05-17 |
+| I-04 | [`docs/07_diagramas/`](../07_diagramas/README.md): carpeta canónica; vistas `*/07_diagramas/` | Nuevo 2026-05-17 |
+| I-05 | [`docs/08_agents/`](../08_agents/AGENTS.md): 8 skills, 5 rules, manifiesto Dorado v2.0 | Nuevo 2026-05-17 |
+| I-06 | Enlaces rotos `docs/adr` desde matriz (prefijo incorrecto) | **Corregido** v1.5 |
 
 ---
 
@@ -90,11 +97,12 @@ No se detectaron `PRD-US` Must sin `FSD-UC` ni `PRD-REQ` Must sin `BRD-REQ`.
 
 | Criterio | Estado |
 |----------|--------|
-| Matriz v1.4 en `docs/09_trazabilidad/` | Cumple |
-| `metricas_ai_sdlc.md` con M-RUB-PC/SF/AE | Cumple |
+| Matriz v1.5 en `docs/09_trazabilidad/` | Cumple |
+| `metricas_ai_sdlc.md` con M-RUB-PC/SF/AE | Cumple (v1.2) |
 | Cero ERROR huérfanos Must | Cumple |
-| Q-05 carreras piloto | Pendiente (no bloquea redacción DTI) |
-| Compilar `docs/05_dti/DTI.md` | **Autorizado** (gate trazabilidad PASS) |
+| Golden Folder 06–08 referenciado en matriz §8 | Cumple |
+| Q-05 carreras piloto | Pendiente (no bloquea DTI) |
+| `docs/05_dti/DTI.md` | Existe — revisión de coherencia pendiente (W-07) |
 
 ---
 
@@ -105,4 +113,5 @@ No se detectaron `PRD-US` Must sin `FSD-UC` ni `PRD-REQ` Must sin `BRD-REQ`.
 | v1.0 | 2026-05-16T15:51:39-04:00 | Informe inicial (`docs/08_trazabilidad/`) |
 | v1.1 | 2026-05-16T16:22:00-04:00 | Auditoría E-01 |
 | v1.2 | 2026-05-16T16:30:00-04:00 | Q-01…Q-04 cerradas |
-| **v1.3** | 2026-05-16T20:00:00-04:00 | Migración `09_trazabilidad`; gate PASS; 0 ERROR Must |
+| v1.3 | 2026-05-16T20:00:00-04:00 | Migración `09_trazabilidad`; gate PASS; 0 ERROR Must |
+| **v1.4** | 2026-05-17T18:00:00-04:00 | Re-auditoría Golden 06–08; matriz v1.5; US 25/25; enlaces corregidos |

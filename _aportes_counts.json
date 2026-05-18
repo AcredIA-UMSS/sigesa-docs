@@ -1,0 +1,3670 @@
+{
+  "alexAlvarez": [
+    {
+      "0": "BRD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\alexAlvarez\\docs\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "2. Objetivos SMART (mí",
+      "2": "2. Objetivos SMART (mí",
+      "ref": "team\\alexAlvarez\\docs\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "3. Stakeholders y matriz RACI básica\r\n\r\n**Actores de",
+      "2": "3. Stakeholders y matriz RACI básica\r\n\r\n",
+      "ref": "team\\alexAlvarez\\docs\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "4. Busi",
+      "2": "4. Busi",
+      "ref": "team\\alexAlvarez\\docs\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "5. Alca",
+      "2": "5. Alca",
+      "ref": "team\\alexAlvarez\\docs\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "6. KPIs de",
+      "2": "6. KPIs de",
+      "ref": "team\\alexAlvarez\\docs\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "7. Restriccio",
+      "2": "7. Restriccio",
+      "ref": "team\\alexAlvarez\\docs\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "8. Supuestos (assumptio",
+      "2": "8. Supuestos (assumptio",
+      "ref": "team\\alexAlvarez\\docs\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "9. Riesgos y mitigació",
+      "2": "9. Riesgos y mitigació",
+      "ref": "team\\alexAlvarez\\docs\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "10. Gober",
+      "2": "10. Gober",
+      "ref": "team\\alexAlvarez\\docs\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "11. Criterios de éxito\r\n\r\n| ID | Criterio |\r\n|----|----------|\r\n| **[B",
+      "2": "11. Criterios de éxito\r\n\r\n| ID | Criteri",
+      "ref": "team\\alexAlvarez\\docs\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "12. Trazabilidad hacia MRD / PRD / FSD\r\n\r\n| Regla / objetivo BRD | Sig",
+      "2": "12. Trazabilidad hacia MRD / PRD / FSD\r\n",
+      "ref": "team\\alexAlvarez\\docs\\01_brd\\BRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | SIG",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "2. Visió",
+      "2": "2. Visió",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "3. A",
+      "2": "3. A",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "4. Segme",
+      "2": "4. Segme",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "5. Jobs-to-be-Do",
+      "2": "5. Jobs-to-be-Do",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "6. Voz del Clie",
+      "2": "6. Voz del Clie",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "7. A",
+      "2": "7. A",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "8. Propuesta de valor\r\n\r\nSIGESA ofrece:\r\n- U",
+      "2": "8. Propuesta de valor\r\n\r\nSIGESA ofrece:\r",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "9. Prici",
+      "2": "9. Prici",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "10. Go-to-market\r\n\r\n### 10.1 Ca",
+      "2": "10. Go-to-market\r\n\r\n### 10.1 Ca",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "11. Métricas de éxito del producto\r\n\r\n- North Star Metric: porce",
+      "2": "11. Métricas de éxito del producto\r\n\r\n- ",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "12. Requerimie",
+      "2": "12. Requerimie",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "13. Supuestos e hipótesis a validar\r\n\r\n| ID | Hipótesis | Cómo validar",
+      "2": "13. Supuestos e hipótesis a validar\r\n\r\n|",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "14. Riesgos de mercado\r\n\r\n| Riesgo | Prob. | Impacto | Mitigació",
+      "2": "14. Riesgos de mercado\r\n\r\n| Riesgo | Pro",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "15. Trazabilidad\r\n\r\n| MRD ID | BRD ID | PRD ID |\r\n|--------|--------|-",
+      "2": "15. Trazabilidad\r\n\r\n| MRD ID | BRD ID | ",
+      "ref": "team\\alexAlvarez\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | SIG",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "2. Épicas pri",
+      "2": "2. Épicas pri",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "3. E",
+      "2": "3. E",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "4. Objetivos y métricas clave\r\n\r\n| Épica | Objetivo | Métrica | Meta |",
+      "2": "4. Objetivos y métricas clave\r\n\r\n| Épica",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "5. Alca",
+      "2": "5. Alca",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "7. Requerimie",
+      "2": "7. Requerimie",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "8. Requerimie",
+      "2": "8. Requerimie",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "9. Depe",
+      "2": "9. Depe",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "10. Supuestos y restriccio",
+      "2": "10. Supuestos y restriccio",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "11. Experie",
+      "2": "11. Experie",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "12. Métricas de éxito del producto\r\n\r\n- **North Star**: porce",
+      "2": "12. Métricas de éxito del producto\r\n\r\n- ",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "13. Riesgos del producto\r\n\r\n| Riesgo | Prob. | Impacto | Mitigació",
+      "2": "13. Riesgos del producto\r\n\r\n| Riesgo | P",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "14. Trazabilidad\r\n\r\n| PRD ID | BRD | MRD | FSD (próximo) |\r\n|--------|",
+      "2": "14. Trazabilidad\r\n\r\n| PRD ID | BRD | MRD",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "1. Roadmap de e",
+      "2": "1. Roadmap de e",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\roadmap.md"
+    },
+    {
+      "0": "PRD",
+      "1": "2. Desglose por hitos\r\n\r\n- **Q3 2026**: Validació",
+      "2": "2. Desglose por hitos\r\n\r\n- **Q3 2026**: ",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\roadmap.md"
+    },
+    {
+      "0": "PRD",
+      "1": "1. Viaje del Coordi",
+      "2": "1. Viaje del Coordi",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\user_journeys.md"
+    },
+    {
+      "0": "PRD",
+      "1": "2. Viaje del Téc",
+      "2": "2. Viaje del Téc",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\user_journeys.md"
+    },
+    {
+      "0": "PRD",
+      "1": "3. Viaje del Público co",
+      "2": "3. Viaje del Público co",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\user_journeys.md"
+    },
+    {
+      "0": "PRD",
+      "1": "4. Viaje de la Jefatura DUEA audita",
+      "2": "4. Viaje de la Jefatura DUEA audita",
+      "ref": "team\\alexAlvarez\\docs\\03_prd\\user_journeys.md"
+    },
+    {
+      "0": "Prompt",
+      "1": "06-docs-consistency-checker.prompt.md",
+      "2": "06-docs-consistency-checker.prompt.md",
+      "ref": "team\\alexAlvarez\\docs\\prompts\\06-docs-consistency-checker.prompt.md"
+    },
+    {
+      "0": "Prompt",
+      "1": "PC-SIG-03.prompt.md",
+      "2": "PC-SIG-03.prompt.md",
+      "ref": "team\\alexAlvarez\\docs\\prompts\\PC-SIG-03.prompt.md"
+    },
+    {
+      "0": "Prompt",
+      "1": "sigesa-api-contract-designer.prompt.md",
+      "2": "sigesa-api-contract-designer.prompt.md",
+      "ref": "team\\alexAlvarez\\prompts\\sigesa-api-contract-designer.prompt.md"
+    },
+    {
+      "0": "Prompt",
+      "1": "sigesa-arquitectura-tecnica-ia.prompt.md",
+      "2": "sigesa-arquitectura-tecnica-ia.prompt.md",
+      "ref": "team\\alexAlvarez\\prompts\\sigesa-arquitectura-tecnica-ia.prompt.md"
+    },
+    {
+      "0": "Prompt",
+      "1": "sigesa-auditor-trazabilidad-dti.prompt.md",
+      "2": "sigesa-auditor-trazabilidad-dti.prompt.md",
+      "ref": "team\\alexAlvarez\\prompts\\sigesa-auditor-trazabilidad-dti.prompt.md"
+    },
+    {
+      "0": "Prompt",
+      "1": "sigesa-db-architect-append-only.prompt.md",
+      "2": "sigesa-db-architect-append-only.prompt.md",
+      "ref": "team\\alexAlvarez\\prompts\\sigesa-db-architect-append-only.prompt.md"
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    }
+  ],
+  "aylenGonzales": [
+    {
+      "0": "BRD",
+      "1": "(v2 — exte",
+      "2": "(v2 — exte",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | Acr",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "2. Co",
+      "2": "2. Co",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "3. Problema y Oportu",
+      "2": "3. Problema y Oportu",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "4. Usuarios Objetivo / Actores del Sistema\r\n\r\nEl sistema reco",
+      "2": "4. Usuarios Objetivo / Actores del Siste",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "5. Propuesta de Valor\r\n\r\n| Eje | Co",
+      "2": "5. Propuesta de Valor\r\n\r\n| Eje | Co",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "6. Pa",
+      "2": "6. Pa",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "7. Busi",
+      "2": "7. Busi",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "8. Métricas Clave de Éxito (North Star + Apoyo)\r\n\r\n| ID | KPI | North ",
+      "2": "8. Métricas Clave de Éxito (North Star +",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "9. Objetivos de Negocio (SMART)\r\n\r\n| ID | Objetivo | Métrica | Lí",
+      "2": "9. Objetivos de Negocio (SMART)\r\n\r\n| ID ",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "10. Stakeholders y Roles (Modelo RACI)\r\n\r\n| Stakeholder | I",
+      "2": "10. Stakeholders y Roles (Modelo RACI)\r\n",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "11. Requerimie",
+      "2": "11. Requerimie",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "12. Reglas de Negocio y Políticas\r\n\r\n| ID | Regla | Tipo | Orige",
+      "2": "12. Reglas de Negocio y Políticas\r\n\r\n| I",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "13. Supuestos, Restriccio",
+      "2": "13. Supuestos, Restriccio",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "14. Alca",
+      "2": "14. Alca",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "15. Be",
+      "2": "15. Be",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "16. Riesgos de Negocio\r\n\r\n| Riesgo | Probabilidad | Impacto | Mitigaci",
+      "2": "16. Riesgos de Negocio\r\n\r\n| Riesgo | Pro",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "17. Criterios de Éxito del Proyecto de Negocio\r\n\r\n- Cumplimie",
+      "2": "17. Criterios de Éxito del Proyecto de N",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "18. Trazabilidad a Docume",
+      "2": "18. Trazabilidad a Docume",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "19. Aprobacio",
+      "2": "19. Aprobacio",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "21. Ali",
+      "2": "21. Ali",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "22. Actores compleme",
+      "2": "22. Actores compleme",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "23. Requerimie",
+      "2": "23. Requerimie",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "24. I",
+      "2": "24. I",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "25. KPIs y criterios de éxito exte",
+      "2": "25. KPIs y criterios de éxito exte",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "26. Riesgos de producto compleme",
+      "2": "26. Riesgos de producto compleme",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "BRD",
+      "1": "Checklist Mí",
+      "2": "Checklist Mí",
+      "ref": "team\\aylenGonzales\\01_brd\\BRD_v2_aylen.md"
+    },
+    {
+      "0": "MRD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | Acr",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "2. Visió",
+      "2": "2. Visió",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "3. A",
+      "2": "3. A",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "4. Segme",
+      "2": "4. Segme",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "5. *Jobs-to-be-Do",
+      "2": "5. *Jobs-to-be-Do",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "6. A",
+      "2": "6. A",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "7. Propuesta de Valor\r\n\r\n### 7.1 *Value Propositio",
+      "2": "7. Propuesta de Valor\r\n\r\n### 7.1 *Value ",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "8. Prici",
+      "2": "8. Prici",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "9. *Go-to-Market*\r\n\r\n### 9.1 Ca",
+      "2": "9. *Go-to-Market*\r\n\r\n### 9.1 Ca",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "10. Métricas de Éxito del Producto\r\n\r\n- **North Star Metric**: tiempo ",
+      "2": "10. Métricas de Éxito del Producto\r\n\r\n- ",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "11. Requerimie",
+      "2": "11. Requerimie",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "12. Supuestos e Hipótesis a Validar\r\n\r\n| ID | Hipótesis | Cómo validar",
+      "2": "12. Supuestos e Hipótesis a Validar\r\n\r\n|",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "13. Riesgos de Mercado\r\n\r\n| Riesgo | Prob. | Impacto | Mitigació",
+      "2": "13. Riesgos de Mercado\r\n\r\n| Riesgo | Pro",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "14. Trazabilidad\r\n\r\n| MRD ID | BRD ID | PRD ID | FSD ID |\r\n|--------|-",
+      "2": "14. Trazabilidad\r\n\r\n| MRD ID | BRD ID | ",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "15. A",
+      "2": "15. A",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "MRD",
+      "1": "Checklist Mí",
+      "2": "Checklist Mí",
+      "ref": "team\\aylenGonzales\\02_mrd\\MRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | Acr",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "0.1 Co",
+      "2": "0.1 Co",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "2. Objetivos del producto\r\n\r\n| ID | Objetivo del producto | BRD vi",
+      "2": "2. Objetivos del producto\r\n\r\n| ID | Obje",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "3. Alca",
+      "2": "3. Alca",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "4. Perso",
+      "2": "4. Perso",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "5. *User stories* y criterios de aceptació",
+      "2": "5. *User stories* y criterios de aceptac",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "6. Priorizació",
+      "2": "6. Priorizació",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "7. Requerimie",
+      "2": "7. Requerimie",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "8. Requerimie",
+      "2": "8. Requerimie",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "9. Depe",
+      "2": "9. Depe",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "10. Supuestos y restriccio",
+      "2": "10. Supuestos y restriccio",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "11. Experie",
+      "2": "11. Experie",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "12. Métricas de éxito del producto\r\n\r\n- **North Star**: tiempo promedi",
+      "2": "12. Métricas de éxito del producto\r\n\r\n- ",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "13. Riesgos del producto\r\n\r\n| Riesgo | Prob. | Impacto | Mitigació",
+      "2": "13. Riesgos del producto\r\n\r\n| Riesgo | P",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "14. Trazabilidad\r\n\r\n| PRD ID | BRD | MRD (pe",
+      "2": "14. Trazabilidad\r\n\r\n| PRD ID | BRD | MRD",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "15. A",
+      "2": "15. A",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "Checklist mí",
+      "2": "Checklist mí",
+      "ref": "team\\aylenGonzales\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Í",
+      "2": "Í",
+      "ref": "team\\aylenGonzales\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "FSD-UC-001 — Carga de Evide",
+      "2": "FSD-UC-001 — Carga de Evide",
+      "ref": "team\\aylenGonzales\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "FSD-UC-002 — Co",
+      "2": "FSD-UC-002 — Co",
+      "ref": "team\\aylenGonzales\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "FSD-UC-003 — Flujo de Aprobació",
+      "2": "FSD-UC-003 — Flujo de Aprobació",
+      "ref": "team\\aylenGonzales\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "FSD-UC-004 — Notificacio",
+      "2": "FSD-UC-004 — Notificacio",
+      "ref": "team\\aylenGonzales\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "FSD-UC-005 — Ge",
+      "2": "FSD-UC-005 — Ge",
+      "ref": "team\\aylenGonzales\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "FSD-UC-006 — Aute",
+      "2": "FSD-UC-006 — Aute",
+      "ref": "team\\aylenGonzales\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "FSD-UC-007 — Búsqueda Multifiltro de Docume",
+      "2": "FSD-UC-007 — Búsqueda Multifiltro de Doc",
+      "ref": "team\\aylenGonzales\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "FSD-UC-008 — Portal Público de Co",
+      "2": "FSD-UC-008 — Portal Público de Co",
+      "ref": "team\\aylenGonzales\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "FSD-UC-009 — Emisió",
+      "2": "FSD-UC-009 — Emisió",
+      "ref": "team\\aylenGonzales\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "FSD-UC-010 — Respaldo Automático Diario Verificable\r\n\r\n| Campo | Valor",
+      "2": "FSD-UC-010 — Respaldo Automático Diario ",
+      "ref": "team\\aylenGonzales\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gaps declarados\r\n\r\n| ID | Gap | MRD-N afectado | Estado |\r\n|----|-----",
+      "2": "Gaps declarados\r\n\r\n| ID | Gap | MRD-N af",
+      "ref": "team\\aylenGonzales\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "0. Metadatos ⚡🔧\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto |",
+      "2": "0. Metadatos ⚡🔧\r\n\r\n| Campo | Valor |\r\n|",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Alca",
+      "2": "2. Alca",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Actores y roles del sistema ⚡🔧\r\n\r\n| Actor | Tipo | Respo",
+      "2": "3. Actores y roles del sistema ⚡🔧\r\n\r\n| ",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Casos de uso fu",
+      "2": "4. Casos de uso fu",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Reglas de",
+      "2": "5. Reglas de",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Modelo de datos fu",
+      "2": "6. Modelo de datos fu",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Prompt como Co",
+      "2": "7. Prompt como Co",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. I",
+      "2": "8. I",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. I",
+      "2": "9. I",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "10. Requerimie",
+      "2": "10. Requerimie",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "11. Trazabilidad MRD → PRD → FSD ⚡🔧\r\n\r\n| MRD (",
+      "2": "11. Trazabilidad MRD → PRD → FSD ⚡🔧\r\n\r\n",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "12. Pla",
+      "2": "12. Pla",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "13. Riesgos fu",
+      "2": "13. Riesgos fu",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "14. Glosario 🔧\r\n\r\n| Térmi",
+      "2": "14. Glosario 🔧\r\n\r\n| Térmi",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Checklist de e",
+      "2": "Checklist de e",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Modo LFSD ⚡\r\n\r\n> **Propósito**: especificar *cómo* fu",
+      "2": "Modo LFSD ⚡\r\n\r\n> **Propósito**: especifi",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | Acr",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Alca",
+      "2": "2. Alca",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Actores del sistema\r\n\r\n| Código | Actor | Tipo | Aute",
+      "2": "3. Actores del sistema\r\n\r\n| Código | Act",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Casos de uso críticos\r\n\r\n### FSD-UC-001 — Aute",
+      "2": "4. Casos de uso críticos\r\n\r\n### FSD-UC-0",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Reglas de",
+      "2": "5. Reglas de",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Modelo de datos\r\n\r\n### 6.1 Diagrama ER (Mermaid)\r\n\r\n```mermaid\r\nerD",
+      "2": "6. Modelo de datos\r\n\r\n### 6.1 Diagrama E",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Prompt-co",
+      "2": "7. Prompt-co",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. I",
+      "2": "8. I",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. Trazabilidad M2 (UI/UX)\r\n\r\n### 9.1 Pa",
+      "2": "9. Trazabilidad M2 (UI/UX)\r\n\r\n### 9.1 Pa",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "10. Requerimie",
+      "2": "10. Requerimie",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "11. Matriz de trazabilidad\r\n\r\n| MRD-N | BRD-BR | PRD-REQ | PRD-US | FS",
+      "2": "11. Matriz de trazabilidad\r\n\r\n| MRD-N | ",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "12. Pla",
+      "2": "12. Pla",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "13. Riesgos fu",
+      "2": "13. Riesgos fu",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "14. Glosario\r\n\r\n| Térmi",
+      "2": "14. Glosario\r\n\r\n| Térmi",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "15. A",
+      "2": "15. A",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Checklist LFSD ⚡\r\n\r\n| Ítem | Estado |\r\n|------|--------|\r\n| §0 Metadat",
+      "2": "Checklist LFSD ⚡\r\n\r\n| Ítem | Estado |\r\n|",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Co",
+      "2": "Co",
+      "ref": "team\\aylenGonzales\\04_fsd\\FSD_v2.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Domi",
+      "2": "1. Domi",
+      "ref": "team\\aylenGonzales\\04_fsd\\glossary.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Domi",
+      "2": "2. Domi",
+      "ref": "team\\aylenGonzales\\04_fsd\\glossary.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Roles del Sistema\r\n\r\n**[CC] — Coordi",
+      "2": "3. Roles del Sistema\r\n\r\n**[CC] — Coordi",
+      "ref": "team\\aylenGonzales\\04_fsd\\glossary.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Domi",
+      "2": "4. Domi",
+      "ref": "team\\aylenGonzales\\04_fsd\\glossary.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. I",
+      "2": "5. I",
+      "ref": "team\\aylenGonzales\\04_fsd\\glossary.md"
+    },
+    {
+      "0": "FSD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | Acr",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\aylenGonzales\\05_lfsd\\LFSD_v1_aylen.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Objetivo LFSD\r\n\r\nAcredIA / SIGESA digitaliza el ciclo completo de g",
+      "2": "1. Objetivo LFSD\r\n\r\nAcredIA / SIGESA dig",
+      "ref": "team\\aylenGonzales\\05_lfsd\\LFSD_v1_aylen.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Actores\r\n\r\n| Actor | Tipo | Permisos clave |\r\n|-------|------|-----",
+      "2": "2. Actores\r\n\r\n| Actor | Tipo | Permisos ",
+      "ref": "team\\aylenGonzales\\05_lfsd\\LFSD_v1_aylen.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Casos de uso críticos\r\n\r\n---\r\n\r\n### UC-A01 — Aute",
+      "2": "3. Casos de uso críticos\r\n\r\n---\r\n\r\n### U",
+      "ref": "team\\aylenGonzales\\05_lfsd\\LFSD_v1_aylen.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Reglas de",
+      "2": "4. Reglas de",
+      "ref": "team\\aylenGonzales\\05_lfsd\\LFSD_v1_aylen.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Modelo de datos core\r\n\r\n| E",
+      "2": "5. Modelo de datos core\r\n\r\n| E",
+      "ref": "team\\aylenGonzales\\05_lfsd\\LFSD_v1_aylen.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Prompt-co",
+      "2": "6. Prompt-co",
+      "ref": "team\\aylenGonzales\\05_lfsd\\LFSD_v1_aylen.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. NFRs críticos\r\n\r\n| ID | Categoría | Umbral | Cómo se verifica |\r\n|-",
+      "2": "7. NFRs críticos\r\n\r\n| ID | Categoría | U",
+      "ref": "team\\aylenGonzales\\05_lfsd\\LFSD_v1_aylen.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. Trazabilidad\r\n\r\n| UC | BRs | NFRs | Test ID |\r\n|----|-----|------|-",
+      "2": "8. Trazabilidad\r\n\r\n| UC | BRs | NFRs | T",
+      "ref": "team\\aylenGonzales\\05_lfsd\\LFSD_v1_aylen.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. Tasks ejecutables\r\n\r\n| Task ID | Descripció",
+      "2": "9. Tasks ejecutables\r\n\r\n| Task ID | Desc",
+      "ref": "team\\aylenGonzales\\05_lfsd\\LFSD_v1_aylen.md"
+    },
+    {
+      "0": "FSD",
+      "1": "10. Riesgos top-4\r\n\r\n| Riesgo | Probabilidad | Impacto | Mitigació",
+      "2": "10. Riesgos top-4\r\n\r\n| Riesgo | Probabil",
+      "ref": "team\\aylenGonzales\\05_lfsd\\LFSD_v1_aylen.md"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diagrama-er-001.mmd",
+      "2": "diagrama-er-001.mmd",
+      "ref": "team\\aylenGonzales\\07_diagramas\\diagrama-er-001.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diagrama-er-dominio-negocio.mmd",
+      "2": "diagrama-er-dominio-negocio.mmd",
+      "ref": "team\\aylenGonzales\\07_diagramas\\diagrama-er-dominio-negocio.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diagrama-gantt-release.mmd",
+      "2": "diagrama-gantt-release.mmd",
+      "ref": "team\\aylenGonzales\\07_diagramas\\diagrama-gantt-release.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diagrama-gantt-sprint.mmd",
+      "2": "diagrama-gantt-sprint.mmd",
+      "ref": "team\\aylenGonzales\\07_diagramas\\diagrama-gantt-sprint.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "seq-001-versionado-evidencias.mmd",
+      "2": "seq-001-versionado-evidencias.mmd",
+      "ref": "team\\aylenGonzales\\07_diagramas\\seq-001-versionado-evidencias.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "seq-002-flujo-aprobacion.mmd",
+      "2": "seq-002-flujo-aprobacion.mmd",
+      "ref": "team\\aylenGonzales\\07_diagramas\\seq-002-flujo-aprobacion.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "seq-003-autenticacion-jwt.mmd",
+      "2": "seq-003-autenticacion-jwt.mmd",
+      "ref": "team\\aylenGonzales\\07_diagramas\\seq-003-autenticacion-jwt.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "state-flujo-001-ciclo-vida-evidencia.mmd",
+      "2": "state-flujo-001-ciclo-vida-evidencia.mmd",
+      "ref": "team\\aylenGonzales\\07_diagramas\\state-flujo-001-ciclo-vida-evidencia.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "state-flujo-002-ciclo-vida-proceso-acreditacion.mmd",
+      "2": "state-flujo-002-ciclo-vida-proceso-acreditacion.mmd",
+      "ref": "team\\aylenGonzales\\07_diagramas\\state-flujo-002-ciclo-vida-proceso-acreditacion.mmd"
+    },
+    {
+      "0": "Otro",
+      "1": "matriz_trazabilidad.md",
+      "2": "matriz_trazabilidad.md",
+      "ref": "team\\aylenGonzales\\08_trazabilidad\\matriz_trazabilidad.md"
+    },
+    {
+      "0": "Otro",
+      "1": "metricas_ai_sdlc.md",
+      "2": "metricas_ai_sdlc.md",
+      "ref": "team\\aylenGonzales\\08_trazabilidad\\metricas_ai_sdlc.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Número | `0001` |",
+      "2": "Metadatos\r\n\r\n| Campo | Valor |\r\n|-------",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-001.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Co",
+      "2": "1. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-001.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Alter",
+      "2": "2. Alter",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-001.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Decisió",
+      "2": "3. Decisió",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-001.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Co",
+      "2": "4. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-001.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Impacto e",
+      "2": "5. Impacto e",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-001.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Pla",
+      "2": "6. Pla",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-001.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Validació",
+      "2": "7. Validació",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-001.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. Refere",
+      "2": "8. Refere",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-001.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. Historial\r\n\r\n| Versió",
+      "2": "9. Historial\r\n\r\n| Versió",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-001.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Número | `0002` |",
+      "2": "Metadatos\r\n\r\n| Campo | Valor |\r\n|-------",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-002.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Co",
+      "2": "1. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-002.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Alter",
+      "2": "2. Alter",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-002.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Decisió",
+      "2": "3. Decisió",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-002.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Co",
+      "2": "4. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-002.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Impacto e",
+      "2": "5. Impacto e",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-002.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Pla",
+      "2": "6. Pla",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-002.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Validació",
+      "2": "7. Validació",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-002.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. Refere",
+      "2": "8. Refere",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-002.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. Historial\r\n\r\n| Versió",
+      "2": "9. Historial\r\n\r\n| Versió",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-002.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Número | `0003` |",
+      "2": "Metadatos\r\n\r\n| Campo | Valor |\r\n|-------",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-003.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Co",
+      "2": "1. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-003.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Alter",
+      "2": "2. Alter",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-003.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Decisió",
+      "2": "3. Decisió",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-003.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Co",
+      "2": "4. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-003.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Impacto e",
+      "2": "5. Impacto e",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-003.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Pla",
+      "2": "6. Pla",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-003.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Validació",
+      "2": "7. Validació",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-003.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. Refere",
+      "2": "8. Refere",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-003.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. Historial\r\n\r\n| Versió",
+      "2": "9. Historial\r\n\r\n| Versió",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-003.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Número | `0004` |",
+      "2": "Metadatos\r\n\r\n| Campo | Valor |\r\n|-------",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-004.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Co",
+      "2": "1. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-004.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Alter",
+      "2": "2. Alter",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-004.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Decisió",
+      "2": "3. Decisió",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-004.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Co",
+      "2": "4. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-004.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Impacto e",
+      "2": "5. Impacto e",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-004.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Pla",
+      "2": "6. Pla",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-004.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Validació",
+      "2": "7. Validació",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-004.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. Refere",
+      "2": "8. Refere",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-004.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. Historial\r\n\r\n| Versió",
+      "2": "9. Historial\r\n\r\n| Versió",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-004.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Número | `0005` |",
+      "2": "Metadatos\r\n\r\n| Campo | Valor |\r\n|-------",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-005.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Co",
+      "2": "1. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-005.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Alter",
+      "2": "2. Alter",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-005.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Decisió",
+      "2": "3. Decisió",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-005.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Co",
+      "2": "4. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-005.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Impacto e",
+      "2": "5. Impacto e",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-005.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Pla",
+      "2": "6. Pla",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-005.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Validació",
+      "2": "7. Validació",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-005.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. Refere",
+      "2": "8. Refere",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-005.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. Historial\r\n\r\n| Versió",
+      "2": "9. Historial\r\n\r\n| Versió",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-005.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Número | `0006` |",
+      "2": "Metadatos\r\n\r\n| Campo | Valor |\r\n|-------",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-006.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Co",
+      "2": "1. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-006.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Alter",
+      "2": "2. Alter",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-006.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Decisió",
+      "2": "3. Decisió",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-006.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Co",
+      "2": "4. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-006.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Impacto e",
+      "2": "5. Impacto e",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-006.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Pla",
+      "2": "6. Pla",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-006.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Validació",
+      "2": "7. Validació",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-006.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. Refere",
+      "2": "8. Refere",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-006.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. Historial\r\n\r\n| Versió",
+      "2": "9. Historial\r\n\r\n| Versió",
+      "ref": "team\\aylenGonzales\\09_dti\\adr\\ADR-006.md"
+    },
+    {
+      "0": "FSD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| **Producto** |",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Visió",
+      "2": "1. Visió",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Co",
+      "2": "2. Co",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Arquitectura de Alto Nivel\r\n\r\n### 3.1 Estilo arquitectó",
+      "2": "3. Arquitectura de Alto Nivel\r\n\r\n### 3.1",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Modelo de Domi",
+      "2": "4. Modelo de Domi",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Arquitectura Hexago",
+      "2": "5. Arquitectura Hexago",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Arquitectura Distribuida\r\n\r\n**No aplica microservicios e",
+      "2": "6. Arquitectura Distribuida\r\n\r\n**No apli",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Arquitectura Así",
+      "2": "7. Arquitectura Así",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. Despliegue — E",
+      "2": "8. Despliegue — E",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. Capa de IA / Age",
+      "2": "9. Capa de IA / Age",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "10. Estrategia de Prompt Mappi",
+      "2": "10. Estrategia de Prompt Mappi",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "11. NFRs Co",
+      "2": "11. NFRs Co",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "12. POCs Críticas\r\n\r\n### 12.1 POC-01: Spike backe",
+      "2": "12. POCs Críticas\r\n\r\n### 12.1 POC-01: Sp",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "13. Seguridad\r\n\r\n| Tema | Decisió",
+      "2": "13. Seguridad\r\n\r\n| Tema | Decisió",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "14. Observabilidad\r\n\r\n- **Logs**: JSON estructurado co",
+      "2": "14. Observabilidad\r\n\r\n- **Logs**: JSON e",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "15. DevOps y ciclo de vida\r\n\r\n- **Bra",
+      "2": "15. DevOps y ciclo de vida\r\n\r\n- **Bra",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "16. A",
+      "2": "16. A",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "17. Trade-offs arquitectó",
+      "2": "17. Trade-offs arquitectó",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "18. Riesgos téc",
+      "2": "18. Riesgos téc",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "19. Roadmap téc",
+      "2": "19. Roadmap téc",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "20. Glosario y refere",
+      "2": "20. Glosario y refere",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "21. Registro de decisio",
+      "2": "21. Registro de decisio",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Checklist de e",
+      "2": "Checklist de e",
+      "ref": "team\\aylenGonzales\\09_dti\\DTI_v1.md"
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    }
+  ],
+  "borisAngulo": [
+    {
+      "0": "BRD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | SIG",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "2. Co",
+      "2": "2. Co",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "3. Problema y oportu",
+      "2": "3. Problema y oportu",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "4. Usuarios objetivo / Perso",
+      "2": "4. Usuarios objetivo / Perso",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "5. Propuesta de valor\r\n\r\n> Sí",
+      "2": "5. Propuesta de valor\r\n\r\n> Sí",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "6. Pa",
+      "2": "6. Pa",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "7. Busi",
+      "2": "7. Busi",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "8. Métricas clave de éxito (North Star + apoyo)\r\n\r\n> Aquí declara",
+      "2": "8. Métricas clave de éxito (North Star +",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "9. Objetivos de",
+      "2": "9. Objetivos de",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "10. Stakeholders y roles (modelo RACI)\r\n\r\n| Stakeholder | I",
+      "2": "10. Stakeholders y roles (modelo RACI)\r\n",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "11. Requerimie",
+      "2": "11. Requerimie",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "12. Reglas de",
+      "2": "12. Reglas de",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "13. Supuestos, restriccio",
+      "2": "13. Supuestos, restriccio",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "14. Alca",
+      "2": "14. Alca",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "15. Be",
+      "2": "15. Be",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "16. Riesgos de",
+      "2": "16. Riesgos de",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "17. Criterios de éxito del proyecto de",
+      "2": "17. Criterios de éxito del proyecto de",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "18. Trazabilidad a docume",
+      "2": "18. Trazabilidad a docume",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "19. Aprobacio",
+      "2": "19. Aprobacio",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "21. A",
+      "2": "21. A",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "BRD",
+      "1": "Checklist mí",
+      "2": "Checklist mí",
+      "ref": "team\\borisAngulo\\docs\\01_brd\\BRD_v2.md"
+    },
+    {
+      "0": "MRD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | SIG",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "2. Visió",
+      "2": "2. Visió",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "3. A",
+      "2": "3. A",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "4. Segme",
+      "2": "4. Segme",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "5. *Jobs-to-be-Do",
+      "2": "5. *Jobs-to-be-Do",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "6. A",
+      "2": "6. A",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "7. Propuesta de valor\r\n\r\n### 7.1 *Value Propositio",
+      "2": "7. Propuesta de valor\r\n\r\n### 7.1 *Value ",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "8. Prici",
+      "2": "8. Prici",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "9. *Go-to-market*\r\n\r\n### 9.1 Ca",
+      "2": "9. *Go-to-market*\r\n\r\n### 9.1 Ca",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "10. Métricas de éxito del producto\r\n\r\n- **North Star Metric**: porce",
+      "2": "10. Métricas de éxito del producto\r\n\r\n- ",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "11. Requerimie",
+      "2": "11. Requerimie",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "12. Supuestos e hipótesis a validar\r\n\r\n| ID | Hipótesis | Cómo validar",
+      "2": "12. Supuestos e hipótesis a validar\r\n\r\n|",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "13. Riesgos de mercado\r\n\r\n| Riesgo | Prob. | Impacto | Mitigació",
+      "2": "13. Riesgos de mercado\r\n\r\n| Riesgo | Pro",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "14. Trazabilidad\r\n\r\n| MRD ID | BRD ID | PRD ID |\r\n|--------|--------|-",
+      "2": "14. Trazabilidad\r\n\r\n| MRD ID | BRD ID | ",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "15. A",
+      "2": "15. A",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "Checklist de evaluació",
+      "2": "Checklist de evaluació",
+      "ref": "team\\borisAngulo\\docs\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | SIG",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "0.1 Co",
+      "2": "0.1 Co",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "2. Objetivos del producto\r\n\r\nCada objetivo e",
+      "2": "2. Objetivos del producto\r\n\r\nCada objeti",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "3. Alca",
+      "2": "3. Alca",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "4. Perso",
+      "2": "4. Perso",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "5. *User stories* y criterios de aceptació",
+      "2": "5. *User stories* y criterios de aceptac",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "6. Priorizació",
+      "2": "6. Priorizació",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "7. Requerimie",
+      "2": "7. Requerimie",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "8. Requerimie",
+      "2": "8. Requerimie",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "9. Depe",
+      "2": "9. Depe",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "10. Supuestos y restriccio",
+      "2": "10. Supuestos y restriccio",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "11. Experie",
+      "2": "11. Experie",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "12. Métricas de éxito del producto\r\n\r\n- **North Star**: porce",
+      "2": "12. Métricas de éxito del producto\r\n\r\n- ",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "13. Riesgos del producto\r\n\r\n| Riesgo | Prob. | Impacto | Mitigació",
+      "2": "13. Riesgos del producto\r\n\r\n| Riesgo | P",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "14. Trazabilidad\r\n\r\n| PRD ID | BRD | MRD | FSD (próximo) |\r\n|--------|",
+      "2": "14. Trazabilidad\r\n\r\n| PRD ID | BRD | MRD",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "15. A",
+      "2": "15. A",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "PRD",
+      "1": "Checklist mí",
+      "2": "Checklist mí",
+      "ref": "team\\borisAngulo\\docs\\03_prd\\PRD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Objetivo\r\n\r\nPermitir que los usuarios acceda",
+      "2": "Objetivo\r\n\r\nPermitir que los usuarios ac",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Actores\r\n\r\n- Usuario\r\n- Sistema de aute",
+      "2": "Actores\r\n\r\n- Usuario\r\n- Sistema de aute",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Preco",
+      "2": "Preco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujo pri",
+      "2": "Flujo pri",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujos alter",
+      "2": "Flujos alter",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Postco",
+      "2": "Postco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gherki",
+      "2": "Gherki",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Objetivo\r\n\r\nPermitir registrar procesos de acreditació",
+      "2": "Objetivo\r\n\r\nPermitir registrar procesos ",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Actores\r\n\r\n- Admi",
+      "2": "Actores\r\n\r\n- Admi",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Preco",
+      "2": "Preco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujo pri",
+      "2": "Flujo pri",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujos alter",
+      "2": "Flujos alter",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Postco",
+      "2": "Postco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gherki",
+      "2": "Gherki",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Objetivo\r\n\r\nAdmi",
+      "2": "Objetivo\r\n\r\nAdmi",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Actores\r\n\r\n- Coordi",
+      "2": "Actores\r\n\r\n- Coordi",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Preco",
+      "2": "Preco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujo pri",
+      "2": "Flujo pri",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujos alter",
+      "2": "Flujos alter",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Postco",
+      "2": "Postco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gherki",
+      "2": "Gherki",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Objetivo\r\n\r\nEvitar el cierre de procesos co",
+      "2": "Objetivo\r\n\r\nEvitar el cierre de procesos",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Actores\r\n\r\n- Admi",
+      "2": "Actores\r\n\r\n- Admi",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Preco",
+      "2": "Preco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujo pri",
+      "2": "Flujo pri",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujos alter",
+      "2": "Flujos alter",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Postco",
+      "2": "Postco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gherki",
+      "2": "Gherki",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Objetivo\r\n\r\nPermitir cargar evide",
+      "2": "Objetivo\r\n\r\nPermitir cargar evide",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Actores\r\n\r\n- Coordi",
+      "2": "Actores\r\n\r\n- Coordi",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Preco",
+      "2": "Preco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujo pri",
+      "2": "Flujo pri",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujos alter",
+      "2": "Flujos alter",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Postco",
+      "2": "Postco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gherki",
+      "2": "Gherki",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Objetivo\r\n\r\nMa",
+      "2": "Objetivo\r\n\r\nMa",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Actores\r\n\r\n- Coordi",
+      "2": "Actores\r\n\r\n- Coordi",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Preco",
+      "2": "Preco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujo pri",
+      "2": "Flujo pri",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujos alter",
+      "2": "Flujos alter",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Postco",
+      "2": "Postco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gherki",
+      "2": "Gherki",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Objetivo\r\n\r\nRegistrar observacio",
+      "2": "Objetivo\r\n\r\nRegistrar observacio",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Actores\r\n\r\n- Admi",
+      "2": "Actores\r\n\r\n- Admi",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Preco",
+      "2": "Preco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujo pri",
+      "2": "Flujo pri",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujos alter",
+      "2": "Flujos alter",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Postco",
+      "2": "Postco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gherki",
+      "2": "Gherki",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Objetivo\r\n\r\nPermitir respo",
+      "2": "Objetivo\r\n\r\nPermitir respo",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Actores\r\n\r\n- Coordi",
+      "2": "Actores\r\n\r\n- Coordi",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Preco",
+      "2": "Preco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujo pri",
+      "2": "Flujo pri",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujos alter",
+      "2": "Flujos alter",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Postco",
+      "2": "Postco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gherki",
+      "2": "Gherki",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Objetivo\r\n\r\nVisualizar el ava",
+      "2": "Objetivo\r\n\r\nVisualizar el ava",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Actores\r\n\r\n- Admi",
+      "2": "Actores\r\n\r\n- Admi",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Preco",
+      "2": "Preco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujo pri",
+      "2": "Flujo pri",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujos alter",
+      "2": "Flujos alter",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Postco",
+      "2": "Postco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gherki",
+      "2": "Gherki",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Objetivo\r\n\r\nE",
+      "2": "Objetivo\r\n\r\nE",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Actores\r\n\r\n- Scheduler\r\n- Sistema de",
+      "2": "Actores\r\n\r\n- Scheduler\r\n- Sistema de",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Preco",
+      "2": "Preco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujo pri",
+      "2": "Flujo pri",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujos alter",
+      "2": "Flujos alter",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Postco",
+      "2": "Postco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gherki",
+      "2": "Gherki",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Objetivo\r\n\r\nGe",
+      "2": "Objetivo\r\n\r\nGe",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Actores\r\n\r\n- Admi",
+      "2": "Actores\r\n\r\n- Admi",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Preco",
+      "2": "Preco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujo pri",
+      "2": "Flujo pri",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujos alter",
+      "2": "Flujos alter",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Postco",
+      "2": "Postco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gherki",
+      "2": "Gherki",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Objetivo\r\n\r\nRegistrar eve",
+      "2": "Objetivo\r\n\r\nRegistrar eve",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Actores\r\n\r\n- Sistema de auditoría\r\n\r\n## Preco",
+      "2": "Actores\r\n\r\n- Sistema de auditoría\r\n\r\n## ",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujo pri",
+      "2": "Flujo pri",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Flujos alter",
+      "2": "Flujos alter",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Postco",
+      "2": "Postco",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Gherki",
+      "2": "Gherki",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\casos-de-uso.md"
+    },
+    {
+      "0": "FSD",
+      "1": "0. Metadatos ✅✨\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | ",
+      "2": "0. Metadatos ✅✨\r\n\r\n| Campo | Valor |\r\n|-",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Alca",
+      "2": "2. Alca",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Actores y roles del sistema ⚡✨\r\n\r\n| Actor | Tipo (huma",
+      "2": "3. Actores y roles del sistema ⚡✨\r\n\r\n| A",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Casos de uso fu",
+      "2": "4. Casos de uso fu",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Reglas de",
+      "2": "5. Reglas de",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Modelo de datos fu",
+      "2": "6. Modelo de datos fu",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Prompt como Co",
+      "2": "7. Prompt como Co",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. I",
+      "2": "8. I",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. I",
+      "2": "9. I",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "10. Requerimie",
+      "2": "10. Requerimie",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "11. Trazabilidad MRD → PRD → FSD ⚡✨\r\n\r\n| MRD (",
+      "2": "11. Trazabilidad MRD → PRD → FSD ⚡✨\r\n\r\n|",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "12. Pla",
+      "2": "12. Pla",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "13. Riesgos fu",
+      "2": "13. Riesgos fu",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "14. Glosario ⚡✨\r\n\r\n| Térmi",
+      "2": "14. Glosario ⚡✨\r\n\r\n| Térmi",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Checklist de e",
+      "2": "Checklist de e",
+      "ref": "team\\borisAngulo\\docs\\04_fsd\\FSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | SIG",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\borisAngulo\\docs\\05_lfsd\\LFSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\borisAngulo\\docs\\05_lfsd\\LFSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Alca",
+      "2": "2. Alca",
+      "ref": "team\\borisAngulo\\docs\\05_lfsd\\LFSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Casos de uso críticos\r\n\r\n> **Cobertura LFSD**: 3 casos de uso críti",
+      "2": "3. Casos de uso críticos\r\n\r\n> **Cobertur",
+      "ref": "team\\borisAngulo\\docs\\05_lfsd\\LFSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Reglas de",
+      "2": "4. Reglas de",
+      "ref": "team\\borisAngulo\\docs\\05_lfsd\\LFSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4.5 Modelo fu",
+      "2": "4.5 Modelo fu",
+      "ref": "team\\borisAngulo\\docs\\05_lfsd\\LFSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Prompt Co",
+      "2": "5. Prompt Co",
+      "ref": "team\\borisAngulo\\docs\\05_lfsd\\LFSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. NFR críticos (resume",
+      "2": "6. NFR críticos (resume",
+      "ref": "team\\borisAngulo\\docs\\05_lfsd\\LFSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Trazabilidad (MRD → PRD → FSD → LFSD)\r\n\r\n| MRD (",
+      "2": "7. Trazabilidad (MRD → PRD → FSD → LFSD)",
+      "ref": "team\\borisAngulo\\docs\\05_lfsd\\LFSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. Riesgos fu",
+      "2": "8. Riesgos fu",
+      "ref": "team\\borisAngulo\\docs\\05_lfsd\\LFSD_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Checklist de e",
+      "2": "Checklist de e",
+      "ref": "team\\borisAngulo\\docs\\05_lfsd\\LFSD_v1.md"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diag-01-seq-autenticacion.mmd",
+      "2": "diag-01-seq-autenticacion.mmd",
+      "ref": "team\\borisAngulo\\docs\\07_diagramas\\diag-01-seq-autenticacion.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diag-02-seq-evidencias.mmd",
+      "2": "diag-02-seq-evidencias.mmd",
+      "ref": "team\\borisAngulo\\docs\\07_diagramas\\diag-02-seq-evidencias.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diag-03-seq-observaciones.mmd",
+      "2": "diag-03-seq-observaciones.mmd",
+      "ref": "team\\borisAngulo\\docs\\07_diagramas\\diag-03-seq-observaciones.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diag-04a-state-proceso.mmd",
+      "2": "diag-04a-state-proceso.mmd",
+      "ref": "team\\borisAngulo\\docs\\07_diagramas\\diag-04a-state-proceso.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diag-04b-state-obs-evidencia.mmd",
+      "2": "diag-04b-state-obs-evidencia.mmd",
+      "ref": "team\\borisAngulo\\docs\\07_diagramas\\diag-04b-state-obs-evidencia.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diag-05-er-modelo-datos.mmd",
+      "2": "diag-05-er-modelo-datos.mmd",
+      "ref": "team\\borisAngulo\\docs\\07_diagramas\\diag-05-er-modelo-datos.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diag-06a-gantt-ciclo-acreditacion.mmd",
+      "2": "diag-06a-gantt-ciclo-acreditacion.mmd",
+      "ref": "team\\borisAngulo\\docs\\07_diagramas\\diag-06a-gantt-ciclo-acreditacion.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diag-07-c4-contenedores-sistema.mmd",
+      "2": "diag-07-c4-contenedores-sistema.mmd",
+      "ref": "team\\borisAngulo\\docs\\07_diagramas\\diag-07-c4-contenedores-sistema.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diag-08-flow-cierre-proceso-pendientes.mmd",
+      "2": "diag-08-flow-cierre-proceso-pendientes.mmd",
+      "ref": "team\\borisAngulo\\docs\\07_diagramas\\diag-08-flow-cierre-proceso-pendientes.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diag-09-class-dominio-agregados.mmd",
+      "2": "diag-09-class-dominio-agregados.mmd",
+      "ref": "team\\borisAngulo\\docs\\07_diagramas\\diag-09-class-dominio-agregados.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "diag-10-pie-cobertura-nfr-iso25010.mmd",
+      "2": "diag-10-pie-cobertura-nfr-iso25010.mmd",
+      "ref": "team\\borisAngulo\\docs\\07_diagramas\\diag-10-pie-cobertura-nfr-iso25010.mmd"
+    },
+    {
+      "0": "Otro",
+      "1": "trazabilidad-sigesa.md",
+      "2": "trazabilidad-sigesa.md",
+      "ref": "team\\borisAngulo\\docs\\08_trazabilidad\\trazabilidad-sigesa.md"
+    },
+    {
+      "0": "FSD",
+      "1": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|-------|-------|\r\n| Producto | SIG",
+      "2": "0. Metadatos\r\n\r\n| Campo | Valor |\r\n|----",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. Visió",
+      "2": "1. Visió",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Modelo ca",
+      "2": "2. Modelo ca",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Co",
+      "2": "3. Co",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Arquitectura de alto",
+      "2": "4. Arquitectura de alto",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Modelo de domi",
+      "2": "5. Modelo de domi",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Arquitectura hexago",
+      "2": "6. Arquitectura hexago",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Reglas de domi",
+      "2": "7. Reglas de domi",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. Lógica de pa",
+      "2": "8. Lógica de pa",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. Eve",
+      "2": "9. Eve",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "10. Despliegue (co",
+      "2": "10. Despliegue (co",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "11. Capa IA / SDLC\r\n\r\nIA e",
+      "2": "11. Capa IA / SDLC\r\n\r\nIA e",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "12. NFRs co",
+      "2": "12. NFRs co",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "13. Gaps (registro v1.2)\r\n\r\n| Gap | Estado | ID / artefacto | Bloquea ",
+      "2": "13. Gaps (registro v1.2)\r\n\r\n| Gap | Esta",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "14. POCs críticas\r\n\r\n| ID | Objetivo | Criterio éxito |\r\n|----|-------",
+      "2": "14. POCs críticas\r\n\r\n| ID | Objetivo | C",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "15. Seguridad (STRIDE resumido)\r\n\r\n| Ame",
+      "2": "15. Seguridad (STRIDE resumido)\r\n\r\n| Ame",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "16. Observabilidad y DevOps\r\n\r\n- Logs JSON co",
+      "2": "16. Observabilidad y DevOps\r\n\r\n- Logs JS",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "17. Trade-offs\r\n\r\n| Decisió",
+      "2": "17. Trade-offs\r\n\r\n| Decisió",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "18. Roadmap téc",
+      "2": "18. Roadmap téc",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "19. Glosario\r\n\r\n| Térmi",
+      "2": "19. Glosario\r\n\r\n| Térmi",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "0": "FSD",
+      "1": "20. ADRs y checklist\r\n\r\n| ADR | Título | Estado |\r\n|-----|--------|---",
+      "2": "20. ADRs y checklist\r\n\r\n| ADR | Título |",
+      "ref": "team\\borisAngulo\\docs\\09_dti\\DTI_v1.md"
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    }
+  ],
+  "Marlene": [
+    {
+      "0": "BRD",
+      "1": "SIGESA / AcredIA — Sistema I",
+      "2": "SIGESA / AcredIA — Sistema I",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "Portada y co",
+      "2": "Portada y co",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "Í",
+      "2": "Í",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "2. I",
+      "2": "2. I",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "3. Arquitectura de",
+      "2": "3. Arquitectura de",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "4. Problema y oportu",
+      "2": "4. Problema y oportu",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "5. Objetivos SMART\r\n\r\nLos objetivos siguie",
+      "2": "5. Objetivos SMART\r\n\r\nLos objetivos sigu",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "6. Stakeholders: ide",
+      "2": "6. Stakeholders: ide",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "7. Busi",
+      "2": "7. Busi",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "8. Alca",
+      "2": "8. Alca",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "9. Requerimie",
+      "2": "9. Requerimie",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "10. KPIs e i",
+      "2": "10. KPIs e i",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "11. Restriccio",
+      "2": "11. Restriccio",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "12. Supuestos del proyecto y depe",
+      "2": "12. Supuestos del proyecto y depe",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "13. A",
+      "2": "13. A",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "14. Modelo de gober",
+      "2": "14. Modelo de gober",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "15. Criterios de aceptació",
+      "2": "15. Criterios de aceptació",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "16. Impacto esperado e",
+      "2": "16. Impacto esperado e",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "17. Cro",
+      "2": "17. Cro",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "18. Co",
+      "2": "18. Co",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "BRD",
+      "1": "19. A",
+      "2": "19. A",
+      "ref": "team\\Marlene\\01_brd\\BRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "Sistema de Evaluació",
+      "2": "Sistema de Evaluació",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "Portada y co",
+      "2": "Portada y co",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "Í",
+      "2": "Í",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "1. Resume",
+      "2": "1. Resume",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "2. I",
+      "2": "2. I",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "3. Siete pilares del a",
+      "2": "3. Siete pilares del a",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "4. Problema actual y oportu",
+      "2": "4. Problema actual y oportu",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "5. Segme",
+      "2": "5. Segme",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "6. Perso",
+      "2": "6. Perso",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "7. Jobs To Be Do",
+      "2": "7. Jobs To Be Do",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "8. Voz del clie",
+      "2": "8. Voz del clie",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "9. A",
+      "2": "9. A",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "10. Propuesta de valor y posicio",
+      "2": "10. Propuesta de valor y posicio",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "11. Hipótesis de",
+      "2": "11. Hipótesis de",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "12. Necesidades fu",
+      "2": "12. Necesidades fu",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "13. Factores críticos de éxito del sistema\r\n\r\n| # | Factor crítico | D",
+      "2": "13. Factores críticos de éxito del siste",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "14. Riesgos de adopció",
+      "2": "14. Riesgos de adopció",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "15. KPIs y métricas de validació",
+      "2": "15. KPIs y métricas de validació",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "16. Roadmap estratégico y visió",
+      "2": "16. Roadmap estratégico y visió",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "17. Recome",
+      "2": "17. Recome",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "18. Trazabilidad y cade",
+      "2": "18. Trazabilidad y cade",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "MRD",
+      "1": "19. A",
+      "2": "19. A",
+      "ref": "team\\Marlene\\02_mrd\\MRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "SIGESA / AcredIA — Sistema de Evaluació",
+      "2": "SIGESA / AcredIA — Sistema de Evaluació",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "0. Co",
+      "2": "0. Co",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "Í",
+      "2": "Í",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "1. I",
+      "2": "1. I",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "2. Problema i",
+      "2": "2. Problema i",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "3. Objetivos estratégicos y objetivos SMART del sistema\r\n\r\n### 3.1 Obj",
+      "2": "3. Objetivos estratégicos y objetivos SM",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "4. Segme",
+      "2": "4. Segme",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "5. User perso",
+      "2": "5. User perso",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "6. Necesidades, pai",
+      "2": "6. Necesidades, pai",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "7. Alca",
+      "2": "7. Alca",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "8. Arquitectura fu",
+      "2": "8. Arquitectura fu",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "9. Flujos operativos y procesos clave\r\n\r\n### 9.1 Proceso e",
+      "2": "9. Flujos operativos y procesos clave\r\n\r",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "10. User Stories (está",
+      "2": "10. User Stories (está",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "11. User Jour",
+      "2": "11. User Jour",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "12. Roadmap del producto por fases\r\n\r\n### 12.1 MVP (mí",
+      "2": "12. Roadmap del producto por fases\r\n\r\n##",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "13. Requerimie",
+      "2": "13. Requerimie",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "14. KPIs y métricas de éxito del producto\r\n\r\n| KPI | Descripció",
+      "2": "14. KPIs y métricas de éxito del product",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "15. Riesgos fu",
+      "2": "15. Riesgos fu",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "16. Restriccio",
+      "2": "16. Restriccio",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "17. Criterios de éxito y criterios de aceptació",
+      "2": "17. Criterios de éxito y criterios de ac",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "18. Recome",
+      "2": "18. Recome",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "PRD",
+      "1": "19. Matriz de trazabilidad BRD → PRD → FSD\r\n\r\n| BRD (ejemplos) | Épica",
+      "2": "19. Matriz de trazabilidad BRD → PRD → F",
+      "ref": "team\\Marlene\\03_prd\\PRD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "SIGESA / AcredIA — Sistema de Evaluació",
+      "2": "SIGESA / AcredIA — Sistema de Evaluació",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "0. Co",
+      "2": "0. Co",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "Í",
+      "2": "Í",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "1. I",
+      "2": "1. I",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "2. Co",
+      "2": "2. Co",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "3. Objetivos fu",
+      "2": "3. Objetivos fu",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "4. Alca",
+      "2": "4. Alca",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "5. Arquitectura fu",
+      "2": "5. Arquitectura fu",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "6. Descripció",
+      "2": "6. Descripció",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "7. Catálogo de eleme",
+      "2": "7. Catálogo de eleme",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "8. Actores, roles y matriz de permisos\r\n\r\n### 8.1 Actores\r\n\r\n| Actor |",
+      "2": "8. Actores, roles y matriz de permisos\r\n",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "9. Diagramas y procesos pri",
+      "2": "9. Diagramas y procesos pri",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "10. Casos de uso desarrollados\r\n\r\n> **Formato por UC:** Nombre, objeti",
+      "2": "10. Casos de uso desarrollados\r\n\r\n> **Fo",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "11. Reglas de",
+      "2": "11. Reglas de",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "12. Esce",
+      "2": "12. Esce",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "13. Requerimie",
+      "2": "13. Requerimie",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "14. Requerimie",
+      "2": "14. Requerimie",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "15. Modelo co",
+      "2": "15. Modelo co",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "16. Diccio",
+      "2": "16. Diccio",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "17. Diseño de e",
+      "2": "17. Diseño de e",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "18. Co",
+      "2": "18. Co",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "19. Flujos de i",
+      "2": "19. Flujos de i",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "20. Validacio",
+      "2": "20. Validacio",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "21. Ma",
+      "2": "21. Ma",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "22. Trazabilidad e",
+      "2": "22. Trazabilidad e",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "23. KPIs fu",
+      "2": "23. KPIs fu",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "24. Estrategia de pruebas fu",
+      "2": "24. Estrategia de pruebas fu",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "25. Criterios de aceptació",
+      "2": "25. Criterios de aceptació",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "26. Riesgos téc",
+      "2": "26. Riesgos téc",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "27. Supuestos y depe",
+      "2": "27. Supuestos y depe",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "28. Glosario téc",
+      "2": "28. Glosario téc",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "29. A",
+      "2": "29. A",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "FSD",
+      "1": "30. Recome",
+      "2": "30. Recome",
+      "ref": "team\\Marlene\\04_fsd\\FSD.md"
+    },
+    {
+      "0": "Gherkin",
+      "1": "CU_BDD.md",
+      "2": "CU_BDD.md",
+      "ref": "team\\Marlene\\05_nfr\\CU_BDD.md"
+    },
+    {
+      "0": "Skill",
+      "1": "SKILLS.md",
+      "2": "SKILLS.md",
+      "ref": "team\\Marlene\\08_agents\\agents\\SKILLS.md"
+    },
+    {
+      "0": "Diagrama",
+      "1": "ARQ_Mermaid_SIGESA_FSD_Traceability_v1.md",
+      "2": "índice",
+      "ref": "team\\Marlene\\08_agents\\ARQ_Mermaid_SIGESA_FSD_Traceability_v1.md"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-ACT-001-observaciones-mejoras.mmd",
+      "2": "D-ACT-001-observaciones-mejoras.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-ACT-001-observaciones-mejoras.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-ARCH-001-capas-sistema.mmd",
+      "2": "D-ARCH-001-capas-sistema.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-ARCH-001-capas-sistema.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-CLASS-001-dominio-sigesa.mmd",
+      "2": "D-CLASS-001-dominio-sigesa.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-CLASS-001-dominio-sigesa.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-COMP-001-modulos-sigesa.mmd",
+      "2": "D-COMP-001-modulos-sigesa.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-COMP-001-modulos-sigesa.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-ER-001-nucleo-sigesa.mmd",
+      "2": "D-ER-001-nucleo-sigesa.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-ER-001-nucleo-sigesa.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-FLOW-001-workflow-aprobacion.mmd",
+      "2": "D-FLOW-001-workflow-aprobacion.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-FLOW-001-workflow-aprobacion.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-GANTT-001-roadmap-implementacion.mmd",
+      "2": "D-GANTT-001-roadmap-implementacion.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-GANTT-001-roadmap-implementacion.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-GANTT-002-cronograma-ceub-carrera.mmd",
+      "2": "D-GANTT-002-cronograma-ceub-carrera.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-GANTT-002-cronograma-ceub-carrera.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-JOURNEY-001-coordinador-carga.mmd",
+      "2": "D-JOURNEY-001-coordinador-carga.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-JOURNEY-001-coordinador-carga.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-SEQ-001-auth-jwt.mmd",
+      "2": "D-SEQ-001-auth-jwt.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-SEQ-001-auth-jwt.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-SEQ-002-carga-evidencia.mmd",
+      "2": "D-SEQ-002-carga-evidencia.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-SEQ-002-carga-evidencia.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-SEQ-003-dictamen-td.mmd",
+      "2": "D-SEQ-003-dictamen-td.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-SEQ-003-dictamen-td.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-SEQ-004-reporte-pdf.mmd",
+      "2": "D-SEQ-004-reporte-pdf.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-SEQ-004-reporte-pdf.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-SEQ-005-integracion-siis-futuro.mmd",
+      "2": "D-SEQ-005-integracion-siis-futuro.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-SEQ-005-integracion-siis-futuro.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-STA-001-indicador.mmd",
+      "2": "D-STA-001-indicador.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-STA-001-indicador.mmd"
+    },
+    {
+      "0": "Diagrama",
+      "1": "D-STA-002-proceso-acreditacion.mmd",
+      "2": "D-STA-002-proceso-acreditacion.mmd",
+      "ref": "team\\Marlene\\08_agents\\mmd\\D-STA-002-proceso-acreditacion.mmd"
+    },
+    {
+      "0": "Otro",
+      "1": "release-1.0.0.md",
+      "2": "release-1.0.0.md",
+      "ref": "team\\Marlene\\09_trazabilidad\\10_aportes\\release-1.0.0.md"
+    },
+    {
+      "0": "Presentación",
+      "1": "release-1.0.0.md",
+      "2": "release-1.0.0.md",
+      "ref": "team\\Marlene\\10_aportes\\release-1.0.0.md"
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    },
+    {
+      "cat": "AGENTS",
+      "desc": "AGENTS.md",
+      "ref": "AGENTS.md (co-autoría Equipo)",
+      "extra": ""
+    }
+  ]
+}
