@@ -79,4 +79,4 @@ Si las rutas literales de las secciones 2–5 no existen en la copia local, usar
 | `BRD.md` / `FSD.md` | `team/[persona]/docs/01_brd/BRD.md`, `team/[persona]/docs/FSD.md`, o artefactos en `docs/` y `team/**/` según trazabilidad del PR |
 | `NFR_ISO25010.md` | *(no versionado aún en la raíz del repo)* — localizar bajo `docs/**` o `team/**` si aparece; si no existe, declarar el vacío y pedir la fuente NFR al usuario |
 | ADR (convención del repo) | Plantilla: `templates/ADR_TEMPLATE.md`; destino habitual: `docs/adr/` con correlativo `ADR-NNNN` (ver plantilla) |
-| DTI | Plantilla/guía: `templates/dti-author_template.md`; ejemplo: `docs/dti/DTI_borrador.md` |
+| DTI | Canónico: `docs/05_dti/DTI.md`; skill: `docs/05_dti/dti-author.md`; plantillas: `templates/dti.md`, `templates/dti-author_template.md` |
