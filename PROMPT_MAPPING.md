@@ -3842,23 +3842,22 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 
 | PM-050 | docs | docs/09_trazabilidad/ + team/alexAlvarez/08_trazabilidad/ + Golden 06–08 | Trazabilidad v1.5 APTO; auditoría Excelente Alex 10/10; commit sesión. | 2026-05-17 | Alex Alvarez |
 
-### 2026-05-17T12:00:00 — Prompt usuario (consolidado inventario + auditoría equipo)
+### 2026-05-17T12:00:00 — Prompt usuario (consolidado inventario + auditoría equipo + APORTES v1.2)
 
-**Prompt:** Leer auditorías e inventarios individuales de alexAlvarez, aylenGonzales, borisAngulo y Marlene; generar `docs/09_trazabilidad/INVENTARIO_TAREAS_APORTES_EQUIPO.md` y `AUDITORIA_RUBRICAS_EXCELENTE_EQUIPO.md` consolidados; no modificar fuera de `docs/09_trazabilidad/`; registrar en PROMPT_MAPPING.
+**Prompt:** Leer auditorías e inventarios individuales de alexAlvarez, aylenGonzales, borisAngulo y Marlene; generar `docs/09_trazabilidad/INVENTARIO_TAREAS_APORTES_EQUIPO.md` y `AUDITORIA_RUBRICAS_EXCELENTE_EQUIPO.md` consolidados; actualizar `docs/10_aportes/APORTES_RELEASE_1.0.0.md`; registrar en PROMPT_MAPPING.
 
-**Acción:** Parseo de 8 archivos en `team/*/08_trazabilidad/` (boris: `team/borisAngulo/docs/08_trazabilidad/`). Regeneración completa de tabla T-xxx con columna Integrante y tabla comparativa de veredictos desde auditorías en disco.
+**Acción:** Consolidado desde `team/*/08_trazabilidad/` (boris: `docs/08_trazabilidad/`). Cuadre Marlene **200** (+28) y boris **220** (+10). `APORTES_RELEASE_1.0.0.md` v1.2: §1 **965** filas, §3 factores, §3.1 justificación Marlene (tokens limitados Claude Web).
 
 **Resultado:**
 
 | Artefacto | Contenido |
 |-----------|-----------|
-| `INVENTARIO_TAREAS_APORTES_EQUIPO.md` | **927** filas — alex 285 · aylen 260 · boris 210 · Marlene 172 |
-| `AUDITORIA_RUBRICAS_EXCELENTE_EQUIPO.md` | alex **9/10** · aylen **10/10** · boris **9/10** · Marlene **10/10** — promedio **9,5/10** |
-
-**Fuentes:** `team/alexAlvarez/08_trazabilidad/`, `team/aylenGonzales/08_trazabilidad/`, `team/borisAngulo/docs/08_trazabilidad/`, `team/Marlene/08_trazabilidad/`.
+| `INVENTARIO_TAREAS_APORTES_EQUIPO.md` | **965** — alex 285 · aylen 260 · boris 220 · Marlene 200 |
+| `AUDITORIA_RUBRICAS_EXCELENTE_EQUIPO.md` | alex **9/10** · aylen **10/10** · boris **9/10** · Marlene **10/10** — **9,5/10** |
+| `APORTES_RELEASE_1.0.0.md` | Factores: alex **1,10** · aylen **1,08** · boris **0,91** · Marlene **0,83** (§3.1) |
 
 ---
 
-| PM-051 | docs | docs/09_trazabilidad/INVENTARIO_TAREAS_APORTES_EQUIPO.md + AUDITORIA_RUBRICAS_EXCELENTE_EQUIPO.md | Consolidación 927 tareas + rúbrica equipo 9,5/10 desde inventarios/auditorías individuales. | 2026-05-17 | — |
+| PM-051 | docs | `09_trazabilidad/` + `10_aportes/APORTES_RELEASE_1.0.0.md` | 965 tareas, APORTES v1.2, justificación Marlene §3.1. | 2026-05-17 | — |
 
 
