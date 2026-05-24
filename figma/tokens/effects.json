@@ -1,0 +1,15 @@
+{
+  "motion": {
+    "dur-rapido": { "value": "150ms", "note": "Token frame on Tokens de Diseño" },
+    "dur-normal": { "value": "250ms" },
+    "dur-lento": { "value": "400ms" }
+  },
+  "loaders": {
+    "dot-loader": {
+      "frames": ["1676:7916", "1676:7921", "1676:7926", "1676:7931", "1676:7936", "1676:7941"],
+      "size": "250x250"
+    },
+    "circle-animation": { "nodeId": "1676:7946", "size": "240x1740" },
+    "pulse": { "nodeIds": ["1677:8007", "1677:8013"] }
+  }
+}

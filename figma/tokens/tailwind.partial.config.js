@@ -1,0 +1,78 @@
+/** @type {import('tailwindcss').Config} */
+/** AcredIA — partial Tailwind theme extension (merge into project tailwind.config) */
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          primary: "#003770",
+          secondary: "#E30613",
+          surface: "#FFFFFF",
+        },
+        primario: {
+          DEFAULT: "#003770",
+          hover: "#1B4780",
+        },
+        peligro: "#DC3545",
+        exito: "#198754",
+        advertencia: "#FFC107",
+        info: "#0D6EFD",
+        pagina: "#F8F9FA",
+        tarjeta: "#FFFFFF",
+        blue: {
+          50: "#E8F1FF",
+          100: "#D6E3FF",
+          200: "#A9C7FF",
+          300: "#7CA2E1",
+          400: "#375F9A",
+          500: "#1B4780",
+          600: "#003770",
+          700: "#002249",
+          800: "#001B3D",
+          900: "#001026",
+        },
+      },
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
+        mono: ["IBM Plex Mono", "ui-monospace", "monospace"],
+      },
+      fontSize: {
+        "display-lg": ["3rem", { lineHeight: "1.2", fontWeight: "700" }],
+        "heading-xl": ["1.875rem", { lineHeight: "1.25", fontWeight: "600" }],
+        "heading-lg": ["1.5rem", { lineHeight: "1.3", fontWeight: "600" }],
+        "heading-md": ["1.25rem", { lineHeight: "1.35", fontWeight: "600" }],
+        "heading-sm": ["1.125rem", { lineHeight: "1.4", fontWeight: "600" }],
+        "body-lg": ["1rem", { lineHeight: "1.5", fontWeight: "400" }],
+        "body-md": ["0.875rem", { lineHeight: "1.45", fontWeight: "400" }],
+        "label-md": ["0.75rem", { lineHeight: "1.3", fontWeight: "500" }],
+        code: ["0.875rem", { lineHeight: "1.4", fontWeight: "400" }],
+      },
+      spacing: {
+        esp-1: "4px",
+        esp-2: "8px",
+        esp-3: "12px",
+        esp-4: "16px",
+        esp-5: "24px",
+        esp-6: "32px",
+        esp-7: "40px",
+        esp-8: "48px",
+        esp-9: "64px",
+        esp-10: "80px",
+      },
+      borderRadius: {
+        sm: "4px",
+        md: "8px",
+        lg: "12px",
+        xl: "16px",
+      },
+      transitionDuration: {
+        rapido: "150ms",
+        normal: "250ms",
+        lento: "400ms",
+      },
+      boxShadow: {
+        card: "0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)",
+      },
+    },
+  },
+};
