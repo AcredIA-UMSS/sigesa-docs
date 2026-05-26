@@ -128,7 +128,7 @@ Resumen ejecutivo:
 - **[JD]:** semáforos, reportes, configuración, publicación portal.
 - **[TD]:** bandeja revisión, rechazo con causa, búsqueda global.
 - **[CC]:** carga, subsanación, observaciones, dashboard (incl. móvil Should).
-- **[P]:** consulta estado y certificados publicados (Could v1.1+).
+- **[P]:** consulta estado y certificados publicados (v1.1+).
 
 ### 4.2 User journeys (Mermaid)
 
@@ -784,4 +784,3 @@ Heredadas BRD-Q-01…Q-03, Q-05…Q-08: ver BRD §21.
 | **Cambios aplicados** | PRD Dorado: 24 US + Gherkin, 28 REQ, 16 NFR, trazabilidad, sistema de automatización (no ERP). |
 
 *Documento canónico SIGESA — UMSS, Cochabamba, Bolivia, 2026.*  
-*Próximo paso: `docs/04_fsd/FSD.md` (Versión Dorada).*

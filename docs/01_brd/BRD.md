@@ -195,7 +195,7 @@ La acreditación exige Evidencias por **Criterio** e **Indicador**, plazos e hit
 | DMS genérico (Drive, carpetas) | Indirecto | Almacenamiento conocido | No modela Fases ni RACI DUEA–carrera |
 | SIGESA (objetivo) | Directo | Flujo y Evidencias alineados UMSS | Requiere piloto y gobernanza |
 
-> Análisis profundo: `docs/02_mrd/MRD.md` (por generar).
+> Análisis profundo: `docs/02_mrd/MRD.md`.
 
 ---
 
@@ -234,7 +234,7 @@ La acreditación exige Evidencias por **Criterio** e **Indicador**, plazos e hit
 
 ---
 
-## 9. Objetivos de negocio (SMART) — mínimo 10
+## 9. Objetivos de negocio (SMART)
 
 | ID | Objetivo | Métrica | Línea base | Meta | Horizonte |
 |----|----------|---------|------------|------|-----------|
@@ -280,7 +280,7 @@ La acreditación exige Evidencias por **Criterio** e **Indicador**, plazos e hit
 
 ---
 
-## 11. Requerimientos de negocio (MoSCoW) — 26 ítems
+## 11. Requerimientos de negocio (MoSCoW)
 
 > Sin prescripción tecnológica (sin stack, frameworks ni lenguajes). Cada ítem es verificable en UAT de negocio. La validación normativa de indicadores es responsabilidad de **[TD]**; no se omiten pasos de auditoría DUEA.
 
@@ -456,7 +456,7 @@ La acreditación exige Evidencias por **Criterio** e **Indicador**, plazos e hit
 
 ---
 
-## 16. Arquitectura de negocio — diez componentes
+## 16. Arquitectura de negocio
 
 | ID | Componente | Valor | KPI/Riesgo vinculado |
 |----|------------|-------|----------------------|
@@ -724,4 +724,3 @@ La UMSS anuncia el piloto de **SIGESA**, sistema de gestión de acreditación de
 | **Cambios aplicados** | BRD-REQ-026; Q-01…Q-04 resueltas; §14.3 piloto; umbral progreso 5 MB. |
 
 *Documento canónico SIGESA — UMSS, Cochabamba, Bolivia, 2026.*  
-*Próximo paso en la cadena: `docs/02_mrd/MRD.md` (Versión Dorada).*
