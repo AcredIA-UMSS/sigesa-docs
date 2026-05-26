@@ -134,15 +134,16 @@
 
 **Flujo principal:**
 1. [CC] navega Proceso → Fase → Indicador.
-2. Adjunta archivo y metadatos obligatorios (`indicatorId`, `criterionId`, `description`).
+2. Adjunta Evidence y metadatos obligatorios (`indicatorId`, `criterionId`, `description`).
 3. Sistema valida tipo/tamaño; calcula SHA-256.
-4. Persiste `Evidence` v1; Indicador → `SUBIDO`.
-5. Encola notificación [TD] (UC-015).
-6. Si archivo > 5 MB: barra de progreso y carga asíncrona (US-025).
+4. Evidence Service persiste `Evidence` v1 y publica `EvidenceUploaded`.
+5. Audit Service inserta transición `PENDIENTE → SUBIDO` en `indicator_state_history`.
+6. Notification Service notifica al [TD] (UC-015).
+7. Si Evidence > 5 MB: barra de progreso y carga asíncrona (US-025).
 
 **Excepciones:** sin Indicador → 400; formato inválido → 422.
 
-**Postcondiciones:** `evidenceId`, `version=1`, `contentHash`, Indicador `SUBIDO`.
+**Postcondiciones:** `evidenceId`, `version=1`, `contentHash`, evento `EvidenceUploaded`.
 
 ---
 
@@ -157,7 +158,7 @@
 
 **Flujo principal (consulta):**
 1. Usuario abre historial de versiones de una Evidencia.
-2. Sistema lista versiones ordenadas; marca `isCurrent=true` en vigente.
+2. Sistema lista versiones ordenadas; deriva la vigente por `version DESC` y `supersedesId`.
 3. Versiones anteriores en solo lectura.
 
 **Flujo excepción (append-only):**
@@ -182,7 +183,7 @@
 1. [CC] abre observación desde dashboard o enlace de correo.
 2. Carga nueva versión (`POST /evidences/{id}/versions`) con `observationId`.
 3. Sistema persiste v2 con `supersedesVersion`; v1 intacta.
-4. Indicador → `SUBSANADO`; notifica [TD].
+4. Audit Service inserta transición `OBSERVADO → SUBSANADO`; Notification Service notifica [TD].
 
 **Postcondiciones:** Cadena de versiones trazable a observación origen.
 
@@ -220,7 +221,7 @@
 **Flujo principal:**
 1. [TD] revisa Indicador en `SUBIDO` o `SUBSANADO`.
 2. Ingresa justificación (mín. 20 caracteres).
-3. Sistema crea `Observation`; Indicador → `OBSERVADO`.
+3. Sistema crea `Observation` e inserta transición `SUBIDO|SUBSANADO → OBSERVADO` en `indicator_state_history`.
 4. Notifica [CC] en ≤ 15 min (FSD-BR-13).
 
 **Excepción:** justificación vacía → `422 JUSTIFICATION_REQUIRED`.
@@ -238,9 +239,9 @@
 
 **Flujo principal:**
 1. [TD] valida Evidencia conforme.
-2. `PATCH /indicators/{id}/approve`.
-3. Indicador → `APROBADO`.
-4. Notifica [CC]; evalúa elegibilidad de cierre de Fase (UC-010).
+2. `POST /indicators/{id}/approve`.
+3. Audit Service inserta transición a `APROBADO` en `indicator_state_history`.
+4. Publica `IndicatorApproved`; Notification Service notifica [CC] y Orchestration Service evalúa cierre de Phase (UC-010).
 
 **Excepción:** [CC] intenta aprobar → `403 FORBIDDEN_ROLE`.
 
@@ -258,9 +259,9 @@
 **Precondiciones:** Todos los Indicadores de la Fase en `APROBADO`.
 
 **Flujo principal:**
-1. [TD] solicita `PATCH /phases/{id}/close`.
-2. Sistema verifica conteo: indicadores aprobados = total.
-3. Fase → `COMPLETADA`; registra `state_transition`.
+1. Orchestration Service consume `IndicatorApproved` desde SQS FIFO (`MessageGroupId = phaseId`).
+2. Sistema verifica conteo sobre `indicator_current_view`: indicadores aprobados = total.
+3. Si corresponde, inserta `phase_state_history` con `COMPLETADA` y publica `PhaseCompleted`.
 
 **Excepción:** pendientes → `409 FASE_CIERRE_BLOQUEADO` + lista de Indicadores.
 

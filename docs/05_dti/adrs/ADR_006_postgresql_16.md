@@ -115,7 +115,7 @@ El equipo tiene experiencia previa con PostgreSQL, lo que reduce el riesgo de im
 - PostgreSQL 16 Full Text Search: https://www.postgresql.org/docs/16/textsearch.html
 - PostgreSQL 16 JSONB: https://www.postgresql.org/docs/16/datatype-json.html
 - ADR relacionado: ADR-0002 (Log de auditoría append-only en PostgreSQL).
-- ADR relacionado: ADR-0001 (Almacenamiento de evidencias en volumen Docker local).
+- ADR relacionado: ADR-0001 (metadatos append-only de Evidence) y ADR-0013 (S3 para blobs de Evidence).
 
 ---
 

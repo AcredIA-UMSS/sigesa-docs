@@ -4,7 +4,7 @@
 |-------|-------|
 | **Canónico** | [ADR-0004](../../adr/ADR-0004-evidence-blob-storage-docker.md) |
 | **Origen equipo** | `team/aylenGonzales/09_dti/adr/ADR-001.md` |
-| **Relacionado** | [ADR_001](ADR_001_append_only_evidencia.md) (modelo de versiones) |
+| **Relacionado** | [ADR_001](ADR_001_append_only_evidencia.md) (modelo de versiones) · [ADR-0013](../../adr/ADR-0013-s3-evidence-blob-storage.md) |
 
 ## Metadatos
 
@@ -14,7 +14,7 @@
 | Título | Almacenamiento de archivos de evidencia en sistema de archivos local |
 | Fecha | 14/05/2026 |
 | Autor(es) | Equipo AcredIA |
-| Estado | **Aceptada** |
+| Estado | **Supersedida para cloud v1.0** |
 | Alcance | MOD-02 — Repositorio de evidencias y versionado |
 | Stakeholders consultados | Tech Lead AcredIA · Jefa DUEA · TI UMSS |
 
@@ -22,7 +22,7 @@
 
 ## 1. Contexto
 
-AcredIA / SIGESA requiere almacenar archivos de evidencia (PDF, DOCX, XLSX; hasta 50 MB por archivo) cargados por los Coordinadores de Carrera [CC] para los procesos de acreditación CEUB y ARCU-SUR. El sistema opera en v1.0 como piloto restringido a la UMSS (12 facultades, ~120 carreras) con un volumen estimado de documentos moderado.
+AcredIA / SIGESA requiere almacenar blobs de Evidence (PDF, DOCX, XLSX; hasta 50 MB por Evidence) cargados por los Coordinadores de Carrera [CC] para los procesos de acreditación CEUB y ARCU-SUR. Este ADR conserva la decisión histórica de volumen Docker. Para la arquitectura cloud distribuida v1.0 vigente, la decisión aplicable es [ADR-0013](../../adr/ADR-0013-s3-evidence-blob-storage.md): S3 para blobs de Evidence.
 
 **Restricciones relevantes:**
 - Presupuesto de infraestructura sujeto a aprobación institucional UMSS; costo cero en servicios cloud de pago es prioritario en v1.0.
@@ -50,7 +50,7 @@ AcredIA / SIGESA requiere almacenar archivos de evidencia (PDF, DOCX, XLSX; hast
 
 ## 3. Decisión
 
-> **Elegimos la alternativa A: almacenamiento de archivos de evidencia en volumen Docker local `/data/evidencias/` con estructura jerárquica por proceso/fase/indicador/versión.**
+> **Decisión histórica supersedida:** almacenamiento de blobs de Evidence en volumen Docker local `/data/evidencias/` con estructura jerárquica por proceso/fase/indicador/versión.
 
 La alternativa A es la única que cumple simultáneamente el requisito de costo $0 en v1.0 (restricción institucional UMSS), el time-to-market Q4 2026 y la integridad verificable mediante hash SHA-256. La alternativa B es la correcta para v2.0 una vez que el piloto valide el volumen real de documentos y se cuente con presupuesto aprobado. La alternativa C queda descartada definitivamente por ser un anti-patrón documentado que degradaría el rendimiento de las consultas de gestión de fases e indicadores.
 
@@ -63,13 +63,13 @@ La ruta de almacenamiento sigue la convención: `/data/evidencias/{proceso_id}/{
 ### 4.1 Positivas
 - Costo de infraestructura $0 en v1.0; no requiere cuentas ni contratos con proveedores cloud.
 - Despliegue inmediato con `docker-compose`; sin configuración adicional de IAM o políticas de bucket.
-- La ruta `ruta_relativa` en la entidad `EVIDENCIA` permite migrar a S3-compatible en v2.0 reemplazando solo la capa de almacenamiento (T-04 en el FSD) sin cambiar el modelo de datos.
+- La ruta `ruta_relativa` en la entidad histórica `EVIDENCIA` permitía migrar a S3-compatible reemplazando solo la capa de almacenamiento; esa migración queda formalizada por ADR-0013 para cloud v1.0.
 - Control total sobre la estructura de carpetas, facilitando la auditoría manual si fuera requerida por TI UMSS.
 
 ### 4.2 Negativas / costos
 - Sin replicación geográfica automática: una falla de disco del servidor pierde los archivos si el respaldo diario (MOD-12, RBN-14) no fue ejecutado correctamente.
 - Capacidad limitada al disco del servidor; se requiere monitoreo activo (alerta al 70% de ocupación, RF-04).
-- La migración a S3-compatible en v2.0 requerirá una tarea de copia masiva de archivos históricos y actualización de `ruta_relativa` en BD.
+- La migración a S3-compatible deja de ser v2.0: ADR-0013 la promueve a decisión cloud v1.0.
 
 ### 4.3 Neutras / observables
 - El hash SHA-256 se calcula post-escritura en disco (invariant de PC-002), garantizando integridad independientemente del medio de almacenamiento.

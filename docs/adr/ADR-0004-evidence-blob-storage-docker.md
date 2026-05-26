@@ -2,20 +2,20 @@
 
 | Campo | Valor |
 |-------|-------|
-| Estado | **Aceptado** |
+| Estado | **Supersedido para cloud v1.0** |
 | Fecha | 2026-05-16 |
 | Autor | Equipo AcredIA (consolidado en repo) |
 | Alcance | MOD-EVIDENCE — capa de archivos |
 | Fuente equipo | `team/aylenGonzales/09_dti/adr/ADR-001.md` |
-| Relacionado | [ADR-0001](ADR-0001-append-only-evidence-storage.md) (metadatos/versiones) · FSD-UC-004 · NFR-007 |
+| Relacionado | [ADR-0001](ADR-0001-append-only-evidence-storage.md) (metadatos/versiones) · [ADR-0013](ADR-0013-s3-evidence-blob-storage.md) · FSD-UC-004 · NFR-007 |
 
 ## Contexto
 
-SIGESA almacena PDF/DOCX/XLSX (hasta 5 MB por archivo, BRD Q-03) para acreditación CEUB/ARCU-SUR. El piloto UMSS requiere costo **$0** en v1.0 y despliegue Docker (FSD SA-05). La **inmutabilidad de versiones** se define en ADR-0001; este ADR define **dónde** persisten los bytes del archivo.
+SIGESA almacena PDF/DOCX/XLSX como blobs de Evidence para acreditación CEUB/ARCU-SUR. Este ADR documenta la alternativa inicial con volumen Docker local. Para la arquitectura cloud distribuida v1.0 vigente, la decisión aplicable es [ADR-0013](ADR-0013-s3-evidence-blob-storage.md): S3 para blobs de Evidence.
 
 ## Decisión
 
-- Volumen Docker nombrado `evidencias_data` → `/data/evidencias/{proceso_id}/{fase_id}/{indicador_id}/{version}_{nombre}`.
+- Decisión histórica supersedida: volumen Docker nombrado `evidencias_data` → `/data/evidencias/{proceso_id}/{fase_id}/{indicador_id}/{version}_{nombre}`.
 - Campo `ruta_relativa` (o equivalente en `evidence_version`) en PostgreSQL; la API nunca expone el filesystem directamente.
 - Hash **SHA-256** tras escritura en disco (alineado PC-004 / FSD-BR-01).
 - Descarga solo vía API con JWT + RBAC (ADR-0007).

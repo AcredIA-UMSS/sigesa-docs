@@ -1,6 +1,7 @@
 -- SIGESA / AcredIA — DDL PostgreSQL append-only (Dorada v1.0)
 -- Timestamp: 2026-05-16T16:06:15-04:00
--- Invariantes: sin DELETE normativo; FK ON DELETE RESTRICT; versionado en evidence_version
+-- Invariantes: sin DELETE normativo; FK ON DELETE RESTRICT; versionado en evidence_version;
+-- transiciones de Indicator por INSERT en indicator_state_history, sin UPDATE de estado.
 -- Referencia: docs/05_dti/modelo_datos.md
 
 BEGIN;
@@ -136,8 +137,6 @@ CREATE TABLE phase (
   id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   process_id        UUID NOT NULL REFERENCES accreditation_process(id) ON DELETE RESTRICT,
   template_phase_id UUID NOT NULL REFERENCES template_phase(id) ON DELETE RESTRICT,
-  estado            phase_status NOT NULL DEFAULT 'ABIERTA',
-  closed_at         TIMESTAMPTZ,
   created_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
   created_by        UUID NOT NULL REFERENCES app_user(id) ON DELETE RESTRICT,
   created_by_role   actor_role NOT NULL,
@@ -148,15 +147,13 @@ CREATE TABLE indicator (
   id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   phase_id      UUID NOT NULL REFERENCES phase(id) ON DELETE RESTRICT,
   catalog_id    UUID NOT NULL REFERENCES indicator_catalog(id) ON DELETE RESTRICT,
-  estado        indicator_status NOT NULL DEFAULT 'PENDIENTE',
-  updated_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
   created_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
   created_by    UUID NOT NULL REFERENCES app_user(id) ON DELETE RESTRICT,
   created_by_role actor_role NOT NULL DEFAULT 'SYSTEM',
   UNIQUE (phase_id, catalog_id)
 );
 
-CREATE INDEX idx_indicator_phase_estado ON indicator (phase_id, estado);
+CREATE INDEX idx_indicator_phase ON indicator (phase_id);
 
 -- ---------------------------------------------------------------------------
 -- Evidencia append-only
@@ -164,8 +161,6 @@ CREATE INDEX idx_indicator_phase_estado ON indicator (phase_id, estado);
 CREATE TABLE evidence (
   id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   indicator_id    UUID NOT NULL UNIQUE REFERENCES indicator(id) ON DELETE RESTRICT,
-  current_version INTEGER NOT NULL DEFAULT 0,
-  estado          entity_status NOT NULL DEFAULT 'ACTIVO',
   created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
   created_by      UUID NOT NULL REFERENCES app_user(id) ON DELETE RESTRICT,
   created_by_role actor_role NOT NULL
@@ -215,20 +210,53 @@ ALTER TABLE evidence_version
   ADD CONSTRAINT fk_evidence_version_observation
   FOREIGN KEY (observation_id) REFERENCES observation(id) ON DELETE RESTRICT;
 
-CREATE TABLE state_transition (
+CREATE TABLE indicator_state_history (
   id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  entity_type     VARCHAR(32) NOT NULL,
-  entity_id       UUID NOT NULL,
-  from_status     VARCHAR(32) NOT NULL,
-  to_status       VARCHAR(32) NOT NULL,
+  indicator_id    UUID NOT NULL REFERENCES indicator(id) ON DELETE RESTRICT,
+  previous_state  indicator_status NOT NULL,
+  new_state       indicator_status NOT NULL,
   reason          TEXT,
+  correlation_id  UUID NOT NULL,
   created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
   created_by      UUID NOT NULL REFERENCES app_user(id) ON DELETE RESTRICT,
   created_by_role actor_role NOT NULL
 );
 
-CREATE INDEX idx_state_transition_entity
-  ON state_transition (entity_type, entity_id, created_at DESC);
+CREATE INDEX idx_indicator_state_history_indicator
+  ON indicator_state_history (indicator_id, created_at DESC);
+
+CREATE VIEW indicator_current_view AS
+  SELECT DISTINCT ON (indicator_id)
+    indicator_id,
+    new_state AS current_state,
+    created_by_role AS last_changed_by_role,
+    created_at AS last_changed_at
+  FROM indicator_state_history
+  ORDER BY indicator_id, created_at DESC;
+
+CREATE TABLE phase_state_history (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  phase_id        UUID NOT NULL REFERENCES phase(id) ON DELETE RESTRICT,
+  previous_state  phase_status NOT NULL,
+  new_state       phase_status NOT NULL,
+  reason          TEXT,
+  correlation_id  UUID NOT NULL,
+  created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
+  created_by      UUID NOT NULL REFERENCES app_user(id) ON DELETE RESTRICT,
+  created_by_role actor_role NOT NULL DEFAULT 'SYSTEM'
+);
+
+CREATE INDEX idx_phase_state_history_phase
+  ON phase_state_history (phase_id, created_at DESC);
+
+CREATE VIEW phase_current_view AS
+  SELECT DISTINCT ON (phase_id)
+    phase_id,
+    new_state AS current_state,
+    created_by_role AS last_changed_by_role,
+    created_at AS last_changed_at
+  FROM phase_state_history
+  ORDER BY phase_id, created_at DESC;
 
 -- ---------------------------------------------------------------------------
 -- Auditoría y notificaciones
@@ -273,23 +301,29 @@ CREATE OR REPLACE FUNCTION fn_indicator_transition(
   p_to_status indicator_status,
   p_actor_id UUID,
   p_actor_role actor_role,
-  p_reason TEXT DEFAULT NULL
+  p_reason TEXT DEFAULT NULL,
+  p_correlation_id UUID DEFAULT gen_random_uuid()
 ) RETURNS VOID AS $$
 DECLARE
   v_from indicator_status;
 BEGIN
-  SELECT estado INTO v_from FROM indicator WHERE id = p_indicator_id FOR UPDATE;
-  IF NOT FOUND THEN
+  IF NOT EXISTS (SELECT 1 FROM indicator WHERE id = p_indicator_id) THEN
     RAISE EXCEPTION 'INDICATOR_NOT_FOUND';
   END IF;
-  INSERT INTO state_transition (
-    entity_type, entity_id, from_status, to_status, reason,
-    created_by, created_by_role
+
+  SELECT current_state INTO v_from
+  FROM indicator_current_view
+  WHERE indicator_id = p_indicator_id;
+
+  v_from := COALESCE(v_from, 'PENDIENTE'::indicator_status);
+
+  INSERT INTO indicator_state_history (
+    indicator_id, previous_state, new_state, reason,
+    correlation_id, created_by, created_by_role
   ) VALUES (
-    'indicator', p_indicator_id, v_from::text, p_to_status::text, p_reason,
-    p_actor_id, p_actor_role
+    p_indicator_id, v_from, p_to_status, p_reason,
+    p_correlation_id, p_actor_id, p_actor_role
   );
-  UPDATE indicator SET estado = p_to_status, updated_at = now() WHERE id = p_indicator_id;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -309,5 +343,6 @@ COMMIT;
 --   \d evidence_version   -- confirmar supersedes_id y sin deleted_at
 --
 -- Política aplicación:
---   REVOKE DELETE ON evidence_version, observation, state_transition, audit_log FROM sigesa_app;
---   Usar solo INSERT + UPDATE indicator.estado vía fn_indicator_transition
+--   REVOKE UPDATE, DELETE ON evidence, evidence_version, observation, indicator_state_history, audit_log FROM sigesa_app;
+--   REVOKE UPDATE, DELETE ON phase_state_history FROM sigesa_app;
+--   Usar solo INSERT en indicator_state_history vía fn_indicator_transition.

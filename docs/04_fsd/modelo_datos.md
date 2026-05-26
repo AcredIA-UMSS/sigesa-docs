@@ -77,24 +77,24 @@ erDiagram
 | Entidad | Atributos clave | Notas |
 |---------|-----------------|-------|
 | `AccreditationProcess` | `programId`, `templateId`, `managementYear`, `status` | EN_PROCESO \| ACREDITADO \| VENCIDO |
-| `Phase` | `processId`, `templatePhaseId`, `status` | ABIERTA \| COMPLETADA |
-| `Indicator` | `phaseId`, `catalogId`, `status` | Máquina de estados §4 |
+| `Phase` | `processId`, `templatePhaseId` | Estado derivado por reglas agregadas |
+| `Indicator` | `phaseId`, `catalogId` | Estado derivado desde `indicator_state_history` |
 
 ### 3.4 Evidencia y auditoría
 
 | Entidad | Atributos clave | Notas |
 |---------|-----------------|-------|
-| `Evidence` | `indicatorId`, `currentVersion` | Cabecera estable |
-| `EvidenceVersion` | `evidenceId`, `versionNumber`, `contentHash`, `isCurrent`, `observationId`, `supersedesVersion` | Append-only |
-| `Observation` | `indicatorId`, `justification`, `createdBy`, `status` | Origen de subsanación |
-| `StateTransition` | `entityType`, `entityId`, `fromStatus`, `toStatus`, `actorId`, `role` | Log transiciones |
+| `Evidence` | `indicatorId`, `latestVersionId` | Cabecera estable; no contiene estado mutable |
+| `EvidenceVersion` | `evidenceId`, `versionNumber`, `contentHash`, `observationId`, `supersedesVersion` | Append-only |
+| `Observation` | `indicatorId`, `justification`, `createdBy`, `createdAt` | Origen de subsanación |
+| `IndicatorStateHistory` | `indicatorId`, `previousState`, `newState`, `actorId`, `role`, `createdAt` | Historial append-only de transiciones |
 | `AuditLog` | `action`, `actorId`, `entityType`, `entityId`, `payload` | Login, DELETE denegado, etc. |
 | `NotificationOutbox` | `eventType`, `recipientId`, `payload`, `sentAt` | Patrón outbox |
 | `PublicationSnapshot` | `programId`, `publishedAt`, `publishedBy` | Portal [P] |
 
 ---
 
-## 4. Máquina de estados — `Indicator.status`
+## 4. Máquina de estados — estado derivado de `Indicator`
 
 | Estado | Descripción |
 |--------|-------------|
@@ -104,7 +104,7 @@ erDiagram
 | `SUBSANADO` | Nueva versión enviada; pendiente re-revisión |
 | `APROBADO` | Validación [TD] completa |
 
-Transiciones válidas: ver [`FSD.md`](FSD.md) §4.1 y `team/alexAlvarez/docs/context/04_state_machine.md`.
+Transiciones válidas: ver [`FSD.md`](FSD.md) §4.1 y `team/alexAlvarez/docs/context/04_state_machine.md`. La implementación física no actualiza `Indicator.status`; inserta una fila en `indicator_state_history` y expone el estado vigente mediante `indicator_current_view`.
 
 ---
 
@@ -115,12 +115,12 @@ Transiciones válidas: ver [`FSD.md`](FSD.md) §4.1 y `team/alexAlvarez/docs/con
 | `Evidence` | `indicatorId` | UUID | sí | Existe; carrera ∈ alcance [CC] |
 | `EvidenceVersion` | `contentHash` | string(64) | sí | SHA-256 del blob |
 | `EvidenceVersion` | `observationId` | UUID | cond. | Obligatorio si subsanación |
-| `Indicator` | `status` | enum | sí | Valores §4; sin PATCH genérico desde cliente |
+| `Indicator` | `currentState` | enum derivado | sí | Valores §4; se obtiene desde `indicator_current_view` |
 | `Observation` | `justification` | text | sí | min 20 caracteres (configurable) |
 | `AppUser` | `email` | string | sí | Dominio `@umss.edu.bo` |
 | `AuditLog` | `action` | string | sí | Catálogo cerrado (`AUDIT_LOGIN`, `AUDIT_DELETE_DENIED`, …) |
 
-**Prohibido:** `isDeleted` / `deletedAt` en `Evidence` o `EvidenceVersion` aprobados.
+**Prohibido:** `isDeleted` / `deletedAt` en `Evidence` o `EvidenceVersion` aprobados, y `UPDATE` destructivo para transiciones de estado de `Indicator`.
 
 ---
 
@@ -137,7 +137,7 @@ Transiciones válidas: ver [`FSD.md`](FSD.md) §4.1 y `team/alexAlvarez/docs/con
 | `Evidence` | `evidence` |
 | `EvidenceVersion` | `evidence_version` |
 | `Observation` | `observation` |
-| `StateTransition` | `state_transition` |
+| `IndicatorStateHistory` | `indicator_state_history` |
 | `AuditLog` | `audit_log` |
 
 Detalle de columnas, índices y FK: ver DTI §2–3.
@@ -152,6 +152,7 @@ Detalle de columnas, índices y FK: ver DTI §2–3.
 | FSD-BR-06 | FK `observation_id` en versión subsanatoria |
 | FSD-BR-08 | Índice único parcial `accreditation_process` activo |
 | FSD-BR-09 | Filtro `program_id` en queries [CC] |
+| Máquina de estados | `indicator_state_history` append-only + `indicator_current_view` |
 
 ---
 

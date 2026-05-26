@@ -75,10 +75,10 @@ BRD-ASM-01…05; correo institucional; datos maestros carreras/facultades; plant
 
 | Bloque | Decisión funcional (no stack) |
 |--------|------------------------------|
-| Estilo | Monolito modular (evitar microservicios prematuros — skill arquitectura) |
+| Estilo | Arquitectura cloud distribuida con servicios hexagonales (Evidence, Audit, Orchestration, Notification) |
 | Persistencia Evidencia | Append-only; sin `DELETE` físico en blobs aprobados |
 | Autenticación | `AuthPort` + `LocalAuthAdapter` (v1.0); `LdapAuthAdapter` (v1.1) — ADR-0003 |
-| ADR | `docs/adr/README.md` — ADR-0001…0009 (inmutable, monolito, auth, storage, audit, PG, JWT, taxonomías, Node) |
+| ADR | `docs/adr/README.md` — ADR-0001…0013 (inmutable, EventBridge, SQS FIFO, S3, estado append-only) |
 | Módulos lógicos | `MOD-AUTH`, `MOD-PROCESS`, `MOD-EVIDENCE`, `MOD-WORKFLOW`, `MOD-DASH`, `MOD-NOTIFY`, `MOD-REPORT`, `MOD-PUBLIC`, `MOD-AUDIT` |
 
 ### 2.5 Descomposición en tasks (Spec Kit)
@@ -104,7 +104,7 @@ BRD-ASM-01…05; correo institucional; datos maestros carreras/facultades; plant
 
 | Actor | Tipo | Responsabilidad | Permisos clave |
 |-------|------|-----------------|----------------|
-| [CC] | humano | Carga/subsana Evidencia de su carrera | CRUD Evidencia propia; leer observaciones |
+| [CC] | humano | Carga/subsana Evidencia de su carrera | Crear, leer y versionar Evidencia propia; leer observaciones |
 | [TD] | humano | Valida, aprueba/rechaza Indicador | Transiciones estado Indicador; búsqueda global |
 | [JD] | humano | Configuración, reportes, publicación | Usuarios, plantillas, semáforo, PDF, portal publish |
 | [P] | humano | Consulta pública | Solo lectura publicados |
@@ -145,12 +145,12 @@ sequenceDiagram
   participant TD as Técnico [TD]
   CC->>SYS: POST Evidencia v1
   SYS->>TD: Notificación revisión
-  TD->>SYS: PATCH Indicador OBSERVADO + Observación
+  TD->>SYS: POST aprobar/rechazar Indicador (inserta indicator_state_history)
   SYS->>CC: Notificación rechazo
   CC->>SYS: POST Evidencia v2 (observationId)
   Note over SYS: v1 permanece; append-only
   SYS->>TD: Notificación subsanación
-  TD->>SYS: PATCH Indicador APROBADO
+  TD->>SYS: POST aprobar Indicador (inserta indicator_state_history)
 ```
 
 ---
@@ -219,24 +219,25 @@ Escenario: Acción sin sesión
 - **Precondiciones:** Indicador en `PENDIENTE` o `OBSERVADO`; usuario con permiso carrera
 - **Flujo principal:**
   1. [CC] selecciona Proceso → Fase → Indicador.
-  2. Adjunta archivo + metadatos obligatorios (Criterio/Indicador).
+  2. Adjunta Evidence + metadatos obligatorios (Criterio/Indicador).
   3. Sistema valida tipo/tamaño; calcula hash.
-  4. Persiste `Evidence` v1; transiciona Indicador a `SUBIDO`.
-  5. Encola notificación [TD] (UC-015).
-  6. Si archivo > umbral → barra progreso (US-025).
+  4. Persiste `Evidence` v1 y publica `EvidenceUploaded`.
+  5. Audit Service consume el evento e inserta transición `PENDIENTE → SUBIDO` en `indicator_state_history`.
+  6. Notification Service notifica al [TD] (UC-015).
+  7. Si el blob de Evidencia > umbral → barra progreso (US-025).
 - **Excepciones:** E1 sin Indicador → 400; E2 formato inválido → 422
 
 ```gherkin
 Escenario: Carga válida
   Dado un [CC] y un Indicador en PENDIENTE
-  Cuando sube archivo válido con metadatos completos
+  Cuando sube Evidence válida con metadatos completos
   Entonces se crea Evidence versión 1
   Y el Indicador pasa a SUBIDO
   Y el [TD] recibe notificación en un máximo de 15 minutos
 ```
 
-**Datos entrada:** `indicatorId`, `file`, `description`, `criterionId`  
-**Datos salida:** `evidenceId`, `version`, `contentHash`, `status`
+**Datos entrada:** `indicatorId`, `evidenceBlob`, `description`, `criterionId`  
+**Datos salida:** `evidenceId`, `version`, `contentHash`, `currentState`
 
 ---
 
@@ -244,7 +245,7 @@ Escenario: Carga válida
 
 - **Trazabilidad:** PRD-REQ-006, 007 · PRD-US-007, 008 · BRD-CST-01 · BRD-RB-18
 - **Reglas:** Sin `DELETE` en Evidencia `APROBADO`; intentos → `AUDIT_DELETE_DENIED`
-- **Flujo:** Consulta historial ordenado; marca `isCurrent=true` en vigente
+- **Flujo:** Consulta historial ordenado; la versión vigente se deriva por `version DESC` y cadena `supersedesId`
 
 ```gherkin
 Escenario: Bloqueo eliminación Evidencia aprobada
@@ -374,20 +375,20 @@ erDiagram
   USER ||--o{ AUDIT_LOG : performs
   INDICATOR {
     uuid id PK
-    string status
+    string current_state
     uuid phase_id FK
   }
   EVIDENCE {
     uuid id PK
     uuid indicator_id FK
-    int current_version
+    int latest_version
   }
   EVIDENCE_VERSION {
     uuid id PK
     uuid evidence_id FK
     int version_number
     string content_hash
-    boolean is_current
+    uuid supersedes_id
     uuid observation_id FK
   }
 ```
@@ -399,11 +400,11 @@ erDiagram
 | Evidence | indicatorId | UUID | sí | existe y carrera del [CC] |
 | EvidenceVersion | contentHash | string(64) | sí | SHA-256 |
 | EvidenceVersion | observationId | UUID | no | requerido si subsanación |
-| Indicator | status | enum | sí | PENDIENTE,SUBIDO,OBSERVADO,SUBSANADO,APROBADO |
+| Indicator | currentState | enum derivado | sí | Derivado de `indicator_state_history`; no editable por cliente |
 | Observation | justification | text | sí | min length |
 | AuditLog | action | string | sí | catálogo cerrado |
 
-> **Prohibido:** columna `is_deleted` en `Evidence` / `EvidenceVersion` aprobados (skill técnica).
+> **Prohibido:** columna `is_deleted` en `Evidence` / `EvidenceVersion` aprobados y `UPDATE` destructivo para transiciones de `Indicator`. El estado vigente se lee desde `indicator_current_view`.
 
 ---
 
@@ -420,9 +421,9 @@ erDiagram
 | API-EVD-03 | GET | `/evidences/{id}/versions` | UC-005 | [CC],[TD] |
 | API-EVD-04 | DELETE | `/evidences/{id}` | UC-005 | **409 siempre si aprobado** |
 | API-EVD-05 | POST | `/evidences/{id}/versions` | UC-006 | [CC] |
-| API-WF-01 | PATCH | `/indicators/{id}/reject` | UC-008 | [TD] |
-| API-WF-02 | PATCH | `/indicators/{id}/approve` | UC-009 | [TD] |
-| API-WF-03 | PATCH | `/phases/{id}/close` | UC-010 | [TD] |
+| API-WF-01 | POST | `/indicators/{id}/reject` | UC-008 | [TD] |
+| API-WF-02 | POST | `/indicators/{id}/approve` | UC-009 | [TD] |
+| API-WF-03 | Evento | `IndicatorApproved` → SQS FIFO → Orchestration Service | UC-010 | sistema |
 | API-DASH-01 | GET | `/dashboard/coordinator` | UC-011 | [CC] |
 | API-DASH-02 | GET | `/dashboard/technician` | UC-012 | [TD] |
 | API-DASH-03 | GET | `/dashboard/executive` | UC-013 | [JD] |
@@ -503,21 +504,21 @@ Motor de dominio SIGESA — módulo MOD-EVIDENCE.
 Persistir una nueva EvidenceVersion vinculada a Indicador, sin violar append-only.
 
 # Context
-- Entrada: indicatorId, file bytes, metadata, actorId (CC)
-- Reglas: FSD-BR-01, FSD-BR-03; transición Indicador → SUBIDO
+- Entrada: indicatorId, evidenceBlob bytes, metadata, actorId (CC)
+- Reglas: FSD-BR-01, FSD-BR-03; publicación `EvidenceUploaded`
 
 # Reasoning
 1. Validar sesión y carrera del CC
 2. Validar Indicador editable (PENDIENTE u OBSERVADO)
 3. Calcular hash; almacenar blob
-4. Insertar versión; actualizar is_current
-5. Encolar notificación TD
+4. Insertar EvidenceVersion append-only
+5. Publicar `EvidenceUploaded` para Audit Service y Notification Service
 
 # Stop condition
 EvidenceVersion persistida O error 4xx documentado.
 
 # Output
-JSON: { evidenceId, version, status: "SUBIDO", notificationQueued: true }
+JSON: { evidenceId, version, event: "EvidenceUploaded" }
 ```
 
 ### 13.2 Contrato — FSD-UC-008 Rechazar Indicador
@@ -542,7 +543,7 @@ Transicionar Indicador a OBSERVADO creando Observation con justificación.
 
 ```markdown
 # Invariants
-- Si evidence.status == APPROVED → reject DELETE
+- Si `indicator_current_view.current_state == APROBADO` → reject DELETE
 - Registrar AUDIT_DELETE_DENIED siempre en intento
 
 # Output

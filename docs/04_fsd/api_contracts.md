@@ -126,16 +126,16 @@ security:
 
 ## 5. MOD-EVIDENCE
 
-### API-EVD-01 — `POST /evidences`
+### API-EVD-01 — `POST /indicators/{indicatorId}/evidences`
 
 | Campo | Valor |
 |-------|-------|
 | **UC** | FSD-UC-004 |
 | **x-allowed-roles** | `[CC]` |
 | **Content-Type** | `multipart/form-data` |
-| **Body** | `file`, `indicatorId`, `criterionId`, `description` |
-| **Prohibido en body** | `status` (backend asigna `SUBIDO`) |
-| **201** | `{ "evidenceId", "version": 1, "contentHash", "indicatorStatus": "SUBIDO" }` |
+| **Body** | `evidenceBlob`, `criterionId`, `description` |
+| **Prohibido en body** | `status` / `estado` (Audit Service deriva estado desde evento) |
+| **201** | `{ "evidenceId", "version": 1, "contentHash", "event": "EvidenceUploaded" }` |
 | **400** | `EVIDENCE_UNCLASSIFIED` |
 | **403** | `FORBIDDEN_ROLE` si [TD] sin delegación |
 
@@ -154,7 +154,7 @@ security:
 |-------|-------|
 | **UC** | FSD-UC-005 |
 | **x-allowed-roles** | `[CC]`, `[TD]` |
-| **200** | `[{ "version", "isCurrent", "observationId", "createdAt", "createdBy" }]` |
+| **200** | `[{ "version", "supersedesId", "observationId", "createdAt", "createdBy" }]` |
 
 ### API-EVD-04 — `DELETE /evidences/{id}`
 
@@ -170,8 +170,8 @@ security:
 |-------|-------|
 | **UC** | FSD-UC-006 |
 | **x-allowed-roles** | `[CC]` |
-| **Body** | `file`, `observationId`, `description` |
-| **201** | `{ "version": 2, "observationId", "supersedesVersion": 1 }` |
+| **Body** | `evidenceBlob`, `observationId`, `description` |
+| **201** | `{ "version": 2, "observationId", "supersedesVersion": 1, "event": "EvidenceSubsanated" }` |
 
 ### API-IMP-01 — `POST /imports/evidences`
 
@@ -186,35 +186,36 @@ security:
 
 ## 6. MOD-WORKFLOW
 
-> Usar endpoints **semánticos**; no `PATCH /indicators/{id}` con `{ "status": "APROBADO" }`.
+> Usar endpoints **semánticos**; no `PATCH /indicators/{id}` con `{ "status": "APROBADO" }`. Todo cambio de estado se persiste como `INSERT` en `indicator_state_history`.
 
-### API-WF-01 — `PATCH /indicators/{id}/reject`
+### API-WF-01 — `POST /indicators/{id}/reject`
 
 | Campo | Valor |
 |-------|-------|
 | **UC** | FSD-UC-008 |
 | **x-allowed-roles** | `[TD]` |
 | **Body** | `{ "justification": "texto mínimo 20 chars" }` |
-| **200** | `{ "status": "OBSERVADO", "observationId" }` |
+| **200** | `{ "newState": "OBSERVADO", "observationId", "stateHistoryId" }` |
 | **422** | `JUSTIFICATION_REQUIRED` |
 
-### API-WF-02 — `PATCH /indicators/{id}/approve`
+### API-WF-02 — `POST /indicators/{id}/approve`
 
 | Campo | Valor |
 |-------|-------|
 | **UC** | FSD-UC-009 |
 | **x-allowed-roles** | `[TD]` |
-| **200** | `{ "status": "APROBADO", "phaseReadyToClose": boolean }` |
+| **200** | `{ "newState": "APROBADO", "stateHistoryId", "event": "IndicatorApproved" }` |
 | **403** | `FORBIDDEN_ROLE` si [CC] |
 
-### API-WF-03 — `PATCH /phases/{id}/close`
+### API-WF-03 — `IndicatorApproved` → SQS FIFO → Orchestration Service
 
 | Campo | Valor |
 |-------|-------|
 | **UC** | FSD-UC-010 |
-| **x-allowed-roles** | `[TD]` |
-| **200** | `{ "status": "COMPLETADA" }` |
-| **409** | `FASE_CIERRE_BLOQUEADO`, `details.pendingIndicators[]` |
+| **x-allowed-roles** | sistema |
+| **Entrada** | Evento `IndicatorApproved` con `phaseId` y `correlationId` |
+| **Salida** | Evento `PhaseCompleted` solo si `COUNT(APROBADO) == COUNT(TOTAL)` |
+| **Sin cierre** | No emite evento; pendientes consultables desde dashboard |
 
 ---
 
@@ -282,10 +283,10 @@ security:
 
 | Endpoint | CC | TD | JD | P |
 |----------|:--:|:--:|:--:|:--:|
-| POST /evidences | ✓ | | | |
-| PATCH .../reject | | ✓ | | |
-| PATCH .../approve | | ✓ | | |
-| PATCH .../close | | ✓ | | |
+| POST /indicators/{id}/evidences | ✓ | | | |
+| POST .../reject | | ✓ | | |
+| POST .../approve | | ✓ | | |
+| Evento IndicatorApproved → SQS FIFO | | sistema | | |
 | GET /dashboard/coordinator | ✓ | | | |
 | GET /dashboard/technician | | ✓ | | |
 | GET /dashboard/executive | | | ✓ | |
@@ -300,7 +301,7 @@ security:
 | Anti-patrón | Alternativa |
 |-------------|-------------|
 | `DELETE /evidences/{id}` que borre aprobados | 409 + append-only |
-| `PUT /indicators/{id}` con `status` en body | `/approve`, `/reject` |
+| `PUT/PATCH /indicators/{id}` con `status` en body | `POST /approve`, `POST /reject` + `indicator_state_history` |
 | [CC] en `/approve` | 403 estricto |
 | Exponer observaciones internas en `/public/*` | Filtro `published` |
 

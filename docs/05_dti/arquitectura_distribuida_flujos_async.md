@@ -1,9 +1,9 @@
 ---
 producto: SIGESA / AcredIA
 ambito: docs/05_dti
-version: dorada-v1.0
+version: antecedente-v1.0
 tipo: analisis-arquitectura-distribuida
-estado: borrador
+estado: supersedido-por-cloud-v1.0
 skill: sigesa-distributed-architect
 contrato: PC-SIG-14
 audience_default: humano+maquina
@@ -27,9 +27,9 @@ audience_default: humano+maquina
 | **FSD** | [`docs/04_fsd/FSD.md`](../04_fsd/FSD.md) v1.0 |
 | **DTI** | [`docs/05_dti/DTI.md`](DTI.md) v1.0 |
 | **NFRs** | [`docs/05_nfr/NFR_ISO25010.md`](../05_nfr/NFR_ISO25010.md) |
-| **Estado** | Borrador — apto para derivar ADR-0010+ y actualizar DTI §2.2 |
+| **Estado** | Antecedente supersedido — las decisiones vigentes están en `DTI.md`, `hybrid_architecture.md` y ADR-0010–0013 |
 
-> **Propósito:** documentar, desde la perspectiva de sistemas distribuidos **dentro del monolito modular**, los tres flujos que justifican patrones Transactional Outbox, CQRS y Saga orquestada, sin violar inmutabilidad append-only ni la máquina de estados del Indicador.
+> **Propósito histórico:** este documento conserva el análisis previo de flujos asíncronos. No es fuente de implementación vigente. Para cloud v1.0 prevalecen EventBridge, SQS FIFO, S3 e `indicator_state_history` según `DTI.md` y ADR-0010–0013.
 
 ---
 
@@ -62,7 +62,7 @@ audience_default: humano+maquina
 
 ## 1. Resumen ejecutivo
 
-SIGESA permanece un **monolito modular** con workers y proyecciones internas; no se propone mesh de microservicios. Aun así, el corpus Dorado ya exige **comunicación asíncrona** (SMTP UMSS, jobs PDF, portal v1.1) y **lecturas institucionales masivas** para [JD] que compiten con escrituras transaccionales de [CC]/[TD] en cierre de acreditación.
+En la versión analizada originalmente, SIGESA permanecía como **monolito modular** con workers y proyecciones internas. Esa premisa quedó supersedida por cloud v1.0: servicios desacoplados, EventBridge, SQS FIFO y `indicator_state_history`. El valor histórico de esta sección es explicar por qué la comunicación asíncrona y las proyecciones eran necesarias.
 
 Este documento fija **tres flujos críticos** que superan el filtro anti sobre-ingeniería (skill `sigesa-distributed-architect`, PASO 0):
 
@@ -231,14 +231,14 @@ Worker `ProjectionExecutiveSemaphore` — upsert idempotente:
 | `faculty_id` | `Faculty.id` |
 | `program_id` | `AcademicProgram.id` |
 | `total_indicators` | Conteo en fase activa |
-| `approved_count` | `indicator.status = APROBADO` |
+| `approved_count` | `indicator_current_view.current_state = APROBADO` |
 | `observed_count` | `OBSERVADO` |
 | `pending_review_count` | `SUBIDO` + `SUBSANADO` |
 | `semaphore_color` | Regla BRD completitud / plazos |
 | `last_event_at` | Watermark consistencia eventual |
 | `projected_at` | Timestamp de proyección |
 
-**`proj_indicator_summary_by_phase`** — grain: `(program_id, phase_id, indicator_status)` — alimenta reporte PDF (UC-014) sin recomputar joins pesados en el job de generación.
+**`proj_indicator_summary_by_phase`** — grain: `(program_id, phase_id, indicator_current_state)` — alimenta reporte PDF (UC-014) sin recomputar joins pesados en el job de generación.
 
 **Consistencia:** [JD] acepta eventualidad de segundos a minutos; la UI expone `last_event_at`. Cierre de Fase (UC-010, FSD-BR-07) sigue validando `COUNT(APROBADO) = COUNT(total)` en command side, no en proyección.
 
@@ -381,7 +381,7 @@ Sin columnas residuales de ETL. Payload JSON con claves explícitas del glosario
 - [x] PASO 0 documentado con veredicto explícito (no sobre-ingeniería de microservicios).
 - [x] Outbox: commit único dominio + outbox; relay posterior; sin dual-write invertido.
 - [x] Saga: compensaciones append-only; sin `DELETE` en diseño.
-- [x] CQRS: proyección no muta `indicator.status` en command side.
+- [x] CQRS: proyección no muta estados; lee desde `indicator_current_view`.
 - [x] Esquemas sin `Unnamed: 0` / `gtin`.
 - [x] Explicaciones fundamentadas con trazabilidad PRD/FSD/BRD.
 - [ ] ADR-0010…0012 creados en `docs/adr/`.

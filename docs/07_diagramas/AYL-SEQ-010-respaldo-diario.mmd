@@ -14,7 +14,7 @@ sequenceDiagram
 
     SCH->>JOB: trigger diario 02:00
     JOB->>DB: pg_dump
-    JOB->>VOL: snapshot archivos
+    JOB->>VOL: snapshot blobs de Evidence
     alt BKP-001 fallo dump
         JOB->>LOG: BACKUP_FAILED
         JOB->>JD: alerta 15 min

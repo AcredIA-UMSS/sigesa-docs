@@ -353,6 +353,7 @@ La acreditación exige Evidencias por **Criterio** e **Indicador**, plazos e hit
 | BRD-RB-16 | **Subsanación** ante observación: nueva versión de Evidencia vinculada al ID de observación | Auditoría | BRD-REQ-007, BRD-REQ-008 |
 | BRD-RB-17 | Avance porcentual del Proceso derivado del cumplimiento de Indicadores configurados | Política | Visión v2 equipo |
 | BRD-RB-18 | Intentos de borrado físico de Evidencia aprobada: rechazados y registrados en bitácora | Seguridad | Append-only |
+| BRD-RB-19 | La arquitectura cloud v1.0 debe desacoplar carga de Evidence, validación, notificación y cierre de Phase sin perder trazabilidad | Operación | BRD-KPI-02, BRD-KPI-03, BRD-KPI-06 |
 
 ### 12.1 Flujo de negocio: subsanación (sin borrado)
 

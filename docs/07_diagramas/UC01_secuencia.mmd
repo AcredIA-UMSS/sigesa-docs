@@ -11,20 +11,20 @@ sequenceDiagram
     CC->>SYS: GET /indicators/{id}/observations
     SYS-->>CC: Observacion abierta y plazo fatal
 
-    CC->>SYS: POST /evidences multipart + observationId
+    CC->>SYS: POST /indicators/{id}/evidences + observationId
     Note over SYS: INSERT evidence_version append-only
-    SYS->>SYS: indicator.estado = SUBSANADO
-    SYS-->>TD: notification_outbox revision pendiente
+    SYS->>SYS: INSERT indicator_state_history SUBSANADO
+    SYS-->>TD: EventBridge/NotificationService revision pendiente
 
     TD->>SYS: GET /evidences/{id}/versions
     SYS-->>TD: v1 y v2 con hashes
 
     alt TD aprueba
         TD->>SYS: POST /indicators/{id}/approve
-        SYS->>SYS: indicator.estado = APROBADO
+        SYS->>SYS: INSERT indicator_state_history APROBADO
         SYS-->>CC: notificacion aprobacion
     else TD observa de nuevo
         TD->>SYS: POST /indicators/{id}/observe
-        SYS->>SYS: indicator.estado = OBSERVADO
+        SYS->>SYS: INSERT indicator_state_history OBSERVADO
         SYS-->>CC: notificacion nueva observacion
     end

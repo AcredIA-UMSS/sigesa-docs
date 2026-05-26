@@ -251,7 +251,7 @@
 | **Tipo** | UX |
 | **Origen BRD** | BRD-REQ-025 |
 | **UC** | UC-004 |
-| **Enunciado** | Archivos > **5 MB** requieren barra de progreso determinada y bloqueo de doble envío (NFR-011). |
+| **Enunciado** | Evidence > **5 MB** requiere barra de progreso determinada y bloqueo de doble envío (NFR-011). |
 | **Verificación** | PRD-US-025; E2E upload. |
 
 ---

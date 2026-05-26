@@ -5,13 +5,13 @@
 | Campo | Valor |
 |-------|-------|
 | **Versión** | Dorada v1.0 |
-| **Timestamp** | `2026-05-16T16:06:15-04:00` |
+| **Timestamp** | `2026-05-25T20:08:00-04:00` |
 | **Skills** | `sigesa-db-architect-append-only` · `mermaid-expert-architect` |
 | **Fuentes** | `context/03_domain_glossary.md` · `team/alexAlvarez/docs/context/04_state_machine.md` · `docs/04_fsd/FSD.md` v1.0 |
 | **DDL ejecutable** | [`ddl_sigesa_append_only.sql`](ddl_sigesa_append_only.sql) |
-| **Invariantes** | Append-only · sin `DELETE` normativo · FK `ON DELETE RESTRICT` · taxonomía CEUB/ARCU-SUR |
+| **Invariantes** | Append-only · sin `DELETE` normativo · sin `UPDATE` de estados · FK `ON DELETE RESTRICT` · taxonomía CEUB/ARCU-SUR |
 
-> **Propósito:** modelo relacional PostgreSQL para el **sistema de automatización** de acreditación. Las tablas normativas (`evidence_version`, `observation`, `state_transition`, `audit_log`) son **solo inserción**; la invalidación usa `estado` o nueva versión con `supersedes_id`.
+> **Propósito:** modelo relacional PostgreSQL para el **sistema de automatización** de acreditación cloud v1.0. Las tablas normativas (`evidence_version`, `observation`, `indicator_state_history`, `phase_state_history`, `audit_log`) son **solo inserción**; los estados vigentes se derivan desde vistas, no desde columnas mutables.
 
 ---
 
@@ -56,8 +56,8 @@
 | Tabla | Descripción |
 |-------|-------------|
 | `accreditation_process` | Ciclo de acreditación de una carrera (`program_id`, `template_id`, gestión, fechas, `estado` EN_PROCESO \| ACREDITADO \| VENCIDO). |
-| `phase` | Instancia de fase (`process_id`, `template_phase_id`, `estado` ABIERTA \| COMPLETADA). |
-| `indicator` | Instancia evaluable (`phase_id`, `catalog_id`, `estado` máquina de estados). |
+| `phase` | Instancia de Phase (`process_id`, `template_phase_id`); estado derivado desde `phase_state_history`. |
+| `indicator` | Instancia evaluable (`phase_id`, `catalog_id`); estado derivado desde `indicator_state_history`. |
 
 **Regla BRD-RB-02:** un solo `accreditation_process` activo por carrera + modalidad + periodo (índice único parcial en DDL).
 
@@ -66,9 +66,10 @@
 | Tabla | Descripción |
 |-------|-------------|
 | `evidence` | Contenedor lógico de prueba por `indicator_id` (cabecera estable). |
-| `evidence_version` | **Versión append-only** del archivo: blob, hash, `supersedes_id`, enlace a `observation_id` si subsanación. |
+| `evidence_version` | **Versión append-only** de Evidence: blob, hash, `supersedes_id`, enlace a `observation_id` si subsanación. |
 | `observation` | Rechazo [TD] con justificación obligatoria; versionada si se reabre observación. |
-| `state_transition` | Log de cambios de `estado` en `indicator` o `phase` (quién, rol, desde/hacia). |
+| `indicator_state_history` | Historial append-only de transiciones de Indicator (quién, rol, desde/hacia, correlationId). |
+| `phase_state_history` | Historial append-only de transiciones de Phase para cierres emitidos por Orchestration Service. |
 | `audit_log` | Eventos de sistema (login, intento DELETE denegado, etc.). |
 | `notification_outbox` | Cola de correo institucional (patrón outbox). |
 | `publication_snapshot` | Contenido publicado en portal [P] (`published_at`, `published_by_role`). |
@@ -163,15 +164,13 @@ erDiagram
     uuid id PK
     uuid process_id FK
     uuid template_phase_id FK
-    varchar estado
-    timestamptz closed_at
+    timestamptz created_at
   }
   INDICATOR {
     uuid id PK
     uuid phase_id FK
     uuid catalog_id FK
-    varchar estado
-    timestamptz updated_at
+    timestamptz created_at
   }
 
   FACULTY ||--o{ ACADEMIC_PROGRAM : agrupa
@@ -200,13 +199,10 @@ erDiagram
   INDICATOR {
     uuid id PK
     uuid phase_id FK
-    varchar estado
   }
   EVIDENCE {
     uuid id PK
     uuid indicator_id FK
-    int current_version
-    varchar estado
     timestamptz created_at
     uuid created_by FK
     varchar created_by_role
@@ -237,13 +233,24 @@ erDiagram
     uuid created_by FK
     varchar created_by_role
   }
-  STATE_TRANSITION {
+  INDICATOR_STATE_HISTORY {
     uuid id PK
-    varchar entity_type
-    uuid entity_id
-    varchar from_status
-    varchar to_status
+    uuid indicator_id FK
+    varchar previous_state
+    varchar new_state
     text reason
+    uuid correlation_id
+    timestamptz created_at
+    uuid created_by FK
+    varchar created_by_role
+  }
+  PHASE_STATE_HISTORY {
+    uuid id PK
+    uuid phase_id FK
+    varchar previous_state
+    varchar new_state
+    text reason
+    uuid correlation_id
     timestamptz created_at
     uuid created_by FK
     varchar created_by_role
@@ -281,7 +288,8 @@ erDiagram
   INDICATOR ||--o{ OBSERVATION : genera
   OBSERVATION ||--o| OBSERVATION : supersedes
   OBSERVATION ||--o{ EVIDENCE_VERSION : motiva
-  INDICATOR ||--o{ STATE_TRANSITION : registra
+  INDICATOR ||--o{ INDICATOR_STATE_HISTORY : registra_estado
+  PHASE ||--o{ PHASE_STATE_HISTORY : registra_estado
   APP_USER ||--o{ AUDIT_LOG : ejecuta
   APP_USER ||--o{ EVIDENCE_VERSION : carga
 ```
@@ -292,11 +300,11 @@ erDiagram
 
 | Entidad | Columna | Valores |
 |---------|---------|---------|
-| `indicator` | `estado` | `PENDIENTE`, `SUBIDO`, `OBSERVADO`, `SUBSANADO`, `APROBADO` |
-| `phase` | `estado` | `ABIERTA`, `COMPLETADA` |
+| `indicator_current_view` | `current_state` | `PENDIENTE`, `SUBIDO`, `OBSERVADO`, `SUBSANADO`, `APROBADO` |
+| `phase_current_view` | `current_state` | `ABIERTA`, `COMPLETADA` |
 | `accreditation_process` | `estado` | `EN_PROCESO`, `ACREDITADO`, `VENCIDO` |
 
-Cada cambio en `indicator.estado` o `phase.estado` inserta fila en `state_transition` (FSD-UC-008, UC-009, UC-010). Cierre de fase validado por agregación: `COUNT(indicator) = COUNT(indicator WHERE estado = APROBADO)`.
+Cada cambio de Indicator inserta una fila en `indicator_state_history`; cada cierre de Phase inserta una fila en `phase_state_history`. No existe `UPDATE` destructivo de estado para Indicator ni Phase. El cierre de Phase se valida por agregación sobre `indicator_current_view`: `COUNT(indicator) = COUNT(indicator WHERE current_state = APROBADO)`.
 
 ---
 
@@ -309,13 +317,13 @@ sequenceDiagram
   participant DB as PostgreSQL
   participant TD as Actor_TD
   CC->>DB: INSERT evidence_version v1
-  Note over DB: indicator.estado SUBIDO
+  Note over DB: EventBridge publica EvidenceUploaded
   TD->>DB: INSERT observation v1
-  TD->>DB: INSERT state_transition OBSERVADO
+  TD->>DB: INSERT indicator_state_history OBSERVADO
   CC->>DB: INSERT evidence_version v2
   Note over DB: supersedes_id v1, observation_id
-  CC->>DB: INSERT state_transition SUBSANADO
-  TD->>DB: INSERT state_transition APROBADO
+  CC->>DB: INSERT indicator_state_history SUBSANADO
+  TD->>DB: INSERT indicator_state_history APROBADO
 ```
 
 ---
@@ -326,10 +334,11 @@ sequenceDiagram
 |-------|--------|--------|
 | `evidence_version` | `(evidence_id, version DESC)` | Historial vigente |
 | `evidence_version` | `(content_sha256)` | Dedup opcional |
-| `indicator` | `(phase_id, estado)` | Bandeja [TD] |
+| `indicator_state_history` | `(indicator_id, created_at DESC)` | Estado vigente e historial |
+| `phase_state_history` | `(phase_id, created_at DESC)` | Estado vigente de Phase |
 | `accreditation_process` | `(program_id, modality, management_year) WHERE estado = EN_PROCESO` | Un proceso activo |
 | `audit_log` | `(created_at)` | Particionado mensual por rango |
-| `state_transition` | `(entity_type, entity_id, created_at)` | Timeline indicador |
+| `indicator_current_view` | vista derivada | Bandeja [TD] y cierre de Phase |
 
 Particionado sugerido: `audit_log` y `evidence_version` por `RANGE (created_at)` anual tras piloto.
 
@@ -341,8 +350,9 @@ Particionado sugerido: `audit_log` y `evidence_version` por `RANGE (created_at)`
 |--------|-------------------|
 | UC-004, UC-006 | `evidence`, `evidence_version` |
 | UC-005 | `evidence_version` (sin DELETE) |
-| UC-008 | `observation`, `state_transition` |
-| UC-009, UC-010 | `indicator`, `phase`, `state_transition` |
+| UC-008 | `observation`, `indicator_state_history` |
+| UC-009 | `indicator`, `indicator_state_history` |
+| UC-010 | `phase`, `phase_state_history`, `indicator_current_view` |
 | UC-017 | `audit_log` |
 | UC-016 | `publication_snapshot` |
 
@@ -354,6 +364,7 @@ Matriz: [`matriz_trazabilidad.md`](../../matriz_trazabilidad.md)
 
 - [x] Tabla `evidence_version` sin dependencia de `DELETE`
 - [x] `supersedes_id` y `version` en evidencia y observación
+- [x] `indicator_state_history` y `phase_state_history` sin `UPDATE` destructivo
 - [x] FKs reflejan taxonomía institucional
 - [x] `ON DELETE RESTRICT` en DDL (sin cascade normativo)
 - [x] Diagramas Mermaid divididos (core + transaccional)
@@ -366,6 +377,7 @@ Matriz: [`matriz_trazabilidad.md`](../../matriz_trazabilidad.md)
 | Versión | Timestamp | Cambio |
 |---------|-----------|--------|
 | **Dorada v1.0** | `2026-05-16T16:06:15-04:00` | Modelo físico inicial append-only + ER + DDL |
+| **Cloud v1.0** | `2026-05-25T20:08:00-04:00` | Alineación ADR-0012: historial append-only de Indicator/Phase y vistas de estado actual |
 
 ---
 

@@ -92,7 +92,7 @@ Característica: Carga de Evidencia
 
   Escenario: Carga exitosa con metadatos obligatorios
     Dado un [CC] autenticado y un Indicador válido en su carrera
-    Cuando carga un archivo y completa metadatos obligatorios
+    Cuando carga una Evidence y completa metadatos obligatorios
     Entonces el sistema crea la Evidencia versión 1 vinculada al Indicador
     Y notifica al [TD] asignado que hay revisión pendiente
 
@@ -103,8 +103,8 @@ Característica: Carga de Evidencia
     Y indica qué campo falta completar
 
 @PRD-US-025 @FSD-UC-004 @NFR-011 @TC-04b
-  Escenario: Progreso en carga de archivo grande
-    Dado un [CC] cargando un archivo mayor al umbral configurado de 5 MB
+  Escenario: Progreso en carga de Evidence grande
+    Dado un [CC] cargando una Evidence mayor al umbral configurado de 5 MB
     Cuando la carga está en curso
     Entonces el sistema muestra barra de progreso determinada
     Y evita permitir un segundo envío duplicado hasta completar
@@ -405,9 +405,9 @@ Característica: Importación masiva desde planilla
     Y reporta filas rechazadas con causa por fila
 
   Escenario: Planilla con errores de formato
-    Dado un archivo con columnas obligatorias faltantes
+    Dado una planilla de importación con columnas obligatorias faltantes
     Cuando intenta importar
-    Entonces el sistema rechaza el archivo completo
+    Entonces el sistema rechaza la planilla completa
     Y no crea registros parciales inconsistentes
 ```
 

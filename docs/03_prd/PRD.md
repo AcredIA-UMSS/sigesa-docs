@@ -283,7 +283,7 @@ Escenario: Sin resultados
 ```gherkin
 Escenario: Carga exitosa con metadatos obligatorios
   Dado un [CC] autenticado y un Indicador válido en su carrera
-  Cuando carga un archivo y completa metadatos obligatorios
+  Cuando carga una Evidencia y completa metadatos obligatorios
   Entonces el sistema crea la Evidencia versión 1 vinculada al Indicador
   Y notifica al [TD] asignado que hay revisión pendiente
 
@@ -413,9 +413,9 @@ Escenario: Importación válida desde planilla
   Y reporta filas rechazadas con causa por fila
 
 Escenario: Planilla con errores de formato
-  Dado un archivo con columnas obligatorias faltantes
+  Dado una planilla de importación con columnas obligatorias faltantes
   Cuando intenta importar
-  Entonces el sistema rechaza el archivo completo
+  Entonces el sistema rechaza la planilla completa
   Y no crea registros parciales inconsistentes
 ```
 
@@ -544,8 +544,8 @@ Escenario: Registro en bitácora
   Cuando la acción se confirma
   Entonces el sistema registra actor, timestamp, acción e identificador de entidad
 
-Escenario: Progreso en carga de archivo grande
-  Dado un [CC] cargando un archivo mayor al umbral configurado
+Escenario: Progreso en carga de Evidencia grande
+  Dado un [CC] cargando una Evidencia mayor al umbral configurado
   Cuando la carga está en curso
   Entonces el sistema muestra barra de progreso determinada
   Y evita permitir un segundo envío duplicado hasta completar
@@ -725,7 +725,8 @@ La matriz **autoritativa** (28 `PRD-REQ`, 24 `PRD-US`, 18 `FSD-UC`, NFR, ADR, TC
 |----|----------|------------|
 | PRD-Q-01 | Responsive **lectura** [CC] = **Must v1.0**; carga/subsanación móvil = **v1.1** (desktop-first carga en v1.0) | BRD §21.1 Q-04 |
 | PRD-Q-02 | **Credenciales locales** v1.0; **LDAP/SSO** v1.1 vía Adapter | [`ADR-0003`](../adr/ADR-0003-authentication-adapter.md) |
-| PRD-Q-03 | Barra de progreso para archivos **> 5 MB** | BRD-REQ-025, NFR-011 |
+| PRD-Q-03 | Barra de progreso para Evidencias **> 5 MB** | BRD-REQ-025, NFR-011 |
+| PRD-Q-04 | Arquitectura cloud distribuida v1.0 con servicios desacoplados para Evidence, auditoría, cierre de Phase y notificaciones | BRD-RB-19 · [`ADR-0010`](../adr/ADR-0010-event-driven-choreography.md) · [`ADR-0011`](../adr/ADR-0011-sqs-fifo-phase-closure.md) · [`ADR-0013`](../adr/ADR-0013-s3-evidence-blob-storage.md) |
 
 ### 15.2 Pendientes
 

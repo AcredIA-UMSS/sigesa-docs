@@ -72,7 +72,7 @@
 | `FSD-BR-*` | Regla de negocio — [`reglas_negocio.md`](reglas_negocio.md) |
 | `PRD-US-*` | User story — [`docs/03_prd/PRD.md`](../03_prd/PRD.md) |
 | `API-*` | Endpoint lógico — [`api_contracts.md`](api_contracts.md) |
-| `MOD-*` | Módulo monolito — AUTH, PROCESS, EVIDENCE, WORKFLOW, DASH, NOTIFY, REPORT, PUBLIC, AUDIT, OPS |
+| `MOD-*` | Boundary funcional / servicio lógico — AUTH, PROCESS, EVIDENCE, WORKFLOW, DASH, NOTIFY, REPORT, PUBLIC, AUDIT, OPS |
 
 ---
 

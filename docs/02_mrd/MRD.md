@@ -151,7 +151,7 @@ La UMSS gestiona acreditación de carrera (**CEUB**, **ARCU-SUR**) con herramien
 | Objetivos | Organizar **Evidencias** por indicador; responder observaciones; cumplir cronograma |
 | Dolores | Canales informales; sin confirmación de recepción; plazos inamovibles |
 | Comportamiento | PC + móvil para urgencias; adopción si ≤ 3 pasos en flujos críticos |
-| Frase | *«Siempre busco el último archivo entre correo y mensajería.»* |
+| Frase | *«Siempre busco la última Evidencia entre correo y mensajería.»* |
 | Buyer / User | **User** principal |
 
 #### Persona 4 — [P] Estudiante / empleador (consulta pública)
@@ -191,7 +191,7 @@ La UMSS gestiona acreditación de carrera (**CEUB**, **ARCU-SUR**) con herramien
 | JTBD-09 | S1 | consulto desde el campus con poco tiempo | usar interfaz usable en pantalla reducida | atender urgencias sin volver a oficina |
 | JTBD-10 | S4 | necesito validar acreditación de una carrera | consultar portal público oficial | confiar en información institucional |
 | JTBD-11 | S2 | audito acciones del piloto | exportar bitácora de quién hizo qué y cuándo | responder auditoría externa |
-| JTBD-12 | S1/S2 | el sistema rechaza mi carga | ver mensaje claro y barra de progreso en archivos pesados | no abandonar ni duplicar envío |
+| JTBD-12 | S1/S2 | el sistema rechaza mi carga | ver mensaje claro y barra de progreso en Evidencias pesadas | no abandonar ni duplicar envío |
 | JTBD-13 | S2 | debo dar seguimiento a mejoras post-observación | gestionar plan de mejora en el mismo **Proceso** | demostrar cierre de acciones correctivas |
 | JTBD-14 | S4 | soy evaluador en fase externa | acceder solo a paquete autorizado de **Evidencias** | emitir informe sin copias informales |
 

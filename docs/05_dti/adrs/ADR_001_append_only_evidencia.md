@@ -14,7 +14,7 @@ SIGESA automatiza el ciclo de acreditación CEUB/ARCU-SUR en la UMSS. La **Evide
 
 El BRD y el FSD establecen explícitamente que no existe eliminación física de Evidencias aprobadas (BRD-CST-01, FSD-BR-02). Patrones habituales en CRUD web — `DELETE` REST, columnas `is_deleted` o `deleted_at`, sobrescritura in-place del blob en almacenamiento — destruyen la trazabilidad que el piloto debe demostrar ante auditores. La skill `sigesa-db-architect-append-only` y el DDL [`ddl_sigesa_append_only.sql`](../ddl_sigesa_append_only.sql) materializan esta restricción a nivel de esquema: `REVOKE DELETE` sobre tablas normativas y FK `ON DELETE RESTRICT` hacia `evidence_version`.
 
-Este ADR define el **modelo de versiones y políticas de API**. La **ruta física del archivo** (volumen Docker vs. object storage) se decide en [ADR_004](ADR_004_almacenamiento_blobs_docker.md). La **bitácora transversal** de acciones en [ADR_005](ADR_005_audit_log_postgresql.md).
+Este ADR define el **modelo de versiones y políticas de API**. La ubicación física del blob de Evidence para cloud v1.0 se decide en [ADR-0013](../../adr/ADR-0013-s3-evidence-blob-storage.md). La **bitácora transversal** de acciones en [ADR_005](ADR_005_audit_log_postgresql.md).
 
 ## Alternativas consideradas
 
@@ -42,7 +42,7 @@ Se adopta el modelo **append-only** con las siguientes reglas obligatorias:
 
 - Cumplimiento demostrable de BRD-CST-01 y NFR-017 ante pares evaluadores.
 - El [TD] puede reconstruir la línea temporal de un Indicador sin exportar backups manuales.
-- Migración futura de medio de almacenamiento (Docker → S3) no exige cambiar el modelo de versiones, solo `storage_key` y el adaptador `FileStoragePort`.
+- La migración de medio de almacenamiento no exige cambiar el modelo de versiones, solo `storage_key` y el adaptador `BlobStoragePort`.
 
 ### Negativas
 

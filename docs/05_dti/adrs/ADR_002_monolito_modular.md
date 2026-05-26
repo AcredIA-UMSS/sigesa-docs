@@ -3,18 +3,18 @@
 | Campo | Valor |
 |-------|-------|
 | **Canónico** | [ADR-0002](../../adr/ADR-0002-modular-monolith.md) |
-| **Estado** | **Aceptada** |
+| **Estado** | **Supersedida parcialmente para cloud v1.0** |
 | **Fecha** | 2026-05-17 |
 | **Alcance** | Arquitectura de aplicación UMSS |
 | **Trazabilidad** | FSD §2.4 · MOD-* en matriz · NFR operabilidad |
 
 ## Contexto
 
-SIGESA no es un marketplace ni una plataforma de analítica masiva: es un **flujo transaccional** con máquina de estados del Indicador, validaciones RBAC por carrera, carga de archivos y generación de reportes PDF. El tráfico esperado en el piloto (5–10 carreras, ~150 usuarios concurrentes máximos según estimación del equipo AcredIA) es moderado. El equipo de implementación es acotado (~4 desarrolladores) con ventana al piloto Q3–Q4 2026 y restricción de **costo $0** en servicios cloud de pago (SA-05, BRD).
+SIGESA fue modelado inicialmente como **flujo transaccional** con máquina de estados del Indicator, validaciones RBAC por carrera, carga de Evidence y generación de reportes PDF. La arquitectura cloud v1.0 vigente supersede el despliegue monolítico, pero conserva este ADR como antecedente de modularidad interna.
 
-Microservicios introducirían fronteras de red, despliegues independientes, observabilidad distribuida y consistencia eventual en operaciones que el dominio exige **atómicas** (escritura de blob + fila `evidence_version` + transición de estado + fila `audit_log`). Un monolito bien modularizado con límites explícitos (`MOD-AUTH`, `MOD-EVIDENCE`, `MOD-WORKFLOW`, etc.) concentra la complejidad donde aporta valor: reglas append-only y máquina de estados, no en orquestación de diez contenedores.
+El análisis posterior identificó que Evidence Service, Audit Service, Orchestration Service y Notification Service requieren fronteras de responsabilidad explícitas. La consistencia eventual se controla con EventBridge, SQS FIFO e historial append-only de estados, según ADR_010–ADR_012.
 
-El FSD Dorado ya declara estilo “monolito modular” como referencia funcional; este ADR fija la decisión técnica y el mapa de módulos para el DTI y el código.
+Este ADR ya no fija la arquitectura de despliegue vigente; el DTI maestro adopta cloud distribuido v1.0.
 
 ## Alternativas consideradas
 

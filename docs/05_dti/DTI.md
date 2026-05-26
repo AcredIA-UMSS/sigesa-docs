@@ -18,7 +18,7 @@ audience_default: humano+maquina
 |-------|-------|
 | **Versión** | Dorada v1.0 (borrador compilado) |
 | **Timestamp** | `2026-05-17T18:00:00-04:00` |
-| **Contrato** | [PC-SIG-13] Arquitecto de Infraestructura y DTI |
+| **Contrato** | [PC-SIG-13] Arquitecto de Infraestructura y DTI · [PC-SIG-14] Arquitecto Cloud Distribuido |
 | **Skills** | [`dti-author`](dti-author.md) · `sigesa-generacion-documentos-tecnicos` · `sigesa-auditor-trazabilidad-dti` · `sigesa-db-architect-append-only` |
 | **Plantilla estructura** | [`templates/dti.md`](../../templates/dti.md) (§0–§21) |
 | **Gate trazabilidad** | [`docs/09_trazabilidad/report_findings.md`](../09_trazabilidad/report_findings.md) — **APTO** |
@@ -50,7 +50,7 @@ audience_default: humano+maquina
 
 ## 1. Resumen ejecutivo
 
-SIGESA es el sistema de **automatización** del ciclo de acreditación CEUB/ARCU-SUR en la UMSS. El DTI traduce el FSD Dorado en arquitectura desplegable: **monolito modular** (SPA React + API Node.js 20 + Express 4 + PostgreSQL 16 + volumen Docker para blobs), con **Evidencia append-only**, **RBAC** para [CC], [TD] y [JD], y bitácora **solo inserción**. No se prescriben microservicios ni almacenamiento cloud de pago en v1.0 (presupuesto institucional $0).
+SIGESA es el sistema de **automatización** del ciclo de acreditación CEUB/ARCU-SUR en la UMSS. El DTI traduce el FSD Dorado en arquitectura desplegable **cloud distribuida**: SPA web, API Gateway, servicios hexagonales desacoplados (Evidence Service, Audit Service, Orchestration Service, Notification Service), PostgreSQL/RDS append-only, S3 para blobs de Evidencia, EventBridge para coreografía y SQS FIFO para cierre concurrente de Phase. La regla central es estricta: **Evidencia y transiciones de estado se registran por inserción, no por actualización destructiva**.
 
 ---
 
@@ -72,19 +72,21 @@ SIGESA es el sistema de **automatización** del ciclo de acreditación CEUB/ARCU
 <!-- avance: iteración 1 -->
 ## 2.1 Logical View (vista lógica)
 
-SIGESA en v1.0 es un **monolito modular**: un solo proceso lógico (API) y módulos internos (dominio + adaptadores). La vista lógica se describe con:
+SIGESA en v1.0 adopta una **arquitectura cloud distribuida** con servicios hexagonales. Cada servicio conserva núcleo de dominio y puertos/adaptadores propios; la comunicación entre dominios ocurre por eventos de negocio.
 
 - **Contexto**: Actores [CC], [TD], [JD], [P] y externos (IdP UMSS, SMTP, marco CEUB/ARCU-SUR).
-- **Contenedores lógicos**: Frontend SPA, API Backend, PostgreSQL, volumen de evidencias versionadas, worker de notificaciones, motor de reportes PDF.
+- **Contenedores lógicos**: Frontend SPA, API Gateway, Evidence Service, Audit Service, Orchestration Service, Notification Service, PostgreSQL/RDS, S3, EventBridge y SQS FIFO.
 - **Integraciones críticas (puntos de fallo)**:
   - **Auth** contra IdP/infra UMSS (o mecanismo local LDAP según ADR_003).
   - **Notificaciones** por SMTP institucional.
 
-**Circuit Breaker (aplicación lógica)**
-- Se aplica alrededor de llamadas a **dependencias externas** (IdP UMSS y SMTP). Para SIGESA, el “fallback” no modifica evidencia: la operación principal (p.ej. `POST /api/v1/evidences`) continúa usando append-only en BD/volumen; solo se afecta la entrega de notificación/reportes asíncronos.
+**Coreografía Event-Driven (aplicación lógica)**
+- Evidence Service no actualiza estado de Indicator; publica `EvidenceUploaded` / `EvidenceSubsanated`.
+- Audit Service consume eventos de Evidence y es el único responsable de insertar transiciones en `indicator_state_history`.
+- Orchestration Service consume `IndicatorApproved` mediante SQS FIFO por `phaseId` y emite `PhaseCompleted` solo si `COUNT(APROBADO) == COUNT(TOTAL)`.
 
-**Consistent Hashing (aplicación lógica)**
-- Se define como estrategia de **asignación estable de trabajo** del worker notificaciones: si SIGESA se escala a múltiples instancias de worker, la clave lógica es `program_id + indicator_id` (o `evidence_version_id` cuando corresponda) para que el “mismo” caso caiga consistentemente en la misma partición/worker.
+**Circuit Breaker (aplicación lógica)**
+- Se aplica alrededor de dependencias externas (IdP UMSS, SMTP). El fallback no modifica Evidence ni estados: solo afecta entrega de notificación o reintento operacional.
 
 ---
 
@@ -94,82 +96,89 @@ SIGESA en v1.0 es un **monolito modular**: un solo proceso lógico (API) y módu
 La vista de procesos se aterriza en flujos ya documentados, con puntos explícitos donde los patrones mejoran resiliencia y escalabilidad:
 
 1) **Carga/Versionado de Evidencia (FSD-UC-004)**
-- Secuencia (resumen): API valida JWT/RBAC → dominio verifica estado del proceso/indicador → escribe blob (versionado SHA-256) → inserta `evidence_version` + transición de estado + `audit_log`.
-- **Circuit Breaker**: protege llamadas a dependencias externas *solo si existen* dentro del flujo (en v1.0, el flujo crítico de evidencia no depende de SMTP/IdP para escribir append-only; el circuit breaker se usa en “producción de eventos” para notificaciones/reporte).
+- Secuencia (resumen): API Gateway valida JWT/RBAC → Evidence Service valida que el Indicator permita carga → escribe blob en S3 → inserta Evidence/version metadata → publica `EvidenceUploaded`.
+- **Invariante**: Evidence Service no inserta transiciones de estado; Audit Service lo hace al consumir el evento.
 
 2) **Aprobación/Rechazo/Observaciones**
-- Estados y transiciones se registran vía `STATE_TRANSITION` y `audit_log` append-only.
-- **Comunicación asíncrona**: generación de notificaciones/reportes desde outbox y worker.
+- Audit Service valida la máquina de estados y registra cada transición con `INSERT INTO indicator_state_history`.
+- **Comunicación asíncrona**: publica `IndicatorApproved` o `IndicatorObserved` para Notification Service y Orchestration Service.
 
-3) **Notificaciones (worker + outbox)**
-- El worker consume `notification_outbox` y envía email vía SMTP.
-- **Circuit Breaker (aquí es donde aporta más)**: ante errores repetidos de SMTP, el circuit breaker evita saturar el sistema; el mensaje permanece para reintentos controlados (sin borrar evidencia).
+3) **Notificaciones**
+- Notification Service consume eventos de EventBridge y entrega correos vía SMTP institucional.
+- **Circuit Breaker**: ante errores repetidos de SMTP, evita saturación; el evento permanece trazable y se reintenta según política.
 
-4) **Particionado estable (consistent hashing) en colas internas**
-- Si hay N workers, el particionado estable reduce reordenamientos y reintentos inconsistentes.
+4) **Cierre de Phase**
+- Orchestration Service consume `IndicatorApproved` desde SQS FIFO con `MessageGroupId = phaseId`.
+- **Race conditions**: SQS FIFO serializa la evaluación por Phase y evita cierres duplicados u omitidos.
 
 ---
 
 <!-- avance: iteración 1 -->
 ## 2.3 Development View (vista de desarrollo)
 
-DTI sigue arquitectura **hexagonal** (puertos/adaptadores). Los patrones se ubican en capas específicas:
+DTI sigue arquitectura **hexagonal** (puertos/adaptadores) en cada servicio. Los patrones se ubican en capas específicas:
 
 - **Puertos de salida**
-  - `AuditLogPort` (append-only, no negociable por resiliencia)
-  - `FileStoragePort` (volumen/blobs versionados)
-  - (nuevo requisito de ingeniería, aunque v1.0 sea monolito): `NotificationDeliveryPort` (adaptador SMTP) con circuit breaker.
+  - `EvidenceRepositoryPort` (append-only, `INSERT` exclusivo)
+  - `BlobStoragePort` (S3 para blobs versionados de Evidence)
+  - `StateHistoryRepositoryPort` (`INSERT INTO indicator_state_history`)
+  - `EventPublisherPort` (EventBridge)
+  - `NotificationDeliveryPort` (adaptador SMTP) con circuit breaker.
 
 - **Adaptadores**
-  - `backend/src/adapter/out/` implementa delivery y reportes.
-  - Aplicación del circuit breaker se hace *en el adaptador* SMTP/IdP (no en el dominio), manteniendo invariantes de evidencia.
+  - Cada servicio implementa sus adaptadores de entrada/salida bajo su propio boundary hexagonal.
+  - Aplicación del circuit breaker se hace *en el adaptador* SMTP/IdP (no en el dominio), manteniendo invariantes de Evidence y estado.
 
-- **Consistent Hashing**
-  - En el adaptador del worker, antes de despachar trabajos, se calcula `partition_key` desde IDs de dominio y se enruta a la partición/consumer correspondiente.
+- **SQS FIFO**
+  - En Orchestration Service, `MessageGroupId = phaseId` garantiza orden total para cierre de Phase.
 
 ---
 
 <!-- avance: iteración 1 -->
 ## 2.4 Physical View (vista física / despliegue)
 
-Contenedores físicos en v1.0:
+Contenedores físicos / servicios en v1.0 cloud:
 
 - `sigesa-web` (SPA)
-- `sigesa-api` (Node 20 + Express 4)
-- `sigesa-db` (PostgreSQL 16)
-- `evidencias_data` (volumen Docker)
-- Worker notificaciones (cron/worker)
+- API Gateway
+- Evidence Service
+- Audit Service
+- Orchestration Service
+- Notification Service
+- PostgreSQL/RDS
+- S3 para blobs de Evidence
+- EventBridge
+- SQS FIFO para cierre de Phase
 
 Aplicación física de patrones:
 
 - **Circuit Breaker**: en el proceso donde ocurre la llamada externa (worker para SMTP; API/adaptador para IdP/LDAP). Límites:
-  - No se protege escritura append-only (BD/volumen), se protege la *entrega*.
-- **Consistent Hashing**: solo tiene efecto si existen múltiples instancias de worker/API; en v1.0 se documenta como habilitador para escalamiento horizontal sin re-procesar masivamente.
+  - No se protege escritura append-only, se protege la *entrega*.
+- **SQS FIFO**: ordena eventos `IndicatorApproved` por `phaseId` antes de evaluar cierre de Phase.
 
 ---
 
 <!-- avance: iteración 1 -->
 ## 2.5 Scenarios (escenarios del sistema)
 
-1) **S1 — Subida de evidencia con IdP/SMTP inestable**
-- Entrada: [CC] hace `POST /api/v1/evidences`.
+1) **S1 — Subida de Evidencia con IdP/SMTP inestable**
+- Entrada: [CC] hace `POST /api/v1/indicators/{id}/evidences`.
 - Comportamiento esperado:
   - La operación principal no depende de SMTP; se conserva append-only (no DELETE).
-  - Si hay confirmación/notificación posterior vía outbox, el delivery usa circuit breaker (evita saturar SMTP) y reintenta según política.
+  - La notificación posterior la entrega Notification Service; el delivery usa circuit breaker y reintentos.
 
-2) **S2 — Aprobación de indicador → notificación diferida**
-- Entrada: [TD] hace `PATCH /indicators/{id}/approve`.
+2) **S2 — Aprobación de Indicator → notificación diferida**
+- Entrada: [TD] hace `POST /api/v1/indicators/{id}/approve`.
 - Comportamiento esperado:
-  - Se registra transición y audit.
-  - Se genera `notification_outbox`.
-  - Worker entrega con circuit breaker sobre SMTP.
-  - Si hay varios workers: consistent hashing por `program_id + indicator_id` minimiza saltos entre instancias.
+  - Audit Service inserta transición en `indicator_state_history`.
+  - Se publica `IndicatorApproved` en EventBridge.
+  - Notification Service entrega con circuit breaker sobre SMTP.
 
-3) **S3 — Cierre de fase con carga concurrente**
-- Entrada: [TD] `PATCH /phases/{id}/close`.
+3) **S3 — Cierre de Phase con aprobación concurrente**
+- Entrada: evento `IndicatorApproved` producido por Audit Service.
 - Comportamiento esperado:
-  - Si hay 409 por pendientes, se responde sin mutaciones destructivas.
-  - Las notificaciones derivadas siguen outbox + worker.
+  - Orchestration Service evalúa cierre tras eventos `IndicatorApproved` serializados por SQS FIFO.
+  - Si hay pendientes, no se emite `PhaseCompleted` y no hay mutaciones destructivas.
 
 4) **S4 — Reportes PDF (FSD-UC-014) bajo fallo parcial**
 - Entrada: solicitud de reporte.
@@ -185,14 +194,16 @@ Aplicación física de patrones:
 |------|-----------|------------------------------|
 | Dominio | Agregados, reglas FSD-BR-*, máquina de estados | `backend/src/domain/` |
 | Puertos entrada | Casos de uso (upload, approve, close phase) | `backend/src/domain/port/in/` |
-| Puertos salida | Repositorios, FileStoragePort, AuditLogPort | `backend/src/domain/port/out/` |
-| Adaptadores entrada | Controllers Express, middleware JWT | `backend/src/adapter/in/http/` |
-| Adaptadores salida | `pg`, volumen FS, Nodemailer | `backend/src/adapter/out/` |
+| Puertos salida | Repositorios, `BlobStoragePort`, `StateHistoryRepositoryPort`, `EventPublisherPort` | `services/*/src/domain/port/out/` |
+| Adaptadores entrada | Controllers HTTP, consumidores EventBridge/SQS, middleware JWT | `services/*/src/adapter/in/` |
+| Adaptadores salida | PostgreSQL/RDS, S3, EventBridge, SQS FIFO, Nodemailer | `services/*/src/adapter/out/` |
 
 | Puerto | ADR / UC |
 |--------|----------|
-| `FileStoragePort` | ADR_004 · FSD-UC-004 |
-| `AuditLogPort` | ADR_005 · transversal |
+| `BlobStoragePort` | ADR_004 · FSD-UC-004 |
+| `EvidenceRepositoryPort` | ADR_001 · FSD-UC-004/005 |
+| `StateHistoryRepositoryPort` | ADR_012 · FSD-UC-008/009/010 |
+| `EventPublisherPort` | ADR_010 · eventos de dominio |
 | `AuthPort` | ADR_003 · FSD-UC-001 |
 | JWT middleware | ADR_007 · todos los endpoints privados |
 
@@ -200,7 +211,7 @@ Aplicación física de patrones:
 
 ## 4. Modelo físico de datos
 
-Detalle completo: [`modelo_datos.md`](modelo_datos.md). DDL ejecutable: [`ddl_sigesa_append_only.sql`](ddl_sigesa_append_only.sql).
+Detalle completo: [`modelo_datos.md`](modelo_datos.md). DDL ejecutable base: [`ddl_sigesa_append_only.sql`](ddl_sigesa_append_only.sql). La arquitectura cloud v1.0 agrega el historial de estados de Indicator definido en [ADR_012](adrs/ADR_012_ddl_indicator_state_history.md).
 
 ### 4.1 ER — Maestros y plantilla normativa
 
@@ -268,13 +279,12 @@ Taxonomías CEUB/ARCU-SUR: [ADR_008](adrs/ADR_008_taxonomias_ceub_arcu.md).
 erDiagram
   INDICATOR {
     uuid id PK
-    varchar estado
+    uuid phase_id FK
   }
   EVIDENCE {
     uuid id PK
     uuid indicator_id FK
-    int current_version
-    varchar estado
+    uuid latest_version_id FK
   }
   EVIDENCE_VERSION {
     uuid id PK
@@ -283,20 +293,21 @@ erDiagram
     uuid supersedes_id FK
     varchar storage_key
     char content_sha256
-    varchar estado
+    timestamptz created_at
   }
   OBSERVATION {
     uuid id PK
     uuid indicator_id FK
     text justification
-    varchar estado
+    timestamptz created_at
   }
-  STATE_TRANSITION {
+  INDICATOR_STATE_HISTORY {
     uuid id PK
-    varchar entity_type
-    uuid entity_id
-    varchar from_status
-    varchar to_status
+    uuid indicator_id FK
+    varchar previous_state
+    varchar new_state
+    varchar created_by_role
+    timestamptz created_at
   }
   AUDIT_LOG {
     uuid id PK
@@ -308,7 +319,7 @@ erDiagram
   EVIDENCE ||--o{ EVIDENCE_VERSION : versiona
   EVIDENCE_VERSION ||--o| EVIDENCE_VERSION : supersedes
   INDICATOR ||--o{ OBSERVATION : genera
-  INDICATOR ||--o{ STATE_TRANSITION : registra
+  INDICATOR ||--o{ INDICATOR_STATE_HISTORY : registra_estado_append_only
 ```
 
 **Prohibido en esquemas SIGESA:** columnas residuales de importación (`Unnamed: 0`, `gtin`, etc.) y `deleted_at` / `is_deleted` en tablas normativas.
@@ -317,7 +328,7 @@ erDiagram
 
 ## 5. Contratos de integración (API)
 
-Especificación lógica completa: [`docs/04_fsd/api_contracts.md`](../04_fsd/api_contracts.md). OpenAPI físico: pendiente `docs/05_dti/openapi.yaml`.
+Especificación lógica completa: [`docs/04_fsd/api_contracts.md`](../04_fsd/api_contracts.md). Contratos cloud v1.0: [`api_contracts_cloud.md`](api_contracts_cloud.md). OpenAPI físico: pendiente `docs/05_dti/openapi.yaml`.
 
 ### 5.1 Convenciones
 
@@ -333,13 +344,13 @@ Especificación lógica completa: [`docs/04_fsd/api_contracts.md`](../04_fsd/api
 | ID | Método | Ruta | Roles | UC | Notas |
 |----|--------|------|-------|-----|-------|
 | API-AUTH-01 | POST | `/auth/login` | — | UC-001 | Dominio `@umss.edu.bo` |
-| API-EVD-01 | POST | `/evidences` | [CC] | UC-004 | multipart; hash SHA-256 |
+| API-EVD-01 | POST | `/indicators/{id}/evidences` | [CC] | UC-004 | multipart; hash SHA-256; publica `EvidenceUploaded` |
 | API-EVD-02 | GET | `/evidences/search` | [CC], [TD] | UC-007 | [CC] filtrado por carrera |
 | API-EVD-04 | DELETE | `/evidences/{id}` | [CC], [TD] | UC-005 | **409** si aprobado |
 | API-EVD-05 | POST | `/evidences/{id}/versions` | [CC] | UC-006 | subsanación |
-| API-WF-01 | PATCH | `/indicators/{id}/reject` | [TD] | UC-008 | justificación obligatoria |
-| API-WF-02 | PATCH | `/indicators/{id}/approve` | [TD] | UC-009 | semántico, no PATCH genérico |
-| API-WF-03 | PATCH | `/phases/{id}/close` | [TD] | UC-010 | 409 si pendientes |
+| API-WF-01 | POST | `/indicators/{id}/reject` | [TD] | UC-008 | inserta `observation` + `indicator_state_history` |
+| API-WF-02 | POST | `/indicators/{id}/approve` | [TD] | UC-009 | inserta `indicator_state_history`; publica `IndicatorApproved` |
+| API-WF-03 | Evento | `IndicatorApproved` → SQS FIFO | sistema | UC-010 | Orchestration Service evalúa cierre |
 
 ### 5.3 Matriz RBAC resumida
 
@@ -356,10 +367,10 @@ Autenticación: [ADR_003](adrs/ADR_003_adapter_autenticacion.md) + [ADR_007](adr
 
 ## 6. Justificación del producto — patrones (1 línea por patrón)
 
-- Circuit Breaker: **SÍ** — aplica a llamadas a dependencias externas (SMTP/IdP) en worker/adaptadores para evitar cascada de fallos y mantener invariantes append-only; ver **§3.5 / §3.5.1**.
-- Consistent Hashing: **SÍ** — aplica como estrategia de asignación estable del trabajo del worker (partición por `program_id+indicator_id`) si SIGESA escala horizontalmente; ver **§9**.
-- Comunicación asíncrona: **SÍ** — ya existe vía `notification_outbox` + worker de notificaciones, desacoplando el tiempo de respuesta del usuario del delivery; ver **§22**.
-- Patrón Saga: **NO** — v1.0 mantiene consistencia por transacciones locales y append-only (sin coreografía de transacciones distribuidas); ver **§23**.
+- Event-Driven: **SÍ** — EventBridge desacopla Evidence Service, Audit Service, Orchestration Service y Notification Service; ver [ADR_010](adrs/ADR_010_event_driven_choreography.md).
+- SQS FIFO: **SÍ** — ordena cierres de Phase por `phaseId` y evita race conditions; ver [ADR_011](adrs/ADR_011_sqs_fifo_phase_closure.md).
+- Estado append-only: **SÍ** — `indicator_state_history` reemplaza actualizaciones destructivas de estado; ver [ADR_012](adrs/ADR_012_ddl_indicator_state_history.md).
+- Circuit Breaker: **SÍ** — aplica a dependencias externas (SMTP/IdP) en adaptadores para evitar cascada de fallos.
 
 ---
 
@@ -376,6 +387,10 @@ Autenticación: [ADR_003](adrs/ADR_003_adapter_autenticacion.md) + [ADR_007](adr
 | [ADR_007](adrs/ADR_007_jwt_rbac.md) | ADR-0007 | JWT + RBAC |
 | [ADR_008](adrs/ADR_008_taxonomias_ceub_arcu.md) | ADR-0008 | Taxonomías en BD |
 | [ADR_009](adrs/ADR_009_backend_nodejs_express.md) | ADR-0009 | Node + Express |
+| [ADR_010](adrs/ADR_010_event_driven_choreography.md) | [ADR-0010](../adr/ADR-0010-event-driven-choreography.md) | EventBridge y coreografía de servicios |
+| [ADR_011](adrs/ADR_011_sqs_fifo_phase_closure.md) | [ADR-0011](../adr/ADR-0011-sqs-fifo-phase-closure.md) | SQS FIFO para cierre concurrente de Phase |
+| [ADR_012](adrs/ADR_012_ddl_indicator_state_history.md) | [ADR-0012](../adr/ADR-0012-indicator-state-history-append-only.md) | Historial append-only de estados de Indicator |
+| — | [ADR-0013](../adr/ADR-0013-s3-evidence-blob-storage.md) | S3 para blobs de Evidence en cloud v1.0 |
 
 Índice y reglas de edición: [`adrs/README.md`](adrs/README.md).
 
@@ -390,7 +405,7 @@ Autenticación: [ADR_003](adrs/ADR_003_adapter_autenticacion.md) + [ADR_007](adr
 | `sigesa-db` | `postgres:16` | Volume `pg_data` |
 | `evidencias_data` | named volume | `/data/evidencias/` — ADR_004 |
 
-Respaldo diario: `pg_dump` + copia del volumen de evidencias (RBN-14 / MOD-AUDIT). TLS 1.3 en reverse proxy institucional (NFR-003).
+Respaldo diario: snapshots de PostgreSQL/RDS + política de versionado y retención de S3 para blobs de Evidence. TLS 1.3 en API Gateway / reverse proxy institucional.
 
 ---
 
@@ -410,10 +425,10 @@ NFRs con impacto directo en este DTI: NFR-001 (latencia búsqueda), NFR-003 (TLS
 
 | Ítem | Acción |
 |------|--------|
-| `openapi.yaml` | Generar desde `api_contracts.md` |
+| `openapi.yaml` | Generar desde `api_contracts.md` y `api_contracts_cloud.md` |
 | LDAP / SSO UMSS | Implementar `LdapAuthAdapter` (ADR_003) |
-| Object storage S3-compatible | Evaluar migración desde volumen Docker (ADR_004 §6) |
-| Sincronizar `docs/adr/ADR-0001` y `docs/adr/ADR-0002` | Ampliar narrativa canónica al nivel de `docs/05_dti/adrs/` |
+| Runbooks AWS | Documentar alarmas EventBridge/SQS FIFO, DLQ y restore RDS/S3 |
+| Sincronizar DDL cloud | Generar `ddl_cloud_hybrid.sql` desde ADR_012 |
 
 ---
 
@@ -422,4 +437,5 @@ NFRs con impacto directo en este DTI: NFR-001 (latencia búsqueda), NFR-003 (TLS
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
 | v1.0-borrador | 2026-05-17 | Primera compilación DTI + carpeta `adrs/` desde `docs/` canónico y `team/aylenGonzales/09_dti/` |
+| v1.0-cloud | 2026-05-25 | Promoción de arquitectura cloud distribuida: EventBridge, SQS FIFO, S3 y estado append-only vía ADR_010–012 + ADR-0013 |
 

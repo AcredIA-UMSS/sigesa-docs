@@ -3,9 +3,9 @@ stateDiagram-v2
 
     [*] --> PENDIENTE : Indicador creado en el sistema\n(sin evidencia cargada)
 
-    PENDIENTE --> EN_REVISION : [CC] carga archivo válido\n(PDF/DOCX/XLSX ≤ 50 MB)\nFSD-UC-001
+    PENDIENTE --> EN_REVISION : [CC] carga Evidence válida\n(PDF/DOCX/XLSX ≤ 50 MB)\nFSD-UC-001
 
-    EN_REVISION --> APROBADO_TD : [TD] aprueba\nPATCH /indicadores/{id}/aprobar\nFSD-UC-003
+    EN_REVISION --> APROBADO_TD : [TD] aprueba\nPOST /indicadores/{id}/aprobar\nFSD-UC-003
 
     EN_REVISION --> RECHAZADO_TD : [TD] rechaza\ncon justificación ≥ 20 chars\nFSD-UC-003
 
@@ -17,7 +17,7 @@ stateDiagram-v2
 
     RECHAZADO_JD --> EN_REVISION : [CC] carga corrección\nFSD-UC-002
 
-    APROBADO_FINAL --> [*] : Estado terminal — inmutable\nDocumento no puede eliminarse\nRBN-02 / RBN-07
+    APROBADO_FINAL --> [*] : Estado terminal — inmutable\nEvidence no puede eliminarse\nRBN-02 / RBN-07
 
     note right of EN_REVISION
         Notificación a [TD] ≤ 15 min

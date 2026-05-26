@@ -21,7 +21,7 @@ sequenceDiagram
     alt hay pendientes u observados
         SYS-->>TD: 409 FASE_CIERRE_BLOQUEADO
     else todos aprobados
-        SYS->>SYS: phase.estado = COMPLETADA
+        SYS->>SYS: INSERT phase_state_history COMPLETADA
         SYS->>SYS: abre Fase N+1
         SYS-->>TD: 200 fase cerrada
     end
