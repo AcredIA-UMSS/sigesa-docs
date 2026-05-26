@@ -1,6 +1,8 @@
 {
   "meta": {
-    "source": "figma frame Espaciado y radio — Border Radius Section (44:784)"
+    "source": "figma frame Espaciado y radio — Border Radius Section (44:784)",
+    "exportedAt": "2026-05-25",
+    "canonicalExport": "variables-local.json"
   },
   "none": { "value": "0px" },
   "sm": { "value": "4px", "tokenFrame": "first radius demo cell" },

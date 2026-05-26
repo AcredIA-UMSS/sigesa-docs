@@ -1,18 +1,43 @@
 {
-  "version": "1.0.0",
-  "exportedAt": "2026-05-24T00:00:00Z",
+  "version": "1.2.0",
+  "exportedAt": "2026-05-25T00:00:00Z",
   "fileKey": "DX0AyrzfJQEUog45DsGEsl",
   "mcpToolsUsed": ["get_metadata", "get_libraries", "search_design_system"],
-  "mcpToolsPending": ["use_figma", "get_screenshot", "get_variable_defs"],
+  "mcpToolsPending": ["use_figma", "get_variable_defs"],
+  "tokenExtraction": {
+    "method": "frame-token-parse",
+    "source": "figma/metadata/raw-page-elementos.xml",
+    "canonicalFile": "figma/tokens/variables-local.json",
+    "extractedBy": "aylenGonzales",
+    "extractedAt": "2026-05-25",
+    "collections": 7,
+    "variables": 52
+  },
   "limitations": [
-    "Figma MCP Starter rate limit blocked use_figma and get_screenshot",
-    "get_variable_defs requires selected layer in desktop app",
-    "Screenshots are URL references only"
+    "Figma Variable API not queried — values parsed from labeled documentation frames",
+    "bg-pagina hex inferred from gray-50; gray ramp hex from Bootstrap-compatible mapping",
+    "Motion durations documented in frames; ms values not in XML text nodes",
+    "3 screenshots pending: body-reference-1280, dropdown-standalone, motion-loaders"
   ],
   "artifacts": {
     "metadata": ["project-summary.md", "frame-inventory.json", "raw-page-elementos.xml"],
-    "tokens": ["colors.json", "typography.json", "spacing.json", "radius.json", "shadows.json", "effects.json", "css-variables.css", "tailwind.partial.config.js"],
-    "frames": 9,
-    "screenshots": "reference-md-only"
+    "tokens": [
+      "variables-local.json",
+      "colors.json",
+      "typography.json",
+      "spacing.json",
+      "radius.json",
+      "shadows.json",
+      "effects.json",
+      "css-variables.css",
+      "tailwind.partial.config.js"
+    ],
+    "frames": 15,
+    "screenshots": "13 png exported",
+    "annotations": 14,
+    "components": "component-inventory.md",
+    "layouts": "layout-system.md",
+    "icons": "icon-inventory.md",
+    "maps": ["interaction-map.md", "responsive-patterns.md"]
   }
 }

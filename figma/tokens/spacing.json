@@ -2,6 +2,9 @@
   "meta": {
     "baseUnit": 4,
     "source": "figma frame Espaciado y radio (44:784)",
+    "exportedAt": "2026-05-25",
+    "extractionMethod": "visual-bar-width-parse",
+    "canonicalExport": "variables-local.json",
     "description": "Sistema basado en múltiplos de 4px"
   },
   "esp-1": { "value": "4px" },

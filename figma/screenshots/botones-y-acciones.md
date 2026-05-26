@@ -2,8 +2,8 @@
 
 | Field | Value |
 |-------|--------|
-| **PNG** | `botones-y-acciones.png` (pending) |
-| **Status** | `reference-only` |
+| **PNG** | [`botones-y-acciones.png`](png/botones-y-acciones.png) |
+| **Status** | `exported` |
 | **Node ID** | `24:26` |
 | **Figma** | [Open frame](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=24-26) |
 

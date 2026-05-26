@@ -2,10 +2,10 @@
 
 | Field | Value |
 |-------|--------|
-| **PNG** | `tokens-de-diseno.png` (pending) |
-| **Status** | `reference-only` |
-| **Node ID** | `44` |
-| **Figma** | [Open frame](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=44) |
+| **PNG** | [`tokens-de-diseno.png`](png/tokens-de-diseno.png) |
+| **Status** | `exported` |
+| **Node ID** | `44:1259` |
+| **Figma** | [Open frame](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=44-1259) |
 
 ## Related
 

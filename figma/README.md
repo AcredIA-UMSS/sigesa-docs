@@ -7,8 +7,8 @@ Persistent design memory for Cursor agents, extracted from the canonical Figma f
 | **Project** | AcredIA — Design System |
 | **File key** | `DX0AyrzfJQEUog45DsGEsl` |
 | **Figma URL** | [AcredIA — Design System](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=0-1) |
-| **Exported** | 2026-05-24 |
-| **Export version** | `v1.0.0` |
+| **Exported** | 2026-05-25 |
+| **Export version** | `v1.1.0` |
 | **Source page** | `Elementos` (`0:1`) |
 
 ## Directory map
@@ -18,14 +18,15 @@ Persistent design memory for Cursor agents, extracted from the canonical Figma f
 | [`metadata/project-summary.md`](metadata/project-summary.md) | File overview, pages, libraries, conventions |
 | [`metadata/frame-inventory.json`](metadata/frame-inventory.json) | Machine-readable frame index |
 | [`frames/`](frames/) | Per-frame metadata (layout, tokens, components) |
-| [`screenshots/`](screenshots/) | PNG exports or URL references + sidecar `.md` |
+| [`screenshots/`](screenshots/) | Sidecar `.md` metadata per frame |
+| [`screenshots/png/`](screenshots/png/) | PNG captures (`<slug>.png`) |
 | [`components/component-inventory.md`](components/component-inventory.md) | Atoms → organisms catalog |
-| [`tokens/`](tokens/) | JSON tokens + CSS + Tailwind partial |
+| [`tokens/variables-local.json`](tokens/variables-local.json) | **Canonical** local variables export (7 collections) |
 | [`layouts/layout-system.md`](layouts/layout-system.md) | Grid, spacing, breakpoints |
 | [`icons/icon-inventory.md`](icons/icon-inventory.md) | Icon sets and usage |
 | [`maps/interaction-map.md`](maps/interaction-map.md) | Navigation / overlay relationships |
 | [`annotations/`](annotations/) | Frame-level notes |
-| [`metadata/raw-page-elementos.xml`](metadata/raw-page-elementos.xml) | Cached `get_metadata` dump (incremental updates) |
+| [`metadata/next-mcp-pass.md`](metadata/next-mcp-pass.md) | P0 screenshot + variables checklist (aylenGonzales) |
 
 ## Incremental updates
 
@@ -33,6 +34,19 @@ Persistent design memory for Cursor agents, extracted from the canonical Figma f
 2. Re-run Figma MCP `get_metadata` for `0:1` only when the page structure changes.
 3. Use `get_screenshot` per frame node ID to refresh `screenshots/` (see `screenshots/EXPORT_TODO.md`).
 4. Use `use_figma` for local variable collections when rate limits allow.
+5. **v1.1.0 (2026-05-25):** Added 4 frames, 13 annotations, enriched body/tablas/iconografia from cached XML.
+
+## Coverage (v1.1.0)
+
+| Area | Status |
+|------|--------|
+| Project metadata | Complete |
+| Frame metadata | 15 frames |
+| Screenshots | URL refs only — PNGs pending |
+| Design tokens | JSON + CSS + Tailwind partial |
+| Component inventory | Atoms → layouts |
+| Annotations | 14 sidecars |
+| Interaction / responsive maps | Complete |
 
 ## MCP limits (this export)
 

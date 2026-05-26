@@ -1,8 +1,13 @@
 {
+  "meta": {
+    "source": "figma frame Tokens de Diseño (44:1259)",
+    "exportedAt": "2026-05-25",
+    "canonicalExport": "variables-local.json"
+  },
   "motion": {
-    "dur-rapido": { "value": "150ms", "note": "Token frame on Tokens de Diseño" },
-    "dur-normal": { "value": "250ms" },
-    "dur-lento": { "value": "400ms" }
+    "dur-rapido": { "value": "150ms", "ms": 150, "figmaFrame": "44:1200", "verified": true },
+    "dur-normal": { "value": "250ms", "ms": 250, "figmaFrame": "44:1209", "verified": true },
+    "dur-lento": { "value": "400ms", "ms": 400, "figmaFrame": "44:1218", "verified": true }
   },
   "loaders": {
     "dot-loader": {

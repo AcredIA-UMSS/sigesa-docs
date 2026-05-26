@@ -22,6 +22,10 @@
 | **Tag — DUEA 2025** | static label | 107×28 | `label-md` | brand subtle | — | Ciclo / convocatoria |
 | **Icon (nav)** | Default, Gestion, Dashboards, Historial, ayuda, Configuracion, Variant7 | 18–22px | — | `color-primario` / muted | vector | Sidebar / navbar |
 | **Dot / pulse loaders** | 6 dot variants + pulse | 250×250 / 456×232 | — | brand primary | animated | Loading states |
+| **Alert — Info** | static | 452×122 | `heading-sm` + `body-md` | `color-info` | info icon | Inline feedback |
+| **Alert — Success** | static | 452×122 | same | `color-exito` | check icon | Operation OK |
+| **Alert — Warning** | static | 452×122 | same | `color-advertencia` | warning icon | Caution |
+| **Alert — Error** | static | 452×122 | same | `color-peligro` | error icon | Failure |
 
 ---
 
@@ -53,8 +57,11 @@
 | **Variantes de botón** (row) | all button types | `25:38` | Pattern library strip |
 | **Insignias y etiquetas** (row) | all status badges | `35:152` | Process state legend |
 | **Botones de navegacion** | menu + subitem + profile | `279:31` | Shell navigation |
-| **Tablas y datos** | data tables (see frame metadata) | `50:290`, `53:890` | Lists, grids, acreditación data |
+| **Tablas y datos** | data table + toolbar | `50:290` | Acreditación listings, 7 columns |
+| **Retroalimentación y estados** | alerts grid + confirmation modal | `53:890` | Feedback UI, destructive confirm |
+| **Confirmation Modal** | header + body + footer | `53:1500` | 448×303 dialog over scrim |
 | **Iconografia sections** | Archivos, Personalizacion, nav icons | `56:1786` | Icon catalog |
+| **Motion loaders** | dot / circle / pulse | `1676:*`, `1677:*` | Async loading reference |
 
 ---
 
@@ -78,6 +85,9 @@
 | InputText | `534:160`, `534:162` | click = Default / Click |
 | Iconos nav bar | `937:2538` … `1760:10625` | Property 1 = role |
 | Button (toggle) | `328:1069`, `328:1071` | Property 1 = Default / Variant2 |
+| Primary Button (hover lab) | `26:50` | Property 1 = Default / hover |
+| Cancelar con advertencia | `973:2633` | Default / Variant3 |
+| Dropdown (extract) | `1729:8294` | desplegar = true / false |
 
 ---
 

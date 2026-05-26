@@ -1,6 +1,6 @@
 /**
  * AcredIA Design System — CSS variables
- * Generated from Figma export (figma/tokens/*.json)
+ * Synced from figma/tokens/variables-local.json (2026-05-25)
  * Source: https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System
  */
 
@@ -22,8 +22,39 @@
 
   /* Blue ramp */
   --color-blue-50: #e8f1ff;
+  --color-blue-100: #d6e3ff;
+  --color-blue-200: #a9c7ff;
+  --color-blue-300: #7ca2e1;
+  --color-blue-400: #375f9a;
+  --color-blue-500: #1b4780;
   --color-blue-600: #003770;
+  --color-blue-700: #002249;
+  --color-blue-800: #001b3d;
   --color-blue-900: #001026;
+
+  /* Red ramp */
+  --color-red-50: #ffece8;
+  --color-red-100: #ffdad5;
+  --color-red-200: #ffb4aa;
+  --color-red-300: #ff897a;
+  --color-red-400: #ff5449;
+  --color-red-500: #e80f16;
+  --color-red-600: #bc000c;
+  --color-red-700: #930007;
+  --color-red-800: #690003;
+  --color-red-900: #410001;
+
+  /* Gray ramp (Bootstrap-compatible; labels 50–999 in Figma) */
+  --color-gray-50: #f8f9fa;
+  --color-gray-100: #f1f3f5;
+  --color-gray-200: #e9ecef;
+  --color-gray-300: #dee2e6;
+  --color-gray-400: #ced4da;
+  --color-gray-500: #adb5bd;
+  --color-gray-600: #6c757d;
+  --color-gray-700: #495057;
+  --color-gray-800: #343a40;
+  --color-gray-900: #212529;
 
   /* Typography */
   --font-sans: "Inter", system-ui, sans-serif;
@@ -31,27 +62,37 @@
   --text-display-lg-size: 3rem;
   --text-display-lg-weight: 700;
   --text-heading-xl-size: 1.875rem;
+  --text-heading-xl-weight: 600;
   --text-heading-lg-size: 1.5rem;
+  --text-heading-lg-weight: 600;
   --text-heading-md-size: 1.25rem;
+  --text-heading-md-weight: 600;
   --text-heading-sm-size: 1.125rem;
+  --text-heading-sm-weight: 600;
   --text-body-lg-size: 1rem;
+  --text-body-lg-weight: 400;
   --text-body-md-size: 0.875rem;
+  --text-body-md-weight: 400;
   --text-label-md-size: 0.75rem;
+  --text-label-md-weight: 500;
   --text-code-size: 0.875rem;
+  --text-code-weight: 400;
 
-  /* Spacing (4px grid) */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 40px;
-  --space-8: 48px;
-  --space-9: 64px;
-  --space-10: 80px;
+  /* Spacing — esp-N (4px grid) */
+  --esp-1: 4px;
+  --esp-2: 8px;
+  --esp-3: 12px;
+  --esp-4: 16px;
+  --esp-5: 24px;
+  --esp-6: 32px;
+  --esp-7: 40px;
+  --esp-8: 48px;
+  --esp-9: 64px;
+  --esp-10: 80px;
+  --space-page-padding: 48px;
 
   /* Radius */
+  --radius-none: 0px;
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
@@ -59,10 +100,11 @@
   --radius-full: 9999px;
 
   /* Motion */
-  --duration-rapido: 150ms;
-  --duration-normal: 250ms;
-  --duration-lento: 400ms;
+  --dur-rapido: 150ms;
+  --dur-normal: 250ms;
+  --dur-lento: 400ms;
 
   /* Shadows */
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 4px 12px rgba(0, 55, 112, 0.12);
 }

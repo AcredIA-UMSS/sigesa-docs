@@ -3,7 +3,10 @@
   "meta": {
     "source": "figma/DX0AyrzfJQEUog45DsGEsl",
     "frame": "Paleta de Colores (8:2187), Tokens de Diseño (44:1259)",
-    "exportedAt": "2026-05-24"
+    "exportedAt": "2026-05-25",
+    "extractionMethod": "frame-token-parse",
+    "canonicalExport": "../variables-local.json",
+    "verifiedFromXml": true
   },
   "brand": {
     "primary": { "value": "#003770", "description": "Azul UMSS - Primario" },
@@ -48,7 +51,7 @@
   },
   "semantic": {
     "color-primario": { "value": "{brand.primary}" },
-    "color-primario-hover": { "value": "#1B4780", "note": "Inferred from blue-500; confirm in Figma" },
+    "color-primario-hover": { "value": "#1B4780", "figmaToken": "color-primario-hover", "verified": true },
     "color-peligro": { "value": "#DC3545" },
     "color-exito": { "value": "#198754" },
     "color-advertencia": { "value": "#FFC107" },

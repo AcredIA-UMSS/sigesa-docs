@@ -1,6 +1,8 @@
 {
   "meta": {
     "source": "figma frame Tipografía (8:2186)",
+    "exportedAt": "2026-05-25",
+    "canonicalExport": "variables-local.json",
     "fonts": {
       "sans": "Inter",
       "mono": "IBM Plex Mono"

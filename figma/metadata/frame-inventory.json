@@ -3,7 +3,8 @@
   "fileName": "AcredIA — Design System",
   "pageId": "0:1",
   "pageName": "Elementos",
-  "exportedAt": "2026-05-24",
+  "exportedAt": "2026-05-25",
+  "exportVersion": "1.1.0",
   "figmaBaseUrl": "https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System",
   "frames": [
     {
@@ -14,7 +15,8 @@
       "height": 825,
       "category": "foundations",
       "metadataPath": "frames/tipografia.md",
-      "screenshotRef": "screenshots/tipografia.md"
+      "screenshotRef": "screenshots/tipografia.md",
+      "annotationsPath": "annotations/tipografia.annotations.md"
     },
     {
       "slug": "tokens-de-diseno",
@@ -24,7 +26,8 @@
       "height": 847,
       "category": "foundations",
       "metadataPath": "frames/tokens-de-diseno.md",
-      "screenshotRef": "screenshots/tokens-de-diseno.md"
+      "screenshotRef": "screenshots/tokens-de-diseno.md",
+      "annotationsPath": "annotations/tokens-de-diseno.annotations.md"
     },
     {
       "slug": "espaciado-y-radio",
@@ -34,7 +37,8 @@
       "height": 1535,
       "category": "foundations",
       "metadataPath": "frames/espaciado-y-radio.md",
-      "screenshotRef": "screenshots/espaciado-y-radio.md"
+      "screenshotRef": "screenshots/espaciado-y-radio.md",
+      "annotationsPath": "annotations/espaciado-y-radio.annotations.md"
     },
     {
       "slug": "paleta-de-colores",
@@ -44,7 +48,8 @@
       "height": 1203,
       "category": "foundations",
       "metadataPath": "frames/paleta-de-colores.md",
-      "screenshotRef": "screenshots/paleta-de-colores.md"
+      "screenshotRef": "screenshots/paleta-de-colores.md",
+      "annotationsPath": "annotations/paleta-de-colores.annotations.md"
     },
     {
       "slug": "botones-y-acciones",
@@ -55,7 +60,19 @@
       "height": 2627,
       "category": "components",
       "metadataPath": "frames/botones-y-acciones.md",
-      "screenshotRef": "screenshots/botones-y-acciones.md"
+      "screenshotRef": "screenshots/botones-y-acciones.md",
+      "annotationsPath": "annotations/botones-y-acciones.annotations.md"
+    },
+    {
+      "slug": "botones-cambios",
+      "name": "Botones cambios",
+      "nodeId": "26:57",
+      "width": 517,
+      "height": 908,
+      "category": "components-wip",
+      "metadataPath": "frames/botones-cambios.md",
+      "screenshotRef": "screenshots/botones-cambios.md",
+      "annotationsPath": "annotations/botones-cambios.annotations.md"
     },
     {
       "slug": "formularios",
@@ -65,7 +82,19 @@
       "height": 1463,
       "category": "components",
       "metadataPath": "frames/formularios.md",
-      "screenshotRef": "screenshots/formularios.md"
+      "screenshotRef": "screenshots/formularios.md",
+      "annotationsPath": "annotations/formularios.annotations.md"
+    },
+    {
+      "slug": "dropdown-standalone",
+      "name": "Dropdown",
+      "nodeId": "1729:8294",
+      "width": 273,
+      "height": 280,
+      "category": "components",
+      "metadataPath": "frames/dropdown-standalone.md",
+      "screenshotRef": "screenshots/dropdown-standalone.md",
+      "annotationsPath": "annotations/dropdown-standalone.annotations.md"
     },
     {
       "slug": "navegacion",
@@ -75,7 +104,8 @@
       "height": 1382,
       "category": "components",
       "metadataPath": "frames/navegacion.md",
-      "screenshotRef": "screenshots/navegacion.md"
+      "screenshotRef": "screenshots/navegacion.md",
+      "annotationsPath": "annotations/navegacion.annotations.md"
     },
     {
       "slug": "tablas-y-datos",
@@ -85,7 +115,19 @@
       "height": 1242,
       "category": "components",
       "metadataPath": "frames/tablas-y-datos.md",
-      "screenshotRef": "screenshots/tablas-y-datos.md"
+      "screenshotRef": "screenshots/tablas-y-datos.md",
+      "annotationsPath": "annotations/tablas-y-datos.annotations.md"
+    },
+    {
+      "slug": "tablas-y-datos-alt",
+      "name": "Tablas y datos (alt)",
+      "nodeId": "53:890",
+      "width": 1024,
+      "height": 1162,
+      "category": "components",
+      "metadataPath": "frames/tablas-y-datos-alt.md",
+      "screenshotRef": "screenshots/tablas-y-datos-alt.md",
+      "annotationsPath": "annotations/tablas-y-datos-alt.annotations.md"
     },
     {
       "slug": "iconografia",
@@ -95,7 +137,20 @@
       "height": 1712,
       "category": "components",
       "metadataPath": "frames/iconografia.md",
-      "screenshotRef": "screenshots/iconografia.md"
+      "screenshotRef": "screenshots/iconografia.md",
+      "annotationsPath": "annotations/iconografia.annotations.md"
+    },
+    {
+      "slug": "motion-loaders",
+      "name": "Motion / Loaders",
+      "nodeId": "1676:7916",
+      "nodeIdRange": "1676:7886–1677:8016",
+      "width": 3243,
+      "height": 3332,
+      "category": "motion",
+      "metadataPath": "frames/motion-loaders.md",
+      "screenshotRef": "screenshots/motion-loaders.md",
+      "annotationsPath": "annotations/motion-loaders.annotations.md"
     },
     {
       "slug": "body-reference-1280",
@@ -105,17 +160,19 @@
       "height": 1747,
       "category": "layouts",
       "metadataPath": "frames/body-reference-1280.md",
-      "screenshotRef": "screenshots/body-reference-1280.md"
+      "screenshotRef": "screenshots/body-reference-1280.md",
+      "annotationsPath": "annotations/body-reference-1280.annotations.md"
     },
     {
       "slug": "body-extended",
-      "name": "Body",
+      "name": "Body (extended)",
       "nodeId": "1004:49",
       "width": 1280,
       "height": 3705,
       "category": "layouts",
       "metadataPath": "frames/body-extended.md",
-      "screenshotRef": "screenshots/body-extended.md"
+      "screenshotRef": "screenshots/body-extended.md",
+      "annotationsPath": null
     }
   ]
 }

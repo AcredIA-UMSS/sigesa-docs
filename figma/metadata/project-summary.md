@@ -29,13 +29,13 @@ No additional top-level pages were detected at export time.
 | Formularios | `37:173` | 1024×1463 | Components |
 | Navegación | `42:15` | 1446×1382 | Components |
 | Tablas y datos | `50:290` | 1024×1242 | Components |
-| Tablas y datos (alt) | `53:890` | 1024×1162 | Components |
+| Tablas y datos (alt) | `53:890` | 1024×1162 | Components — alerts + modal |
 | Iconografia | `56:1786` | 1024×1712 | Components |
-| Body (reference UI) | `56:1522` | 1280×1747 | Layout / screen |
-| Body (extended) | `1004:49` | 1280×3705 | Layout / screen |
-| Botones cambios | `26:57` | 517×908 | Work-in-progress |
+| Body (reference UI) | `56:1522` | 1280×1747 | Layout — app shell |
+| Body (extended) | `1004:49` | 1280×3705 | Layout — marketing scroll |
+| Botones cambios | `26:57` | 517×908 | WIP — hover state lab |
 | Dropdown (standalone) | `1729:8294` | 273×280 | Component extract |
-| Loaders / motion demos | `1676:*`, `1677:*` | various | Motion reference |
+| Motion / loaders | `1676:7886`+ | various | Motion reference |
 
 Full index: [`frame-inventory.json`](frame-inventory.json).
 
@@ -98,8 +98,10 @@ Formal breakpoint tokens are **not** defined as Figma variables in the cached ex
 
 | Status | Notes |
 |--------|--------|
-| **Local collections** | Not extracted (MCP `use_figma` rate-limited). Token values inferred from labeled frames and text nodes. |
-| **Library variables** | Material 3, SDS, Apple HIG kits available via team libraries. |
+| **Documented tokens** | ✅ Exported to [`tokens/variables-local.json`](tokens/variables-local.json) — 7 collections, 52 variables |
+| **Extraction method** | Frame/layer names + labeled swatches from cached XML (2026-05-25) |
+| **Figma Variable API** | Pending `use_figma` when MCP quota available — may reveal published local collections |
+| **Library variables** | Material 3, SDS, Apple HIG kits available via team libraries |
 
 ## Style collections
 
@@ -127,7 +129,8 @@ Formal breakpoint tokens are **not** defined as Figma variables in the cached ex
 
 ## Export provenance
 
-- `get_metadata` — page `0:1` (cached XML)
+- `get_metadata` — page `0:1` (cached XML: [`raw-page-elementos.xml`](raw-page-elementos.xml))
 - `get_libraries` — subscribed kits list
 - `search_design_system` — cross-library component/variable search sample
+- **v1.1.0 incremental pass** — parsed cached XML for body, tablas-alt, botones-cambios, dropdown, motion
 - Pending: `use_figma` variable extraction, per-frame `get_screenshot` PNGs

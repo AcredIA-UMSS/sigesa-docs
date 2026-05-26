@@ -48,9 +48,20 @@ stateDiagram-v2
 
 ## Modal / overlay relationships
 
+```mermaid
+flowchart TB
+  TableAction[Row action / delete trigger] --> Scrim[Rectangle 5 scrim]
+  Scrim --> ConfirmModal[Confirmation Modal 53:1500]
+  ConfirmModal -->|Cancel| Scrim
+  ConfirmModal -->|Confirm| ActionComplete[Action executed]
+  ConfirmModal -->|Close X| Scrim
+```
+
 | Pattern | Evidence | Notes |
 |---------|----------|-------|
-| Dropdown overlay | `Dropdown` expanded symbol | Inline overlay, not modal |
+| Dropdown overlay | `Dropdown` expanded symbol (`1729:8294`, `534:389`) | Inline overlay, not modal |
+| Confirmation modal | `53:1500` on `tablas-y-datos-alt` | 448×303, footer Cancel + Confirm |
+| Alert banners | `53:1268`–`53:1295` | Static inline, 4 semantic variants |
 | FAB / dialog | Not in AcredIA-native frames | Available in M3 library only |
 | Side sheets | Not documented in-file | — |
 
@@ -58,9 +69,14 @@ stateDiagram-v2
 
 | Component | States shown in Figma |
 |-----------|----------------------|
-| Primary Button | default, loading (`Cargando...`) |
+| Primary Button | default, hover (`26:51`), loading (`Cargando...`) |
+| Secundary button | default, hover (`522:95`) |
+| Cancelar | default, Variant2 |
+| Eliminar proceso | default, hover (`26:74`) |
+| Más opciones | default, hover (`26:67`) |
 | — | disabled (`Deshabilitado` frame) |
-| Eliminar proceso | destructive hover (inferred) |
+
+Hover variants documented in [`../frames/botones-cambios.md`](../frames/botones-cambios.md).
 
 ## Linked frames (documentation flow)
 
@@ -79,8 +95,10 @@ flowchart LR
   Components --> Formularios
   Components --> Navegacion
   Components --> Tablas
+  Components --> TablasAlt[Tablas alt - alerts modal]
 
   Components --> Screens
+  TablasAlt --> ConfirmModal[Confirmation Modal]
 ```
 
 ## Motion / transitions

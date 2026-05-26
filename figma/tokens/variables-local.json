@@ -1,0 +1,132 @@
+{
+  "$schema": "acredia/figma-variables/v1",
+  "meta": {
+    "fileKey": "DX0AyrzfJQEUog45DsGEsl",
+    "fileName": "AcredIA — Design System",
+    "extractedAt": "2026-05-25",
+    "extractedBy": "aylenGonzales",
+    "method": "frame-token-parse",
+    "sources": [
+      "figma/metadata/raw-page-elementos.xml",
+      "figma/frames/paleta-de-colores.md (8:2187)",
+      "figma/frames/tokens-de-diseno.md (44:1259)",
+      "figma/frames/espaciado-y-radio.md (44:784)",
+      "figma/frames/tipografia.md (8:2186)"
+    ],
+    "figmaVariableApi": "pending — re-run with use_figma when MCP quota available",
+    "note": "Tokens match Figma frame/layer names used as design-system documentation. Values verified from labeled swatches and visual bar widths in cached metadata."
+  },
+  "collections": [
+    {
+      "id": "color",
+      "name": "AcredIA / Color",
+      "modes": [{ "id": "default", "name": "Default" }],
+      "variables": [
+        { "name": "color-primario", "type": "COLOR", "value": "#003770", "figmaFrame": "44:1140", "verified": true },
+        { "name": "color-primario-hover", "type": "COLOR", "value": "#1B4780", "figmaFrame": "44:1147", "verified": true, "aliasOf": "blue.500" },
+        { "name": "color-peligro", "type": "COLOR", "value": "#DC3545", "figmaFrame": "44:1154", "verified": true },
+        { "name": "color-exito", "type": "COLOR", "value": "#198754", "figmaFrame": "44:1161", "verified": true },
+        { "name": "color-advertencia", "type": "COLOR", "value": "#FFC107", "figmaFrame": "44:1168", "verified": true },
+        { "name": "color-info", "type": "COLOR", "value": "#0D6EFD", "figmaFrame": "44:1175", "verified": true },
+        { "name": "bg-pagina", "type": "COLOR", "value": "#F8F9FA", "figmaFrame": "44:1182", "verified": "inferred-from-bootstrap-gray-50" },
+        { "name": "bg-tarjeta", "type": "COLOR", "value": "#FFFFFF", "figmaFrame": "44:1189", "verified": true },
+        { "name": "brand-primary", "type": "COLOR", "value": "#003770", "label": "Azul UMSS - Primario", "verified": true },
+        { "name": "brand-secondary", "type": "COLOR", "value": "#E30613", "label": "Rojo UMSS - Secundario", "verified": true },
+        { "name": "brand-surface", "type": "COLOR", "value": "#FFFFFF", "label": "Blanco - Cuerpo", "verified": true }
+      ]
+    },
+    {
+      "id": "color-ramp-blue",
+      "name": "AcredIA / Blue Ramp",
+      "modes": [{ "id": "default", "name": "Default" }],
+      "variables": [
+        { "name": "blue-50", "type": "COLOR", "value": "#E8F1FF", "verified": true },
+        { "name": "blue-100", "type": "COLOR", "value": "#D6E3FF", "verified": true },
+        { "name": "blue-200", "type": "COLOR", "value": "#A9C7FF", "verified": true },
+        { "name": "blue-300", "type": "COLOR", "value": "#7CA2E1", "verified": true },
+        { "name": "blue-400", "type": "COLOR", "value": "#375F9A", "verified": true },
+        { "name": "blue-500", "type": "COLOR", "value": "#1B4780", "verified": true },
+        { "name": "blue-600", "type": "COLOR", "value": "#003770", "verified": true },
+        { "name": "blue-700", "type": "COLOR", "value": "#002249", "verified": true },
+        { "name": "blue-800", "type": "COLOR", "value": "#001B3D", "verified": true },
+        { "name": "blue-900", "type": "COLOR", "value": "#001026", "verified": true }
+      ]
+    },
+    {
+      "id": "color-ramp-red",
+      "name": "AcredIA / Red Ramp",
+      "modes": [{ "id": "default", "name": "Default" }],
+      "variables": [
+        { "name": "red-50", "type": "COLOR", "value": "#FFECE8", "verified": true },
+        { "name": "red-100", "type": "COLOR", "value": "#FFDAD5", "verified": true },
+        { "name": "red-200", "type": "COLOR", "value": "#FFB4AA", "verified": true },
+        { "name": "red-300", "type": "COLOR", "value": "#FF897A", "verified": true },
+        { "name": "red-400", "type": "COLOR", "value": "#FF5449", "verified": true },
+        { "name": "red-500", "type": "COLOR", "value": "#E80F16", "verified": true },
+        { "name": "red-600", "type": "COLOR", "value": "#BC000C", "verified": true },
+        { "name": "red-700", "type": "COLOR", "value": "#930007", "verified": true },
+        { "name": "red-800", "type": "COLOR", "value": "#690003", "verified": true },
+        { "name": "red-900", "type": "COLOR", "value": "#410001", "verified": true }
+      ]
+    },
+    {
+      "id": "spacing",
+      "name": "AcredIA / Spacing",
+      "modes": [{ "id": "default", "name": "Default" }],
+      "baseUnit": 4,
+      "variables": [
+        { "name": "esp-1", "type": "FLOAT", "value": 4, "unit": "px", "figmaFrame": "44:964", "verified": true },
+        { "name": "esp-2", "type": "FLOAT", "value": 8, "unit": "px", "figmaFrame": "44:970", "verified": true },
+        { "name": "esp-3", "type": "FLOAT", "value": 12, "unit": "px", "figmaFrame": "44:976", "verified": true },
+        { "name": "esp-4", "type": "FLOAT", "value": 16, "unit": "px", "figmaFrame": "44:982", "verified": true },
+        { "name": "esp-5", "type": "FLOAT", "value": 24, "unit": "px", "figmaFrame": "44:988", "verified": true },
+        { "name": "esp-6", "type": "FLOAT", "value": 32, "unit": "px", "figmaFrame": "44:994", "verified": true },
+        { "name": "esp-7", "type": "FLOAT", "value": 40, "unit": "px", "figmaFrame": "44:1000", "verified": true },
+        { "name": "esp-8", "type": "FLOAT", "value": 48, "unit": "px", "figmaFrame": "44:1006", "verified": true },
+        { "name": "esp-9", "type": "FLOAT", "value": 64, "unit": "px", "figmaFrame": "44:1012", "verified": true },
+        { "name": "esp-10", "type": "FLOAT", "value": 80, "unit": "px", "figmaFrame": "44:1018", "verified": true }
+      ]
+    },
+    {
+      "id": "radius",
+      "name": "AcredIA / Radius",
+      "modes": [{ "id": "default", "name": "Default" }],
+      "variables": [
+        { "name": "radius-none", "type": "FLOAT", "value": 0, "unit": "px", "verified": true },
+        { "name": "radius-sm", "type": "FLOAT", "value": 4, "unit": "px", "figmaFrame": "44:1030", "verified": "visual-demo" },
+        { "name": "radius-md", "type": "FLOAT", "value": 8, "unit": "px", "figmaFrame": "44:1038", "verified": "visual-demo" },
+        { "name": "radius-lg", "type": "FLOAT", "value": 12, "unit": "px", "figmaFrame": "44:1046", "verified": "visual-demo" },
+        { "name": "radius-xl", "type": "FLOAT", "value": 16, "unit": "px", "figmaFrame": "44:1054", "verified": "visual-demo" },
+        { "name": "radius-full", "type": "FLOAT", "value": 9999, "unit": "px", "figmaFrame": "44:1070", "verified": true }
+      ]
+    },
+    {
+      "id": "motion",
+      "name": "AcredIA / Motion",
+      "modes": [{ "id": "default", "name": "Default" }],
+      "variables": [
+        { "name": "dur-rapido", "type": "FLOAT", "value": 150, "unit": "ms", "figmaFrame": "44:1200", "verified": "documented" },
+        { "name": "dur-normal", "type": "FLOAT", "value": 250, "unit": "ms", "figmaFrame": "44:1209", "verified": "documented" },
+        { "name": "dur-lento", "type": "FLOAT", "value": 400, "unit": "ms", "figmaFrame": "44:1218", "verified": "documented" }
+      ]
+    },
+    {
+      "id": "typography",
+      "name": "AcredIA / Typography",
+      "modes": [{ "id": "default", "name": "Default" }],
+      "variables": [
+        { "name": "font-sans", "type": "STRING", "value": "Inter", "verified": true },
+        { "name": "font-mono", "type": "STRING", "value": "IBM Plex Mono", "verified": true },
+        { "name": "display-lg", "type": "STRING", "value": "3rem / 700", "verified": true },
+        { "name": "heading-xl", "type": "STRING", "value": "1.875rem / 600", "verified": true },
+        { "name": "heading-lg", "type": "STRING", "value": "1.5rem / 600", "verified": true },
+        { "name": "heading-md", "type": "STRING", "value": "1.25rem / 600", "verified": true },
+        { "name": "heading-sm", "type": "STRING", "value": "1.125rem / 600", "verified": true },
+        { "name": "body-lg", "type": "STRING", "value": "1rem / 400", "verified": true },
+        { "name": "body-md", "type": "STRING", "value": "0.875rem / 400", "verified": true },
+        { "name": "label-md", "type": "STRING", "value": "0.75rem / 500", "verified": true },
+        { "name": "code", "type": "STRING", "value": "0.875rem / 400 / mono", "verified": true }
+      ]
+    }
+  ]
+}
