@@ -501,4 +501,3 @@ La UMSS gestiona acreditación de carrera (**CEUB**, **ARCU-SUR**) con herramien
 | **Cambios aplicados** | Posicionamiento: automatización de acreditación, no ERP; GTM post-launch y F5 alineados a BRD v2.1. |
 
 *Documento canónico SIGESA — UMSS, Cochabamba, Bolivia, 2026.*  
-*Próximo paso en la cadena: `docs/03_prd/PRD.md` (Versión Dorada).*

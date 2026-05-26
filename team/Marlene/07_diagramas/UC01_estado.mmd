@@ -1,0 +1,48 @@
+%% UC01_estado.mmd — FSD-UC-001 Autenticación y sesión institucional
+%% diagramId: UC01-STA | complementa: UC01_secuencia.mmd
+%% fsdTrace: FSD-UC-001 · PRD-REQ-001 · PRD-REQ-002 · PRD-US-001 · PRD-US-002
+%% reglas: RB-06 · CN-04 (bloqueo 5 intentos / 15 min)
+%% entidades: usuario.activo · sesión JWT · intentos_login
+%% pruebas: TC-01 · TC-02
+%% version: 1.0 · 14/05/2026
+
+stateDiagram-v2
+    direction TB
+
+    state "1. Cuenta usuario (BD)" as Cuenta {
+        [*] --> USUARIO_ACTIVO: alta por [JD]
+        USUARIO_ACTIVO --> USUARIO_INACTIVO: desactivar cuenta
+        USUARIO_INACTIVO --> USUARIO_ACTIVO: reactivar cuenta
+    }
+
+    state "2. Intentos de login (rate limit)" as Intentos {
+        [*] --> SIN_BLOQUEO
+        SIN_BLOQUEO --> ACUMULANDO_FALLOS: login fallido
+        ACUMULANDO_FALLOS --> SIN_BLOQUEO: login exitoso
+        ACUMULANDO_FALLOS --> BLOQUEADO: 5 fallos en 15 min
+        BLOQUEADO --> SIN_BLOQUEO: ventana expirada
+    }
+
+    state "3. Sesión cliente (SPA + JWT)" as Sesion {
+        [*] --> NO_AUTENTICADO
+        NO_AUTENTICADO --> AUTENTICANDO: POST /auth/login
+        AUTENTICANDO --> NO_AUTENTICADO: 400 / 401 / 403 / 429
+        AUTENTICANDO --> SESION_ACTIVA: 200 JWT
+        SESION_ACTIVA --> NO_AUTENTICADO: logout o JWT expirado
+        SESION_ACTIVA --> SESION_ACTIVA: GET /auth/me
+    }
+
+    note right of USUARIO_INACTIVO
+        AUTH_INACTIVE → no emite JWT
+    end note
+
+    note right of BLOQUEADO
+        AUTH_LOCKED → 429
+    end note
+
+    note right of SESION_ACTIVA
+        Redirección por rol:
+        CC → /dashboard/coordinador
+        TD → /dashboard/tecnico
+        JD → /dashboard/jefatura
+    end note
