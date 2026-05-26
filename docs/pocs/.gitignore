@@ -1,0 +1,13 @@
+.env
+**/__pycache__/
+**/.pytest_cache/
+**/.venv/
+**/venv/
+*.pyc
+*.db
+.local-storage/
+evidencia/*.log
+!evidencia/.gitkeep
+!evidencia/README.md
+!evidencia/poc01-run-summary.json
+!evidencia/poc02-pytest-summary.json

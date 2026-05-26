@@ -1,0 +1,43 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.1, pytest-8.3.4, pluggy-1.6.0 -- C:\Users\PC\Desktop\Acredia_UMSS\sigesa-docs\docs\pocs\POC-02-workflow-dictamen\src\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\PC\Desktop\Acredia_UMSS\sigesa-docs\docs\pocs\POC-02-workflow-dictamen\src
+plugins: anyio-4.13.0
+collecting ... collected 13 items
+
+tests/test_api.py::test_tc06_aprobar_indicador PASSED                    [  7%]
+tests/test_api.py::test_tc07_rechazo_y_nueva_version PASSED              [ 15%]
+tests/test_api.py::test_tc08_cierre_subfase_incompleta PASSED            [ 23%]
+tests/test_api.py::test_cierre_subfase_todos_aprobados PASSED            [ 30%]
+tests/test_api.py::test_concurrencia_doble_dictamen PASSED               [ 38%]
+tests/test_workflow.py::test_aprobar_desde_en_revision PASSED            [ 46%]
+tests/test_workflow.py::test_rechazar_sin_justificacion_falla PASSED     [ 53%]
+tests/test_workflow.py::test_rechazar_con_justificacion_ok PASSED        [ 61%]
+tests/test_workflow.py::test_nueva_version_solo_desde_rechazado PASSED   [ 69%]
+tests/test_workflow.py::test_evaluar_cierre_con_pendientes PASSED        [ 76%]
+tests/test_workflow.py::test_evaluar_cierre_todos_aprobados PASSED       [ 84%]
+tests/test_workflow.py::test_dictamen_invalido_desde_pendiente PASSED    [ 92%]
+tests/test_workflow.py::test_cierre_ignora_no_obligatorio_pendiente PASSED [100%]
+
+============================== warnings summary ===============================
+api\main.py:110
+  C:\Users\PC\Desktop\Acredia_UMSS\sigesa-docs\docs\pocs\POC-02-workflow-dictamen\src\api\main.py:110: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+.venv\Lib\site-packages\fastapi\applications.py:4495
+  C:\Users\PC\Desktop\Acredia_UMSS\sigesa-docs\docs\pocs\POC-02-workflow-dictamen\src\.venv\Lib\site-packages\fastapi\applications.py:4495: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 13 passed, 2 warnings in 0.39s ========================
+
