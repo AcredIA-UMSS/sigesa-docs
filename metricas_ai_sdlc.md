@@ -1,5 +1,10 @@
 # Métricas AI-SDLC y gobernanza de componentes inteligentes — SIGESA / UMSS
 
+> **Métricas de rúbrica (M-RUB-PC/SF/AE):** [`docs/09_trazabilidad/metricas_ai_sdlc.md`](docs/09_trazabilidad/metricas_ai_sdlc.md)  
+> **Matriz e informe:** [`docs/09_trazabilidad/`](docs/09_trazabilidad/)
+
+---
+
 | Metadato | Valor |
 |----------|-------|
 | **Versión** | v1.0 |

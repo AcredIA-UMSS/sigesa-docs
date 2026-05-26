@@ -1,0 +1,1 @@
+../06_prompt_contracts/PC-SIG-03-generador-prd.prompt.md

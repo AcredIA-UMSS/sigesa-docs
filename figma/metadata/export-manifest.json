@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "exportedAt": "2026-05-24T00:00:00Z",
+  "fileKey": "DX0AyrzfJQEUog45DsGEsl",
+  "mcpToolsUsed": ["get_metadata", "get_libraries", "search_design_system"],
+  "mcpToolsPending": ["use_figma", "get_screenshot", "get_variable_defs"],
+  "limitations": [
+    "Figma MCP Starter rate limit blocked use_figma and get_screenshot",
+    "get_variable_defs requires selected layer in desktop app",
+    "Screenshots are URL references only"
+  ],
+  "artifacts": {
+    "metadata": ["project-summary.md", "frame-inventory.json", "raw-page-elementos.xml"],
+    "tokens": ["colors.json", "typography.json", "spacing.json", "radius.json", "shadows.json", "effects.json", "css-variables.css", "tailwind.partial.config.js"],
+    "frames": 9,
+    "screenshots": "reference-md-only"
+  }
+}

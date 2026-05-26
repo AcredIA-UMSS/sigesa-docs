@@ -17,9 +17,10 @@ owner: docente / grupo
 
 # Skill: dti-author (poblar DTI y sincronizar con AGENTS.md)
 
-> **Convención del módulo**: este skill vive en `docs/skills/dti-author.md`.
-> Para activarlo en Claude Code, copiar a `.claude/skills/dti-author/SKILL.md` en el repo del grupo
-> o a `~/.claude/skills/dti-author/` para alcance global del usuario.
+> **Convención del módulo**: plantilla maestra en `templates/dti-author_template.md`.
+> En **SIGESA / AcredIA** la instancia canónica está en [`docs/05_dti/dti-author.md`](../docs/05_dti/dti-author.md) junto a [`docs/05_dti/DTI.md`](../docs/05_dti/DTI.md).
+> Para Cursor: `.cursor/skills/sigesa-dti-author/SKILL.md` (opcional, sincronizar con `docs/05_dti/dti-author.md`).
+> Para Claude Code: copiar a `.claude/skills/dti-author/SKILL.md` o `~/.claude/skills/dti-author/`.
 
 ## 1. Cuándo activarlo (triggers)
 

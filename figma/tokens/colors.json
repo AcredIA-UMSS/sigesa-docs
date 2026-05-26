@@ -1,0 +1,59 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "source": "figma/DX0AyrzfJQEUog45DsGEsl",
+    "frame": "Paleta de Colores (8:2187), Tokens de Diseño (44:1259)",
+    "exportedAt": "2026-05-24"
+  },
+  "brand": {
+    "primary": { "value": "#003770", "description": "Azul UMSS - Primario" },
+    "secondary": { "value": "#E30613", "description": "Rojo UMSS - Secundario" },
+    "surface": { "value": "#FFFFFF", "description": "Blanco - Cuerpo" }
+  },
+  "blue": {
+    "50": { "value": "#E8F1FF" },
+    "100": { "value": "#D6E3FF" },
+    "200": { "value": "#A9C7FF" },
+    "300": { "value": "#7CA2E1" },
+    "400": { "value": "#375F9A" },
+    "500": { "value": "#1B4780" },
+    "600": { "value": "#003770" },
+    "700": { "value": "#002249" },
+    "800": { "value": "#001B3D" },
+    "900": { "value": "#001026" }
+  },
+  "red": {
+    "50": { "value": "#FFECE8" },
+    "100": { "value": "#FFDAD5" },
+    "200": { "value": "#FFB4AA" },
+    "300": { "value": "#FF897A" },
+    "400": { "value": "#FF5449" },
+    "500": { "value": "#E80F16" },
+    "600": { "value": "#BC000C" },
+    "700": { "value": "#930007" },
+    "800": { "value": "#690003" },
+    "900": { "value": "#410001" }
+  },
+  "gray": {
+    "50": { "value": "#F8F9FA", "note": "Label '50' on ramp; verify in Figma" },
+    "100": { "value": "#F1F3F5" },
+    "200": { "value": "#E9ECEF" },
+    "300": { "value": "#DEE2E6" },
+    "400": { "value": "#CED4DA" },
+    "500": { "value": "#ADB5BD" },
+    "600": { "value": "#6C757D" },
+    "700": { "value": "#495057" },
+    "800": { "value": "#343A40" },
+    "900": { "value": "#212529", "note": "Label '999' on ramp" }
+  },
+  "semantic": {
+    "color-primario": { "value": "{brand.primary}" },
+    "color-primario-hover": { "value": "#1B4780", "note": "Inferred from blue-500; confirm in Figma" },
+    "color-peligro": { "value": "#DC3545" },
+    "color-exito": { "value": "#198754" },
+    "color-advertencia": { "value": "#FFC107" },
+    "color-info": { "value": "#0D6EFD" },
+    "bg-pagina": { "value": "#F8F9FA", "note": "Page background token frame" },
+    "bg-tarjeta": { "value": "#FFFFFF", "note": "Card surface token frame" }
+  }
+}

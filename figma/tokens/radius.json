@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "source": "figma frame Espaciado y radio — Border Radius Section (44:784)"
+  },
+  "none": { "value": "0px" },
+  "sm": { "value": "4px", "tokenFrame": "first radius demo cell" },
+  "md": { "value": "8px" },
+  "lg": { "value": "12px" },
+  "xl": { "value": "16px" },
+  "full": { "value": "9999px", "tokenFrame": "full" },
+  "component": {
+    "input": { "value": "4px", "note": "Form field Frame 7 height 36" },
+    "button": { "value": "8px", "note": "Primary buttons height 48" },
+    "badge": { "value": "14px", "note": "Status chips height 28" }
+  }
+}

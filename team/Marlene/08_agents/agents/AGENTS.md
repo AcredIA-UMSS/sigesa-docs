@@ -37,4 +37,22 @@ Este documento define la arquitectura agéntica para el ciclo de vida de desarro
 * **Responsabilidades:**
   - Escribir código adherido estrictamente a las `cursor_rules`.
   - Implementar los API Contracts definidos por el `@ArchAgent`.
-* **Archivos Base de Contexto:** `.cursor/rules/`, `team/Marlene/rules/coding_rules.md`, `04_fsd/api_contracts.md`.
+* **Archivos Base de Contexto:** `.cursor/rules/`, `04_fsd/api_contracts.md`.
+
+---
+
+## 5. Catálogo de skills (≥7 — rúbrica Excelente)
+
+| # | Skill | Ubicación | Agente |
+|---|-------|-----------|--------|
+| 1 | `sigesa-generacion-historias-usuario` | `08_agents/agents/SKILLS.md` (§1) | @ProductAgent |
+| 2 | `sigesa-validacion-maquina-estados` | `08_agents/agents/SKILLS.md` (§2) | @ArchAgent |
+| 3 | `mermaid-expert-architect` | `.cursor/skills/` (repo) | @VisualAgent |
+| 4 | `sigesa-generacion-documentos-negocio` | `.cursor/skills/` (repo) | @ProductAgent |
+| 5 | `sigesa-generacion-documentos-tecnicos` | `.cursor/skills/` (repo) | @ArchAgent |
+| 6 | `sigesa-arquitectura-tecnica-ia` | `.cursor/skills/` (repo) | @ArchAgent |
+| 7 | `sigesa-auditor-trazabilidad-dti` | `.cursor/skills/` (repo) | @QaAgent |
+
+**Reglas Cursor documentadas:** `08_agents/agents/cursor_rules.md` (3 reglas: dominio, máquina de estados, append-only).
+
+**Manifiesto ampliado:** [`docs/08_agents/AGENTS.md`](../../../../docs/08_agents/AGENTS.md) (Golden Folder).

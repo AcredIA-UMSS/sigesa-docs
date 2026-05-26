@@ -1,0 +1,1 @@
+../06_prompt_contracts/PC-SIG-10-consistencia-documental.prompt.md

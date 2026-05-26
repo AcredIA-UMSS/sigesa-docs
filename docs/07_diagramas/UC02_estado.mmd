@@ -1,10 +1,15 @@
-%% UC02 estado — FSD-UC-002 (referencia)
-%% Canónico: team/Marlene/07_diagramas/UC02_estado.mmd
+%% FSD-UC-004 / UC-008 — Estados en Fase 1 y auditoria
 
 stateDiagram-v2
-    [*] --> PENDIENTE
-    PENDIENTE --> EN_REVISION: CC carga evidencia
-    EN_REVISION --> APROBADO: TD aprueba
-    EN_REVISION --> RECHAZADO: TD rechaza
-    RECHAZADO --> EN_REVISION: CC nueva versión
-    APROBADO --> EN_REVISION: nueva versión RB-04
+    direction LR
+    state Fase1 {
+        [*] --> PENDIENTE
+        PENDIENTE --> SUBIDO : CC_upload
+        SUBIDO --> APROBADO : TD_aprueba
+        SUBIDO --> OBSERVADO : TD_observa
+    }
+    state EvidenciaVersion {
+        [*] --> v1_activa
+        v1_activa --> v2_nueva : CC_subsanacion
+        note right of v1_activa : v1 nunca DELETE
+    }

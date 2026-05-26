@@ -1,0 +1,67 @@
+---
+name: sigesa-docs-consistency-checker
+description: Guardián de consistencia entre README.md, AGENTS.md, glosario y docs/; bloquea contradicciones y renombres terminológicos.
+globs: "{README.md,AGENTS.md,matriz_trazabilidad.md,context/**/*.md,docs/**/*.md,team/**/docs/**/*.md,**/*.md}"
+alwaysApply: false
+---
+
+# Guardián de Consistencia Documental (SIGESA)
+
+## Activación
+
+Opera de forma silenciosa al **crear o editar** cualquier archivo Markdown del repositorio (incluido `docs/` completo, `team/**/docs/`, raíz y `context/`). No requiere invocación explícita del usuario.
+
+## Jerarquía de fuentes de verdad
+
+De mayor a menor autoridad normativa:
+
+1. **Glosario** — `context/03_domain_glossary.md` (alias institucional: `glosario.md`)
+2. **`AGENTS.md`** — agentes, skills, reglas globales, políticas AI-SDLC
+3. **`README.md`** — visión, actores, alcance público del producto
+4. **`docs/`** — pirámide BRD → MRD → PRD → FSD → DTI/NFR/ADR (nivel inferior no redefine políticas superiores)
+5. **`team/**/docs/`** — entregables por persona; deben alinearse con lo anterior, nunca contradecirlo
+
+Un Caso de Uso, user story o fragmento en `team/` **no puede** sobrescribir silenciosamente políticas de `README.md` o `AGENTS.md`. Si el cambio local implica divergencia, **detener** y alertar antes de persistir.
+
+## Mecanismo de cross-reference (obligatorio antes de redactar)
+
+Antes de introducir o modificar un **rol**, **flujo**, **dashboard**, **módulo**, **actor** o decisión de **arquitectura**:
+
+1. Leer `README.md` (alcance, actores [CC]/[TD]/[JD]/[P], propósito CEUB/ARCU-SUR).
+2. Leer `AGENTS.md` (límites de agentes, append-only, RBAC, trazabilidad).
+3. Leer el glosario (`context/03_domain_glossary.md`).
+4. Si el cambio toca requisitos o comportamiento, contrastar con el artefacto de nivel inmediatamente superior en `docs/` (p. ej. PRD vs BRD/MRD).
+
+Solo continuar si no hay conflicto; si hay ambigüedad, preguntar al usuario con la discrepancia citada.
+
+## Política de vocabulario (bloqueo inmediato)
+
+- Prohibido renombrar términos institucionales: **Fase** (no Etapa/Stage/Step), **Evidencia** (no archivo genérico), jerarquía **Fase → Dimensión → Criterio → Indicador → Evidencia**.
+- Actores fijos: **[CC]**, **[TD]**, **[JD]**, **[P]** según glosario; no inventar sinónimos (Cliente, Super Admin, etc.).
+- Restricciones base innegociables: **append-only** en evidencia normativa, fases de acreditación y máquina de estados acordada.
+
+Ante violación terminológica: **abortar** la edición y reportar el término canónico exigido.
+
+## Detección de contradicciones (detener generación)
+
+Si un documento de nivel inferior contradice una fuente superior (ej. README limita alcance a evaluación interna y PRD introduce evaluación externa sin alineación previa):
+
+1. **No** completar el párrafo, sección ni commit sugerido.
+2. Emitir alerta estructurada: fuente A vs fuente B, archivo y sección, término o política en conflicto.
+3. Proponer resolución: alinear el documento inferior, escalar el cambio al nivel superior con confirmación explícita del usuario, o registrar ADR/excepción documentada.
+
+## Actualización en cascada (proactiva, no silenciosa)
+
+Tras un cambio **válido y estructural** en un artefacto de `docs/` (nuevo dashboard, módulo, actor, flujo o alcance en PRD/FSD):
+
+1. Enumerar impacto en `README.md`, `AGENTS.md`, glosario, `matriz_trazabilidad.md` y artefactos hermanos.
+2. **Sugerir** al usuario las actualizaciones necesarias en `README.md` (visión/alcance) y demás fuentes afectadas.
+3. No modificar `README.md`, `AGENTS.md` ni glosario sin **confirmación explícita** del usuario (coherente con `03_sigesa_doc_orchestrator`).
+
+## Ejemplo de alerta
+
+```
+CONSISTENCIA SIGESA — BLOQUEO
+- Conflicto: README §Actores lista 4 roles; borrador PRD añade "Evaluador Externo" sin [P] ni glosario.
+- Acción: confirmar alta en glosario + README antes de continuar en PRD.
+```

@@ -1,23 +1,23 @@
-%% UC02 — FSD-UC-002 Carga evidencia (referencia)
-%% Canónico: team/Marlene/07_diagramas/UC02_secuencia.mmd
+%% FSD-UC-004 Cargar Evidencia + FSD-UC-008 Observar
+%% Trazabilidad: PRD-US-002, PRD-US-009 | FSD-BR-01, FSD-BR-05
 
 sequenceDiagram
     autonumber
-    actor CC as [CC]
-    participant UI as SPA
-    participant API as API
-    participant S3 as Storage
-    participant DB as PostgreSQL
-    participant OUT as Outbox
+    participant CC as Coordinador_Carrera_CC
+    participant SYS as SIGESA_API
+    participant STORE as Object_Storage
+    participant TD as Tecnico_DUEA_TD
 
-    CC->>UI: adjuntar evidencia
-    UI->>API: POST /documentos multipart
-    API->>API: RB-02 RB-015 MIME tamaño
-    alt error
-        API-->>UI: 403 413 415
-    else ok
-        API->>S3: PUT archivo
-        API->>DB: documento v++ indicador EN_REVISION
-        API->>OUT: NOTIF_CARGA
-        API-->>UI: 201
-    end
+    CC->>SYS: POST /evidences indicatorId file metadata
+    SYS->>SYS: RBAC programa CC
+    SYS->>STORE: PUT blob con hash SHA-256
+    STORE-->>SYS: storage_key
+    SYS->>SYS: INSERT evidence_version v1
+    SYS->>SYS: indicator.estado = SUBIDO
+    SYS-->>TD: alerta bandeja auditoria
+
+    TD->>SYS: GET /audit-queue?phaseId=
+    TD->>SYS: POST /indicators/{id}/observe
+    Note over SYS: justification obligatoria min 20 chars
+    SYS->>SYS: INSERT observation + estado OBSERVADO
+    SYS-->>CC: notificacion en 15 min

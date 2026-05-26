@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "baseUnit": 4,
+    "source": "figma frame Espaciado y radio (44:784)",
+    "description": "Sistema basado en múltiplos de 4px"
+  },
+  "esp-1": { "value": "4px" },
+  "esp-2": { "value": "8px" },
+  "esp-3": { "value": "12px" },
+  "esp-4": { "value": "16px" },
+  "esp-5": { "value": "24px" },
+  "esp-6": { "value": "32px" },
+  "esp-7": { "value": "40px" },
+  "esp-8": { "value": "48px" },
+  "esp-9": { "value": "64px" },
+  "esp-10": { "value": "80px" },
+  "layout": {
+    "pagePadding": { "value": "48px", "note": "Main Content Area horizontal inset" },
+    "sectionGap": { "value": "32px" },
+    "cardPadding": { "value": "17px", "note": "Semantic color swatch internal padding" }
+  }
+}

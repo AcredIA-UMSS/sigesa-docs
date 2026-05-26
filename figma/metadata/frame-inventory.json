@@ -1,0 +1,121 @@
+{
+  "fileKey": "DX0AyrzfJQEUog45DsGEsl",
+  "fileName": "AcredIA — Design System",
+  "pageId": "0:1",
+  "pageName": "Elementos",
+  "exportedAt": "2026-05-24",
+  "figmaBaseUrl": "https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System",
+  "frames": [
+    {
+      "slug": "tipografia",
+      "name": "Tipografía",
+      "nodeId": "8:2186",
+      "width": 1024,
+      "height": 825,
+      "category": "foundations",
+      "metadataPath": "frames/tipografia.md",
+      "screenshotRef": "screenshots/tipografia.md"
+    },
+    {
+      "slug": "tokens-de-diseno",
+      "name": "Tokens de Diseño",
+      "nodeId": "44:1259",
+      "width": 1024,
+      "height": 847,
+      "category": "foundations",
+      "metadataPath": "frames/tokens-de-diseno.md",
+      "screenshotRef": "screenshots/tokens-de-diseno.md"
+    },
+    {
+      "slug": "espaciado-y-radio",
+      "name": "Espaciado y radio",
+      "nodeId": "44:784",
+      "width": 1024,
+      "height": 1535,
+      "category": "foundations",
+      "metadataPath": "frames/espaciado-y-radio.md",
+      "screenshotRef": "screenshots/espaciado-y-radio.md"
+    },
+    {
+      "slug": "paleta-de-colores",
+      "name": "Paleta de Colores",
+      "nodeId": "8:2187",
+      "width": 1024,
+      "height": 1203,
+      "category": "foundations",
+      "metadataPath": "frames/paleta-de-colores.md",
+      "screenshotRef": "screenshots/paleta-de-colores.md"
+    },
+    {
+      "slug": "botones-y-acciones",
+      "name": "Botones y acciones",
+      "nodeId": "24:26",
+      "parentFrameId": "952:3291",
+      "width": 1199,
+      "height": 2627,
+      "category": "components",
+      "metadataPath": "frames/botones-y-acciones.md",
+      "screenshotRef": "screenshots/botones-y-acciones.md"
+    },
+    {
+      "slug": "formularios",
+      "name": "Formularios",
+      "nodeId": "37:173",
+      "width": 1024,
+      "height": 1463,
+      "category": "components",
+      "metadataPath": "frames/formularios.md",
+      "screenshotRef": "screenshots/formularios.md"
+    },
+    {
+      "slug": "navegacion",
+      "name": "Navegación",
+      "nodeId": "42:15",
+      "width": 1446,
+      "height": 1382,
+      "category": "components",
+      "metadataPath": "frames/navegacion.md",
+      "screenshotRef": "screenshots/navegacion.md"
+    },
+    {
+      "slug": "tablas-y-datos",
+      "name": "Tablas y datos",
+      "nodeId": "50:290",
+      "width": 1024,
+      "height": 1242,
+      "category": "components",
+      "metadataPath": "frames/tablas-y-datos.md",
+      "screenshotRef": "screenshots/tablas-y-datos.md"
+    },
+    {
+      "slug": "iconografia",
+      "name": "Iconografia",
+      "nodeId": "56:1786",
+      "width": 1024,
+      "height": 1712,
+      "category": "components",
+      "metadataPath": "frames/iconografia.md",
+      "screenshotRef": "screenshots/iconografia.md"
+    },
+    {
+      "slug": "body-reference-1280",
+      "name": "Body",
+      "nodeId": "56:1522",
+      "width": 1280,
+      "height": 1747,
+      "category": "layouts",
+      "metadataPath": "frames/body-reference-1280.md",
+      "screenshotRef": "screenshots/body-reference-1280.md"
+    },
+    {
+      "slug": "body-extended",
+      "name": "Body",
+      "nodeId": "1004:49",
+      "width": 1280,
+      "height": 3705,
+      "category": "layouts",
+      "metadataPath": "frames/body-extended.md",
+      "screenshotRef": "screenshots/body-extended.md"
+    }
+  ]
+}
