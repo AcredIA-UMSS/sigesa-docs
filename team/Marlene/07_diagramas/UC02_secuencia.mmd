@@ -1,0 +1,89 @@
+%% UC02_secuencia.mmd — FSD-UC-002 Carga y versionado de evidencia
+%% diagramId: UC02 | alias: D-SEQ-002
+%% fsdTrace: FSD-UC-002 · PRD-REQ-003 · PRD-REQ-004 · PRD-US-003 · PRD-US-004 · PRD-US-005
+%% reglas: RB-02 · RB-04 · BR-015
+%% api: POST /api/v1/documentos
+%% pantalla: /dashboard/coordinador
+%% pruebas: TC-03 · TC-04 · TC-05 · NFR-009 (barra progreso)
+%% version: 1.0 · 14/05/2026
+
+sequenceDiagram
+    autonumber
+    actor CC as Coordinador [CC]
+    participant UI as SPA Coordinador<br/>/dashboard/coordinador
+    participant API as API Documentos<br/>/api/v1/documentos
+    participant AUTH as Middleware JWT RBAC
+    participant S3 as Almacenamiento objeto
+    participant DB as PostgreSQL
+    participant AUD as log_auditoria
+    participant OUT as notificacion_outbox
+    participant WORK as Worker SMTP
+
+    Note over CC,UI: Precondición: sesión JWT activa<br/>indicador PENDIENTE o RECHAZADO
+
+    CC->>UI: Selecciona indicador y archivo
+    UI->>UI: Validar archivo seleccionado<br/>y descripcionCambio
+    UI->>UI: Mostrar barra de progreso NFR-009
+    UI->>API: POST /documentos multipart<br/>indicadorId, descripcionCambio, archivo<br/>Authorization Bearer JWT<br/>Idempotency-Key opcional
+
+    API->>AUTH: Verificar JWT rol CC
+    alt Token inválido o no CC
+        AUTH-->>API: 401 / 403
+        API-->>UI: SIGESA_FORBIDDEN
+        UI-->>CC: Sin permiso para cargar
+    else Autorizado
+        API->>API: Validar indicadorId presente BR-015
+        alt Sin indicadorId
+            API-->>UI: 400 SIGESA_EVIDENCE_CRITERION_REQUIRED
+            UI-->>CC: Debe asociar evidencia a indicador
+        else Con indicadorId
+            API->>DB: Verificar asignación CC–carrera RB-02
+            alt CC sin asignación a carrera del indicador
+                API-->>UI: 403 SIGESA_DOC_UNAUTHORIZED
+                UI-->>CC: Sin acceso a esta carrera
+            else Asignación válida
+                API->>DB: Leer estado indicador y proceso
+                alt Indicador APROBADO sin política reapertura
+                    API-->>UI: 409 SIGESA_DOC_INDICATOR_CLOSED<br/>o advertencia UI nueva versión RB-04
+                    UI-->>CC: Confirmar nueva versión
+                else Estado permite carga
+                    API->>API: Validar MIME PDF DOCX XLSX
+                    alt MIME no permitido
+                        API-->>UI: 415 SIGESA_DOC_MIME
+                        UI-->>CC: Formatos permitidos listados
+                    else MIME válido
+                        API->>API: Validar tamaño ≤ 50 MB
+                        alt Archivo mayor a 50 MB
+                            API-->>UI: 413 SIGESA_DOC_SIZE
+                            UI-->>CC: Guía de compresión RB-10
+                        else Tamaño válido
+                            API->>API: Calcular SHA-256 del archivo
+                            opt Idempotency-Key ya procesada
+                                API->>DB: Buscar resultado previo
+                                DB-->>API: documento existente
+                                API-->>UI: 201 mismo documentoId
+                                UI-->>CC: Confirmación sin duplicar versión
+                            end
+                            API->>DB: BEGIN transacción
+                            API->>S3: PUT storage_key binario
+                            alt Falla almacenamiento S3
+                                API->>DB: ROLLBACK
+                                API-->>UI: 502 SIGESA_STORAGE_ERROR
+                                UI-->>CC: Reintentar carga A4
+                            else PUT exitoso
+                                API->>DB: INSERT documento version++
+                                API->>DB: UPDATE indicador EN_REVISION
+                                API->>DB: INSERT auditoria CARGA
+                                API->>DB: INSERT outbox NOTIF_CARGA
+                                API->>DB: COMMIT
+                                API-->>UI: 201 id version hash indicadorEstado
+                                UI-->>CC: Confirmación nombre versión fecha
+                                OUT-->>WORK: consumir evento async
+                                WORK->>WORK: Enviar SMTP a [TD]<br/>SLA ≤ 15 min NFR-003
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end

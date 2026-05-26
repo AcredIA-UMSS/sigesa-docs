@@ -1,0 +1,119 @@
+%% UC03_estado.mmd — FSD-UC-003 Aprobación, rechazo y avance de subfase
+%% diagramId: UC03-STA | alias: D-STA-002 (proceso) · complementa: UC03_secuencia.mmd
+%% fsdTrace: FSD-UC-003 · PRD-REQ-005 · PRD-US-006 · PRD-US-007 · PRD-US-008
+%% reglas: RB-02 · RB-03 · BR-013 · BR-014
+%% entidades: indicador.estado · subfase.estado · fase.estado · proceso.estado_proceso
+%% pruebas: TC-06 · TC-07 · TC-08
+%% version: 1.0 · 14/05/2026
+
+stateDiagram-v2
+    direction TB
+
+    state "1. Indicador (dictamen [TD])" as IndicadorTD {
+        [*] --> EN_REVISION: documento vigente<br/>carga [CC] UC-002
+
+        EN_REVISION --> APROBADO: [TD] PATCH decision<br/>accion APROBAR
+        EN_REVISION --> RECHAZADO: [TD] PATCH decision<br/>justificación ≥ 20 chars
+
+        RECHAZADO --> EN_REVISION: [CC] nueva versión<br/>evidencia UC-002
+
+        APROBADO --> EN_REVISION: [CC] nueva versión<br/>advertencia RB-04
+
+        note right of EN_REVISION
+            Precondición dictamen
+            Cola /dashboard/tecnico
+            409 WF_INVALID_STATE si ya cerrado
+        end note
+
+        note right of RECHAZADO
+            Notificación NOTIF_DICTAMEN
+            a [CC] — SLA NFR-003
+        end note
+    }
+
+    state "2. Subfase (workflow RB-03)" as Subfase {
+        [*] --> PENDIENTE: clonada desde plantilla
+
+        PENDIENTE --> EN_CURSO: fase padre EN_CURSO<br/>o subfase anterior CERRADA
+
+        EN_CURSO --> EN_CURSO: dictámenes parciales<br/>indicadores mixtos
+
+        EN_CURSO --> CERRADA: POST /subfases/{id}/avance<br/>∀ obligatorios APROBADO
+
+        EN_CURSO --> EN_CURSO: intento avance<br/>409 WF_INCOMPLETE
+
+        CERRADA --> [*]: habilita siguiente subfase<br/>PENDIENTE → EN_CURSO
+
+        note right of EN_CURSO
+            Comando "Cerrar subfase"
+            habilitado solo si
+            obligatorios = APROBADO
+            BR-014
+        end note
+
+        note right of CERRADA
+            Auditoría AVANCE_FASE
+            TC-08 escenario exitoso
+        end note
+    }
+
+    state "3. Fase (contenedor)" as Fase {
+        [*] --> PENDIENTE
+
+        PENDIENTE --> EN_CURSO: primera subfase activa
+
+        EN_CURSO --> CERRADA: todas las subfases<br/>de la fase en CERRADA
+
+        CERRADA --> [*]
+    }
+
+    state "4. Proceso acreditación (carrera)" as Proceso {
+        [*] --> BORRADOR: alta plantilla [JD]
+
+        BORRADOR --> EN_PROCESO: activación proceso<br/>BR-013 proceso único
+
+        EN_PROCESO --> EN_PROCESO: ciclos subfase UC-003<br/>dentro de EN_PROCESO
+
+        EN_PROCESO --> ACREDITADO: cierre favorable<br/>UC-010 / dictamen externo
+
+        EN_PROCESO --> CERRADO: cierre sin acreditación
+
+        ACREDITADO --> VENCIDO: fin vigencia resolución
+
+        note right of EN_PROCESO
+            UC-003 opera solo con
+            proceso EN_PROCESO
+            tipos CEUB / ARCU-SUR RB-01
+        end note
+    }
+
+    state "5. Panel [TD] (UI dictamen)" as PanelTD {
+        [*] --> COLA_REVISION
+
+        COLA_REVISION --> DETALLE_INDICADOR: seleccionar fila
+
+        DETALLE_INDICADOR --> COLA_REVISION: volver sin dictamen
+
+        DETALLE_INDICADOR --> CONFIRMANDO_DECISION: APROBAR o RECHAZAR
+
+        CONFIRMANDO_DECISION --> DETALLE_INDICADOR: 422 justificación corta<br/>o 409 WF_CONFLICT
+
+        CONFIRMANDO_DECISION --> COLA_REVISION: 200 dictamen persistido
+
+        COLA_REVISION --> CIERRE_SUBFASE: todos obligatorios<br/>APROBADO en subfase activa
+
+        CIERRE_SUBFASE --> COLA_REVISION: 409 WF_INCOMPLETE<br/>lista pendientes
+
+        CIERRE_SUBFASE --> COLA_REVISION: 200 subfase CERRADA
+
+        note right of CIERRE_SUBFASE
+            confirmar: true
+            POST /subfases/{id}/avance
+        end note
+    }
+
+    note right of IndicadorTD
+        Transiciones 1 ↔ 2:
+        subfase EN_CURSO acumula
+        indicadores hasta cierre RB-03
+    end note

@@ -1,0 +1,69 @@
+%% UC02_estado.mmd — FSD-UC-002 Carga y versionado de evidencia
+%% diagramId: UC02-STA | alias: D-STA-001 · complementa: UC02_secuencia.mmd
+%% fsdTrace: FSD-UC-002 · FSD-UC-003 (transiciones TD) · PRD-REQ-003 · PRD-REQ-004
+%% reglas: RB-02 · RB-04 · BR-015
+%% entidades: indicador.estado · documento.version
+%% pruebas: TC-03 · TC-04 · TC-05
+%% version: 1.0 · 14/05/2026
+
+stateDiagram-v2
+    direction TB
+
+    state "1. Indicador (ciclo acreditación)" as Indicador {
+        [*] --> PENDIENTE: indicador creado<br/>desde plantilla proceso
+
+        PENDIENTE --> EN_REVISION: [CC] carga evidencia<br/>POST /documentos exitoso
+
+        EN_REVISION --> APROBADO: [TD] aprueba<br/>UC-003 PATCH decision
+        EN_REVISION --> RECHAZADO: [TD] rechaza con<br/>justificación ≥ 20 chars
+
+        RECHAZADO --> EN_REVISION: [CC] sube nueva versión<br/>documento version++
+
+        APROBADO --> EN_REVISION: [CC] nueva versión<br/>advertencia UI RB-04
+
+        note right of PENDIENTE
+            Sin documento vigente
+            CC puede primera carga
+        end note
+
+        note right of EN_REVISION
+            Cola revisión [TD]
+            Notificación CARGA
+        end note
+
+        note right of RECHAZADO
+            Observación visible [CC]
+            Plan mejora opcional UC-012
+        end note
+    }
+
+    state "2. Documento evidencia (versionado)" as Documento {
+        [*] --> SIN_REGISTRO: sin fila documento
+
+        SIN_REGISTRO --> VIGENTE_EN_REVISION: INSERT version 1..N<br/>hash SHA-256 en S3
+
+        VIGENTE_EN_REVISION --> HISTORICO: nueva version INSERT<br/>versión anterior RB-04
+
+        HISTORICO --> HISTORICO: solo lectura<br/>sin DELETE físico
+
+        note right of HISTORICO
+            Todas las versiones
+            consultables en auditoría
+        end note
+    }
+
+    state "3. Carga en UI [CC]" as CargaUI {
+        [*] --> FORMULARIO_ABIERTO
+        FORMULARIO_ABIERTO --> VALIDANDO_CLIENTE: seleccionar archivo
+        VALIDANDO_CLIENTE --> FORMULARIO_ABIERTO: validación fallida
+        VALIDANDO_CLIENTE --> SUBIENDO: POST multipart<br/>barra progreso NFR-009
+        SUBIENDO --> FORMULARIO_ABIERTO: error 4xx/5xx
+        SUBIENDO --> CONFIRMADO: 201 Created
+        CONFIRMADO --> [*]
+    }
+
+    note right of Indicador
+        Precondición proceso EN_PROCESO
+        BR-015: indicadorId obligatorio
+        RB-02: solo [CC] asignado
+    end note

@@ -1,0 +1,89 @@
+%% UC01_secuencia.mmd — FSD-UC-001 Autenticación y sesión institucional
+%% diagramId: UC01 | alias: D-SEQ-001
+%% fsdTrace: FSD-UC-001 · PRD-REQ-001 · PRD-REQ-002 · PRD-US-001 · PRD-US-002
+%% reglas: RB-06 · NFR-005 · NFR-007 · NFR-013
+%% api: POST /api/v1/auth/login · GET /api/v1/auth/me
+%% pantalla: /login
+%% pruebas: TC-01 · TC-02
+%% version: 1.0 · 14/05/2026
+
+sequenceDiagram
+    autonumber
+    actor U as Usuario interno<br/>[CC] [TD] [JD]
+    participant UI as SPA Login<br/>/login
+    participant API as API Auth<br/>/api/v1/auth
+    participant RL as Rate limiter
+    participant DB as PostgreSQL<br/>usuario
+    participant AUD as log_auditoria
+
+    U->>UI: Ingresa email y contraseña
+    UI->>UI: Validación cliente<br/>campos obligatorios
+    UI->>API: POST /auth/login<br/>{ email, password }
+
+    API->>API: Validar formato email
+    alt Formato inválido
+        API-->>UI: 400 SIGESA_VAL_BAD_REQUEST
+        UI-->>U: Mensaje RB-10 accionable
+    else Formato válido
+        API->>API: Validar dominio @umss.edu.bo
+        alt Dominio no institucional
+            API->>AUD: append LOGIN_FALLIDO<br/>motivo DOMAIN
+            API-->>UI: 403 SIGESA_AUTH_DOMAIN
+            UI-->>U: Solo se admiten correos @umss.edu.bo
+        else Dominio @umss.edu.bo
+            API->>RL: Verificar intentos fallidos<br/>ventana 15 min
+            alt Cuenta bloqueada AUTH_LOCKED
+                API->>AUD: append LOGIN_BLOQUEADO
+                API-->>UI: 429 SIGESA_AUTH_LOCKED
+                UI-->>U: Intente más tarde
+            else No bloqueada
+                API->>DB: SELECT usuario por email
+                alt BD no disponible
+                    API-->>UI: 503 SIGESA_DB_UNAVAILABLE
+                    UI-->>U: Servicio temporalmente no disponible
+                else BD responde
+                    alt Usuario no existe
+                        API->>RL: incrementar intentos
+                        API->>AUD: append LOGIN_FALLIDO<br/>motivo CREDENTIAL
+                        API-->>UI: 401 SIGESA_AUTH_INVALID<br/>mensaje genérico
+                        UI-->>U: Credenciales inválidas
+                    else Usuario encontrado
+                        API->>API: bcrypt verify password
+                        alt Contraseña incorrecta
+                            API->>RL: incrementar intentos
+                            API->>AUD: append LOGIN_FALLIDO<br/>motivo CREDENTIAL
+                            API-->>UI: 401 SIGESA_AUTH_INVALID
+                            UI-->>U: Credenciales inválidas
+                        else Contraseña correcta
+                            alt activo = false
+                                API->>AUD: append LOGIN_FALLIDO<br/>motivo INACTIVE
+                                API-->>UI: 403 SIGESA_AUTH_INACTIVE
+                                UI-->>U: Contacte a [JD]
+                            else activo = true
+                                API->>API: Emitir JWT<br/>sub, email, rol, carreraIds
+                                API->>AUD: append LOGIN exitoso
+                                API-->>UI: 200 accessToken + usuario
+                                UI->>UI: Almacenar token sesión
+                                alt rol = CC
+                                    UI-->>U: Redirigir /dashboard/coordinador
+                                else rol = TD
+                                    UI-->>U: Redirigir /dashboard/tecnico
+                                else rol = JD
+                                    UI-->>U: Redirigir /dashboard/jefatura
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    Note over U,AUD: Sesión activa — consulta perfil opcional
+    U->>UI: Navegación autenticada
+    UI->>API: GET /auth/me<br/>Authorization Bearer JWT
+    API->>API: Validar JWT exp y firma
+    API->>DB: Cargar usuario activo
+    DB-->>API: perfil rol carreraIds
+    API-->>UI: 200 usuario
+    UI-->>U: Renderizar menú según rol
