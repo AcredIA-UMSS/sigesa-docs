@@ -787,3 +787,7 @@ also keep in mind all the versions available of the brd for more context if need
 ## 2026-05-27T17:59:26-04:00 — Prompt usuario
 **Prompt:** Implementar plan Backend MVP SIGESA en app/sigesa-backend (todos los to-dos)
 **Acción:** Monorepo: shared, evidence-service, audit-service, orchestration-service, gateway; docker-compose; migrations+seed; tests Jest 7/7.
+
+## 2026-05-27T18:04:44-04:00 — Prompt usuario
+**Prompt:** commit all changes to main repo; mantener repos separados front/back
+**Acción:** Commit 8eac519 en sigesa-docs (skills, AGENTS, README, .gitignore app/*); sin incluir app/sigesa-front ni app/sigesa-backend.
