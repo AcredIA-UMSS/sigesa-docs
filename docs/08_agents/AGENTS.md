@@ -7,9 +7,12 @@
 | **Versión** | Dorada v2.2 |
 | **Última actualización** | 2026-05-27 |
 | **Ubicación canónica** | `docs/08_agents/AGENTS.md` |
+| **Ejecutable para agentes (Cursor)** | **[`AGENTS.md`](../../AGENTS.md) en la raíz del repo** — leer primero |
 | **Runtime skills** | `.cursor/skills/` (`.claude` es enlace simbólico a `.cursor`) |
 | **Runtime rules** | `.cursor/rules/*.mdc` |
 | **Audiencia** | Analistas, arquitectos, desarrolladores, QA, oficiales de cumplimiento DUEA |
+
+> **Convención Defensa Final / curso:** Cursor y Claude Code cargan automáticamente `./AGENTS.md`. Este archivo amplía políticas IA, riesgos y workflow; el stack, comandos y MUST leer DTI viven en la raíz v2.0.
 
 Documentación hermana en esta carpeta: [`skills.md`](skills.md) (catálogo de skills) · [`cursor_rules.md`](cursor_rules.md) (reglas globales).
 
@@ -258,7 +261,8 @@ Revisiones periódicas conjuntas DUEA + equipo AcredIA: muestreo de Human Evalua
 
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
-| Dorada v2.2 | 2026-05-27 | Alta @DevAgent; skills `sigesa-frontend-engineer`, `sigesa-backend-engineer`, `sigesa-distributed-architect`; inventario 12 skills |
+| Dorada v2.2 | 2026-05-25 | Raíz `AGENTS.md` v2.0 ejecutable; este archivo = gobernanza extendida |
+| Dorada v2.2 | 2026-05-27 | Alta @DevAgent; skills frontend/backend/distributed; inventario 12 skills |
 | Dorada v2.1 | 2026-05-17 | Alta skill `sigesa-dti-author`; fuente en `docs/05_dti/dti-author.md` |
 | Dorada v2.0 | 2026-05-17 | Golden Folder `docs/08_agents/`; alineación a `docs/01`–`09`; 8 skills; 5 rules; gobernanza ampliada |
 | v1.1 | 2026-05-15 | Manifiesto en raíz (legacy) |
