@@ -5,7 +5,7 @@
 | **Node ID** | `56:1522` |
 | **Dimensions** | 1280 × 1747 |
 | **Category** | Layout / screen |
-| **Figma** | [Open in Figma](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=56-1522) |
+| **Figma** | [Open in Figma](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=56-1522) |
 | **Screenshot** | [../screenshots/body-reference-1280.md](../screenshots/body-reference-1280.md) |
 
 ## Layout structure

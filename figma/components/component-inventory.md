@@ -1,7 +1,7 @@
 # Component inventory — AcredIA Design System
 
 **Source frame:** `Botones y acciones`, `Formularios`, `Navegación`, `Tablas y datos`, `Iconografia`  
-**Figma:** [Design System file](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System)
+**Figma:** [Design System file](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-)
 
 ---
 

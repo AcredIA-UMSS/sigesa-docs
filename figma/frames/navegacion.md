@@ -5,7 +5,7 @@
 | **Node ID** | `42:15` |
 | **Dimensions** | 1446 × 1382 |
 | **Category** | Components |
-| **Figma** | [Open in Figma](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=42-15) |
+| **Figma** | [Open in Figma](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=42-15) |
 | **Screenshot** | [../screenshots/navegacion.md](../screenshots/navegacion.md) |
 
 ## Layout structure

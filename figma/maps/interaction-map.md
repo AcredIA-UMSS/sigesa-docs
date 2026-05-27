@@ -115,4 +115,4 @@ Acreditación process UI maps badge copy to business states:
 | Main menu | `535:222` | `?node-id=535-222` |
 | Navegacion set | `285:83` | `?node-id=285-83` |
 
-Base: `https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System`
+Base: `https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-`

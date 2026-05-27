@@ -5,7 +5,7 @@
 | **Node ID** | `24:26` (parent wrapper `952:3291`) |
 | **Dimensions** | 1199 × 2627 |
 | **Category** | Components |
-| **Figma** | [Open in Figma](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=24-26) |
+| **Figma** | [Open in Figma](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=24-26) |
 | **Screenshot** | [../screenshots/botones-y-acciones.md](../screenshots/botones-y-acciones.md) |
 
 ## Layout structure

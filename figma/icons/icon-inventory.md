@@ -1,7 +1,7 @@
 # Icon inventory — AcredIA
 
 **Primary frame:** `Iconografia` (`56:1786`)  
-**Figma:** [Iconografia node](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=56-1786)
+**Figma:** [Iconografia node](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=56-1786)
 
 ## Categories
 

@@ -5,7 +5,7 @@
 | **Node ID** | `8:2186` |
 | **Dimensions** | 1024 × 825 |
 | **Category** | Foundations |
-| **Figma** | [Open in Figma](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=8-2186) |
+| **Figma** | [Open in Figma](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=8-2186) |
 | **Screenshot** | [../screenshots/tipografia.md](../screenshots/tipografia.md) |
 
 ## Layout structure

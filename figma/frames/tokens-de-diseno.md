@@ -5,7 +5,7 @@
 | **Node ID** | `44:1259` |
 | **Dimensions** | 1024 × 847 |
 | **Category** | Foundations |
-| **Figma** | [Open in Figma](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=44-1259) |
+| **Figma** | [Open in Figma](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=44-1259) |
 | **Screenshot** | [../screenshots/tokens-de-diseno.md](../screenshots/tokens-de-diseno.md) |
 
 ## Layout structure

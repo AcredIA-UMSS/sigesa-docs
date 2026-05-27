@@ -1,18 +1,67 @@
 {
-  "version": "1.0.0",
-  "exportedAt": "2026-05-24T00:00:00Z",
-  "fileKey": "DX0AyrzfJQEUog45DsGEsl",
-  "mcpToolsUsed": ["get_metadata", "get_libraries", "search_design_system"],
-  "mcpToolsPending": ["use_figma", "get_screenshot", "get_variable_defs"],
+  "version": "1.2.0",
+  "exportedAt": "2026-05-26T21:22:00Z",
+  "fileKey": "8xAUbh7TScU1I4lHVTvUTS",
+  "previousFileKey": "DX0AyrzfJQEUog45DsGEsl",
+  "fileName": "AcredIA — Design System (Copy)",
+  "mcpToolsUsed": [
+    "get_metadata",
+    "get_libraries",
+    "search_design_system",
+    "whoami",
+    "get_screenshot"
+  ],
+  "mcpToolsPending": ["get_variable_defs", "use_figma"],
   "limitations": [
-    "Figma MCP Starter rate limit blocked use_figma and get_screenshot",
     "get_variable_defs requires selected layer in desktop app",
-    "Screenshots are URL references only"
+    "File key updated from DX0AyrzfJQEUog45DsGEsl to 8xAUbh7TScU1I4lHVTvUTS (Copy file)"
   ],
   "artifacts": {
     "metadata": ["project-summary.md", "frame-inventory.json", "raw-page-elementos.xml"],
-    "tokens": ["colors.json", "typography.json", "spacing.json", "radius.json", "shadows.json", "effects.json", "css-variables.css", "tailwind.partial.config.js"],
-    "frames": 9,
-    "screenshots": "reference-md-only"
+    "tokens": [
+      "colors.json",
+      "typography.json",
+      "spacing.json",
+      "radius.json",
+      "shadows.json",
+      "effects.json",
+      "css-variables.css",
+      "tailwind.partial.config.js"
+    ],
+    "frames": 11,
+    "screenshots": {
+      "status": "exported",
+      "count": 11,
+      "files": [
+        "tipografia.png",
+        "paleta-de-colores.png",
+        "tokens-de-diseno.png",
+        "botones-y-acciones.png",
+        "formularios.png",
+        "navegacion.png",
+        "body-reference-1280.png",
+        "espaciado-y-radio.png",
+        "iconografia.png",
+        "tablas-y-datos.png",
+        "body-extended.png"
+      ]
+    },
+    "annotations": [
+      "tipografia.annotations.md",
+      "paleta-de-colores.annotations.md",
+      "tokens-de-diseno.annotations.md",
+      "espaciado-y-radio.annotations.md",
+      "botones-y-acciones.annotations.md",
+      "formularios.annotations.md",
+      "navegacion.annotations.md",
+      "tablas-y-datos.annotations.md",
+      "iconografia.annotations.md",
+      "body-reference-1280.annotations.md",
+      "body-extended.annotations.md"
+    ],
+    "components": ["component-inventory.md"],
+    "layouts": ["layout-system.md"],
+    "icons": ["icon-inventory.md"],
+    "maps": ["interaction-map.md"]
   }
 }

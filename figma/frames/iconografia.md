@@ -5,7 +5,7 @@
 | **Node ID** | `56:1786` |
 | **Dimensions** | 1024 × 1712 |
 | **Category** | Components |
-| **Figma** | [Open frame](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=56-1786) |
+| **Figma** | [Open frame](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=56-1786) |
 | **Screenshot** | [../screenshots/iconografia.md](../screenshots/iconografia.md) |
 
 ## Sections

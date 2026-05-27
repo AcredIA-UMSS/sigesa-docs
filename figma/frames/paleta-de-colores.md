@@ -5,7 +5,7 @@
 | **Node ID** | `8:2187` |
 | **Dimensions** | 1024 × 1203 |
 | **Category** | Foundations |
-| **Figma** | [Open in Figma](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=8-2187) |
+| **Figma** | [Open in Figma](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=8-2187) |
 | **Screenshot** | [../screenshots/paleta-de-colores.md](../screenshots/paleta-de-colores.md) |
 
 ## Layout structure

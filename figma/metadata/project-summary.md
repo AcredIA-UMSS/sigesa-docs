@@ -4,10 +4,11 @@
 
 | Property | Value |
 |----------|--------|
-| **Figma file name** | AcredIA — Design System |
-| **File key** | `DX0AyrzfJQEUog45DsGEsl` |
+| **Figma file name** | AcredIA — Design System (Copy) |
+| **Previous file key** | `DX0AyrzfJQEUog45DsGEsl` (original — superseded) |
+| **File key** | `8xAUbh7TScU1I4lHVTvUTS` |
 | **Team context** | AcredIA / UMSS / DUEA acreditación institucional |
-| **Primary URL** | https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System |
+| **Primary URL** | https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy- |
 
 ## Pages
 

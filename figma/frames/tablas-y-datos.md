@@ -5,7 +5,7 @@
 | **Node ID** | `50:290` (also `53:890` variant) |
 | **Dimensions** | 1024 × 1242 / 1162 |
 | **Category** | Components |
-| **Figma** | [Open frame](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=50-290) |
+| **Figma** | [Open frame](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=50-290) |
 | **Screenshot** | [../screenshots/tablas-y-datos.md](../screenshots/tablas-y-datos.md) |
 
 ## Purpose

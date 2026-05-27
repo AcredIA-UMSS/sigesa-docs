@@ -5,10 +5,11 @@ Persistent design memory for Cursor agents, extracted from the canonical Figma f
 | Field | Value |
 |-------|--------|
 | **Project** | AcredIA — Design System |
-| **File key** | `DX0AyrzfJQEUog45DsGEsl` |
-| **Figma URL** | [AcredIA — Design System](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=0-1) |
-| **Exported** | 2026-05-24 |
-| **Export version** | `v1.0.0` |
+| **File key** | `8xAUbh7TScU1I4lHVTvUTS` |
+| **Figma URL** | [AcredIA — Design System](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=0-1) |
+| **Exported** | 2026-05-26 (gap-fill run) |
+| **Previous file key** | `DX0AyrzfJQEUog45DsGEsl` (original) |
+| **Export version** | `v1.1.0` |
 | **Source page** | `Elementos` (`0:1`) |
 
 ## Directory map

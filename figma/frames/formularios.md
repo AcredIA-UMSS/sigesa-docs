@@ -5,7 +5,7 @@
 | **Node ID** | `37:173` |
 | **Dimensions** | 1024 × 1463 |
 | **Category** | Components |
-| **Figma** | [Open in Figma](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=37-173) |
+| **Figma** | [Open in Figma](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=37-173) |
 | **Screenshot** | [../screenshots/formularios.md](../screenshots/formularios.md) |
 
 ## Layout structure

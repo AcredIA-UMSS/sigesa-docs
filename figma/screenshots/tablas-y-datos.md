@@ -1,16 +1,14 @@
-# Screenshot — tablas-y-datos
+# Screenshot — Tablas y Datos
 
 | Field | Value |
 |-------|--------|
-| **PNG** | `tablas-y-datos.png` (pending) |
-| **Status** | `reference-only` |
-| **Node ID** | `50` |
-| **Figma** | [Open frame](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=50) |
+| **PNG** | `tablas-y-datos.png` ✅ |
+| **Status** | `exported` |
+| **Dimensions** | 1024 × 1242 px |
+| **Node ID** | `50:290` |
+| **Figma** | [Open frame](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=50-290) |
 
 ## Related
 
 - [../frames/tablas-y-datos.md](../frames/tablas-y-datos.md)
-
-## Export
-
-See [EXPORT_TODO.md](EXPORT_TODO.md).
+- [../annotations/tablas-y-datos.annotations.md](../annotations/tablas-y-datos.annotations.md)

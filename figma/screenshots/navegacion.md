@@ -1,16 +1,14 @@
-# Screenshot — navegacion
+# Screenshot — Navegación
 
 | Field | Value |
 |-------|--------|
-| **PNG** | `navegacion.png` (pending) |
-| **Status** | `reference-only` |
-| **Node ID** | `42` |
-| **Figma** | [Open frame](https://www.figma.com/design/DX0AyrzfJQEUog45DsGEsl/AcredIA---Design-System?node-id=42) |
+| **PNG** | `navegacion.png` ✅ |
+| **Status** | `exported` |
+| **Dimensions** | 1446 × 1382 px |
+| **Node ID** | `42:15` |
+| **Figma** | [Open frame](https://www.figma.com/design/8xAUbh7TScU1I4lHVTvUTS/AcredIA---Design-System--Copy-?node-id=42-15) |
 
 ## Related
 
 - [../frames/navegacion.md](../frames/navegacion.md)
-
-## Export
-
-See [EXPORT_TODO.md](EXPORT_TODO.md).
+- [../annotations/navegacion.annotations.md](../annotations/navegacion.annotations.md)
