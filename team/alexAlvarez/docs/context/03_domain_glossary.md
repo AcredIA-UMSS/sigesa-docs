@@ -10,9 +10,11 @@ La evaluación de una carrera se rige por una estructura de árbol estricta. Las
 
 ### 1. Proceso (Process / AccreditationCycle)
 Es la entidad raíz que representa un intento formal de una Carrera por lograr o renovar su acreditación en un periodo determinado.
-* **Cardinalidad:** Una Carrera (Career) puede tener múltiples Procesos en su historia (ej. Acreditación 2018, Renovación 2026), pero **solo un (1)** Proceso puede estar en estado "Activo" a la vez.
+* **Cardinalidad:** Una Carrera (Career) puede tener múltiples Procesos en su historia (ej. Acreditación 2018, Renovación 2026), pero **solo un (1)** Proceso puede estar en estado `Activo` a la vez.
 * **Atributos de Negocio:** Requiere asociarse obligatoriamente a una Carrera, un periodo de gestión (Año), una Modalidad normativa y un conjunto de fechas límite de ejecución.
-* **Ciclo de Vida:** Borrador -> Activo -> Acreditado / Rechazado / Vencido.
+* **Ciclo de Vida:** `Borrador → Activo → Acreditado / Rechazado / Vencido / Anulado`
+* **Estado Anulado (soft delete):** El [JD] puede cerrar anticipadamente un Proceso `Activo` sin completar la acreditación (ej. retiro voluntario, cambio normativo, fuerza mayor). La acción **no elimina datos**; transiciona el Proceso a `Anulado` y preserva íntegramente todas las Evidencias, Observaciones e historial de transiciones para auditoría. Regla: FSD-BR-19.
+* **Nota de UI:** La interfaz muestra el estado `Activo` con el badge visual **`"EN PROCESO"`**. Este es un mapeo de presentación; el valor persistido en base de datos es `ACTIVO`.
 
 ### 2. Modalidad (Framework / Modality)
 Representa el marco normativo y legal que auditará el Proceso. En SIGESA, existen dos entidades predefinidas: **CEUB** (Nacional) y **ARCU-SUR** (Internacional).
@@ -20,10 +22,15 @@ Representa el marco normativo y legal que auditará el Proceso. En SIGESA, exist
 
 ### 3. Fase (Phase / Stage)
 Agrupación temporal y lógica que determina qué acciones están permitidas en el Proceso en un momento dado. Un proceso estándar en SIGESA tiene tres fases secuenciales:
-* **Fase 1 (Autoevaluación):** Permite la carga masiva inicial de Evidencias.
-* **Fase 2 (Evaluación Interna / Subsanación):** Se bloquea la creación de nueva evidencia base; solo se permite la carga de subsanaciones en respuesta a Observaciones específicas.
-* **Fase 3 (Evaluación Externa):** Fase de solo lectura para actores internos; registro de los dictámenes de pares evaluadores.
-* **Restricción:** El motor del sistema no permite avanzar a la Fase *N+1* si la Fase *N* tiene dependencias (Indicadores) no resueltas.
+
+| # | Nombre canónico | Label UI (formulario) | Descripción funcional |
+|---|----------------|----------------------|----------------------|
+| **Fase 1** | **Autoevaluación** | "Autoevaluación" | El [CC] recopila y carga Evidencias masivamente para todos los Indicadores del Proceso. |
+| **Fase 2** | **Evaluación Interna** | "Evaluación Interna" | El [TD] audita las Evidencias. Solo se admiten subsanaciones vinculadas a Observaciones específicas abiertas; sin carga masiva nueva. |
+| **Fase 3** | **Evaluación Externa** | "Evaluación Externa" | Presentación a pares evaluadores externos, [JD] y stakeholders. Vista de solo lectura para [CC] y [TD]; el [JD] registra el Dictamen Final. |
+
+* **Restricción:** El motor del sistema no permite avanzar a la Fase *N+1* si la Fase *N* tiene dependencias (Indicadores) no resueltas — ver FSD-BR-07.
+* **Nota de UI:** Los radio buttons en el formulario de creación de Proceso usan las etiquetas "Autoevaluación" / "Evaluación Interna" / "Evaluación Externa". Los valores "Evaluación documental / presencial" que aparecen en el diseño actual (Figma node `37:173`) **no son correctos** y deben actualizarse en el diseño.
 
 ### 4. Dimensión (Dimension)
 El primer nivel taxonómico dentro del modelo de evaluación definido por la Modalidad (ej. "Contexto Institucional", "Proyecto Académico"). 

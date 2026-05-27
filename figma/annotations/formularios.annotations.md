@@ -24,8 +24,17 @@
 - Error message pattern: field border + `!` icon chip — map to HTML `aria-describedby` + `role="alert"`.
 - Use `esp-6` (32px) between form field groups; `esp-4` (16px) between label and control.
 
+## Clarificaciones de dominio (2026-05-27)
+
+| Campo en Figma | Aclaración |
+|---------------|-----------|
+| Radio "Evaluación documental / presencial / Auto-evaluación" | **Estos radios deben representar los tipos de Fase, no tipos de evaluación.** Labels canónicos correctos: **"Autoevaluación"** (Fase 1) / **"Evaluación Interna"** (Fase 2) / **"Evaluación Externa"** (Fase 3). Actualización pendiente en diseño Figma. |
+| Radio "Auto-evaluación" (actual) | Nombre correcto: **"Autoevaluación"** (sin guion). |
+| Botón "Guardar" / "Subir" en contextos de Evidencia | Etiqueta canónica: **"Subir Evidencia"** (FSD-BR-20). No usar "Subir Documento" ni "Cargar Archivo". |
+
 ## Open questions
 
 - [ ] Confirm disabled state for all form controls (not explicitly documented in-frame)
 - [ ] Verify dropdown option list max height + scroll behavior for long lists
 - [ ] Clarify if "Carrera" is a free-text or select field (shown as text input in frame)
+- [ ] Update radio button labels in Figma: "Evaluación documental/presencial" → "Autoevaluación / Evaluación Interna / Evaluación Externa"

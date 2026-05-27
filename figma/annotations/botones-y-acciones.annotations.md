@@ -24,8 +24,17 @@
 - Badge height is always 28px; width adapts to label length (`pill` radius applied).
 - Implement `Más opciones` as an overflow menu trigger (ellipsis / kebab pattern).
 
+## Clarificaciones de dominio (2026-05-27)
+
+| Elemento | Aclaración |
+|---------|-----------|
+| `"Eliminar proceso"` (botón danger) | **Soft delete / cierre anticipado** — NO es un DELETE físico. Implementar como transición de estado `ACTIVO → ANULADO`. Requiere modal de confirmación con campo de motivo obligatorio. Ver FSD-BR-19 y FSD-UC-003 (flujo alterno A3). |
+| `"EN PROCESO"` (status badge) | Etiqueta visual intencional para el estado interno `ACTIVO` del Proceso. Mapeo: `ACTIVO` → UI muestra `"EN PROCESO"`. No es error de vocabulario; es una decisión de UX. |
+| Sección "Archivos" (iconografía) | Representa el repositorio de Evidencias cargadas en un Proceso de Acreditación específico. Es un concepto de carpeta/repositorio, no un archivo individual. El término canónico del dominio sigue siendo **Evidencia**. |
+
 ## Open questions
 
 - [ ] Confirm if `Secundary button` has hover/focus states documented (note: "Secundary" spelling in Figma — do not correct in component names)
 - [ ] Check if `Cancelar` uses `outline` or `ghost` style (no explicit fill token annotated)
 - [ ] Validate icon size inside buttons per size tier (Pequeño / Normal / Grande)
+- [ ] Confirm modal de confirmación para "Eliminar proceso" — campo de motivo obligatorio (≥ 20 chars? alineado a FSD-BR-05)

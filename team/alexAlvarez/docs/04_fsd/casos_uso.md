@@ -28,9 +28,9 @@
 | [FSD-UC-008](#fsd-uc-008) | Registrar Observación | [TD] | 009 | [UC-L05](../05_lfsd/LFSD_v1.md#uc-l05--observación-td) | [UC02](../07_diagramas/UC02_secuencia.mmd) |
 | [FSD-UC-009](#fsd-uc-009) | Aprobar Indicador | [TD] | 023 | [UC-L06](../05_lfsd/LFSD_v1.md#uc-l06--aprobar-indicador-y-cerrar-fase) | [UC01 estado](../07_diagramas/UC01_estado.mmd) |
 | [FSD-UC-010](#fsd-uc-010) | Avanzar / cerrar Fase | [TD] | 014, 023 | [UC-L06](../05_lfsd/LFSD_v1.md#uc-l06--aprobar-indicador-y-cerrar-fase) | [UC03](../07_diagramas/UC03_estado.mmd) |
-| [FSD-UC-011](#fsd-uc-011) | Dashboard [CC] | [CC] | 004, 006, 025 | — | — |
-| [FSD-UC-012](#fsd-uc-012) | Bandeja auditoría [TD] | [TD] | 007, 012 | — | — |
-| [FSD-UC-013](#fsd-uc-013) | Panel ejecutivo [JD] | [JD] | 015, 020 | [UC-L07](../05_lfsd/LFSD_v1.md#uc-l07--panel-semáforo-jd) | — |
+| [FSD-UC-011](#fsd-uc-011) | Dashboard [CC] | [CC] | 004, 006, 025 | — | `figma/screenshots/cc-coordinador-home.png` |
+| [FSD-UC-012](#fsd-uc-012) | Bandeja auditoría [TD] | [TD] | 007, 012 | — | `figma/screenshots/td-bandeja-tareas.png` |
+| [FSD-UC-013](#fsd-uc-013) | Panel ejecutivo [JD] | [JD] | 015, 020 | [UC-L07](../05_lfsd/LFSD_v1.md#uc-l07--panel-semáforo-jd) | `figma/screenshots/jd-admin-dashboard.png` |
 | [FSD-UC-014](#fsd-uc-014) | Reporte ejecutivo PDF | [JD] | 021 | — | — |
 | [FSD-UC-015](#fsd-uc-015) | Notificaciones | Sistema | 005, 018, 019 | — | — |
 | [FSD-UC-016](#fsd-uc-016) | Portal público | [P] | 016, 017 | — | — |
@@ -72,8 +72,9 @@
 | Campo | Valor |
 |-------|-------|
 | **Trazabilidad** | BRD-SCP-IN-01 · PRD-US-024 |
-| **Reglas** | FSD-BR-08, FSD-BR-17 |
+| **Reglas** | FSD-BR-08, FSD-BR-17, FSD-BR-19 |
 | **Diagrama** | [`UC03_secuencia.mmd`](../07_diagramas/UC03_secuencia.mmd) |
+| **Mockup** | `figma/screenshots/jd-admin-dashboard.png` (node `435:450`) |
 
 **Actor principal:** [JD]
 
@@ -82,15 +83,19 @@
 **Flujo principal:**
 1. [JD] activa plantilla CEUB o ARCU-SUR para el periodo.
 2. El sistema fija taxonomía **Fase → Dimensión → Criterio → Indicador** en catálogo.
-3. [JD] crea `accreditation_process` para una `academic_program`.
-4. El sistema instancia fases e indicadores; estado proceso `EN_PROCESO`; Fase 1 `ABIERTA`.
+3. [JD] crea `accreditation_process` para una `academic_program`, seleccionando los tipos de fase de evaluación:
+   - **Fase 1 — Autoevaluación:** el [CC] recopila y carga Evidencias de forma masiva.
+   - **Fase 2 — Evaluación Interna:** el [TD] audita; el [CC] subsana observaciones. Sin carga nueva masiva.
+   - **Fase 3 — Evaluación Externa:** presentación de resultados a pares evaluadores externos, [JD] y stakeholders. Vista de solo lectura para actores internos.
+4. El sistema instancia las tres fases e indicadores; estado del proceso → `ACTIVO` (UI muestra badge `"EN PROCESO"`); Fase 1 → `ABIERTA`.
 5. Notifica al [CC] asignado.
 
 **Flujos alternos:**
-- **A1 — Proceso duplicado activo:** HTTP 409 `PROCESS_ALREADY_ACTIVE`.
+- **A1 — Proceso duplicado activo:** HTTP 409 `PROCESS_ALREADY_ACTIVE` (FSD-BR-08).
 - **A2 — Cambio de plantilla mid-proceso:** proceso en curso conserva plantilla de origen.
+- **A3 — Cierre anticipado por [JD] (soft delete):** [JD] selecciona "Eliminar proceso" (UI). El sistema muestra modal de confirmación con campo de motivo obligatorio. Al confirmar: proceso → `ANULADO`; todas las Evidencias y Observaciones permanecen auditables; se emite `AUDIT_PROCESS_CLOSED` en bitácora. Prohibido `DELETE` físico (FSD-BR-19). Solo aplicable a procesos en estado `ACTIVO`.
 
-**Postcondiciones:** Un solo proceso activo por carrera + modalidad + periodo.
+**Postcondiciones:** Un solo proceso activo por carrera + modalidad + periodo. Estados válidos del Proceso: `ACTIVO` → `ACREDITADO` / `RECHAZADO` / `VENCIDO` / `ANULADO`.
 
 ---
 
@@ -99,17 +104,18 @@
 | Campo | Valor |
 |-------|-------|
 | **Trazabilidad** | BRD-SCP-IN-02 · PRD-US-002 |
-| **Reglas** | FSD-BR-01, FSD-BR-03 |
+| **Reglas** | FSD-BR-01, FSD-BR-03, FSD-BR-20 |
 | **Diagrama** | [`UC02_secuencia.mmd`](../07_diagramas/UC02_secuencia.mmd) |
+| **Mockup** | `figma/screenshots/cc-coordinador-home.png` (node `635:319`) — botón **"Subir Evidencia"** en lista de Indicadores |
 
 **Actor principal:** [CC]
 
-**Precondiciones:** [CC] autenticado; proceso activo; Fase permite carga; indicador en `PENDIENTE` o (Fase 2) subsanación vinculada.
+**Precondiciones:** [CC] autenticado; proceso `ACTIVO`; Fase 1 `ABIERTA`; indicador en `PENDIENTE`.
 
 **Flujo principal:**
 1. [CC] selecciona **Indicador** en árbol normativo (no carga huérfana).
 2. El sistema valida alcance: carrera del [CC] = carrera del proceso.
-3. [CC] adjunta archivo (PDF, DOCX, XLSX, JPG, PNG; máx. 50 MB) y metadatos obligatorios.
+3. [CC] pulsa **"Subir Evidencia"** (FSD-BR-20) y adjunta archivo (PDF, DOCX, XLSX, JPG, PNG; máx. 50 MB) con metadatos obligatorios.
 4. El sistema calcula SHA-256, almacena blob, inserta `evidence` + `evidence_version` v1.
 5. El sistema transiciona indicador a `SUBIDO`.
 6. Registra auditoría y encola notificación a [TD].
@@ -128,21 +134,22 @@
 | Campo | Valor |
 |-------|-------|
 | **Trazabilidad** | BRD-CST-01 · PRD-US-003, 025 |
-| **Reglas** | FSD-BR-02, FSD-BR-06 |
+| **Reglas** | FSD-BR-02, FSD-BR-06, FSD-BR-20 |
 | **Diagrama** | [`UC01_secuencia.mmd`](../07_diagramas/UC01_secuencia.mmd) |
+| **Mockup** | `figma/screenshots/td-bandeja-tareas.png` — sección "Observación (subsanación)" visible para [TD] |
 
 **Actor principal:** [CC]
 
-**Precondiciones:** Indicador `OBSERVADO`; observación `ABIERTA`; plazo fatal no vencido.
+**Precondiciones:** Indicador `OBSERVADO`; observación `ABIERTA`; Fase 2 activa; plazo fatal no vencido.
 
 **Flujo principal:**
-1. [CC] lee observación y plazo en dashboard.
-2. [CC] carga archivo corregido con `observationId` obligatorio.
-3. El sistema inserta `evidence_version` v2 con `supersedes_id` → v1; **no** elimina v1.
+1. [CC] lee el texto de la Observación y el plazo en su dashboard (sección "Observaciones y Seguimiento").
+2. [CC] pulsa **"Subir Evidencia"** (FSD-BR-20) sobre el Indicador `OBSERVADO`, vinculando el `observationId` obligatorio.
+3. El sistema inserta `evidence_version` v2 con `supersedes_id` → v1; **no** elimina v1 (FSD-BR-02).
 4. Indicador → `SUBSANADO`; observación → `REVISION_PENDIENTE`.
 5. Notifica [TD] en ≤ 15 min.
 
-**Postcondiciones:** Cadena auditable Observación → v1 → v2; turno de acción en [TD].
+**Postcondiciones:** Cadena auditable Observación → v1 → v2; turno de acción en [TD]. En la Bandeja de Tareas del [TD] aparece la tarea con tipo "Observación (subsanación)".
 
 ---
 
@@ -237,3 +244,4 @@ El borrador monolítico con flujos paso a paso (UC-001 login, UC-002 carga, UC-0
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
 | v1.0 | 17/05/2026 | Descomposición desde FSD monolítico; 17 UC indexados |
+| v1.1 | 27/05/2026 | UC-003: flujo alterno cierre anticipado (A3 soft-delete → ANULADO); selección tipos de fase (Autoevaluación / Evaluación Interna / Evaluación Externa). UC-004/006: botón "Subir Evidencia" (FSD-BR-20). Mockups Figma enlazados en UC-011/012/013. |
