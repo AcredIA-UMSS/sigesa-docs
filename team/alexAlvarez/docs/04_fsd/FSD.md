@@ -3,8 +3,8 @@
 | Campo | Valor |
 |-------|-------|
 | **Ámbito** | `team/alexAlvarez/docs/04_fsd/` |
-| **Versión** | **v1.1** (FSD clásico + LFSD integrado) |
-| **Fecha** | 17/05/2026 |
+| **Versión** | **v1.2** (FSD clásico + LFSD + Figma integration) |
+| **Fecha** | 27/05/2026 |
 | **Autor** | Alexander James Alvarez |
 | **Estado** | Borrador — listo para revisión docente |
 | **BRD** | [`../01_brd/BRD.md`](../01_brd/BRD.md) |

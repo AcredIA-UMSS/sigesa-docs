@@ -174,7 +174,7 @@ Característica: Consulta pública
 
 ---
 
-## FSD-UC-003 — Plantillas (`PRD-US-024`)
+## FSD-UC-003 — Plantillas y Proceso (`PRD-US-024`)
 
 ```gherkin
 # language: es
@@ -185,6 +185,77 @@ Característica: Plantilla CEUB/ARCU-SUR
     Dado plantilla CEUB activa
     Cuando el [JD] crea un Proceso para una carrera
     Entonces existen Indicadores para todas las Dimensiones del marco
+    Y el estado del Proceso es ACTIVO
+    Y la interfaz muestra el badge "EN PROCESO"
+    Y la Fase 1 (Autoevaluación) está ABIERTA
+
+  Escenario: Selección de tipos de fase en creación de Proceso
+    Dado que el [JD] está creando un nuevo Proceso
+    Cuando configura las fases de evaluación
+    Entonces el sistema instancia Fase 1 (Autoevaluación), Fase 2 (Evaluación Interna) y Fase 3 (Evaluación Externa)
+    Y solo la Fase 1 queda ABIERTA al inicio
+
+@PRD-US-024 @FSD-UC-003 @FSD-BR-19 @TC-SAD-CLOSE
+  Escenario: Cierre anticipado de Proceso por [JD] (soft delete)
+    Dado un Proceso en estado ACTIVO
+    Cuando el [JD] selecciona "Eliminar proceso" y confirma el motivo de cierre
+    Entonces el sistema transiciona el Proceso a estado ANULADO
+    Y todas las Evidencias y Observaciones permanecen auditables
+    Y se registra AUDIT_PROCESS_CLOSED en la bitácora
+    Y no se ejecuta DELETE físico sobre ninguna entidad
+
+@PRD-US-024 @FSD-UC-003 @FSD-BR-19 @TC-SAD-CLOSE
+  Escenario: Intento de cierre de Proceso ya ACREDITADO
+    Dado un Proceso en estado ACREDITADO
+    Cuando el [JD] intenta cerrarlo anticipadamente
+    Entonces el sistema responde 409 PROCESS_NOT_CLOSEABLE
+    Y el Proceso no cambia de estado
+```
+
+---
+
+## FSD-UC-004 — Cargar Evidencia — label UI (`FSD-BR-20`)
+
+```gherkin
+# language: es
+@FSD-BR-20 @FSD-UC-004
+Característica: Etiqueta UI "Subir Evidencia"
+
+  Escenario: Botón de carga usa etiqueta canónica
+    Dado un [CC] autenticado en su dashboard
+    Y un Indicador en estado PENDIENTE
+    Cuando visualiza las acciones disponibles para el Indicador
+    Entonces el botón de carga se etiqueta "Subir Evidencia"
+    Y no aparece la etiqueta "Subir Documento" ni "Cargar Archivo"
+```
+
+---
+
+## FSD-UC-012 — Bandeja auditoría [TD] (`PRD-US-007`, `012`)
+
+```gherkin
+# language: es
+@PRD-US-012 @FSD-UC-012
+Característica: Bandeja de Tareas Pendientes [TD]
+
+  Escenario: [TD] ve cola de evidencias pendientes al iniciar sesión
+    Dado un [TD] autenticado
+    Cuando accede a su panel principal
+    Entonces ve la "Bandeja de Tareas Pendientes"
+    Y cada tarea muestra: Fase, Dimensión, cantidad de Indicadores y botón "REVISAR"
+    Y las tareas corresponden a Indicadores en estado SUBIDO o SUBSANADO
+
+  Escenario: Tarea tipo subsanación diferenciada
+    Dado un Indicador en estado SUBSANADO
+    Y una Observación de tipo subsanación abierta
+    Cuando aparece en la bandeja del [TD]
+    Entonces se etiqueta como "Observación (subsanación)"
+    Y el [TD] puede distinguirla de una revisión inicial
+
+  Escenario: Bandeja vacía cuando no hay pendientes
+    Dado que no existen Indicadores en SUBIDO ni SUBSANADO
+    Cuando el [TD] accede a su bandeja
+    Entonces ve el mensaje "No existen observaciones realizadas aún"
 ```
 
 ---
@@ -196,7 +267,9 @@ Característica: Plantilla CEUB/ARCU-SUR
 | 001 | UC-001 | user_stories.md §001 |
 | 002–003 | UC-004, UC-006 | §002–003 |
 | 009, 023 | UC-008, UC-009 | §009, §023 |
+| 012, 007 | UC-012 | §012 (Bandeja TD) |
 | 016–017 | UC-016 | §016–017 |
 | 024–026 | UC-003, UC-017 | §024–026 |
+| 027 | UC-003 (A3) | Cierre anticipado [JD] |
 
 Escenarios adicionales en [`../03_prd/user_stories.md`](../03_prd/user_stories.md).

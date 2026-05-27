@@ -18,9 +18,10 @@
 | Validación | BR-01, BR-05, BR-07 |
 | Política / trazabilidad | BR-02, BR-03, BR-06, BR-15 |
 | Autorización | BR-04, BR-09, BR-12 |
-| Estado / fase | BR-07, BR-08 |
+| Estado / fase | BR-07, BR-08, BR-19 |
 | SLA / plazos | BR-13 |
 | Alcance / público | BR-14, BR-16 |
+| Etiquetas UI | BR-20 |
 
 ---
 
@@ -105,9 +106,10 @@
 
 | Campo | Valor |
 |-------|-------|
-| **Enunciado** | Máximo un `accreditation_process` en `EN_PROCESO` por carrera + modalidad + periodo. |
+| **Enunciado** | Máximo un `accreditation_process` en estado `ACTIVO` por carrera + modalidad + periodo. |
 | **Violación** | `409 PROCESS_ALREADY_ACTIVE` |
 | **UC** | UC-003 |
+| **Nota UI** | La interfaz muestra el estado `ACTIVO` con la etiqueta visual `"EN PROCESO"` (badge). Este es un mapeo de presentación; el valor persistido en base de datos es `ACTIVO`. |
 
 ---
 
@@ -177,6 +179,31 @@
 
 ---
 
+### FSD-BR-19 — Cierre anticipado de Proceso (soft delete)
+
+| Campo | Valor |
+|-------|-------|
+| **Enunciado** | [JD] puede cerrar un `accreditation_process` sin completar la acreditación. La acción no elimina datos ni evidencias; transiciona el proceso al estado `ANULADO`. |
+| **Prerrequisito** | Solo aplicable a procesos en estado `ACTIVO` (no a los ya `ACREDITADO` o `RECHAZADO`). |
+| **Implementación** | La operación es una **transición de estado** (`ACTIVO → ANULADO`). Prohibido `DELETE` físico del proceso. Toda evidencia, observación y historial de transiciones permanece auditable. |
+| **Violación** | `409 PROCESS_NOT_CLOSEABLE` si el proceso no está en estado `ACTIVO`. |
+| **UI** | Botón "Eliminar proceso" en AcredIA Design System (`figma/screenshots/botones-y-acciones.png`). Implementar como soft-delete: mostrar modal de confirmación con campo de motivo de cierre antes de ejecutar la transición. |
+| **UC** | UC-003 (flujo alterno A3) |
+| **Trazabilidad** | Confirmado en sesión de análisis Figma 2026-05-27 |
+
+---
+
+### FSD-BR-20 — Etiqueta UI para carga de Evidencia
+
+| Campo | Valor |
+|-------|-------|
+| **Enunciado** | El botón de carga de Evidencia en la UI debe etiquetarse **"Subir Evidencia"** en todos los contextos (Fase 1 carga inicial, Fase 2 subsanación). Prohibido usar "Subir Documento", "Cargar Archivo" u otros genéricos. |
+| **Razón** | El término canónico del glosario es `Evidencia` (glosario §7). El uso de genéricos rompe el lenguaje ubicuo del dominio y puede confundir a los actores [CC]. |
+| **Aplica a** | Modal de carga (frame `782:1510`), botón en lista de Indicadores (CC Home `635:319`), formulario de subsanación. |
+| **UC** | UC-004, UC-006 |
+
+---
+
 ### FSD-BR-16 — No-ERP
 
 | Campo | Valor |
@@ -206,9 +233,12 @@
 
 ## Matriz regla → UC
 
-| Regla | UC-001 | UC-004 | UC-006 | UC-008 | UC-009 | UC-010 | UC-016 |
-|-------|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
-| BR-02 | | ✓ | ✓ | | | | |
-| BR-06 | | | ✓ | | | | |
-| BR-07 | | | | | ✓ | ✓ | |
-| BR-14 | | | | | | | ✓ |
+| Regla | UC-001 | UC-003 | UC-004 | UC-006 | UC-008 | UC-009 | UC-010 | UC-016 |
+|-------|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| BR-02 | | | ✓ | ✓ | | | | |
+| BR-06 | | | | ✓ | | | | |
+| BR-07 | | | | | | ✓ | ✓ | |
+| BR-08 | | ✓ | | | | | | |
+| BR-14 | | | | | | | | ✓ |
+| BR-19 | | ✓ | | | | | | |
+| BR-20 | | | ✓ | ✓ | | | | |

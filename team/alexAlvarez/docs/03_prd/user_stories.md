@@ -35,18 +35,21 @@ Escenario: No hay resultados disponibles
 ```
 
 ### PRD-US-002
-**Como** Coordinador de Carrera [CC], **quiero** registrar una nueva Evidence vinculada a un Indicador, **para** mantener un historial auditado y evitar duplicados.
+**Como** Coordinador de Carrera [CC], **quiero** registrar una nueva Evidencia vinculada a un Indicador mediante el botón **"Subir Evidencia"**, **para** mantener un historial auditado y evitar duplicados.
 **BRD vinculado:** BRD-OBJ-04
+**Regla UI:** FSD-BR-20 — el botón de carga se etiqueta siempre "Subir Evidencia".
+**Mockup:** `figma/screenshots/cc-coordinador-home.png` (node `635:319`)
 
 #### Criterios de aceptación
 ```gherkin
-Escenario: Registro de nueva evidencia
-  Dado que el [CC] ha seleccionado un Indicador válido
-  Cuando carga un archivo y completa la metadata requerida
+Escenario: Registro de nueva Evidencia mediante botón canónico
+  Dado que el [CC] ha seleccionado un Indicador en estado PENDIENTE
+  Cuando pulsa el botón "Subir Evidencia" y completa la metadata requerida
   Entonces el sistema crea una nueva Evidence vinculada al Indicador con versión inicial
+  Y el Indicador transiciona a estado SUBIDO
 ```
 ```gherkin
-Escenario: Versionado automático de evidencia
+Escenario: Versionado automático de Evidencia
   Dado que ya existe una Evidence previa para el mismo Indicador
   Cuando el [CC] carga una nueva versión
   Entonces el sistema incrementa la versión y guarda la nueva entrada sin borrar la anterior
@@ -480,6 +483,63 @@ Escenario: Camino triste — intento de borrado
   Entonces el sistema rechaza la operacion
 ```
 
+### PRD-US-027
+**Como** Jefatura DUEA [JD], **quiero** poder cerrar anticipadamente un Proceso activo sin completar la acreditación, **para** gestionar situaciones extraordinarias (cambio normativo, retiro voluntario, fuerza mayor) sin perder el historial de Evidencias.
+**BRD vinculado:** BRD-CST-01 (trazabilidad inmutable)
+**Regla:** FSD-BR-19 — soft delete; el Proceso pasa a `ANULADO`, nunca se elimina físicamente.
+**Mockup:** `figma/screenshots/jd-admin-dashboard.png` — botón "Eliminar proceso" en AcredIA Design System.
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Cierre anticipado exitoso de Proceso
+  Dado que el [JD] está en el panel de administración
+  Y existe un Proceso en estado ACTIVO
+  Cuando selecciona "Eliminar proceso" e ingresa el motivo de cierre
+  Entonces el Proceso transiciona a ANULADO
+  Y todas las Evidencias, Observaciones y transiciones permanecen auditables
+  Y el sistema registra AUDIT_PROCESS_CLOSED con el motivo ingresado
+```
+```gherkin
+Escenario: No se puede cerrar un Proceso ya ACREDITADO
+  Dado que existe un Proceso en estado ACREDITADO
+  Cuando el [JD] intenta cerrarlo anticipadamente
+  Entonces el sistema rechaza la operación con error 409 PROCESS_NOT_CLOSEABLE
+```
+```gherkin
+Escenario: No se elimina Evidence al cerrar Proceso
+  Dado que el Proceso tiene Evidencias registradas
+  Cuando el [JD] lo cierra anticipadamente
+  Entonces las Evidencias permanecen accesibles para auditoría
+  Y el sistema no ejecuta DELETE físico sobre ninguna entidad
+```
+
+### PRD-US-028
+**Como** Técnico DUEA [TD], **quiero** ver una Bandeja de Tareas Pendientes al iniciar sesión, **para** priorizar qué Indicadores necesitan mi revisión sin buscarlos manualmente.
+**BRD vinculado:** BRD-OBJ-02
+**Mockup:** `figma/screenshots/td-bandeja-tareas.png` (node `1249:3112`)
+
+#### Criterios de aceptación
+```gherkin
+Escenario: Bandeja muestra evidencias en espera de revisión
+  Dado que un [CC] ha enviado Evidencias (Indicadores en estado SUBIDO o SUBSANADO)
+  Cuando el [TD] accede a su panel principal
+  Entonces ve la "Bandeja de Tareas Pendientes"
+  Y cada tarea muestra: nombre de Fase, Dimensión, cantidad de Indicadores y botón "REVISAR"
+```
+```gherkin
+Escenario: Tareas de subsanación diferenciadas visualmente
+  Dado que un Indicador está en estado SUBSANADO (segunda revisión)
+  Cuando aparece en la bandeja del [TD]
+  Entonces la tarea se etiqueta "Observación (subsanación)"
+  Y puede distinguirse de una revisión inicial
+```
+```gherkin
+Escenario: Estado vacío cuando no hay pendientes
+  Dado que no existen Indicadores en SUBIDO ni SUBSANADO
+  Cuando el [TD] accede a su bandeja
+  Entonces ve el mensaje "No existen observaciones realizadas aún"
+```
+
 ---
 
 ## Índice de historias (IDs únicos)
@@ -491,3 +551,5 @@ Escenario: Camino triste — intento de borrado
 | PRD-US-024 | 3 / gobierno | [JD] plantillas |
 | PRD-US-025 | 1 / 2 | [CC] observaciones abiertas |
 | PRD-US-026 | 3 | [TD] auditoría |
+| PRD-US-027 | 3 / gobierno | [JD] cierre anticipado (soft delete) |
+| PRD-US-028 | 2 / dashboard | [TD] bandeja de tareas |

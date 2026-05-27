@@ -725,3 +725,35 @@ also keep in mind all the versions available of the brd for more context if need
 - **Tarea**: Recalcular inventario sin inflar conteo (v1.1 tenía 370 filas irrealistas).
 - **Archivos**: `INVENTARIO_TAREAS_APORTES_v1.md` v1.2 (285 filas, ~237 únicas); `AUDITORIA_RUBRICAS_EXCELENTE.md` v1.2.
 - **Estado**: Completado
+
+## 2026-05-27T14:49:00 — Prompt usuario
+**Prompt:** "execute the next prompt-contract @.cursor/prompts/sigesa-figma-integration.prompt.md" + identificación "alexAlvarez"
+**Acción:** Ejecución del contrato de agente `sigesa-figma-integration.prompt.md` — Analista de Integración UI/UX y Documentación. Lectura de insumos: carpeta `/figma`, `PRD.md`, `FSD.md`, `04_state_machine.md`, `03_domain_glossary.md`. Generación del Reporte de Integración Figma → Documentación.
+
+## 2026-05-27T14:54:00 — Prompt usuario
+**Prompt:** "pls use the minimal amount of calls to figma, to include the missing dashboards / views, (it should be the second page of figma project) you can execute this prompt-contract @.cursor/prompts/figma-extract.prompt.md"
+**Acción:** Ejecución del contrato figma-extract con 3 llamadas MCP (mínimas): (1) get_metadata sin nodeId → descubrimiento de página "Prototipo Web" `79:15`; (2) get_metadata con `79:15` → inventario completo de 100+ frames del prototipo; (3) get_screenshot `635:319` → CC Coordinador Home descargado como PNG (306 KB). Creados: frame-inventory-prototipo.json, frames/prototipo/README.md (cataloga 25 frames priorizados), cc-coordinador-home.md + .annotations.md, actualizado project-summary.md y EXPORT_TODO.md.
+
+## 2026-05-27T15:05:00 — Prompt usuario
+**Prompt:** "pls include the information of the user 'Tecnico DUEA', that is missing in your knowledge, include that as well, and for the Admin too (if its much information, only extract for the critical tasks for the first iteration)"
+**Acción:** Análisis del metadata de la página Prototipo Web (sin nuevas llamadas get_metadata). Identificación del frame TD mediante búsqueda textual de keywords (Bandeja de Tareas Pendientes, REVISAR, Observación, Subsanación) → frame `1249:3112`. Identificación del frame JD/Admin → frame `435:450`. 2 llamadas get_screenshot en paralelo → descarga de `td-bandeja-tareas.png` (287KB) y `jd-admin-dashboard.png` (263KB). Creados: frames/prototipo/td-bandeja-tareas.md, frames/prototipo/jd-admin-dashboard.md, annotations/prototipo/td-*.annotations.md, annotations/prototipo/jd-*.annotations.md. Actualizados: frame-inventory-prototipo.json, frames/prototipo/README.md, screenshots/EXPORT_TODO.md. Total sesión: 5 llamadas MCP (2 get_metadata + 3 get_screenshot).
+
+## 2026-05-27T15:15:00 — Prompt usuario
+**Prompt:** "now execute the prompt-contract @.cursor/prompts/sigesa-figma-integration.prompt.md"
+**Acción:** Re-ejecución del contrato de integración UI/UX SIGESA con base de conocimiento completa (Elementos + Prototipo Web): CC Home, TD Bandeja de Tareas, JD Admin Dashboard. Generación del Reporte de Integración v2 con los tres roles cubiertos.
+
+## 2026-05-27T15:20:00 — Prompt usuario
+**Prompt:** Aclaraciones sobre fricciones de UI (L-01, L-03, L-05, L-06, N-07) + "update all the documentation required in docs folder"
+**Acción:** 7 archivos actualizados con las clarificaciones del usuario:
+1. `reglas_negocio.md` v1.0→v1.1: FSD-BR-08 (EN_PROCESO=ACTIVO nota UI), nueva FSD-BR-19 (soft-delete Proceso → ANULADO), nueva FSD-BR-20 (etiqueta "Subir Evidencia"), matriz UC actualizada.
+2. `casos_uso.md` v1.0→v1.1: UC-003 flujo A3 (cierre anticipado), tipos de fase (Autoevaluación/Evaluación Interna/Evaluación Externa), UC-004/006 botón "Subir Evidencia", mockups Figma en UC-011/012/013.
+3. `gherkin.md`: 7 nuevos escenarios — UC-003 plantilla (estado ACTIVO, badge EN PROCESO, tipos de fase), UC-003 soft-delete (A3 + camino triste), UC-004 label BR-20, UC-012 bandeja TD (3 escenarios).
+4. `user_stories.md`: PRD-US-002 actualizada (botón "Subir Evidencia"), nueva PRD-US-027 (JD soft-delete), nueva PRD-US-028 (TD bandeja de tareas).
+5. `context/03_domain_glossary.md`: Proceso.cicloVida + ANULADO + nota UI badge; Fase tabla 3 tipos + nota radios formulario.
+6. `figma/annotations/botones-y-acciones.annotations.md`: clarificaciones L-01 ("EN PROCESO"=ACTIVO), L-03 (Eliminar=soft delete), L-05 (Archivos=repositorio).
+7. `figma/annotations/formularios.annotations.md`: clarificación L-06 (radios=tipos de fase) + N-07 (Subir Evidencia).
+8. `FSD.md` → versión v1.2.
+
+## 2026-05-27T15:41:00 — Prompt usuario
+**Prompt:** `/create-skill` — Generar skill `sigesa-frontend-engineer` a partir del contrato de agente Lead Frontend Engineer SIGESA (roles CC/TD/JD/P, pila Next.js+React+TS, directivas Append-Only, UX Event-Driven, RBAC).
+**Acción:** Creado `.claude/skills/sigesa-frontend-engineer/SKILL.md` con frontmatter, triggers, directivas no negociables, formato de salida con tabla de metadatos, STOP CONDITIONS y checklist de verificación.

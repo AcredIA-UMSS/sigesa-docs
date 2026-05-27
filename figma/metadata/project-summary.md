@@ -12,11 +12,13 @@
 
 ## Pages
 
-| Page ID | Name | Role |
-|---------|------|------|
-| `0:1` | Elementos | Single canonical page: foundations + components + reference screens |
+| Page ID | Name | Role | Export status |
+|---------|------|------|---------------|
+| `0:1` | Elementos | Foundations + components + reference screens | ✅ Full export (2026-05-26) |
+| `79:15` | Prototipo Web | Functional prototype screens by role (CC / JD / P / AUTH) | ✅ Metadata extracted · 1 screenshot (2026-05-27) |
 
-No additional top-level pages were detected at export time.
+**Prototipo Web frame index:** [`frame-inventory-prototipo.json`](frame-inventory-prototipo.json)  
+**Prototipo Web frame catalog:** [`../frames/prototipo/README.md`](../frames/prototipo/README.md)
 
 ## Frame inventory (top-level artboards)
 

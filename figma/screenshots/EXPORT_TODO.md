@@ -1,4 +1,4 @@
-# Screenshot export — COMPLETADO ✅
+# Screenshot export — Elementos: COMPLETADO ✅ | Prototipo Web: EN PROGRESO 🔄
 
 Todos los frames fueron exportados como PNG el **2026-05-26** vía MCP `get_screenshot`.
 
@@ -27,5 +27,29 @@ Todos los frames fueron exportados como PNG el **2026-05-26** vía MCP `get_scre
 | 3 | get_metadata, get_libraries, search_design_system | 2026-05-24 |
 | 1 | whoami | 2026-05-26 |
 | 11 | get_screenshot × 11 | 2026-05-26 |
+| 2 | get_metadata (pages list + prototipo web `79:15`) | 2026-05-27 |
+| 1 | get_screenshot (`635:319` CC Coordinador Home) | 2026-05-27 |
+| 2 | get_screenshot (`1249:3112` TD Bandeja · `435:450` JD Admin) | 2026-05-27 |
 
-> Cuota disponible en siguiente ciclo para: `get_variable_defs`, `use_figma` (variables locales).
+**Total acumulado:** 20 calls
+
+---
+
+## Prototipo Web — Pendientes (página `79:15`)
+
+Screenshots pendientes para la siguiente sesión (ordenados por prioridad del audit):
+
+| Priority | Slug | Node ID | Dimensions | Justification |
+|----------|------|---------|------------|---------------|
+| ~~P0~~ | ~~jd-admin-dashboard~~ | ~~`435:450`~~ | ~~1280×1511~~ | ✅ EXPORTED 2026-05-27 |
+| ~~P0~~ | ~~td-bandeja-tareas~~ | ~~`1249:3112`~~ | ~~1282×1589~~ | ✅ EXPORTED 2026-05-27 |
+| **P0** | cc-observaciones | `671:2661` | 1280×1159 | Cubre estado OBSERVADO — gap crítico |
+| **P0** | cc-modal-proceso-observado | `1162:3861` | 864×735 | Modal de Observación — gap crítico |
+| **P0** | cc-modal-subir-documento | `782:1510` | 671×684 | Modal de carga Evidencia — gap crítico |
+| **P0** | auth-login | `111:74` | 1280×1123 | Pantalla de login — ausente |
+| **P1** | td-review-detail | `885:2309` | 1280×1574 | TD vista de detalle de revisión |
+| **P1** | cc-fase2 | `666:1807` | 1280×1043 | Estado SUBSANADO |
+| **P1** | cc-documentacion | `670:2333` | 1280×1387 | Vista de gestión de Evidencias |
+| **P1** | public-home | `1505:6772` | 1280×3762 | Portal público [P] |
+
+Catálogo completo: [`../frames/prototipo/README.md`](../frames/prototipo/README.md)
