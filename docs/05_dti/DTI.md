@@ -432,10 +432,30 @@ NFRs con impacto directo en este DTI: NFR-001 (latencia búsqueda), NFR-003 (TLS
 
 ---
 
+## 19. Roadmap técnico — [humano]
+
+> **Vista estratégica para stakeholders:** consolida lecciones del ciclo M4, comunica el *por qué* de la arquitectura y traza la ruta hacia el siguiente módulo de la maestría. Prosa, trade-offs y horizonte — no sustituye Tasks ni contratos API.
+
+**Documento canónico:** [`docs/roadmap.md`](../roadmap.md) (v2.0, audiencia **`[humano]`**).
+
+| Contenido del roadmap | Sección |
+|-----------------------|---------|
+| Semilla (BRD) → arquitectura (DTI) → sistema | `docs/roadmap.md` §2 |
+| Por qué estratégico de decisiones (append-only, hexagonal, POCs, AI-SDLC) | §3 |
+| Lecciones aprendidas del ciclo de desarrollo | §4 |
+| Trazabilidad objetivo → ADR → MOD | §5 |
+| Hoja de ruta siguiente módulo maestría + Gantt | §6–§7 |
+| Gates de transición M4 → Implement | §8 |
+
+**Roadmap de releases de producto** (oleadas 0.9→2.0, audiencia PM/sponsor): [`docs/03_prd/roadmap.md`](../03_prd/roadmap.md).
+
+---
+
 ## 11. Historial
 
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
 | v1.0-borrador | 2026-05-17 | Primera compilación DTI + carpeta `adrs/` desde `docs/` canónico y `team/aylenGonzales/09_dti/` |
 | v1.0-cloud | 2026-05-25 | Promoción de arquitectura cloud distribuida: EventBridge, SQS FIFO, S3 y estado append-only vía ADR_010–012 + ADR-0013 |
+| v1.0-roadmap | 2026-05-25 | §19 Roadmap técnico [humano] → enlace a `docs/roadmap.md` v2.0 |
 
