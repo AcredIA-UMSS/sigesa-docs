@@ -2,12 +2,12 @@
 
 | Metadato | Valor |
 |----------|-------|
-| **Versión** | Dorada v1.1 |
-| **Fecha** | 2026-05-17 |
+| **Versión** | Dorada v1.2 |
+| **Fecha** | 2026-05-27 |
 | **Ubicación física** | `.cursor/skills/<nombre>/SKILL.md` |
 | **Manifiesto** | [`AGENTS.md`](AGENTS.md) |
 
-Este catálogo refleja el inventario **verificado en disco** (9 skills con `SKILL.md`). La descripción completa de cada skill está en su archivo fuente; aquí se documentan agente, triggers y entregables para orquestación UMSS.
+Este catálogo refleja el inventario **verificado en disco** (12 skills con `SKILL.md` en `.cursor/skills/`). La descripción completa de cada skill está en su archivo fuente; aquí se documentan agente, triggers y entregables para orquestación UMSS.
 
 ---
 
@@ -121,6 +121,42 @@ Este catálogo refleja el inventario **verificado en disco** (9 skills con `SKIL
 
 ---
 
+## 10. `sigesa-frontend-engineer`
+
+| Campo | Valor |
+|-------|-------|
+| **Agente** | @DevAgent |
+| **Ruta** | [`.cursor/skills/sigesa-frontend-engineer/SKILL.md`](../../.cursor/skills/sigesa-frontend-engineer/SKILL.md) |
+| **Triggers** | Componentes React/Next.js, hooks, servicios API, guardas RBAC, UX event-driven (React Query, WebSocket) |
+| **Entregables** | Código en `app/sigesa-front/` (features, domain, shared) alineado a `docs/04_fsd/api_contracts.md` |
+| **Protección** | Sin `fetch` en `.tsx`; sin DELETE/update destructivo de Evidencia; tipado estricto del dominio |
+
+---
+
+## 11. `sigesa-backend-engineer`
+
+| Campo | Valor |
+|-------|-------|
+| **Agente** | @DevAgent |
+| **Ruta** | [`.cursor/skills/sigesa-backend-engineer/SKILL.md`](../../.cursor/skills/sigesa-backend-engineer/SKILL.md) |
+| **Triggers** | Controladores, casos de uso, repositorios, adaptadores AWS, handlers EventBridge/SQS, DDL/ORM backend |
+| **Entregables** | Código en `app/sigesa-backend/` (hexagonal: domain, application, ports, adapters) |
+| **Protección** | Lectura obligatoria de `hybrid_architecture.md` + ADRs; solo INSERT append-only; sin HTTP síncrono entre microservicios; contratos en `api_contracts_cloud.md` |
+
+---
+
+## 12. `sigesa-distributed-architect`
+
+| Campo | Valor |
+|-------|-------|
+| **Agente** | @ArchAgent |
+| **Ruta** | [`.cursor/skills/sigesa-distributed-architect/SKILL.md`](../../.cursor/skills/sigesa-distributed-architect/SKILL.md) |
+| **Triggers** | ADRs CQRS, Outbox, Saga; arquitectura event-driven; consistencia eventual; integración asíncrona entre módulos |
+| **Entregables** | ADRs en `docs/05_dti/adrs/`, alineación con `hybrid_architecture.md` y ADR_010 (EventBridge) |
+| **Protección** | No violar append-only ni publicar patrones no respaldados por FSD/DTI |
+
+---
+
 ## Skills documentales en `team/` (no runtime Cursor)
 
 Inventario de apoyo por integrante (11 archivos): `team/aylenGonzales/10_agents/skills/`, `team/borisAngulo/docs/09_agents/skills/`. No sustituyen las skills de `.cursor/skills/`; se usan como plantillas de equipo hasta su promoción.
@@ -133,3 +169,4 @@ Inventario de apoyo por integrante (11 archivos): `team/aylenGonzales/10_agents/
 |---------|-------|--------|
 | v1.0 | 2026-05-17 | Catálogo inicial alineado a 8 skills en disco; alta `sigesa-auditoria-excelente-equipo` |
 | v1.1 | 2026-05-17 | Alta `sigesa-dti-author`; fuente canónica en `docs/05_dti/dti-author.md` |
+| v1.2 | 2026-05-27 | Alta `sigesa-frontend-engineer`, `sigesa-backend-engineer`, `sigesa-distributed-architect`; conteo 12 skills |

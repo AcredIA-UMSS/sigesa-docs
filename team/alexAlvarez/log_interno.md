@@ -757,3 +757,33 @@ also keep in mind all the versions available of the brd for more context if need
 ## 2026-05-27T15:41:00 — Prompt usuario
 **Prompt:** `/create-skill` — Generar skill `sigesa-frontend-engineer` a partir del contrato de agente Lead Frontend Engineer SIGESA (roles CC/TD/JD/P, pila Next.js+React+TS, directivas Append-Only, UX Event-Driven, RBAC).
 **Acción:** Creado `.claude/skills/sigesa-frontend-engineer/SKILL.md` con frontmatter, triggers, directivas no negociables, formato de salida con tabla de metadatos, STOP CONDITIONS y checklist de verificación.
+
+## 2026-05-27T16:20:00 — Planificación Frontend MVP (front_generator.prompt.md)
+**Prompt:** Ejecutar contrato Frontend MVP con skill `sigesa-frontend-engineer`. Leer archivos arquitectura: `docs/05_dti/api_contracts_cloud.md` + `docs/04_fsd/api_contracts.md`. Decidir mejor arquitectura basada en ADRs. Confirmar `app/sigesa-front/` vacío.
+**Entrada:** 
+- front_generator.prompt.md (actualizado con reglas duras: 50MB limit, Idempotency-Key, no caché URLs S3).
+- api_contracts_cloud.md (Dorada v1.0, Evidence Service + Audit Service con EventBridge).
+- api_contracts.md (FSD v1.0 lógico, OpenAPI futuro).
+- ADRs: ADR_001 (Append-Only), ADR_007 (JWT RBAC), ADR_010 (Event-Driven Choreography).
+- app/sigesa-front/ → vacío (solo .git folder), listo para inicializar.
+**Acción en progreso:** Análisis comparativo de contratos + decisión arquitectura para plan de codificación.
+
+## 2026-05-27T17:10:00 — Implementación Frontend MVP
+**Prompt:** `/sigesa-frontend-engineer go ahead with the implementation plan`
+**Acción:** Implementado MVP en `app/sigesa-front/`: domain entities, Evidence/Audit API services, hooks React Query (polling 30s), componentes CC (CoordinatorHome, EvidenceUploader) y TD (TechnicianDashboard, IndicatorReviewCard, RejectModal), RBAC ProtectedRoute, páginas `/login`, `/cc/home`, `/td/dashboard`, httpClient con Idempotency-Key y validación 50MB. Build TypeScript OK.
+
+## 2026-05-27T17:25:00 — Prompt usuario
+**Prompt:** Incluir plan seguido en AGENTS.md dentro de sigesa-front y README con instrucciones de ejecución.
+**Acción:** Actualizado `app/sigesa-front/AGENTS.md` (plan por fases, ADRs, directivas, STOP CONDITIONS, árbol dirs) y ampliado `app/sigesa-front/README.md` (requisitos, install, env, scripts, rutas, troubleshooting).
+
+## 2026-05-27T17:29:30-04:00 — Prompt usuario
+**Prompt:** /create-skill sigesa-backend-engineer — Lead Backend Engineer (DTI dinámico, hexagonal, append-only, EventBridge/SQS, api_contracts_cloud.md)
+**Acción:** Creado `.cursor/skills/sigesa-backend-engineer/SKILL.md` con secciones ROLE, TECH STACK DETECTION, CORE DIRECTIVES, API & EVENT CONTRACTS, OUTPUT FORMAT.
+
+## 2026-05-27T17:33:45-04:00 — Prompt usuario
+**Prompt:** Revisar y actualizar AGENTS.md y README.md según skills (alineación catálogo)
+**Acción:** Actualizado skills.md (12 skills), README (AI/skills/stack/docs), renombrado sigesa-distributed-architect/SKILL.md; AGENTS.md ya en v2.2.
+
+## 2026-05-27T17:59:26-04:00 — Prompt usuario
+**Prompt:** Implementar plan Backend MVP SIGESA en app/sigesa-backend (todos los to-dos)
+**Acción:** Monorepo: shared, evidence-service, audit-service, orchestration-service, gateway; docker-compose; migrations+seed; tests Jest 7/7.

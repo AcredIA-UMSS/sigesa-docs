@@ -4,8 +4,8 @@
 
 | Metadato | Valor |
 |----------|-------|
-| **Versión** | Dorada v2.1 |
-| **Última actualización** | 2026-05-17 |
+| **Versión** | Dorada v2.2 |
+| **Última actualización** | 2026-05-27 |
 | **Ubicación canónica** | `docs/08_agents/AGENTS.md` |
 | **Runtime skills** | `.cursor/skills/` (`.claude` es enlace simbólico a `.cursor`) |
 | **Runtime rules** | `.cursor/rules/*.mdc` |
@@ -53,17 +53,20 @@ flowchart TD
   QA["@QaAgent\ntrazabilidad Dorada"]
   QE["@QaAgent\nrúbrica Excelente team/"]
   VA["@VisualAgent\nMermaid"]
+  DEV["@DevAgent\nFE / BE código"]
   GR["Guardrails\n.cursor/rules"]
 
   HS -->|aprobación release| PA
   PA --> AA
   AA --> DB
   AA --> QA
+  AA --> DEV
   PA --> QE
   VA --> AA
   GR -.-> PA
   GR -.-> AA
   GR -.-> QA
+  GR -.-> DEV
 ```
 
 **Principio rector:** ningún agente persiste dictámenes de acreditación ni modifica Evidencia aprobada sin flujo humano explícito (véase `docs/04_fsd/reglas_negocio.md`, FSD-BR-02, FSD-BR-11).
@@ -92,6 +95,10 @@ Dos frentes: (1) trazabilidad extremo a extremo en `docs/09_trazabilidad/` (matr
 
 Produce diagramas Mermaid modulares en `docs/07_diagramas/` (secuencia, estado, ER, Gantt, C4). No inventa flujos no respaldados por casos de uso; alinea nombres al glosario EN/ES.
 
+### 4.6 @DevAgent
+
+Implementa código de aplicación bajo `app/` a partir del DTI y contratos aprobados. **Frontend:** Next.js, React, TypeScript, RBAC y UX event-driven (`sigesa-frontend-engineer`). **Backend:** Node.js 20 + Express, arquitectura hexagonal, persistencia append-only, coreografía EventBridge/SQS (`sigesa-backend-engineer`). No redefine contratos API ni DDL sin pasar por @ArchAgent / @DBAgent; no introduce `UPDATE`/`DELETE` en tablas normativas de Evidencia o historial de estados.
+
 ---
 
 ## 5. Catálogo de skills activas (runtime)
@@ -109,8 +116,11 @@ Ubicación física: **`.cursor/skills/<nombre>/SKILL.md`**. Detalle y triggers: 
 | `sigesa-auditor-trazabilidad-dti` | @QaAgent | `docs/09_trazabilidad/*`, compilación DTI si gate PASS |
 | `sigesa-auditoria-excelente-equipo` | @QaAgent | `AUDITORIA_RUBRICAS_EXCELENTE.md`, inventario aportes |
 | `mermaid-expert-architect` | @VisualAgent | `.mmd` en `docs/07_diagramas/` |
+| `sigesa-frontend-engineer` | @DevAgent | `app/sigesa-front/`, UI tipada + RBAC + contratos FSD/cloud |
+| `sigesa-backend-engineer` | @DevAgent | `app/sigesa-backend/`, hexagonal + append-only + eventos AWS |
+| `sigesa-distributed-architect` | @ArchAgent | ADRs CQRS/Outbox/Saga, `hybrid_architecture.md`, EventBridge |
 
-**Conteo verificado en disco:** 9 skills con `SKILL.md` operativo. Procedimiento detallado de `sigesa-dti-author`: [`docs/05_dti/dti-author.md`](../05_dti/dti-author.md).
+**Conteo verificado en disco:** 12 skills con `SKILL.md` en `.cursor/skills/`. Detalle de triggers: [`skills.md`](skills.md). Procedimiento `sigesa-dti-author`: [`docs/05_dti/dti-author.md`](../05_dti/dti-author.md).
 
 ---
 
@@ -138,13 +148,16 @@ flowchart TD
   Prod --> DocsB[docs/01_brd .. 03_prd]
   DocsB --> Arch[@ArchAgent]
   Arch --> DocsT[docs/04_fsd .. 05_dti]
+  DocsT --> Dev[@DevAgent app/]
   DocsT --> Qa[@QaAgent trazabilidad]
-  Qa --> Trace[docs/09_trazabilidad]
+  Dev --> Trace[docs/09_trazabilidad]
+  Qa --> Trace
   Team[team/integrante/docs] --> Qe[@QaAgent rúbrica]
   Qe -->|CUMPLE 10/10| Promote[Promoción a docs/]
   Rules[.cursor/rules] -.-> Prod
   Rules -.-> Arch
   Rules -.-> Qa
+  Rules -.-> Dev
 ```
 
 Métricas de adopción: [`docs/09_trazabilidad/metricas_ai_sdlc.md`](../09_trazabilidad/metricas_ai_sdlc.md). Legacy en raíz (`metricas_ai_sdlc.md`, `matriz_trazabilidad.md`) debe tratarse como copia histórica; la fuente de verdad es `docs/09_trazabilidad/`.
@@ -217,11 +230,11 @@ Revisiones periódicas conjuntas DUEA + equipo AcredIA: muestreo de Human Evalua
 
 ---
 
-## 14. Observaciones de cumplimiento (inventario 2026-05-17)
+## 14. Observaciones de cumplimiento (inventario 2026-05-27)
 
 | Elemento | Cantidad en disco |
 |----------|-------------------|
-| Skills `.cursor/skills/*/SKILL.md` | 9 |
+| Skills `.cursor/skills/*/SKILL.md` | 12 |
 | Reglas `.cursor/rules/*.mdc` | 5 |
 | Prompt contracts consolidados | 58 en `docs/06_prompt_contracts/` |
 | Diagramas canónicos `.mmd` | 92 entradas en `docs/07_diagramas/` |
@@ -245,6 +258,7 @@ Revisiones periódicas conjuntas DUEA + equipo AcredIA: muestreo de Human Evalua
 
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
+| Dorada v2.2 | 2026-05-27 | Alta @DevAgent; skills `sigesa-frontend-engineer`, `sigesa-backend-engineer`, `sigesa-distributed-architect`; inventario 12 skills |
 | Dorada v2.1 | 2026-05-17 | Alta skill `sigesa-dti-author`; fuente en `docs/05_dti/dti-author.md` |
 | Dorada v2.0 | 2026-05-17 | Golden Folder `docs/08_agents/`; alineación a `docs/01`–`09`; 8 skills; 5 rules; gobernanza ampliada |
 | v1.1 | 2026-05-15 | Manifiesto en raíz (legacy) |

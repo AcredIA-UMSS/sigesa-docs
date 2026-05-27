@@ -150,47 +150,92 @@ El sistema funciona si se logra:
 
 ## 🤖 Notas para Agentes de IA (AI Knowledge Base Context)
 
-Si eres un agente de Inteligencia Artificial (ej. Devin, GitHub Copilot Workspace, Cursor) analizando este repositorio para generar código, ten en cuenta:
+Si eres un agente (Cursor, Copilot, etc.) en este repositorio, **lee primero** el manifiesto [`docs/08_agents/AGENTS.md`](docs/08_agents/AGENTS.md) y el catálogo de skills [`docs/08_agents/skills.md`](docs/08_agents/skills.md). Las skills runtime viven en [`.cursor/skills/`](.cursor/skills/).
 
-### Lenguaje de Dominio
-- **No asumas nombres de variables.** Utiliza estrictamente el glosario definido en `context/03_domain_glossary.md`
-- **Jerarquía crítica:** `Proceso → Fase → Dimensión → Criterio → Indicador → Evidencia`
-- Especial atención: no mezclar `File` (archivo técnico) con `Evidence` (artefacto normativo)
+### Skills por tipo de tarea
 
-### Máquina de Estados
-- La lógica de transición entre fases **no es trivial** y contiene restricciones complejas
-- Antes de programar endpoints de actualización o vistas de UI, consulta `context/04_state_machine.md`
-- El bloqueo de avance cuando existen indicadores pendientes es una restricción dura
+| Tarea | Skill (`.cursor/skills/`) | Agente |
+|-------|---------------------------|--------|
+| BRD / MRD / PRD | `sigesa-generacion-documentos-negocio` | @ProductAgent |
+| DTI / ADR / FSD técnico | `sigesa-generacion-documentos-tecnicos`, `sigesa-dti-author`, `sigesa-arquitectura-tecnica-ia` | @ArchAgent |
+| Contratos REST | `sigesa-api-contract-designer` | @ArchAgent |
+| DDL append-only | `sigesa-db-architect-append-only` | @DBAgent |
+| UI Next.js | `sigesa-frontend-engineer` | @DevAgent |
+| Backend hexagonal + eventos | `sigesa-backend-engineer` | @DevAgent |
+| CQRS / Saga / Outbox | `sigesa-distributed-architect` | @ArchAgent |
+| Trazabilidad Dorada | `sigesa-auditor-trazabilidad-dti` | @QaAgent |
+| Auditoría `team/` (rúbrica Excelente) | `sigesa-auditoria-excelente-equipo` | @QaAgent |
+| Diagramas Mermaid | `mermaid-expert-architect` | @VisualAgent |
 
-### Mutabilidad de Archivos
-- **NUNCA generes código que sobrescriba o elimine un PDF existente** (`Evidencia`)
-- El sistema es **Append-Only** para fines de auditoría
-- Revisa `context/05_data_schema.md` para entender las relaciones de base de datos
+**Código de aplicación:** `app/sigesa-front/` (frontend) y `app/sigesa-backend/` (backend). No inventar stack: leer [`docs/05_dti/hybrid_architecture.md`](docs/05_dti/hybrid_architecture.md) y ADRs en `docs/05_dti/adrs/`.
 
-### Comportamiento Esperado
-- Revisa `context/06_bdd_fase2_subsanaciones.md` para entender validaciones críticas
-- Antes de escribir tests automatizados, asegúrate de que cubran los escenarios de rechazo y subsanación
-- Respeta las restricciones de roles en todos los endpoints
+### Lenguaje de dominio
+
+- Glosario canónico: [`context/03_domain_glossary.md`](context/03_domain_glossary.md)
+- Jerarquía: `Proceso → Fase → Dimensión → Criterio → Indicador → Evidencia`
+- No mezclar `File` (archivo técnico) con `Evidence` (artefacto normativo)
+
+### Máquina de estados y contratos
+
+- Transiciones del `Indicator`: [`context/04_state_machine.md`](context/04_state_machine.md) (y referencias en FSD/DTI)
+- API REST (cloud): [`docs/05_dti/api_contracts_cloud.md`](docs/05_dti/api_contracts_cloud.md)
+- API REST (FSD): [`docs/04_fsd/api_contracts.md`](docs/04_fsd/api_contracts.md)
+
+### Mutabilidad (append-only)
+
+- **Prohibido** `UPDATE`/`DELETE` destructivos sobre Evidencia normativa e historial de estados; usar `INSERT` con versionado
+- Esquema y reglas: [`docs/05_dti/ddl_sigesa_append_only.sql`](docs/05_dti/ddl_sigesa_append_only.sql) (cuando aplique), skill `sigesa-db-architect-append-only`
+- Comportamiento de subsanación: [`context/06_bdd_fase2_subsanaciones.md`](context/06_bdd_fase2_subsanaciones.md)
+
+### Comunicación entre servicios
+
+- Integración **asíncrona** (EventBridge, SQS FIFO); no HTTP síncrono servicio-a-servicio para flujos de negocio (véase ADR_010 en `docs/05_dti/adrs/`)
 
 ---
 
-## 📁 Estructura de la Documentación
+## 📁 Estructura de la documentación
 
-Este repositorio contiene:
+### Golden Folder (`docs/`)
 
-- `context/01_vision_negocio.txt` — Análisis de usuarios, problemas y tareas principales
-- `context/01_parte_dificil.txt` — Flujos complejos, restricciones y casos de prueba
-- `context/03_domain_glossary.md` — Mapeo de términos de negocio a variables de código
-- `context/04_state_machine.md` — Reglas de transición entre fases
-- `context/05_data_schema.md` — Estructura de base de datos y relaciones
-- `context/06_bdd_fase2_subsanaciones.md` — Comportamiento esperado de validaciones
-- Futuros: ADR (Architectural Decision Records), FSD (Functional Specification Documents)
+| Capa | Ruta |
+|------|------|
+| Negocio | [`docs/01_brd/`](docs/01_brd/), [`docs/02_mrd/`](docs/02_mrd/) |
+| Producto | [`docs/03_prd/`](docs/03_prd/) |
+| Funcional | [`docs/04_fsd/`](docs/04_fsd/) |
+| Técnica | [`docs/05_dti/`](docs/05_dti/), [`docs/05_nfr/`](docs/05_nfr/), [`docs/adr/`](docs/adr/) |
+| Agentes IA | [`docs/08_agents/`](docs/08_agents/) |
+| Trazabilidad | [`docs/09_trazabilidad/`](docs/09_trazabilidad/) |
+| Diagramas | [`docs/07_diagramas/`](docs/07_diagramas/) |
+
+### Contexto transversal (`context/`)
+
+- [`context/01_vision_negocio.txt`](context/01_vision_negocio.txt) — Usuarios, problemas y tareas
+- [`context/02_parte_dificil.txt`](context/02_parte_dificil.txt) — Flujos críticos y restricciones
+- [`context/03_domain_glossary.md`](context/03_domain_glossary.md) — Lenguaje ubicuo
+- [`context/04_state_machine.md`](context/04_state_machine.md) — Máquina de estados
+- [`context/05_data_schema.md`](context/05_data_schema.md) — Modelo de datos
+- [`context/06_bdd_fase2_subsanaciones.md`](context/06_bdd_fase2_subsanaciones.md) — BDD subsanaciones
+
+### Entregas por integrante
+
+- `team/<integrante>/docs/` — borradores de curso; promover a `docs/` tras auditoría Excelente (`sigesa-auditoria-excelente-equipo`)
 
 ---
 
-## 🚀 Tecnologías Base
+## 🚀 Tecnologías base (DTI v1.0 — referencia)
 
-(Por definir según documentos de arquitectura)
+Stack **oficial** según DTI y ADRs (detalle en [`docs/05_dti/hybrid_architecture.md`](docs/05_dti/hybrid_architecture.md)):
+
+| Capa | Tecnología |
+|------|------------|
+| Frontend | Next.js, React, TypeScript, Tailwind (piloto en `app/sigesa-front/`) |
+| Backend API | Node.js 20 LTS + Express 4 ([ADR_009](docs/05_dti/adrs/ADR_009_backend_nodejs_express.md)) |
+| Base de datos | PostgreSQL 16 ([ADR_006](docs/05_dti/adrs/ADR_006_postgresql_16.md)) |
+| Evidencias (blob) | AWS S3 |
+| Mensajería | AWS EventBridge ([ADR_010](docs/05_dti/adrs/ADR_010_event_driven_choreography.md)); SQS FIFO para cierre de Phase ([ADR_011](docs/05_dti/adrs/ADR_011_sqs_fifo_phase_closure.md)) |
+| Auth | JWT + RBAC ([ADR_007](docs/05_dti/adrs/ADR_007_jwt_rbac.md)) |
+
+Cualquier cambio de stack requiere **ADR nuevo** antes de implementar.
 
 ---
 
