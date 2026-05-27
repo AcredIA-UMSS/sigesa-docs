@@ -1,0 +1,27 @@
+{
+  "name": "sigesa-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SIGESA backend MVP — Evidence, Audit, Gateway (hexagonal, append-only)",
+  "workspaces": [
+    "shared",
+    "gateway",
+    "services/evidence-service",
+    "services/audit-service",
+    "services/orchestration-service"
+  ],
+  "scripts": {
+    "build": "npm run build -w @sigesa/shared && npm run build -w @sigesa/evidence-service && npm run build -w @sigesa/audit-service && npm run build -w @sigesa/gateway && npm run build -w @sigesa/orchestration-service",
+    "dev:evidence": "npm run dev -w @sigesa/evidence-service",
+    "dev:audit": "npm run dev -w @sigesa/audit-service",
+    "dev:gateway": "npm run dev -w @sigesa/gateway",
+    "dev:orchestration": "npm run dev -w @sigesa/orchestration-service",
+    "test": "npm run test -w @sigesa/audit-service -- --passWithNoTests",
+    "test:e2e": "npm run test:e2e -w @sigesa/audit-service",
+    "db:migrate": "docker compose exec -T postgres psql -U sigesa -d sigesa -f /migrations/001_ddl.sql && docker compose exec -T postgres psql -U sigesa -d sigesa -f /migrations/002_supplementary.sql && docker compose exec -T postgres psql -U sigesa -d sigesa -f /scripts/seed-dev.sql",
+    "lint": "eslint . --ext .ts"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
