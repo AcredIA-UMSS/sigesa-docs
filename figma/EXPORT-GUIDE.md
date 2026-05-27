@@ -201,13 +201,13 @@ No need to re-export the entire file; update individual sections as needed.
 | **Project Metadata** | ✅ | 1 | Includes pages, frames, naming |
 | **Components** | ✅ | 1 | Atoms, molecules, organisms |
 | **Design Tokens** | ✅ | 2 | JSON + CSS vars |
-| **Frames** | 🔄 | Multiple | Per-frame metadata (optional) |
+| **Frames** | ✅ | 11 | Per-frame detailed documentation |
+| **Layout System** | ✅ | 1 | Spacing, grids, breakpoints, auto-layout |
+| **Icon Inventory** | ✅ | 1 | 37+ icons, categories, usage patterns |
 | **Screenshots** | 📋 | Multiple | References only (access-limited) |
-| **Layouts** | 📋 | 1 | Spacing, grids, breakpoints |
-| **Icons** | 📋 | 1 | Inventory + categories |
 | **Interactions** | 📋 | 1 | Navigation flows, triggers |
 
-**Legend:** ✅ Done | 🔄 In Progress | 📋 Planned
+**Legend:** ✅ Done | 🔄 In Progress | 📋 Planned (Phase 3)
 
 ---
 
