@@ -15,6 +15,8 @@
 |----|---------|-------------|--------|
 | **POC-01** | [`POC-01-evidencias-upload/`](POC-01-evidencias-upload/) | RISK-02 · FSD-UC-002 | Completada |
 | **POC-02** | [`POC-02-workflow-dictamen/`](POC-02-workflow-dictamen/) | RB-03 · FSD-UC-003 | Completada |
+| **POC-03** | [`POC-03-notification-outbox/`](POC-03-notification-outbox/) | RISK-NOTIF-01 · FSD-UC-015 | En ejecución |
+| **POC-04** | [`POC-04-audit-log-query/`](POC-04-audit-log-query/) | RISK-AUDIT-01 · FSD-UC-017 | En ejecución |
 
 ---
 
@@ -38,8 +40,10 @@ docker compose up -d
 
 | Servicio | Puerto | Uso |
 |----------|--------|-----|
-| PostgreSQL 16 | 5433 | Metadatos POC-01 y POC-02 |
+| PostgreSQL 16 | 5433 | Metadatos POC-01 a POC-04 |
 | MinIO | 9000 / 9001 | Objetos evidencia (POC-01) |
+| POC-03 API | 8003 | Outbox notificaciones |
+| POC-04 API | 8004 | Bitácora auditoría |
 
 Variables: ver `.env.example` en cada POC `src/`.
 
@@ -71,6 +75,8 @@ Variables: ver `.env.example` en cada POC `src/`.
 |-----|--------|
 | [ADR-0003](../adr/ADR-0003-upload-idempotency-s3.md) | Upload idempotente + validar antes de S3 |
 | [ADR-0004](../adr/ADR-0004-workflow-state-machine.md) | Máquina de estados dictamen / cierre subfase |
+| [ADR-0005](../adr/ADR-0005-audit-log-append-only-postgresql.md) | Bitácora append-only (POC-04) |
+| [ADR-0010](../adr/ADR-0010-event-driven-choreography.md) | Coreografía event-driven (POC-03 outbox) |
 
 ---
 
