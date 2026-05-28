@@ -28,6 +28,7 @@
 | [ADR-0011](ADR-0011-sqs-fifo-phase-closure.md) | SQS FIFO para cierre concurrente de Phase | Aceptado | ADR-0010 · Máquina de estados |
 | [ADR-0012](ADR-0012-indicator-state-history-append-only.md) | Historial append-only de estados de Indicator | Aceptado | ADR-0001 · ADR-0010 |
 | [ADR-0013](ADR-0013-s3-evidence-blob-storage.md) | Almacenamiento S3 para blobs de Evidence | Aceptado | Supersede ADR-0004 para cloud v1.0 |
+| [ADR-0014](ADR-0005-cloud-provider-y-estilo-de-despliegue.md) | Proveedor cloud AWS + estilo de despliegue (ECS Fargate / Compose) | Aceptado | Rúbrica curso: archivo `ADR-0005-cloud-provider-*`; slot numérico 0005 audit = bitácora |
 
 ---
 
@@ -54,7 +55,7 @@
 | [`docs/01_brd/BRD.md`](../01_brd/BRD.md) | Q-02 → ADR-0003 |
 | [`docs/04_fsd/FSD.md`](../04_fsd/FSD.md) | ADR-0001–0013 en plan técnico |
 | [`docs/05_dti/modelo_datos.md`](../05_dti/modelo_datos.md) | ADR-0001, 0005, 0006, 0012 |
-| [`docs/05_dti/hybrid_architecture.md`](../05_dti/hybrid_architecture.md) | ADR-0010–0013 |
+| [`docs/05_dti/hybrid_architecture.md`](../05_dti/hybrid_architecture.md) | ADR-0010–0014 |
 | [`docs/09_trazabilidad/matriz_trazabilidad.md`](../09_trazabilidad/matriz_trazabilidad.md) | §6 MOD × ADR |
 
 ---
@@ -66,3 +67,4 @@
 | 2026-05-16 | Consolidación: ADR-0004–0009 desde `team/aylenGonzales`; índice; eliminación de archivos duplicados sin extensión |
 | 2026-05-25 | Promoción canónica ADR-0010–0012 para arquitectura cloud v1.0 |
 | 2026-05-25 | ADR-0013 formaliza S3 como almacenamiento de blobs de Evidence para cloud v1.0 |
+| 2026-05-28 | ADR-0014 (archivo rúbrica `ADR-0005-cloud-provider-y-estilo-de-despliegue.md`): AWS + ECS Fargate / Docker Compose |

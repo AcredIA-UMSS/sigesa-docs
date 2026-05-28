@@ -393,6 +393,7 @@ Autenticación: [ADR_003](adrs/ADR_003_adapter_autenticacion.md) + [ADR_007](adr
 | [ADR_011](adrs/ADR_011_sqs_fifo_phase_closure.md) | [ADR-0011](../adr/ADR-0011-sqs-fifo-phase-closure.md) | SQS FIFO para cierre concurrente de Phase |
 | [ADR_012](adrs/ADR_012_ddl_indicator_state_history.md) | [ADR-0012](../adr/ADR-0012-indicator-state-history-append-only.md) | Historial append-only de estados de Indicator |
 | — | [ADR-0013](../adr/ADR-0013-s3-evidence-blob-storage.md) | S3 para blobs de Evidence en cloud v1.0 |
+| — | [ADR-0014](../adr/ADR-0005-cloud-provider-y-estilo-de-despliegue.md) | Proveedor AWS + estilo despliegue (Fargate / Compose) |
 
 Índice y reglas de edición: [`adrs/README.md`](adrs/README.md).
 

@@ -16,16 +16,16 @@
 | # | Criterio | Veredicto |
 |---|----------|-----------|
 | 1 | Coherencia y completitud documental | **PARCIAL** |
-| 2 | Calidad arquitectónica + mapeo AWS | **PARCIAL** |
+| 2 | Calidad arquitectónica + mapeo AWS | **CUMPLE** |
 | 3 | AGENTS.md sincronizado y ejecutable | **CUMPLE** |
 | 4 | POC medibles y ejecutadas | **CUMPLE** |
 | 5 | Calidad defensa oral | **OMITIDO** |
 | 6 | Mapeo rápido documentado | **PARCIAL** |
 | 7 | Diagramas `.mmd` legibles y versionados | **PARCIAL** |
 
-**Puntuación rúbrica (solo CUMPLE): 2/6** criterios automatizables (criterio 5 excluido).
+**Puntuación rúbrica (solo CUMPLE): 3/6** criterios automatizables (criterio 5 excluido).
 
-**Veredicto global release/2.0.0 (documentación `docs/`):** **APTO con reservas** — cadena Dorada y POCs críticas sólidas; cerrar gaps de DTI §12–18, ADR cloud explícito, mapeo rápido tabular y saneamiento Mermaid residual antes de defensa.
+**Veredicto global release/2.0.0 (documentación `docs/`):** **APTO con reservas** — cadena Dorada y POCs críticas sólidas; cerrar gaps de DTI §12–18, mapeo rápido tabular y saneamiento Mermaid residual antes de defensa.
 
 ---
 
@@ -61,12 +61,12 @@
 | Trade-offs CRUD vs hexagonal/event/append | CUMPLE | [`hybrid_architecture.md`](../05_dti/hybrid_architecture.md) §1.1–1.3 |
 | Tabla servicios AWS | CUMPLE | DTI §2.4 · hybrid §2 · escenarios §2.5 |
 | ADR EventBridge / SQS / S3 | CUMPLE | [`docs/adr/ADR-0010`](../adr/ADR-0010-event-driven-choreography.md) … ADR-0013 |
-| ADR **0005-cloud-provider-y-estilo-de-despliegue** | **NO CUMPLE** | No existe en `docs/adr/` |
-| ADR-0005 existente | Otro alcance | [`ADR-0005-audit-log-append-only-postgresql.md`](../adr/ADR-0005-audit-log-append-only-postgresql.md) (bitácora, no cloud provider) |
+| ADR **0005-cloud-provider-y-estilo-de-despliegue** | **CUMPLE** | [`ADR-0014` / rúbrica](../adr/ADR-0005-cloud-provider-y-estilo-de-despliegue.md) — AWS + ECS Fargate (prod) / Docker Compose (STAGE) |
+| ADR-0005 audit log (slot numérico repo) | Referencia | [`ADR-0005-audit-log-append-only-postgresql.md`](../adr/ADR-0005-audit-log-append-only-postgresql.md) — distinto alcance; no conflicto con archivo rúbrica |
 
-**Veredicto:** **PARCIAL** — arquitectura cloud bien argumentada; falta el ADR nominal de la rúbrica de curso.
+**Veredicto:** **CUMPLE** — trade-offs explícitos, mapeo AWS por capa y ADR nominal de rúbrica documentados; ADR-0010–0013 complementan eventos/colas/blobs.
 
-**Gap:** `GAP-DOC-02` — Crear `docs/adr/ADR-0005-cloud-provider-y-estilo-de-despliegue.md` (o alinear rúbrica al ADR-0006/0010 y actualizar índice).
+**Gap:** ~~`GAP-DOC-02`~~ **CERRADO** (2026-05-28) — ADR [`ADR-0005-cloud-provider-y-estilo-de-despliegue.md`](../adr/ADR-0005-cloud-provider-y-estilo-de-despliegue.md) (canónico **ADR-0014**).
 
 ---
 
@@ -101,7 +101,7 @@
 
 ## 6. Criterio 5 — Defensa oral
 
-**Veredicto:** **OMITIDO** (evaluación presencial).
+**Veredicto:** **OMITIDO** (evaluación síncrona).
 
 ---
 
@@ -147,7 +147,7 @@
 | ID | Prioridad | Acción |
 |----|-----------|--------|
 | GAP-DOC-01 | Alta | Completar DTI §12–§18 o actualizar plantilla/rúbrica |
-| GAP-DOC-02 | Alta | ADR cloud provider con estilo de despliegue (nombre rúbrica) |
+| ~~GAP-DOC-02~~ | ~~Alta~~ | ~~ADR cloud provider~~ — **CERRADO** ADR-0014 / `ADR-0005-cloud-provider-y-estilo-de-despliegue.md` |
 | GAP-DOC-03 | Media | Tabla mapeo rápido símbolo→archivo→métricas |
 | GAP-DOC-04 | Media | Sanear `.mmd` restantes (inline `title`, `FK UK`) |
 | GAP-DOC-05 | Baja | Cerrar POC-03/04 `RESULTADO.md` con veredicto SMART antes de defensa |
@@ -162,6 +162,7 @@
 - [`docs/09_trazabilidad/report_findings.md`](report_findings.md)
 - [`docs/08_agents/AGENTS.md`](../08_agents/AGENTS.md)
 - [`docs/05_dti/hybrid_architecture.md`](../05_dti/hybrid_architecture.md)
+- [`docs/adr/ADR-0005-cloud-provider-y-estilo-de-despliegue.md`](../adr/ADR-0005-cloud-provider-y-estilo-de-despliegue.md)
 - [`docs/adr/README.md`](../adr/README.md)
 
 ---
@@ -171,3 +172,4 @@
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
 | 1.0 | 2026-05-28 | Auditoría inicial release/2.0.0 alcance `docs/` |
+| 1.1 | 2026-05-28 | Criterio 2 **CUMPLE**: ADR-0014 (`ADR-0005-cloud-provider-y-estilo-de-despliegue.md`); GAP-DOC-02 cerrado; puntuación 3/6 |

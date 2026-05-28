@@ -972,3 +972,7 @@ Demo: `cc.demo@umss.edu.bo` / `td.demo@umss.edu.bo` — `Password123!`
 ## 2026-05-28T19:30:00-04:00 — Prompt usuario
 **Prompt:** PUEDES HACER DE LOS 4? alex, ayle, boris y marlene
 **Acción:** Consolidación en PROMPT_MAPPING.md: PM-052 (alex MVP/Figma), PM-053 (aylen roadmap/Mermaid/POC-03/04), PM-054 (boris tabla v1→v2), PM-055 (Marlene retroactivo team/Marlene/).
+
+## 2026-05-28T22:00:00-04:00 — Prompt usuario
+**Prompt:** arquitectura cloud bien argumentada; falta el ADR nominal de la rúbrica de curso. genera eso por favor y actualiza en AUDITORIA_RUBRICAS_EXCELENTE_DOCS_RELEASE_2.0.0.md
+**Acción:** Creado `docs/adr/ADR-0005-cloud-provider-y-estilo-de-despliegue.md` (canónico ADR-0014: AWS + ECS Fargate / Docker Compose); actualizados `docs/adr/README.md`, DTI §7, auditoría docs v1.1 — criterio 2 **CUMPLE**, GAP-DOC-02 cerrado.
