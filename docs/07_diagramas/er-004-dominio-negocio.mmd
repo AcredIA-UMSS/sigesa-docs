@@ -1,8 +1,10 @@
-﻿%% diagramId: AYL-ER-DOMINIO-001
-%% fsdTrace: FSD_v2 Â§6 Â· BRD_v2 Â· glossary.md
-%% nota: Vista conceptual de negocio (DUEA). Implementacion fisica: diagrama-er-001.mmd
+﻿---
+title: ER Dominio de negocio AcredIA vista conceptual DUEA UMSS
+---
+%% diagramId: AYL-ER-DOMINIO-001
+%% fsdTrace: FSD_v2 §6 · BRD_v2 · glossary.md
+%% nota: Vista conceptual de negocio DUEA. Implementacion fisica diagrama-er-001.mmd
 erDiagram
-    title ER - Dominio de negocio AcredIA - vista conceptual DUEA-UMSS
 
     FACULTAD {
         int id PK
@@ -64,7 +66,7 @@ erDiagram
 
     EXPEDIENTE_DIGITAL {
         int id PK
-        int proceso_id FK UK
+        int proceso_id UK
         string titulo
         float avance_global_pct
         timestamp ultima_actualizacion
@@ -109,7 +111,7 @@ erDiagram
 
     PLAN_MEJORA {
         int id PK
-        int indicador_instancia_id FK UK
+        int indicador_instancia_id UK
         string estado "ABIERTO|EN_VALIDACION|PENDIENTE_CIERRE|CERRADO"
         date fecha_objetivo
         int responsable_cc_id FK
@@ -137,7 +139,7 @@ erDiagram
         int id PK
         string correo_umss UK
         string rol "CC|TD|JD"
-        int carrera_id FK "NULL si TD o JD"
+        int carrera_id FK
         string nombre_completo
     }
 
