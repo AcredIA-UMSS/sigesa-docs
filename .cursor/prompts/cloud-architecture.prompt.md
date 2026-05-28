@@ -41,7 +41,7 @@ Lee y asimila **obligatoriamente** los siguientes artefactos antes de procesar:
 | **Máquina de Estados** | `team/alexAlvarez/docs/context/04_state_machine.md` | Transiciones válidas, Hard Constraints |
 | **Glosario de Dominio** | `context/03_domain_glossary.md` | Mapeo ES → EN, guardarraíles para IA |
 | **Parte Difícil** | `context/02_parte_dificil.txt` | Ciclo crítico: Observación → Subsanación |
-| **Diagramas C4** | `docs/07_diagramas/diag-06-c4-contexto-sistema.mmd` | Contexto del sistema (fuente única) |
+| **Diagramas C4** | `docs/07_diagramas/c4-006-06-contexto-sistema.mmd` | Contexto del sistema (fuente única) |
 
 ---
 

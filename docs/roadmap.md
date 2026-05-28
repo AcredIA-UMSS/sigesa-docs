@@ -250,7 +250,7 @@ gantt
     Go-live piloto Release 0.9          :milestone, golive, 2026-08-21, 0d
 ```
 
-Detalle de sprints técnicos: [`07_diagramas/diagrama-gantt-roadmap.mmd`](07_diagramas/diagrama-gantt-roadmap.mmd).
+Detalle de sprints técnicos: [`07_diagramas/gantt-003-diagrama.mmd`](07_diagramas/gantt-003-diagrama.mmd).
 
 ---
 

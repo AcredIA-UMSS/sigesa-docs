@@ -574,7 +574,7 @@ also keep in mind all the versions available of the brd for more context if need
   - `team/alexAlvarez/docs/05_nfr/catalogo_tc.md` — TC-NFR-* y TC-SAD-*
   - `team/alexAlvarez/docs/05_nfr/matriz_cobertura.md`
   - `team/alexAlvarez/docs/05_nfr/plantilla_tags_pruebas.md`
-  - `team/alexAlvarez/docs/05_nfr/07_diagramas/nfr_cobertura_iso25010.mmd`
+  - `team/alexAlvarez/docs/05_nfr/07_diagramas/pie-010-cobertura-iso25010.mmd`
   - `team/alexAlvarez/docs/05_nfr/07_diagramas/diag-10-pie-cobertura-nfr-boris.mmd` — symlink
   - `team/alexAlvarez/docs/04_fsd/FSD.md` — §7 NFR actualizado
   - `team/alexAlvarez/docs/README.md` — `05_nfr/` marcado listo

@@ -53,4 +53,4 @@ Rechazo → nueva carga [CC]: transición `RECHAZADO` → `EN_REVISION` explíci
 ### 5. Referencias
 
 - POC-02 [`RESULTADO.md`](../pocs/POC-02-workflow-dictamen/RESULTADO.md)
-- UC03_estado.mmd · TC-06, TC-07, TC-08
+- state-003-03-estado.mmd · TC-06, TC-07, TC-08

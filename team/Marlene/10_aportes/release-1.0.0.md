@@ -60,7 +60,7 @@ La UMSS enfrenta ciclos de **acreditación de carrera** bajo exigencias de **evi
 | `04_fsd/` | `casos_uso.md`, `gherkin.md`, `reglas_negocio.md`, `modelo_datos.md`, `api_contracts.md`, `glosario.md` | Especificación funcional UC-001…012 |
 | `05_nfr/` | `NFR_ISO25010.md` | Calidad ISO/IEC 25010 (NFR-001…013) |
 | `06_prompt_contracts/` | `prompt_contracts.md` | PC-UC y contratos IA |
-| `07_diagramas/` | `UC01–UC03_*`, `modelo_er.mmd`, `gantt.mmd` | Secuencia, estado, ER, cronograma CEUB |
+| `07_diagramas/` | `UC01–UC03_*`, `er-006-diagrama.mmd`, `gantt-005-diagrama.mmd` | Secuencia, estado, ER, cronograma CEUB |
 | `08_agents/` | `ARQ_Mermaid_*`, `agents/SKILLS.md`, `mmd/D-*` | Trazabilidad diagramas y skills |
 | `09_trazabilidad/` | `matriz_trazabilidad.md`, `metricas_ai_sdlc.md` | Matriz E2E y métricas AI-SDLC |
 | `10_aportes/` | **Este documento** | Release notes y compliance |
@@ -250,7 +250,7 @@ Las métricas aplican a: **prompt-contratos** (LFSD §7), **agentes** (`AGENTS.m
 |-------|--------|------------------------------|
 | UC-001 … UC-003 | `04_fsd/casos_uso.md` | `07_diagramas/UC01_*` … `UC03_*` |
 | UC-004 … UC-012 | `04_fsd/casos_uso.md` | Pendientes en `07_diagramas/` (v1.1) |
-| Transversal | `modelo_er.mmd`, `gantt.mmd` | ER + cronograma tipo CEUB |
+| Transversal | `er-006-diagrama.mmd`, `gantt-005-diagrama.mmd` | ER + cronograma tipo CEUB |
 
 Núcleo LFSD §4 (UC-001…005) ampliado a **UC-012** en el paquete Marlene (portal, auditoría, respaldos, plan de mejora).
 

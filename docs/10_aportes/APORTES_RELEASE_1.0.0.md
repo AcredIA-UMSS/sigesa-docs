@@ -247,15 +247,15 @@
 | 199 | alexAlvarez | Playwright (E2E) | NFR | `team/alexAlvarez/docs/05_nfr/plantilla_tags_pruebas.md` | 17/05/2026 |
 | 200 | alexAlvarez | CI — job sugerido | NFR | `team/alexAlvarez/docs/05_nfr/plantilla_tags_pruebas.md` | 17/05/2026 |
 | 201 | alexAlvarez | diag-10-pie-cobertura-nfr-boris.mmd | Diagrama | `team/alexAlvarez/docs/05_nfr/07_diagramas/diag-10-pie-cobertura-nfr-boris.mmd` | 17/05/2026 |
-| 202 | alexAlvarez | nfr_cobertura_iso25010.mmd | Diagrama | `team/alexAlvarez/docs/05_nfr/07_diagramas/nfr_cobertura_iso25010.mmd` | 17/05/2026 |
-| 203 | alexAlvarez | UC01_estado.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/UC01_estado.mmd` | 17/05/2026 |
-| 204 | alexAlvarez | UC01_secuencia.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/UC01_secuencia.mmd` | 17/05/2026 |
-| 205 | alexAlvarez | UC02_estado.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/UC02_estado.mmd` | 17/05/2026 |
-| 206 | alexAlvarez | UC02_secuencia.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/UC02_secuencia.mmd` | 17/05/2026 |
-| 207 | alexAlvarez | UC03_estado.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/UC03_estado.mmd` | 17/05/2026 |
-| 208 | alexAlvarez | UC03_secuencia.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/UC03_secuencia.mmd` | 17/05/2026 |
-| 209 | alexAlvarez | gantt.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/gantt.mmd` | 17/05/2026 |
-| 210 | alexAlvarez | modelo_er.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/modelo_er.mmd` | 17/05/2026 |
+| 202 | alexAlvarez | pie-010-cobertura-iso25010.mmd | Diagrama | `team/alexAlvarez/docs/05_nfr/07_diagramas/pie-010-cobertura-iso25010.mmd` | 17/05/2026 |
+| 203 | alexAlvarez | state-001-01-estado.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/state-001-01-estado.mmd` | 17/05/2026 |
+| 204 | alexAlvarez | seq-001-01-secuencia.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/seq-001-01-secuencia.mmd` | 17/05/2026 |
+| 205 | alexAlvarez | state-002-02-estado.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/state-002-02-estado.mmd` | 17/05/2026 |
+| 206 | alexAlvarez | seq-002-02-secuencia.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/seq-002-02-secuencia.mmd` | 17/05/2026 |
+| 207 | alexAlvarez | state-003-03-estado.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/state-003-03-estado.mmd` | 17/05/2026 |
+| 208 | alexAlvarez | seq-003-03-secuencia.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/seq-003-03-secuencia.mmd` | 17/05/2026 |
+| 209 | alexAlvarez | gantt-005-diagrama.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/gantt-005-diagrama.mmd` | 17/05/2026 |
+| 210 | alexAlvarez | er-006-diagrama.mmd | Diagrama | `team/alexAlvarez/docs/07_diagramas/er-006-diagrama.mmd` | 17/05/2026 |
 | 211 | alexAlvarez | PC-SIG-03-generador-prd.prompt 6elem+invariants | Prompt | `team/alexAlvarez/docs/06_prompt_contracts/PC-SIG-03-generador-prd.prompt.md` | 17/05/2026 |
 | 212 | alexAlvarez | PC-SIG-04-v2-consolidacion-maestra.prompt 6elem+invariants | Prompt | `team/alexAlvarez/docs/06_prompt_contracts/PC-SIG-04-v2-consolidacion-maestra.prompt.md` | 17/05/2026 |
 | 213 | alexAlvarez | PC-SIG-07-compilador-ecosistema-agentico.prompt 6elem+invariants | Prompt | `team/alexAlvarez/docs/06_prompt_contracts/PC-SIG-07-compilador-ecosistema-agentico.prompt.md` | 17/05/2026 |
@@ -541,15 +541,15 @@
 | 488 | aylenGonzales | LFSD_v1 seccion §8 | Otro | `05_lfsd/LFSD_v1_aylen.md` | 17/05/2026 |
 | 489 | aylenGonzales | LFSD_v1 seccion §9 | Otro | `05_lfsd/LFSD_v1_aylen.md` | 17/05/2026 |
 | 490 | aylenGonzales | LFSD_v1 seccion §10 | Otro | `05_lfsd/LFSD_v1_aylen.md` | 17/05/2026 |
-| 491 | aylenGonzales | ER nucleo | Diagrama | `07_diagramas/diagrama-er-001.mmd` | 17/05/2026 |
-| 492 | aylenGonzales | ER dominio negocio (156 líneas; vista conceptual DUEA) | Diagrama | `07_diagramas/diagrama-er-dominio-negocio.mmd` | 17/05/2026 |
-| 493 | aylenGonzales | Gantt release | Diagrama | `07_diagramas/diagrama-gantt-release.mmd` | 17/05/2026 |
-| 494 | aylenGonzales | Gantt sprint | Diagrama | `07_diagramas/diagrama-gantt-sprint.mmd` | 17/05/2026 |
-| 495 | aylenGonzales | Secuencia aprobacion (46 líneas; FSD-UC-003) | Diagrama | `07_diagramas/seq-002-flujo-aprobacion.mmd` | 17/05/2026 |
-| 496 | aylenGonzales | Secuencia auth (62 líneas; FSD-UC-001) | Diagrama | `07_diagramas/seq-003-autenticacion-jwt.mmd` | 17/05/2026 |
-| 497 | aylenGonzales | Estado evidencia (27 líneas; FSD-UC-002) | Diagrama | `07_diagramas/state-flujo-001-ciclo-vida-evidencia.mmd` | 17/05/2026 |
-| 498 | aylenGonzales | Estado proceso (41 líneas; UC-003/010) | Diagrama | `07_diagramas/state-flujo-002-ciclo-vida-proceso-acreditacion.mmd` | 17/05/2026 |
-| 499 | aylenGonzales | Secuencia versionado (37 líneas; FSD-UC-002) | Diagrama | `07_diagramas/seq-001-versionado-evidencias.mmd` | 17/05/2026 |
+| 491 | aylenGonzales | ER nucleo | Diagrama | `07_diagramas/er-001-001.mmd` | 17/05/2026 |
+| 492 | aylenGonzales | ER dominio negocio (156 líneas; vista conceptual DUEA) | Diagrama | `07_diagramas/er-005-negocio.mmd` | 17/05/2026 |
+| 493 | aylenGonzales | Gantt release | Diagrama | `07_diagramas/gantt-002-diagrama.mmd` | 17/05/2026 |
+| 494 | aylenGonzales | Gantt sprint | Diagrama | `07_diagramas/gantt-004-diagrama.mmd` | 17/05/2026 |
+| 495 | aylenGonzales | Secuencia aprobacion (46 líneas; FSD-UC-003) | Diagrama | `07_diagramas/seq-002-002-flujo-aprobacion.mmd` | 17/05/2026 |
+| 496 | aylenGonzales | Secuencia auth (62 líneas; FSD-UC-001) | Diagrama | `07_diagramas/seq-003-003-autenticacion-jwt.mmd` | 17/05/2026 |
+| 497 | aylenGonzales | Estado evidencia (27 líneas; FSD-UC-002) | Diagrama | `07_diagramas/state-001-001-ciclo-vida-evidencia-v2.mmd` | 17/05/2026 |
+| 498 | aylenGonzales | Estado proceso (41 líneas; UC-003/010) | Diagrama | `07_diagramas/state-002-002-ciclo-vida-proceso-acreditacion.mmd` | 17/05/2026 |
+| 499 | aylenGonzales | Secuencia versionado (37 líneas; FSD-UC-002) | Diagrama | `07_diagramas/seq-001-001-versionado-evidencias.mmd` | 17/05/2026 |
 | 500 | aylenGonzales | validate_domain_rules | Skill | `10_agents/skills/skill_validate_domain_rules.md` | 17/05/2026 |
 | 501 | aylenGonzales | detect_spec_gaps | Skill | `10_agents/skills/skill_detect_spec_gaps.md` | 17/05/2026 |
 | 502 | aylenGonzales | sync_traceability_matrix | Skill | `10_agents/skills/skill_sync_traceability_matrix.md` | 17/05/2026 |
@@ -567,17 +567,17 @@
 | 514 | aylenGonzales | vision negocio v2 | Otro | `00_context/02_vision_negocio_v2.md` | 17/05/2026 |
 | 515 | aylenGonzales | POC-01 append-only evidencia (§1–§8 completos) | POC | `11_pocs/POC-01/README.md` | 17/05/2026 |
 | 516 | aylenGonzales | POC-02 FTS PostgreSQL (§1–§8 completos) | POC | `11_pocs/POC-02/README.md` | 17/05/2026 |
-| 517 | aylenGonzales | AYL-SEQ-004-dashboard-semaforos.mmd (FSD-UC-004) | Diagrama | `07_diagramas/AYL-SEQ-004-dashboard-semaforos.mmd` | 17/05/2026 |
-| 518 | aylenGonzales | AYL-SEQ-005-reporte-pdf-async.mmd (FSD-UC-005) | Diagrama | `07_diagramas/AYL-SEQ-005-reporte-pdf-async.mmd` | 17/05/2026 |
-| 519 | aylenGonzales | AYL-SEQ-006-notificaciones-smtp.mmd (FSD-UC-006) | Diagrama | `07_diagramas/AYL-SEQ-006-notificaciones-smtp.mmd` | 17/05/2026 |
-| 520 | aylenGonzales | AYL-SEQ-007-busqueda-fts.mmd (FSD-UC-007) | Diagrama | `07_diagramas/AYL-SEQ-007-busqueda-fts.mmd` | 17/05/2026 |
-| 521 | aylenGonzales | AYL-SEQ-008-portal-publico.mmd (FSD-UC-008) | Diagrama | `07_diagramas/AYL-SEQ-008-portal-publico.mmd` | 17/05/2026 |
-| 522 | aylenGonzales | AYL-SEQ-009-certificados.mmd (FSD-UC-009) | Diagrama | `07_diagramas/AYL-SEQ-009-certificados.mmd` | 17/05/2026 |
-| 523 | aylenGonzales | AYL-SEQ-010-respaldo-diario.mmd (FSD-UC-010) | Diagrama | `07_diagramas/AYL-SEQ-010-respaldo-diario.mmd` | 17/05/2026 |
-| 524 | aylenGonzales | AYL-SEQ-011-proceso-unico-carrera.mmd (FSD-UC-011) | Diagrama | `07_diagramas/AYL-SEQ-011-proceso-unico-carrera.mmd` | 17/05/2026 |
-| 525 | aylenGonzales | Completar seq-002 (cerrado) (Duplicado lógico T-210) | Diagrama | `07_diagramas/seq-002-flujo-aprobacion.mmd` | 17/05/2026 |
-| 526 | aylenGonzales | Completar seq-001 (cerrado) (Duplicado lógico T-214) | Diagrama | `07_diagramas/seq-001-versionado-evidencias.mmd` | 17/05/2026 |
-| 527 | aylenGonzales | Gantt roadmap .mmd (42 líneas; canónico (sin `.mdd` duplicado)) | Diagrama | `07_diagramas/diagrama-gantt-roadmap.mmd` | 17/05/2026 |
+| 517 | aylenGonzales | seq-004-004-dashboard-semaforos.mmd (FSD-UC-004) | Diagrama | `07_diagramas/seq-004-004-dashboard-semaforos.mmd` | 17/05/2026 |
+| 518 | aylenGonzales | seq-005-005-reporte-pdf-async.mmd (FSD-UC-005) | Diagrama | `07_diagramas/seq-005-005-reporte-pdf-async.mmd` | 17/05/2026 |
+| 519 | aylenGonzales | seq-006-006-notificaciones-smtp.mmd (FSD-UC-006) | Diagrama | `07_diagramas/seq-006-006-notificaciones-smtp.mmd` | 17/05/2026 |
+| 520 | aylenGonzales | seq-007-007-busqueda-fts.mmd (FSD-UC-007) | Diagrama | `07_diagramas/seq-007-007-busqueda-fts.mmd` | 17/05/2026 |
+| 521 | aylenGonzales | seq-008-008-portal-publico.mmd (FSD-UC-008) | Diagrama | `07_diagramas/seq-008-008-portal-publico.mmd` | 17/05/2026 |
+| 522 | aylenGonzales | seq-009-009-certificados.mmd (FSD-UC-009) | Diagrama | `07_diagramas/seq-009-009-certificados.mmd` | 17/05/2026 |
+| 523 | aylenGonzales | seq-010-010-respaldo-diario.mmd (FSD-UC-010) | Diagrama | `07_diagramas/seq-010-010-respaldo-diario.mmd` | 17/05/2026 |
+| 524 | aylenGonzales | seq-011-011-proceso-unico-carrera.mmd (FSD-UC-011) | Diagrama | `07_diagramas/seq-011-011-proceso-unico-carrera.mmd` | 17/05/2026 |
+| 525 | aylenGonzales | Completar seq-002 (cerrado) (Duplicado lógico T-210) | Diagrama | `07_diagramas/seq-002-002-flujo-aprobacion.mmd` | 17/05/2026 |
+| 526 | aylenGonzales | Completar seq-001 (cerrado) (Duplicado lógico T-214) | Diagrama | `07_diagramas/seq-001-001-versionado-evidencias.mmd` | 17/05/2026 |
+| 527 | aylenGonzales | Gantt roadmap .mmd (42 líneas; canónico (sin `.mdd` duplicado)) | Diagrama | `07_diagramas/gantt-003-diagrama.mmd` | 17/05/2026 |
 | 528 | aylenGonzales | README índice UC-diagrama (11/11 UC mapeados) | Diagrama | `07_diagramas/README.md` | 17/05/2026 |
 | 529 | aylenGonzales | PC-005-reporte-pdf.prompt.md (+ ref. `prompt-contracts.md`) | Prompt | `06_prompt_contracts/PC-005-reporte-pdf.prompt.md` | 17/05/2026 |
 | 530 | aylenGonzales | PC-006-notificaciones.prompt.md | Prompt | `06_prompt_contracts/PC-006-notificaciones.prompt.md` | 17/05/2026 |
@@ -768,17 +768,17 @@
 | 710 | borisAngulo | 7. Trazabilidad (MRD → PRD → FSD → LFSD)  / MRD ( | FSD | `team/borisAngulo/docs/05_lfsd/LFSD_v1.md` | 17/05/2026 |
 | 711 | borisAngulo | 8. Riesgos fu | FSD | `team/borisAngulo/docs/05_lfsd/LFSD_v1.md` | 17/05/2026 |
 | 712 | borisAngulo | Checklist de e | FSD | `team/borisAngulo/docs/05_lfsd/LFSD_v1.md` | 17/05/2026 |
-| 713 | borisAngulo | diag-01-seq-autenticacion.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/diag-01-seq-autenticacion.mmd` | 17/05/2026 |
-| 714 | borisAngulo | diag-02-seq-evidencias.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/diag-02-seq-evidencias.mmd` | 17/05/2026 |
-| 715 | borisAngulo | diag-03-seq-observaciones.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/diag-03-seq-observaciones.mmd` | 17/05/2026 |
-| 716 | borisAngulo | diag-04a-state-proceso.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/diag-04a-state-proceso.mmd` | 17/05/2026 |
-| 717 | borisAngulo | diag-04b-state-obs-evidencia.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/diag-04b-state-obs-evidencia.mmd` | 17/05/2026 |
-| 718 | borisAngulo | diag-05-er-modelo-datos.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/diag-05-er-modelo-datos.mmd` | 17/05/2026 |
-| 719 | borisAngulo | diag-06a-gantt-ciclo-acreditacion.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/diag-06a-gantt-ciclo-acreditacion.mmd` | 17/05/2026 |
-| 720 | borisAngulo | diag-07-c4-contenedores-sistema.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/diag-07-c4-contenedores-sistema.mmd` | 17/05/2026 |
-| 721 | borisAngulo | diag-08-flow-cierre-proceso-pendientes.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/diag-08-flow-cierre-proceso-pendientes.mmd` | 17/05/2026 |
-| 722 | borisAngulo | diag-09-class-dominio-agregados.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/diag-09-class-dominio-agregados.mmd` | 17/05/2026 |
-| 723 | borisAngulo | diag-10-pie-cobertura-nfr-iso25010.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/diag-10-pie-cobertura-nfr-iso25010.mmd` | 17/05/2026 |
+| 713 | borisAngulo | seq-001-01-autenticacion.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/seq-001-01-autenticacion.mmd` | 17/05/2026 |
+| 714 | borisAngulo | seq-002-02-evidencias.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/seq-002-02-evidencias.mmd` | 17/05/2026 |
+| 715 | borisAngulo | seq-003-03-observaciones.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/seq-003-03-observaciones.mmd` | 17/05/2026 |
+| 716 | borisAngulo | state-002-04a-proceso.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/state-002-04a-proceso.mmd` | 17/05/2026 |
+| 717 | borisAngulo | state-003-04b-obs-evidencia.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/state-003-04b-obs-evidencia.mmd` | 17/05/2026 |
+| 718 | borisAngulo | er-005-05-modelo-datos.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/er-005-05-modelo-datos.mmd` | 17/05/2026 |
+| 719 | borisAngulo | gantt-001-06a-ciclo-acreditacion.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/gantt-001-06a-ciclo-acreditacion.mmd` | 17/05/2026 |
+| 720 | borisAngulo | c4-007-07-contenedores-sistema.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/c4-007-07-contenedores-sistema.mmd` | 17/05/2026 |
+| 721 | borisAngulo | flow-008-08-cierre-proceso-pendientes.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/flow-008-08-cierre-proceso-pendientes.mmd` | 17/05/2026 |
+| 722 | borisAngulo | class-009-09-dominio-agregados.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/class-009-09-dominio-agregados.mmd` | 17/05/2026 |
+| 723 | borisAngulo | pie-010-10-pie-cobertura-nfr-iso25010.mmd | Diagrama | `team/borisAngulo/docs/07_diagramas/pie-010-10-pie-cobertura-nfr-iso25010.mmd` | 17/05/2026 |
 | 724 | borisAngulo | trazabilidad-sigesa.md | Otro | `team/borisAngulo/docs/08_trazabilidad/trazabilidad-sigesa.md` | 17/05/2026 |
 | 725 | borisAngulo | 0. Metadatos  / Campo / Valor / /-------/-------/ / Producto / SIG | FSD | `team/borisAngulo/docs/09_dti/DTI_v1.md` | 17/05/2026 |
 | 726 | borisAngulo | 1. Visió | FSD | `team/borisAngulo/docs/09_dti/DTI_v1.md` | 17/05/2026 |
@@ -961,24 +961,24 @@
 | 898 | Marlene | NFR-POR-01 metrica+umbral+verificacion | NFR | `06_prompt_contracts/NFR.md` | 17/05/2026 |
 | 899 | Marlene | J-01 Cierre evidencia CEUB | PRD | `03_prd/PRD.md §11.1` | 17/05/2026 |
 | 900 | Marlene | J-02 Transparencia empleador | PRD | `03_prd/PRD.md §11.2` | 17/05/2026 |
-| 901 | Marlene | MAR-SEQ-001-autenticacion-jwt.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-SEQ-001-autenticacion-jwt.mmd` | 17/05/2026 |
-| 902 | Marlene | MAR-SEQ-002-carga-evidencia-versionada.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-SEQ-002-carga-evidencia-versionada.mmd` | 17/05/2026 |
-| 903 | Marlene | MAR-SEQ-003-aprobacion-rechazo-subfase.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-SEQ-003-aprobacion-rechazo-subfase.mmd` | 17/05/2026 |
-| 904 | Marlene | MAR-SEQ-004-dashboard-drilldown.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-SEQ-004-dashboard-drilldown.mmd` | 17/05/2026 |
-| 905 | Marlene | MAR-SEQ-005-reporte-pdf-asincrono.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-SEQ-005-reporte-pdf-asincrono.mmd` | 17/05/2026 |
-| 906 | Marlene | MAR-SEQ-006-notificaciones-outbox-smtp.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-SEQ-006-notificaciones-outbox-smtp.mmd` | 17/05/2026 |
-| 907 | Marlene | MAR-SEQ-007-busqueda-fts-multifiltro.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-SEQ-007-busqueda-fts-multifiltro.mmd` | 17/05/2026 |
-| 908 | Marlene | MAR-SEQ-008-portal-publico-consulta.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-SEQ-008-portal-publico-consulta.mmd` | 17/05/2026 |
-| 909 | Marlene | MAR-SEQ-009-auditoria-exportacion.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-SEQ-009-auditoria-exportacion.mmd` | 17/05/2026 |
-| 910 | Marlene | MAR-SEQ-010-configuracion-proceso-normativa.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-SEQ-010-configuracion-proceso-normativa.mmd` | 17/05/2026 |
-| 911 | Marlene | MAR-SEQ-011-supervision-respaldos.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-SEQ-011-supervision-respaldos.mmd` | 17/05/2026 |
-| 912 | Marlene | MAR-STA-001-ciclo-vida-evidencia.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-STA-001-ciclo-vida-evidencia.mmd` | 17/05/2026 |
-| 913 | Marlene | MAR-STA-002-ciclo-proceso-acreditacion.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-STA-002-ciclo-proceso-acreditacion.mmd` | 17/05/2026 |
-| 914 | Marlene | MAR-STA-003-ciclo-plan-mejora.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-STA-003-ciclo-plan-mejora.mmd` | 17/05/2026 |
-| 915 | Marlene | MAR-ER-001-modelo-datos-nucleo.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-ER-001-modelo-datos-nucleo.mmd` | 17/05/2026 |
-| 916 | Marlene | MAR-ER-002-dominio-auditoria-evidencia.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-ER-002-dominio-auditoria-evidencia.mmd` | 17/05/2026 |
-| 917 | Marlene | MAR-GANTT-001-roadmap-implementacion-sigesa.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-GANTT-001-roadmap-implementacion-sigesa.mmd` | 17/05/2026 |
-| 918 | Marlene | MAR-GANTT-002-cronograma-convocatoria-ceub.mmd (Oficial MAR) | Diagrama | `07_diagramas/MAR-GANTT-002-cronograma-convocatoria-ceub.mmd` | 17/05/2026 |
+| 901 | Marlene | seq-001-001-autenticacion-jwt.mmd (Oficial MAR) | Diagrama | `07_diagramas/seq-001-001-autenticacion-jwt.mmd` | 17/05/2026 |
+| 902 | Marlene | seq-002-002-carga-evidencia-versionada.mmd (Oficial MAR) | Diagrama | `07_diagramas/seq-002-002-carga-evidencia-versionada.mmd` | 17/05/2026 |
+| 903 | Marlene | seq-003-003-aprobacion-rechazo-subfase.mmd (Oficial MAR) | Diagrama | `07_diagramas/seq-003-003-aprobacion-rechazo-subfase.mmd` | 17/05/2026 |
+| 904 | Marlene | seq-004-004-dashboard-drilldown.mmd (Oficial MAR) | Diagrama | `07_diagramas/seq-004-004-dashboard-drilldown.mmd` | 17/05/2026 |
+| 905 | Marlene | seq-005-005-reporte-pdf-asincrono.mmd (Oficial MAR) | Diagrama | `07_diagramas/seq-005-005-reporte-pdf-asincrono.mmd` | 17/05/2026 |
+| 906 | Marlene | seq-006-006-notificaciones-outbox-smtp.mmd (Oficial MAR) | Diagrama | `07_diagramas/seq-006-006-notificaciones-outbox-smtp.mmd` | 17/05/2026 |
+| 907 | Marlene | seq-007-007-busqueda-fts-multifiltro.mmd (Oficial MAR) | Diagrama | `07_diagramas/seq-007-007-busqueda-fts-multifiltro.mmd` | 17/05/2026 |
+| 908 | Marlene | seq-008-008-portal-publico-consulta.mmd (Oficial MAR) | Diagrama | `07_diagramas/seq-008-008-portal-publico-consulta.mmd` | 17/05/2026 |
+| 909 | Marlene | seq-009-009-auditoria-exportacion.mmd (Oficial MAR) | Diagrama | `07_diagramas/seq-009-009-auditoria-exportacion.mmd` | 17/05/2026 |
+| 910 | Marlene | seq-010-010-configuracion-proceso-normativa.mmd (Oficial MAR) | Diagrama | `07_diagramas/seq-010-010-configuracion-proceso-normativa.mmd` | 17/05/2026 |
+| 911 | Marlene | seq-011-011-supervision-respaldos.mmd (Oficial MAR) | Diagrama | `07_diagramas/seq-011-011-supervision-respaldos.mmd` | 17/05/2026 |
+| 912 | Marlene | state-001-001-ciclo-vida-evidencia.mmd (Oficial MAR) | Diagrama | `07_diagramas/state-001-001-ciclo-vida-evidencia.mmd` | 17/05/2026 |
+| 913 | Marlene | state-002-002-ciclo-proceso-acreditacion.mmd (Oficial MAR) | Diagrama | `07_diagramas/state-002-002-ciclo-proceso-acreditacion.mmd` | 17/05/2026 |
+| 914 | Marlene | state-003-003-ciclo-plan-mejora.mmd (Oficial MAR) | Diagrama | `07_diagramas/state-003-003-ciclo-plan-mejora.mmd` | 17/05/2026 |
+| 915 | Marlene | er-001-001-modelo-datos-nucleo.mmd (Oficial MAR) | Diagrama | `07_diagramas/er-001-001-modelo-datos-nucleo.mmd` | 17/05/2026 |
+| 916 | Marlene | er-002-002-dominio-auditoria-evidencia.mmd (Oficial MAR) | Diagrama | `07_diagramas/er-002-002-dominio-auditoria-evidencia.mmd` | 17/05/2026 |
+| 917 | Marlene | gantt-001-001-roadmap-implementacion-sigesa.mmd (Oficial MAR) | Diagrama | `07_diagramas/gantt-001-001-roadmap-implementacion-sigesa.mmd` | 17/05/2026 |
+| 918 | Marlene | gantt-002-002-cronograma-convocatoria-ceub.mmd (Oficial MAR) | Diagrama | `07_diagramas/gantt-002-002-cronograma-convocatoria-ceub.mmd` | 17/05/2026 |
 | 919 | Marlene | PRD-US-001 INVEST+CA (Cuadre v1.2) | PRD | `team/Marlene/03_prd/PRD.md` | 17/05/2026 |
 | 920 | Marlene | PRD-US-002 INVEST+CA (Cuadre v1.2) | PRD | `team/Marlene/03_prd/PRD.md` | 17/05/2026 |
 | 921 | Marlene | PRD-US-003 INVEST+CA (Cuadre v1.2) | PRD | `team/Marlene/03_prd/PRD.md` | 17/05/2026 |

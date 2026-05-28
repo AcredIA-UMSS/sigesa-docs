@@ -4,7 +4,7 @@
 
 ## 0. Vista por fases de negocio
 
-Diagrama Gantt canónico: [`../07_diagramas/gantt.mmd`](../07_diagramas/gantt.mmd)
+Diagrama Gantt canónico: [`../07_diagramas/gantt-005-diagrama.mmd`](../07_diagramas/gantt-005-diagrama.mmd)
 
 ## 1. Roadmap de entregas (Gantt)
 

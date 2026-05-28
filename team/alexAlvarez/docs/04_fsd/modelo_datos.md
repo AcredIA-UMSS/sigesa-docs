@@ -4,7 +4,7 @@
 |-------|-------|
 | **Ámbito** | `team/alexAlvarez/docs/04_fsd/` |
 | **Versión** | v1.0 |
-| **Diagrama ER** | [`../07_diagramas/modelo_er.mmd`](../07_diagramas/modelo_er.mmd) |
+| **Diagrama ER** | [`../07_diagramas/er-006-diagrama.mmd`](../07_diagramas/er-006-diagrama.mmd) |
 | **Glosario** | [`glosario.md`](glosario.md) |
 
 > Modelo lógico-relacional para PostgreSQL. **Append-only** en prueba normativa. **Prohibido** en diseño: columnas `Unnamed: 0`, campos `gtin` u otros residuales de importación Excel.

@@ -137,7 +137,7 @@ Estado documental al corte **14/05/2026** (actualizar en cada release):
 | UC-007 | C3 | — | — | — | Pendiente v1.1 |
 | UC-008 | C2 | — | RB-11-PUB | — | Pendiente |
 | UC-009 | C1 | — | — | — | Pendiente |
-| UC-010 | C1 | PC-UC-010, SKILL-SIG-01 | — | gantt.mmd | Cubierto |
+| UC-010 | C1 | PC-UC-010, SKILL-SIG-01 | — | gantt-005-diagrama.mmd | Cubierto |
 | UC-011 | C2 | — | — | — | Pendiente |
 | UC-012 | C3 | SKILL-SIG-07 (borrador) | — | D-ACT-001 | Parcial |
 

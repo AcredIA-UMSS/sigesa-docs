@@ -34,10 +34,10 @@ Diagramas canónicos en [`../07_diagramas/`](../07_diagramas/) y FSD [`../04_fsd
 
 | Diagrama | Archivo |
 |----------|---------|
-| Actores ↔ dominio | Ver [`modelo_er.mmd`](../07_diagramas/modelo_er.mmd) |
-| Subsanación (secuencia) | [`UC01_secuencia.mmd`](../07_diagramas/UC01_secuencia.mmd) |
-| Estados del Indicador | [`UC01_estado.mmd`](../07_diagramas/UC01_estado.mmd) · [`user_stories.md`](user_stories.md) |
-| Cierre de Fase | [`UC03_estado.mmd`](../07_diagramas/UC03_estado.mmd) |
+| Actores ↔ dominio | Ver [`er-006-diagrama.mmd`](../07_diagramas/er-006-diagrama.mmd) |
+| Subsanación (secuencia) | [`seq-001-01-secuencia.mmd`](../07_diagramas/seq-001-01-secuencia.mmd) |
+| Estados del Indicador | [`state-001-01-estado.mmd`](../07_diagramas/state-001-01-estado.mmd) · [`user_stories.md`](user_stories.md) |
+| Cierre de Fase | [`state-003-03-estado.mmd`](../07_diagramas/state-003-03-estado.mmd) |
 
 > Transiciones: `context/04_state_machine.md`
 
@@ -60,7 +60,7 @@ Envía alertas automáticas de rechazos, aprobaciones y fechas límite, integran
 
 ### 2.1 Dependencias entre épicas (orden de entrega)
 
-Ver oleadas en [`roadmap.md`](roadmap.md) y [`../07_diagramas/gantt.mmd`](../07_diagramas/gantt.mmd).
+Ver oleadas en [`roadmap.md`](roadmap.md) y [`../07_diagramas/gantt-005-diagrama.mmd`](../07_diagramas/gantt-005-diagrama.mmd).
 
 | Épica | Depende de | Entrega mínima |
 |-------|------------|----------------|

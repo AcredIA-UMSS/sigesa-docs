@@ -46,7 +46,7 @@
 | `SUBSANADO` | Corrección enviada | [TD] |
 | `APROBADO` | Cumplimiento verificado | — |
 
-Diagrama: [`../07_diagramas/UC01_estado.mmd`](../07_diagramas/UC01_estado.mmd)
+Diagrama: [`../07_diagramas/state-001-01-estado.mmd`](../07_diagramas/state-001-01-estado.mmd)
 
 ---
 

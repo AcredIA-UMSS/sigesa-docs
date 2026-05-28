@@ -294,15 +294,15 @@ Cada fila del inventario corresponde **como máximo a una unidad** de la tabla o
 | T-199 | NFR plantilla seccion | Playwright (E2E) | team/alexAlvarez/docs/05_nfr/plantilla_tags_pruebas.md | Entregada |  |
 | T-200 | NFR plantilla seccion | CI — job sugerido | team/alexAlvarez/docs/05_nfr/plantilla_tags_pruebas.md | Entregada |  |
 | T-201 | Diagrama Mermaid | diag-10-pie-cobertura-nfr-boris.mmd | team/alexAlvarez/docs/05_nfr/07_diagramas/diag-10-pie-cobertura-nfr-boris.mmd | Entregada |  |
-| T-202 | Diagrama Mermaid | nfr_cobertura_iso25010.mmd | team/alexAlvarez/docs/05_nfr/07_diagramas/nfr_cobertura_iso25010.mmd | Entregada |  |
-| T-203 | Diagrama Mermaid | UC01_estado.mmd | team/alexAlvarez/docs/07_diagramas/UC01_estado.mmd | Entregada |  |
-| T-204 | Diagrama Mermaid | UC01_secuencia.mmd | team/alexAlvarez/docs/07_diagramas/UC01_secuencia.mmd | Entregada |  |
-| T-205 | Diagrama Mermaid | UC02_estado.mmd | team/alexAlvarez/docs/07_diagramas/UC02_estado.mmd | Entregada |  |
-| T-206 | Diagrama Mermaid | UC02_secuencia.mmd | team/alexAlvarez/docs/07_diagramas/UC02_secuencia.mmd | Entregada |  |
-| T-207 | Diagrama Mermaid | UC03_estado.mmd | team/alexAlvarez/docs/07_diagramas/UC03_estado.mmd | Entregada |  |
-| T-208 | Diagrama Mermaid | UC03_secuencia.mmd | team/alexAlvarez/docs/07_diagramas/UC03_secuencia.mmd | Entregada |  |
-| T-209 | Diagrama Mermaid | gantt.mmd | team/alexAlvarez/docs/07_diagramas/gantt.mmd | Entregada |  |
-| T-210 | Diagrama Mermaid | modelo_er.mmd | team/alexAlvarez/docs/07_diagramas/modelo_er.mmd | Entregada |  |
+| T-202 | Diagrama Mermaid | pie-010-cobertura-iso25010.mmd | team/alexAlvarez/docs/05_nfr/07_diagramas/pie-010-cobertura-iso25010.mmd | Entregada |  |
+| T-203 | Diagrama Mermaid | state-001-01-estado.mmd | team/alexAlvarez/docs/07_diagramas/state-001-01-estado.mmd | Entregada |  |
+| T-204 | Diagrama Mermaid | seq-001-01-secuencia.mmd | team/alexAlvarez/docs/07_diagramas/seq-001-01-secuencia.mmd | Entregada |  |
+| T-205 | Diagrama Mermaid | state-002-02-estado.mmd | team/alexAlvarez/docs/07_diagramas/state-002-02-estado.mmd | Entregada |  |
+| T-206 | Diagrama Mermaid | seq-002-02-secuencia.mmd | team/alexAlvarez/docs/07_diagramas/seq-002-02-secuencia.mmd | Entregada |  |
+| T-207 | Diagrama Mermaid | state-003-03-estado.mmd | team/alexAlvarez/docs/07_diagramas/state-003-03-estado.mmd | Entregada |  |
+| T-208 | Diagrama Mermaid | seq-003-03-secuencia.mmd | team/alexAlvarez/docs/07_diagramas/seq-003-03-secuencia.mmd | Entregada |  |
+| T-209 | Diagrama Mermaid | gantt-005-diagrama.mmd | team/alexAlvarez/docs/07_diagramas/gantt-005-diagrama.mmd | Entregada |  |
+| T-210 | Diagrama Mermaid | er-006-diagrama.mmd | team/alexAlvarez/docs/07_diagramas/er-006-diagrama.mmd | Entregada |  |
 | T-211 | Prompt-contrato | PC-SIG-03-generador-prd.prompt 6elem+invariants | team/alexAlvarez/docs/06_prompt_contracts/PC-SIG-03-generador-prd.prompt.md | Entregada |  |
 | T-212 | Prompt-contrato | PC-SIG-04-v2-consolidacion-maestra.prompt 6elem+invariants | team/alexAlvarez/docs/06_prompt_contracts/PC-SIG-04-v2-consolidacion-maestra.prompt.md | Entregada |  |
 | T-213 | Prompt-contrato | PC-SIG-07-compilador-ecosistema-agentico.prompt 6elem+invariants | team/alexAlvarez/docs/06_prompt_contracts/PC-SIG-07-compilador-ecosistema-agentico.prompt.md | Entregada |  |

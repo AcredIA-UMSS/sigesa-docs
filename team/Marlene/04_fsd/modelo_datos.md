@@ -47,7 +47,7 @@ Este documento describe el **modelo de datos lógico y físico de referencia** p
 
 ## 3. Diagrama entidad-relación (núcleo)
 
-**Fuente Mermaid (completo):** `team/Marlene/07_diagramas/modelo_er.mmd` · alias `D-ER-001`
+**Fuente Mermaid (completo):** `team/Marlene/07_diagramas/er-006-diagrama.mmd` · alias `D-ER-001`
 
 ```mermaid
 erDiagram

@@ -98,7 +98,7 @@
 | **Enunciado** | Una **Fase** solo pasa a `COMPLETADA` si todos sus **Indicadores** están `APROBADO`. |
 | **Violación** | `409 FASE_CIERRE_BLOQUEADO` |
 | **UC** | UC-010 |
-| **Diagrama** | [`UC03_estado.mmd`](../07_diagramas/UC03_estado.mmd) |
+| **Diagrama** | [`state-003-03-estado.mmd`](../07_diagramas/state-003-03-estado.mmd) |
 
 ---
 

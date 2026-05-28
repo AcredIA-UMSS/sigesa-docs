@@ -123,7 +123,7 @@ flowchart TB
 | **Reglas** | `RB-06` |
 | **Entrada** | `email`, `password` |
 | **Salida** | JWT, URL de redirección |
-| **Diagramas** | `team/Marlene/07_diagramas/UC01_secuencia.mmd`, `UC01_estado.mmd` |
+| **Diagramas** | `team/Marlene/07_diagramas/seq-001-01-secuencia.mmd`, `state-001-01-estado.mmd` |
 | **Gherkin** | Ver `docs/LFSD.md` §4.1 o `gherkin.md` |
 
 ---
@@ -145,7 +145,7 @@ flowchart TB
 | **Reglas** | `RB-02`, `RB-04`, `BR-015` |
 | **Entrada** | `archivo`, `descripcionCambio`, `indicadorId` |
 | **Salida** | `{ documentoId, version, hash, estado: EN_REVISION }` |
-| **Diagramas** | `team/Marlene/07_diagramas/UC02_secuencia.mmd`, `UC02_estado.mmd` |
+| **Diagramas** | `team/Marlene/07_diagramas/seq-002-02-secuencia.mmd`, `state-002-02-estado.mmd` |
 
 ---
 
@@ -166,7 +166,7 @@ flowchart TB
 | **Reglas** | `RB-02`, `RB-03`, `BR-014`, `BR-013` (proceso único) |
 | **Entrada** | `indicadorId`, `accion`, `justificacion?` |
 | **Salida** | `{ indicadorId, nuevoEstado, tecnicoId, justificacion? }` |
-| **Diagramas** | `team/Marlene/07_diagramas/UC03_secuencia.mmd`, `team/Marlene/07_diagramas/UC03_estado.mmd` |
+| **Diagramas** | `team/Marlene/07_diagramas/seq-003-03-secuencia.mmd`, `team/Marlene/07_diagramas/state-003-03-estado.mmd` |
 
 ---
 
@@ -325,7 +325,7 @@ flowchart TB
 | **Flujo principal** | 1) [CC] define acciones y plazos → estado `PROPUESTO`. 2) [TD] revisa → `EN_EJECUCION` o devuelve ajustes. 3) [CC] ejecuta y adjunta evidencia de cumplimiento. 4) [TD] marca `EVIDENCIADO` y cierra → `CERRADO`. |
 | **Postcondiciones** | Registro en `PLAN_MEJORA` + auditoría. |
 | **Reglas** | Alineación política calidad UMSS |
-| **Diagrama** | `07_diagramas/adicionales/D-ACT-001-observaciones-mejoras.mmd` |
+| **Diagrama** | `07_diagramas/adicionales/flow-001-001-observaciones-mejoras.mmd` |
 
 ---
 
@@ -352,9 +352,9 @@ flowchart TB
 
 | UC | Secuencia | Estado | Casos de prueba (LFSD §11) |
 |----|-----------|--------|----------------------------|
-| UC-001 | UC01_secuencia.mmd | UC01_estado.mmd | TC-01, TC-02 |
-| UC-002 | team/Marlene/07_diagramas/UC02_secuencia.mmd | team/Marlene/07_diagramas/UC02_estado.mmd | TC-03, TC-04, TC-05 |
-| UC-003 | team/Marlene/07_diagramas/UC03_secuencia.mmd | team/Marlene/07_diagramas/UC03_estado.mmd | TC-06, TC-07, TC-08 |
+| UC-001 | seq-001-01-secuencia.mmd | state-001-01-estado.mmd | TC-01, TC-02 |
+| UC-002 | team/Marlene/07_diagramas/seq-002-02-secuencia.mmd | team/Marlene/07_diagramas/state-002-02-estado.mmd | TC-03, TC-04, TC-05 |
+| UC-003 | team/Marlene/07_diagramas/seq-003-03-secuencia.mmd | team/Marlene/07_diagramas/state-003-03-estado.mmd | TC-06, TC-07, TC-08 |
 | UC-004 | — | — | TC-09, TC-10 |
 | UC-005 | (en adicionales SEQ-004) | — | TC-11, TC-12 |
 | UC-006 | — | — | TC-13 |

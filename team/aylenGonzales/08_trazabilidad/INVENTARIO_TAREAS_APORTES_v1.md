@@ -305,15 +305,15 @@
 | T-203 | LFSD seccion | LFSD_v1 seccion §8 | 05_lfsd/LFSD_v1_aylen.md | Entregada |  |
 | T-204 | LFSD seccion | LFSD_v1 seccion §9 | 05_lfsd/LFSD_v1_aylen.md | Entregada |  |
 | T-205 | LFSD seccion | LFSD_v1 seccion §10 | 05_lfsd/LFSD_v1_aylen.md | Entregada |  |
-| T-206 | Diagrama Mermaid | ER nucleo | 07_diagramas/diagrama-er-001.mmd | Entregada |  |
-| T-207 | Diagrama Mermaid | ER dominio negocio | 07_diagramas/diagrama-er-dominio-negocio.mmd | Entregada | 156 líneas; vista conceptual DUEA |
-| T-208 | Diagrama Mermaid | Gantt release | 07_diagramas/diagrama-gantt-release.mmd | Entregada |  |
-| T-209 | Diagrama Mermaid | Gantt sprint | 07_diagramas/diagrama-gantt-sprint.mmd | Entregada |  |
-| T-210 | Diagrama Mermaid | Secuencia aprobacion | 07_diagramas/seq-002-flujo-aprobacion.mmd | Entregada | 46 líneas; FSD-UC-003 |
-| T-211 | Diagrama Mermaid | Secuencia auth | 07_diagramas/seq-003-autenticacion-jwt.mmd | Entregada | 62 líneas; FSD-UC-001 |
-| T-212 | Diagrama Mermaid | Estado evidencia | 07_diagramas/state-flujo-001-ciclo-vida-evidencia.mmd | Entregada | 27 líneas; FSD-UC-002 |
-| T-213 | Diagrama Mermaid | Estado proceso | 07_diagramas/state-flujo-002-ciclo-vida-proceso-acreditacion.mmd | Entregada | 41 líneas; UC-003/010 |
-| T-214 | Diagrama Mermaid | Secuencia versionado | 07_diagramas/seq-001-versionado-evidencias.mmd | Entregada | 37 líneas; FSD-UC-002 |
+| T-206 | Diagrama Mermaid | ER nucleo | 07_diagramas/er-001-001.mmd | Entregada |  |
+| T-207 | Diagrama Mermaid | ER dominio negocio | 07_diagramas/er-005-negocio.mmd | Entregada | 156 líneas; vista conceptual DUEA |
+| T-208 | Diagrama Mermaid | Gantt release | 07_diagramas/gantt-002-diagrama.mmd | Entregada |  |
+| T-209 | Diagrama Mermaid | Gantt sprint | 07_diagramas/gantt-004-diagrama.mmd | Entregada |  |
+| T-210 | Diagrama Mermaid | Secuencia aprobacion | 07_diagramas/seq-002-002-flujo-aprobacion.mmd | Entregada | 46 líneas; FSD-UC-003 |
+| T-211 | Diagrama Mermaid | Secuencia auth | 07_diagramas/seq-003-003-autenticacion-jwt.mmd | Entregada | 62 líneas; FSD-UC-001 |
+| T-212 | Diagrama Mermaid | Estado evidencia | 07_diagramas/state-001-001-ciclo-vida-evidencia-v2.mmd | Entregada | 27 líneas; FSD-UC-002 |
+| T-213 | Diagrama Mermaid | Estado proceso | 07_diagramas/state-002-002-ciclo-vida-proceso-acreditacion.mmd | Entregada | 41 líneas; UC-003/010 |
+| T-214 | Diagrama Mermaid | Secuencia versionado | 07_diagramas/seq-001-001-versionado-evidencias.mmd | Entregada | 37 líneas; FSD-UC-002 |
 | T-215 | Skill propio | validate_domain_rules | 10_agents/skills/skill_validate_domain_rules.md | Entregada |  |
 | T-216 | Skill propio | detect_spec_gaps | 10_agents/skills/skill_detect_spec_gaps.md | Entregada |  |
 | T-217 | Skill propio | sync_traceability_matrix | 10_agents/skills/skill_sync_traceability_matrix.md | Entregada |  |
@@ -331,17 +331,17 @@
 | T-229 | Contexto | vision negocio v2 | 00_context/02_vision_negocio_v2.md | Entregada |  |
 | T-230 | POC propuesta | POC-01 append-only evidencia | 11_pocs/POC-01/README.md | Entregada | §1–§8 completos |
 | T-231 | POC propuesta | POC-02 FTS PostgreSQL | 11_pocs/POC-02/README.md | Entregada | §1–§8 completos |
-| T-232 | Diagrama Mermaid | AYL-SEQ-004-dashboard-semaforos.mmd | 07_diagramas/AYL-SEQ-004-dashboard-semaforos.mmd | Entregada | FSD-UC-004 |
-| T-233 | Diagrama Mermaid | AYL-SEQ-005-reporte-pdf-async.mmd | 07_diagramas/AYL-SEQ-005-reporte-pdf-async.mmd | Entregada | FSD-UC-005 |
-| T-234 | Diagrama Mermaid | AYL-SEQ-006-notificaciones-smtp.mmd | 07_diagramas/AYL-SEQ-006-notificaciones-smtp.mmd | Entregada | FSD-UC-006 |
-| T-235 | Diagrama Mermaid | AYL-SEQ-007-busqueda-fts.mmd | 07_diagramas/AYL-SEQ-007-busqueda-fts.mmd | Entregada | FSD-UC-007 |
-| T-236 | Diagrama Mermaid | AYL-SEQ-008-portal-publico.mmd | 07_diagramas/AYL-SEQ-008-portal-publico.mmd | Entregada | FSD-UC-008 |
-| T-237 | Diagrama Mermaid | AYL-SEQ-009-certificados.mmd | 07_diagramas/AYL-SEQ-009-certificados.mmd | Entregada | FSD-UC-009 |
-| T-238 | Diagrama Mermaid | AYL-SEQ-010-respaldo-diario.mmd | 07_diagramas/AYL-SEQ-010-respaldo-diario.mmd | Entregada | FSD-UC-010 |
-| T-239 | Diagrama Mermaid | AYL-SEQ-011-proceso-unico-carrera.mmd | 07_diagramas/AYL-SEQ-011-proceso-unico-carrera.mmd | Entregada | FSD-UC-011 |
-| T-240 | Diagrama Mermaid | Completar seq-002 (cerrado) | 07_diagramas/seq-002-flujo-aprobacion.mmd | Entregada | Duplicado lógico T-210 |
-| T-241 | Diagrama Mermaid | Completar seq-001 (cerrado) | 07_diagramas/seq-001-versionado-evidencias.mmd | Entregada | Duplicado lógico T-214 |
-| T-242 | Diagrama Mermaid | Gantt roadmap .mmd | 07_diagramas/diagrama-gantt-roadmap.mmd | Entregada | 42 líneas; canónico (sin `.mdd` duplicado) |
+| T-232 | Diagrama Mermaid | seq-004-004-dashboard-semaforos.mmd | 07_diagramas/seq-004-004-dashboard-semaforos.mmd | Entregada | FSD-UC-004 |
+| T-233 | Diagrama Mermaid | seq-005-005-reporte-pdf-async.mmd | 07_diagramas/seq-005-005-reporte-pdf-async.mmd | Entregada | FSD-UC-005 |
+| T-234 | Diagrama Mermaid | seq-006-006-notificaciones-smtp.mmd | 07_diagramas/seq-006-006-notificaciones-smtp.mmd | Entregada | FSD-UC-006 |
+| T-235 | Diagrama Mermaid | seq-007-007-busqueda-fts.mmd | 07_diagramas/seq-007-007-busqueda-fts.mmd | Entregada | FSD-UC-007 |
+| T-236 | Diagrama Mermaid | seq-008-008-portal-publico.mmd | 07_diagramas/seq-008-008-portal-publico.mmd | Entregada | FSD-UC-008 |
+| T-237 | Diagrama Mermaid | seq-009-009-certificados.mmd | 07_diagramas/seq-009-009-certificados.mmd | Entregada | FSD-UC-009 |
+| T-238 | Diagrama Mermaid | seq-010-010-respaldo-diario.mmd | 07_diagramas/seq-010-010-respaldo-diario.mmd | Entregada | FSD-UC-010 |
+| T-239 | Diagrama Mermaid | seq-011-011-proceso-unico-carrera.mmd | 07_diagramas/seq-011-011-proceso-unico-carrera.mmd | Entregada | FSD-UC-011 |
+| T-240 | Diagrama Mermaid | Completar seq-002 (cerrado) | 07_diagramas/seq-002-002-flujo-aprobacion.mmd | Entregada | Duplicado lógico T-210 |
+| T-241 | Diagrama Mermaid | Completar seq-001 (cerrado) | 07_diagramas/seq-001-001-versionado-evidencias.mmd | Entregada | Duplicado lógico T-214 |
+| T-242 | Diagrama Mermaid | Gantt roadmap .mmd | 07_diagramas/gantt-003-diagrama.mmd | Entregada | 42 líneas; canónico (sin `.mdd` duplicado) |
 | T-243 | Diagrama Mermaid | README índice UC-diagrama | 07_diagramas/README.md | Entregada | 11/11 UC mapeados |
 | T-244 | Prompt-contrato | PC-005-reporte-pdf.prompt.md | 06_prompt_contracts/PC-005-reporte-pdf.prompt.md | Entregada | + ref. `prompt-contracts.md` |
 | T-245 | Prompt-contrato | PC-006-notificaciones.prompt.md | 06_prompt_contracts/PC-006-notificaciones.prompt.md | Entregada |  |

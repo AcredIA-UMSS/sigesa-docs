@@ -221,7 +221,7 @@ Integración ecosistema UMSS e **IA asistida** con supervisión humana (`RB-11`)
 | 1 mes antes visita CEUB | v1.0 estable + reportes PDF |
 | Post-visita | Plan de mejora (US-021) |
 
-Diagrama de referencia: `docs/07_diagramas/gantt.mmd`.
+Diagrama de referencia: `docs/07_diagramas/gantt-005-diagrama.mmd`.
 
 ---
 

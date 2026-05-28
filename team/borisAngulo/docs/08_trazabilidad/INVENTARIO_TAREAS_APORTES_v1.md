@@ -206,17 +206,17 @@ Ver `templates/APORTES_TEMPLATE.md`, `docs/10_aportes/APORTES_RELEASE_1.0.0.md` 
 | T-165 | FSD | 7. Trazabilidad (MRD → PRD → FSD → LFSD)  / MRD ( | team/borisAngulo/docs/05_lfsd/LFSD_v1.md | Entregada |  |
 | T-166 | FSD | 8. Riesgos fu | team/borisAngulo/docs/05_lfsd/LFSD_v1.md | Entregada |  |
 | T-167 | FSD | Checklist de e | team/borisAngulo/docs/05_lfsd/LFSD_v1.md | Entregada |  |
-| T-168 | Diagrama | diag-01-seq-autenticacion.mmd | team/borisAngulo/docs/07_diagramas/diag-01-seq-autenticacion.mmd | Entregada |  |
-| T-169 | Diagrama | diag-02-seq-evidencias.mmd | team/borisAngulo/docs/07_diagramas/diag-02-seq-evidencias.mmd | Entregada |  |
-| T-170 | Diagrama | diag-03-seq-observaciones.mmd | team/borisAngulo/docs/07_diagramas/diag-03-seq-observaciones.mmd | Entregada |  |
-| T-171 | Diagrama | diag-04a-state-proceso.mmd | team/borisAngulo/docs/07_diagramas/diag-04a-state-proceso.mmd | Entregada |  |
-| T-172 | Diagrama | diag-04b-state-obs-evidencia.mmd | team/borisAngulo/docs/07_diagramas/diag-04b-state-obs-evidencia.mmd | Entregada |  |
-| T-173 | Diagrama | diag-05-er-modelo-datos.mmd | team/borisAngulo/docs/07_diagramas/diag-05-er-modelo-datos.mmd | Entregada |  |
-| T-174 | Diagrama | diag-06a-gantt-ciclo-acreditacion.mmd | team/borisAngulo/docs/07_diagramas/diag-06a-gantt-ciclo-acreditacion.mmd | Entregada |  |
-| T-175 | Diagrama | diag-07-c4-contenedores-sistema.mmd | team/borisAngulo/docs/07_diagramas/diag-07-c4-contenedores-sistema.mmd | Entregada |  |
-| T-176 | Diagrama | diag-08-flow-cierre-proceso-pendientes.mmd | team/borisAngulo/docs/07_diagramas/diag-08-flow-cierre-proceso-pendientes.mmd | Entregada |  |
-| T-177 | Diagrama | diag-09-class-dominio-agregados.mmd | team/borisAngulo/docs/07_diagramas/diag-09-class-dominio-agregados.mmd | Entregada |  |
-| T-178 | Diagrama | diag-10-pie-cobertura-nfr-iso25010.mmd | team/borisAngulo/docs/07_diagramas/diag-10-pie-cobertura-nfr-iso25010.mmd | Entregada |  |
+| T-168 | Diagrama | seq-001-01-autenticacion.mmd | team/borisAngulo/docs/07_diagramas/seq-001-01-autenticacion.mmd | Entregada |  |
+| T-169 | Diagrama | seq-002-02-evidencias.mmd | team/borisAngulo/docs/07_diagramas/seq-002-02-evidencias.mmd | Entregada |  |
+| T-170 | Diagrama | seq-003-03-observaciones.mmd | team/borisAngulo/docs/07_diagramas/seq-003-03-observaciones.mmd | Entregada |  |
+| T-171 | Diagrama | state-002-04a-proceso.mmd | team/borisAngulo/docs/07_diagramas/state-002-04a-proceso.mmd | Entregada |  |
+| T-172 | Diagrama | state-003-04b-obs-evidencia.mmd | team/borisAngulo/docs/07_diagramas/state-003-04b-obs-evidencia.mmd | Entregada |  |
+| T-173 | Diagrama | er-005-05-modelo-datos.mmd | team/borisAngulo/docs/07_diagramas/er-005-05-modelo-datos.mmd | Entregada |  |
+| T-174 | Diagrama | gantt-001-06a-ciclo-acreditacion.mmd | team/borisAngulo/docs/07_diagramas/gantt-001-06a-ciclo-acreditacion.mmd | Entregada |  |
+| T-175 | Diagrama | c4-007-07-contenedores-sistema.mmd | team/borisAngulo/docs/07_diagramas/c4-007-07-contenedores-sistema.mmd | Entregada |  |
+| T-176 | Diagrama | flow-008-08-cierre-proceso-pendientes.mmd | team/borisAngulo/docs/07_diagramas/flow-008-08-cierre-proceso-pendientes.mmd | Entregada |  |
+| T-177 | Diagrama | class-009-09-dominio-agregados.mmd | team/borisAngulo/docs/07_diagramas/class-009-09-dominio-agregados.mmd | Entregada |  |
+| T-178 | Diagrama | pie-010-10-pie-cobertura-nfr-iso25010.mmd | team/borisAngulo/docs/07_diagramas/pie-010-10-pie-cobertura-nfr-iso25010.mmd | Entregada |  |
 | T-179 | Otro | trazabilidad-sigesa.md | team/borisAngulo/docs/08_trazabilidad/trazabilidad-sigesa.md | Entregada |  |
 | T-180 | FSD | 0. Metadatos  / Campo / Valor / /-------/-------/ / Producto / SIG | team/borisAngulo/docs/09_dti/DTI_v1.md | Entregada |  |
 | T-181 | FSD | 1. Visió | team/borisAngulo/docs/09_dti/DTI_v1.md | Entregada |  |

@@ -129,7 +129,7 @@ Para tests y seeds:
 
 - Prefijo `TEST_` en nombres (p. ej. `TEST_IngenieriaFicticia`).
 - Dominios `example.invalid`.
-- Cronogramas: comentario `EJEMPLO ILUSTRATIVO` en `.mmd` (véase `07_diagramas/gantt.mmd`).
+- Cronogramas: comentario `EJEMPLO ILUSTRATIVO` en `.mmd` (véase `07_diagramas/gantt-005-diagrama.mmd`).
 
 ---
 
@@ -139,7 +139,7 @@ Para tests y seeds:
 |-------|-----------|
 | **Cursor ref** | `.cursor/rules/02_state_machine.mdc` |
 | **Reglas de negocio** | RB-03, BR-014 |
-| **Diagramas** | `07_diagramas/UC02_estado.mmd`, `UC03_estado.mmd` |
+| **Diagramas** | `07_diagramas/state-002-02-estado.mmd`, `state-003-03-estado.mmd` |
 
 **Regla exacta:**
 

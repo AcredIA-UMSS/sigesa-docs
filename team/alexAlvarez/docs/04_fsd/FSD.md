@@ -67,14 +67,14 @@ Los diagramas Mermaid **no** se duplican inline; viven en `07_diagramas/`:
 
 | Archivo | Caso de uso |
 |---------|-------------|
-| [`UC01_secuencia.mmd`](../07_diagramas/UC01_secuencia.mmd) | FSD-UC-006 Subsanar |
-| [`UC01_estado.mmd`](../07_diagramas/UC01_estado.mmd) | Estados subsanación |
-| [`UC02_secuencia.mmd`](../07_diagramas/UC02_secuencia.mmd) | FSD-UC-004/008 Carga y observar |
-| [`UC02_estado.mmd`](../07_diagramas/UC02_estado.mmd) | Estados Fase 1 |
-| [`UC03_secuencia.mmd`](../07_diagramas/UC03_secuencia.mmd) | FSD-UC-003/010 Proceso y cierre fase |
-| [`UC03_estado.mmd`](../07_diagramas/UC03_estado.mmd) | Agregación de fase |
-| [`modelo_er.mmd`](../07_diagramas/modelo_er.mmd) | Modelo entidad-relación |
-| [`gantt.mmd`](../07_diagramas/gantt.mmd) | Roadmap PRD |
+| [`seq-001-01-secuencia.mmd`](../07_diagramas/seq-001-01-secuencia.mmd) | FSD-UC-006 Subsanar |
+| [`state-001-01-estado.mmd`](../07_diagramas/state-001-01-estado.mmd) | Estados subsanación |
+| [`seq-002-02-secuencia.mmd`](../07_diagramas/seq-002-02-secuencia.mmd) | FSD-UC-004/008 Carga y observar |
+| [`state-002-02-estado.mmd`](../07_diagramas/state-002-02-estado.mmd) | Estados Fase 1 |
+| [`seq-003-03-secuencia.mmd`](../07_diagramas/seq-003-03-secuencia.mmd) | FSD-UC-003/010 Proceso y cierre fase |
+| [`state-003-03-estado.mmd`](../07_diagramas/state-003-03-estado.mmd) | Agregación de fase |
+| [`er-006-diagrama.mmd`](../07_diagramas/er-006-diagrama.mmd) | Modelo entidad-relación |
+| [`gantt-005-diagrama.mmd`](../07_diagramas/gantt-005-diagrama.mmd) | Roadmap PRD |
 
 ---
 

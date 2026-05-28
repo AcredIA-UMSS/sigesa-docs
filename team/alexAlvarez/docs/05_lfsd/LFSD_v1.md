@@ -96,7 +96,7 @@ Los demás `FSD-UC-002`…`018` permanecen solo en FSD clásico hasta priorizaci
 
 ### UC-L02 — Plantillas y Proceso
 
-**FSD-UC:** `FSD-UC-003` · **PRD:** PRD-US-024 · **Diagrama:** [`UC03_secuencia.mmd`](../07_diagramas/UC03_secuencia.mmd)
+**FSD-UC:** `FSD-UC-003` · **PRD:** PRD-US-024 · **Diagrama:** [`seq-003-03-secuencia.mmd`](../07_diagramas/seq-003-03-secuencia.mmd)
 
 **Precondiciones:** Plantilla CEUB o ARCU-SUR validada; actor [JD].
 
@@ -123,7 +123,7 @@ Los demás `FSD-UC-002`…`018` permanecen solo en FSD clásico hasta priorizaci
 
 ### UC-L03 — Cargar Evidencia
 
-**FSD-UC:** `FSD-UC-004` · **PRD:** PRD-US-002 · **Diagrama:** [`UC02_secuencia.mmd`](../07_diagramas/UC02_secuencia.mmd)
+**FSD-UC:** `FSD-UC-004` · **PRD:** PRD-US-002 · **Diagrama:** [`seq-002-02-secuencia.mmd`](../07_diagramas/seq-002-02-secuencia.mmd)
 
 **Precondiciones:** [CC] autenticado; proceso activo; **Indicador** en `PENDIENTE` o subsanación permitida.
 
@@ -155,7 +155,7 @@ Los demás `FSD-UC-002`…`018` permanecen solo en FSD clásico hasta priorizaci
 
 ### UC-L04 — Subsanar Evidencia
 
-**FSD-UC:** `FSD-UC-006` · **PRD:** PRD-US-003, 025 · **Diagrama:** [`UC01_secuencia.mmd`](../07_diagramas/UC01_secuencia.mmd)
+**FSD-UC:** `FSD-UC-006` · **PRD:** PRD-US-003, 025 · **Diagrama:** [`seq-001-01-secuencia.mmd`](../07_diagramas/seq-001-01-secuencia.mmd)
 
 **Precondiciones:** **Indicador** `OBSERVADO`; **Observación** abierta.
 
@@ -207,7 +207,7 @@ Los demás `FSD-UC-002`…`018` permanecen solo en FSD clásico hasta priorizaci
 
 ### UC-L06 — Aprobar Indicador y cerrar Fase
 
-**FSD-UC:** `FSD-UC-009`, `FSD-UC-010` · **Diagramas:** [`UC01_estado.mmd`](../07_diagramas/UC01_estado.mmd), [`UC03_estado.mmd`](../07_diagramas/UC03_estado.mmd)
+**FSD-UC:** `FSD-UC-009`, `FSD-UC-010` · **Diagramas:** [`state-001-01-estado.mmd`](../07_diagramas/state-001-01-estado.mmd), [`state-003-03-estado.mmd`](../07_diagramas/state-003-03-estado.mmd)
 
 **Flujo aprobación:**
 1. [TD] `PATCH /indicators/{id}/approve` cuando evidencia cumple.

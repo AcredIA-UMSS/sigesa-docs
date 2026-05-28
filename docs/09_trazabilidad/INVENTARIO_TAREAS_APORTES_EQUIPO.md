@@ -228,15 +228,15 @@ Ver `templates/APORTES_TEMPLATE.md`, `docs/10_aportes/APORTES_RELEASE_1.0.0.md` 
 | T-199 | alexAlvarez | NFR plantilla seccion | Playwright (E2E) | team/alexAlvarez/docs/05_nfr/plantilla_tags_pruebas.md | Entregada |  |
 | T-200 | alexAlvarez | NFR plantilla seccion | CI — job sugerido | team/alexAlvarez/docs/05_nfr/plantilla_tags_pruebas.md | Entregada |  |
 | T-201 | alexAlvarez | Diagrama Mermaid | diag-10-pie-cobertura-nfr-boris.mmd | team/alexAlvarez/docs/05_nfr/07_diagramas/diag-10-pie-cobertura-nfr-boris.mmd | Entregada |  |
-| T-202 | alexAlvarez | Diagrama Mermaid | nfr_cobertura_iso25010.mmd | team/alexAlvarez/docs/05_nfr/07_diagramas/nfr_cobertura_iso25010.mmd | Entregada |  |
-| T-203 | alexAlvarez | Diagrama Mermaid | UC01_estado.mmd | team/alexAlvarez/docs/07_diagramas/UC01_estado.mmd | Entregada |  |
-| T-204 | alexAlvarez | Diagrama Mermaid | UC01_secuencia.mmd | team/alexAlvarez/docs/07_diagramas/UC01_secuencia.mmd | Entregada |  |
-| T-205 | alexAlvarez | Diagrama Mermaid | UC02_estado.mmd | team/alexAlvarez/docs/07_diagramas/UC02_estado.mmd | Entregada |  |
-| T-206 | alexAlvarez | Diagrama Mermaid | UC02_secuencia.mmd | team/alexAlvarez/docs/07_diagramas/UC02_secuencia.mmd | Entregada |  |
-| T-207 | alexAlvarez | Diagrama Mermaid | UC03_estado.mmd | team/alexAlvarez/docs/07_diagramas/UC03_estado.mmd | Entregada |  |
-| T-208 | alexAlvarez | Diagrama Mermaid | UC03_secuencia.mmd | team/alexAlvarez/docs/07_diagramas/UC03_secuencia.mmd | Entregada |  |
-| T-209 | alexAlvarez | Diagrama Mermaid | gantt.mmd | team/alexAlvarez/docs/07_diagramas/gantt.mmd | Entregada |  |
-| T-210 | alexAlvarez | Diagrama Mermaid | modelo_er.mmd | team/alexAlvarez/docs/07_diagramas/modelo_er.mmd | Entregada |  |
+| T-202 | alexAlvarez | Diagrama Mermaid | pie-010-cobertura-iso25010.mmd | team/alexAlvarez/docs/05_nfr/07_diagramas/pie-010-cobertura-iso25010.mmd | Entregada |  |
+| T-203 | alexAlvarez | Diagrama Mermaid | state-001-01-estado.mmd | team/alexAlvarez/docs/07_diagramas/state-001-01-estado.mmd | Entregada |  |
+| T-204 | alexAlvarez | Diagrama Mermaid | seq-001-01-secuencia.mmd | team/alexAlvarez/docs/07_diagramas/seq-001-01-secuencia.mmd | Entregada |  |
+| T-205 | alexAlvarez | Diagrama Mermaid | state-002-02-estado.mmd | team/alexAlvarez/docs/07_diagramas/state-002-02-estado.mmd | Entregada |  |
+| T-206 | alexAlvarez | Diagrama Mermaid | seq-002-02-secuencia.mmd | team/alexAlvarez/docs/07_diagramas/seq-002-02-secuencia.mmd | Entregada |  |
+| T-207 | alexAlvarez | Diagrama Mermaid | state-003-03-estado.mmd | team/alexAlvarez/docs/07_diagramas/state-003-03-estado.mmd | Entregada |  |
+| T-208 | alexAlvarez | Diagrama Mermaid | seq-003-03-secuencia.mmd | team/alexAlvarez/docs/07_diagramas/seq-003-03-secuencia.mmd | Entregada |  |
+| T-209 | alexAlvarez | Diagrama Mermaid | gantt-005-diagrama.mmd | team/alexAlvarez/docs/07_diagramas/gantt-005-diagrama.mmd | Entregada |  |
+| T-210 | alexAlvarez | Diagrama Mermaid | er-006-diagrama.mmd | team/alexAlvarez/docs/07_diagramas/er-006-diagrama.mmd | Entregada |  |
 | T-211 | alexAlvarez | Prompt-contrato | PC-SIG-03-generador-prd.prompt 6elem+invariants | team/alexAlvarez/docs/06_prompt_contracts/PC-SIG-03-generador-prd.prompt.md | Entregada |  |
 | T-212 | alexAlvarez | Prompt-contrato | PC-SIG-04-v2-consolidacion-maestra.prompt 6elem+invariants | team/alexAlvarez/docs/06_prompt_contracts/PC-SIG-04-v2-consolidacion-maestra.prompt.md | Entregada |  |
 | T-213 | alexAlvarez | Prompt-contrato | PC-SIG-07-compilador-ecosistema-agentico.prompt 6elem+invariants | team/alexAlvarez/docs/06_prompt_contracts/PC-SIG-07-compilador-ecosistema-agentico.prompt.md | Entregada |  |
@@ -517,15 +517,15 @@ Ver `templates/APORTES_TEMPLATE.md`, `docs/10_aportes/APORTES_RELEASE_1.0.0.md` 
 | T-203 | aylenGonzales | LFSD seccion | LFSD_v1 seccion §8 | 05_lfsd/LFSD_v1_aylen.md | Entregada |  |
 | T-204 | aylenGonzales | LFSD seccion | LFSD_v1 seccion §9 | 05_lfsd/LFSD_v1_aylen.md | Entregada |  |
 | T-205 | aylenGonzales | LFSD seccion | LFSD_v1 seccion §10 | 05_lfsd/LFSD_v1_aylen.md | Entregada |  |
-| T-206 | aylenGonzales | Diagrama Mermaid | ER nucleo | 07_diagramas/diagrama-er-001.mmd | Entregada |  |
-| T-207 | aylenGonzales | Diagrama Mermaid | ER dominio negocio | 07_diagramas/diagrama-er-dominio-negocio.mmd | Entregada | 156 líneas; vista conceptual DUEA |
-| T-208 | aylenGonzales | Diagrama Mermaid | Gantt release | 07_diagramas/diagrama-gantt-release.mmd | Entregada |  |
-| T-209 | aylenGonzales | Diagrama Mermaid | Gantt sprint | 07_diagramas/diagrama-gantt-sprint.mmd | Entregada |  |
-| T-210 | aylenGonzales | Diagrama Mermaid | Secuencia aprobacion | 07_diagramas/seq-002-flujo-aprobacion.mmd | Entregada | 46 líneas; FSD-UC-003 |
-| T-211 | aylenGonzales | Diagrama Mermaid | Secuencia auth | 07_diagramas/seq-003-autenticacion-jwt.mmd | Entregada | 62 líneas; FSD-UC-001 |
-| T-212 | aylenGonzales | Diagrama Mermaid | Estado evidencia | 07_diagramas/state-flujo-001-ciclo-vida-evidencia.mmd | Entregada | 27 líneas; FSD-UC-002 |
-| T-213 | aylenGonzales | Diagrama Mermaid | Estado proceso | 07_diagramas/state-flujo-002-ciclo-vida-proceso-acreditacion.mmd | Entregada | 41 líneas; UC-003/010 |
-| T-214 | aylenGonzales | Diagrama Mermaid | Secuencia versionado | 07_diagramas/seq-001-versionado-evidencias.mmd | Entregada | 37 líneas; FSD-UC-002 |
+| T-206 | aylenGonzales | Diagrama Mermaid | ER nucleo | 07_diagramas/er-001-001.mmd | Entregada |  |
+| T-207 | aylenGonzales | Diagrama Mermaid | ER dominio negocio | 07_diagramas/er-005-negocio.mmd | Entregada | 156 líneas; vista conceptual DUEA |
+| T-208 | aylenGonzales | Diagrama Mermaid | Gantt release | 07_diagramas/gantt-002-diagrama.mmd | Entregada |  |
+| T-209 | aylenGonzales | Diagrama Mermaid | Gantt sprint | 07_diagramas/gantt-004-diagrama.mmd | Entregada |  |
+| T-210 | aylenGonzales | Diagrama Mermaid | Secuencia aprobacion | 07_diagramas/seq-002-002-flujo-aprobacion.mmd | Entregada | 46 líneas; FSD-UC-003 |
+| T-211 | aylenGonzales | Diagrama Mermaid | Secuencia auth | 07_diagramas/seq-003-003-autenticacion-jwt.mmd | Entregada | 62 líneas; FSD-UC-001 |
+| T-212 | aylenGonzales | Diagrama Mermaid | Estado evidencia | 07_diagramas/state-001-001-ciclo-vida-evidencia-v2.mmd | Entregada | 27 líneas; FSD-UC-002 |
+| T-213 | aylenGonzales | Diagrama Mermaid | Estado proceso | 07_diagramas/state-002-002-ciclo-vida-proceso-acreditacion.mmd | Entregada | 41 líneas; UC-003/010 |
+| T-214 | aylenGonzales | Diagrama Mermaid | Secuencia versionado | 07_diagramas/seq-001-001-versionado-evidencias.mmd | Entregada | 37 líneas; FSD-UC-002 |
 | T-215 | aylenGonzales | Skill propio | validate_domain_rules | 10_agents/skills/skill_validate_domain_rules.md | Entregada |  |
 | T-216 | aylenGonzales | Skill propio | detect_spec_gaps | 10_agents/skills/skill_detect_spec_gaps.md | Entregada |  |
 | T-217 | aylenGonzales | Skill propio | sync_traceability_matrix | 10_agents/skills/skill_sync_traceability_matrix.md | Entregada |  |
@@ -543,17 +543,17 @@ Ver `templates/APORTES_TEMPLATE.md`, `docs/10_aportes/APORTES_RELEASE_1.0.0.md` 
 | T-229 | aylenGonzales | Contexto | vision negocio v2 | 00_context/02_vision_negocio_v2.md | Entregada |  |
 | T-230 | aylenGonzales | POC propuesta | POC-01 append-only evidencia | 11_pocs/POC-01/README.md | Entregada | §1–§8 completos |
 | T-231 | aylenGonzales | POC propuesta | POC-02 FTS PostgreSQL | 11_pocs/POC-02/README.md | Entregada | §1–§8 completos |
-| T-232 | aylenGonzales | Diagrama Mermaid | AYL-SEQ-004-dashboard-semaforos.mmd | 07_diagramas/AYL-SEQ-004-dashboard-semaforos.mmd | Entregada | FSD-UC-004 |
-| T-233 | aylenGonzales | Diagrama Mermaid | AYL-SEQ-005-reporte-pdf-async.mmd | 07_diagramas/AYL-SEQ-005-reporte-pdf-async.mmd | Entregada | FSD-UC-005 |
-| T-234 | aylenGonzales | Diagrama Mermaid | AYL-SEQ-006-notificaciones-smtp.mmd | 07_diagramas/AYL-SEQ-006-notificaciones-smtp.mmd | Entregada | FSD-UC-006 |
-| T-235 | aylenGonzales | Diagrama Mermaid | AYL-SEQ-007-busqueda-fts.mmd | 07_diagramas/AYL-SEQ-007-busqueda-fts.mmd | Entregada | FSD-UC-007 |
-| T-236 | aylenGonzales | Diagrama Mermaid | AYL-SEQ-008-portal-publico.mmd | 07_diagramas/AYL-SEQ-008-portal-publico.mmd | Entregada | FSD-UC-008 |
-| T-237 | aylenGonzales | Diagrama Mermaid | AYL-SEQ-009-certificados.mmd | 07_diagramas/AYL-SEQ-009-certificados.mmd | Entregada | FSD-UC-009 |
-| T-238 | aylenGonzales | Diagrama Mermaid | AYL-SEQ-010-respaldo-diario.mmd | 07_diagramas/AYL-SEQ-010-respaldo-diario.mmd | Entregada | FSD-UC-010 |
-| T-239 | aylenGonzales | Diagrama Mermaid | AYL-SEQ-011-proceso-unico-carrera.mmd | 07_diagramas/AYL-SEQ-011-proceso-unico-carrera.mmd | Entregada | FSD-UC-011 |
-| T-240 | aylenGonzales | Diagrama Mermaid | Completar seq-002 (cerrado) | 07_diagramas/seq-002-flujo-aprobacion.mmd | Entregada | Duplicado lógico T-210 |
-| T-241 | aylenGonzales | Diagrama Mermaid | Completar seq-001 (cerrado) | 07_diagramas/seq-001-versionado-evidencias.mmd | Entregada | Duplicado lógico T-214 |
-| T-242 | aylenGonzales | Diagrama Mermaid | Gantt roadmap .mmd | 07_diagramas/diagrama-gantt-roadmap.mmd | Entregada | 42 líneas; canónico (sin `.mdd` duplicado) |
+| T-232 | aylenGonzales | Diagrama Mermaid | seq-004-004-dashboard-semaforos.mmd | 07_diagramas/seq-004-004-dashboard-semaforos.mmd | Entregada | FSD-UC-004 |
+| T-233 | aylenGonzales | Diagrama Mermaid | seq-005-005-reporte-pdf-async.mmd | 07_diagramas/seq-005-005-reporte-pdf-async.mmd | Entregada | FSD-UC-005 |
+| T-234 | aylenGonzales | Diagrama Mermaid | seq-006-006-notificaciones-smtp.mmd | 07_diagramas/seq-006-006-notificaciones-smtp.mmd | Entregada | FSD-UC-006 |
+| T-235 | aylenGonzales | Diagrama Mermaid | seq-007-007-busqueda-fts.mmd | 07_diagramas/seq-007-007-busqueda-fts.mmd | Entregada | FSD-UC-007 |
+| T-236 | aylenGonzales | Diagrama Mermaid | seq-008-008-portal-publico.mmd | 07_diagramas/seq-008-008-portal-publico.mmd | Entregada | FSD-UC-008 |
+| T-237 | aylenGonzales | Diagrama Mermaid | seq-009-009-certificados.mmd | 07_diagramas/seq-009-009-certificados.mmd | Entregada | FSD-UC-009 |
+| T-238 | aylenGonzales | Diagrama Mermaid | seq-010-010-respaldo-diario.mmd | 07_diagramas/seq-010-010-respaldo-diario.mmd | Entregada | FSD-UC-010 |
+| T-239 | aylenGonzales | Diagrama Mermaid | seq-011-011-proceso-unico-carrera.mmd | 07_diagramas/seq-011-011-proceso-unico-carrera.mmd | Entregada | FSD-UC-011 |
+| T-240 | aylenGonzales | Diagrama Mermaid | Completar seq-002 (cerrado) | 07_diagramas/seq-002-002-flujo-aprobacion.mmd | Entregada | Duplicado lógico T-210 |
+| T-241 | aylenGonzales | Diagrama Mermaid | Completar seq-001 (cerrado) | 07_diagramas/seq-001-001-versionado-evidencias.mmd | Entregada | Duplicado lógico T-214 |
+| T-242 | aylenGonzales | Diagrama Mermaid | Gantt roadmap .mmd | 07_diagramas/gantt-003-diagrama.mmd | Entregada | 42 líneas; canónico (sin `.mdd` duplicado) |
 | T-243 | aylenGonzales | Diagrama Mermaid | README índice UC-diagrama | 07_diagramas/README.md | Entregada | 11/11 UC mapeados |
 | T-244 | aylenGonzales | Prompt-contrato | PC-005-reporte-pdf.prompt.md | 06_prompt_contracts/PC-005-reporte-pdf.prompt.md | Entregada | + ref. `prompt-contracts.md` |
 | T-245 | aylenGonzales | Prompt-contrato | PC-006-notificaciones.prompt.md | 06_prompt_contracts/PC-006-notificaciones.prompt.md | Entregada |  |
@@ -739,17 +739,17 @@ Ver `templates/APORTES_TEMPLATE.md`, `docs/10_aportes/APORTES_RELEASE_1.0.0.md` 
 | T-165 | borisAngulo | FSD | 7. Trazabilidad (MRD → PRD → FSD → LFSD)  / MRD ( | team/borisAngulo/docs/05_lfsd/LFSD_v1.md | Entregada |  |
 | T-166 | borisAngulo | FSD | 8. Riesgos fu | team/borisAngulo/docs/05_lfsd/LFSD_v1.md | Entregada |  |
 | T-167 | borisAngulo | FSD | Checklist de e | team/borisAngulo/docs/05_lfsd/LFSD_v1.md | Entregada |  |
-| T-168 | borisAngulo | Diagrama | diag-01-seq-autenticacion.mmd | team/borisAngulo/docs/07_diagramas/diag-01-seq-autenticacion.mmd | Entregada |  |
-| T-169 | borisAngulo | Diagrama | diag-02-seq-evidencias.mmd | team/borisAngulo/docs/07_diagramas/diag-02-seq-evidencias.mmd | Entregada |  |
-| T-170 | borisAngulo | Diagrama | diag-03-seq-observaciones.mmd | team/borisAngulo/docs/07_diagramas/diag-03-seq-observaciones.mmd | Entregada |  |
-| T-171 | borisAngulo | Diagrama | diag-04a-state-proceso.mmd | team/borisAngulo/docs/07_diagramas/diag-04a-state-proceso.mmd | Entregada |  |
-| T-172 | borisAngulo | Diagrama | diag-04b-state-obs-evidencia.mmd | team/borisAngulo/docs/07_diagramas/diag-04b-state-obs-evidencia.mmd | Entregada |  |
-| T-173 | borisAngulo | Diagrama | diag-05-er-modelo-datos.mmd | team/borisAngulo/docs/07_diagramas/diag-05-er-modelo-datos.mmd | Entregada |  |
-| T-174 | borisAngulo | Diagrama | diag-06a-gantt-ciclo-acreditacion.mmd | team/borisAngulo/docs/07_diagramas/diag-06a-gantt-ciclo-acreditacion.mmd | Entregada |  |
-| T-175 | borisAngulo | Diagrama | diag-07-c4-contenedores-sistema.mmd | team/borisAngulo/docs/07_diagramas/diag-07-c4-contenedores-sistema.mmd | Entregada |  |
-| T-176 | borisAngulo | Diagrama | diag-08-flow-cierre-proceso-pendientes.mmd | team/borisAngulo/docs/07_diagramas/diag-08-flow-cierre-proceso-pendientes.mmd | Entregada |  |
-| T-177 | borisAngulo | Diagrama | diag-09-class-dominio-agregados.mmd | team/borisAngulo/docs/07_diagramas/diag-09-class-dominio-agregados.mmd | Entregada |  |
-| T-178 | borisAngulo | Diagrama | diag-10-pie-cobertura-nfr-iso25010.mmd | team/borisAngulo/docs/07_diagramas/diag-10-pie-cobertura-nfr-iso25010.mmd | Entregada |  |
+| T-168 | borisAngulo | Diagrama | seq-001-01-autenticacion.mmd | team/borisAngulo/docs/07_diagramas/seq-001-01-autenticacion.mmd | Entregada |  |
+| T-169 | borisAngulo | Diagrama | seq-002-02-evidencias.mmd | team/borisAngulo/docs/07_diagramas/seq-002-02-evidencias.mmd | Entregada |  |
+| T-170 | borisAngulo | Diagrama | seq-003-03-observaciones.mmd | team/borisAngulo/docs/07_diagramas/seq-003-03-observaciones.mmd | Entregada |  |
+| T-171 | borisAngulo | Diagrama | state-002-04a-proceso.mmd | team/borisAngulo/docs/07_diagramas/state-002-04a-proceso.mmd | Entregada |  |
+| T-172 | borisAngulo | Diagrama | state-003-04b-obs-evidencia.mmd | team/borisAngulo/docs/07_diagramas/state-003-04b-obs-evidencia.mmd | Entregada |  |
+| T-173 | borisAngulo | Diagrama | er-005-05-modelo-datos.mmd | team/borisAngulo/docs/07_diagramas/er-005-05-modelo-datos.mmd | Entregada |  |
+| T-174 | borisAngulo | Diagrama | gantt-001-06a-ciclo-acreditacion.mmd | team/borisAngulo/docs/07_diagramas/gantt-001-06a-ciclo-acreditacion.mmd | Entregada |  |
+| T-175 | borisAngulo | Diagrama | c4-007-07-contenedores-sistema.mmd | team/borisAngulo/docs/07_diagramas/c4-007-07-contenedores-sistema.mmd | Entregada |  |
+| T-176 | borisAngulo | Diagrama | flow-008-08-cierre-proceso-pendientes.mmd | team/borisAngulo/docs/07_diagramas/flow-008-08-cierre-proceso-pendientes.mmd | Entregada |  |
+| T-177 | borisAngulo | Diagrama | class-009-09-dominio-agregados.mmd | team/borisAngulo/docs/07_diagramas/class-009-09-dominio-agregados.mmd | Entregada |  |
+| T-178 | borisAngulo | Diagrama | pie-010-10-pie-cobertura-nfr-iso25010.mmd | team/borisAngulo/docs/07_diagramas/pie-010-10-pie-cobertura-nfr-iso25010.mmd | Entregada |  |
 | T-179 | borisAngulo | Otro | trazabilidad-sigesa.md | team/borisAngulo/docs/08_trazabilidad/trazabilidad-sigesa.md | Entregada |  |
 | T-180 | borisAngulo | FSD | 0. Metadatos  / Campo / Valor / /-------/-------/ / Producto / SIG | team/borisAngulo/docs/09_dti/DTI_v1.md | Entregada |  |
 | T-181 | borisAngulo | FSD | 1. Visió | team/borisAngulo/docs/09_dti/DTI_v1.md | Entregada |  |
@@ -927,24 +927,24 @@ Ver `templates/APORTES_TEMPLATE.md`, `docs/10_aportes/APORTES_RELEASE_1.0.0.md` 
 | T-152 | Marlene | NFR ISO 25010 | NFR-POR-01 metrica+umbral+verificacion | 06_prompt_contracts/NFR.md | Entregada |  |
 | T-153 | Marlene | User journey | J-01 Cierre evidencia CEUB | 03_prd/PRD.md §11.1 | Entregada |  |
 | T-154 | Marlene | User journey | J-02 Transparencia empleador | 03_prd/PRD.md §11.2 | Entregada |  |
-| T-155 | Marlene | Diagrama Mermaid | MAR-SEQ-001-autenticacion-jwt.mmd | 07_diagramas/MAR-SEQ-001-autenticacion-jwt.mmd | Entregada | Oficial MAR |
-| T-156 | Marlene | Diagrama Mermaid | MAR-SEQ-002-carga-evidencia-versionada.mmd | 07_diagramas/MAR-SEQ-002-carga-evidencia-versionada.mmd | Entregada | Oficial MAR |
-| T-157 | Marlene | Diagrama Mermaid | MAR-SEQ-003-aprobacion-rechazo-subfase.mmd | 07_diagramas/MAR-SEQ-003-aprobacion-rechazo-subfase.mmd | Entregada | Oficial MAR |
-| T-158 | Marlene | Diagrama Mermaid | MAR-SEQ-004-dashboard-drilldown.mmd | 07_diagramas/MAR-SEQ-004-dashboard-drilldown.mmd | Entregada | Oficial MAR |
-| T-159 | Marlene | Diagrama Mermaid | MAR-SEQ-005-reporte-pdf-asincrono.mmd | 07_diagramas/MAR-SEQ-005-reporte-pdf-asincrono.mmd | Entregada | Oficial MAR |
-| T-160 | Marlene | Diagrama Mermaid | MAR-SEQ-006-notificaciones-outbox-smtp.mmd | 07_diagramas/MAR-SEQ-006-notificaciones-outbox-smtp.mmd | Entregada | Oficial MAR |
-| T-161 | Marlene | Diagrama Mermaid | MAR-SEQ-007-busqueda-fts-multifiltro.mmd | 07_diagramas/MAR-SEQ-007-busqueda-fts-multifiltro.mmd | Entregada | Oficial MAR |
-| T-162 | Marlene | Diagrama Mermaid | MAR-SEQ-008-portal-publico-consulta.mmd | 07_diagramas/MAR-SEQ-008-portal-publico-consulta.mmd | Entregada | Oficial MAR |
-| T-163 | Marlene | Diagrama Mermaid | MAR-SEQ-009-auditoria-exportacion.mmd | 07_diagramas/MAR-SEQ-009-auditoria-exportacion.mmd | Entregada | Oficial MAR |
-| T-164 | Marlene | Diagrama Mermaid | MAR-SEQ-010-configuracion-proceso-normativa.mmd | 07_diagramas/MAR-SEQ-010-configuracion-proceso-normativa.mmd | Entregada | Oficial MAR |
-| T-165 | Marlene | Diagrama Mermaid | MAR-SEQ-011-supervision-respaldos.mmd | 07_diagramas/MAR-SEQ-011-supervision-respaldos.mmd | Entregada | Oficial MAR |
-| T-166 | Marlene | Diagrama Mermaid | MAR-STA-001-ciclo-vida-evidencia.mmd | 07_diagramas/MAR-STA-001-ciclo-vida-evidencia.mmd | Entregada | Oficial MAR |
-| T-167 | Marlene | Diagrama Mermaid | MAR-STA-002-ciclo-proceso-acreditacion.mmd | 07_diagramas/MAR-STA-002-ciclo-proceso-acreditacion.mmd | Entregada | Oficial MAR |
-| T-168 | Marlene | Diagrama Mermaid | MAR-STA-003-ciclo-plan-mejora.mmd | 07_diagramas/MAR-STA-003-ciclo-plan-mejora.mmd | Entregada | Oficial MAR |
-| T-169 | Marlene | Diagrama Mermaid | MAR-ER-001-modelo-datos-nucleo.mmd | 07_diagramas/MAR-ER-001-modelo-datos-nucleo.mmd | Entregada | Oficial MAR |
-| T-170 | Marlene | Diagrama Mermaid | MAR-ER-002-dominio-auditoria-evidencia.mmd | 07_diagramas/MAR-ER-002-dominio-auditoria-evidencia.mmd | Entregada | Oficial MAR |
-| T-171 | Marlene | Diagrama Mermaid | MAR-GANTT-001-roadmap-implementacion-sigesa.mmd | 07_diagramas/MAR-GANTT-001-roadmap-implementacion-sigesa.mmd | Entregada | Oficial MAR |
-| T-172 | Marlene | Diagrama Mermaid | MAR-GANTT-002-cronograma-convocatoria-ceub.mmd | 07_diagramas/MAR-GANTT-002-cronograma-convocatoria-ceub.mmd | Entregada | Oficial MAR |
+| T-155 | Marlene | Diagrama Mermaid | seq-001-001-autenticacion-jwt.mmd | 07_diagramas/seq-001-001-autenticacion-jwt.mmd | Entregada | Oficial MAR |
+| T-156 | Marlene | Diagrama Mermaid | seq-002-002-carga-evidencia-versionada.mmd | 07_diagramas/seq-002-002-carga-evidencia-versionada.mmd | Entregada | Oficial MAR |
+| T-157 | Marlene | Diagrama Mermaid | seq-003-003-aprobacion-rechazo-subfase.mmd | 07_diagramas/seq-003-003-aprobacion-rechazo-subfase.mmd | Entregada | Oficial MAR |
+| T-158 | Marlene | Diagrama Mermaid | seq-004-004-dashboard-drilldown.mmd | 07_diagramas/seq-004-004-dashboard-drilldown.mmd | Entregada | Oficial MAR |
+| T-159 | Marlene | Diagrama Mermaid | seq-005-005-reporte-pdf-asincrono.mmd | 07_diagramas/seq-005-005-reporte-pdf-asincrono.mmd | Entregada | Oficial MAR |
+| T-160 | Marlene | Diagrama Mermaid | seq-006-006-notificaciones-outbox-smtp.mmd | 07_diagramas/seq-006-006-notificaciones-outbox-smtp.mmd | Entregada | Oficial MAR |
+| T-161 | Marlene | Diagrama Mermaid | seq-007-007-busqueda-fts-multifiltro.mmd | 07_diagramas/seq-007-007-busqueda-fts-multifiltro.mmd | Entregada | Oficial MAR |
+| T-162 | Marlene | Diagrama Mermaid | seq-008-008-portal-publico-consulta.mmd | 07_diagramas/seq-008-008-portal-publico-consulta.mmd | Entregada | Oficial MAR |
+| T-163 | Marlene | Diagrama Mermaid | seq-009-009-auditoria-exportacion.mmd | 07_diagramas/seq-009-009-auditoria-exportacion.mmd | Entregada | Oficial MAR |
+| T-164 | Marlene | Diagrama Mermaid | seq-010-010-configuracion-proceso-normativa.mmd | 07_diagramas/seq-010-010-configuracion-proceso-normativa.mmd | Entregada | Oficial MAR |
+| T-165 | Marlene | Diagrama Mermaid | seq-011-011-supervision-respaldos.mmd | 07_diagramas/seq-011-011-supervision-respaldos.mmd | Entregada | Oficial MAR |
+| T-166 | Marlene | Diagrama Mermaid | state-001-001-ciclo-vida-evidencia.mmd | 07_diagramas/state-001-001-ciclo-vida-evidencia.mmd | Entregada | Oficial MAR |
+| T-167 | Marlene | Diagrama Mermaid | state-002-002-ciclo-proceso-acreditacion.mmd | 07_diagramas/state-002-002-ciclo-proceso-acreditacion.mmd | Entregada | Oficial MAR |
+| T-168 | Marlene | Diagrama Mermaid | state-003-003-ciclo-plan-mejora.mmd | 07_diagramas/state-003-003-ciclo-plan-mejora.mmd | Entregada | Oficial MAR |
+| T-169 | Marlene | Diagrama Mermaid | er-001-001-modelo-datos-nucleo.mmd | 07_diagramas/er-001-001-modelo-datos-nucleo.mmd | Entregada | Oficial MAR |
+| T-170 | Marlene | Diagrama Mermaid | er-002-002-dominio-auditoria-evidencia.mmd | 07_diagramas/er-002-002-dominio-auditoria-evidencia.mmd | Entregada | Oficial MAR |
+| T-171 | Marlene | Diagrama Mermaid | gantt-001-001-roadmap-implementacion-sigesa.mmd | 07_diagramas/gantt-001-001-roadmap-implementacion-sigesa.mmd | Entregada | Oficial MAR |
+| T-172 | Marlene | Diagrama Mermaid | gantt-002-002-cronograma-convocatoria-ceub.mmd | 07_diagramas/gantt-002-002-cronograma-convocatoria-ceub.mmd | Entregada | Oficial MAR |
 | T-173 | Marlene | User story | PRD-US-001 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
 | T-174 | Marlene | User story | PRD-US-002 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
 | T-175 | Marlene | User story | PRD-US-003 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |

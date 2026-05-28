@@ -9,7 +9,7 @@ Carpeta **oficial** de artefactos `.mmd` para la documentación Dorada en `docs/
 | Fuente editable | Archivos **reales** solo en `docs/07_diagramas/` |
 | Vistas por documento | `docs/XX_*/07_diagramas/*.mmd` → `../../07_diagramas/<nombre>.mmd` |
 | Equipo | `team/*/07_diagramas/*.mmd` → `../../../../docs/07_diagramas/<nombre>.mmd` (mismo contenido) |
-| Alias | Nombres orientados a PRD/MRD/FSD (ej. `FSD-UC-001_autenticacion_secuencia.mmd`) apuntan al `.mmd` base (ej. `diag-01-seq-autenticacion.mmd`) |
+| Alias | Nombres orientados a PRD/MRD/FSD (ej. `seq-001-001-autenticacion-secuencia.mmd`) apuntan al `.mmd` base (ej. `seq-001-01-autenticacion.mmd`) |
 
 ## Índice por familia
 
@@ -17,15 +17,15 @@ Carpeta **oficial** de artefactos `.mmd` para la documentación Dorada en `docs/
 
 | Archivo (alias o base) | FSD-UC / uso | Origen equipo |
 |------------------------|--------------|---------------|
-| `FSD-UC-001_autenticacion_secuencia.mmd` | UC-001 | Boris `diag-01-seq-autenticacion.mmd` |
-| `FSD-UC-003_010_proceso_y_cierre_fase_secuencia.mmd` | UC-003, UC-010 | Alex `UC03_secuencia.mmd` |
-| `FSD-UC-004_008_carga_y_observacion_secuencia.mmd` | UC-004, UC-008 | Alex `UC02_secuencia.mmd` |
-| `FSD-UC-004_005_estados_evidencia.mmd` | UC-004, UC-005 | Alex `UC02_estado.mmd` |
-| `FSD-UC-006_subsanar_evidencia_secuencia.mmd` | UC-006 | Alex `UC01_secuencia.mmd` |
-| `FSD-UC-006_008_009_estados_indicador.mmd` | UC-006, UC-008, UC-009 | Alex `UC01_estado.mmd` |
-| `FSD-UC-010_cierre_fase_estados.mmd` | UC-010 | Alex `UC03_estado.mmd` |
-| `FSD-UC_modelo_er_funcional.mmd` | Modelo funcional | Alex `modelo_er.mmd` |
-| `FSD-UC_modelo_er_fisico.mmd` | Modelo físico / DTI | Boris `diag-05-er-modelo-datos.mmd` |
+| `seq-001-001-autenticacion-secuencia.mmd` | UC-001 | Boris `seq-001-01-autenticacion.mmd` |
+| `seq-003-003-010-proceso-y-cierre-fase-secuencia.mmd` | UC-003, UC-010 | Alex `seq-003-03-secuencia.mmd` |
+| `seq-004-004-008-carga-y-observacion-secuencia.mmd` | UC-004, UC-008 | Alex `seq-002-02-secuencia.mmd` |
+| `state-004-004-005-estados-evidencia.mmd` | UC-004, UC-005 | Alex `state-002-02-estado.mmd` |
+| `seq-006-006-subsanar-evidencia-secuencia.mmd` | UC-006 | Alex `seq-001-01-secuencia.mmd` |
+| `state-006-006-008-009-estados-indicador.mmd` | UC-006, UC-008, UC-009 | Alex `state-001-01-estado.mmd` |
+| `state-010-010-cierre-fase-estados.mmd` | UC-010 | Alex `state-003-03-estado.mmd` |
+| `er-002-modelo-funcional.mmd` | Modelo funcional | Alex `er-006-diagrama.mmd` |
+| `er-001-modelo-fisico.mmd` | Modelo físico / DTI | Boris `er-005-05-modelo-datos.mmd` |
 | `diag-01` … `diag-10` | Arquitectura, estados, NFR | Boris |
 | `seq-001` … `seq-003`, `state-flujo-*` | Secuencias Aylen | aylenGonzales |
 | `AYL-SEQ-*` | UC extendidos Aylen | aylenGonzales |
@@ -34,27 +34,27 @@ Carpeta **oficial** de artefactos `.mmd` para la documentación Dorada en `docs/
 
 | Archivo | Uso |
 |---------|-----|
-| `gantt_roadmap_2026_2027.mmd` | Roadmap producto |
-| `gantt_release_producto.mmd` | Releases v1.0 / v1.1 |
-| `gantt_sprint_equipo.mmd` | Sprint equipo |
-| `gantt_ciclo_acreditacion_institucional.mmd` | Ciclo CEUB/ARCU-SUR |
+| `gantt-026-roadmap-2026-2027.mmd` | Roadmap producto |
+| `gantt-007-release-producto.mmd` | Releases v1.0 / v1.1 |
+| `gantt-008-sprint-equipo.mmd` | Sprint equipo |
+| `gantt-006-ciclo-acreditacion-institucional.mmd` | Ciclo CEUB/ARCU-SUR |
 | `PRD_journey_CC_subsanacion_*.mmd` | User journey [CC] |
-| `PRD_journey_TD_cierre_fase_secuencia.mmd` | User journey [TD] |
+| `seq-002-journey-td-cierre-fase-secuencia.mmd` | User journey [TD] |
 
 ### MRD
 
 | Archivo | Uso |
 |---------|-----|
-| `MRD_dominio_negocio_er.mmd` | Dominio negocio |
-| `MRD_contexto_entidades.mmd` | Contexto entidades |
-| `MRD_cobertura_nfr_mercado.mmd` | Cobertura NFR mercado |
+| `er-004-dominio-negocio.mmd` | Dominio negocio |
+| `er-003-contexto-entidades.mmd` | Contexto entidades |
+| `pie-001-cobertura-nfr-mercado.mmd` | Cobertura NFR mercado |
 
 ### DTI — C4 (fuente única; enlazado desde `docs/05_dti/DTI.md` §2)
 
 | Archivo | Nivel | Uso |
 |---------|-------|-----|
-| `diag-06-c4-contexto-sistema.mmd` | C4-1 Contexto | Actores [CC]/[TD]/[JD]/[P], SIGESA, SMTP, CEUB |
-| `diag-07-c4-contenedores-sistema.mmd` | C4-2 Contenedores | Stack Dorada v1.0 (React 18, Node 20, PostgreSQL 16, volumen Docker) |
+| `c4-006-06-contexto-sistema.mmd` | C4-1 Contexto | Actores [CC]/[TD]/[JD]/[P], SIGESA, SMTP, CEUB |
+| `c4-007-07-contenedores-sistema.mmd` | C4-2 Contenedores | Stack Dorada v1.0 (React 18, Node 20, PostgreSQL 16, volumen Docker) |
 
 ### Marlene (`MAR-*`, `D-*`)
 
@@ -64,7 +64,7 @@ Diagramas de módulo Marlene (ER, secuencias, Gantt, estados). Prefijos `MAR-` e
 
 | Archivo | Uso |
 |---------|-----|
-| `nfr_cobertura_iso25010.mmd` | Cobertura ISO 25010 (Alex NFR) |
+| `pie-010-cobertura-iso25010.mmd` | Cobertura ISO 25010 (Alex NFR) |
 
 ## Mantenimiento
 

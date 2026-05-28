@@ -46,7 +46,7 @@
 | Adecuación funcional / dominio | NFR-016, NFR-018 | Crítica (gate) |
 | Cumplimiento | NFR-019 | Ley 164 UMSS |
 
-Diagrama de distribución: [`07_diagramas/nfr_cobertura_iso25010.mmd`](07_diagramas/nfr_cobertura_iso25010.mmd)
+Diagrama de distribución: [`07_diagramas/pie-010-cobertura-iso25010.mmd`](07_diagramas/pie-010-cobertura-iso25010.mmd)
 
 ---
 
@@ -95,7 +95,7 @@ Puente con PRD §8 del equipo: ver [`matriz_cobertura.md`](matriz_cobertura.md).
 |-------|-------|
 | Actor | [TD] (búsqueda global) / [CC] (carrera propia) |
 | BRD | BRD-KPI-01 / objetivo PRD-OP-01 |
-| Diagrama | [`../07_diagramas/UC02_secuencia.mmd`](../07_diagramas/UC02_secuencia.mmd) (carga; búsqueda sin diagrama dedicado) |
+| Diagrama | [`../07_diagramas/seq-002-02-secuencia.mmd`](../07_diagramas/seq-002-02-secuencia.mmd) (carga; búsqueda sin diagrama dedicado) |
 
 ### NFR-017 — Inmutabilidad Evidencia
 
@@ -124,7 +124,7 @@ Escenario: Intento de eliminar Evidencia aprobada
 | TC-SAD-JUST | Rechazo sin justificación | `@TC-SAD-JUST` |
 | TC-SAD-APPROVE | [CC] no puede aprobar | `@TC-SAD-APPROVE` |
 
-Estados: [`../07_diagramas/UC01_estado.mmd`](../07_diagramas/UC01_estado.mmd), [`UC03_estado.mmd`](../07_diagramas/UC03_estado.mmd). Norma: [`../context/04_state_machine.md`](../context/04_state_machine.md).
+Estados: [`../07_diagramas/state-001-01-estado.mmd`](../07_diagramas/state-001-01-estado.mmd), [`state-003-03-estado.mmd`](../07_diagramas/state-003-03-estado.mmd). Norma: [`../context/04_state_machine.md`](../context/04_state_machine.md).
 
 ---
 

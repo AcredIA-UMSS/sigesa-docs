@@ -35,7 +35,7 @@ audience_default: humano+maquina
 | NFR | [`docs/05_nfr/NFR_ISO25010.md`](../05_nfr/NFR_ISO25010.md) |
 | Glosario | [`context/03_domain_glossary.md`](../../context/03_domain_glossary.md) |
 | Máquina de estados | [`team/alexAlvarez/docs/context/04_state_machine.md`](../../team/alexAlvarez/docs/context/04_state_machine.md) |
-| **Diagramas C4 (fuente única)** | [`docs/07_diagramas/`](../07_diagramas/README.md) — [`diag-06-c4-contexto-sistema.mmd`](../07_diagramas/diag-06-c4-contexto-sistema.mmd) · [`diag-07-c4-contenedores-sistema.mmd`](../07_diagramas/diag-07-c4-contenedores-sistema.mmd) |
+| **Diagramas C4 (fuente única)** | [`docs/07_diagramas/`](../07_diagramas/README.md) — [`c4-006-06-contexto-sistema.mmd`](../07_diagramas/c4-006-06-contexto-sistema.mmd) · [`c4-007-07-contenedores-sistema.mmd`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) |
 
 ### Fuentes de trabajo equipo (consolidadas en esta versión)
 

@@ -35,7 +35,7 @@ journey
 
 Flujo técnico-normativo del bucle Fase 2; el sistema **no** elimina la **Evidencia** v1.
 
-**Diagrama canónico:** [`../07_diagramas/UC01_secuencia.mmd`](../07_diagramas/UC01_secuencia.mmd) · Estados: [`UC01_estado.mmd`](../07_diagramas/UC01_estado.mmd)
+**Diagrama canónico:** [`../07_diagramas/seq-001-01-secuencia.mmd`](../07_diagramas/seq-001-01-secuencia.mmd) · Estados: [`state-001-01-estado.mmd`](../07_diagramas/state-001-01-estado.mmd)
 
 ---
 
@@ -117,7 +117,7 @@ journey
 
 La **Jefatura DUEA** (o [TD] delegado) instancia el **Proceso**, selecciona modalidad **CEUB** o **ARCU-SUR** y activa el cronograma. El sistema materializa la taxonomía completa.
 
-**Diagrama canónico:** [`../07_diagramas/UC03_secuencia.mmd`](../07_diagramas/UC03_secuencia.mmd) (apertura + cierre de fase)
+**Diagrama canónico:** [`../07_diagramas/seq-003-03-secuencia.mmd`](../07_diagramas/seq-003-03-secuencia.mmd) (apertura + cierre de fase)
 
 ---
 
