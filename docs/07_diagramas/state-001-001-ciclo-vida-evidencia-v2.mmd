@@ -1,7 +1,9 @@
+---
+title: Estado Ciclo de Vida de una Evidencia SIGESA
+---
 stateDiagram-v2
-    title Estado - Ciclo de Vida de una Evidencia SIGESA
 
-    [*] --> PENDIENTE : Indicador creado en el sistema\n(sin evidencia cargada)
+    [*] --> PENDIENTE : Indicador creado en el sistema\nsin evidencia cargada
 
     PENDIENTE --> EN_REVISION : "(CC) carga Evidence valida\n(PDF/DOCX/XLSX max 50 MB)\nFSD-UC-001"
 
@@ -17,7 +19,7 @@ stateDiagram-v2
 
     RECHAZADO_JD --> EN_REVISION : "(CC) carga correccion\nFSD-UC-002"
 
-    APROBADO_FINAL --> [*] : Estado terminal — inmutable\nEvidence no puede eliminarse\nRBN-02 / RBN-07
+    APROBADO_FINAL --> [*] : Estado terminal inmutable\nEvidence no puede eliminarse\nRBN-02 RBN-07
 
     note right of EN_REVISION
         Notificacion a (TD) en 15 min
