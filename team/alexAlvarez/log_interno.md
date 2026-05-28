@@ -835,3 +835,15 @@ also keep in mind all the versions available of the brd for more context if need
 ## 2026-05-28T14:15:00-04:00 — Prompt usuario
 **Prompt:** No push; move changes to branch alex; fix frontend with sigesa-frontend-engineer (DTI UCs + Figma hi-fi); skip broken symlinks.
 **Acción:** Branch alex en sigesa-docs (submodules) y sigesa-front; CC/TD dashboards alineados Figma (ProcessOverview, observaciones UC-005/006, TdAppShell, búsqueda UC-007); lint/tsc OK; sin push.
+
+## 2026-05-28T14:25:00-04:00 — Prompt usuario
+**Prompt:** yes go ahead now push it to origin
+**Acción:** Push branch alex: sigesa-front (b09457a) y sigesa-docs (a772798) a origin/alex; tracking configurado.
+
+## 2026-05-28T14:35:00-04:00 — Prompt usuario
+**Prompt:** you didn't include the .env.example in frontend pls check that as well
+**Acción:** Añadido app/sigesa-front/.env.example (NEXT_PUBLIC_API_URL), excepción en .gitignore, push alex en sigesa-front y bump submodule en sigesa-docs.
+
+## 2026-05-28T16:00:00-04:00 — Prompt usuario
+**Prompt:** execute the plan (compose profiles, FE/BE alignment, DTI api_contracts_mvp_runtime, MVP happy+sad paths)
+**Acción:** Ejecutado: Docker profile full-stack; backend alex (dashboard status/description, observation indicatorId, dev-check); front alex (TD filter, description map); docs/05_dti/api_contracts_mvp_runtime.md; E2E H1–H9 + S1/S8/S9 OK.
