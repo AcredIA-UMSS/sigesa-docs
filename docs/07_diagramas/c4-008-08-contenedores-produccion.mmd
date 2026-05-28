@@ -1,0 +1,58 @@
+%% diagramId: D-C4-003
+%% dtiTrace: docs/05_dti/DTI.md §2 · docs/05_dti/hybrid_architecture.md §2–§3
+%% adrs: ADR-0010 ADR-0011 ADR-0013 ADR-0003 ADR-0007
+%% version: Target cloud v1.0 — referencia arquitectonica (no 100% en app/)
+%% runtimeMVP: c4-007-07-contenedores-sistema.mmd
+C4Container
+  title SIGESA — Contenedores target produccion (cloud v1.0)
+  Person(cc, "[CC] Coordinador de Carrera", "Carga y subsana Evidencia")
+  Person(td, "[TD] Tecnico DUEA", "Valida Indicadores y cierra Fases")
+  Person(jd, "[JD] Jefatura DUEA", "Plantillas, usuarios, reportes")
+  Person(pub, "[P] Publico", "Consulta publicacion sin login")
+
+  System_Boundary(sigesa, "SIGESA / AcredIA — cloud v1.0") {
+    Container(web, "Frontend SPA", "React / Next.js", "UI semaforo, evidencias, observaciones, portal")
+    Container(gw, "API Gateway", "Node.js + Express", "REST JWT RBAC; enrutamiento a servicios")
+    Container(ev, "Evidence Service", "Hexagonal", "Upload S3; publica EvidenceUploaded")
+    Container(audit, "Audit Service", "Hexagonal", "Dictamen TD; indicator_state_history append-only")
+    Container(notif, "Notification Service", "Worker + SMTP", "Consume EventBridge; circuit breaker SMTP")
+    Container(orch, "Orchestration Service", "Hexagonal", "SQS FIFO MessageGroupId=phaseId; PhaseCompleted")
+    Container(pdf, "Motor reportes PDF", "Modulo async", "FSD-UC-014 reporte ejecutivo [JD]")
+    ContainerDb(db, "PostgreSQL 16 / RDS", "Transaccional", "Append-only, FTS, audit_log")
+    ContainerDb(blob, "Amazon S3", "Object storage", "Blobs Evidence versionados SHA-256")
+    ContainerQueue(eb, "AWS EventBridge", "Event bus", "Coreografia EvidenceUploaded, IndicatorApproved, PhaseCompleted")
+    ContainerQueue(sqs, "SQS FIFO", "Cola por phaseId", "Serializa cierre concurrente de Phase")
+  }
+
+  System_Ext(idp, "Identidad UMSS", "SSO / LDAP — ADR-0003")
+  System_Ext(smtp, "SMTP institucional UMSS", "Notificaciones")
+  System_Ext(ceub, "CEUB / ARCU-SUR", "Marco normativo acreditacion")
+
+  Rel(cc, web, "HTTPS")
+  Rel(td, web, "HTTPS")
+  Rel(jd, web, "HTTPS")
+  Rel(pub, web, "HTTPS lectura")
+
+  Rel(web, gw, "JSON /api/v1")
+  Rel(gw, ev, "Evidences")
+  Rel(gw, audit, "Auth, audit, dashboard")
+
+  Rel(ev, blob, "S3 PutObject")
+  Rel(ev, db, "INSERT evidence_version")
+  Rel(ev, eb, "putEvents EvidenceUploaded")
+
+  Rel(eb, audit, "EvidenceUploaded / EvidenceSubsanated")
+  Rel(audit, db, "INSERT indicator_state_history")
+  Rel(audit, eb, "IndicatorApproved / IndicatorObserved")
+
+  Rel(eb, notif, "Fanout alertas")
+  Rel(notif, smtp, "SMTP async + circuit breaker")
+
+  Rel(eb, sqs, "IndicatorApproved enrutado")
+  Rel(sqs, orch, "Consume FIFO por phaseId")
+  Rel(orch, db, "INSERT phase_state_history")
+  Rel(orch, eb, "PhaseCompleted")
+
+  Rel(gw, idp, "Autentica JWT")
+  Rel(gw, pdf, "Solicita reporte")
+  Rel(audit, ceub, "Taxonomias y trazabilidad")

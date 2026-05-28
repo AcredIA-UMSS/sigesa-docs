@@ -1,18 +1,20 @@
 %% diagramId: D-C4-001
-%% dtiTrace: docs/05_dti/DTI.md §2.1
-%% version: Dorada v1.0 — fuente única C4 nivel 1
+%% dtiTrace: docs/05_dti/DTI.md §2.1 · docs/05_dti/hybrid_architecture.md §1
+%% adrs: ADR-0003 ADR-0007
+%% version: MVP-runtime v0.1 — actores CC + TD (implementado en app/)
+%% prodTarget: c4-008-08-contenedores-produccion.mmd (JD, P, SMTP, AWS)
 C4Context
-  title SIGESA — Diagrama de contexto v1.0
+  title SIGESA — Contexto MVP (CC + TD)
   Person(cc, "[CC] Coordinador de Carrera", "Carga y subsana Evidencia")
-  Person(td, "[TD] Tecnico DUEA", "Valida Indicadores y cierra Fases")
-  Person(jd, "[JD] Jefatura DUEA", "Plantillas, usuarios, reportes")
-  Person(pub, "[P] Publico", "Consulta publicacion sin login")
-  System(sigesa, "SIGESA / AcredIA", "Automatizacion acreditacion UMSS")
-  System_Ext(smtp, "SMTP institucional UMSS", "Notificaciones")
-  System_Ext(ceub, "CEUB / ARCU-SUR", "Marco normativo")
-  Rel(cc, sigesa, "HTTPS")
-  Rel(td, sigesa, "HTTPS")
-  Rel(jd, sigesa, "HTTPS")
-  Rel(pub, sigesa, "HTTPS lectura")
-  Rel(sigesa, smtp, "Envia alertas")
-  Rel(sigesa, ceub, "Cumple taxonomias y trazabilidad")
+  Person(td, "[TD] Tecnico DUEA", "Aprueba / observa Indicadores")
+
+  System(sigesa, "SIGESA / AcredIA", "MVP acreditacion UMSS — evidencias y dictamen TD")
+  System_Ext(idp, "Identidad UMSS", "Prod: SSO/LDAP (ADR-0003). Dev: AuthPort local @umss.edu.bo")
+  System_Ext(ceub, "CEUB / ARCU-SUR", "Marco normativo y taxonomias")
+
+  Rel(cc, sigesa, "HTTPS — upload, subsanacion, dashboard CC")
+  Rel(td, sigesa, "HTTPS — bandeja revision, approve/reject")
+  Rel(sigesa, idp, "JWT RBAC (ADR-0007)")
+  Rel(sigesa, ceub, "Plantillas e indicadores normativos")
+
+  %% Fuera de alcance MVP (v1.0 completo): [JD], [P], SMTP, reportes PDF — ver c4-008

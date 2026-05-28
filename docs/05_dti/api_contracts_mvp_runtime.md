@@ -245,13 +245,16 @@ Mode B: `npm run compose:full`.
 
 | [`c4-007-07-contenedores-sistema.mmd`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) | MVP Mode A (código) |
 |-------------------------------------------------------------------------------------------|---------------------|
-| Frontend SPA | `sigesa-front` :3000 |
-| API Backend (monolito Dorada) | **Gateway** + **Evidence** + **Audit** + **Orchestration** |
-| Volumen evidencias | MinIO S3 |
+| Frontend | `sigesa-front` Next.js 16 (:3000) — CC + TD |
+| API Gateway | `:8080` proxy único |
+| Evidence / Audit / Orchestration | `:3001` / `:3002` / `:3003` hexagonal |
+| Bus eventos dev | HTTP webhooks `POST /internal/events` (imita EventBridge) |
+| Object storage | MinIO (dev) / S3 (prod) — ADR-0013 |
 | PostgreSQL 16 | Docker `postgres` |
-| Worker notificaciones | **No implementado** — `NotificationBar` en UI |
+| Notification Service | **No implementado** — solo tabla `notification_outbox`; UI usa `NotificationBar` |
+| Target cloud completo | [`c4-008`](../07_diagramas/c4-008-08-contenedores-produccion.mmd) |
 
-Contexto [`c4-006`](../07_diagramas/c4-006-06-contexto-sistema.mmd): [CC] carga/subsana; [TD] valida — cubierto por rutas `/cc/fases/*` y `/td/indicators/*/review`.
+Contexto [`c4-006`](../07_diagramas/c4-006-06-contexto-sistema.mmd): solo [CC] y [TD] en MVP; auth `@umss.edu.bo` (dev) / LDAP prod (ADR-0003). Rutas `/cc/fases/*` y `/td/indicators/*/review`.
 
 ### 11.2 Secuencia canónica MVP (endpoints reales)
 

@@ -53,8 +53,9 @@ Carpeta **oficial** de artefactos `.mmd` para la documentación Dorada en `docs/
 
 | Archivo | Nivel | Uso |
 |---------|-------|-----|
-| `c4-006-06-contexto-sistema.mmd` | C4-1 Contexto | Actores [CC]/[TD]/[JD]/[P], SIGESA, SMTP, CEUB |
-| `c4-007-07-contenedores-sistema.mmd` | C4-2 Contenedores | Stack Dorada v1.0 (React 18, Node 20, PostgreSQL 16, volumen Docker) |
+| `c4-006-06-contexto-sistema.mmd` | C4-1 Contexto | MVP runtime: actores [CC]/[TD]; IdP UMSS (dev `@umss.edu.bo`) |
+| `c4-007-07-contenedores-sistema.mmd` | C4-2 Contenedores | **MVP implementado** — microservicios, MinIO/S3, eventos HTTP dev (`app/`) |
+| `c4-008-08-contenedores-produccion.mmd` | C4-2 Contenedores | **Target cloud v1.0** — EventBridge, SQS FIFO, Notification Service, [JD]/[P] |
 
 ### Marlene (`MAR-*`, `D-*`)
 
@@ -78,3 +79,4 @@ Diagramas de módulo Marlene (ER, secuencias, Gantt, estados). Prefijos `MAR-` e
 |---------|-------|--------|
 | v1.0 | 2026-05-17 | Consolidación canónica desde `team/*/07_diagramas/`; vistas MRD/PRD/FSD reenlazadas |
 | v1.1 | 2026-05-17 | C4 unificado: `diag-06` contexto + `diag-07` contenedores; DTI §2 sin duplicar Mermaid inline |
+| v1.2 | 2026-05-28 | C4 MVP runtime (`c4-007`) alineado a `app/`; `c4-008` target produccion AWS; contexto MVP CC+TD |

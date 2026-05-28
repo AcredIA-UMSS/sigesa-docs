@@ -948,3 +948,15 @@ Demo: `cc.demo@umss.edu.bo` / `td.demo@umss.edu.bo` — `Password123!`
 ## 2026-05-28T16:44:00-04:00 — Prompt usuario
 **Prompt:** I want to move to main branch, pls check evetyhing is correct with the submodules and also I want to merge alex branch with oriign main and push it to origin/alex
 **Acción:** Verificado estado git/submodules; merge origin/main→alex ya up-to-date; push origin/alex OK; inspeccionado main (apps embebidos, sin submodules); restaurado branch alex con submodules init.
+
+## 2026-05-28T17:00:00-04:00 — Prompt usuario
+**Prompt:** .
+**Acción:** Inicio de sesión; solicitado identificación de usuario según regla 02_session_prompt_logging.
+
+## 2026-05-28T17:00:30-04:00 — Prompt usuario
+**Prompt:** alexAlvarez
+**Acción:** Sesión registrada para alexAlvarez; log activo en team/alexAlvarez/log_interno.md.
+
+## 2026-05-28T17:30:00-04:00 — Prompt usuario
+**Prompt:** pls change to agent mode and update the necessary files but also do a whole analysis of the files in docs and check that everything is consistent BRD -> MRD -> PRD -> NFRs -> DTI + ADRs + C4 -> code (implementation)
+**Acción:** Actualizados c4-006, c4-007; creado c4-008 prod; DTI §2/§8, hybrid §2.6, api_contracts_mvp_runtime §11, READMEs, symlinks; auditoría consistency_mvp_runtime_audit.md.

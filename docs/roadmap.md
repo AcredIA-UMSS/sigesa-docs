@@ -96,13 +96,15 @@ Esta sección responde a la pregunta que [JD] y el docente formulan en revisión
 
 **Trade-off aceptado:** mayor complejidad en UI de versiones a cambio de **cero riesgo reputacional** en visita de pares.
 
-### 3.3 Por qué arquitectura hexagonal / monolito modular (v1.0)
+### 3.3 Por qué arquitectura hexagonal (MVP runtime vs target cloud)
 
-**Por qué:** el equipo de maestría debe entregar valor en meses, no fragmentar operaciones en microservicios prematuros. Los límites de dominio (Auth, Docs, Workflow, Notif) ya están probados en la matriz MOD-*.
+**Antecedente:** [ADR-0002](../adr/ADR-0002-modular-monolith.md) (monolito modular) quedó **supersedido parcialmente** por [ADR-0010](../adr/ADR-0010-event-driven-choreography.md) para target cloud v1.0.
 
-**Decisión:** monolito modular desplegable ([ADR-0002](../adr/ADR-0002-modular-monolith.md)) con puertos/adaptadores para SMTP, S3 y futuro LDAP.
+**MVP en código (`app/`):** microservicios hexagonales (Evidence, Audit, Orchestration, Gateway) con eventos HTTP internos en dev — ver [`c4-007`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) y [`consistency_mvp_runtime_audit.md`](09_trazabilidad/consistency_mvp_runtime_audit.md).
 
-**Trade-off:** escalado horizontal menos granular que microservicios; mitigación v1.1+ con colas async para PDF y notificaciones ([ADR-0011](../adr/ADR-0011-sqs-fifo-phase-closure.md)).
+**Target producción:** EventBridge + SQS FIFO + Notification Service — [`c4-008`](../07_diagramas/c4-008-08-contenedores-produccion.mmd).
+
+**Trade-off MVP:** sin AWS local; adaptadores intercambiables (`EventPublisherPort`, `AuthPort`) preservan el dominio append-only.
 
 ### 3.4 Por qué validar con POCs antes de construir
 

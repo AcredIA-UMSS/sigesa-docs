@@ -1,39 +1,46 @@
 %% diagramId: D-C4-002
-%% dtiTrace: docs/05_dti/DTI.md §2.2
-%% adrs: ADR_002 ADR_003 ADR_004 ADR_006 ADR_007 ADR_009
-%% version: Dorada v1.0 — fuente única C4 nivel 2 (unificado DTI + diag-07 legacy)
+%% dtiTrace: docs/05_dti/DTI.md §2 · docs/05_dti/hybrid_architecture.md §2 · api_contracts_mvp_runtime.md §11
+%% adrs: ADR-0001 ADR-0003 ADR-0006 ADR-0007 ADR-0009 ADR-0010 ADR-0011 ADR-0013
+%% version: MVP-runtime v0.1 — microservicios hexagonales; eventos HTTP en dev
+%% codeRef: app/sigesa-front · app/sigesa-backend (gateway, evidence, audit, orchestration)
+%% prodTarget: c4-008-08-contenedores-produccion.mmd (EventBridge, SQS FIFO, Notification Service)
 C4Container
-  title SIGESA - Contenedores v1.0 Dorada
+  title SIGESA — Contenedores MVP (hybrid architecture, runtime local)
   Person(cc, "[CC] Coordinador de Carrera", "Carga y subsana Evidencia")
-  Person(td, "[TD] Tecnico DUEA", "Valida Indicadores y cierra Fases")
-  Person(jd, "[JD] Jefatura DUEA", "Plantillas, usuarios, reportes")
-  Person(pub, "[P] Publico", "Consulta publicacion sin login")
-  Person(ext, "Evaluador externo", "Alcance minimo por fase")
+  Person(td, "[TD] Tecnico DUEA", "Valida Indicadores")
 
-  System_Boundary(sigesa, "SIGESA / AcredIA") {
-    Container(web, "Frontend SPA", "React 18", "UI semaforo, evidencias, observaciones")
-    Container(api, "API Backend", "Node.js 20 + Express 4", "REST JWT RBAC; modulos dominio; audit_log")
-    ContainerDb(db, "PostgreSQL 16", "PostgreSQL", "Transaccional, FTS, audit_log append-only")
-    Container(vol, "Volumen evidencias", "Docker named volume", "Blobs versionados SHA-256")
-    Container(worker, "Worker notificaciones", "Node cron", "Cola notification_outbox")
-    Container(pdf, "Motor reportes PDF", "Modulo en proceso", "FSD-UC-014 reporte ejecutivo")
+  System_Boundary(sigesa, "SIGESA / AcredIA — MVP") {
+    Container(web, "Frontend", "Next.js 16 + React 19", "Rutas CC (/cc) y TD (/td); polling 30s")
+    Container(gw, "API Gateway", "Node.js 22 + Express 4", ":8080 proxy unico /api/v1")
+    Container(ev, "Evidence Service", "Node.js + Express", ":3001 hexagonal; upload S3; publica EvidenceUploaded")
+    Container(audit, "Audit Service", "Node.js + Express", ":3002 auth, dashboards, approve/reject, consume eventos Evidence")
+    Container(orch, "Orchestration Service", "Node.js + Express", ":3003 PhaseCloseRule; webhook serial (SQS FIFO pendiente prod)")
+    Container(devbus, "Bus eventos dev", "HTTP webhooks internos", "Imita EventBridge: POST /internal/events + X-Internal-Events-Secret")
+    ContainerDb(db, "PostgreSQL 16", "RDS local Docker", "Append-only: evidence_version, indicator_state_history, observation")
+    ContainerDb(blob, "Object storage", "MinIO (dev) / S3 (prod)", "Blobs Evidence SHA-256 — ADR-0013")
+    ContainerDb(outbox, "notification_outbox", "Tabla PostgreSQL", "Esquema listo; worker SMTP NO implementado en MVP")
   }
 
-  System_Ext(idp, "Identidad UMSS", "SSO / LDAP — ADR_003")
-  System_Ext(smtp, "SMTP institucional UMSS", "Notificaciones")
-  System_Ext(ceub, "CEUB / ARCU-SUR", "Marco normativo acreditacion")
+  System_Ext(idp, "Identidad UMSS", "Prod: LDAP/SSO. Dev: login local @umss.edu.bo")
+  System_Ext(aws_prod, "AWS prod (target v1.0)", "EventBridge + SQS FIFO + SMTP")
+  System_Ext(ceub, "CEUB / ARCU-SUR", "Marco normativo")
 
   Rel(cc, web, "HTTPS")
   Rel(td, web, "HTTPS")
-  Rel(jd, web, "HTTPS")
-  Rel(pub, web, "HTTPS lectura")
-  Rel(ext, web, "HTTPS acotado")
+  Rel(web, gw, "JSON /api/v1")
+  Rel(gw, ev, "Proxy evidences")
+  Rel(gw, audit, "Proxy auth, audit, dashboard")
 
-  Rel(web, api, "JSON /api/v1")
-  Rel(api, db, "TCP transaccional")
-  Rel(api, vol, "storage_key read/write")
-  Rel(api, idp, "Autentica JWT")
-  Rel(api, worker, "enqueue")
-  Rel(api, pdf, "Render reporte")
-  Rel(worker, smtp, "SMTP async")
-  Rel(api, ceub, "Taxonomias y trazabilidad")
+  Rel(ev, blob, "PutObject / presigned GET")
+  Rel(ev, db, "INSERT evidence_version")
+  Rel(ev, devbus, "publish EvidenceUploaded / EvidenceSubsanated")
+  Rel(devbus, audit, "POST /internal/events")
+  Rel(audit, db, "INSERT indicator_state_history, observation")
+  Rel(audit, devbus, "publish IndicatorApproved")
+  Rel(devbus, orch, "POST /internal/events")
+  Rel(orch, db, "INSERT phase_state_history si COUNT(APROBADO)==TOTAL")
+
+  Rel(audit, idp, "Dev: AuthPort en servicio. Prod: adapter LDAP")
+  Rel(devbus, aws_prod, "Prod: reemplazar por EventBridge + SQS FIFO")
+  Rel(outbox, aws_prod, "Futuro: Notification Service + SMTP")
+  Rel(sigesa, ceub, "Taxonomias en BD seed")

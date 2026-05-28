@@ -41,7 +41,7 @@
 | Contratos API | [`api_contracts.md`](api_contracts.md) |
 | Glosario FSD | [`glosario.md`](glosario.md) |
 | **Diagramas (`.mmd`)** | Vista [`07_diagramas/`](07_diagramas/README.md) → canónico [`../07_diagramas/`](../07_diagramas/README.md) |
-| **C4 (DTI)** | [`c4-006-06-contexto-sistema.mmd`](../07_diagramas/c4-006-06-contexto-sistema.mmd) · [`c4-007-07-contenedores-sistema.mmd`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) — ver [`docs/05_dti/DTI.md`](../05_dti/DTI.md) §2 |
+| **C4 (DTI)** | MVP: [`c4-007`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) · Target: [`c4-008`](../07_diagramas/c4-008-08-contenedores-produccion.mmd) — ver [`docs/05_dti/DTI.md`](../05_dti/DTI.md) §2, [`consistency_mvp_runtime_audit.md`](../09_trazabilidad/consistency_mvp_runtime_audit.md) |
 
 > Modelo físico PostgreSQL: [`docs/05_dti/modelo_datos.md`](../05_dti/modelo_datos.md).
 
