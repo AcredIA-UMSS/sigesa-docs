@@ -1,1 +1,39 @@
-../../07_diagramas/diag-07-c4-contenedores-sistema.mmd
+﻿%% diagramId: D-C4-002
+%% dtiTrace: docs/05_dti/DTI.md Â§2.2
+%% adrs: ADR_002 ADR_003 ADR_004 ADR_006 ADR_007 ADR_009
+%% version: Dorada v1.0 â€” fuente Ãºnica C4 nivel 2 (unificado DTI + diag-07 legacy)
+C4Container
+  title SIGESA â€” Contenedores v1.0 (Dorada)
+  Person(cc, "[CC] Coordinador de Carrera", "Carga y subsana Evidencia")
+  Person(td, "[TD] Tecnico DUEA", "Valida Indicadores y cierra Fases")
+  Person(jd, "[JD] Jefatura DUEA", "Plantillas, usuarios, reportes")
+  Person(pub, "[P] Publico", "Consulta publicacion sin login")
+  Person(ext, "Evaluador externo", "Alcance minimo por fase")
+
+  System_Boundary(sigesa, "SIGESA / AcredIA") {
+    Container(web, "Frontend SPA", "React 18", "UI semaforo, evidencias, observaciones")
+    Container(api, "API Backend", "Node.js 20 + Express 4", "REST JWT RBAC; modulos dominio; audit_log")
+    ContainerDb(db, "PostgreSQL 16", "PostgreSQL", "Transaccional, FTS, audit_log append-only")
+    Container(vol, "Volumen evidencias", "Docker named volume", "Blobs versionados SHA-256")
+    Container(worker, "Worker notificaciones", "Node cron", "Cola notification_outbox")
+    Container(pdf, "Motor reportes PDF", "Modulo en proceso", "FSD-UC-014 reporte ejecutivo")
+  }
+
+  System_Ext(idp, "Identidad UMSS", "SSO / LDAP â€” ADR_003")
+  System_Ext(smtp, "SMTP institucional UMSS", "Notificaciones")
+  System_Ext(ceub, "CEUB / ARCU-SUR", "Marco normativo acreditacion")
+
+  Rel(cc, web, "HTTPS")
+  Rel(td, web, "HTTPS")
+  Rel(jd, web, "HTTPS")
+  Rel(pub, web, "HTTPS lectura")
+  Rel(ext, web, "HTTPS acotado")
+
+  Rel(web, api, "JSON /api/v1")
+  Rel(api, db, "TCP transaccional")
+  Rel(api, vol, "storage_key read/write")
+  Rel(api, idp, "Autentica JWT")
+  Rel(api, worker, "enqueue")
+  Rel(api, pdf, "Render reporte")
+  Rel(worker, smtp, "SMTP async")
+  Rel(api, ceub, "Taxonomias y trazabilidad")

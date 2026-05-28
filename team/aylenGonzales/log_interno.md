@@ -17,3 +17,7 @@ El archivo debe ser la fuente única de verdad: no duplicar docs/03_prd/roadmap.
 ## 2026-05-27T22:45:00-04:00 — Prompt usuario
 **Prompt:** sigue la misma rubrica, vamos con la segunda pasada
 **Acción:** Segunda pasada sobre bloques Mermaid embebidos en Markdown; detección por patrones de riesgo y normalización de labels/roles en diagramas `journey` dentro de `docs/03_prd/PRD.md`.
+
+## 2026-05-27T23:09:00-04:00 — Prompt usuario
+**Prompt:** Reemplazar archivos `.mmd`/`.md` symlink por contenido Mermaid real del destino, validar sintaxis base, hacer commit `fix: replace symlinks with actual Mermaid content` y resumir reemplazos.
+**Acción:** Identificación de symlinks Git (`mode 120000`), resolución recursiva de destinos, reemplazo por contenido real, validación de inicio Mermaid/subgraphs y preparación del commit solicitado.
