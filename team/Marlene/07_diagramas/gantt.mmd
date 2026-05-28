@@ -10,18 +10,18 @@ gantt
     dateFormat YYYY-MM-DD
     axisFormat %d/%m
 
-    section Activación [JD]
+    section Activacion JD
     Validar BR-013 proceso único           :done, act0, 2026-07-15, 5d
     Crear proceso y clonar plantilla UC-010 :act1, after act0, 7d
-    Asignar [TD] referente y publicar plazos :act2, after act1, 3d
+    Asignar TD referente y publicar plazos :act2, after act1, 3d
     Inicio oficial autoevaluación           :milestone, ms0, after act2, 0d
 
-    section Autoevaluación — Fase I [CC]
+    section Autoevaluacion Fase I CC
     Subfase 1 carga evidencias UC-002     :crit, cc1, 2026-08-01, 28d
     Subfase 2 carga evidencias UC-002     :cc2, after cc1, 25d
     Subfase 3 carga evidencias UC-002     :cc3, after cc2, 21d
 
-    section Revisión DUEA [TD]
+    section Revision DUEA TD
     Dictamen subfase 1 UC-003             :crit, td1, after cc1, 18d
     Cierre subfase 1 RB-03                :milestone, ms1, after td1, 0d
     Dictamen subfase 2 UC-003             :td2, after cc2, 18d
@@ -29,15 +29,15 @@ gantt
     Dictamen subfase 3 UC-003             :td3, after cc3, 15d
     Cierre subfase 3 — fase I cerrada     :milestone, ms3, after td3, 0d
 
-    section Autoevaluación — Fase II [CC]
+    section Autoevaluacion Fase II CC
     Ajustes post-observaciones internas   :cc4, after ms3, 14d
     Evidencias complementarias            :cc5, after cc4, 20d
 
     section Cierre interno DUEA
-    Revisión final [TD]                   :td4, after cc5, 12d
+    Revision final TD                     :td4, after cc5, 12d
     Reporte ejecutivo PDF UC-005          :jd1, after td4, 5d
     Preparación paquete auditoría         :crit, pkg1, after jd1, 12d
-    Aprobación [JD] envío externo         :milestone, ms4, after pkg1, 0d
+    Aprobacion JD envio externo           :milestone, ms4, after pkg1, 0d
 
     section Convocatoria externa CEUB
     Ventana evaluación externa            :ext1, 2026-12-01, 45d
