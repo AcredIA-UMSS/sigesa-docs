@@ -851,3 +851,96 @@ also keep in mind all the versions available of the brd for more context if need
 ## 2026-05-28T18:30:00-04:00 — Prompt usuario
 **Prompt:** execute the plan (push alex, UC-004 phase drill-down, TD tray/review, C4 alignment, Figma TD audit)
 **Acción:** Push alex (3 repos). Implementado: multi-phase seed + db:reset-dev, /cc/fases/[phaseId], /td/indicators/[id]/review, task-tray TD, api_contracts_mvp_runtime §11 C4, EXPORT_TODO TD frames.
+
+---
+
+## Versión `alex` — Registro consolidado (2026-05-28)
+
+**Rama activa:** `alex` en `sigesa-docs`, `sigesa-front`, `sigesa-backend` (pusheada a `origin/alex`).
+
+### 1. Repositorio y submodules
+
+- Sync con `origin/main` (POC-03/04, diagramas, roadmap); stash/pop de WIP local.
+- `app/sigesa-front` y `app/sigesa-backend` cableados como **git submodules** (AcredIA-UMSS).
+- Bootstrap y push inicial: backend `main` (`6508c9b`), front `main` → reemplazado por MVP local.
+- Trabajo activo en **`alex`** (no `main`) en los tres repos.
+
+### 2. Desarrollo local Mode A (backend)
+
+| Cambio | Archivos / comando |
+|--------|-------------------|
+| Perfil Docker `full-stack` — infra sola por defecto | `docker-compose.yml`, `npm run compose:infra` |
+| Smoke health + login | `scripts/dev-check.sh`, `npm run dev:check` |
+| TD bandeja vacía (status filter) | `DashboardQueries.ts`, `dashboardStatusFilter.ts` |
+| Descripción indicador en dashboard | `requirement_text` en SQL |
+| `indicatorId` en lista observaciones | `RDSRepositories.ts` |
+| Multi-status SQL fix (`IN` vs `ANY`) | commit `9d8a25c` |
+| Seed 3 fases + 4 indicadores | `scripts/seed-dev.sql` |
+| Reset ciclo demo | `npm run db:reset-dev` (`reset-dev.sql` / `reset-dev.sh`) |
+| Dashboard: `phaseId`, `phaseName`, `recentObservations` (TD) | `DashboardQueries.ts` |
+
+**Commits backend (`alex`):** `e56a3ef` → `9d8a25c` → `67121f4`
+
+### 3. Frontend MVP (`sigesa-front/alex`)
+
+| Área | Entregable |
+|------|------------|
+| Figma/FSD CC+TD | `CoordinatorHome`, `CcAppShell`, `TdAppShell`, `IndicatorTable`, `ProcessOverviewCard`, observaciones |
+| `.env.example` | `NEXT_PUBLIC_API_URL=http://localhost:8080/api/v1` |
+| TD bandeja | Quitar param `status` roto; map `description` |
+| **UC-004 drill-down** | `/cc/fases/[phaseId]` + `PhaseIndicatorView` |
+| Upload modal Figma | `EvidenceUploader` drag-drop + cabecera indicador/fase |
+| **TD flujo REVISAR** | Task-tray por fase en `TechnicianDashboard` |
+| **TD revisión** | `/td/indicators/[id]/review` + `IndicatorReviewDetail` |
+
+**Commits front (`alex`):** `b09457a` → `0a82039` → `6a47019` → `7a584e6`
+
+### 4. Documentación DTI (`sigesa-docs/alex`)
+
+| Documento | Contenido |
+|-----------|-----------|
+| `docs/05_dti/api_contracts_mvp_runtime.md` | Gateway, auth, dashboard, health, webhooks, matriz FE↔BE |
+| `DTI.md` §5 | Enlace runtime MVP |
+| `api_contracts_cloud.md` | Cross-link runtime |
+| §11 (añadido) | Alineación C4 + secuencia MVP vs `docs/07_diagramas/seq-*` |
+| `figma/screenshots/EXPORT_TODO.md` | TD frames pendientes (`885:2309`, `231:130`; re-export `1249:3112`) |
+
+**Hallazgo Figma:** PNG `td-bandeja-tareas.png` posiblemente mislabeled (parece panel JD); metadata describe task-tray correcto.
+
+**Commits docs:** `5ca4e04`, `03bd6f3` (+ submodules)
+
+### 5. Flujo MVP verificado (happy + sad)
+
+```text
+CC: fase → indicador → POST evidences → SUBIDO
+TD: bandeja → REVISAR → reject (≥20) → OBSERVADO
+CC: subsanar (observationId) → SUBSANADO
+TD: approve → APROBADO
+```
+
+Sad paths probados: 401 login, 400 reason corto, 409 approve en PENDIENTE. Tests audit: 11/11 PASS.
+
+### 6. Arranque local (referencia)
+
+```bash
+cd app/sigesa-backend && cp .env.example .env
+npm run compose:infra && npm run db:reset-dev
+npm run build -w @sigesa/shared
+npm run dev:evidence & npm run dev:audit & npm run dev:orchestration & npm run dev:gateway
+cd ../sigesa-front && cp .env.example .env.local && npm run dev
+```
+
+Demo: `cc.demo@umss.edu.bo` / `td.demo@umss.edu.bo` — `Password123!`
+
+### 7. Prompts de sesión (cronología)
+
+1. Sync local con origin + submodules Phase 5  
+2. Push branch `alex`  
+3. `.env.example` frontend  
+4. Execute plan: compose profiles, FE/BE alignment, `api_contracts_mvp_runtime`, E2E  
+5. Plan iteración: TD screenshots, C4, UC-004 completo  
+6. Execute plan: phase routes, TD tray/review, C4 §11  
+7. **Este prompt:** commit todo + log consolidado versión `alex`
+
+**Acción:** Append registro consolidado; commit en `sigesa-docs/alex` si hay cambios pendientes.
+
