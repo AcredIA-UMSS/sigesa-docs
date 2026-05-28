@@ -67,7 +67,7 @@ Al iniciar cualquier tarea, leer **en este orden**:
     └── rules/*.mdc              ← reglas globales (5)
 ```
 
-**Código aplicativo v1.0:** [`app/sigesa-front/`](app/README.md) y [`app/sigesa-backend/`](app/README.md) — **repositorios Git independientes** (no versionados en este monorepo). **Código en este repo:** POCs en `docs/pocs/` — materializa ADR-0003, ADR-0004.
+**Código aplicativo v1.0:** [`app/sigesa-front/`](app/README.md) y [`app/sigesa-backend/`](app/README.md) — **submodules** apuntando a repos independientes (`AcredIA-UMSS/sigesa-front`, `AcredIA-UMSS/sigesa-backend`). **Código en este repo:** POCs en `docs/pocs/` — materializa ADR-0003, ADR-0004.
 
 ---
 
