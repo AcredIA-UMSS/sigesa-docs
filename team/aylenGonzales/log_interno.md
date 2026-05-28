@@ -25,3 +25,7 @@ El archivo debe ser la fuente única de verdad: no duplicar docs/03_prd/roadmap.
 ## 2026-05-27T23:30:00-04:00 — Prompt usuario
 **Prompt:** Renombrar `.mmd` en `docs/07_diagramas/` para que el prefijo coincida con el tipo Mermaid interno, actualizar referencias en Markdown y registrar cambios como @VisualAgent.
 **Acción:** Detección de tipo Mermaid por primer keyword real, renombre masivo en `docs/07_diagramas/` bajo patrón `<tipo>-<NNN>-<descripcion>.mmd`, actualización global de referencias `.md` y verificación de enlaces sin nombres antiguos.
+
+## 2026-05-28T00:03:00-04:00 — Prompt usuario
+**Prompt:** Corregir errores Mermaid de parseo en `docs/07_diagramas/` sanitizando títulos (`title` / `acc_title`) con caracteres especiales y verificando IDs de nodos.
+**Acción:** Sanitización de líneas de título en archivos `.mmd` afectados (eliminación de paréntesis, reemplazo de `/` por separador seguro y limpieza de caracteres especiales), sin modificar lógica del diagrama; verificación posterior de ausencia de caracteres especiales en posiciones de ID.
