@@ -35,7 +35,7 @@ audience_default: humano+maquina
 | NFR | [`docs/05_nfr/NFR_ISO25010.md`](../05_nfr/NFR_ISO25010.md) |
 | Glosario | [`context/03_domain_glossary.md`](../../context/03_domain_glossary.md) |
 | Máquina de estados | [`team/alexAlvarez/docs/context/04_state_machine.md`](../../team/alexAlvarez/docs/context/04_state_machine.md) |
-| **Diagramas C4 (fuente única)** | [`docs/07_diagramas/`](../07_diagramas/README.md) — [`c4-006-06-contexto-sistema.mmd`](../07_diagramas/c4-006-06-contexto-sistema.mmd) · [`c4-007-07-contenedores-sistema.mmd`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) |
+| **Diagramas C4 (fuente única)** | [`docs/07_diagramas/`](../07_diagramas/README.md) — MVP runtime: [`c4-006`](../07_diagramas/c4-006-06-contexto-sistema.mmd) · [`c4-007`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) · Target prod: [`c4-008`](../07_diagramas/c4-008-08-contenedores-produccion.mmd) |
 
 ### Fuentes de trabajo equipo (consolidadas en esta versión)
 
@@ -56,6 +56,8 @@ SIGESA es el sistema de **automatización** del ciclo de acreditación CEUB/ARCU
 
 <!-- avance: iteración 1 -->
 ## 2. Vistas del DTI (Richardson, Cap. 1)
+
+> **Dos vistas de despliegue (2026-05-28):** este DTI describe la **arquitectura lógica/target cloud v1.0** (§2.1–§2.5). El **código MVP** en `app/` se documenta en [`c4-007-07-contenedores-sistema.mmd`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) y [`api_contracts_mvp_runtime.md`](api_contracts_mvp_runtime.md): microservicios hexagonales, eventos vía **HTTP webhooks internos** (adaptador dev que imita EventBridge), auth local `@umss.edu.bo`, actores **CC + TD**. Target produccion: [`c4-008-08-contenedores-produccion.mmd`](../07_diagramas/c4-008-08-contenedores-produccion.mmd).
 
 ### 2.0 Checklist por vista
 
@@ -328,7 +330,7 @@ erDiagram
 
 ## 5. Contratos de integración (API)
 
-Especificación lógica completa: [`docs/04_fsd/api_contracts.md`](../04_fsd/api_contracts.md). Contratos cloud v1.0: [`api_contracts_cloud.md`](api_contracts_cloud.md). OpenAPI físico: pendiente `docs/05_dti/openapi.yaml`.
+Especificación lógica completa: [`docs/04_fsd/api_contracts.md`](../04_fsd/api_contracts.md). Contratos cloud v1.0: [`api_contracts_cloud.md`](api_contracts_cloud.md). **Runtime MVP local (gateway, auth, dashboard, health):** [`api_contracts_mvp_runtime.md`](api_contracts_mvp_runtime.md). OpenAPI físico: pendiente `docs/05_dti/openapi.yaml`.
 
 ### 5.1 Convenciones
 
@@ -398,14 +400,30 @@ Autenticación: [ADR_003](adrs/ADR_003_adapter_autenticacion.md) + [ADR_007](adr
 
 ## 8. Despliegue y operaciones (v1.0)
 
+### 8.1 MVP runtime local (`app/` — ver `c4-007`)
+
 | Componente | Imagen / artefacto | Notas |
 |------------|-------------------|-------|
-| `sigesa-web` | build estático React | Nginx o servido por reverse proxy |
-| `sigesa-api` | `node:20-alpine` | Health `GET /health` |
-| `sigesa-db` | `postgres:16` | Volume `pg_data` |
-| `evidencias_data` | named volume | `/data/evidencias/` — ADR_004 |
+| `sigesa-front` | Next.js 16 | CC/TD; `NEXT_PUBLIC_API_URL` → gateway :8080 |
+| `api-gateway` | `node:22-alpine` | Proxy `/api/v1` → Evidence + Audit |
+| `evidence-service` | `node:22-alpine` | :3001; S3/MinIO — ADR-0013 |
+| `audit-service` | `node:22-alpine` | :3002; auth JWT, dashboards, `/internal/events` |
+| `orchestration-service` | `node:22-alpine` | :3003; PhaseCloseRule vía webhook (SQS FIFO en prod) |
+| `postgres` | `postgres:16` | Volume `pg_data`; append-only DDL |
+| `minio` | MinIO | Emula S3 en dev |
 
-Respaldo diario: snapshots de PostgreSQL/RDS + política de versionado y retención de S3 para blobs de Evidence. TLS 1.3 en API Gateway / reverse proxy institucional.
+Eventos entre servicios: `HttpWebhookEventPublisher` → `POST /internal/events` (no EventBridge en dev). Ver [`app/sigesa-backend/README.md`](../../app/sigesa-backend/README.md).
+
+### 8.2 Target produccion cloud (`c4-008`)
+
+| Componente | Imagen / artefacto | Notas |
+|------------|-------------------|-------|
+| `sigesa-web` | build estático React/Next | Nginx o reverse proxy |
+| Servicios hexagonales | ECS/Lambda según runbook | EventBridge + SQS FIFO + Notification Service |
+| `sigesa-db` | RDS PostgreSQL 16 | Snapshots diarios |
+| Blobs Evidence | Amazon S3 | ADR-0013; sin volumen Docker (ADR-0004 supersedido) |
+
+Respaldo diario: snapshots RDS + retención S3. TLS 1.2+ en API Gateway (NFR-006).
 
 ---
 

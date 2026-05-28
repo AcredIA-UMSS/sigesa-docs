@@ -40,7 +40,7 @@ estado: En revisión — primera versión integrada
 | NFR | [`docs/05_nfr/NFR_ISO25010.md`](../05_nfr/NFR_ISO25010.md) |
 | Glosario | [`context/03_domain_glossary.md`](../../context/03_domain_glossary.md) |
 | Máquina de estados | [`team/alexAlvarez/docs/context/04_state_machine.md`](../../team/alexAlvarez/docs/context/04_state_machine.md) |
-| **Diagramas C4 (fuente única)** | [`docs/07_diagramas/`](../07_diagramas/README.md) — [`c4-006-06-contexto-sistema.mmd`](../07_diagramas/c4-006-06-contexto-sistema.mmd) · [`c4-007-07-contenedores-sistema.mmd`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) |
+| **Diagramas C4 (fuente única)** | MVP: [`c4-007`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) · Target prod: [`c4-008`](../07_diagramas/c4-008-08-contenedores-produccion.mmd) |
 
 ### Fuentes de trabajo equipo (consolidadas en esta versión)
 
@@ -264,6 +264,20 @@ Orchestration Service:
           +-- RDSAggregateQuery.ts
           +-- EventBridgeAdapter.ts
 ```
+
+
+### 2.6 Adaptadores de infraestructura — MVP local vs produccion
+
+| Puerto / patron | Produccion (ADR-0010, ADR-0011) | MVP local (`app/sigesa-backend`) |
+|-----------------|----------------------------------|----------------------------------|
+| `EventPublisherPort` | EventBridge `putEvents` | `HttpWebhookEventPublisher` → `AUDIT_INTERNAL_EVENTS_URL` / `ORCHESTRATION_INTERNAL_EVENTS_URL` |
+| Consumidor eventos | EventBridge rules / SQS trigger | `POST /internal/events` + header `X-Internal-Events-Secret` |
+| Cierre de Phase | SQS FIFO `MessageGroupId = phaseId` | Webhook serial a `orchestration-service` (sin cola real) |
+| `AuthPort` | LDAP / SSO UMSS | Login local emails `@umss.edu.bo` (ADR-0003 v1.0 adapter) |
+| Blobs | Amazon S3 | MinIO compatible S3 (`S3_ENDPOINT`) |
+| Notification Service | Worker + SMTP + circuit breaker | **Pendiente** — DDL `notification_outbox` sin worker |
+
+El dominio (envelopes, idempotencia, append-only, máquina de estados) es el mismo; solo cambian los adaptadores de salida/entrada.
 
 ### 2.5 Notification Service
 

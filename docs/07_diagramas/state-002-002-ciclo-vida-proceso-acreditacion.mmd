@@ -1,7 +1,9 @@
+---
+title: Estado Ciclo de Vida del Proceso de Acreditacion SIGESA
+---
 stateDiagram-v2
-    title Estado - Ciclo de Vida del Proceso de Acreditacion SIGESA
 
-    [*] --> CONFIGURACION : "(JD) crea proceso\nselecciona carrera + tipo CEUB/ARCU-SUR\nverifica RBN-13"
+    [*] --> CONFIGURACION : JD crea proceso\nselecciona carrera y tipo CEUB ARCU-SUR\nverifica RBN-13
 
     state "CONFIGURACION" as CONFIGURACION
     state "ACTIVO" as ACTIVO
@@ -22,7 +24,7 @@ stateDiagram-v2
         Seguimiento --> [*]
     }
 
-    EN_FASE --> ACREDITADA : "Organismo externo CEUB/ARCU-SUR\nemite resolucion de acreditacion\n(JD) registra la resolucion"
+    EN_FASE --> ACREDITADA : Organismo externo CEUB ARCU-SUR\nemite resolucion de acreditacion\nJD registra la resolucion
 
     EN_FASE --> SUSPENDIDO : "(JD) registra suspension\ncon resolucion DUEA documentada\nRBN-06"
 

@@ -4,5 +4,6 @@ Enlaces a la carpeta canónica [`../../07_diagramas/`](../../07_diagramas/README
 
 | Archivo | Nivel C4 | Uso en DTI |
 |---------|----------|------------|
-| `c4-006-06-contexto-sistema.mmd` | 1 — Contexto | §2.1 actores [CC]/[TD]/[JD]/[P] y sistemas externos |
-| `c4-007-07-contenedores-sistema.mmd` | 2 — Contenedores | §2.2 stack cloud v1.0 (SPA, API Gateway, servicios, PostgreSQL/RDS, S3, EventBridge, SQS FIFO) |
+| `c4-006-06-contexto-sistema.mmd` | 1 — Contexto | MVP runtime: [CC]/[TD] + IdP UMSS |
+| `c4-007-07-contenedores-sistema.mmd` | 2 — Contenedores | **Runtime local** (`app/`) — gateway, servicios, webhooks HTTP, MinIO |
+| `c4-008-08-contenedores-produccion.mmd` | 2 — Contenedores | **Target cloud v1.0** — EventBridge, SQS FIFO, Notification, [JD]/[P] |

@@ -791,3 +791,172 @@ also keep in mind all the versions available of the brd for more context if need
 ## 2026-05-27T18:04:44-04:00 — Prompt usuario
 **Prompt:** commit all changes to main repo; mantener repos separados front/back
 **Acción:** Commit 8eac519 en sigesa-docs (skills, AGENTS, README, .gitignore app/*); sin incluir app/sigesa-front ni app/sigesa-backend.
+
+## 2026-05-27T — Prompt usuario
+**Prompt:** pls analyze the sigesa-backend folder... Docker build errors (tsconfig.base.json, esModuleInterop, etc.)
+**Acción:** Sesión identificada como alexAlvarez; inicio análisis backend vs DTI.
+
+## 2026-05-27T — Prompt usuario
+**Prompt:** alexAlvarez, yes continue with the debug and fixing the errors
+**Acción:** Fix Dockerfiles (COPY tsconfig.base.json), exclude tests del build audit-service, alinear import en idempotency.test.ts, orchestration runtime shared dist.
+
+## 2026-05-27T20:23:09-04:00 — Prompt usuario
+**Prompt:** during the execution of this seed @app/sigesa-backend/scripts/seed-dev.sql I get the following error, pls check the actual code of the seeds that should match the ddl and the syntax
+**Acción:** Reproducido error UUID inválido en accreditation_template id; corregido último segmento (13→12 hex) en seed-dev.sql; seed verificado idempotente.
+
+## 2026-05-27T20:28:00-04:00 — Prompt usuario
+**Prompt:** Error NodeVersionSupportWarning AWS SDK + EADDRINUSE :3001; update npm to newer version
+**Acción:** Node 22.22.3 + npm 11.16.0 vía nvm; .nvmrc, engines>=22, Dockerfiles node:22-alpine; README modos A/B dev y conflicto puertos.
+
+## 2026-05-27T20:41:57-04:00 — Prompt usuario
+**Prompt:** Análisis completo app/ + contratos front/backend; login 404 en https://localhost:8080/api/v1/
+**Acción:** Diagnóstico: gateway strippeaba /api/v1 (404); dev sin .env (500); HTTPS incorrecto. Fix pathRewrite en gateway + --env-file en dev scripts + trailing slash .env front. Verificación E2E login 201 OK.
+
+## 2026-05-27T20:46:41-04:00 — Prompt usuario
+**Prompt:** .env sigue en 8080 pero login devuelve 500 INTERNAL_ERROR
+**Acción:** Causa: audit-service corriendo sin DATABASE_URL/JWT (proceso viejo). Fix: loadEnv automático en @sigesa/shared + gateway; dev scripts corregidos; audit reiniciado. Login 201 OK vía :8080.
+
+## 2026-05-27T20:51:33-04:00 — Prompt usuario
+**Prompt:** /sigesa-frontend-engineer revisar alineación FE con AGENTS/DTI/Figma; error acceso [CC]
+**Acción:** Bug: API dashboard devuelve id/status pero UI esperaba indicatorId/currentState → crash StateBadge. Fix mappers en dashboardApi.ts, auth isReady en ProtectedRoute, tipografía Inter/IBM Plex Mono + tokens Figma en globals.css.
+
+## 2026-05-27T20:59:03-04:00 — Prompt usuario
+**Prompt:** Alinear vista CC con screenshots Figma, filtros, UC004 upload en MVP, análisis UCs alto valor
+**Acción:** Rediseño CcAppShell (sidebar Figma), CoordinatorHome KPIs/fases, IndicatorTable con filtros estado+búsqueda y CTAs UC004/UC006; Suspense useSearchParams.
+
+## 2026-05-28T00:00:00-04:00 — Prompt usuario
+**Prompt:** execute plan (sync local with origin/main + git submodules for sigesa-front/sigesa-backend)
+**Acción:** Ejecución plan: fetch (11 commits behind), stash WIP, pull fast-forward, bootstrap app repos, wire submodules.
+
+## 2026-05-28T14:05:00-04:00 — Prompt usuario
+**Prompt:** execute plan (sync + submodules)
+**Acción:** Completado: pull origin/main (61ac14c, core.symlinks=false), bootstrap push sigesa-backend (6508c9b) y sigesa-front (7e0bf3f), submodules wired (.gitmodules), commit 1397fa0 en sigesa-docs (ahead 1, sin push).
+
+## 2026-05-28T14:15:00-04:00 — Prompt usuario
+**Prompt:** No push; move changes to branch alex; fix frontend with sigesa-frontend-engineer (DTI UCs + Figma hi-fi); skip broken symlinks.
+**Acción:** Branch alex en sigesa-docs (submodules) y sigesa-front; CC/TD dashboards alineados Figma (ProcessOverview, observaciones UC-005/006, TdAppShell, búsqueda UC-007); lint/tsc OK; sin push.
+
+## 2026-05-28T14:25:00-04:00 — Prompt usuario
+**Prompt:** yes go ahead now push it to origin
+**Acción:** Push branch alex: sigesa-front (b09457a) y sigesa-docs (a772798) a origin/alex; tracking configurado.
+
+## 2026-05-28T14:35:00-04:00 — Prompt usuario
+**Prompt:** you didn't include the .env.example in frontend pls check that as well
+**Acción:** Añadido app/sigesa-front/.env.example (NEXT_PUBLIC_API_URL), excepción en .gitignore, push alex en sigesa-front y bump submodule en sigesa-docs.
+
+## 2026-05-28T16:00:00-04:00 — Prompt usuario
+**Prompt:** execute the plan (compose profiles, FE/BE alignment, DTI api_contracts_mvp_runtime, MVP happy+sad paths)
+**Acción:** Ejecutado: Docker profile full-stack; backend alex (dashboard status/description, observation indicatorId, dev-check); front alex (TD filter, description map); docs/05_dti/api_contracts_mvp_runtime.md; E2E H1–H9 + S1/S8/S9 OK.
+
+## 2026-05-28T18:30:00-04:00 — Prompt usuario
+**Prompt:** execute the plan (push alex, UC-004 phase drill-down, TD tray/review, C4 alignment, Figma TD audit)
+**Acción:** Push alex (3 repos). Implementado: multi-phase seed + db:reset-dev, /cc/fases/[phaseId], /td/indicators/[id]/review, task-tray TD, api_contracts_mvp_runtime §11 C4, EXPORT_TODO TD frames.
+
+---
+
+## Versión `alex` — Registro consolidado (2026-05-28)
+
+**Rama activa:** `alex` en `sigesa-docs`, `sigesa-front`, `sigesa-backend` (pusheada a `origin/alex`).
+
+### 1. Repositorio y submodules
+
+- Sync con `origin/main` (POC-03/04, diagramas, roadmap); stash/pop de WIP local.
+- `app/sigesa-front` y `app/sigesa-backend` cableados como **git submodules** (AcredIA-UMSS).
+- Bootstrap y push inicial: backend `main` (`6508c9b`), front `main` → reemplazado por MVP local.
+- Trabajo activo en **`alex`** (no `main`) en los tres repos.
+
+### 2. Desarrollo local Mode A (backend)
+
+| Cambio | Archivos / comando |
+|--------|-------------------|
+| Perfil Docker `full-stack` — infra sola por defecto | `docker-compose.yml`, `npm run compose:infra` |
+| Smoke health + login | `scripts/dev-check.sh`, `npm run dev:check` |
+| TD bandeja vacía (status filter) | `DashboardQueries.ts`, `dashboardStatusFilter.ts` |
+| Descripción indicador en dashboard | `requirement_text` en SQL |
+| `indicatorId` en lista observaciones | `RDSRepositories.ts` |
+| Multi-status SQL fix (`IN` vs `ANY`) | commit `9d8a25c` |
+| Seed 3 fases + 4 indicadores | `scripts/seed-dev.sql` |
+| Reset ciclo demo | `npm run db:reset-dev` (`reset-dev.sql` / `reset-dev.sh`) |
+| Dashboard: `phaseId`, `phaseName`, `recentObservations` (TD) | `DashboardQueries.ts` |
+
+**Commits backend (`alex`):** `e56a3ef` → `9d8a25c` → `67121f4`
+
+### 3. Frontend MVP (`sigesa-front/alex`)
+
+| Área | Entregable |
+|------|------------|
+| Figma/FSD CC+TD | `CoordinatorHome`, `CcAppShell`, `TdAppShell`, `IndicatorTable`, `ProcessOverviewCard`, observaciones |
+| `.env.example` | `NEXT_PUBLIC_API_URL=http://localhost:8080/api/v1` |
+| TD bandeja | Quitar param `status` roto; map `description` |
+| **UC-004 drill-down** | `/cc/fases/[phaseId]` + `PhaseIndicatorView` |
+| Upload modal Figma | `EvidenceUploader` drag-drop + cabecera indicador/fase |
+| **TD flujo REVISAR** | Task-tray por fase en `TechnicianDashboard` |
+| **TD revisión** | `/td/indicators/[id]/review` + `IndicatorReviewDetail` |
+
+**Commits front (`alex`):** `b09457a` → `0a82039` → `6a47019` → `7a584e6`
+
+### 4. Documentación DTI (`sigesa-docs/alex`)
+
+| Documento | Contenido |
+|-----------|-----------|
+| `docs/05_dti/api_contracts_mvp_runtime.md` | Gateway, auth, dashboard, health, webhooks, matriz FE↔BE |
+| `DTI.md` §5 | Enlace runtime MVP |
+| `api_contracts_cloud.md` | Cross-link runtime |
+| §11 (añadido) | Alineación C4 + secuencia MVP vs `docs/07_diagramas/seq-*` |
+| `figma/screenshots/EXPORT_TODO.md` | TD frames pendientes (`885:2309`, `231:130`; re-export `1249:3112`) |
+
+**Hallazgo Figma:** PNG `td-bandeja-tareas.png` posiblemente mislabeled (parece panel JD); metadata describe task-tray correcto.
+
+**Commits docs:** `5ca4e04`, `03bd6f3` (+ submodules)
+
+### 5. Flujo MVP verificado (happy + sad)
+
+```text
+CC: fase → indicador → POST evidences → SUBIDO
+TD: bandeja → REVISAR → reject (≥20) → OBSERVADO
+CC: subsanar (observationId) → SUBSANADO
+TD: approve → APROBADO
+```
+
+Sad paths probados: 401 login, 400 reason corto, 409 approve en PENDIENTE. Tests audit: 11/11 PASS.
+
+### 6. Arranque local (referencia)
+
+```bash
+cd app/sigesa-backend && cp .env.example .env
+npm run compose:infra && npm run db:reset-dev
+npm run build -w @sigesa/shared
+npm run dev:evidence & npm run dev:audit & npm run dev:orchestration & npm run dev:gateway
+cd ../sigesa-front && cp .env.example .env.local && npm run dev
+```
+
+Demo: `cc.demo@umss.edu.bo` / `td.demo@umss.edu.bo` — `Password123!`
+
+### 7. Prompts de sesión (cronología)
+
+1. Sync local con origin + submodules Phase 5  
+2. Push branch `alex`  
+3. `.env.example` frontend  
+4. Execute plan: compose profiles, FE/BE alignment, `api_contracts_mvp_runtime`, E2E  
+5. Plan iteración: TD screenshots, C4, UC-004 completo  
+6. Execute plan: phase routes, TD tray/review, C4 §11  
+7. **Este prompt:** commit todo + log consolidado versión `alex`
+
+**Acción:** Append registro consolidado; commit en `sigesa-docs/alex` si hay cambios pendientes.
+
+
+## 2026-05-28T16:44:00-04:00 — Prompt usuario
+**Prompt:** I want to move to main branch, pls check evetyhing is correct with the submodules and also I want to merge alex branch with oriign main and push it to origin/alex
+**Acción:** Verificado estado git/submodules; merge origin/main→alex ya up-to-date; push origin/alex OK; inspeccionado main (apps embebidos, sin submodules); restaurado branch alex con submodules init.
+
+## 2026-05-28T17:00:00-04:00 — Prompt usuario
+**Prompt:** .
+**Acción:** Inicio de sesión; solicitado identificación de usuario según regla 02_session_prompt_logging.
+
+## 2026-05-28T17:00:30-04:00 — Prompt usuario
+**Prompt:** alexAlvarez
+**Acción:** Sesión registrada para alexAlvarez; log activo en team/alexAlvarez/log_interno.md.
+
+## 2026-05-28T17:30:00-04:00 — Prompt usuario
+**Prompt:** pls change to agent mode and update the necessary files but also do a whole analysis of the files in docs and check that everything is consistent BRD -> MRD -> PRD -> NFRs -> DTI + ADRs + C4 -> code (implementation)
+**Acción:** Actualizados c4-006, c4-007; creado c4-008 prod; DTI §2/§8, hybrid §2.6, api_contracts_mvp_runtime §11, READMEs, symlinks; auditoría consistency_mvp_runtime_audit.md.

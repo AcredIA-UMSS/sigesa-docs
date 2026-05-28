@@ -1,0 +1,6 @@
+[submodule "app/sigesa-front"]
+	path = app/sigesa-front
+	url = git@github.com:AcredIA-UMSS/sigesa-front.git
+[submodule "app/sigesa-backend"]
+	path = app/sigesa-backend
+	url = git@github.com:AcredIA-UMSS/sigesa-backend.git

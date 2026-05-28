@@ -306,5 +306,6 @@ GET /api/v1/indicators/{indicatorId}/observations
 - [`docs/05_dti/adrs/ADR_010_event_driven_choreography.md`](adrs/ADR_010_event_driven_choreography.md)
 - [`docs/05_dti/adrs/ADR_012_ddl_indicator_state_history.md`](adrs/ADR_012_ddl_indicator_state_history.md)
 - [`docs/04_fsd/api_contracts.md`](../04_fsd/api_contracts.md) (contratos funcionales cloud v1.0)
+- [`api_contracts_mvp_runtime.md`](api_contracts_mvp_runtime.md) (gateway, auth, dashboard, Mode A local)
 - [`context/03_domain_glossary.md`](../../context/03_domain_glossary.md) (mapeo de terminos ES → EN)
 - [`team/alexAlvarez/docs/context/04_state_machine.md`](../../team/alexAlvarez/docs/context/04_state_machine.md) (transiciones validas)

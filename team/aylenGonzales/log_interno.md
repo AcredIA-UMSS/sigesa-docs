@@ -33,3 +33,7 @@ El archivo debe ser la fuente única de verdad: no duplicar docs/03_prd/roadmap.
 ## 2026-05-28T10:30:00-04:00 — Prompt usuario
 **Prompt:** @ArchAgent con skill poc-runner: diseñar y bootstrapear 2 POCs ejecutables en Python (selección UC FSD sin repetir POC-01/02, fichas POC_TEMPLATE, scaffold FastAPI+pytest).
 **Acción:** Tabla de decisión UC-015 y UC-017; creación POC-03 notification-outbox y POC-04 audit-log-query con fichas, código, tests, scripts run_poc03/04 y actualización docs/pocs/README.md y run_local_pocs.ps1.
+
+## 2026-05-28T14:00:00-04:00 — Prompt usuario
+**Prompt:** Corregir 8 diagramas Mermaid con error de parseo en title línea 2 (er, gantt, seq, state en docs/07_diagramas/).
+**Acción:** title inline movido a frontmatter YAML; sanitización guiones, emojis, paréntesis y encoding en gantt-001/006; frontmatter primero en seq-002/003; er-004/005 sin title dentro de erDiagram.

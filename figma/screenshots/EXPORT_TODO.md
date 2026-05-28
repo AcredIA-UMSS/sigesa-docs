@@ -47,7 +47,9 @@ Screenshots pendientes para la siguiente sesión (ordenados por prioridad del au
 | **P0** | cc-modal-proceso-observado | `1162:3861` | 864×735 | Modal de Observación — gap crítico |
 | **P0** | cc-modal-subir-documento | `782:1510` | 671×684 | Modal de carga Evidencia — gap crítico |
 | **P0** | auth-login | `111:74` | 1280×1123 | Pantalla de login — ausente |
-| **P1** | td-review-detail | `885:2309` | 1280×1574 | TD vista de detalle de revisión |
+| **P1** | td-review-detail | `885:2309` | 1280×1574 | TD vista revisión — **pendiente export** |
+| **P1** | td-panel-control | `231:130` | 1280×1145 | KPI strip TD — **pendiente export** |
+| **P0 verify** | td-bandeja-tareas | `1249:3112` | 1282×1589 | **Re-export** — PNG actual puede ser panel JD |
 | **P1** | cc-fase2 | `666:1807` | 1280×1043 | Estado SUBSANADO |
 | **P1** | cc-documentacion | `670:2333` | 1280×1387 | Vista de gestión de Evidencias |
 | **P1** | public-home | `1505:6772` | 1280×3762 | Portal público [P] |
