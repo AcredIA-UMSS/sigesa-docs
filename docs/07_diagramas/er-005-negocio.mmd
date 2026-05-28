@@ -64,7 +64,7 @@ erDiagram
 
     EXPEDIENTE_DIGITAL {
         int id PK
-        int proceso_id FK UK
+        int proceso_id UK
         string titulo
         float avance_global_pct
         timestamp ultima_actualizacion
@@ -109,7 +109,7 @@ erDiagram
 
     PLAN_MEJORA {
         int id PK
-        int indicador_instancia_id FK UK
+        int indicador_instancia_id UK
         string estado "ABIERTO|EN_VALIDACION|PENDIENTE_CIERRE|CERRADO"
         date fecha_objetivo
         int responsable_cc_id FK
