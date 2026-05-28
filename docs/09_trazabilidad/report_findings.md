@@ -66,7 +66,7 @@ No se detectaron `PRD-US` Must sin `FSD-UC` ni `PRD-REQ` Must sin `BRD-REQ`.
 | W-06 | BRD-Q-04: carreras piloto pendientes | Completar BRD §14.3 con [JD] |
 | W-07 | `docs/05_dti/DTI.md` compilado; revisar coherencia ADR/MOD con matriz §6 | Auditoría DTI vs matriz en próximo sprint |
 | W-08 | Spec Fidelity (M-RUB-SF) requiere medición Git formal | Ejecutar script diff en próximo sprint |
-| W-09 | `diag-02-seq-evidencias.mmd` puede sugerir DELETE exitoso | Alinear diagrama con append-only (409) |
+| W-09 | `seq-002-02-evidencias.mmd` puede sugerir DELETE exitoso | Alinear diagrama con append-only (409) |
 
 ### 3.3 Info — resueltos / nuevos
 

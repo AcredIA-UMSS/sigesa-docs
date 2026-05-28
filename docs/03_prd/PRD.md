@@ -132,7 +132,7 @@ Resumen ejecutivo:
 
 ### 4.2 User journeys (Mermaid)
 
-> Diagramas detallados (fuente editable): [`07_diagramas/PRD_journey_CC_subsanacion_secuencia.mmd`](07_diagramas/PRD_journey_CC_subsanacion_secuencia.mmd) · [`PRD_journey_CC_subsanacion_estados.mmd`](07_diagramas/PRD_journey_CC_subsanacion_estados.mmd) · [`PRD_journey_TD_cierre_fase_secuencia.mmd`](07_diagramas/PRD_journey_TD_cierre_fase_secuencia.mmd)
+> Diagramas detallados (fuente editable): [`07_diagramas/seq-001-journey-cc-subsanacion-secuencia.mmd`](07_diagramas/seq-001-journey-cc-subsanacion-secuencia.mmd) · [`state-001-journey-cc-subsanacion-estados.mmd`](07_diagramas/state-001-journey-cc-subsanacion-estados.mmd) · [`seq-002-journey-td-cierre-fase-secuencia.mmd`](07_diagramas/seq-002-journey-td-cierre-fase-secuencia.mmd)
 
 ```mermaid
 journey

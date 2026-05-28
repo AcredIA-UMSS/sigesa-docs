@@ -196,7 +196,7 @@ Revisar gate: [`docs/09_trazabilidad/report_findings.md`](docs/09_trazabilidad/r
 | Append-only Evidence | ADR-0001, ADR-0012 | `docs/05_dti/ddl_sigesa_append_only.sql` |
 | EventBridge + SQS FIFO | ADR-0010, ADR-0011 | `docs/05_dti/hybrid_architecture.md` |
 | S3 blobs | ADR-0013 | POC-01 (MinIO en docker compose) |
-| JWT + RBAC | ADR-0007 | FSD-UC-001 · secuencia `docs/07_diagramas/seq-003-autenticacion-jwt.mmd` |
+| JWT + RBAC | ADR-0007 | FSD-UC-001 · secuencia `docs/07_diagramas/seq-003-003-autenticacion-jwt.mmd` |
 
 Si implementas en el **repo aplicativo** futuro, **MUST** respetar contratos en [`docs/04_fsd/api_contracts.md`](docs/04_fsd/api_contracts.md) y [`docs/05_dti/api_contracts_cloud.md`](docs/05_dti/api_contracts_cloud.md).
 

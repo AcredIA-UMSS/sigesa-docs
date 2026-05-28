@@ -22,7 +22,7 @@ SIGESA evoluciona en **cuatro oleadas** alineadas al calendario de acreditación
 3. **v1.x escalabilidad** — Picos de convocatoria, roles extendidos, exportaciones.  
 4. **v2.0 plataforma** — Integraciones UMSS, IA asistida gobernada, evaluador externo.
 
-Diagrama Gantt de implementación (sprints técnicos): [`docs/07_diagramas/diagrama-gantt-roadmap.mmd`](../../../docs/07_diagramas/diagrama-gantt-roadmap.mmd)
+Diagrama Gantt de implementación (sprints técnicos): [`docs/07_diagramas/gantt-003-diagrama.mmd`](../../../docs/07_diagramas/gantt-003-diagrama.mmd)
 
 ```mermaid
 gantt
@@ -80,7 +80,7 @@ gantt
 
 ## 1. Roadmap de entregas (Gantt)
 
-El diagrama anterior resume el **plan de implementación técnica** (mayo–agosto 2026). Para la vista estratégica institucional (2026–2028), ver el Gantt canónico en [`docs/07_diagramas/gantt.mmd`](../../../docs/07_diagramas/gantt.mmd).
+El diagrama anterior resume el **plan de implementación técnica** (mayo–agosto 2026). Para la vista estratégica institucional (2026–2028), ver el Gantt canónico en [`docs/07_diagramas/gantt-005-diagrama.mmd`](../../../docs/07_diagramas/gantt-005-diagrama.mmd).
 
 Renderizar los archivos `.mmd` en el visor del repositorio o en la documentación publicada.
 
@@ -185,7 +185,7 @@ Historias **Should** incluidas en v1.0 según capacidad: PRD-US-010, PRD-US-018.
 | PRD (este equipo) | `team/aylenGonzales/03_prd/PRD_v1.md` |
 | Roadmap canónico | `docs/03_prd/roadmap.md` |
 | User stories canónicas | `docs/03_prd/user_stories.md` |
-| Gantt implementación | `docs/07_diagramas/diagrama-gantt-roadmap.mmd` |
+| Gantt implementación | `docs/07_diagramas/gantt-003-diagrama.mmd` |
 | Release documental | `docs/10_aportes/release-1.0.0.md` |
 
 ---

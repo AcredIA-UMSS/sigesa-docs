@@ -41,7 +41,7 @@
 | Contratos API | [`api_contracts.md`](api_contracts.md) |
 | Glosario FSD | [`glosario.md`](glosario.md) |
 | **Diagramas (`.mmd`)** | Vista [`07_diagramas/`](07_diagramas/README.md) → canónico [`../07_diagramas/`](../07_diagramas/README.md) |
-| **C4 (DTI)** | [`diag-06-c4-contexto-sistema.mmd`](../07_diagramas/diag-06-c4-contexto-sistema.mmd) · [`diag-07-c4-contenedores-sistema.mmd`](../07_diagramas/diag-07-c4-contenedores-sistema.mmd) — ver [`docs/05_dti/DTI.md`](../05_dti/DTI.md) §2 |
+| **C4 (DTI)** | [`c4-006-06-contexto-sistema.mmd`](../07_diagramas/c4-006-06-contexto-sistema.mmd) · [`c4-007-07-contenedores-sistema.mmd`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) — ver [`docs/05_dti/DTI.md`](../05_dti/DTI.md) §2 |
 
 > Modelo físico PostgreSQL: [`docs/05_dti/modelo_datos.md`](../05_dti/modelo_datos.md).
 
@@ -136,7 +136,7 @@ stateDiagram-v2
 
 ### 4.3 Diagrama de secuencia — Subsanación
 
-> Versión editable (fuente): [`07_diagramas/FSD-UC-006_subsanar_evidencia_secuencia.mmd`](07_diagramas/FSD-UC-006_subsanar_evidencia_secuencia.mmd) · Estados: [`FSD-UC-006_008_009_estados_indicador.mmd`](07_diagramas/FSD-UC-006_008_009_estados_indicador.mmd)
+> Versión editable (fuente): [`07_diagramas/seq-006-006-subsanar-evidencia-secuencia.mmd`](07_diagramas/seq-006-006-subsanar-evidencia-secuencia.mmd) · Estados: [`state-006-006-008-009-estados-indicador.mmd`](07_diagramas/state-006-006-008-009-estados-indicador.mmd)
 
 ```mermaid
 sequenceDiagram

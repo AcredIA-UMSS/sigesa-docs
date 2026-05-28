@@ -177,24 +177,24 @@ Ver `templates/APORTES_TEMPLATE.md`, `docs/10_aportes/APORTES_RELEASE_1.0.0.md` 
 | T-152 | NFR ISO 25010 | NFR-POR-01 metrica+umbral+verificacion | 06_prompt_contracts/NFR.md | Entregada |  |
 | T-153 | User journey | J-01 Cierre evidencia CEUB | 03_prd/PRD.md §11.1 | Entregada |  |
 | T-154 | User journey | J-02 Transparencia empleador | 03_prd/PRD.md §11.2 | Entregada |  |
-| T-155 | Diagrama Mermaid | MAR-SEQ-001-autenticacion-jwt.mmd | 07_diagramas/MAR-SEQ-001-autenticacion-jwt.mmd | Entregada | Oficial MAR |
-| T-156 | Diagrama Mermaid | MAR-SEQ-002-carga-evidencia-versionada.mmd | 07_diagramas/MAR-SEQ-002-carga-evidencia-versionada.mmd | Entregada | Oficial MAR |
-| T-157 | Diagrama Mermaid | MAR-SEQ-003-aprobacion-rechazo-subfase.mmd | 07_diagramas/MAR-SEQ-003-aprobacion-rechazo-subfase.mmd | Entregada | Oficial MAR |
-| T-158 | Diagrama Mermaid | MAR-SEQ-004-dashboard-drilldown.mmd | 07_diagramas/MAR-SEQ-004-dashboard-drilldown.mmd | Entregada | Oficial MAR |
-| T-159 | Diagrama Mermaid | MAR-SEQ-005-reporte-pdf-asincrono.mmd | 07_diagramas/MAR-SEQ-005-reporte-pdf-asincrono.mmd | Entregada | Oficial MAR |
-| T-160 | Diagrama Mermaid | MAR-SEQ-006-notificaciones-outbox-smtp.mmd | 07_diagramas/MAR-SEQ-006-notificaciones-outbox-smtp.mmd | Entregada | Oficial MAR |
-| T-161 | Diagrama Mermaid | MAR-SEQ-007-busqueda-fts-multifiltro.mmd | 07_diagramas/MAR-SEQ-007-busqueda-fts-multifiltro.mmd | Entregada | Oficial MAR |
-| T-162 | Diagrama Mermaid | MAR-SEQ-008-portal-publico-consulta.mmd | 07_diagramas/MAR-SEQ-008-portal-publico-consulta.mmd | Entregada | Oficial MAR |
-| T-163 | Diagrama Mermaid | MAR-SEQ-009-auditoria-exportacion.mmd | 07_diagramas/MAR-SEQ-009-auditoria-exportacion.mmd | Entregada | Oficial MAR |
-| T-164 | Diagrama Mermaid | MAR-SEQ-010-configuracion-proceso-normativa.mmd | 07_diagramas/MAR-SEQ-010-configuracion-proceso-normativa.mmd | Entregada | Oficial MAR |
-| T-165 | Diagrama Mermaid | MAR-SEQ-011-supervision-respaldos.mmd | 07_diagramas/MAR-SEQ-011-supervision-respaldos.mmd | Entregada | Oficial MAR |
-| T-166 | Diagrama Mermaid | MAR-STA-001-ciclo-vida-evidencia.mmd | 07_diagramas/MAR-STA-001-ciclo-vida-evidencia.mmd | Entregada | Oficial MAR |
-| T-167 | Diagrama Mermaid | MAR-STA-002-ciclo-proceso-acreditacion.mmd | 07_diagramas/MAR-STA-002-ciclo-proceso-acreditacion.mmd | Entregada | Oficial MAR |
-| T-168 | Diagrama Mermaid | MAR-STA-003-ciclo-plan-mejora.mmd | 07_diagramas/MAR-STA-003-ciclo-plan-mejora.mmd | Entregada | Oficial MAR |
-| T-169 | Diagrama Mermaid | MAR-ER-001-modelo-datos-nucleo.mmd | 07_diagramas/MAR-ER-001-modelo-datos-nucleo.mmd | Entregada | Oficial MAR |
-| T-170 | Diagrama Mermaid | MAR-ER-002-dominio-auditoria-evidencia.mmd | 07_diagramas/MAR-ER-002-dominio-auditoria-evidencia.mmd | Entregada | Oficial MAR |
-| T-171 | Diagrama Mermaid | MAR-GANTT-001-roadmap-implementacion-sigesa.mmd | 07_diagramas/MAR-GANTT-001-roadmap-implementacion-sigesa.mmd | Entregada | Oficial MAR |
-| T-172 | Diagrama Mermaid | MAR-GANTT-002-cronograma-convocatoria-ceub.mmd | 07_diagramas/MAR-GANTT-002-cronograma-convocatoria-ceub.mmd | Entregada | Oficial MAR |
+| T-155 | Diagrama Mermaid | seq-001-001-autenticacion-jwt.mmd | 07_diagramas/seq-001-001-autenticacion-jwt.mmd | Entregada | Oficial MAR |
+| T-156 | Diagrama Mermaid | seq-002-002-carga-evidencia-versionada.mmd | 07_diagramas/seq-002-002-carga-evidencia-versionada.mmd | Entregada | Oficial MAR |
+| T-157 | Diagrama Mermaid | seq-003-003-aprobacion-rechazo-subfase.mmd | 07_diagramas/seq-003-003-aprobacion-rechazo-subfase.mmd | Entregada | Oficial MAR |
+| T-158 | Diagrama Mermaid | seq-004-004-dashboard-drilldown.mmd | 07_diagramas/seq-004-004-dashboard-drilldown.mmd | Entregada | Oficial MAR |
+| T-159 | Diagrama Mermaid | seq-005-005-reporte-pdf-asincrono.mmd | 07_diagramas/seq-005-005-reporte-pdf-asincrono.mmd | Entregada | Oficial MAR |
+| T-160 | Diagrama Mermaid | seq-006-006-notificaciones-outbox-smtp.mmd | 07_diagramas/seq-006-006-notificaciones-outbox-smtp.mmd | Entregada | Oficial MAR |
+| T-161 | Diagrama Mermaid | seq-007-007-busqueda-fts-multifiltro.mmd | 07_diagramas/seq-007-007-busqueda-fts-multifiltro.mmd | Entregada | Oficial MAR |
+| T-162 | Diagrama Mermaid | seq-008-008-portal-publico-consulta.mmd | 07_diagramas/seq-008-008-portal-publico-consulta.mmd | Entregada | Oficial MAR |
+| T-163 | Diagrama Mermaid | seq-009-009-auditoria-exportacion.mmd | 07_diagramas/seq-009-009-auditoria-exportacion.mmd | Entregada | Oficial MAR |
+| T-164 | Diagrama Mermaid | seq-010-010-configuracion-proceso-normativa.mmd | 07_diagramas/seq-010-010-configuracion-proceso-normativa.mmd | Entregada | Oficial MAR |
+| T-165 | Diagrama Mermaid | seq-011-011-supervision-respaldos.mmd | 07_diagramas/seq-011-011-supervision-respaldos.mmd | Entregada | Oficial MAR |
+| T-166 | Diagrama Mermaid | state-001-001-ciclo-vida-evidencia.mmd | 07_diagramas/state-001-001-ciclo-vida-evidencia.mmd | Entregada | Oficial MAR |
+| T-167 | Diagrama Mermaid | state-002-002-ciclo-proceso-acreditacion.mmd | 07_diagramas/state-002-002-ciclo-proceso-acreditacion.mmd | Entregada | Oficial MAR |
+| T-168 | Diagrama Mermaid | state-003-003-ciclo-plan-mejora.mmd | 07_diagramas/state-003-003-ciclo-plan-mejora.mmd | Entregada | Oficial MAR |
+| T-169 | Diagrama Mermaid | er-001-001-modelo-datos-nucleo.mmd | 07_diagramas/er-001-001-modelo-datos-nucleo.mmd | Entregada | Oficial MAR |
+| T-170 | Diagrama Mermaid | er-002-002-dominio-auditoria-evidencia.mmd | 07_diagramas/er-002-002-dominio-auditoria-evidencia.mmd | Entregada | Oficial MAR |
+| T-171 | Diagrama Mermaid | gantt-001-001-roadmap-implementacion-sigesa.mmd | 07_diagramas/gantt-001-001-roadmap-implementacion-sigesa.mmd | Entregada | Oficial MAR |
+| T-172 | Diagrama Mermaid | gantt-002-002-cronograma-convocatoria-ceub.mmd | 07_diagramas/gantt-002-002-cronograma-convocatoria-ceub.mmd | Entregada | Oficial MAR |
 | T-173 | User story | PRD-US-001 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
 | T-174 | User story | PRD-US-002 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |
 | T-175 | User story | PRD-US-003 INVEST+CA | team/Marlene/03_prd/PRD.md | Entregada | Cuadre v1.2 |

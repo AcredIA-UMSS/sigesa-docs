@@ -21,3 +21,7 @@ El archivo debe ser la fuente única de verdad: no duplicar docs/03_prd/roadmap.
 ## 2026-05-27T23:09:00-04:00 — Prompt usuario
 **Prompt:** Reemplazar archivos `.mmd`/`.md` symlink por contenido Mermaid real del destino, validar sintaxis base, hacer commit `fix: replace symlinks with actual Mermaid content` y resumir reemplazos.
 **Acción:** Identificación de symlinks Git (`mode 120000`), resolución recursiva de destinos, reemplazo por contenido real, validación de inicio Mermaid/subgraphs y preparación del commit solicitado.
+
+## 2026-05-27T23:30:00-04:00 — Prompt usuario
+**Prompt:** Renombrar `.mmd` en `docs/07_diagramas/` para que el prefijo coincida con el tipo Mermaid interno, actualizar referencias en Markdown y registrar cambios como @VisualAgent.
+**Acción:** Detección de tipo Mermaid por primer keyword real, renombre masivo en `docs/07_diagramas/` bajo patrón `<tipo>-<NNN>-<descripcion>.mmd`, actualización global de referencias `.md` y verificación de enlaces sin nombres antiguos.

@@ -64,11 +64,11 @@ Cada fila es la **unidad de trazabilidad** principal para releases, PRs y checkl
 | UC-007 | Búsqueda global | OBJ-01 | 009 | 015 | 001 | — | 14 | MOD-BUSQUEDA | `GET /busqueda/documentos` | — | §8 | PLAN | P0 | C3 |
 | UC-008 | Portal público | OBJ-03 | 012, 013 | 016, 017 | 004, 008 | RB-07, BR-010 | PUB-01 | MOD-PUBLICO | `GET /publico/carreras/{slug}` | — | §9 | PLAN | P1 | C2 |
 | UC-009 | Auditoría | OBJ-02 | 011 | 018 | 013 | RB-04, BR-009 | AUD-01 | MOD-AUDITORIA | `GET /auditoria` | — | §10 | PLAN | P0 | C1 |
-| UC-010 | Proceso y plantilla | OBJ-02 | 010 | 019, 002 | 004 | RB-01, RB-05, RB-08, BR-013 | PROC-01 | MOD-WORKFLOW | `POST /procesos`, plantillas | `gantt.mmd` | §11 | PLAN | P1 | C1 |
+| UC-010 | Proceso y plantilla | OBJ-02 | 010 | 019, 002 | 004 | RB-01, RB-05, RB-08, BR-013 | PROC-01 | MOD-WORKFLOW | `POST /procesos`, plantillas | `gantt-005-diagrama.mmd` | §11 | PLAN | P1 | C1 |
 | UC-011 | Respaldos automáticos | OBJ-02 | 014 | 022 | 004, FIA-02 | BR-012 | BKP-01 | MOD-OPS | health / backup | — | §12 | PLAN | P0 | C2 |
 | UC-012 | Plan de mejora | OBJ-01 | 016 | 021 | — | — | MEJ-01 | MOD-MEJORA | `POST /planes-mejora` | D-ACT-001 (adicionales) | §13 | PLAN | P1 | C3 |
 
-**Documentos de detalle:** `team/Marlene/04_fsd/casos_uso.md` · `api_contracts.md` · `modelo_datos.md` (`modelo_er.mmd`).
+**Documentos de detalle:** `team/Marlene/04_fsd/casos_uso.md` · `api_contracts.md` · `modelo_datos.md` (`er-006-diagrama.mmd`).
 
 ---
 
@@ -183,12 +183,12 @@ Detalle OpenAPI-style: `team/Marlene/04_fsd/api_contracts.md`.
 
 | FSD-UC | Secuencia | Estado | Otros |
 |--------|-----------|--------|-------|
-| UC-001 | `07_diagramas/UC01_secuencia.mmd` | `UC01_estado.mmd` | D-SEQ-001 |
-| UC-002 | `UC02_secuencia.mmd` | `UC02_estado.mmd` | D-SEQ-002 |
-| UC-003 | `UC03_secuencia.mmd` | `UC03_estado.mmd` | D-SEQ-003 |
+| UC-001 | `07_diagramas/seq-001-01-secuencia.mmd` | `state-001-01-estado.mmd` | D-SEQ-001 |
+| UC-002 | `seq-002-02-secuencia.mmd` | `state-002-02-estado.mmd` | D-SEQ-002 |
+| UC-003 | `seq-003-03-secuencia.mmd` | `state-003-03-estado.mmd` | D-SEQ-003 |
 | UC-004 | — | — | — |
 | UC-005 | `08_agents/mmd/` (SEQ-004) | — | — |
-| Transversal | — | — | `modelo_er.mmd`, `gantt.mmd` |
+| Transversal | — | — | `er-006-diagrama.mmd`, `gantt-005-diagrama.mmd` |
 
 Índice agentes: `team/Marlene/08_agents/ARQ_Mermaid_SIGESA_FSD_Traceability_v1.md`.
 

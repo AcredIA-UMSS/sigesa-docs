@@ -4,11 +4,11 @@ Enlaces simbólicos a [`../../07_diagramas/`](../../07_diagramas/README.md). Los
 
 | Archivo | Uso en PRD | Archivo canónico |
 |---------|------------|------------------|
-| `gantt_roadmap_2026_2027.mmd` | [`ROADMAP.md`](../ROADMAP.md) §4 | `gantt.mmd` |
-| `gantt_release_producto.mmd` | Releases v1.0 / v1.1 | `diagrama-gantt-release.mmd` |
-| `gantt_sprint_equipo.mmd` | Planificación sprint | `diagrama-gantt-sprint.mmd` |
-| `gantt_ciclo_acreditacion_institucional.mmd` | Ciclo normativo | `diag-06a-gantt-ciclo-acreditacion.mmd` |
-| `modelo_er_dominio.mmd` | Dominio producto | `modelo_er.mmd` |
-| `PRD_journey_CC_subsanacion_secuencia.mmd` | Journey [CC] detalle | `UC01_secuencia.mmd` |
-| `PRD_journey_CC_subsanacion_estados.mmd` | Estados subsanación | `UC01_estado.mmd` |
-| `PRD_journey_TD_cierre_fase_secuencia.mmd` | Journey [TD] cierre Fase | `UC03_secuencia.mmd` |
+| `gantt-026-roadmap-2026-2027.mmd` | [`ROADMAP.md`](../ROADMAP.md) §4 | `gantt-005-diagrama.mmd` |
+| `gantt-007-release-producto.mmd` | Releases v1.0 / v1.1 | `gantt-002-diagrama.mmd` |
+| `gantt-008-sprint-equipo.mmd` | Planificación sprint | `gantt-004-diagrama.mmd` |
+| `gantt-006-ciclo-acreditacion-institucional.mmd` | Ciclo normativo | `gantt-001-06a-ciclo-acreditacion.mmd` |
+| `er-007-dominio.mmd` | Dominio producto | `er-006-diagrama.mmd` |
+| `seq-001-journey-cc-subsanacion-secuencia.mmd` | Journey [CC] detalle | `seq-001-01-secuencia.mmd` |
+| `state-001-journey-cc-subsanacion-estados.mmd` | Estados subsanación | `state-001-01-estado.mmd` |
+| `seq-002-journey-td-cierre-fase-secuencia.mmd` | Journey [TD] cierre Fase | `seq-003-03-secuencia.mmd` |

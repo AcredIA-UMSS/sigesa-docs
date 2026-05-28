@@ -40,7 +40,7 @@ estado: En revisión — primera versión integrada
 | NFR | [`docs/05_nfr/NFR_ISO25010.md`](../05_nfr/NFR_ISO25010.md) |
 | Glosario | [`context/03_domain_glossary.md`](../../context/03_domain_glossary.md) |
 | Máquina de estados | [`team/alexAlvarez/docs/context/04_state_machine.md`](../../team/alexAlvarez/docs/context/04_state_machine.md) |
-| **Diagramas C4 (fuente única)** | [`docs/07_diagramas/`](../07_diagramas/README.md) — [`diag-06-c4-contexto-sistema.mmd`](../07_diagramas/diag-06-c4-contexto-sistema.mmd) · [`diag-07-c4-contenedores-sistema.mmd`](../07_diagramas/diag-07-c4-contenedores-sistema.mmd) |
+| **Diagramas C4 (fuente única)** | [`docs/07_diagramas/`](../07_diagramas/README.md) — [`c4-006-06-contexto-sistema.mmd`](../07_diagramas/c4-006-06-contexto-sistema.mmd) · [`c4-007-07-contenedores-sistema.mmd`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) |
 
 ### Fuentes de trabajo equipo (consolidadas en esta versión)
 
@@ -267,7 +267,7 @@ Orchestration Service:
 
 ### 2.5 Notification Service
 
-**Responsabilidad exclusiva:** Suscribirse a eventos del bus y enviar alertas a los actores correspondientes vía SMTP institucional (mapeado desde el diagrama C4, `diag-06-c4-contexto-sistema.mmd`). No contiene lógica de dominio de acreditación; su núcleo es la resolución de destinatarios y la plantilla del mensaje.
+**Responsabilidad exclusiva:** Suscribirse a eventos del bus y enviar alertas a los actores correspondientes vía SMTP institucional (mapeado desde el diagrama C4, `c4-006-06-contexto-sistema.mmd`). No contiene lógica de dominio de acreditación; su núcleo es la resolución de destinatarios y la plantilla del mensaje.
 
 | Evento entrante | Destinatario | Mensaje |
 |-----------------|-------------|---------|
@@ -436,7 +436,7 @@ erDiagram
 | Ninguna Evidence puede ser eliminada o sobreescrita | `02_parte_dificil.txt` Restriccion 1 | Tabla `evidence` con columna `supersedes_id`; INSERT exclusivo; sin clave de borrado | DDL: `INSERT INTO evidence (..., supersedes_id, version)` | Audit trail por `version` y `supersedes_id`; no existe endpoint DELETE |
 | Estado del Indicator avanza por transiciones validas unicamente | `04_state_machine.md` §2 Maquina de estados micro | `IndicatorStateMachine.validateTransition()` en domain core de Audit Service; lanza excepcion antes de INSERT | `IndicatorStateMachine.ts` en `audit-service/domain/state-machine/` | Tests unitarios sobre matriz de transiciones; 0 dependencias de infraestructura |
 | Phase cierra solo cuando todos los Indicators estan APROBADO | `04_state_machine.md` §3 Hard Constraint | `PhaseCloseRule` en Orchestration Service evalua `COUNT(APROBADO)==COUNT(TOTAL)` antes de emitir `PhaseCompleted` | `PhaseCloseRule.ts`; query en `RDSAggregateQuery.ts` | Evento `PhaseCompleted` nunca se emite si la condicion no se cumple; SQL verificable |
-| Notificacion inmediata al [TD] cuando [CC] sube Evidence | `02_parte_dificil.txt` Resultado esperado | EventBridge enruta `EvidenceUploaded` a Notification Service; SMTP institucional entrega alerta | `EventBridgeAdapter.ts`; `NotificationService`; `diag-06-c4-contexto-sistema.mmd` | Latencia < 2s medible en CloudWatch |
+| Notificacion inmediata al [TD] cuando [CC] sube Evidence | `02_parte_dificil.txt` Resultado esperado | EventBridge enruta `EvidenceUploaded` a Notification Service; SMTP institucional entrega alerta | `EventBridgeAdapter.ts`; `NotificationService`; `c4-006-06-contexto-sistema.mmd` | Latencia < 2s medible en CloudWatch |
 | Evidence Service no debe actualizar estado de Indicator | REGLA 2 del contrato PC-SIG-14 | Evidence Service carece de puerto secundario hacia `indicator_state_history`; solo publica evento | Ausencia de `StateHistoryRepositoryPort` en `evidence-service/ports/secondary/` | Code review: Evidence Service no importa ninguna interfaz de estado de Indicator |
 | Race conditions en cierre de Phase deben ser controladas | REGLA 3 del contrato PC-SIG-14 | SQS FIFO con `MessageGroupId = phaseId`; Orchestration Service consume de cola FIFO, no directamente de EventBridge | `SQSFifoConsumer.ts` en `orchestration-service/adapters/primary/` | Total order garantizado por SQS FIFO; sin procesamiento concurrente por mismo phaseId |
 | El [CC] no puede modificar plazos de subsanacion | `02_parte_dificil.txt` Restriccion 3 | RBAC en API Gateway: rol `ProgramCoordinator` no tiene permiso en endpoints de configuracion de cronograma | IAM policy de API Gateway; `HttpController.ts` con anotacion `@AuthorizedRole` | Tests de autorizacion: POST /schedules devuelve 403 para rol CC |

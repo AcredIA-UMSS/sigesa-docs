@@ -2009,13 +2009,13 @@ Instrucciones:
 
 | Archivo | Tipo | FSD-UC / dominio | Operación |
 |---------|------|------------------|-----------|
-| `diag-01-seq-autenticacion.mmd` | Secuencia | FSD-UC-001 | Creado |
-| `diag-02-seq-evidencias.mmd` | Secuencia | FSD-UC-004, FSD-UC-005 | Creado |
-| `diag-03-seq-observaciones.mmd` | Secuencia | FSD-UC-006 | Creado |
-| `diag-04a-state-proceso.mmd` | Estado | FSD-UC-002, FSD-UC-003 | Creado |
-| `diag-04b-state-obs-evidencia.mmd` | Estado | FSD-UC-005, FSD-UC-006 | Creado |
-| `diag-05-er-modelo-datos.mmd` | ER | Modelo de datos §2.4 | Creado |
-| `diag-06a-gantt-ciclo-acreditacion.mmd` | Gantt | Ciclo completo UMSS | Creado |
+| `seq-001-01-autenticacion.mmd` | Secuencia | FSD-UC-001 | Creado |
+| `seq-002-02-evidencias.mmd` | Secuencia | FSD-UC-004, FSD-UC-005 | Creado |
+| `seq-003-03-observaciones.mmd` | Secuencia | FSD-UC-006 | Creado |
+| `state-002-04a-proceso.mmd` | Estado | FSD-UC-002, FSD-UC-003 | Creado |
+| `state-003-04b-obs-evidencia.mmd` | Estado | FSD-UC-005, FSD-UC-006 | Creado |
+| `er-005-05-modelo-datos.mmd` | ER | Modelo de datos §2.4 | Creado |
+| `gantt-001-06a-ciclo-acreditacion.mmd` | Gantt | Ciclo completo UMSS | Creado |
 
 ---
 
@@ -3568,10 +3568,10 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 
 | Archivo | Tipo | Fuente documental |
 |---------|------|-------------------|
-| `diag-07-c4-contenedores-sistema.mmd` | C4Container | DTI_v1 §3.2 |
-| `diag-08-flow-cierre-proceso-pendientes.mmd` | flowchart | FSD-UC-002 / BR-009 / CU-004 |
-| `diag-09-class-dominio-agregados.mmd` | classDiagram | DTI_v1 §4.2 |
-| `diag-10-pie-cobertura-nfr-iso25010.mmd` | pie | `nfr_iso25010.md` |
+| `c4-007-07-contenedores-sistema.mmd` | C4Container | DTI_v1 §3.2 |
+| `flow-008-08-cierre-proceso-pendientes.mmd` | flowchart | FSD-UC-002 / BR-009 / CU-004 |
+| `class-009-09-dominio-agregados.mmd` | classDiagram | DTI_v1 §4.2 |
+| `pie-010-10-pie-cobertura-nfr-iso25010.mmd` | pie | `nfr_iso25010.md` |
 
 ---
 
@@ -3726,7 +3726,7 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 
 **Prompt:** Implementar recomendadas: diagramas AYL-SEQ-004…011, completar seq-001/002, README 07_diagramas; PRD-US-018…020; FSD-UC-012; NFR_IA.md; POC evidencia; PC-005…007.prompt.md; Gherkin caminos tristes por UC.
 
-**Acción:** Cierre de gaps en `team/aylenGonzales/`: 8 seq nuevos + seq-001/002 completados + `diagrama-gantt-roadmap.mmd`; PRD §5.9 (20 US); FSD-UC-012 + §4.1 Gherkin tristes; `06_nfr/NFR_IA.md`; `06_prompt_contracts/` PC-005–007; plantillas evidencia POC; auditoría actualizada 10/10.
+**Acción:** Cierre de gaps en `team/aylenGonzales/`: 8 seq nuevos + seq-001/002 completados + `gantt-003-diagrama.mmd`; PRD §5.9 (20 US); FSD-UC-012 + §4.1 Gherkin tristes; `06_nfr/NFR_IA.md`; `06_prompt_contracts/` PC-005–007; plantillas evidencia POC; auditoría actualizada 10/10.
 
 **Resultado:** Rúbrica «Excelente» alcanzable en las 10 dimensiones; diagramas 19 `.mmd` con UC-001…011 mapeados.
 
@@ -3736,15 +3736,15 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 
 ### 2026-05-17T00:00:00 — Prompt usuario (ER dominio negocio)
 
-**Prompt:** Completar `team/aylenGonzales/07_diagramas/diagrama-er-dominio-negocio.mmd`.
+**Prompt:** Completar `team/aylenGonzales/07_diagramas/er-005-negocio.mmd`.
 
 **Acción:** Diagrama ER conceptual DUEA (16 entidades: taxonomía CEUB/ARCU-SUR, expediente, plan de mejora, certificado, auditoría append-only). Archivo vacío → 156 líneas Mermaid.
 
-**Resultado:** `diagrama-er-dominio-negocio.mmd` completado; complemento de `diagrama-er-001.mmd` (vista técnica).
+**Resultado:** `er-005-negocio.mmd` completado; complemento de `er-001-001.mmd` (vista técnica).
 
 ---
 
-| PM-046 | docs | team/aylenGonzales/07_diagramas/diagrama-er-dominio-negocio.mmd | ER dominio negocio AYL-ER-DOMINIO-001 (156 líneas). | 2026-05-16 | — |
+| PM-046 | docs | team/aylenGonzales/07_diagramas/er-005-negocio.mmd | ER dominio negocio AYL-ER-DOMINIO-001 (156 líneas). | 2026-05-16 | — |
 
 ### 2026-05-17T00:30:00 — Prompt usuario (re-auditoría + inventario aylenGonzales)
 
@@ -3834,7 +3834,7 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 - **Estado**: Completado
 - **Riesgos / observaciones**:
   - W-07: revisar coherencia `docs/05_dti/DTI.md` vs matriz
-  - W-09: diagrama `diag-02-seq-evidencias.mmd` vs append-only
+  - W-09: diagrama `seq-002-02-evidencias.mmd` vs append-only
   - G-01: FSD-UC-018 sincronía equipo ↔ Golden
 - **Próximos pasos**:
   - FSD Paso 2: flujos alternos en todos los UC (backlog)

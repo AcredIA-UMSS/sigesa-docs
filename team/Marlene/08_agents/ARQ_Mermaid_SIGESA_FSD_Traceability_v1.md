@@ -83,7 +83,7 @@ Los diagramas modelan el comportamiento y la estructura de **SIGESA** para: (1) 
 | **Objetivo** | Modelar FSD-UC-001 / RB-06 / PRD-REQ-001, PRD-REQ-002 |
 | **Actores** | Usuario interno, API Auth, DB Usuario, Auditoría |
 | **Flujo** | Credenciales → validación dominio @umss.edu.bo → bcrypt → JWT → log LOGIN |
-| **Archivo** | `mmd/D-SEQ-001-auth-jwt.mmd` |
+| **Archivo** | `mmd/seq-001-001-auth-jwt.mmd` |
 
 ```mermaid
 sequenceDiagram
@@ -117,7 +117,7 @@ sequenceDiagram
 |-------|-------|
 | **Objetivo** | FSD-UC-002 / RB-02, RB-04, BR-015 / PRD-REQ-003, PRD-REQ-004 |
 | **Flujo** | Multipart → validación → hash → S3 → versión → estado EN_REVISION → outbox notificación |
-| **Archivo** | `mmd/D-SEQ-002-carga-evidencia.mmd` |
+| **Archivo** | `mmd/seq-002-002-carga-evidencia.mmd` |
 
 ```mermaid
 sequenceDiagram
@@ -153,7 +153,7 @@ sequenceDiagram
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | FSD-UC-003 / RB-03, BR-014 / PRD-REQ-005 |
-| **Archivo** | `mmd/D-SEQ-003-dictamen-td.mmd` |
+| **Archivo** | `mmd/seq-003-003-dictamen-td.mmd` |
 
 ```mermaid
 sequenceDiagram
@@ -181,7 +181,7 @@ sequenceDiagram
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | FSD-UC-005 / RB-07 / PRD-REQ-007 |
-| **Archivo** | `mmd/D-SEQ-004-reporte-pdf.mmd` |
+| **Archivo** | `mmd/seq-004-004-reporte-pdf.mmd` |
 
 ```mermaid
 sequenceDiagram
@@ -211,7 +211,7 @@ sequenceDiagram
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | LFSD §2.2 integración SIIS v2 (fuera alcance v1.0) |
-| **Archivo** | `mmd/D-SEQ-005-integracion-siis-futuro.mmd` |
+| **Archivo** | `mmd/seq-005-005-integracion-siis-futuro.mmd` |
 
 ```mermaid
 sequenceDiagram
@@ -238,7 +238,7 @@ sequenceDiagram
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | Estados coherente con UC-002 y UC-003 |
-| **Archivo** | `mmd/D-STA-001-indicador.mmd` |
+| **Archivo** | `mmd/state-001-001-indicador.mmd` |
 
 ```mermaid
 stateDiagram-v2
@@ -258,7 +258,7 @@ stateDiagram-v2
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | Taxonomías proceso CEUB/ARCU-SUR (T-012 LFSD §3; RB-01, RB-08) |
-| **Archivo** | `mmd/D-STA-002-proceso-acreditacion.mmd` |
+| **Archivo** | `mmd/state-002-002-proceso-acreditacion.mmd` |
 
 ```mermaid
 stateDiagram-v2
@@ -279,7 +279,7 @@ stateDiagram-v2
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | Modelo lógico coherente con entidades descritas en LFSD §2.1 y §4 |
-| **Archivo** | `mmd/D-ER-001-nucleo-sigesa.mmd` |
+| **Archivo** | `mmd/er-001-001-nucleo-sigesa.mmd` |
 
 ```mermaid
 erDiagram
@@ -315,7 +315,7 @@ erDiagram
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | Plan despliegue alineado PRD/FSD |
-| **Archivo** | `mmd/D-GANTT-001-roadmap-implementacion.mmd` |
+| **Archivo** | `mmd/gantt-001-001-roadmap-implementacion.mmd` |
 
 ```mermaid
 gantt
@@ -340,7 +340,7 @@ gantt
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | Visualizar autoevaluacion revision y cierre |
-| **Archivo** | `mmd/D-GANTT-002-cronograma-ceub-carrera.mmd` |
+| **Archivo** | `mmd/gantt-002-002-cronograma-ceub-carrera.mmd` |
 
 ```mermaid
 gantt
@@ -364,7 +364,7 @@ gantt
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | Vista proceso CC TD JD |
-| **Archivo** | `mmd/D-FLOW-001-workflow-aprobacion.mmd` |
+| **Archivo** | `mmd/flow-001-001-workflow-aprobacion.mmd` |
 
 ```mermaid
 flowchart TB
@@ -387,7 +387,7 @@ flowchart TB
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | Separación presentación API datos mensajería |
-| **Archivo** | `mmd/D-ARCH-001-capas-sistema.mmd` |
+| **Archivo** | `mmd/flow-001-001-capas-sistema.mmd` |
 
 ```mermaid
 flowchart LR
@@ -418,7 +418,7 @@ flowchart LR
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | Mapeo FSD módulos M1–M11 |
-| **Archivo** | `mmd/D-COMP-001-modulos-sigesa.mmd` |
+| **Archivo** | `mmd/flow-001-001-modulos-sigesa.mmd` |
 
 ```mermaid
 flowchart TB
@@ -454,7 +454,7 @@ flowchart TB
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | Responsabilidades y asociaciones clave (LFSD §2.1 auditoría / NFR-013) |
-| **Archivo** | `mmd/D-CLASS-001-dominio-sigesa.mmd` |
+| **Archivo** | `mmd/class-001-001-dominio-sigesa.mmd` |
 
 ```mermaid
 classDiagram
@@ -526,7 +526,7 @@ journey
 | Campo | Valor |
 |-------|-------|
 | **Objetivo** | Plan de mejora post-rechazo (LFSD §2.1 alcance) |
-| **Archivo** | `mmd/D-ACT-001-observaciones-mejoras.mmd` |
+| **Archivo** | `mmd/flow-001-001-observaciones-mejoras.mmd` |
 
 ```mermaid
 flowchart TD

@@ -277,9 +277,9 @@ Merge a `main`: revisión humana [TD] o Tech Lead si **C1** (`AGENTS.md`).
 
 | UC | Patrón código | Referencia |
 |----|---------------|------------|
-| UC-001 | Auth middleware + redirect por `rol` | `UC01_secuencia.mmd` |
-| UC-002 | Multipart → S3 → INSERT documento + UPDATE indicador | `UC02_secuencia.mmd` |
-| UC-003 | PATCH decision + validación longitud; POST avance transaccional | `UC03_secuencia.mmd` |
+| UC-001 | Auth middleware + redirect por `rol` | `seq-001-01-secuencia.mmd` |
+| UC-002 | Multipart → S3 → INSERT documento + UPDATE indicador | `seq-002-02-secuencia.mmd` |
+| UC-003 | PATCH decision + validación longitud; POST avance transaccional | `seq-003-03-secuencia.mmd` |
 | UC-005 | Job async + polling `GET /reportes/jobs/{id}` | `api_contracts.md` |
 | UC-006 | Outbox pattern; reintentos RB-12 | `modelo_datos.md` |
 | UC-009 | Solo lectura logs; sin endpoint DELETE | `gherkin.md` UC-009 |

@@ -152,7 +152,7 @@ Cada PC incluye system prompt, I/O, invariants y failure modes (muestra en `FSD_
 
 **Contenido mínimo:** todos los `.mmd` listados tienen ≥19 líneas de diagrama (no vacíos).
 
-**Observación menor:** existe `diagrama-gantt-roadmap.mdd` (duplicado legacy); canónico = `diagrama-gantt-roadmap.mmd`. Eliminar `.mdd` para evitar confusión.
+**Observación menor:** existe `diagrama-gantt-roadmap.mdd` (duplicado legacy); canónico = `gantt-003-diagrama.mmd`. Eliminar `.mdd` para evitar confusión.
 
 ---
 

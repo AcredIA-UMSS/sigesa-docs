@@ -79,7 +79,7 @@
 |-----------|--------|---------|
 | ≥20 user stories INVEST + CA | **26/26** | `PRD-US-001` … `PRD-US-026` en `user_stories.md` |
 | ≥2 user journeys | **6** | §1–6 en `user_journeys.md` (Mermaid `journey`) |
-| Roadmap | Sí | `roadmap.md` + `07_diagramas/gantt.mmd` |
+| Roadmap | Sí | `roadmap.md` + `07_diagramas/gantt-005-diagrama.mmd` |
 | Golden PRD | **25 US** | [`docs/03_prd/PRD.md`](../../../docs/03_prd/PRD.md) — consolidación PC-SIG-04 / PM-ALEX |
 
 **Sesión:** `PC-SIG-03` (`log_interno.md`).
@@ -123,7 +123,7 @@
 | [`05_nfr/NFR_ISO25010.md`](../docs/05_nfr/NFR_ISO25010.md) | NFR-001…019 con métrica/umbral |
 | [`catalogo_tc.md`](../docs/05_nfr/catalogo_tc.md) | TC-NFR-* / TC-SAD-* |
 | [`matriz_cobertura.md`](../docs/05_nfr/matriz_cobertura.md) | Puente FSD/Gherkin |
-| Diagrama | `05_nfr/07_diagramas/nfr_cobertura_iso25010.mmd` |
+| Diagrama | `05_nfr/07_diagramas/pie-010-cobertura-iso25010.mmd` |
 
 **Referencia canónica:** [`docs/05_nfr/NFR_ISO25010.md`](../../../docs/05_nfr/NFR_ISO25010.md) v1.1.
 

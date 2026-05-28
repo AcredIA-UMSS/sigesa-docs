@@ -110,7 +110,7 @@ Detalle: `03_prd/PRD.md` §3 y §14.
 | **v1.1** | Portal endurecido, k6 formal, métricas HER | Post-piloto |
 | **v2.0** | SIIS lectura, IA asistida gobernada, [EE] | Roadmap `03_prd/roadmap.md` |
 
-Cronograma orientativo: `07_diagramas/gantt.mmd` (ejemplo ilustrativo).
+Cronograma orientativo: `07_diagramas/gantt-005-diagrama.mmd` (ejemplo ilustrativo).
 
 ### 3.4 Alcance no funcional (v1)
 

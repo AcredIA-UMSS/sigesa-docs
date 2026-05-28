@@ -4,7 +4,7 @@
 
 ## Máquina de estados del Indicador (referencia)
 
-Todas las historias de auditoría y subsanación deben respetar el diagrama canónico: [`../07_diagramas/UC01_estado.mmd`](../07_diagramas/UC01_estado.mmd)
+Todas las historias de auditoría y subsanación deben respetar el diagrama canónico: [`../07_diagramas/state-001-01-estado.mmd`](../07_diagramas/state-001-01-estado.mmd)
 
 > **Append-only:** las transiciones nunca eliminan **Evidencia** histórica; solo insertan versiones nuevas.
 

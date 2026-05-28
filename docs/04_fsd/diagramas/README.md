@@ -4,15 +4,15 @@ Enlaces simbólicos a la carpeta canónica [`../../07_diagramas/`](../../07_diag
 
 | Archivo (enlace) | FSD-UC / sección | Archivo canónico |
 |------------------|------------------|------------------|
-| `FSD-UC-001_autenticacion_secuencia.mmd` | UC-001 | `diag-01-seq-autenticacion.mmd` |
-| `FSD-UC-003_010_proceso_y_cierre_fase_secuencia.mmd` | UC-003, UC-010 | `UC03_secuencia.mmd` |
-| `FSD-UC-004_008_carga_y_observacion_secuencia.mmd` | UC-004, UC-008 | `UC02_secuencia.mmd` |
-| `FSD-UC-004_005_estados_evidencia.mmd` | UC-004, UC-005 | `UC02_estado.mmd` |
-| `FSD-UC-006_subsanar_evidencia_secuencia.mmd` | UC-006 | `UC01_secuencia.mmd` |
-| `FSD-UC-006_008_009_estados_indicador.mmd` | UC-006, UC-008, UC-009 | `UC01_estado.mmd` |
-| `FSD-UC-010_cierre_fase_estados.mmd` | UC-010 | `UC03_estado.mmd` |
-| `FSD-UC_modelo_er_funcional.mmd` | Modelo datos funcional | `modelo_er.mmd` |
-| `FSD-UC_modelo_er_fisico.mmd` | Modelo físico / DTI | `diag-05-er-modelo-datos.mmd` |
+| `seq-001-001-autenticacion-secuencia.mmd` | UC-001 | `seq-001-01-autenticacion.mmd` |
+| `seq-003-003-010-proceso-y-cierre-fase-secuencia.mmd` | UC-003, UC-010 | `seq-003-03-secuencia.mmd` |
+| `seq-004-004-008-carga-y-observacion-secuencia.mmd` | UC-004, UC-008 | `seq-002-02-secuencia.mmd` |
+| `state-004-004-005-estados-evidencia.mmd` | UC-004, UC-005 | `state-002-02-estado.mmd` |
+| `seq-006-006-subsanar-evidencia-secuencia.mmd` | UC-006 | `seq-001-01-secuencia.mmd` |
+| `state-006-006-008-009-estados-indicador.mmd` | UC-006, UC-008, UC-009 | `state-001-01-estado.mmd` |
+| `state-010-010-cierre-fase-estados.mmd` | UC-010 | `state-003-03-estado.mmd` |
+| `er-002-modelo-funcional.mmd` | Modelo datos funcional | `er-006-diagrama.mmd` |
+| `er-001-modelo-fisico.mmd` | Modelo físico / DTI | `er-005-05-modelo-datos.mmd` |
 | `diag-01` … `diag-10` | Arquitectura y transversal | Boris |
 | `UC01_*`, `UC02_*`, `UC03_*` | Secuencia / estado Alex | Alex |
 | `seq-*`, `state-flujo-*` | Flujos Aylen | aylenGonzales |

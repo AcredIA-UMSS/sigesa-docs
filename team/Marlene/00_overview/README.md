@@ -65,7 +65,7 @@ team/Marlene/
 |-----|----------------|
 | **Sponsor / [JD]** | Este README → `02_vision_negocio_v2.md` → `03_prd/PRD.md` → `10_aportes/release-1.0.0.md` |
 | **Analista / PM** | `01_brd/BRD_v1.md` → `03_prd/user_stories.md` → `04_fsd/casos_uso.md` |
-| **Arquitecto** | `04_fsd/FSD.md` → `04_fsd/modelo_datos.md` → `07_diagramas/modelo_er.mmd` → `05_nfr/NFR_ISO25010.md` |
+| **Arquitecto** | `04_fsd/FSD.md` → `04_fsd/modelo_datos.md` → `07_diagramas/er-006-diagrama.mmd` → `05_nfr/NFR_ISO25010.md` |
 | **Desarrollador** | `rules/coding_rules.md` → `rules/domain_rules.md` → `04_fsd/api_contracts.md` |
 | **QA** | `04_fsd/gherkin.md` → `09_trazabilidad/matriz_trazabilidad.md` |
 | **Agente IA (Cursor)** | `rules/ai_rules.md` → `AGENTS.md` → `06_prompt_contracts/prompt_contracts.md` |
@@ -113,7 +113,7 @@ Matriz completa: `09_trazabilidad/matriz_trazabilidad.md` · Pruebas: `04_fsd/gh
 | Release notes v1.0.0 | `10_aportes/release-1.0.0.md` |
 | Métricas IA (PCOV, SFID, TII, HRR) | `09_trazabilidad/metricas_ai_sdlc.md` |
 | Roadmap producto | `03_prd/roadmap.md` |
-| Cronograma tipo CEUB (ejemplo) | `07_diagramas/gantt.mmd` |
+| Cronograma tipo CEUB (ejemplo) | `07_diagramas/gantt-005-diagrama.mmd` |
 
 ---
 

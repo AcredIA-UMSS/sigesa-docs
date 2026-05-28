@@ -20,14 +20,14 @@
 |----|--------|-------|--------|------|----------|
 | [FSD-UC-001](#fsd-uc-001) | Autenticación y sesión | Todos | 001 | [UC-L01](../05_lfsd/LFSD_v1.md#uc-l01--autenticación-y-sesión) | — |
 | [FSD-UC-002](#fsd-uc-002) | Gestión de usuarios | [JD] | 002 | — | — |
-| [FSD-UC-003](#fsd-uc-003) | Plantillas y Proceso CEUB/ARCU-SUR | [JD] | 024 | [UC-L02](../05_lfsd/LFSD_v1.md#uc-l02--plantillas-y-proceso) | [UC03](../07_diagramas/UC03_secuencia.mmd) |
-| [FSD-UC-004](#fsd-uc-004) | Cargar Evidencia | [CC] | 002 | [UC-L03](../05_lfsd/LFSD_v1.md#uc-l03--cargar-evidencia) | [UC02](../07_diagramas/UC02_secuencia.mmd) |
-| [FSD-UC-005](#fsd-uc-005) | Versionado append-only | [CC], [TD] | 010 | (en UC-L03/L04) | [UC02 estado](../07_diagramas/UC02_estado.mmd) |
-| [FSD-UC-006](#fsd-uc-006) | Subsanar Evidencia | [CC] | 003, 025 | [UC-L04](../05_lfsd/LFSD_v1.md#uc-l04--subsanar-evidencia) | [UC01](../07_diagramas/UC01_secuencia.mmd) |
+| [FSD-UC-003](#fsd-uc-003) | Plantillas y Proceso CEUB/ARCU-SUR | [JD] | 024 | [UC-L02](../05_lfsd/LFSD_v1.md#uc-l02--plantillas-y-proceso) | [UC03](../07_diagramas/seq-003-03-secuencia.mmd) |
+| [FSD-UC-004](#fsd-uc-004) | Cargar Evidencia | [CC] | 002 | [UC-L03](../05_lfsd/LFSD_v1.md#uc-l03--cargar-evidencia) | [UC02](../07_diagramas/seq-002-02-secuencia.mmd) |
+| [FSD-UC-005](#fsd-uc-005) | Versionado append-only | [CC], [TD] | 010 | (en UC-L03/L04) | [UC02 estado](../07_diagramas/state-002-02-estado.mmd) |
+| [FSD-UC-006](#fsd-uc-006) | Subsanar Evidencia | [CC] | 003, 025 | [UC-L04](../05_lfsd/LFSD_v1.md#uc-l04--subsanar-evidencia) | [UC01](../07_diagramas/seq-001-01-secuencia.mmd) |
 | [FSD-UC-007](#fsd-uc-007) | Buscar Evidencia | [CC], [TD] | 001, 007 | — | — |
-| [FSD-UC-008](#fsd-uc-008) | Registrar Observación | [TD] | 009 | [UC-L05](../05_lfsd/LFSD_v1.md#uc-l05--observación-td) | [UC02](../07_diagramas/UC02_secuencia.mmd) |
-| [FSD-UC-009](#fsd-uc-009) | Aprobar Indicador | [TD] | 023 | [UC-L06](../05_lfsd/LFSD_v1.md#uc-l06--aprobar-indicador-y-cerrar-fase) | [UC01 estado](../07_diagramas/UC01_estado.mmd) |
-| [FSD-UC-010](#fsd-uc-010) | Avanzar / cerrar Fase | [TD] | 014, 023 | [UC-L06](../05_lfsd/LFSD_v1.md#uc-l06--aprobar-indicador-y-cerrar-fase) | [UC03](../07_diagramas/UC03_estado.mmd) |
+| [FSD-UC-008](#fsd-uc-008) | Registrar Observación | [TD] | 009 | [UC-L05](../05_lfsd/LFSD_v1.md#uc-l05--observación-td) | [UC02](../07_diagramas/seq-002-02-secuencia.mmd) |
+| [FSD-UC-009](#fsd-uc-009) | Aprobar Indicador | [TD] | 023 | [UC-L06](../05_lfsd/LFSD_v1.md#uc-l06--aprobar-indicador-y-cerrar-fase) | [UC01 estado](../07_diagramas/state-001-01-estado.mmd) |
+| [FSD-UC-010](#fsd-uc-010) | Avanzar / cerrar Fase | [TD] | 014, 023 | [UC-L06](../05_lfsd/LFSD_v1.md#uc-l06--aprobar-indicador-y-cerrar-fase) | [UC03](../07_diagramas/state-003-03-estado.mmd) |
 | [FSD-UC-011](#fsd-uc-011) | Dashboard [CC] | [CC] | 004, 006, 025 | — | `figma/screenshots/cc-coordinador-home.png` |
 | [FSD-UC-012](#fsd-uc-012) | Bandeja auditoría [TD] | [TD] | 007, 012 | — | `figma/screenshots/td-bandeja-tareas.png` |
 | [FSD-UC-013](#fsd-uc-013) | Panel ejecutivo [JD] | [JD] | 015, 020 | [UC-L07](../05_lfsd/LFSD_v1.md#uc-l07--panel-semáforo-jd) | `figma/screenshots/jd-admin-dashboard.png` |
@@ -73,7 +73,7 @@
 |-------|-------|
 | **Trazabilidad** | BRD-SCP-IN-01 · PRD-US-024 |
 | **Reglas** | FSD-BR-08, FSD-BR-17, FSD-BR-19 |
-| **Diagrama** | [`UC03_secuencia.mmd`](../07_diagramas/UC03_secuencia.mmd) |
+| **Diagrama** | [`seq-003-03-secuencia.mmd`](../07_diagramas/seq-003-03-secuencia.mmd) |
 | **Mockup** | `figma/screenshots/jd-admin-dashboard.png` (node `435:450`) |
 
 **Actor principal:** [JD]
@@ -105,7 +105,7 @@
 |-------|-------|
 | **Trazabilidad** | BRD-SCP-IN-02 · PRD-US-002 |
 | **Reglas** | FSD-BR-01, FSD-BR-03, FSD-BR-20 |
-| **Diagrama** | [`UC02_secuencia.mmd`](../07_diagramas/UC02_secuencia.mmd) |
+| **Diagrama** | [`seq-002-02-secuencia.mmd`](../07_diagramas/seq-002-02-secuencia.mmd) |
 | **Mockup** | `figma/screenshots/cc-coordinador-home.png` (node `635:319`) — botón **"Subir Evidencia"** en lista de Indicadores |
 
 **Actor principal:** [CC]
@@ -135,7 +135,7 @@
 |-------|-------|
 | **Trazabilidad** | BRD-CST-01 · PRD-US-003, 025 |
 | **Reglas** | FSD-BR-02, FSD-BR-06, FSD-BR-20 |
-| **Diagrama** | [`UC01_secuencia.mmd`](../07_diagramas/UC01_secuencia.mmd) |
+| **Diagrama** | [`seq-001-01-secuencia.mmd`](../07_diagramas/seq-001-01-secuencia.mmd) |
 | **Mockup** | `figma/screenshots/td-bandeja-tareas.png` — sección "Observación (subsanación)" visible para [TD] |
 
 **Actor principal:** [CC]
@@ -202,7 +202,7 @@
 |-------|-------|
 | **Trazabilidad** | BRD-CST-03 · PRD-US-014 |
 | **Reglas** | FSD-BR-07 |
-| **Diagrama** | [`UC03_estado.mmd`](../07_diagramas/UC03_estado.mmd) |
+| **Diagrama** | [`state-003-03-estado.mmd`](../07_diagramas/state-003-03-estado.mmd) |
 
 **Actor principal:** [TD] (solicitud); sistema (validación)
 

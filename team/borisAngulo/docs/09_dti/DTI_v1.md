@@ -82,7 +82,7 @@ El repositorio del equipo usa **tres capas de identificadores**. El DTI y la imp
 
 ### 3.1 C4 – Nivel 1 (contexto)
 
-Ver también: `07_diagramas/diag-07-c4-contenedores-sistema.mmd` (nivel contenedores).
+Ver también: `07_diagramas/c4-007-07-contenedores-sistema.mmd` (nivel contenedores).
 
 ```mermaid
 C4Context
@@ -125,7 +125,7 @@ C4Context
 
 ### 4.2 Contenedores
 
-Fuente canónica: `diag-07-c4-contenedores-sistema.mmd`.
+Fuente canónica: `c4-007-07-contenedores-sistema.mmd`.
 
 | Contenedor | Tecnología | UC principales |
 |------------|------------|----------------|
@@ -150,11 +150,11 @@ flowchart LR
   UC --> AUD["AuditEventPort"]
 ```
 
-**Flujo de secuencia**: `07_diagramas/diag-02-seq-evidencias.mmd` (actualizar etiqueta a FSD-UC-003).
+**Flujo de secuencia**: `07_diagramas/seq-002-02-evidencias.mmd` (actualizar etiqueta a FSD-UC-003).
 
 ### 4.4 Flujo de cierre de proceso
 
-`07_diagramas/diag-08-flow-cierre-proceso-pendientes.mmd` — FSD-UC-002, BR-009, CU-004.
+`07_diagramas/flow-008-08-cierre-proceso-pendientes.mmd` — FSD-UC-002, BR-009, CU-004.
 
 ---
 
@@ -172,16 +172,16 @@ flowchart LR
 | Notifications | Alerta, Ventana deduplicación | UC-006 |
 | Audit & Events | EventoAuditoría | Transversal |
 
-Diagrama de clases: `diag-09-class-dominio-agregados.mmd`.
+Diagrama de clases: `class-009-09-dominio-agregados.mmd`.
 
 ### 5.2 ER físico (resumen)
 
-Diagrama completo: `diag-05-er-modelo-datos.mmd`. Reglas: append-only en versiones de Evidencia; `LOG_AUDITORIA` para RB-011.
+Diagrama completo: `er-005-05-modelo-datos.mmd`. Reglas: append-only en versiones de Evidencia; `LOG_AUDITORIA` para RB-011.
 
 ### 5.3 Estados
 
-- Proceso: `diag-04a-state-proceso.mmd` (BR-008, BR-009, BR-010).
-- Observación y Evidencia: `diag-04b-state-obs-evidencia.mmd`.
+- Proceso: `state-002-04a-proceso.mmd` (BR-008, BR-009, BR-010).
+- Observación y Evidencia: `state-003-04b-obs-evidencia.mmd`.
 
 ---
 
@@ -264,7 +264,7 @@ Fuente: **PC-007** en `prompt-contracts.md` (encabezado `FSD-UC-007` = id de PC,
 
 Scheduler diario (UC-006): identificar vencimientos → notificar → registrar en auditoría. Retry con backoff; deduplicación por `(proceso_id, ventana)`.
 
-Secuencia observaciones: `diag-03-seq-observaciones.mmd` → etiquetar **FSD-UC-004**.
+Secuencia observaciones: `seq-003-03-observaciones.mmd` → etiquetar **FSD-UC-004**.
 
 ---
 
@@ -313,7 +313,7 @@ Trazabilidad de prompts: `PROMPT_MAPPING.md` (PM-034 diagramas, PM-035 skills).
 | NFR-009 | Mantenibilidad | Cobertura dominio ≥ 80 % | CI SonarQube | Todos |
 | NFR-010 | Interoperabilidad | ≥ 95 % llamadas externas en SLA | Contract tests | UC-003, UC-007 |
 
-Distribución ISO 25010: `diag-10-pie-cobertura-nfr-iso25010.mmd`.
+Distribución ISO 25010: `pie-010-10-pie-cobertura-nfr-iso25010.mmd`.
 
 ---
 
@@ -385,7 +385,7 @@ Detalle completo: `08_trazabilidad/trazabilidad-sigesa.md` §3.
 | +1 | Core hexagonal UC-001–004 |
 | +2 | UC-005–007 + worker; cierre GAP-001/002 |
 
-Cronograma acreditación (referencia): `diag-06a-gantt-ciclo-acreditacion.mmd`.
+Cronograma acreditación (referencia): `gantt-001-06a-ciclo-acreditacion.mmd`.
 
 ---
 
