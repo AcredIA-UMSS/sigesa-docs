@@ -328,7 +328,7 @@ erDiagram
 
 ## 5. Contratos de integración (API)
 
-Especificación lógica completa: [`docs/04_fsd/api_contracts.md`](../04_fsd/api_contracts.md). Contratos cloud v1.0: [`api_contracts_cloud.md`](api_contracts_cloud.md). OpenAPI físico: pendiente `docs/05_dti/openapi.yaml`.
+Especificación lógica completa: [`docs/04_fsd/api_contracts.md`](../04_fsd/api_contracts.md). Contratos cloud v1.0: [`api_contracts_cloud.md`](api_contracts_cloud.md). **Runtime MVP local (gateway, auth, dashboard, health):** [`api_contracts_mvp_runtime.md`](api_contracts_mvp_runtime.md). OpenAPI físico: pendiente `docs/05_dti/openapi.yaml`.
 
 ### 5.1 Convenciones
 
