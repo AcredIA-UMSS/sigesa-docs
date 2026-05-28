@@ -791,3 +791,47 @@ also keep in mind all the versions available of the brd for more context if need
 ## 2026-05-27T18:04:44-04:00 — Prompt usuario
 **Prompt:** commit all changes to main repo; mantener repos separados front/back
 **Acción:** Commit 8eac519 en sigesa-docs (skills, AGENTS, README, .gitignore app/*); sin incluir app/sigesa-front ni app/sigesa-backend.
+
+## 2026-05-27T — Prompt usuario
+**Prompt:** pls analyze the sigesa-backend folder... Docker build errors (tsconfig.base.json, esModuleInterop, etc.)
+**Acción:** Sesión identificada como alexAlvarez; inicio análisis backend vs DTI.
+
+## 2026-05-27T — Prompt usuario
+**Prompt:** alexAlvarez, yes continue with the debug and fixing the errors
+**Acción:** Fix Dockerfiles (COPY tsconfig.base.json), exclude tests del build audit-service, alinear import en idempotency.test.ts, orchestration runtime shared dist.
+
+## 2026-05-27T20:23:09-04:00 — Prompt usuario
+**Prompt:** during the execution of this seed @app/sigesa-backend/scripts/seed-dev.sql I get the following error, pls check the actual code of the seeds that should match the ddl and the syntax
+**Acción:** Reproducido error UUID inválido en accreditation_template id; corregido último segmento (13→12 hex) en seed-dev.sql; seed verificado idempotente.
+
+## 2026-05-27T20:28:00-04:00 — Prompt usuario
+**Prompt:** Error NodeVersionSupportWarning AWS SDK + EADDRINUSE :3001; update npm to newer version
+**Acción:** Node 22.22.3 + npm 11.16.0 vía nvm; .nvmrc, engines>=22, Dockerfiles node:22-alpine; README modos A/B dev y conflicto puertos.
+
+## 2026-05-27T20:41:57-04:00 — Prompt usuario
+**Prompt:** Análisis completo app/ + contratos front/backend; login 404 en https://localhost:8080/api/v1/
+**Acción:** Diagnóstico: gateway strippeaba /api/v1 (404); dev sin .env (500); HTTPS incorrecto. Fix pathRewrite en gateway + --env-file en dev scripts + trailing slash .env front. Verificación E2E login 201 OK.
+
+## 2026-05-27T20:46:41-04:00 — Prompt usuario
+**Prompt:** .env sigue en 8080 pero login devuelve 500 INTERNAL_ERROR
+**Acción:** Causa: audit-service corriendo sin DATABASE_URL/JWT (proceso viejo). Fix: loadEnv automático en @sigesa/shared + gateway; dev scripts corregidos; audit reiniciado. Login 201 OK vía :8080.
+
+## 2026-05-27T20:51:33-04:00 — Prompt usuario
+**Prompt:** /sigesa-frontend-engineer revisar alineación FE con AGENTS/DTI/Figma; error acceso [CC]
+**Acción:** Bug: API dashboard devuelve id/status pero UI esperaba indicatorId/currentState → crash StateBadge. Fix mappers en dashboardApi.ts, auth isReady en ProtectedRoute, tipografía Inter/IBM Plex Mono + tokens Figma en globals.css.
+
+## 2026-05-27T20:59:03-04:00 — Prompt usuario
+**Prompt:** Alinear vista CC con screenshots Figma, filtros, UC004 upload en MVP, análisis UCs alto valor
+**Acción:** Rediseño CcAppShell (sidebar Figma), CoordinatorHome KPIs/fases, IndicatorTable con filtros estado+búsqueda y CTAs UC004/UC006; Suspense useSearchParams.
+
+## 2026-05-28T00:00:00-04:00 — Prompt usuario
+**Prompt:** execute plan (sync local with origin/main + git submodules for sigesa-front/sigesa-backend)
+**Acción:** Ejecución plan: fetch (11 commits behind), stash WIP, pull fast-forward, bootstrap app repos, wire submodules.
+
+## 2026-05-28T14:05:00-04:00 — Prompt usuario
+**Prompt:** execute plan (sync + submodules)
+**Acción:** Completado: pull origin/main (61ac14c, core.symlinks=false), bootstrap push sigesa-backend (6508c9b) y sigesa-front (7e0bf3f), submodules wired (.gitmodules), commit 1397fa0 en sigesa-docs (ahead 1, sin push).
+
+## 2026-05-28T14:15:00-04:00 — Prompt usuario
+**Prompt:** No push; move changes to branch alex; fix frontend with sigesa-frontend-engineer (DTI UCs + Figma hi-fi); skip broken symlinks.
+**Acción:** Branch alex en sigesa-docs (submodules) y sigesa-front; CC/TD dashboards alineados Figma (ProcessOverview, observaciones UC-005/006, TdAppShell, búsqueda UC-007); lint/tsc OK; sin push.
