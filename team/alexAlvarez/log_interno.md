@@ -944,3 +944,7 @@ Demo: `cc.demo@umss.edu.bo` / `td.demo@umss.edu.bo` — `Password123!`
 
 **Acción:** Append registro consolidado; commit en `sigesa-docs/alex` si hay cambios pendientes.
 
+
+## 2026-05-28T16:44:00-04:00 — Prompt usuario
+**Prompt:** I want to move to main branch, pls check evetyhing is correct with the submodules and also I want to merge alex branch with oriign main and push it to origin/alex
+**Acción:** Verificado estado git/submodules; merge origin/main→alex ya up-to-date; push origin/alex OK; inspeccionado main (apps embebidos, sin submodules); restaurado branch alex con submodules init.
