@@ -9,7 +9,7 @@
 
 sequenceDiagram
     autonumber
-    actor TD as Técnico DUEA [TD]
+    actor TD as Tecnico DUEA TD
     participant UI as SPA Técnico<br/>/dashboard/tecnico
     participant API as API Workflow
     participant AUTH as Middleware JWT RBAC
@@ -19,7 +19,7 @@ sequenceDiagram
     participant OUT as notificacion_outbox
     participant WORK as Worker SMTP
 
-    Note over TD,UI: Precondición: indicador EN_REVISION<br/>documento vigente cargado por [CC]
+    Note over TD,UI: Precondicion indicador EN_REVISION<br/>documento vigente cargado por CC
 
     TD->>UI: Abre panel de auditoría
     UI->>API: GET indicadores?estado=EN_REVISION<br/>Bearer JWT rol TD
@@ -65,10 +65,10 @@ sequenceDiagram
                 else Actualización exitosa
                     API->>DB: UPDATE indicador APROBADO o RECHAZADO
                     API->>DB: INSERT auditoria APROBACION o RECHAZO
-                    API->>OUT: NOTIF_DICTAMEN a [CC]
+                    API->>OUT: NOTIF_DICTAMEN a CC
                     API-->>UI: 200 nuevoEstado actualizadoEn
                     UI-->>TD: Confirmación dictamen
-                    OUT-->>WORK: async SMTP [CC]<br/>SLA ≤ 15 min NFR-003
+                    OUT-->>WORK: async SMTP CC<br/>SLA max 15 min NFR-003
                 end
             end
         end
@@ -90,6 +90,6 @@ sequenceDiagram
         UI-->>TD: Subfase cerrada correctamente
     end
 
-    opt [CC] sube nueva versión tras rechazo UC-002
-        Note over TD,DB: Indicador RECHAZADO → EN_REVISION<br/>nueva notificación a [TD]
+    opt CC sube nueva version tras rechazo UC-002
+        Note over TD,DB: Indicador RECHAZADO a EN_REVISION<br/>nueva notificacion a TD
     end

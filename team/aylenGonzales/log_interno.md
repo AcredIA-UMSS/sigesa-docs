@@ -9,3 +9,11 @@ Trazabilidad — enfoque semilla → sistema, con referencias cruzadas (ej. DTI 
 
 El archivo debe ser la fuente única de verdad: no duplicar docs/03_prd/roadmap.md ni crear versiones en carpetas de equipo. Si ya existe contenido disperso, consolídalo aquí en una sola reescritura limpia.
 **Acción:** Revisión de roadmap canónico (`docs/03_prd/roadmap.md`), PRD_v1 y Gantt existente; creación de `team/aylenGonzales/03_prd/roadmap.md`.
+
+## 2026-05-27T22:23:00-04:00 — Prompt usuario
+**Prompt:** Tengo múltiples diagramas Mermaid en mi proyecto que fallan con el error "Cannot read properties of undefined (reading 'x')", y se solicita detectar, analizar causas comunes, corregir y resumir archivos modificados.
+**Acción:** Barrido global de archivos con bloques Mermaid y `.mmd`; análisis de patrones de falla (nodos C4 no válidos, labels con caracteres problemáticos en state/gantt, símbolos especiales); correcciones aplicadas en diagramas críticos y preparación de resumen de cambios.
+
+## 2026-05-27T22:45:00-04:00 — Prompt usuario
+**Prompt:** sigue la misma rubrica, vamos con la segunda pasada
+**Acción:** Segunda pasada sobre bloques Mermaid embebidos en Markdown; detección por patrones de riesgo y normalización de labels/roles en diagramas `journey` dentro de `docs/03_prd/PRD.md`.

@@ -1,7 +1,7 @@
 stateDiagram-v2
     title Estado — Ciclo de Vida del Proceso de Acreditación (SIGESA)
 
-    [*] --> CONFIGURACION : [JD] crea proceso\nselecciona carrera + tipo CEUB/ARCU-SUR\nverifica RBN-13
+    [*] --> CONFIGURACION : "(JD) crea proceso\nselecciona carrera + tipo CEUB/ARCU-SUR\nverifica RBN-13"
 
     state "CONFIGURACION" as CONFIGURACION
     state "ACTIVO" as ACTIVO
@@ -10,27 +10,27 @@ stateDiagram-v2
     state "VENCIDA" as VENCIDA
     state "SUSPENDIDO" as SUSPENDIDO
 
-    CONFIGURACION --> ACTIVO : [JD] activa el proceso\nFases e indicadores cargados\nFecha inicio registrada
+    CONFIGURACION --> ACTIVO : "(JD) activa el proceso\nFases e indicadores cargados\nFecha inicio registrada"
 
-    ACTIVO --> EN_FASE : Primera subfase abierta\n[CC] comienza carga de evidencias
+    ACTIVO --> EN_FASE : "Primera subfase abierta\n(CC) comienza carga de evidencias"
 
     state EN_FASE {
         [*] --> Autoevaluacion
-        Autoevaluacion --> EvaluacionExterna : Todas las evidencias APROBADO_FINAL\n[JD] cierra la subfase
+        Autoevaluacion --> EvaluacionExterna : "Todas las evidencias APROBADO_FINAL\n(JD) cierra la subfase"
         EvaluacionExterna --> PlanMejoras : Misma condición
         PlanMejoras --> Seguimiento : Misma condición
         Seguimiento --> [*]
     }
 
-    EN_FASE --> ACREDITADA : Organismo externo (CEUB/ARCU-SUR)\nemite resolución de acreditación\n[JD] registra la resolución
+    EN_FASE --> ACREDITADA : "Organismo externo CEUB/ARCU-SUR\nemite resolucion de acreditacion\n(JD) registra la resolucion"
 
-    EN_FASE --> SUSPENDIDO : [JD] registra suspensión\ncon resolución DUEA documentada\nRBN-06
+    EN_FASE --> SUSPENDIDO : "(JD) registra suspension\ncon resolucion DUEA documentada\nRBN-06"
 
-    ACREDITADA --> VENCIDA : Job nocturno detecta\nfecha_fin < fecha_actual\nEstado automático
+    ACREDITADA --> VENCIDA : "Job nocturno detecta\nfecha_fin menor a fecha_actual\nEstado automatico"
 
-    VENCIDA --> CONFIGURACION : [JD] inicia proceso de renovación\n(nuevo ciclo, mismo carrera_id)
+    VENCIDA --> CONFIGURACION : "(JD) inicia proceso de renovacion\n(nuevo ciclo, mismo carrera_id)"
 
-    SUSPENDIDO --> ACTIVO : [JD] reactiva con resolución\nDocumentada en LOG_AUDITORIA
+    SUSPENDIDO --> ACTIVO : "(JD) reactiva con resolucion\nDocumentada en LOG_AUDITORIA"
 
     note right of ACREDITADA
         Semáforo = VERDE en dashboard
@@ -40,9 +40,9 @@ stateDiagram-v2
 
     note right of EN_FASE
         Semáforo calculado por avance:
-        ≥80% → VERDE
-        50-79% → AMARILLO
-        <50% → ROJO
+        mayor o igual 80 por ciento: VERDE
+        50 a 79 por ciento: AMARILLO
+        menor a 50 por ciento: ROJO
         RBN-12
     end note
 

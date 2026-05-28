@@ -3,24 +3,24 @@ stateDiagram-v2
 
     [*] --> PENDIENTE : Indicador creado en el sistema\n(sin evidencia cargada)
 
-    PENDIENTE --> EN_REVISION : [CC] carga Evidence válida\n(PDF/DOCX/XLSX ≤ 50 MB)\nFSD-UC-001
+    PENDIENTE --> EN_REVISION : "(CC) carga Evidence valida\n(PDF/DOCX/XLSX max 50 MB)\nFSD-UC-001"
 
-    EN_REVISION --> APROBADO_TD : [TD] aprueba\nPOST /indicadores/{id}/aprobar\nFSD-UC-003
+    EN_REVISION --> APROBADO_TD : "(TD) aprueba\nPOST /indicadores/{id}/aprobar\nFSD-UC-003"
 
-    EN_REVISION --> RECHAZADO_TD : [TD] rechaza\ncon justificación ≥ 20 chars\nFSD-UC-003
+    EN_REVISION --> RECHAZADO_TD : "(TD) rechaza\ncon justificacion min 20 chars\nFSD-UC-003"
 
-    RECHAZADO_TD --> EN_REVISION : [CC] carga nueva versión\n(versión N+1 automática)\nFSD-UC-002
+    RECHAZADO_TD --> EN_REVISION : "(CC) carga nueva version\n(version N+1 automatica)\nFSD-UC-002"
 
-    APROBADO_TD --> APROBADO_FINAL : [JD] aprueba en revisión final\nFSD-UC-003
+    APROBADO_TD --> APROBADO_FINAL : "(JD) aprueba en revision final\nFSD-UC-003"
 
-    APROBADO_TD --> RECHAZADO_JD : [JD] rechaza con justificación\nFSD-UC-003
+    APROBADO_TD --> RECHAZADO_JD : "(JD) rechaza con justificacion\nFSD-UC-003"
 
-    RECHAZADO_JD --> EN_REVISION : [CC] carga corrección\nFSD-UC-002
+    RECHAZADO_JD --> EN_REVISION : "(CC) carga correccion\nFSD-UC-002"
 
     APROBADO_FINAL --> [*] : Estado terminal — inmutable\nEvidence no puede eliminarse\nRBN-02 / RBN-07
 
     note right of EN_REVISION
-        Notificación a [TD] ≤ 15 min
+        Notificacion a (TD) en 15 min
         Hash SHA-256 calculado
         Registro en LOG_AUDITORIA
         accion = 'CARGA'
@@ -28,7 +28,7 @@ stateDiagram-v2
 
     note right of RECHAZADO_TD
         observacion_td guardada en EVIDENCIA
-        Notificación a [CC] con justificación
+        Notificacion a (CC) con justificacion
         LOG_AUDITORIA accion = 'RECHAZO'
     end note
 

@@ -10,7 +10,7 @@ stateDiagram-v2
     direction TB
 
     state "1. Cuenta usuario (BD)" as Cuenta {
-        [*] --> USUARIO_ACTIVO: alta por [JD]
+        [*] --> USUARIO_ACTIVO: alta por (JD)
         USUARIO_ACTIVO --> USUARIO_INACTIVO: desactivar cuenta
         USUARIO_INACTIVO --> USUARIO_ACTIVO: reactivar cuenta
     }
@@ -33,16 +33,16 @@ stateDiagram-v2
     }
 
     note right of USUARIO_INACTIVO
-        AUTH_INACTIVE → no emite JWT
+        AUTH_INACTIVE: no emite JWT
     end note
 
     note right of BLOQUEADO
-        AUTH_LOCKED → 429
+        AUTH_LOCKED: respuesta 429
     end note
 
     note right of SESION_ACTIVA
-        Redirección por rol:
-        CC → /dashboard/coordinador
-        TD → /dashboard/tecnico
-        JD → /dashboard/jefatura
+        Redireccion por rol:
+        CC a /dashboard/coordinador
+        TD a /dashboard/tecnico
+        JD a /dashboard/jefatura
     end note

@@ -12,14 +12,14 @@ stateDiagram-v2
     state "1. Indicador (ciclo acreditación)" as Indicador {
         [*] --> PENDIENTE: indicador creado<br/>desde plantilla proceso
 
-        PENDIENTE --> EN_REVISION: [CC] carga evidencia<br/>POST /documentos exitoso
+        PENDIENTE --> EN_REVISION: "(CC) carga evidencia POST /documentos exitoso"
 
-        EN_REVISION --> APROBADO: [TD] aprueba<br/>UC-003 PATCH decision
-        EN_REVISION --> RECHAZADO: [TD] rechaza con<br/>justificación ≥ 20 chars
+        EN_REVISION --> APROBADO: "(TD) aprueba UC-003 PATCH decision"
+        EN_REVISION --> RECHAZADO: "(TD) rechaza con justificacion min 20 chars"
 
-        RECHAZADO --> EN_REVISION: [CC] sube nueva versión<br/>documento version++
+        RECHAZADO --> EN_REVISION: "(CC) sube nueva version documento"
 
-        APROBADO --> EN_REVISION: [CC] nueva versión<br/>advertencia UI RB-04
+        APROBADO --> EN_REVISION: "(CC) nueva version advertencia UI RB-04"
 
         note right of PENDIENTE
             Sin documento vigente
@@ -27,12 +27,12 @@ stateDiagram-v2
         end note
 
         note right of EN_REVISION
-            Cola revisión [TD]
-            Notificación CARGA
+            Cola revision TD
+            Notificacion CARGA
         end note
 
         note right of RECHAZADO
-            Observación visible [CC]
+            Observacion visible CC
             Plan mejora opcional UC-012
         end note
     }
@@ -52,7 +52,7 @@ stateDiagram-v2
         end note
     }
 
-    state "3. Carga en UI [CC]" as CargaUI {
+    state "3. Carga en UI CC" as CargaUI {
         [*] --> FORMULARIO_ABIERTO
         FORMULARIO_ABIERTO --> VALIDANDO_CLIENTE: seleccionar archivo
         VALIDANDO_CLIENTE --> FORMULARIO_ABIERTO: validación fallida
@@ -63,7 +63,7 @@ stateDiagram-v2
     }
 
     note right of Indicador
-        Precondición proceso EN_PROCESO
+        Precondicion proceso EN_PROCESO
         BR-015: indicadorId obligatorio
-        RB-02: solo [CC] asignado
+        RB-02: solo CC asignado
     end note

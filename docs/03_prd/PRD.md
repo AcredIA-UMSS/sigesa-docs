@@ -136,7 +136,7 @@ Resumen ejecutivo:
 
 ```mermaid
 journey
-  title [CC] — Cargar y subsanar Evidencia
+  title CC - Cargar y subsanar Evidencia
   section Preparar
     Inicia sesión: 4: CC
     Abre Proceso y Fase: 5: CC
@@ -144,13 +144,13 @@ journey
     Carga Evidencia en Indicador: 5: CC
     Recibe confirmación de registro: 5: CC
   section Subsanar
-    Recibe observación [TD]: 3: CC
+    Recibe observacion TD: 3: CC
     Sube nueva versión enlazada: 5: CC
 ```
 
 ```mermaid
 journey
-  title [TD] — Validar y decidir
+  title TD - Validar y decidir
   section Revisar
     Filtra pendientes por carrera: 5: TD
     Abre Evidencia e historial: 4: TD
@@ -163,13 +163,13 @@ journey
 
 ```mermaid
 journey
-  title [JD] — Supervisión ejecutiva
+  title JD - Supervision ejecutiva
   section Monitorear
     Abre panel semáforo global: 5: JD
   section Actuar
     Genera reporte PDF ejecutivo: 5: JD
   section Publicar
-    Autoriza contenido portal [P]: 4: JD
+    Autoriza contenido portal P: 4: JD
 ```
 
 ---
