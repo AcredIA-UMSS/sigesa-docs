@@ -3860,4 +3860,196 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 
 | PM-051 | docs | `09_trazabilidad/` + `10_aportes/APORTES_RELEASE_1.0.0.md` | 965 tareas, APORTES v1.2, justificación Marlene §3.1. | 2026-05-17 | — |
 
+---
+
+### PM-052 - MVP runtime Figma + full-stack + auditoría consistencia (alexAlvarez)
+
+- **ID**: PM-052
+- **Fecha**: 2026-05-27 — 2026-05-28
+- **Hora**: 14:49 — 17:30 (UTC-4)
+- **Solicitante**: Alex Alvarez
+- **Agente / Entorno**: Cursor Agent (@VisualAgent, @DevAgent, @ArchAgent)
+- **Modelo**: Composer (Cursor)
+- **Tarea**: Integración Figma→docs; bootstrap MVP `app/sigesa-front` + `app/sigesa-backend`; rama `alex` con submodules; contratos runtime DTI; auditoría cadena BRD→código.
+- **Objetivo**: MVP ejecutable CC/TD (UC-004/005/006/007), documentación alineada Figma/FSD, trazabilidad prompt consolidada en mapping global.
+- **Contexto**:
+  - Origen: `team/alexAlvarez/log_interno.md` — sesiones 2026-05-27…2026-05-28 (post **PM-050**)
+  - Skills: `sigesa-frontend-engineer`, `sigesa-backend-engineer`, `sigesa-figma-integration`
+- **Prompts usados (resumen sesión)**:
+  ```text
+  execute sigesa-figma-integration + figma-extract (CC/TD/JD frames, 5 llamadas MCP)
+  update all the documentation required in docs folder (BR-08/19/20, UC-003/004/006, gherkin, user_stories)
+  /create-skill sigesa-frontend-engineer + /sigesa-frontend-engineer go ahead with the implementation plan
+  /create-skill sigesa-backend-engineer + Implementar plan Backend MVP (monorepo, docker-compose, Jest 7/7)
+  execute plan: sync submodules, branch alex, FE/BE alignment, api_contracts_mvp_runtime, E2E happy+sad
+  execute plan: UC-004 phase drill-down, TD tray/review, C4 §11, Figma TD audit
+  pls change to agent mode and update files — whole analysis BRD → MRD → PRD → NFRs → DTI + ADRs + C4 → code
+  ```
+- **Archivos generados o modificados (principal)**:
+  - `figma/` — frames CC/TD/JD, annotations, EXPORT_TODO.md
+  - `docs/04_fsd/` — reglas_negocio v1.1, casos_uso v1.1, gherkin, FSD v1.2
+  - `docs/03_prd/user_stories.md` — PRD-US-027/028
+  - `.cursor/skills/sigesa-frontend-engineer/`, `sigesa-backend-engineer/` — Creados
+  - `app/sigesa-front/` — MVP React (CC/TD, RBAC, EvidenceUploader, review flows)
+  - `app/sigesa-backend/` — monorepo hexagonal (evidence, audit, orchestration, gateway)
+  - `docs/05_dti/api_contracts_mvp_runtime.md` — Creado; DTI §5 enlace; §11 C4 alineación
+  - `docs/07_diagramas/c4-008-*` — prod MVP; symlinks
+  - `docs/09_trazabilidad/consistency_mvp_runtime_audit.md` — Creado
+  - `team/alexAlvarez/log_interno.md` — Append sesiones + registro consolidado rama `alex`
+- **Validación ejecutada**:
+  - E2E MVP: CC upload → TD reject/approve; sad paths 401/400/409
+  - Backend Jest 7/7; audit tests 11/11; front lint/tsc OK
+  - Login 201 vía gateway :8080 tras fixes pathRewrite/loadEnv
+- **Resultado obtenido**:
+  - Rama `alex` pusheada (`sigesa-docs`, `sigesa-front`, `sigesa-backend`); submodules AcredIA-UMSS cableados; MVP demo verificado.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - PNG `td-bandeja-tareas.png` posible mislabel Figma
+  - `main` vs `alex`: submodules solo en rama `alex`
+- **Próximos pasos**:
+  - Merge `alex` → `main` post-revisión equipo; export frames TD pendientes Figma
+
+| PM-052 | app+docs | `app/` + `docs/05_dti/` + `figma/` + rama `alex` | MVP full-stack CC/TD; api_contracts_mvp_runtime; consistencia BRD→código. | 2026-05-28 | Alex Alvarez |
+
+---
+
+### PM-053 - Roadmap, Mermaid y POC-03/04 (aylenGonzales)
+
+- **ID**: PM-053
+- **Fecha**: 2026-05-25 — 2026-05-28
+- **Hora**: 12:00 — 14:00 (UTC-4)
+- **Solicitante**: Aylen Gonzáles
+- **Agente / Entorno**: Cursor Agent (@ArchAgent, @VisualAgent)
+- **Modelo**: Composer (Cursor)
+- **Tarea**: Hoja de ruta canónica; saneamiento masivo Mermaid; bootstrap POC-03 (notification-outbox) y POC-04 (audit-log-query).
+- **Objetivo**: `docs/roadmap.md` como fuente única; 0 errores parseo Mermaid en `docs/07_diagramas/`; 2 POCs nuevas ejecutables en Python/FastAPI.
+- **Contexto**:
+  - Origen: `team/aylenGonzales/log_interno.md` — entradas 2026-05-25…2026-05-28 (post **PM-051**)
+  - Skill: `mermaid-expert-architect`, POC runner
+- **Prompts usados (resumen sesión)**:
+  ```text
+  Único archivo docs/roadmap.md — fuente única hacia siguiente módulo maestría (DTI §19, lecciones aprendidas)
+  Detectar/corregir diagramas Mermaid con error "Cannot read properties of undefined (reading 'x')"
+  Segunda pasada sobre bloques embebidos en Markdown (journey en PRD.md)
+  Reemplazar symlinks .mmd por contenido Mermaid real; commit fix: replace symlinks with actual Mermaid content
+  Renombrar .mmd en docs/07_diagramas/ según tipo interno (<tipo>-<NNN>-<descripcion>.mmd)
+  Sanitizar title/acc_title con caracteres especiales; title a frontmatter YAML (er, gantt, seq, state)
+  @ArchAgent poc-runner: bootstrapear POC-03 y POC-04 (UC-015, UC-017; FastAPI+pytest)
+  ```
+- **Archivos generados o modificados (principal)**:
+  - `docs/roadmap.md` — Consolidado v2.0 (fuente única release/2.0.0)
+  - `docs/07_diagramas/*.mmd` — Renombrados, sanitizados, symlinks → contenido real
+  - `docs/03_prd/PRD.md` — Diagramas journey normalizados
+  - `docs/pocs/POC-03-notification-outbox/` — Creado (ficha, src, tests, RESULTADO.md)
+  - `docs/pocs/POC-04-audit-log-query/` — Creado (ficha, src, tests, RESULTADO.md)
+  - `docs/pocs/README.md`, `run_local_pocs.ps1` — Actualizados
+  - `team/aylenGonzales/log_interno.md` — Append 8 entradas sesión
+- **Validación ejecutada**:
+  - Sintaxis Mermaid base verificada post-sanitización
+  - POC-03/04 scaffold + pytest en modo laboratorio SQLite
+- **Resultado obtenido**:
+  - Roadmap institucional único; catálogo diagramas canónico estable; POC-03/04 listas para demo Defensa Final.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - Residual: revisar parseo en editores distintos a Mermaid Live
+- **Próximos pasos**:
+  - Ejecutar `docs/pocs/run_local_pocs.ps1` en CI STAGE; cerrar GAP-DOC Mermaid en auditoría release/2.0.0
+
+| PM-053 | docs | `docs/roadmap.md` + `docs/07_diagramas/` + `docs/pocs/POC-03|04` | Roadmap v2; Mermaid saneado; POC-03/04 UC-015/017. | 2026-05-28 | Aylen Gonzáles |
+
+---
+
+### PM-054 - Trazabilidad release/1.0.0 → release/2.0.0 (borisAngulo)
+
+- **ID**: PM-054
+- **Fecha**: 2026-05-28
+- **Hora**: 15:39 (UTC-4)
+- **Solicitante**: Boris Angulo (+ Aylen Gonzáles co-ejecución)
+- **Agente / Entorno**: Cursor Agent / script git
+- **Modelo**: Composer (Cursor)
+- **Tarea**: Análisis exhaustivo diff `origin/release/1.0.0` ↔ `origin/release/2.0.0` con LOC, clasificación y tabla comparativa 1045 artefactos.
+- **Objetivo**: Evidencia auditable de evolución del repo SIGESA-DOCS hacia release/2.0.0; validar cadena PRD↔FSD↔NFR intacta.
+- **Contexto**:
+  - Origen: `team/borisAngulo/prompt_trazabilidad.md` (ejecutado 2026-05-28; **sin `log_interno.md`** — GAP-BOR02)
+  - Restricción: cero filas inventadas; solo datos de comandos git
+- **Prompt usado (exacto)**:
+  ```text
+  Ejecutar análisis exhaustivo de cambios entre release/1.0.0 y release/2.0.0:
+  clasificación ELIMINADOS/AGREGADOS/MODIFICADOS/SIN_CAMBIOS, LOC por archivo,
+  tabla comparativa 1045 filas, validación cadena PRD ↔ FSD ↔ NFR.
+  Prohibido generar filas sin ejecutar el comando que produce el dato.
+  ```
+- **Archivos generados o modificados**:
+  - `docs/tabla_comparativa_v1_v2.md` — Creado (1045 filas + resumen ejecutivo)
+  - `team/borisAngulo/prompt_trazabilidad.md` — Registro ejecución completa
+- **Validación ejecutada**:
+  - `git ls-tree` v1: 551 archivos · v2: 935 archivos
+  - Clasificación: 111 eliminados · 494 agregados · 187 modificados · 253 sin cambios
+  - PRD.md, FSD.md, NFR_ISO25010.md — presentes en ambas ramas
+- **Resultado obtenido**:
+  - Reporte comparativo v1→v2 con trazabilidad LOC; cadena especificación validada.
+- **Estado**: Completado
+- **Riesgos / observaciones**:
+  - Crear `team/borisAngulo/log_interno.md` para futuras sesiones (append-only)
+- **Próximos pasos**:
+  - Vincular tabla a `docs/10_aportes/release-2.0.0.md` y auditoría `AUDITORIA_RUBRICAS_EXCELENTE_DOCS_RELEASE_2.0.0.md`
+
+| PM-054 | docs | `docs/tabla_comparativa_v1_v2.md` | 1045 artefactos v1→v2; LOC + cadena PRD/FSD/NFR OK. | 2026-05-28 | Boris Angulo |
+
+---
+
+### PM-055 - Consolidación prompt-contracts NFR y entregables Dorada (Marlene)
+
+- **ID**: PM-055
+- **Fecha**: 2026-05-16 — 2026-05-17 (consolidación 2026-05-28)
+- **Hora**: — (UTC-4)
+- **Solicitante**: Marlene (equipo AcredIA)
+- **Agente / Entorno**: Cursor Agent / Claude Web (sesiones previas)
+- **Modelo**: Claude Web + Cursor Agent (auditoría)
+- **Tarea**: Consolidar en mapping global el corpus `team/Marlene/` — cadena BRD→MRD→PRD→FSD→NFR, 20 prompt-contracts PC-NFR, diagramas MAR, trazabilidad local.
+- **Objetivo**: Trazabilidad PM global para aportes Marlene no volcados individualmente post **PM-049**; cerrar GAP-MAR03 (`log_interno.md` vacío/inexistente).
+- **Contexto**:
+  - Origen: `team/Marlene/` — inventario T-001…T-219, auditoría 10/10 (17/05/2026)
+  - **Nota:** no existe `team/Marlene/log_interno.md`; fuentes: `06_prompt_contracts/PC-NFR-*.prompt.md`, `08_trazabilidad/`, cadena documental
+  - Justificación tokens: ver `APORTES_RELEASE_1.0.0.md` §3.1 (Claude Web, sesiones limitadas)
+- **Prompts representativos (corpus PC-NFR, resumen)**:
+  ```text
+  Generar prompt-contracts ISO 25010 + NFR IA (PC-NFR-SEG-01, POR-01, ED-01/02, FIA-01/02, COM-01, MAN-01, USA-01/02, IA-01…10)
+  Completar cadena BRD/MRD/PRD (22 US) / FSD (12 UC) / Gherkin / 18 diagramas MAR-*
+  AGENTS.md local §5 + catálogo 7 skills; matriz_trazabilidad + metricas_ai_sdlc
+  ```
+- **Archivos generados o modificados (principal)**:
+  - `team/Marlene/01_brd/BRD.md` — BRD institucional completo
+  - `team/Marlene/02_mrd/MRD.md`, `03_prd/PRD.md` (22 PRD-US), `04_fsd/FSD.md` (12 UC)
+  - `team/Marlene/05_nfr/NFR_ISO25010.md`, `06_prompt_contracts/` — 20× `PC-NFR-*.prompt.md`
+  - `team/Marlene/07_diagramas/` — 18× `MAR-*.mmd` (seq, state, er, gantt)
+  - `team/Marlene/08_agents/agents/AGENTS.md` — Gobernanza local
+  - `team/Marlene/08_trazabilidad/AUDITORIA_RUBRICAS_EXCELENTE.md` — **10/10**
+  - `team/Marlene/08_trazabilidad/INVENTARIO_TAREAS_APORTES_v1.md` — **200** tareas v1.2
+- **Validación ejecutada**:
+  - Rúbrica Excelente `team/Marlene/`: 10/10 criterios (auditoría 17/05/2026)
+  - Cuadre APORTES: 22 US + 12 UC + 18 diagramas + 20 PC + 10 NFR ISO
+- **Resultado obtenido**:
+  - Entregables Marlene trazados en PROMPT_MAPPING global; inventario 200 filas cuadrado en release 1.0.0.
+- **Estado**: Completado (consolidación retroactiva)
+- **Riesgos / observaciones**:
+  - GAP-MAR03: crear `team/Marlene/log_interno.md` para sesiones futuras
+  - POC local T-130 «Recomendada» — no ejecutada en carpeta equipo
+- **Próximos pasos**:
+  - Iniciar bitácora append-only Marlene; promover PCs NFR a `docs/06_prompt_contracts/` tras auditoría trazabilidad
+
+| PM-055 | team | `team/Marlene/` (BRD→FSD, 20 PC-NFR, 18 MAR) | Consolidación retroactiva; auditoría 10/10; 200 tareas inventario. | 2026-05-28 | Marlene |
+
+---
+
+### 2026-05-28T18:00:00-04:00 — Prompt usuario (consolidación log_interno → PROMPT_MAPPING, 4 integrantes)
+
+**Prompt:** Puedes hacer de los 4? alex, ayle, boris y marlene — consolidar logs internos en PROMPT_MAPPING.md.
+
+**Acción:** Append **PM-052** (alexAlvarez), **PM-053** (aylenGonzales), **PM-054** (borisAngulo desde `prompt_trazabilidad.md`), **PM-055** (Marlene retroactivo desde `team/Marlene/`). Fuentes: `team/alexAlvarez/log_interno.md`, `team/aylenGonzales/log_interno.md`, `team/borisAngulo/prompt_trazabilidad.md`, `team/Marlene/08_trazabilidad/`.
+
+**Resultado:** 4 entradas globales PM-052…055 añadidas; GAP-BOR02 y GAP-MAR03 documentados (sin log_interno).
+
+---
+
 

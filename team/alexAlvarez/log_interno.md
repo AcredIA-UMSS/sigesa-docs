@@ -960,3 +960,15 @@ Demo: `cc.demo@umss.edu.bo` / `td.demo@umss.edu.bo` — `Password123!`
 ## 2026-05-28T17:30:00-04:00 — Prompt usuario
 **Prompt:** pls change to agent mode and update the necessary files but also do a whole analysis of the files in docs and check that everything is consistent BRD -> MRD -> PRD -> NFRs -> DTI + ADRs + C4 -> code (implementation)
 **Acción:** Actualizados c4-006, c4-007; creado c4-008 prod; DTI §2/§8, hybrid §2.6, api_contracts_mvp_runtime §11, READMEs, symlinks; auditoría consistency_mvp_runtime_audit.md.
+
+## 2026-05-28T19:00:00-04:00 — Prompt usuario
+**Prompt:** con los logs internos se puede actualizar en el @PROMPT_MAPPING.md ?
+**Acción:** Explicación flujo log_interno → PROMPT_MAPPING (append-only, 1 sesión = 1 PM, IDs PM-ALEX-* locales vs PM-0xx global).
+
+## 2026-05-28T19:15:00-04:00 — Prompt usuario
+**Prompt:** O SEA, COMO?
+**Acción:** Guía paso a paso con ejemplo Aylen (6 prompts log → 1 entrada PM-052 propuesta).
+
+## 2026-05-28T19:30:00-04:00 — Prompt usuario
+**Prompt:** PUEDES HACER DE LOS 4? alex, ayle, boris y marlene
+**Acción:** Consolidación en PROMPT_MAPPING.md: PM-052 (alex MVP/Figma), PM-053 (aylen roadmap/Mermaid/POC-03/04), PM-054 (boris tabla v1→v2), PM-055 (Marlene retroactivo team/Marlene/).
