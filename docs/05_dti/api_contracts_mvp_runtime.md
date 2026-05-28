@@ -239,6 +239,49 @@ Mode B: `npm run compose:full`.
 
 ---
 
+## 11. Alineación C4 y secuencia MVP (UC-004 → UC-009)
+
+### 11.1 Contenedores C4 vs Mode A
+
+| [`c4-007-07-contenedores-sistema.mmd`](../07_diagramas/c4-007-07-contenedores-sistema.mmd) | MVP Mode A (código) |
+|-------------------------------------------------------------------------------------------|---------------------|
+| Frontend SPA | `sigesa-front` :3000 |
+| API Backend (monolito Dorada) | **Gateway** + **Evidence** + **Audit** + **Orchestration** |
+| Volumen evidencias | MinIO S3 |
+| PostgreSQL 16 | Docker `postgres` |
+| Worker notificaciones | **No implementado** — `NotificationBar` en UI |
+
+Contexto [`c4-006`](../07_diagramas/c4-006-06-contexto-sistema.mmd): [CC] carga/subsana; [TD] valida — cubierto por rutas `/cc/fases/*` y `/td/indicators/*/review`.
+
+### 11.2 Secuencia canónica MVP (endpoints reales)
+
+| Paso | Actor | HTTP | Servicio |
+|------|-------|------|----------|
+| 1 | CC | `POST /indicators/{id}/evidences` | Evidence → event → Audit `SUBIDO` |
+| 2 | TD | `GET /dashboard/technician` | Audit |
+| 3 | TD | `POST /indicators/{id}/reject` | Audit `OBSERVADO` |
+| 4 | CC | `GET /indicators/{id}/observations` | Audit |
+| 5 | CC | `POST /indicators/{id}/evidences` + `observationId` | Evidence → `SUBSANADO` |
+| 6 | TD | `POST /indicators/{id}/approve` | Audit `APROBADO` |
+
+**Drift vs `docs/07_diagramas/seq-*` (no modificar en MVP):**
+
+| Diagrama legacy | MVP usa |
+|-----------------|---------|
+| `GET /audit-queue` | `GET /dashboard/technician` |
+| `POST /observe` | `POST /reject` |
+| `POST /evidences/{id}/versions` | `POST /indicators/{id}/evidences` + `observationId` |
+
+### 11.3 Rutas front MVP (evidence cycle)
+
+| Ruta | Rol | UC |
+|------|-----|-----|
+| `/cc/fases/[phaseId]` | CC | UC-004, UC-006 |
+| `/td/dashboard` | TD | UC-012 |
+| `/td/indicators/[id]/review` | TD | UC-008, UC-009 |
+
+---
+
 ## 10. Referencias
 
 - [`api_contracts_cloud.md`](api_contracts_cloud.md) — Evidence upload, approve/reject, observations

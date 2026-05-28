@@ -847,3 +847,7 @@ also keep in mind all the versions available of the brd for more context if need
 ## 2026-05-28T16:00:00-04:00 — Prompt usuario
 **Prompt:** execute the plan (compose profiles, FE/BE alignment, DTI api_contracts_mvp_runtime, MVP happy+sad paths)
 **Acción:** Ejecutado: Docker profile full-stack; backend alex (dashboard status/description, observation indicatorId, dev-check); front alex (TD filter, description map); docs/05_dti/api_contracts_mvp_runtime.md; E2E H1–H9 + S1/S8/S9 OK.
+
+## 2026-05-28T18:30:00-04:00 — Prompt usuario
+**Prompt:** execute the plan (push alex, UC-004 phase drill-down, TD tray/review, C4 alignment, Figma TD audit)
+**Acción:** Push alex (3 repos). Implementado: multi-phase seed + db:reset-dev, /cc/fases/[phaseId], /td/indicators/[id]/review, task-tray TD, api_contracts_mvp_runtime §11 C4, EXPORT_TODO TD frames.
