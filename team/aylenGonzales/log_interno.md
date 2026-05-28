@@ -29,3 +29,7 @@ El archivo debe ser la fuente única de verdad: no duplicar docs/03_prd/roadmap.
 ## 2026-05-28T00:03:00-04:00 — Prompt usuario
 **Prompt:** Corregir errores Mermaid de parseo en `docs/07_diagramas/` sanitizando títulos (`title` / `acc_title`) con caracteres especiales y verificando IDs de nodos.
 **Acción:** Sanitización de líneas de título en archivos `.mmd` afectados (eliminación de paréntesis, reemplazo de `/` por separador seguro y limpieza de caracteres especiales), sin modificar lógica del diagrama; verificación posterior de ausencia de caracteres especiales en posiciones de ID.
+
+## 2026-05-28T10:30:00-04:00 — Prompt usuario
+**Prompt:** @ArchAgent con skill poc-runner: diseñar y bootstrapear 2 POCs ejecutables en Python (selección UC FSD sin repetir POC-01/02, fichas POC_TEMPLATE, scaffold FastAPI+pytest).
+**Acción:** Tabla de decisión UC-015 y UC-017; creación POC-03 notification-outbox y POC-04 audit-log-query con fichas, código, tests, scripts run_poc03/04 y actualización docs/pocs/README.md y run_local_pocs.ps1.

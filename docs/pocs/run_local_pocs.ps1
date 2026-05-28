@@ -38,5 +38,19 @@ Set-Location $poc2
 & .\.venv\Scripts\python scripts\run_poc02.py
 $poc2Exit = $LASTEXITCODE
 
-if ($poc1Exit -ne 0 -or $poc2Exit -ne 0) { exit 1 }
+Write-Host "=== POC-03 ===" -ForegroundColor Cyan
+Setup-Venv (Join-Path $root "POC-03-notification-outbox\src")
+$poc3 = Join-Path $root "POC-03-notification-outbox\src"
+Set-Location $poc3
+& .\.venv\Scripts\python scripts\run_poc03.py
+$poc3Exit = $LASTEXITCODE
+
+Write-Host "=== POC-04 ===" -ForegroundColor Cyan
+Setup-Venv (Join-Path $root "POC-04-audit-log-query\src")
+$poc4 = Join-Path $root "POC-04-audit-log-query\src"
+Set-Location $poc4
+& .\.venv\Scripts\python scripts\run_poc04.py
+$poc4Exit = $LASTEXITCODE
+
+if ($poc1Exit -ne 0 -or $poc2Exit -ne 0 -or $poc3Exit -ne 0 -or $poc4Exit -ne 0) { exit 1 }
 Write-Host "POCs completadas." -ForegroundColor Green
