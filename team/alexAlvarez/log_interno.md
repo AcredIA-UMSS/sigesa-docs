@@ -976,3 +976,10 @@ Demo: `cc.demo@umss.edu.bo` / `td.demo@umss.edu.bo` — `Password123!`
 ## 2026-05-28T22:00:00-04:00 — Prompt usuario
 **Prompt:** arquitectura cloud bien argumentada; falta el ADR nominal de la rúbrica de curso. genera eso por favor y actualiza en AUDITORIA_RUBRICAS_EXCELENTE_DOCS_RELEASE_2.0.0.md
 **Acción:** Creado `docs/adr/ADR-0005-cloud-provider-y-estilo-de-despliegue.md` (canónico ADR-0014: AWS + ECS Fargate / Docker Compose); actualizados `docs/adr/README.md`, DTI §7, auditoría docs v1.1 — criterio 2 **CUMPLE**, GAP-DOC-02 cerrado.
+## 2026-06-20T21:58:42Z — Generated design_dashboard v1.1\n**Action:** Rewrote design document to v1.1 (Hybrid Sync/Async, Excel export, RBAC filter injection).\n
+
+## 2026-06-23 — Prompt usuario (documentación completa Dashboard)
+**Prompt:** based on the next requirement, pls add the missing info (ADRs, FSD, etc) for the feature "dashboard" … sesión 19/06/2026 … ADR, diseño, prompt implementation, prompt mappings, 90% tests AGENTS.md.
+**Acción:** Creado ADR-0015; PC-MOD-DASH-01 en catálogo; design_dashboard v1.2 con trazabilidad FSD-UC-011–014; PM-056; sprint1 summary; reporting_dashboard.prompt v1.1 Aprobado.
+**Artefactos:** docs/adr/ADR-0015-*.md, docs/06_prompt_contracts/contract_fsd_008_mod_dash_backend.md, design_docs/design_dashboard.md v1.2.
+**Estado:** Documentación completa; pendiente alineación API canónica + JaCoCo 90% en código.

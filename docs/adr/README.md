@@ -4,7 +4,7 @@
 |-------|-------|
 | **Ubicación canónica** | `docs/adr/` (este directorio) |
 | **Audiencia** | DTI, FSD, implementación, agentes IA |
-| **Última actualización** | 2026-05-25 |
+| **Última actualización** | 2026-06-23 |
 | **DTI compilado** | [`docs/05_dti/DTI.md`](../05_dti/DTI.md) · ADRs narrativos en [`docs/05_dti/adrs/`](../05_dti/adrs/README.md) |
 
 > **Regla:** las decisiones de arquitectura del producto viven aquí. Las carpetas `team/<equipo>/09_dti/adr/` son **copias de trabajo** del equipo; no introducen numeración distinta en el repo.
@@ -29,6 +29,7 @@
 | [ADR-0012](ADR-0012-indicator-state-history-append-only.md) | Historial append-only de estados de Indicator | Aceptado | ADR-0001 · ADR-0010 |
 | [ADR-0013](ADR-0013-s3-evidence-blob-storage.md) | Almacenamiento S3 para blobs de Evidence | Aceptado | Supersede ADR-0004 para cloud v1.0 |
 | [ADR-0014](ADR-0005-cloud-provider-y-estilo-de-despliegue.md) | Proveedor cloud AWS + estilo de despliegue (ECS Fargate / Compose) | Aceptado | Rúbrica curso: archivo `ADR-0005-cloud-provider-*`; slot numérico 0005 audit = bitácora |
+| [ADR-0015](ADR-0015-dashboard-sync-async-reporting.md) | Dashboards síncronos y exportación asíncrona (MOD-DASH/MOD-REPORT) | Aceptado | FSD-UC-011–014 · ADR-0007 · ADR-0013 |
 
 ---
 
@@ -68,3 +69,4 @@
 | 2026-05-25 | Promoción canónica ADR-0010–0012 para arquitectura cloud v1.0 |
 | 2026-05-25 | ADR-0013 formaliza S3 como almacenamiento de blobs de Evidence para cloud v1.0 |
 | 2026-05-28 | ADR-0014 (archivo rúbrica `ADR-0005-cloud-provider-y-estilo-de-despliegue.md`): AWS + ECS Fargate / Docker Compose |
+| 2026-06-23 | ADR-0015: arquitectura híbrida sync/async para MOD-DASH y MOD-REPORT (FSD-UC-011–014) |

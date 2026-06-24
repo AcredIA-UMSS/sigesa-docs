@@ -4052,4 +4052,62 @@ Tras lectura obligatoria de BRD, MRD, PRD, FSD, LFSD, NFR, trazabilidad y DTI de
 
 ---
 
+### PM-056 - Documentación completa feature Dashboard (alexAlvarez)
+
+- **ID**: PM-056
+- **Fecha**: 2026-06-23
+- **Hora**: — (UTC-4)
+- **Solicitante**: alexAlvarez
+- **Agente / Entorno**: Cursor Agent
+- **Modelo**: Composer (Cursor)
+- **Tarea**: Completar trazabilidad documental del feature Dashboard/Reporting según sesión 19/06/2026: diseño técnico, ADR, prompt contract, prompt mapping, referencias FSD y AcredIA Design System.
+- **Objetivo**: Cerrar gaps de documentación para demo de integrante: ADR si corresponde, design doc con trazabilidad FSD-UC-011–014, PC promovido al catálogo, PM registrado, cobertura tests ≥90% documentada.
+- **Contexto**:
+  - Requisito académico: una funcionalidad por integrante con trazabilidad BRD→PRD→FSD→DTI→código.
+  - Sesión 19/06/2026: submodules, prompt contracts, no duplicar docs en submodule.
+  - Existía `design_dashboard.md` v1.1 y `reporting_dashboard.prompt.md` (Draft) sin ADR ni entrada PM.
+  - Design system UI: **AcredIA Design System** (`figma/`), no "Deben" (verbo normativo en español).
+- **Prompt usado (exacto)**:
+  ```text
+  based on the next requirement, pls add the missing info (ADRs, FSD, etc) for the feature "dashboard"
+  if you need more information, you can use the prompts used + design system: Deben
+  desarrollar usando la IA una funcionalidad cada integrante de grupo. Deben presentar un demo
+  de la funcionalidad desarrollada. Para esto deben seguir las recomendaciones de la sesion del
+  19/06/2026. Mantener trazabilidad hacia los documentos de especificaciones, realizar primero
+  el Documento de diseño, ADR si corresponde, prompt implementation y prompt mappings, la cobertura
+  de test debe ser del 90 % al menos como regla en AGENTS.md.
+  ```
+- **Archivos generados o modificados**:
+  - `docs/adr/ADR-0015-dashboard-sync-async-reporting.md` — Creado
+  - `docs/adr/README.md` — ADR-0015 en índice
+  - `docs/06_prompt_contracts/contract_fsd_008_mod_dash_backend.md` — PC-MOD-DASH-01 creado
+  - `docs/06_prompt_contracts/prompt_contracts.md` — Catálogo 59 contratos
+  - `app/sigesa-backend/design_docs/design_dashboard.md` — v1.2 trazabilidad FSD/API/tests
+  - `app/sigesa-backend/design_docs/sprint1/design_dashboard.md` — Resumen sprint
+  - `app/sigesa-backend/.cursor/prompts/reporting_dashboard.prompt.md` — v1.1 Aprobado
+  - `team/alexAlvarez/log_interno.md` — Append sesión
+- **Cambios realizados**:
+  - ADR-0015: decisión sync dashboard + async export + Caffeine + S3 pre-signed URLs
+  - Sección §0 trazabilidad PRD/FSD/ADR/PC/PM en design doc
+  - Tabla alineación API canónico vs implementación Java (drift `/kpis` vs API-DASH-01)
+  - Plan pruebas 12 casos T-DASH/T-RPT con TC-09a/b/c y JaCoCo ≥90%
+  - Referencias AcredIA DS (figma jd-admin-dashboard)
+- **Validación ejecutada**:
+  - Cruce con `docs/04_fsd/casos_uso.md`, `api_contracts.md`, `matriz_trazabilidad.md`
+  - Revisión ADR README numeración secuencial
+- **Resultado obtenido**:
+  - Feature Dashboard documentado end-to-end para demo y auditoría trazabilidad.
+- **Estado**: Completado (documentación); implementación API canónica y JaCoCo pendientes
+- **Riesgos / observaciones**:
+  - Drift API: código usa `/dashboard/kpis|data`; FSD exige `/dashboard/coordinator|technician|executive`
+  - API-DASH-03 (JD semáforo) excluido MVP front según `api_contracts_mvp_runtime.md`
+- **Próximos pasos**:
+  - Alinear `DashboardController` a API-DASH-01/02
+  - Configurar JaCoCo 90% en `DashboardServiceImpl`
+  - Implementar `ReportService` async para FSD-UC-014
+
+| PM-056 | docs+backend | ADR-0015, PC-MOD-DASH-01, design_dashboard v1.2 | Trazabilidad FSD-UC-011–014 completa. | 2026-06-23 | alexAlvarez |
+
+---
+
 
